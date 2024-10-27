@@ -1,3 +1,78 @@
-h1 {
-    text-align: center;
+/* font */
+@font-face {
+  font-family: "Computer Modern";
+  src: url('../fonts/cmu.serif-roman.ttf') format('truetype'); /* Adjust path as needed */
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "Computer Modern", sans-serif; /* Use your custom font */
+}
+
+/* Class for circular images */
+.circular-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Centering the image with "img-center" id */
+#img-center {
+  margin-right: 30px;  /* Margin: right only */
+}
+
+/* Top container styles */
+.top-container {
+  display: flex;    
+  align-items: center;   
+  justify-content: center;
+}
+
+.top-container h1,
+.top-container p {
+  margin: 0;   
+}
+
+/* Centering Subsections */
+#subsection-title{
+  text-align: center;
+}
+
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.project-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+.project-card:hover {
+    transform: scale(1.05);
+}
+.project-image {
+    width: 100%;
+    border-radius: 8px;
+}
+.project-title {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+.project-description {
+    font-size: 1em;
+    color: #555;
+}
+.project-links {
+    margin-top: 10px;
+}
+.project-links a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007BFF;
 }
