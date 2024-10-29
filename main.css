@@ -11,10 +11,21 @@ body {
 
 /* Class for circular images */
 .circular-image {
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.circular-icons {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.social-link {
+  text-decoration: none;
 }
 
 /* Centering the image with "img-center" id */
