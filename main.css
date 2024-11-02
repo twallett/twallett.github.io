@@ -107,7 +107,59 @@ body {
   color: #007BFF;
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) { /* For tablets and medium screens */
+  .course-container {
+    width: 100vw; /* Adjust to fit screen width */
+    padding-left: 20px; /* Reduce padding for smaller screens */
+  }
 
+  .course-card {
+    width: calc(50% - 20px); /* Two cards per row */
+  }
+
+  .course-image {
+    width: calc(50% - 10px); /* Two images per row */
+  }
+}
+
+@media (max-width: 768px) { /* For smaller tablets */
+  .course-container {
+    width: 100vw;
+    padding-left: 10px;
+  }
+
+  .course-card {
+    width: 100%; /* One card per row */
+  }
+
+  .course-image {
+    width: calc(50% - 10px); /* Two images per row */
+  }
+}
+
+@media (max-width: 480px) { /* For mobile phones */
+  .course-container {
+    width: 100vw;
+    padding-left: 5px;
+  }
+
+  .course-card {
+    width: 100%; /* Full width for better readability on mobile */
+  }
+
+  .course-image {
+    width: 100%; /* One image per row */
+  }
+
+  .course-title {
+    font-size: 1.2em;
+  }
+
+  .course-description {
+    font-size: 0.9em;
+  }
+}
 
 .project-container {
     display: flex;
