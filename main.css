@@ -148,11 +148,6 @@ body {
     border-radius: 8px;
     object-fit: cover;
 }
-.project-image-bigger {
-  width: 300px;  /* Set fixed width */
-  height: 300px; /* Set fixed height */
-  object-fit: cover; /* Adjusts the image to fill the dimensions without distortion */
-}
 .project-title {
     font-size: 1.5em;
     margin: 10px 0;
