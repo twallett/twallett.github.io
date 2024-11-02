@@ -24,9 +24,13 @@ body {
   object-fit: cover;
 }
 
-.social-link {
-  text-decoration: none;
+#me-desc {
+  max-width: 600px; /* Specify the maximum width of the paragraph */
+  margin: 0 auto; /* Center the paragraph within its container */
+  word-wrap: break-word; /* Allow long words to break and wrap onto the next line */
+  line-height: 1.5; /* Optional: increase line height for better readability */
 }
+
 
 /* Centering the image with "img-center" id */
 #img-center {
@@ -36,14 +40,29 @@ body {
 /* Top container styles */
 .top-container {
   display: flex;    
+  flex-direction: column; /* Stack items vertically */
   align-items: center;   
-  justify-content: center;
+  justify-content: space-between; /* Space between items */
+  text-align: center; /* Center text in the container */
+}
+
+.top-container img#img-center {
+  max-width: 100%; /* Make sure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Make the image circular if needed */
 }
 
 .top-container h1,
 .top-container p {
   margin: 0;   
+  padding: 5px 0; /* Add some space around text elements */
 }
+
+.social-link {
+  text-decoration: none;
+  margin: 10px; /* Add space around social links */
+}
+
 
 /* Centering Subsections */
 #subsection-title{
