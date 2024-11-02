@@ -50,6 +50,65 @@ body {
   text-align: center;
 }
 
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Aligns content to the left */
+  width: 180vw; /* Set width to 100% of the viewport */
+  margin: 0; /* Removes any horizontal centering */
+  padding-left: 70px; /* Adjust padding as needed */
+  box-sizing: border-box; /* Ensures padding is within the width */
+}
+
+.course-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 15px;
+  width: calc(50% - 40px); /* Two cards per row; adjust as needed */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.course-card:hover {
+  transform: scale(1.05);
+}
+
+.course-image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.course-image {
+  width: calc(25% - 10px); /* Four images per row */
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.course-title {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.course-description {
+  font-size: 1em;
+  color: #555;
+  margin-top: 10px;
+}
+
+.course-links {
+  margin-top: 10px;
+}
+
+.course-links a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #007BFF;
+}
+
+
+
 .project-container {
     display: flex;
     flex-wrap: wrap;
