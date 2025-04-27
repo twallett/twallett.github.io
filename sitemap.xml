@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://twallett.com/courses/index.html</loc>
+    <lastmod>2025-04-27T23:41:03.058Z</lastmod>
+  </url>
+  <url>
     <loc>https://twallett.com/projects/index.html</loc>
-    <lastmod>2025-04-27T15:39:22.277Z</lastmod>
+    <lastmod>2025-04-27T23:33:25.682Z</lastmod>
   </url>
   <url>
     <loc>https://twallett.com/research/index.html</loc>
-    <lastmod>2025-04-27T18:48:38.420Z</lastmod>
+    <lastmod>2025-04-27T19:19:34.140Z</lastmod>
   </url>
   <url>
     <loc>https://twallett.com/index.html</loc>
-    <lastmod>2025-04-27T18:26:05.052Z</lastmod>
+    <lastmod>2025-04-27T23:41:43.221Z</lastmod>
   </url>
 </urlset>
