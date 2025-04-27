@@ -1,0 +1,29 @@
+- title: "A Benchmark for Graph-Based Dynamic Recommendation Systems"
+  description: "This paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems. Key algorithms covered SAGE (GraphSAGE), GAT (Graph Attention Networks), GIN (Graph Isomorphism Networks), and additional state of the art Graph Neural Network architectures."
+  image: "imgs/gnn-dynamic-recommender.svg"
+  tags:
+    - icon: calendar
+      text: "May 2024"
+    - icon: book
+      text: "GNN"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/twallett/research/tree/main/2024/gnn-dynamic-recommender"
+    - icon: file-earmark-pdf 
+      text: "Research Paper"
+      href: "https://doi.org/10.1007/s00521-024-10425-6"
+
+- title: "A Benchmark for Graph-Based Dynamic Recommendation Systems (Alt Version)"
+  description: "Alternative benchmark framework covering GNNs like GraphSAGE, GAT, GIN, and more advanced models."
+  image: "imgs/gnn-dynamic-recommender.svg"
+  tags:
+    - icon: calendar
+      text: "May 2024"
+    - icon: book
+      text: "GNN"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/twallett/research/tree/main/2024/gnn-dynamic-recommender"
+    - icon: file-earmark-pdf 
+      text: "Research Paper"
+      href: "https://doi.org/10.1007/s00521-024-10425-6"

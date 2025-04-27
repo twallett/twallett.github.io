@@ -1,0 +1,26 @@
+/* Font CSS */
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('fonts/cmu.serif-roman.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('fonts/cmu.serif-roman.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('fonts/cmu.serif-roman.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+body {
+  font-family: 'CustomFont', sans-serif;
+}

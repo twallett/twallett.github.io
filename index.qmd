@@ -1,0 +1,25 @@
+---
+title: "Tyler Wallett"
+about:
+    template: trestles
+    image: imgs/me.png
+    image-shape: round
+    links:
+        - icon: linkedin
+          text: LinkedIn
+          url: https://www.linkedin.com/in/twallett/
+        - icon: github
+          text: Github
+          url: https://github.com/twallett
+        - icon: instagram
+          text: Instagram
+          url: https://www.instagram.com/twromero_/
+        - icon: envelope  
+          text: Email
+          url: mailto:tywallett@gmail.com
+comments: false
+---
+
+## Bio
+
+I am from Venezuela 🇻🇪 and Canada 🇨🇦. I am deeply passionate 💖 about computers 💻, specifically teaching computers how to learn 📚 from lots and lots of data 📊. My areas of interest 🤔 are Deep Learning 🧠, Natural Language Processing 💬, Graph-Neural Networks 🔗 and Reinforcement Learning 🤖 with applications in Finance and Economics 📈.
