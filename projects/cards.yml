@@ -1,9 +1,0 @@
-- title: "A Benchmark for Graph-Based Dynamic Recommendation Systems"
-  description: "This paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems."
-  image: "imgs/gnn-dynamic-recommender.png"
-  tags:
-    - icon: calendar
-      text: "Spring 2024"
-    - icon: book
-      text: "GNN"
-      

@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "A Benchmark for Graph-Based Dynamic Recommendation Systems\n        This paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems.\n        \n    \n            \n               Spring 2024\n            \n            \n            \n               GNN"
+  },
+  {
+    "objectID": "research/index.html",
+    "href": "research/index.html",
+    "title": "Research",
+    "section": "",
+    "text": "A Benchmark for Graph-Based Dynamic Recommendation Systems\n        This paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems. Key algorithms covered SAGE (GraphSAGE), GAT (Graph Attention Networks), GIN (Graph Isomorphism Networks), and additional state of the art Graph Neural Network architectures.\n        \n    \n            \n               May 2024\n            \n            \n            \n               GNN\n            \n            \n            \n               GitHub\n            \n            \n            \n               Research Paper\n            \n            \n    \n      \n        \n      \n      \n        A Benchmark for Graph-Based Dynamic Recommendation Systems (Alt Version)\n        Alternative benchmark framework covering GNNs like GraphSAGE, GAT, GIN, and more advanced models.\n        \n    \n            \n               May 2024\n            \n            \n            \n               GNN\n            \n            \n            \n               GitHub\n            \n            \n            \n               Research Paper"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Tyler Wallett",
+    "section": "",
+    "text": "I am from Venezuela 🇻🇪 and Canada 🇨🇦. I am deeply passionate 💖 about computers 💻, specifically teaching computers how to learn 📚 from lots and lots of data 📊. My areas of interest 🤔 are Deep Learning 🧠, Natural Language Processing 💬, Graph-Neural Networks 🔗 and Reinforcement Learning 🤖 with applications in Finance and Economics 📈."
+  },
+  {
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
+    "title": "Tyler Wallett",
+    "section": "",
+    "text": "I am from Venezuela 🇻🇪 and Canada 🇨🇦. I am deeply passionate 💖 about computers 💻, specifically teaching computers how to learn 📚 from lots and lots of data 📊. My areas of interest 🤔 are Deep Learning 🧠, Natural Language Processing 💬, Graph-Neural Networks 🔗 and Reinforcement Learning 🤖 with applications in Finance and Economics 📈."
+  }
+]
