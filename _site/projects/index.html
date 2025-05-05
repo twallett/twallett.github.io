@@ -144,25 +144,72 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div id="86b6c090" class="cell" data-execution_count="1">
+<div id="9537c818" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
+
+<style>
+@media (max-width: 600px) {
+  .card-container {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+  .card-image {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .card-content {
+    padding: 0.5rem;
+  }
+  .card-tags {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+</style>
+
 <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-    <div style="display: flex; align-items: center; padding: 1rem; border: 1px solid #ccc; border-radius: 10px; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
-      <div style="flex: 0 0 25%; text-align: center; padding: 0.5rem;">
-        <img src="imgs/gnn-dynamic-recommender.png" alt="Image" style="width: 100%; height: auto; border-radius: 8px;">
+
+    <div class="card-container" style="display: flex; align-items: center; flex-wrap: wrap; padding: 1rem; border: 1px solid #ccc; border-radius: 10px; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+      <div class="card-image" style="flex: 0 0 25%; text-align: center; padding: 0.5rem; max-width: 100%;">
+        <img src="imgs/SGD.gif" alt="Image" style="width: 100%; height: auto; border-radius: 8px;">
       </div>
-      <div style="flex: 1; padding: 0.5rem;">
-        <h3 style="margin-top: 0;" class="anchored">A Benchmark for Graph-Based Dynamic Recommendation Systems</h3>
-        <p>This paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems.</p>
-        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+      <div class="card-content" style="flex: 1; padding: 0.5rem;">
+        <h3 style="margin-top: 0;" class="anchored">Optimization Foundations</h3>
+        <p>This project applies optimization techniques using NumPy to optimize multidimensional functions. Key algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient.</p>
+        <div class="card-tags" style="display: flex; justify-content: center; align-items: center; gap: 4rem; margin-top: 1rem; flex-wrap: wrap;">
     
             <div style="display: flex; align-items: center; font-weight: bold; font-size: 0.9rem; color: #1f2937;">
-              <i class="bi bi-calendar" style="margin-right: 0.3rem;"></i> Spring 2024
+              <i class="bi bi-calendar" style="margin-right: 0.3rem;"></i> August 2023
             </div>
             
             <div style="display: flex; align-items: center; font-weight: bold; font-size: 0.9rem; color: #1f2937;">
-              <i class="bi bi-book" style="margin-right: 0.3rem;"></i> GNN
+              <i class="bi bi-book" style="margin-right: 0.3rem;"></i> ML
             </div>
+            
+            <a href="https://github.com/twallett/machine-learning-foundations/tree/main/Optimization" style="display: flex; align-items: center; font-weight: normal; font-size: 0.9rem; color: #2563eb; text-decoration: none;">
+              <i class="bi bi-github" style="margin-right: 0.3rem;"></i> GitHub
+            </a>
+            </div></div></div>
+    <div class="card-container" style="display: flex; align-items: center; flex-wrap: wrap; padding: 1rem; border: 1px solid #ccc; border-radius: 10px; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+      <div class="card-image" style="flex: 0 0 25%; text-align: center; padding: 0.5rem; max-width: 100%;">
+        <img src="imgs/MLP.gif" alt="Image" style="width: 100%; height: auto; border-radius: 8px;">
+      </div>
+      <div class="card-content" style="flex: 1; padding: 0.5rem;">
+        <h3 style="margin-top: 0;" class="anchored">Machine Learning Foundations</h3>
+        <p>This project implements neural networks using NumPy to solve regression and classification problems. Key algorithms covered include Perceptron, ADALINE and Multi-Layered Perceptron (MLP).</p>
+        <div class="card-tags" style="display: flex; justify-content: center; align-items: center; gap: 4rem; margin-top: 1rem; flex-wrap: wrap;">
+    
+            <div style="display: flex; align-items: center; font-weight: bold; font-size: 0.9rem; color: #1f2937;">
+              <i class="bi bi-calendar" style="margin-right: 0.3rem;"></i> August 2023
+            </div>
+            
+            <div style="display: flex; align-items: center; font-weight: bold; font-size: 0.9rem; color: #1f2937;">
+              <i class="bi bi-book" style="margin-right: 0.3rem;"></i> ML
+            </div>
+            
+            <a href="https://github.com/twallett/machine-learning-foundations/tree/main/NeuralNetworks" style="display: flex; align-items: center; font-weight: normal; font-size: 0.9rem; color: #2563eb; text-decoration: none;">
+              <i class="bi bi-github" style="margin-right: 0.3rem;"></i> GitHub
+            </a>
             </div></div></div></div>
 </div>
 </div>

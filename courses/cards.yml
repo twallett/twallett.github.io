@@ -1,0 +1,14 @@
+- title: "Reinforcement Learning"
+  description: "This course introduces reinforcement learning through classical and deep architectures. Key algorithms covered include Monte Carlo (MC), Temporal Difference (TD), Value Function Approximation (VFA), Deep Q-Networks (DQN), Vanilla Policy Gradient (VPG), Proximal Policy Optimization (PPO), and Monte Carlo Tree Search (MCTS), with hands-on projects and real-world applications."
+  image: "imgs/cheetah.gif"
+  tags:
+    - icon: calendar
+      text: "December 2024"
+    - icon: book
+      text: "RL"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/twallett/rl.github.io"
+    - icon: globe  
+      text: "Course Website"
+      href: "https://dats.columbian.gwu.edu/courses/reinforcement-learning"

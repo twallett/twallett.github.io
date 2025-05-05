@@ -1,9 +1,35 @@
-- title: "A Benchmark for Graph-Based Dynamic Recommendation Systems"
-  description: "This paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems."
-  image: "imgs/gnn-dynamic-recommender.png"
+# - title: "Time Series Forecasting with Applications in Finance and Economics"
+#   description: "This project applies deep learning techniques using Tensorflow to predict financial and economic data. Key algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient."
+#   image: "imgs/x.svg"
+#   tags:
+#     - icon: calendar
+#       text: "June 2024"
+#     - icon: book
+#       text: "DL"
+#     - icon: github  
+#       text: "GitHub"
+#       href: "https://github.com/twallett/time-series-forecasting"
+
+- title: "Optimization Foundations"
+  description: "This project applies optimization techniques using NumPy to optimize multidimensional functions. Key algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient."
+  image: "imgs/SGD.gif"
   tags:
     - icon: calendar
-      text: "Spring 2024"
+      text: "August 2023"
     - icon: book
-      text: "GNN"
-      
+      text: "ML"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/twallett/machine-learning-foundations/tree/main/Optimization"
+
+- title: "Machine Learning Foundations"
+  description: "This project implements neural networks using NumPy to solve regression and classification problems. Key algorithms covered include Perceptron, ADALINE and Multi-Layered Perceptron (MLP)."
+  image: "imgs/MLP.gif"
+  tags:
+    - icon: calendar
+      text: "August 2023"
+    - icon: book
+      text: "ML"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/twallett/machine-learning-foundations/tree/main/NeuralNetworks"

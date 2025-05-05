@@ -11,9 +11,6 @@ about:
         - icon: github
           text: Github
           url: https://github.com/twallett
-        - icon: instagram
-          text: Instagram
-          url: https://www.instagram.com/twromero_/
         - icon: envelope  
           text: Email
           url: mailto:tywallett@gmail.com
