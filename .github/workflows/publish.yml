@@ -46,7 +46,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: './docs/'
+          source_file: './_site/'
           destination_repo: 'twallett/twallett.github.io'
           destination_branch: 'gh-pages'
           user_email: 'tywallett@gmail.com'
