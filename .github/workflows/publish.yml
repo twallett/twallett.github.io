@@ -3,14 +3,14 @@ on:
     branches:
       - main
 
-name: Render and Publish
+name: Build and Deploy Quarto Site
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out source repository
+      - name: Check out source repo
         uses: actions/checkout@v4
 
       - name: Set up Quarto
@@ -23,28 +23,11 @@ jobs:
         uses: actions/setup-python@v4
       - run: pip install jupyter
 
-      - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
+      - name: Render site
+        run: quarto render
 
-      - name: Check out destination repo
-        uses: actions/checkout@v4
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          repository: twallett/twallett.github.io
-          path: out
-          token: ${{ secrets.API_TOKEN_GITHUB }}
-
-      - name: Mark output directory as safe
-        run: git config --global --add safe.directory $GITHUB_WORKSPACE/out
-
-      - name: Copy rendered site to destination repo
-        run: |
-          rsync -av --delete ./_site/ ./out/
-
-      - name: Commit and push changes
-        working-directory: out
-        run: |
-          git config user.name "twallett"
-          git config user.email "tywallett@gmail.com"
-          git add .
-          git commit -m "Update twallett.github.io" || echo "Nothing to commit"
-          git push
+          github_token: ${{ secrets.API_TOKEN_GITHUB }}
+          publish_dir: ./_site
