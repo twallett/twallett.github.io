@@ -47,7 +47,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: './docs/'
-          destination_repo: 'twallett.github.io'
+          destination_repo: 'twallett/twallett.github.io'
           destination_branch: 'gh-pages'
           user_email: 'tywallett@gmail.com'
           user_name: 'twallett'
