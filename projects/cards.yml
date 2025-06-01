@@ -1,15 +1,3 @@
-# - title: "Time Series Forecasting with Applications in Finance and Economics"
-#   description: "This project applies deep learning techniques using Tensorflow to predict financial and economic data. Key algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient."
-#   image: "imgs/x.svg"
-#   tags:
-#     - icon: calendar
-#       text: "June 2024"
-#     - icon: book
-#       text: "DL"
-#     - icon: github  
-#       text: "GitHub"
-#       href: "https://github.com/twallett/time-series-forecasting"
-
 - title: "Optimization Foundations"
   description: "This project applies optimization techniques using NumPy to optimize multidimensional functions. Key algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient."
   image: "imgs/SGD.gif"
@@ -22,7 +10,7 @@
       text: "GitHub"
       href: "https://github.com/twallett/machine-learning-foundations/tree/main/Optimization"
 
-- title: "Machine Learning Foundations"
+- title: "Neural Networks Foundations"
   description: "This project implements neural networks using NumPy to solve regression and classification problems. Key algorithms covered include Perceptron, ADALINE and Multi-Layered Perceptron (MLP)."
   image: "imgs/MLP.gif"
   tags:

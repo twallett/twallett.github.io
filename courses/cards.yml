@@ -1,6 +1,51 @@
-- title: "Reinforcement Learning"
+- title: "DATS 6103: Data Mining"
+  description: "This course introduces basic concepts of data mining as applied to Data Science, using Python as the programming language. Key algorithms covered include Linear/Logistic Regression (LR), Decision Trees (DT), Random Forests (RF), K-Nearest Neighbors (KNN), Support Vector Machines (SVM) and K-Means, with hands-on projects and real-world applications."
+  image: "imgs/dm-logo.png"
+  tags:
+    - icon: calendar
+      text: "July 2025"
+    - icon: book
+      text: "DM"
+    # - icon: github  
+    #   text: "GitHub"
+    #   href: "https://github.com/twallett/rl.github.io"
+    - icon: globe  
+      text: "Course Website"
+      href: "https://dats.columbian.gwu.edu/courses/data-mining"
+
+- title: "Math for Data Science"
+  description: "This course introduces fundamental mathematical concepts for Data Science. Key subjects covered include Set Theory, Linear Algebra, Calculus and Probability, with real-world interview questions."
+  image: "imgs/gw-logo.svg"
+  tags:
+    - icon: calendar
+      text: "May 2025"
+    - icon: book
+      text: "Data Science Bootcamp"
+    # - icon: github  
+    #   text: "GitHub"
+    #   href: "https://github.com/twallett/rl.github.io"
+    - icon: globe  
+      text: "Course Website"
+      href: "https://dats.columbian.gwu.edu/math"
+
+- title: "Programming for Data Science"
+  description: "This course introduces fundamental programming concepts for Data Science. Key programming languages covered include Python, R and SQL, with real-world interview questions."
+  image: "imgs/gw-logo.svg"
+  tags:
+    - icon: calendar
+      text: "May 2025"
+    - icon: book
+      text: "Data Science Bootcamp"
+    # - icon: github  
+    #   text: "GitHub"
+    #   href: "https://github.com/twallett/rl.github.io"
+    - icon: globe  
+      text: "Course Website"
+      href: "https://dats.columbian.gwu.edu/programming"
+
+- title: "DATS 6450: Reinforcement Learning"
   description: "This course introduces reinforcement learning through classical and deep architectures. Key algorithms covered include Monte Carlo (MC), Temporal Difference (TD), Value Function Approximation (VFA), Deep Q-Networks (DQN), Vanilla Policy Gradient (VPG), Proximal Policy Optimization (PPO), and Monte Carlo Tree Search (MCTS), with hands-on projects and real-world applications."
-  image: "imgs/cheetah.gif"
+  image: "imgs/rl-logo.svg"
   tags:
     - icon: calendar
       text: "December 2024"

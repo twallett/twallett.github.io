@@ -19,7 +19,7 @@ def pdf_to_svg(input_pdf, output_svg):
         print(f"An error occurred: {e}")
 
 # Example usage:
-pdf_file = 'postoperative-com.pdf'
+pdf_file = 'gw-logo.pdf'
 svg_file = 'output_file.svg'
 pdf_to_svg(pdf_file, svg_file)
 

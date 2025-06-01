@@ -20,3 +20,12 @@ comments: false
 ## Bio
 
 I am from Venezuela 🇻🇪 and Canada 🇨🇦. I am deeply passionate 💖 about computers 💻, specifically teaching computers how to learn 📚 from lots and lots of data 📊. My areas of interest 🤔 are Deep Learning 🧠, Natural Language Processing 💬, Graph-Neural Networks 🔗 and Reinforcement Learning 🤖 with applications in Finance and Economics 📈.
+
+## My Journey, So Far...
+
+To date, I have been involved in developing:
+
+- 2 [Projects](https://twallett.com/projects/) 
+- 2 [Research Papers](https://twallett.com/research/)
+- 4 [Courses](https://twallett.com/courses/)
+<!-- - 3 [Events]() -->
