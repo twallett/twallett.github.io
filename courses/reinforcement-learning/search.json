@@ -1,0 +1,2434 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DATS 6450 – Reinforcement Learning",
+    "section": "",
+    "text": "Instructor Information",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#instructor-information",
+    "href": "index.html#instructor-information",
+    "title": "DATS 6450 – Reinforcement Learning",
+    "section": "",
+    "text": "Name: Tyler Wallett\nTerm: Fall 2025\n\nClass location: MON 114\nClass hours: 06:10 PM - 08:40 PM\nOffice location: Samson Hall Room 310\n\nOffice hours: TBD\n\nE-mail: twallett@gwu.edu\n\nGitHub: twallett",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "DATS 6450 – Reinforcement Learning",
+    "section": "Course Description",
+    "text": "Course Description\nThe aim of this course is to provide a comprehensive understanding of the reinforcement learning framework. The course will explore the key distinctions between reinforcement learning and other artificial intelligence learning paradigms, delve into relevant industry applications, and examine both classical and deep learning approaches. Additionally, the course will cover the taxonomy of reinforcement learning and offer hands-on experience through practical implementations using OpenAI Gymnasium and other learning environments.\nThe classical approach will focus on learning methods designed to find optimal solutions in tabular environments, whereas the deep learning approach will tackle the challenge of finding approximate optimal solutions in large or continuous environments through the use of deep learning architectures.\nThe course will introduce the taxonomy of reinforcement learning by focusing on model-free value-based and policy-based methods. Model-based reinforcement learning will be covered briefly, as it is allocated only one lecture.\nTo conclude, a discussion on advanced topics, applications, and outlook of reinforcement learning will be provided.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#learning-outcomes",
+    "href": "index.html#learning-outcomes",
+    "title": "DATS 6450 – Reinforcement Learning",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nImplement reinforcement learning frameworks using numpy and tensorflow. \nDesign decision-making systems using classical and deep learning architectures. \nExplain the reinforcement learning taxonomy. \nIdentify reinforcement learning’s challenges, current research, and future outlook.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#resources",
+    "href": "index.html#resources",
+    "title": "DATS 6450 – Reinforcement Learning",
+    "section": "Resources",
+    "text": "Resources\n\nReinforcement Learning: An Introduction by Richard S. Sutton and Andrew G. Barto (Web Link)\nThe Reinforcement Learning Course by Hugging Face (Web Link)\nSpinning Up in Deep RL by OpenAI (Web Link)\nOpenAI Gymnasium API documentation (Web Link)\nTensorflow Python API documentation (Web Link)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#software-requirements",
+    "href": "index.html#software-requirements",
+    "title": "DATS 6450 – Reinforcement Learning",
+    "section": "Software Requirements",
+    "text": "Software Requirements\n\nProgramming Language: Python.\n\npip install numpy tensorflow pygame gymnasium pickle tqdm tensorboard\n\nCloud Services: Google Colab and GWU Ronin.\nVersion Control: GitHub.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#course-outline",
+    "href": "index.html#course-outline",
+    "title": "DATS 6450 – Reinforcement Learning",
+    "section": "Course Outline",
+    "text": "Course Outline\nSummary of the Course Outline section.\n\n\n\nWeek\nTopic\nQuiz/Exams\nLearning Objectives\n\n\n\n\nAug. 25, 2025\nIntroduction\n\n• Why should I study Reinforcement Learning?  • What is Reinforcement Learning?  • Where is Reinforcement Learning Applied?  • How is Reinforcement Learning Structured? \n\n\nSep. 1, 2025\nLabor Day\n\n\n\n\nSep. 8, 2025\nMathematical Foundations\n\n• Set Theory  • Axiomatic Probability  • Conditioning  • Independence  • Random Variables  • Expectation  • Probability Distribution\n\n\nSep. 15, 2025\nMulti-Armed Bandits\nQuiz 1\n• Multi-Armed Bandit Framework  • \\(\\epsilon\\)-Greedy  • Upper Confidence Boundary (UCB)  • Thompson Sampling\n\n\nSep. 22, 2025\nDynamic Programming\nQuiz 2\n• OpenAI Gymansium GridWorldEnv  • Markov Chain  • Markov Decision Process (MDPs)  • Dynamic Programming\n\n\nSep. 29, 2025\nMonte Carlo\nQuiz 3\n• OpenAI Gymansium GridWorldEnv  • Monte Carlo Prediction  • Exploring Starts Monte Carlo  • On-Policy Monte Carlo  • Off-Policy Monte Carlo\n\n\nOct. 6, 2025\nTemporal Difference\nQuiz 4\n• OpenAI Gymansium GridWorldEnv  • Temporal Difference (TD) Prediction  • SARSA  • Q-Learning  • Double Q-Learning  • (Optional) n-step TD\n\n\nOct. 13, 2025\nFunction Approximation\nExam 1\n• OpenAI Gymansium MountainCar-v0  • Value Function Approximation (VFA)  • On-Policy Function Approximation  • Semi-gradient SARSA  • Limitations of Off-Policy Function Approximation\n\n\nOct. 20, 2025\nDeep Q-Networks\nQuiz 5\n• OpenAI Gymansium ALE/Breakout-v5  • Multi-Layered Perceprtons (MLPs)  • Convolutional Neural Networks (CNNs)  • Experience Replay  • Fixed Targets  • Vanilla Deep Q-Network\n\n\nOct. 27, 2025\nPolicy Gradients\nQuiz 6\n• OpenAI Gymansium CartPole-v1  • Policy Gradient Theorem  • Vanilla Policy Gradient\n\n\nNov. 3, 2025\nAdvanced Policy Gradients\nQuiz 7\n• OpenAI Gymansium HalfCheetah-v5  • Trust Region Policy Optimization (TRPO)  • Proximal Policy Optimization: KL-Divergence  • Proximal Policy Optimization: Clip\n\n\nNov. 10, 2025\nMonte Carlo Tree Search\nExam 2\n• OpenAI Gymansium CartPole-v0  • Model-based Reinforcement Learning  • Monte Carlo Tree Search  • AlphaGo  • MuZero\n\n\nNov. 17, 2025\nConclusion\n\n• Advanced Topics in Reinforcement Learning  • Identify the Reinforcement Learning Application  • Outlook of Reinforcement Learning\n\n\nNov. 24, 2025\nThanksgiving Break\n\n\n\n\nDec. 1, 2025\nFinal Project Submission",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "DATS 6450 – Reinforcement Learning",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nDATS 6101 - Introduction to Data Science",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#assignments-grading",
+    "href": "index.html#assignments-grading",
+    "title": "DATS 6450 – Reinforcement Learning",
+    "section": "Assignments & Grading",
+    "text": "Assignments & Grading\nSummary of the Assignments & Grading section.\n\n\n\nAssignment\nPoints\n\n\n\n\nQuizzes (5 best scores)\n25\n\n\nExam 1\n25\n\n\nExam 2\n25\n\n\nFinal Project\n25\n\n\n\n\n\n\n\n\n\nAverage Learning Per Week\n\n\n\nStudents are expected to spend a minimum of 100 minutes of out-of-class work for every 50 minutes of direct instruction, for a minimum total of 2.5 hours a week. A 3-credit course should include 2.5 hours of direct instruction and a minimum of 5 hours of independent learning or 7.5 hours per week.\n\n\n\n\n\n\n\n\nOnline Resources\n\n\n\nFor technical requirements and support, student services, obtaining a GWorld card, and state contact information please check HERE\n\n\n\n\n\n\n\n\nClassroom Recording\n\n\n\nThe particular class recordings will be available to students who are registered on an individual basis, upon request. Please let me know in advance if you have any medical issues or emergencies that will prevent you from joining the class.\n\n\n\n\n\n\n\n\nVirtual Academic Support\n\n\n\nWriting and research consultations are available online. See HERE. Coaching, offered through the Office of Student Success, is available in a virtual format. See HERE. Academic Commons offers several short videos addressing different virtual learning strategies for the unique circumstances of the fall 2020 semester. See HERE. They also offer a variety of live virtual workshops to equip students with the tools they need to succeed in a virtual environment. See HERE.\n\n\n\n\n\n\n\n\nSafety and Security\n\n\n\nIn an emergency: call GWPD 202-994-6111 or 911. For situation-specific actions: review the Emergency Response Handbook in HERE. In an active violence situation: Get Out, Hide Out, or Take Out. See HERE. Stay informed: safety.gwu.edu/stay-informed.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-1.html",
+    "href": "lecture1/lecture1-1.html",
+    "title": "1.1 Why should I study Reinforcement Learning?",
+    "section": "",
+    "text": "Advances in Artificial Intelligence\nIn essence, the AI model’s behavior closely mirrors human-like actions. This is expected, given its training on extensive datasets derived from human behavior. However, continued training on the same datasets will likely result in models that perform at a human-equivalent level. To achieve significant breakthroughs, we must explore learning methods that transcend typical human capabilities.",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1.1 Why should I study Reinforcement Learning?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-1.html#advances-in-artificial-intelligence",
+    "href": "lecture1/lecture1-1.html#advances-in-artificial-intelligence",
+    "title": "1.1 Why should I study Reinforcement Learning?",
+    "section": "",
+    "text": "June 2018: OpenAI introduces the Generative Pre-trained Transformer (GPT), laying the foundation for subsequent LLMs.\nFebruary 2019: OpenAI releases GPT-2, demonstrating significant improvements in text generation capabilities.\nJune 2020: GPT-3 is unveiled, featuring 175 billion parameters and showcasing advanced language understanding and generation.\nJanuary 2021: OpenAI announces DALL-E, a model capable of generating images from textual descriptions.\nApril 2022: DALL-E 2 is introduced, offering enhanced image resolution and greater realism in generated images.\nNovember 2022: OpenAI releases ChatGPT, a conversational AI based on the GPT-3.5 architecture, enabling more interactive and contextually relevant dialogues.\n\n\n\n\n\nAt GWU, where minds aspire,  Reinforcement learners never tire  In search of policies, bold and bright,  They train their agents, day and night.   With Sutton, Barto as their guide,  They walk the path, rewards beside.  Exploring states with epsilon’s grace,  They find the optimal embrace.   Gridworlds vast, mazes deep,  In code they sow, in dreams they reap.  The future’s theirs, they push, they strive–  GWU’s learners, alive, alive!\n\n\n\nPoem and images generated by Large Language Model: ChatGPT 3.5 & Diffusion Models: DALL-E, correspondingly.",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1.1 Why should I study Reinforcement Learning?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-1.html#the-goal-of-reinforcement-learning",
+    "href": "lecture1/lecture1-1.html#the-goal-of-reinforcement-learning",
+    "title": "1.1 Why should I study Reinforcement Learning?",
+    "section": "The Goal of Reinforcement Learning",
+    "text": "The Goal of Reinforcement Learning\nUltimately, as scientists, we want to discover new solutions for a task so that when an agent, or decision-maker, is placed in a novel situation it can respond intelligently (Levine 2019).\n\n\n\n\n\n\nEmergent Behavior\n\n\n\nReinforcement Learning is concerned with seeking emergent behavior, or behavior that goes beyond what people might do or think of. \n\n\n\nExample: AlphaGO\n\n\n\n\n\nAlphaGo Move 37\n\n\n\n“It’s not a human move. I’ve never seen a human play this move.” – Commentator on Move 37, AlphaGo (2017)\n\n\n\n\nExample: Matrix Multiplication (Fawzi et al. 2022)\n\n\n\n\n\nDiscovering Faster Matrix Multiplication Algorithms with Reinforcement Learning\n\n\n\n“Trained from scratch, AlphaTensor discovers matrix multiplication algorithms that are more efficient than existing human and computer-designed algorithms.” - Discovering faster matrix multiplication algorithms with reinforcement learning\n\n\n\n\n\n\nFawzi, Alhussein, Matej Balog, Atri Huang, et al. 2022. “Discovering Faster Matrix Multiplication Algorithms with Reinforcement Learning.” Nature 610: 47–53. https://doi.org/10.1038/s41586-022-05172-4.\n\n\nLevine, Sergey. 2019. “Introduction to Deep Reinforcement Learning.” Course Lecture Slides, Deep RL Course, UC Berkeley. https://rail.eecs.berkeley.edu/deeprlcourse/deeprlcourse/static/slides/lec-1.pdf.",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1.1 Why should I study Reinforcement Learning?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-2.html",
+    "href": "lecture1/lecture1-2.html",
+    "title": "1.2 What is Reinforcement Learning?",
+    "section": "",
+    "text": "Learning\nGood news! We can sum up the core idea of Reinforcement Learning in just one powerful sentence (Brunskill 2022):\nBut what exactly does that mean? Let’s break it down!\nAt its core, learning in Reinforcement Learning occurs through trial and error, where an agent refines its actions based on evaluative feedback from the environment.",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1.2 What is Reinforcement Learning?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-2.html#learning",
+    "href": "lecture1/lecture1-2.html#learning",
+    "title": "1.2 What is Reinforcement Learning?",
+    "section": "",
+    "text": "Evaluative Feedback\n\n\n\nEvaluative feedback indicates how good the action taken was, but not whether it was the best or the worst action. Intuitively, this type of feedback can be thought of as learning through experience.\n\n\n\nExample: Learning How to Walk\n\n\n\n\n\nLearning to Walk\n\n\n\nLearning to walk involves trial and error, where feedback comes from the outcome of each attempt—success or falling—rather than explicit instruction. This aligns with evaluative feedback in reinforcement learning, where the agent learns from the consequences of its actions, not direct guidance.\n\n\n\n\nExample: Learning to Distinguish Right from Wrong\n\n\n\n\n\nLearning to Distinguish Right from Wrong\n\n\n\nLearning to distinguish right from wrong often relies on experiencing the outcomes of decisions and receiving approval or disapproval from others. This reflects evaluative feedback in reinforcement learning, where behavior is shaped by rewards or penalties rather than explicit rules.\n\n\nUnlike both Supervised/Unsupervised Learning which rely on instructive feedback through gradient-based optimization.\n\n\n\n\n\n\nInstructive Feedback\n\n\n\nInstructive feedback indicates the correct action to take, independently of the action actually taken. Intuitively, this type of feedback can be thought of as learning from ground truth.\n\n\n\n\n\n\nSupervised/Unsupervised Learning\n\n\n\n\n\nExample: Cheetah\nSupervised/Unsupervised learning focus on identifying what makes an image a cheetah by learning patterns from a dataset of animal images. In contrast, Reinforcement Learning is about teaching a cheetah how to run by interacting with its environment (Lecture 10).\n\n\n\n\n\nSupervised Learning\n\n\n\n“Here’s some examples (images), now learn patterns in these examples…”\n\n\n\n\n\n\n\nReinforcement Learning\n\n\n\n“Here’s an environment, now learn patterns by exploring it…”",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1.2 What is Reinforcement Learning?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-2.html#optimal",
+    "href": "lecture1/lecture1-2.html#optimal",
+    "title": "1.2 What is Reinforcement Learning?",
+    "section": "Optimal",
+    "text": "Optimal\nThe goal of Reinforcement Learning is to maximize rewards over time by finding the best possible strategy. This involves seeking:\n\nA maximized discounted sum of rewards, or goal \\(G\\).\nOptimal Value Functions \\(V^{*}\\).\nOptimal Action-Value Functions \\(Q^{*}\\).\nOptimal Policies \\(\\pi^{*}\\).\nA balance between exploration vs. exploitation \\(\\epsilon\\).",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1.2 What is Reinforcement Learning?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-2.html#sequential-decision-making",
+    "href": "lecture1/lecture1-2.html#sequential-decision-making",
+    "title": "1.2 What is Reinforcement Learning?",
+    "section": "Sequential Decision-Making",
+    "text": "Sequential Decision-Making\nUnlike a one-time choice, Reinforcement Learning involves a chain of decisions where each action affects the next.\n\n\n\n\nMarkov Decision Process\n\n\n\n\n\\(\\pi: S_{0}, A_{0}, R_{1}, S_{1}, A_{1}, R_{2}, ... , S_{T-1}, A_{T-1}, R_{T}\\)\n\n\nMarkov Decision Process (MDP) is a formal framework for modeling decision-making.\nThe agent selects actions \\(A_t\\) over multiple time steps, shaping its future states \\(S_t\\) and rewards \\(R_t\\).\nEach decision affects not only immediate rewards but also the trajectory \\(\\tau\\) of future outcomes.\n\n\n\n\n\nBrunskill, Emma. 2022. “CS234: Reinforcement Learning - Lecture 1.” Course Lecture Slides, Stanford University. https://web.stanford.edu/class/cs234/slides/lecture1pre.pdf.",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>1.2 What is Reinforcement Learning?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-3.html",
+    "href": "lecture1/lecture1-3.html",
+    "title": "1.3 Where is Reinforcement Learning Applied?",
+    "section": "",
+    "text": "Recommendation Systems\nReinforcement Learning powers modern recommendation systems by dynamically adapting to user preferences, optimizing content suggestions in platforms like Netflix, YouTube, and Spotify using techniques such as Multi-Armed Bandits (MAB).",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>1.3 Where is Reinforcement Learning Applied?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-3.html#recommendation-systems",
+    "href": "lecture1/lecture1-3.html#recommendation-systems",
+    "title": "1.3 Where is Reinforcement Learning Applied?",
+    "section": "",
+    "text": "Trained using MAB (Lecture 2)\nLink to Online Article",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>1.3 Where is Reinforcement Learning Applied?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-3.html#games",
+    "href": "lecture1/lecture1-3.html#games",
+    "title": "1.3 Where is Reinforcement Learning Applied?",
+    "section": "Games",
+    "text": "Games\nReinforcement Learning has revolutionized gaming by enabling AI to master complex environments, from Atari classics (Mnih et al. 2013) to advanced strategy games, using deep learning techniques like Deep Q-Networks (DQN) to achieve superhuman performance.\n\n\nTrained using DQN (Lecture 9)\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>1.3 Where is Reinforcement Learning Applied?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-3.html#robotics",
+    "href": "lecture1/lecture1-3.html#robotics",
+    "title": "1.3 Where is Reinforcement Learning Applied?",
+    "section": "Robotics",
+    "text": "Robotics\nIn robotics, Reinforcement Learning enables autonomous agents to learn complex motor skills, such as dexterous manipulation and locomotion, through continuous interaction and training with Proximal Policy Optimization (PPO).\n\n\nTrained using PPO (Lecture 11)\nLink to Blog",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>1.3 Where is Reinforcement Learning Applied?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-3.html#autonomous-vehicles",
+    "href": "lecture1/lecture1-3.html#autonomous-vehicles",
+    "title": "1.3 Where is Reinforcement Learning Applied?",
+    "section": "Autonomous Vehicles",
+    "text": "Autonomous Vehicles\nSelf-driving cars rely on Reinforcement Learning to navigate complex environments, optimize decision-making, and improve safety, often incorporating PPO and deep learning to refine real-time control strategies.\n\n   Partly trained using PPO (Lecture 11)",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>1.3 Where is Reinforcement Learning Applied?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-3.html#natural-language-processing",
+    "href": "lecture1/lecture1-3.html#natural-language-processing",
+    "title": "1.3 Where is Reinforcement Learning Applied?",
+    "section": "Natural Language Processing",
+    "text": "Natural Language Processing\nReinforcement Learning from Human Feedback (RLHF) (Ouyang et al. 2022) enhances AI language models like ChatGPT, allowing them to refine responses based on user interactions and align better with human preferences.\n\n\nTrained using PPO (Lecture 11)\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>1.3 Where is Reinforcement Learning Applied?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-3.html#finance",
+    "href": "lecture1/lecture1-3.html#finance",
+    "title": "1.3 Where is Reinforcement Learning Applied?",
+    "section": "Finance",
+    "text": "Finance\nIn financial markets, Reinforcement Learning is applied to portfolio optimization (Acero et al. 2024), algorithmic trading, and risk management, leveraging techniques like PPO to make data-driven investment decisions.\n\n\nTrained using PPO (Lecture 11)\nLink to Research Paper\n\n\n\n\n\nAcero, Fernando, Parisa Zehtabi, Nicolas Marchesotti, Michael Cashmore, Daniele Magazzeni, and Manuela Veloso. 2024. “Deep Reinforcement Learning and Mean-Variance Strategies for Responsible Portfolio Optimization.” https://arxiv.org/abs/2403.16667.\n\n\nMnih, Volodymyr, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis Antonoglou, Daan Wierstra, and Martin Riedmiller. 2013. “Playing Atari with Deep Reinforcement Learning.” https://arxiv.org/abs/1312.5602.\n\n\nOuyang, Long, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, et al. 2022. “Training Language Models to Follow Instructions with Human Feedback.” https://arxiv.org/abs/2203.02155.",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>1.3 Where is Reinforcement Learning Applied?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture1/lecture1-4.html",
+    "href": "lecture1/lecture1-4.html",
+    "title": "1.4 How is Reinforcement Learning Structured?",
+    "section": "",
+    "text": "Finally, to wrap up our introduction, let’s take a look at:\n\nHow is Reinforcement Learning Structured? 🤔\n\n\n\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\nLecture 1 – Introduction.\nA discussion on why it matters, what it is, where it is applied, and how it is structured.\nLecture 2 – Mathematical foundations for understanding Reinforcement Learning.\nKey math topics covered include Set Theory, Linear Algebra, Calculus, and Probability.\nLecture 3 – Learn to make decisions in one-state environments using the Multi-Armed Bandits framework.\nKey algorithms covered are \\(\\epsilon\\)-greedy, Upper Confidence Bound (UCB), and Thompson Sampling.\nLectures 4–6 – Learn to make decisions in multiple finite-state environments by leveraging experience and bootstrapping.\nKey algorithms covered are Dynamic Programming (DP), Monte Carlo (MC), Temporal Difference (TD), and n-step Bootstrapping.\nLectures 7–11 – Learn to make decisions in multiple infinite-state environments using gradient-based learning and classical RL methods (MC and TD).\nKey algorithms covered are Value Function Approximation (VFA), Deep Q-Networks (DQN), Policy Gradients (VPG), Advanced Policy Gradients (APG), and Monte Carlo Tree Search (MCTS).\nLecture 12 – Conclusion.\nA discussion on advanced topics, real-world applications, and the future outlook of Reinforcement Learning.",
+    "crumbs": [
+      "Lecture 1: Introduction",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>1.4 How is Reinforcement Learning Structured?</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lo.html",
+    "href": "lecture2/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 2: Mathematical Foundations (Hammack 2013) (Bertsekas and Tsitsiklis 2008) 🎯\n\n\n\n\nSet Theory\nProbability:\n\nAxiomatic Probability\nConditioning\nIndependence\nDiscrete Random Variables\nContinuous Random Variables\nProbability Distributions\n\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nBertsekas, Dimitri P., and John N. Tsitsiklis. 2008. Introduction to Probability. 2nd ed. Belmont, MA: Athena Scientific.\n\n\nHammack, Richard H. 2013. Book of Proof. Richard Hammack.",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-1.html",
+    "href": "lecture2/lecture2-1.html",
+    "title": "2.1 Set Theory",
+    "section": "",
+    "text": "Sets\nA set is a collection of things.\nThe things are called elements of a set.\n\\[\nColors = \\{\\text{Red}, \\text{Blue}, \\text{Green}\\}\n\\]\n\\[\nNumbers = \\{1,2,3\\}\n\\]\nSets can be finite or infinite.\n\\[\nSome\\ Even\\ Integers = \\{2,4,6\\}\n\\]\n\\[\nAll\\ Even\\ Integers = \\{..., -4, -2, 0, 2, 4, ...\\}\n\\]\nThe number of elements in a set is called the cardinality.\n\\[\n|Colors| = 3\n\\]\nTwo sets are equal if they share exactly the same elements.\n\\[\nA = \\{2,4,6\\}, B = \\{4,2,6\\}, C = \\{4,2,7\\}\n\\]\n\\[\nA = B\n\\] \\[\nA \\neq C\n\\]\nTo express that \\(2\\) is an element of \\(A\\), we denote:\n\\[\n2 \\in A\n\\] \\[\n\\text{2 exists in A}\n\\]\n\\[\n5 \\notin A\n\\] \\[\n\\text{5 does not exist in A}\n\\]\nSome sets are so significant that we reserve special symbols for them:\n\\[\n\\emptyset = \\{\\} \\quad \\textbf{(empty set)}\n\\]\n\\[\n\\mathbb{N} = \\{1, 2, 3, ... \\} \\quad \\textbf{(natural numbers)}\n\\]\n\\[\n\\mathbb{Z} = \\{..., -2, -1, 0, 1, 2, ... \\} \\quad \\textbf{(integers)}\n\\]\n\\[\n\\mathbb{R} = \\{..., -0.22,...,0,...,1,..., \\pi, ... \\} \\quad \\textbf{(real numbers)}\n\\]\nWe visualize \\(\\mathbb{R}\\) as an infinitely long number line.",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-1.html#set-builder-notation",
+    "href": "lecture2/lecture2-1.html#set-builder-notation",
+    "title": "2.1 Set Theory",
+    "section": "Set-Builder Notation",
+    "text": "Set-Builder Notation\nA special notation called set-builder notation is used to describe sets that are too big or complex to list between braces.\n\\[\nAll\\ Even\\ Integers_{1} = \\{..., -4, -2, 0, 2, 4, ...\\}\n\\]\n\\[\nAll\\ Even\\ Integers_{2} = \\{2x: x \\in \\mathbb{Z} \\}\n\\]\n\\[\n\\text{The set of all numbers of the form } 2x \\text{ such that } x \\in \\mathbb{Z}\n\\]\n\\[\nAll\\ Even\\ Integers_{1} = All\\ Even\\ Integers_{2}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nWrite the following sets in set-builder notation:\n\n\\(\\{ 2, 4, 8, 16, 32, 64, ... \\}\\)\n\\(\\{ 0, 1, 4, 9, 16, 25, 36, ... \\}\\)\n\\(\\{ 3, 4, 5, 6, 7, 8 \\}\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(\\{ 2^x: x \\in \\mathbb{N} \\}\\)\n\\(\\{ x^2: x \\in \\mathbb{Z} \\}\\)\n\\(\\{ x \\in \\mathbb{Z}: 3 \\le x \\le 8 \\}\\)",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-1.html#subsets",
+    "href": "lecture2/lecture2-1.html#subsets",
+    "title": "2.1 Set Theory",
+    "section": "Subsets",
+    "text": "Subsets\nSuppose \\(A\\) and \\(B\\) are sets.\nIf every element of \\(A\\) is also an element of \\(B\\), then we say \\(A\\) is a subset of \\(B\\), denoted \\(A \\subseteq B\\).\nWe write \\(A \\not\\subseteq B\\) if \\(A\\) is not a subset of \\(B\\), that is, if it is not true that every element of \\(A\\) is also an element of \\(B\\).\nThus \\(A \\not\\subseteq B\\) means that there is at least one element of \\(A\\) that is not an element of \\(B\\).\n\\[\n\\mathbb{N} \\subseteq \\mathbb{Z} \\subseteq \\mathbb{R}\n\\]\n\\[\nA = \\{1,2\\}, B = \\{2,3,4\\}\n\\] \\[\nA \\not\\subseteq B\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nList all the subsets of the following sets:\n\n\\(\\{1,2,3\\}\\)\n\\(\\{1,\\{2,3\\}\\}\\)\n\\(\\{\\mathbb{N}, \\mathbb{Z}, \\mathbb{R}\\}\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(\\{\\}, \\{1\\}, \\{2\\}, \\{3\\}, \\{1,2\\}, \\{1,3\\}, \\{2,3\\}, \\{1,2,3\\}\\)\n\\(\\{\\}, \\{1\\}, \\{\\{2,3\\}\\}, \\{1,\\{2,3\\}\\}\\)\n\\(\\{\\}, \\{\\mathbb{N}\\}, \\{\\mathbb{Z}\\}, \\{\\mathbb{R}\\}, \\{\\mathbb{N},\\mathbb{Z}\\}, \\{\\mathbb{N},\\mathbb{R}\\}, \\{\\mathbb{Z},\\mathbb{R}\\}, \\{\\mathbb{N},\\mathbb{Z},\\mathbb{R}\\}\\)",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-1.html#union-intersection-and-difference",
+    "href": "lecture2/lecture2-1.html#union-intersection-and-difference",
+    "title": "2.1 Set Theory",
+    "section": "Union, Intersection, and Difference",
+    "text": "Union, Intersection, and Difference\nSuppose \\(A\\) and \\(B\\) are sets.\nA union of \\(A\\) and \\(B\\) is the set: \\[\nA \\cup B = \\{x: x \\in A \\text{ or } x \\in B \\}\n\\]\nA intersection of \\(A\\) and \\(B\\) is the set: \\[\nA \\cap B = \\{x: x \\in A \\text{ and } x \\in B \\}\n\\]\nA difference of \\(A\\) and \\(B\\) is the set: \\[\nA - B = \\{x: x \\in A \\text{ and } x \\notin B \\}\n\\]\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nShade in the region matching the expression:\n\n\\((A \\cap B) \\cap C\\)\n\\((A \\cup B) \\cap C\\)\n\\((A \\cup B) - C\\)\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-1.html#complements",
+    "href": "lecture2/lecture2-1.html#complements",
+    "title": "2.1 Set Theory",
+    "section": "Complements",
+    "text": "Complements\nSuppose \\(A\\) is a set.\nA universal set is a larger set that encompasses other sets.\nThe complement of \\(A\\), denoted \\(\\bar{A}\\), is the set \\(\\bar{A} = U - A\\).\n\\[\nP = \\{2, 3, 5, 7, ...\\} \\quad \\textbf{(prime numbers)}\n\\]\n\\[\n\\bar{P} = \\mathbb{N} - P = \\{1, 4, 6, ...\\}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nFind \\(\\bar{A}\\):\n\\[\nA = \\{1,2,3\\}, U = \\{0,1,2,3,4,5\\}\n\\]\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\n\\bar{A} = \\{0, 4, 5\\}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-1.html#ordered-pair",
+    "href": "lecture2/lecture2-1.html#ordered-pair",
+    "title": "2.1 Set Theory",
+    "section": "Ordered Pair",
+    "text": "Ordered Pair\nAn ordered pair is a list \\((x,y)\\) of two elements \\(x\\) and \\(y\\), enclosed in parentheses and separated by a comma.\n\\[\n(1,2)\n\\] \\[\n(2,1)\n\\]\nHowever:\n\\[\n(1,2) \\neq (2,1)\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-1.html#cartesian-product",
+    "href": "lecture2/lecture2-1.html#cartesian-product",
+    "title": "2.1 Set Theory",
+    "section": "Cartesian Product",
+    "text": "Cartesian Product\nSuppose \\(A\\) and \\(B\\) are sets.\nA cartesian product is simply the multiplication of sets denoted as \\(A\\) x \\(B\\) and defined as\n\\[\nA x B = \\{(a,b): a \\in A, \\ b \\in B \\}\n\\]\n\\[\nA = \\{a, b, c\\}, \\ B = \\{1, 2, 3\\}\n\\]\n\\[\nA \\ \\text{x} \\ B = \\{ (a,1), (a,2), (a,3), (b,1), (b,2), (b,3), (c,1), (c,2), (c,3) \\}\n\\]\nOrdered tripples such as \\((x,y,z)\\) are also possible.\n\\[\nA = \\{a, b\\}, \\ B = \\{1, 2\\}, \\ C = \\{I, II\\}\n\\]\n\\[\nA \\ \\text{x} \\ B \\ \\text{x} \\ C = \\{ (a,1,I), (a,1,II), (a,2,I), (a,2,II), (b,1,I), (b,1,II), (b,2,I), (b,2,II) \\}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-1.html#cartesian-power",
+    "href": "lecture2/lecture2-1.html#cartesian-power",
+    "title": "2.1 Set Theory",
+    "section": "Cartesian Power",
+    "text": "Cartesian Power\nA cartesian power is also possible for any integer \\(n\\) as\n\\[\nA^n = A \\ \\text{x} \\ A \\ \\text{x} \\ ... \\ \\text{x} \\ A = \\{ (x_1, x_2, ..., x_n):x_1,x_2,...,x_n \\in A\\}\n\\]\nOne famous cartesian power is \\(\\mathbb{R}^2\\), also known as the cartesian plane or a two-dimensional plane.\n\\[\n\\mathbb{R} \\ \\text{x} \\ \\mathbb{R} = \\mathbb{R}^2\n\\]\n\n\n\n\\(\\mathbb{R}^3\\) three-dimensional planes are also possible.\n\\[\n\\mathbb{R} \\ \\text{x} \\ \\mathbb{R} \\ \\text{x} \\ \\mathbb{R} = \\mathbb{R}^3\n\\]\n\n\n\nAnd we can generalize up to \\(n\\) dimensions.\n\\[\n\\mathbb{R} \\ \\text{x} \\ \\mathbb{R} \\ \\text{x} \\ ... \\ \\text{x} \\ \\mathbb{R} = \\mathbb{R}^n\n\\]\n\n\n\n\n\n\nIn Data Science, we often work in high-dimensional spaces—sometimes with thousands or even millions of dimensions. GPT-4, for example, is rumored to have over a trillion \\(\\mathbb{R}^{1,000,000,000,000,000}\\).\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nFor the following sets list the elements of their corresponding cartesian product:\n\\(A = \\{1,2,3\\}\\) \\(B = \\{1, (2,3) \\}\\) \\(C = \\{\\mathbb{Z}, \\mathbb{R}\\}\\)\n\n\\(A\\) x \\(B\\)\n\\(A\\) x \\(C\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(A \\ \\text{x} \\ B = \\{ (1,1), (1,(2,3)), (2,1), (2, (2,3)), (3,1), (3,(2,3)) \\}\\)\n\\(A \\ \\text{x} \\ C = \\{ (1,\\mathbb{Z}), (1,\\mathbb{R}), (2,\\mathbb{Z}), (2,\\mathbb{R}), (3,\\mathbb{Z}), (3,\\mathbb{R}) \\}\\)",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-2.html",
+    "href": "lecture2/lecture2-2.html",
+    "title": "2.2 Axiomatic Probability",
+    "section": "",
+    "text": "Methodology\nSteps to perform a probabilistic model:",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-2.html#methodology",
+    "href": "lecture2/lecture2-2.html#methodology",
+    "title": "2.2 Axiomatic Probability",
+    "section": "",
+    "text": "Specify sample space.\nDefine probability law (must align with probability axioms).\nIdentify event of interest.\nCalculate…",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-2.html#sample-space",
+    "href": "lecture2/lecture2-2.html#sample-space",
+    "title": "2.2 Axiomatic Probability",
+    "section": "Sample Space",
+    "text": "Sample Space\nA sample space is a set of all possible outcomes from an experiment. \n\\[\nSample \\ Space = \\{\\text{Heads}, \\text{Tails}\\}\n\\]\nAn experiment is any procedure that can be repeated and has a well-defined set of outcomes. \n\\[\n\\text{Flipping a fair coin}\n\\]\nAn outcome is the end result of an experiment, or an element in the sample space.\n\\[\n\\text{Heads}  \n\\]\n\n\n\n\n\n\nIllustration: Discrete Sample Space\n\n\n\nExperiment: Rolling two fair die at the same time.\n\\[\nSample \\ Space = \\{ (x, y) : x,y \\in \\mathbb{N}, 1 \\leq x, y \\leq 6  \\}\n\\]\n\n\n\n\n\n\n\n\n\n\n\nIllustration: Continuous Sample Space\n\n\n\nExperiment: Measure two continuous variables in the range \\([0,1]\\)\n\\[ Sample\\ Space = \\{ (x, y) : x,y \\in \\mathbb{R}, 0 \\leq x, y \\leq 1  \\} \\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-2.html#events-and-experiment",
+    "href": "lecture2/lecture2-2.html#events-and-experiment",
+    "title": "2.2 Axiomatic Probability",
+    "section": "Events and Experiment",
+    "text": "Events and Experiment\nAn event is a subset of the sample space.\nEvents are important because they ultimately get assigned probabilities.\nExperiment: Rolling a die once.\n\\[\nSample \\ Space = \\{1,2,3,4,5,6\\}\n\\]\nWhat is the event of rolling a \\(1\\)?\n\\[\n\\{1\\} \\subseteq \\{1,2,3,4,5,6\\}\n\\]\nWhat is the event of rolling an odd number?\n\\[\n\\{1, 3, 5\\} \\subseteq \\{1,2,3,4,5,6\\}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-2.html#probability-axioms-and-probability-law",
+    "href": "lecture2/lecture2-2.html#probability-axioms-and-probability-law",
+    "title": "2.2 Axiomatic Probability",
+    "section": "Probability Axioms and Probability Law",
+    "text": "Probability Axioms and Probability Law\nSuppose \\(A\\) and \\(B\\) are events.\nKolmogorov probability axioms are the foundations of axiomatic probability theory:\n\nNonnegativity: \\(P(Event) \\geq 0\\)\nNormalization: \\(P(Sample\\ Space) = 1\\)\nAdditivity: If \\(A \\cap B = \\emptyset, P(A \\cup B) = P(A) + P(B)\\)\n\nProbability laws are additional axioms mathematically derived from Kolmogorov probability axioms.\n\n\n\n\n\n\nExercise\n\n\n\nExperiment: Rolling two fair die at the same time.\nLet all outcomes be equally likely.\n\\[\nP(A) = \\frac{|A|}{|Sample\\ Space|}\n\\]\n\n\n\nFind the following probabilities:\n\n\\(P(die_1 = 1)\\)\n\\(P(\\text{max}(die_1, die_2) = 2)\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(P(die_1 = 1) = \\frac{6}{36} \\approx 0.1\\bar{6}\\)\n\\(P(\\text{max}(die_1, die_2) = 2) = \\frac{2}{36} \\approx 0.0\\bar{5}\\)\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nExperiment: Measure two continuous variables in the range \\([0,1]\\)\n\\[\nSample\\ Space = \\{ (x, y) : x,y \\in \\mathbb{R}, 0 \\leq x, y \\leq 1  \\}\n\\]\n\n\n\nFind the following probabilities:\n\n\\(P(x = 0.5 , y = 0.5)\\)\n\\(P(x+y \\geq 1)\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(P(x = 0.5 , y = 0.5) = 0\\)\n\\(P(x+y \\geq 1) = 0.5\\)",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-3.html",
+    "href": "lecture2/lecture2-3.html",
+    "title": "2.3 Conditioning",
+    "section": "",
+    "text": "Conditional Probability\nSuppose \\(A\\) and \\(B\\) are events.\nConditional probability is the likelihood of an event occurring given that we know another event has occurred.\n\\[\nP(A|B) = \\frac{P(A \\cap B)}{P(B)}\n\\]\nNotice that the conditioned event becomes the new sample space.\nIf \\(P(B) \\neq 0\\), then the probability of the intersection normalized by the conditioned space. Else \\(P(B) = 0\\), then \\(P(A|B)\\) is undefined.",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>2.3 Conditioning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-3.html#product-rule",
+    "href": "lecture2/lecture2-3.html#product-rule",
+    "title": "2.3 Conditioning",
+    "section": "Product Rule",
+    "text": "Product Rule\nSuppose \\(A\\) and \\(B\\) are events.\nThe product rule states that the probability of two events \\(A\\) and \\(B\\) occurring together \\(A \\cap B\\) is given by the probability of one event occurring given the other \\(P(A|B)\\) or \\(P(B|A)\\) multiplied by the probability of the other event.\n\\[\nP(A \\cap B) = P(A|B) P(B) = P(B|A) P(A)\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>2.3 Conditioning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-3.html#total-probability-theorem",
+    "href": "lecture2/lecture2-3.html#total-probability-theorem",
+    "title": "2.3 Conditioning",
+    "section": "Total Probability Theorem",
+    "text": "Total Probability Theorem\nSuppose \\(A_{1,...,n}\\) and \\(B\\) are events.\nThe total probability theorem allows us to compute the likelihood of an event by summing over conditional probabilities of different partitions of the sample space.\n\\[\nP(B) = P(B|A_1) P(A_1) + P(B|A_2) P(A_2) + P(B|A_3) P(A_3)\n\\]\n\n\n\nIn general terms:\n\\[\nP(B) = P(B|A_1) P(A_1) + ... + P(B|A_n) P(A_n)\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nExperiment: Classifying emails as spam \\(S\\) or not spam \\(NS\\) based on the word \\(W\\) or not the word \\(NW\\) “free”.\n\\[\nP(S) = 0.4\n\\]\n\\[\nP(NS) = 0.6\n\\]\n\\[\nP(W|S) = 0.7\n\\]\n\\[\nP(W|NS) = 0.1\n\\]\nFind the probability of \\(P(S|W)\\):\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\nP(S|W) = \\frac{P(S \\cap W)}{P(W)} = \\underbrace{\\frac{P(W|S)P(S)}{P(W|S)P(S) + P(W|NS)P(NS)}}_{Bayes' \\ Theorem} = \\frac{0.7 * 0.4}{0.7 * 0.4 + 0.1 * 0.6} = 0.82\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>2.3 Conditioning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-4.html",
+    "href": "lecture2/lecture2-4.html",
+    "title": "2.4 Independence",
+    "section": "",
+    "text": "Independent Events\nSuppose \\(A\\) and \\(B\\) are two events.\nTwo events are independent if the occurrence of event \\(B\\) provides no information about the occurrence of event \\(A\\):\n\\[\nP(A|B) = P(A)\n\\]\nAnother definition of independence:\n\\[\nP(A \\cap B) = P(A) P(B)\n\\]\nFor multiple events:\n\\[\nP(A_{1} \\cap A_{2} \\cap ... A_{n}) = P(A_{1}) P(A_{2}) ... P(A_{n})\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>2.4 Independence</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-4.html#conditioning-and-independence",
+    "href": "lecture2/lecture2-4.html#conditioning-and-independence",
+    "title": "2.4 Independence",
+    "section": "Conditioning and Independence",
+    "text": "Conditioning and Independence\nSuppose \\(A\\), \\(B\\), and \\(C\\) are events.\nIf \\(A\\) and \\(B\\) are independent, conditioning on \\(C\\) may remove that independence.\nWhen we condition on \\(C\\), events \\(A\\) and \\(B\\) may no longer be independent.\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nThe king comes from a family of two children. What is the probability that his sibling is female \\(F\\) and not male \\(M\\)?\nLet all outcomes be equally likely.\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\nSample \\ Space = \\{(FF), (FM), (MF), (MM)\\} = \\{(\\not F \\not F), (FM), (MF), (MM)\\}\n\\]\n\\[\nP(F|M) = \\frac{P(F \\cap M)}{M} = \\frac{2}{3} \\approx 0.6\\bar{6}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>2.4 Independence</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-5.html",
+    "href": "lecture2/lecture2-5.html",
+    "title": "2.5 Discrete Random Variables",
+    "section": "",
+    "text": "Discrete Random Variable\nA discrete random variable is a mapping \\(X\\) of all of the outcomes of a sample space to numerical values \\(x \\in \\mathbb{Z}\\).\n\\[\nX: Outcome \\in Sample \\ Space \\to x \\in \\mathbb{Z}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-5.html#probability-mass-function-pmf",
+    "href": "lecture2/lecture2-5.html#probability-mass-function-pmf",
+    "title": "2.5 Discrete Random Variables",
+    "section": "Probability Mass Function (PMF)",
+    "text": "Probability Mass Function (PMF)\nA probability mass function (PMF) is a mapping of values \\(x\\) of discrete random variables \\(X\\) to probabilities \\([0,1]\\).\n\\[\np_{X}(x) = P(X = x)\n\\]\nPMF has properties: \\[\np_{X}(x) \\geq 0, \\quad \\sum_{x} p_{X}(x) = 1\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-5.html#cumulative-distribution-function-cdf",
+    "href": "lecture2/lecture2-5.html#cumulative-distribution-function-cdf",
+    "title": "2.5 Discrete Random Variables",
+    "section": "Cumulative Distribution Function (CDF)",
+    "text": "Cumulative Distribution Function (CDF)\nThe cumulative distribution function (CDF) for discrete random variables is defined as:\n\\[\nF_{X}(x) = P(X \\leq x) = \\sum_{k \\leq x} p_{X}(k)\n\\]\nRelation to PMF: \\[\np_{X}(x) = \\frac{dF_{X}(x)}{dx}\n\\]\n\\[\nF_{X}(x) = \\sum_{k \\leq x}p_{X}(k)\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-5.html#illustration-pmf-and-cdf",
+    "href": "lecture2/lecture2-5.html#illustration-pmf-and-cdf",
+    "title": "2.5 Discrete Random Variables",
+    "section": "Illustration: PMF and CDF",
+    "text": "Illustration: PMF and CDF",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-5.html#expectation-and-variance-of-pmfs",
+    "href": "lecture2/lecture2-5.html#expectation-and-variance-of-pmfs",
+    "title": "2.5 Discrete Random Variables",
+    "section": "Expectation and Variance of PMFs",
+    "text": "Expectation and Variance of PMFs\nDiscrete expectation, or mean, is the average numerical value that the discrete random variable takes over the PMF. \\[\nE[X] = \\sum_{x} x \\ p_{X}(x)\n\\]\nDiscrete variance is the expected squared difference from the mean of a PMF. \\[\nVar[X] = E[(X - E[X])^{2}] = \\sum_{x}(x - E[X])^2 p_{X}(x)\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-5.html#joint-and-marginal-pmfs",
+    "href": "lecture2/lecture2-5.html#joint-and-marginal-pmfs",
+    "title": "2.5 Discrete Random Variables",
+    "section": "Joint and Marginal PMFs",
+    "text": "Joint and Marginal PMFs\nThe joint PMF calculates the intersection of two discrete random variables: \\[\np_{X,Y}(x_{1},x_{2}) = P(X = x_{1}, Y = x_{2})\n\\]\nFrom the previous definition we can also compute the marginal PMF for a particular random variable: \\[\np_{X}(x_{1}) = \\sum_{x_{2}} p_{X,Y}(X = x_{1},Y = x_{2})\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-5.html#conditional-expectation-of-pmfs",
+    "href": "lecture2/lecture2-5.html#conditional-expectation-of-pmfs",
+    "title": "2.5 Discrete Random Variables",
+    "section": "Conditional Expectation of PMFs",
+    "text": "Conditional Expectation of PMFs\nThe conditional PMF gives the probability distribution of a discrete random variable given that another variable has a specific value. \\[\np_{X|Y}(x_{1}| x_{2}) = \\frac{p_{X,Y}(x_{1}, x_{2})}{p_{Y}(x_{2})}\n\\]\nThe conditional expectation is the expected value of a discrete random variable given that another variable is fixed at a specific value. \\[\nE[X| Y = x_{2}] = \\sum_{x_{1}} x_{1} \\frac{p_{X,Y}(x_{1}, x_{2})}{p_{Y}(x_{2})}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-5.html#independence",
+    "href": "lecture2/lecture2-5.html#independence",
+    "title": "2.5 Discrete Random Variables",
+    "section": "Independence",
+    "text": "Independence\nTwo discrete random variables are independent if:\n\\[\np_{X,Y}(x_{1}, x_{2}) = p_{X}(x_{1}) p_{Y}(x_{2})\n\\]\nFor multiple discrete random variables: \\[\np_{X_{1},...,X_{n}}(x_{1}, ..., x_{n}) = p_{X_{1}}(x_{1}) ... \\ p_{X_{n}}(x_{n})\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-6.html",
+    "href": "lecture2/lecture2-6.html",
+    "title": "2.6 Continuous Random Variables",
+    "section": "",
+    "text": "Continuous Random Variable\nA continuous random variable is a mapping \\(X\\) of all the events of a sample space to numerical values \\(x \\in \\mathbb{R}\\). \\[\nX: Event \\in Sample \\ Space \\to x \\in \\mathbb{R}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-6.html#probability-density-function-pdf",
+    "href": "lecture2/lecture2-6.html#probability-density-function-pdf",
+    "title": "2.6 Continuous Random Variables",
+    "section": "Probability Density Function (PDF)",
+    "text": "Probability Density Function (PDF)\nA probability density function (PDF) is a mapping of values \\(x\\) of intervals of continuous random variables \\(X\\) to probabilities \\([0,1]\\).\n\\[\nP(a \\leq X \\leq b) = \\int_{a}^{b} f_{X}(x) \\ dx\n\\]\nPDF has properties: \\[\nf_{X}(x) \\geq 0, \\ \\int_{-\\infty}^{\\infty} f_{X}(x) \\ dx = 1\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-6.html#cumulative-distribution-function-cdf",
+    "href": "lecture2/lecture2-6.html#cumulative-distribution-function-cdf",
+    "title": "2.6 Continuous Random Variables",
+    "section": "Cumulative Distribution Function (CDF)",
+    "text": "Cumulative Distribution Function (CDF)\nThe cumulative distribution function (CDF) for continuous random variables is defined as:\n\\[ F_{X}(x) = P(X \\leq x) = \\int_{-\\infty}^{x} f_{X}(u) \\ du \\]\nRelation to PDF:\n\\[\nf_{X}(x) = \\frac{dF_{X}(x)}{dx}\n\\] \\[\nF_{X}(x) = \\int_{-\\infty}^{x} f_{X}(u) \\ du\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-6.html#illustration-pdf-and-cdf",
+    "href": "lecture2/lecture2-6.html#illustration-pdf-and-cdf",
+    "title": "2.6 Continuous Random Variables",
+    "section": "Illustration: PDF and CDF",
+    "text": "Illustration: PDF and CDF",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-6.html#expectation-and-variance-of-pdfs",
+    "href": "lecture2/lecture2-6.html#expectation-and-variance-of-pdfs",
+    "title": "2.6 Continuous Random Variables",
+    "section": "Expectation and Variance of PDFs",
+    "text": "Expectation and Variance of PDFs\nContinuous expectation, or mean, is the average numerical value that the continuous random variable takes over the PDF. \\[\nE[X] = \\int_{-\\infty}^{\\infty} x \\ f_{X}(x) dx\n\\]\nContinuous variance is the expected squared difference from the mean of a PDF. \\[\n\\text{Var}[X] = E[(X - E[X])^{2}] = \\int_{-\\infty}^{\\infty} (x - E[X])^2 \\ f_{X}(x) dx\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-6.html#joint-and-marginal-pdfs",
+    "href": "lecture2/lecture2-6.html#joint-and-marginal-pdfs",
+    "title": "2.6 Continuous Random Variables",
+    "section": "Joint and Marginal PDFs",
+    "text": "Joint and Marginal PDFs\nThe joint PDF calculates the intersection of two continuous random variables: \\[\nP((X,Y) \\in A) = \\int \\int_{A} f_{X,Y}(x_{1}, x_{2}) dx_{1} \\ dx_{2}\n\\]\nFrom the previous definition we can also compute the marginal PDF for a particular random variable:\n\\[\nf_{X}(x_{1}) = \\int_{-\\infty}^{\\infty} f_{X,Y}(x_{1}, x_{2}) dx_{2}\n\\]\n\\[\nf_{Y}(x_{2}) = \\int_{-\\infty}^{\\infty} f_{X,Y}(x_{1},x_{2}) dx_{1}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-6.html#conditional-expectation-of-pdfs",
+    "href": "lecture2/lecture2-6.html#conditional-expectation-of-pdfs",
+    "title": "2.6 Continuous Random Variables",
+    "section": "Conditional Expectation of PDFs",
+    "text": "Conditional Expectation of PDFs\nThe conditional PDF gives the probability distribution of a continuous random variable given that another variable has a specific value. \\[\nf_{X|Y}(x_{1}| x_{2}) = \\frac{f_{X,Y}(x_{1}, x_{2})}{f_{Y}(x_{2})}\n\\]\nThe conditional expectation is the expected value of a continuous random variable given that another variable is fixed at a specific value. \\[\n\\mathbb{E}[X| Y = x_{2}] = \\int_{x_{1} \\in X} x_{1} \\frac{f_{X,Y}(x_{1}, x_{2})}{f_{Y}(x_{2})} dx_{1}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-6.html#independence",
+    "href": "lecture2/lecture2-6.html#independence",
+    "title": "2.6 Continuous Random Variables",
+    "section": "Independence",
+    "text": "Independence\nTwo continuous random variables are independent if: \\[\nf_{X,Y}(x_{1}, x_{2}) = f_{X}(x_{1}) f_{Y}(x_{2})\n\\]\nThis can be extended to multiple random variables: \\[\nf_{X_{1},...,X{n}}(x_{1}, ..., x_{n}) = f_{X_{1}}(x_{1}) ... \\ f_{X_{n}}(x_{n})\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-7.html",
+    "href": "lecture2/lecture2-7.html",
+    "title": "2.7 Probability Distributions",
+    "section": "",
+    "text": "Bernoulli Distribution\n\\[\np_{X}(x) =\n\\begin{cases}\n    p & \\text{if } x = 1, \\\\\n    q = 1-p & \\text{if } x = 0.\n\\end{cases}\n\\]",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>2.7 Probability Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-7.html#bernoulli-distribution",
+    "href": "lecture2/lecture2-7.html#bernoulli-distribution",
+    "title": "2.7 Probability Distributions",
+    "section": "",
+    "text": "The discrete random variable can take value \\(1\\) with probability \\(p\\) or value \\(0\\) with probability \\(q = 1 - p\\)\nNot to be confused with the binomial distribution, since only one trial is being conducted.\n\\(\\mathbb{E}[X] = p\\)\n\\(Var[X] = pq\\) \n\n\n\nviewof p = Inputs.range([0, 1], {\n  step: 0.01,\n  value: 0.5,\n  label: tex`p`,\n  width: 200\n})\n\ndata = {\n  return [\n    {outcome: \"0\", probability: 1 - p},\n    {outcome: \"1\", probability: p}\n  ];\n}\n\nPlot.plot({\n  style: \"overflow: visible; display: block; margin: 0 auto;\",\n  width: 600,\n  height: 400,\n  y: {\n    grid: true,\n    label: \"Probability\",\n    domain: [0, 1]\n  },\n  x: {\n    label: \"Outcome\",\n    padding: 0.2\n  },\n  marks: [\n    Plot.barY(data, {\n      x: \"outcome\",\n      y: \"probability\",\n      fill: \"steelblue\"\n    }),\n    Plot.ruleY([0])\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhtml`&lt;div style=\"text-align: center; margin-top: 1em;\"&gt;\n  &lt;p&gt;${tex`\\mathbb{E}[X] =`} ${p.toFixed(3)}&lt;/p&gt;\n  &lt;p&gt;${tex`\\text{Var}(X) =`} ${(p * (1-p)).toFixed(3)}&lt;/p&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\nPython Code: Bernoulli Distribution\nTo create Bernoulli distributed data using numpy:\nimport numpy as np\n\ninterval = [0,1]\nsize = (1000,1)\np = [1-0.5, 0.5]\n\ndata = np.random.choice(interval, size, p = p)",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>2.7 Probability Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-7.html#gaussian-distribution",
+    "href": "lecture2/lecture2-7.html#gaussian-distribution",
+    "title": "2.7 Probability Distributions",
+    "section": "Gaussian Distribution",
+    "text": "Gaussian Distribution\n\\[\nf_{X}(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^{2} }}e^{-\\frac{(x-\\mu)^{2}}{2\\sigma^{2}}}\n\\]\n\nUsed frequently to represent real-valued random variables whose distributions are not known.\nIts importance is derived from the central limit theorem that states, under some conditions, the average of many samples of a random variable is itself a random variable that converges to a Gaussian distribution as it increases.\n\\(E[X] = \\mu\\)\n\\(Var[X] = \\sigma^{2}\\)\n\n\n\nviewof mu = Inputs.range([-1, 1], {\n  step: 0.1,\n  value: 0,\n  label: tex`\\mu`,\n  width: 200\n})\n\nviewof sigma = Inputs.range([0.1, 2], {\n  step: 0.1,\n  value: 1,\n  label: tex`\\sigma`,\n  width: 200\n})\n\n// Generate points for the normal distribution curve\npointsGaussian = {\n  const x = d3.range(-5, 5, 0.1);\n  return x.map(x =&gt; ({\n    x,\n    y: (1 / (sigma * Math.sqrt(2 * Math.PI))) * \n       Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2))\n  }));\n}\n\nPlot.plot({\n  style: \"overflow: visible; display: block; margin: 0 auto;\",\n  width: 600,\n  height: 400,\n  y: {\n    grid: true,\n    label: \"Density\"\n  },\n  x: {\n    label: \"x\",\n    domain: [-5, 5]\n  },\n  marks: [\n    Plot.line(pointsGaussian, {x: \"x\", y: \"y\", stroke: \"steelblue\"}),\n    Plot.ruleY([0])\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhtml`&lt;div style=\"text-align: center; margin-top: 1em;\"&gt;\n  &lt;p&gt;${tex`\\mathbb{E}[X] =`} ${mu.toFixed(3)}&lt;/p&gt;\n  &lt;p&gt;${tex`\\text{Var}(X) =`} ${(sigma * sigma).toFixed(3)}&lt;/p&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\nPython Code: Gaussian Distribution\nTo create Gaussian distributed data using numpy:\nimport numpy as np\n\nmu = 0\nsigma = 1\nsize = (1000,1)\n\ndata = np.random.normal(mu, sigma, size)",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>2.7 Probability Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "lecture2/lecture2-7.html#beta-distribution",
+    "href": "lecture2/lecture2-7.html#beta-distribution",
+    "title": "2.7 Probability Distributions",
+    "section": "Beta Distribution",
+    "text": "Beta Distribution\n\\[\nf_{X}(x) = {\\frac {\\Gamma (\\alpha +\\beta )}{\\Gamma (\\alpha )\\Gamma (\\beta )}}\\,x^{\\alpha -1}(1-x)^{\\beta -1}\n\\]\nwhere \\(\\Gamma\\) is the gamma function defined as:\n\\[\n\\Gamma (z)=\\int _{0}^{\\infty}t^{z-1}e^{-t}\\,dt\n\\]\n\nGamma functions are used to model factorial functions of complex numbers \\(z\\).\nBeta functions are used to model behavior of random variables in intervals of finite length.\n\\(E[X] = \\frac{\\alpha}{\\alpha+\\beta}\\)\n\\(Var[X] = \\frac{\\alpha\\beta}{(\\alpha+\\beta)^2(\\alpha+\\beta+1)}\\)\n\n\n\nviewof alpha = Inputs.range([0.1, 10], {\n  step: 0.1,\n  value: 1,\n  label: tex`\\alpha`,\n  width: 200\n})\n\nviewof beta = Inputs.range([0.1, 10], {\n  step: 0.1,\n  value: 1,\n  label: tex`\\beta`,\n  width: 200\n})\n\n// Gamma function approximation using Lanczos approximation\nfunction gamma(z) {\n    const p = [676.5203681218851, -1259.1392167224028, 771.32342877765313,\n        -176.61502916214059, 12.507343278686905, -0.13857109526572012,\n        9.9843695780195716e-6, 1.5056327351493116e-7];\n    \n    if (z &lt; 0.5) {\n        return Math.PI / (Math.sin(Math.PI * z) * gamma(1 - z));\n    }\n    \n    z -= 1;\n    let x = 0.99999999999980993;\n    for (let i = 0; i &lt; p.length; i++) {\n        x += p[i] / (z + i + 1);\n    }\n    \n    const t = z + p.length - 0.5;\n    return Math.sqrt(2 * Math.PI) * Math.pow(t, z + 0.5) * Math.exp(-t) * x;\n}\n\n// Beta function using gamma function\nfunction betaFunc(x, y) {\n    return (gamma(x) * gamma(y)) / gamma(x + y);\n}\n\n// Beta probability density function\nfunction betaPDF(x, a, b) {\n    if (x &lt;= 0 || x &gt;= 1) return 0;\n    return Math.pow(x, a - 1) * Math.pow(1 - x, b - 1) / betaFunc(a, b);\n}\n\n// Generate points for the beta distribution curve\npoints = Array.from({length: 100}, (_, i) =&gt; {\n  let x = 0.001 + i * 0.01;\n  return { x, y: betaPDF(x, alpha, beta) };\n});\n\nPlot.plot({\n  style: \"overflow: visible; display: block; margin: 0 auto;\",\n  width: 600,\n  height: 400,\n  y: {\n    grid: true,\n    label: \"Density\"\n  },\n  x: {\n    label: \"x\",\n    domain: [0, 1]\n  },\n  marks: [\n    Plot.line(points, {x: \"x\", y: \"y\", stroke: \"steelblue\"}),\n    Plot.ruleY([0])\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhtml`&lt;div style=\"text-align: center; margin-top: 1em;\"&gt;\n  &lt;p&gt;${tex`\\mathbb{E}[X] =`} ${(alpha/(alpha + beta)).toFixed(3)}&lt;/p&gt;\n  &lt;p&gt;${tex`\\text{Var}(X) =`} ${((alpha * beta)/((alpha + beta)**2 * (alpha + beta + 1))).toFixed(3)}&lt;/p&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\nPython Code: Beta Distribution\nTo create Beta distributed data using numpy:\nimport numpy as np \n\nalpha = 0.5\nbeta = 0.5\nsize = (1000,1)\n\ndata = np.random.beta(alpha, beta, size)",
+    "crumbs": [
+      "Lecture 2: Mathematical Foundations",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>2.7 Probability Distributions</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lo.html",
+    "href": "lecture3/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 3: Multi-Armed Bandits (Sutton and Barto 2018) 🎯\n\n\n\n\nMulti-Amed Bandits Framework.\n\\(\\epsilon\\)-greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\nBernoulli & Gaussian generated environment using numpy.\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-1.html",
+    "href": "lecture3/lecture3-1.html",
+    "title": "3.1 Multi-Armed Bandit Framework",
+    "section": "",
+    "text": "Motivation\nWe saw from Lecture 1 that Reinforcement Learning is about sequential decision-making:",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>3.1 Multi-Armed Bandit Framework</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-1.html#motivation",
+    "href": "lecture3/lecture3-1.html#motivation",
+    "title": "3.1 Multi-Armed Bandit Framework",
+    "section": "",
+    "text": "Markov Decision Process\n\n\n\n\n\\(\\pi: S_{0}, A_{0}, R_{1}, S_{1}, A_{1}, R_{2}, ... , S_{T-1}, A_{T-1}, R_{T}\\)\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we learn to act optimally without the added complexity of changing states?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nA nonassociative environment is a setting that involves learning how to act in one state. A common example of a nonassociative environment is the Multi-Armed Bandit problem.\n\n\\(\\pi: S, A_{0}, R_{1}, S, A_{1}, R_{2}, ... , S, A_{T-1}, R_{T}\\)\n\nThis simplified setting helps us develop foundational ideas in Reinforcement Learning — like action selection and reward maximization — without worrying about state transitions.",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>3.1 Multi-Armed Bandit Framework</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-1.html#bandit",
+    "href": "lecture3/lecture3-1.html#bandit",
+    "title": "3.1 Multi-Armed Bandit Framework",
+    "section": "Bandit",
+    "text": "Bandit\nA bandit is a slot machine.\nIt is used as an analogy to represent the action an agent can make in one state.\nEach action selection is like a play of one of the slot machine’s levers, and the rewards are the payoffs for hitting the jackpot, according to its underlying probability distribution.\n\n\n\n\n\n\\(\\Huge{\\to}\\)\nRewards",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>3.1 Multi-Armed Bandit Framework</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-1.html#multi-armed-bandit",
+    "href": "lecture3/lecture3-1.html#multi-armed-bandit",
+    "title": "3.1 Multi-Armed Bandit Framework",
+    "section": "Multi-Armed Bandit",
+    "text": "Multi-Armed Bandit\nA Multi-Armed Bandit can be interpreted as k-actions, or k-arms of the slot machines, to decide from.\nThrough repeated action selections, you maximize your winnings by concentrating actions on the best levers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nHow do we decide the most appropriate action?\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nWe calculate the expectation of a Bandit!\nEach bandit has an expected reward given a particular action is selected, called the action value.\n\\[\nQ_t(a) = \\mathbb{E}[R_t | A_t = a]\n\\]\n\nNote that \\(Q_t(a)\\) tells us how good an action is at time step \\(t\\) for a particular action \\(a\\). This is fundamental concept to Value-based Reinforcement Learning algorithms.\n\n\n\n\n\\(Q_t(a)\\) is the conditional expectation of the rewards \\(R_t\\) given the selection of an action \\(A_t\\). \\(R_t\\) is the random variable for the reward at time step \\(t\\). \\(A_t\\) is the random variable for the action selected at time step \\(t\\).",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>3.1 Multi-Armed Bandit Framework</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-1.html#action-value-predicate-method",
+    "href": "lecture3/lecture3-1.html#action-value-predicate-method",
+    "title": "3.1 Multi-Armed Bandit Framework",
+    "section": "Action Value: Predicate Method",
+    "text": "Action Value: Predicate Method\nOne way to compute action values is using a predicate:\n\\[\nQ_t(a) = \\frac{\\sum_{i=1}^{t-1} R_i * \\mathbf{1}_{A_i = a}}{\\sum_{i=1}^{t-1} \\mathbf{1}_{A_i = a}}\n\\]\n\n\n\\(Q_t(a)\\) is the action value for a particular action \\(a\\). \\(\\mathbf{1}\\) is a predicate, which denotes whether \\(A_i = a\\) is true or false.\nIf the denominator is \\(0\\), then we denote \\(Q_t(a)\\) as \\(0\\).",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>3.1 Multi-Armed Bandit Framework</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-1.html#action-value-incremental-update",
+    "href": "lecture3/lecture3-1.html#action-value-incremental-update",
+    "title": "3.1 Multi-Armed Bandit Framework",
+    "section": "Action Value: Incremental Update",
+    "text": "Action Value: Incremental Update\nTo avoid computationally expensive updates using the predicate method, we can update action values in an incremental fashion:\n\\[\n\\underbrace{Q_{t+1}}_{\\text{New Estimate}} = \\underbrace{Q_t}_{\\text{Old Estimate}} + \\underbrace{\\frac{1}{t}}_{\\text{Step Size}} (\\underbrace{R_t}_{\\text{Target}} - \\underbrace{Q_t}_{\\text{Old Estimate}})\n\\]\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nShould we always pick actions with the highest expected value?\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nNo, always picking actions with the highest expected value will disallow us to explore other actions!\nLet’s see how we can solve this problem in the next page 😊",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>3.1 Multi-Armed Bandit Framework</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-2.html",
+    "href": "lecture3/lecture3-2.html",
+    "title": "3.2 ε-Greedy",
+    "section": "",
+    "text": "Motivation\nWe are exploring when we randomly select an action.\nWe are exploiting, or acting greedy, when an action is selected based on its expected value.",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>3.2 &epsilon;-Greedy</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-2.html#motivation",
+    "href": "lecture3/lecture3-2.html#motivation",
+    "title": "3.2 ε-Greedy",
+    "section": "",
+    "text": "Problem\n\n\n\nExploring all of the time does not permit you to exploit your knowledge of expected values.\nExploiting all of the time does not permit you to explore all of the options.\nHow can we select actions with the highest expected value while leveraging exploration?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you are in a Multi-Armed Bandit scenario:\n\n\\(S\\) - You are hungry and want to treat yourself to a restaurant meal.\n\\(A_{1,\\dots,k}\\) - You can choose from \\(k\\) different restaurants in your area.\n\n\\(R\\) - After eating, you rate your experience — maybe based on taste, service, or price satisfaction.\n\nIn my case:\n\n\n\n\n\nReally like Arepas\n\n\n\n\n\n\n\nEnjoy Chipotle once in a while\n\n\n\n\n\n\n\nNever tried Falafel Bowls before\n\n\n\n\nHow can I select a restaurant meal that I would enjoy while being open-minded to the idea of Falafel Bowls?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nEpsilon (\\(\\epsilon\\)) is a fixed proportion that decides whether we explore or exploit our actions.\n\\[\n  A_t \\gets\n  \\begin{cases}\n      \\text{a random action with probability } \\epsilon \\\\\n      \\arg\\max_a Q(a) \\text{ with probability } 1 - \\epsilon\n  \\end{cases}\n\\]\nHence, Epsilon Greedy is an algorithm that allows us to balance our decision-making in this simple manner.\nIn our Real Life Example, at first, you try different restaurants (exploration) to see what’s good. Over time, you start favoring the ones with better rewards (exploitation). But occasionally, you still try a new one — just in case it’s better than your current favorite.",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>3.2 &epsilon;-Greedy</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-3.html",
+    "href": "lecture3/lecture3-3.html",
+    "title": "3.3 Upper Confidence Boundary (UCB)",
+    "section": "",
+    "text": "Motivation\nOne risk that we incur with \\(\\epsilon\\)-greedy is that it randomly explores — which might lead to suboptimal or redundant choices.",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>3.3 Upper Confidence Boundary (UCB)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-3.html#motivation",
+    "href": "lecture3/lecture3-3.html#motivation",
+    "title": "3.3 Upper Confidence Boundary (UCB)",
+    "section": "",
+    "text": "Problem\n\n\n\nIs there a way that we can explore more intelligently?\nHint: Think about Lecture 2\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you are in a Multi-Armed Bandit scenario:\n\n\\(S\\) – It’s a beautiful day, and you’re deciding where to go for a run.\n\n\\(A_{1,\\dots,k}\\) – You can choose from \\(k\\) different running trails nearby.\n\n\\(R\\) – After each run, you mentally rate the experience - scenery, terrain or how energized you felt.\n\nIn my case:\n\n\n\n\n\nMy go-to loop\n\n\n\n\n\n\n\nOnly ran this trail once\n\n\n\n\n\n\n\nNever tried this one\n\n\n\n\nHow can I pick a trail that has the best combination of enjoyment and uncertainty — so I explore only when it is smart to?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nUpper Confidence Boundaries (UCB) allow us to select among the non-greedy actions according to their potential for actually being optimal.\n\\[\nA_t \\gets \\arg\\max_a \\left[ Q(a) + \\sqrt{\\frac{2 \\ln(t)}{N(a)}} \\right]\n\\]\n\nEach time \\(a\\) is selected, the uncertainty is presumably reduced \\(N(a)\\) increments, and as it appears in the denominator, the uncertainty term decreases.\n\\[\nVAR \\downarrow = \\sqrt{\\frac{2 \\ln(t)}{N(a)\\uparrow}}\n\\]\nEach time an action other than \\(a\\) is selected, \\(t\\) increases but \\(N(a)\\) does not; because \\(t\\) appears in the numerator, the uncertainty estimate increases.\n\\[\nVAR \\uparrow = \\sqrt{\\frac{2 \\ln(t) \\uparrow}{N(a)}}\n\\]\nIn our Real Life Example UCB says “Don’t just pick randomly. Prefer trails that are either great or still uncertain — they might surprise you.”\n\n\n\n\n\n\n\n\n\n\\(\\sqrt{\\frac{2 \\ln(t)}{N(a)}}\\) is the measure of variance of the action \\(a\\). The natural logarithm increases get smaller over time but are unbounded, so all actions will be selected.",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>3.3 Upper Confidence Boundary (UCB)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-4.html",
+    "href": "lecture3/lecture3-4.html",
+    "title": "3.4 Thompson Sampling",
+    "section": "",
+    "text": "Motivation\nWe want to explore options proportionally to how likely they are to be optimal, not just randomly or based on confidence bounds.",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>3.4 Thompson Sampling</span>"
+    ]
+  },
+  {
+    "objectID": "lecture3/lecture3-4.html#motivation",
+    "href": "lecture3/lecture3-4.html#motivation",
+    "title": "3.4 Thompson Sampling",
+    "section": "",
+    "text": "Problem\n\n\n\nIs there a way that we can select actions based out of a distribution of our beliefs?\nHint: Think about Lecture 2\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you are in a Multi-Armed Bandit scenario:\n\n\\(S\\) – It’s Friday night, and you’re deciding what show or YouTube channel to watch.\n\n\\(A_{1,\\dots,k}\\) – You can choose from \\(k\\) different shows or creators.\n\n\\(R\\) – After each episode or video, you mentally rate how entertaining or satisfying it was.\n\nIn my case:\n\n\n\n\n\nMy comfort show\n\n\n\n\n\n\n\nWatched a couple episodes\n\n\n\n\n\n\n\nNever saw this one\n\n\n\n\nHow can I select a show based on my prior beliefs?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThompson sampling is an algorithm that leverages the beta distribution for its action value method and action selections.\nInitialize beta distributed with parameters:\n\\[\n\\alpha(a) = (\\alpha_{1}, . . . , \\alpha_{k}) = 1\n\\] \\[\n\\beta(a) = (\\beta_{1}, . . . , \\beta_{k}) = 1\n\\]\nNow for each action \\(a\\), the prior probability density function of our action value method \\(Q(a)\\) is:\n\\[\n  Q(a) = \\frac{\\Gamma(\\alpha(a) + \\beta(a))}{\\Gamma(\\alpha(a)) \\ \\Gamma(\\beta(a))} a^{\\alpha(a)-1} (1 a)^{\\beta(a)-1}\n\\]\nThe agent updates its prior belief using the following action value method:\n\\[\n\\alpha(A_{t}) \\gets \\alpha(A_{t}) + R_{t}\n\\] \\[\n\\beta(A_{t}) \\gets \\beta(A_{t}) + 1 R_{t}\n\\]\nNotice that for those actions selected \\(A_t\\), we increase its corresponding \\(\\alpha\\) parameter (\\(R_t = 1\\)) and maintain its \\(\\beta\\) parameter the same as before (\\(1 - R_t = 1 - 1 = 0\\)).\nThis update allows the algorithm to draw accurate samples and strike a balance between exploring and exploiting.",
+    "crumbs": [
+      "Lecture 3: Multi-Armed Bandits",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>3.4 Thompson Sampling</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lo.html",
+    "href": "lecture4/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 4: Dynamic Programming (Sutton and Barto 2018) 🎯\n\n\n\n\nMarkov Chain.\nMarkov Decision Process (MDPs).\nDynamic Programming.\nHomemade GridWorld OpenAI environment using gymnasium, pygame & numpy.\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-1.html",
+    "href": "lecture4/lecture4-1.html",
+    "title": "4.1 Markov Chain",
+    "section": "",
+    "text": "Motivation\nWe saw from Lecture 3 how to make optimal decisions in non-associative environments:",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>4.1 Markov Chain</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-1.html#motivation",
+    "href": "lecture4/lecture4-1.html#motivation",
+    "title": "4.1 Markov Chain",
+    "section": "",
+    "text": "\\(\\pi: S, A_{0}, R_{1}, S, A_{1}, R_{2}, ... , S, A_{T-1}, R_{T}\\)\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we learn to act optimally with changing states?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nA associative environment is a setting that involves learning how to act in multiple states.\nThe best frameworks to generalize associative environments are Markov models.\nAll Markov models assume the Markov Property, meaning that future states depend only on current states and not previous states.\n\\[\nP(s’ | s, s_{t-1}, s_{t-2}, \\dots) = P(s’ | s)\n\\]\nMarkov models differ based on whether every sequential state is observable and whether the system is adjusted based on observations:\n\n\n\n\n\n\n\n\n\nStates are fully observable\nStates are partially observable\n\n\n\n\nDecision-making is not controlled\n🔶Markov Chain (MC)🔶\nHidden Markov Model (HMM)\n\n\nDecision-making is controlled\nMarkov Decision Process (MDP)\nPartially Observable Markov Decision Process (POMDP)\n\n\n\nWhile Markov Chains model state transitions, they provide the foundation for defining value functions once rewards and actions are introduced.",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>4.1 Markov Chain</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-1.html#markov-chain",
+    "href": "lecture4/lecture4-1.html#markov-chain",
+    "title": "4.1 Markov Chain",
+    "section": "Markov Chain",
+    "text": "Markov Chain\nA Markov Chain is a model for transitions that are not controlled between fully observable states.\nA State is a node.\nA State Transition is one outward-going arrow.\n\n\nState transitions are conditional probabilities of going to the next state given the current state.\n\n\n\nIn this framework, we are interested in how state probabilities evolve over time and the corresponding values of each state.\n\nProbability Matrix\nSuppose a frog jumps from one lily pad to another with state transition probabilities:\n\n\n\n\\[\n\\mathbf{P} = \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\n\n\nRewards Matrix\nSuppose the frog has associated rewards:\n\n\n\n\\[\n\\mathbf{R} = \\begin{bmatrix} 6 & 1 \\\\ 1 & -2 \\end{bmatrix}\n\\]\n\n\nValue Function\nWe want to calculate the expected value of moving from state \\(i\\) to state \\(j\\) for all situations \\(s \\in \\{1,2,...,S\\}\\):\n\\[\n\\mathbf{v}(t) = \\mathbf{q} + \\mathbf{v}(t-1) \\mathbf{P}\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\begin{align*}\nv_{j}(t) & = \\sum_{i=1}^{S} p_{i,j} \\ [r_{i,j}+v_{i}(t-1)] \\\\\n& = \\sum_{i=1}^{S} p_{i,j} \\ r_{i,j} + \\sum_{i=1}^{S} p_{i,j} \\ v_{i}(t-1) \\\\\n& = \\textbf{q} + \\sum_{i=1}^{S} p_{i,j}\\ v_{i}(t-1)\n\\end{align*}\n\\]\n\n\n\nFirst, we need to calculate \\(\\textbf{q}\\), the expected reward in the next transition out of state \\(i\\):\n\\[\n\\textbf{q} =\n\\begin{bmatrix}\n    2 & -0.2\n\\end{bmatrix}\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\mathbf{q} = \\sum_{i=1}^{S} p_{i,j} r_{i,j}\n\\]\n\\[\nq_{1} = p_{1,1} \\ r_{1,1} + r_{2,1} \\ p_{2,1}\n\\]\n\\[\nq_{2} = p_{1,2} \\ r_{1,2} + r_{2,2} \\ p_{2,2}\n\\]\n\n\n\n\\[\n\\begin{bmatrix} v_{1}(t) \\ v_{2}(t) \\end{bmatrix} = \\begin{bmatrix} 2 \\ -0.2 \\end{bmatrix} + \\begin{bmatrix} v_{1}(t-1) \\ v_{2}(t-1) \\end{bmatrix} \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\nAt \\(t=100\\): \\[\n\\mathbf{v}(100) = \\begin{bmatrix} 77.88 & 76.59 \\end{bmatrix}\n\\]\nIn other words, the frogs expected value at \\(t = 100\\) is that lilly pad \\(1\\) will be greater (with \\(77.88\\) expected flies) than that of lilly pad \\(2\\) (with \\(76.59\\) expected flies)\n\n\n\n\n\nDiscounting Factor\nThe \\(\\gamma\\) allows us to place a higher value on the present rewards, rather than future uncertain rewards.\n\\[\n\\mathbf{v}(t) = \\mathbf{q} + \\gamma \\mathbf{v}(t-1) \\mathbf{P}\n\\]\n\\[\n\\begin{bmatrix} v_{1}(t) \\ v_{2}(t) \\end{bmatrix} = \\begin{bmatrix} 2 \\ -0.2 \\end{bmatrix} + \\gamma \\begin{bmatrix} v_{1}(t-1) \\ v_{2}(t-1) \\end{bmatrix} \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\nAt \\(\\gamma=0.9\\) and \\(t=100\\): \\[\n\\mathbf{v}(100) = \\begin{bmatrix} 8.47 & 7.15 \\end{bmatrix}\n\\]\n\n\n\n\n\nPython Code\nimport numpy as np\n\nGAMMA = 0.9\nP = np.array([[0.2, 0.6], [0.8, 0.4]])\nR = np.array([[6, 1], [1, -2]])\nq = np.sum(P * R, axis=1)\nv_initial = np.array([0, 0])\n\ndef value_function(v, P, q, t=100):\n    for _ in range(t):\n        v = q + GAMMA * np.dot(v, P)\n    return v\n\nv_result = value_function(v_initial, P, q)\nprint(v_result)",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>4.1 Markov Chain</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html",
+    "href": "lecture4/lecture4-2.html",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "",
+    "text": "Motivation\nMarkov Chain’s are a framework for an associative environment.\nA Markov Chain is a model for transitions that are not controlled between fully observable states.",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html#motivation",
+    "href": "lecture4/lecture4-2.html#motivation",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "",
+    "text": "Problem\n\n\n\nIdeally, we would like to have an Agent that can control state transitions in any associative environment.\nHow can we learn to act optimally with changing states but controlling state transitions between fully observable states?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe need to model our environments as a Markov Decision Process (MDP).\n\n\n\n\n\n\n\n\n\nStates are fully observable\nStates are partially observable\n\n\n\n\nDecision-making is not controlled\nMarkov Chain (MC)\nHidden Markov Model (HMM)\n\n\nDecision-making is controlled\n🔶Markov Decision Process (MDP)🔶\nPartially Observable Markov Decision Process (POMDP)",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html#markov-decision-process",
+    "href": "lecture4/lecture4-2.html#markov-decision-process",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "Markov Decision Process",
+    "text": "Markov Decision Process\nA Markov Decision Process (MDP) is a model for transitions that are controlled between fully observable states.\nThe Agent is the learner and decision-maker.\nThe Environment is everything external to the agent.\nFrom an Initial State, the agent interacts with the environment through its Actions.\nThese actions continuously give rise to different States and Rewards.\n\n\n\n\nMarkov Decision Process\n\n\n\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\n\nActions are equally likely to occur. \nActions that take the agent out of the environment receive a reward of \\(-1\\), actions that take the agent to the terminal state (shaded in gray) receive a reward of \\(+1\\), and all other actions receive a reward of \\(0\\). \nOur objective is to calculate the shortest path from any state to the optimal state.",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html#sequential-interaction",
+    "href": "lecture4/lecture4-2.html#sequential-interaction",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "Sequential Interaction",
+    "text": "Sequential Interaction\nFor a finite discrete number of time steps \\(t = 0, 1, 2, 3...,T\\) (where \\(T\\) is the terminal time step marking the end of an episode) the sequential interaction is:\n\nThe agent receives an interpretation from the state \\(s_t \\in S\\).\nThe agent makes an action \\(a_t \\in A(s_t)\\) based on the situation.\nThe agent receives a reward \\(r_{t+1} \\in R \\subseteq \\mathbb{R}\\) from its environment and finds itself in a new state \\(s_{t+1}\\) based on the action taken.\n\nThe sequence continues in the form:\n\\[\ns_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3,...\n\\]\n\n\n\n\n\n\nExample: GridWorld\n\n\n\nSequential interaction for one episode:\n\n\n\n\n\nNotice that, for now, state transitions are deterministic. In other words, we assume a perfect model of the environment. We do not care about stochastic state transitions (this is something that we will visit in the next lectures).",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html#policy",
+    "href": "lecture4/lecture4-2.html#policy",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "Policy",
+    "text": "Policy\nA Policy is a mapping from states to probabilities of selecting each possible action, denoted as:\n\\[\n\\pi(a|s)\n\\]\n\n\n\n\n\n\\[\n\\sum_{a \\in A(s)} \\pi(a|s) = 1 \\quad \\text{for all } s \\in S\n\\]\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\nSince all actions are equally likely, we are said to be following a random policy:\n\\[\n\\pi(a_0|s_0) = \\frac{1}{4}\n\\]",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html#dynamic-function",
+    "href": "lecture4/lecture4-2.html#dynamic-function",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "Dynamic Function",
+    "text": "Dynamic Function\nThe dynamic function is a mapping of the state transition probabilities of the MDP for each possible reward:\n\\[\np(s^{'}, r | s, a)\n\\]\n\n\n\n\n\nAs mentioned before, the dynamics of GridWorld are deterministic leading to the same new state given each state and action:\n\\[\n\\sum_{s^{'} \\in S}\\sum_{r \\in R} p(s^{'}, r| s, a) = 1 \\quad \\text{for all } s \\in S \\text{ and } a \\in A(s)\n\\]\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\nAs mentioned before, the dynamics of GridWorld are deterministic, leading to the same new state given each state and action:\n\\[\np(s_{1}, r_{1}| s_0, a_{0}) = 1\n\\]",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html#goal",
+    "href": "lecture4/lecture4-2.html#goal",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "Goal",
+    "text": "Goal\nOur Goal \\(G_{t}\\) is to maximize the expected return of the discounted reward sequence:\n\\[\n\\begin{aligned}\nG_{t} = r_{t+1} + \\gamma r_{t+2} + \\ldots + \\gamma^{T-1} r_{T} \\\\\n     = r_{t+1} + \\gamma (r_{t+2} + \\ldots + \\gamma^{T-2} r_{T}) \\\\\n     = r_{t+1} + \\gamma G_{t+1}\n\\end{aligned}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nSuppose \\(\\gamma = 0.5\\) and the following sequence of rewards is received \\(r_{1} = -1\\), \\(r_{2} = 2\\), \\(r_{3} = 6\\), \\(r_{4} = 3\\), and \\(r_{5} = 2\\), with \\(T = 5\\). What are \\(G_{0}\\), \\(G_{1}\\), …, \\(G_{5}\\)?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\n\\begin{aligned}\nG_{5} &= r_{6} + r_{7} + \\dots = 0 \\\\\nG_{4} &= r_{5} + 0.5(G_{5}) = 2 \\\\\nG_{3} &= r_{4} + 0.5(G_{4}) = 4 \\\\\nG_{2} &= r_{3} + 0.5(G_{3}) = 8 \\\\\nG_{1} &= r_{2} + 0.5(G_{2}) = 6 \\\\\nG_{0} &= r_{1} + 0.5(G_{1}) = 2 \\\\\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html#value-functions",
+    "href": "lecture4/lecture4-2.html#value-functions",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "Value Functions",
+    "text": "Value Functions\nValue Functions calculate the expected reward when starting from the state \\(s\\) and then interacting with the environment according to the policy \\(\\pi\\), denoted as:\n\\[\nv_{\\pi}(s) = \\mathbb{E_{\\pi}}[G_{t}| \\ s]\n\\]\n\n\n\n\n\n\nBellman Equation\nFor any policy \\(\\pi\\) and any state \\(s\\), the Bellman equation holds:\n\\[\n\\begin{aligned}\nv_{\\pi}(s) &= \\mathbb{E_{\\pi}}[G_{t}| \\ s] \\\\\n&= \\mathbb{E_{\\pi}}[r_{t+1} + \\gamma G_{t+1}| \\ s] \\\\\n&= \\sum_{a} \\pi(a|s) \\sum_{s^{'},r} p(s^{'},r|s,a)[r_{t+1} + \\gamma \\mathbb{E_{\\pi}}[G_{t+1}| \\ s]] \\\\\n&= \\underbrace{\\sum_{a} \\pi(a|s)}_{Policy} \\underbrace{\\sum_{s^{'}, r} p(s^{'},r|s,a)}_{Dynamic \\ Function}\\underbrace{[r_{t+1} + \\gamma v_{\\pi}(s^{'})]}_{Discounted \\ Reward \\ Sequence}\n\\end{aligned}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nFor the first episode, calculate the value of each state using the Bellman equation:\n\\[\nv_{\\pi}(s) = \\sum_{a} \\pi(a|s) \\sum_{s^{'}, r} p(s^{'},r|s,a)[r + \\gamma v_{\\pi}(s^{'})]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html#action-value-functions",
+    "href": "lecture4/lecture4-2.html#action-value-functions",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "Action Value Functions",
+    "text": "Action Value Functions\nAction Value Functions estimate how good it is for an agent to follow policy \\(\\pi\\) given the action taken under the previous state:\n\\[\nq_{\\pi}(s, a) = \\mathbb{E_{\\pi}}[G_{t}| \\ s, \\ a]\n\\]\n\n\n\n\n\n\nBellman Equation\nThe action value function is also expressed in terms of the Bellman equation:\n\\[\n\\begin{align}\n    q_{\\pi}(s, a) & = \\mathbb{E_{\\pi}}[G_{t}| \\ s, \\ a] \\\\\n     & = \\underbrace{\\sum_{s^{'}, r} p(s^{'},r|s,a)}_{Dynamic \\ Function} \\underbrace{[r + \\gamma v_{\\pi}(s^{'})]}_{Discounted \\ Reward \\  Sequence}\n\\end{align}\n\\]\nNotice that the policy is no longer calculated (since an action has already taken place according to the policy), and that the quality of following policy \\(\\pi\\) is calculated in \\(v_{\\pi}(s^{'})\\).",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-2.html#optimal-policy",
+    "href": "lecture4/lecture4-2.html#optimal-policy",
+    "title": "4.2 Markov Decision Process (MDPs)",
+    "section": "Optimal Policy",
+    "text": "Optimal Policy\nAn optimal policy \\(\\pi\\) is defined to be better than or equal to a policy \\(\\pi^{'}\\) if its expected return is greater than or equal to that of \\(\\pi^{'}\\) for all states:\n\\[\n\\pi \\geq \\pi^{'} \\quad \\text{I.F.F.} \\quad v_{\\pi} \\geq v_{\\pi^{'}} \\quad \\forall s \\in S\n\\]\nSince there may be more than one optimal policy, we denote all optimal policies by \\(\\pi_{*}\\).\n\nOptimal Value Function\n\\[\nv_{*}(s) = \\max_{a} \\sum_{s^{'}, r} p(s^{'},r|s,a) \\big[ r + \\gamma v_{*}(s^{'}) \\big]\n\\]\n\n\n\n\n\n\n\nOptimal Action-Value Function\n\\[\nq_{*}(s, a) = \\sum_{s^{'}, r} p(s^{'},r|s,a) \\big[ r + \\gamma v_{*}(s^{'}) \\big]\n\\]\n\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nFor the first episode, calculate the optimal value for each state using the bellman equation:\n\\[\nv_{*}(s) = \\max_{a} \\sum_{s^{'}, r} p(s^{'},r|s,a) \\big[ r + \\gamma v_{*}(s^{'}) \\big]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\nNotice the behavior of the optimal policy as \\(\\pi_{*} \\to \\infty\\)",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-3.html",
+    "href": "lecture4/lecture4-3.html",
+    "title": "4.3 Dynamic Programming",
+    "section": "",
+    "text": "Motivation\nMarkov Decision Process (MDP) is a framework for an associative environment.\nA MDP is a model for transitions that are controlled between fully observable states.",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>4.3 Dynamic Programming</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-3.html#motivation",
+    "href": "lecture4/lecture4-3.html#motivation",
+    "title": "4.3 Dynamic Programming",
+    "section": "",
+    "text": "Problem\n\n\n\nHow can we find an optimal policy \\(\\pi_{*}\\), assuming that we have perfect model of state transitions \\(P(s', r \\mid s, a)\\)?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nDynamic Programming is a collection of algorithms that can be used to compute optimal policies \\(\\pi_{*}\\).\nThese algorithms have limited utility in Reinforcement Learning due to:\n\nAssumption of a perfect model: All state transitions \\(P(s', r \\mid s, a)\\) are known in advance.\nComputational expense: Dynammic Programming typically requires full sweeps over the state space \\(\\forall s \\in S\\), which is only feasible in small, tabular environments.",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>4.3 Dynamic Programming</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-3.html#policy-improvement",
+    "href": "lecture4/lecture4-3.html#policy-improvement",
+    "title": "4.3 Dynamic Programming",
+    "section": "Policy Improvement",
+    "text": "Policy Improvement\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nWe know how good it is to follow the current policy from \\(s\\) — that is \\(v_{\\pi}(s)\\) — but would it be better or worse to change to a new policy \\(\\pi^{'}\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nImagine your commute to work every day:\n\n\\(S_{1,...,k}\\) — The location you’re currently in (e.g., your home or a traffic junction).\n\\(A_{1,...,k}\\) — The route you choose (e.g., highway, back roads, or scenic route).\n\\(R\\) — Your reward could be getting to work quickly, stress-free, or on time.\n\nCurrently, you always take the highway (your policy \\(\\pi\\)), and on average, it takes you 35 minutes.\nBut one day, you try a different route (new policy \\(\\pi^{'}\\)) — maybe a side street — and even though it looks longer on the map, traffic is lighter and you reach work in 30 minutes.\nShould I switch my policy to this new route from now on?\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nOne way to check if it is better to switch from policy \\(\\pi\\) to \\(\\pi^{'}\\) is by checking if the following inequality holds:\n\\[\nq_{\\pi}(s, \\pi^{'}(s)) \\geq v_{\\pi}(s)\n\\]\nIf selecting \\(a\\) in \\(s\\) and thereafter following policy \\(\\pi\\) is better than just following \\(\\pi\\), there must be a better policy \\(\\pi^{'}\\).\nThe special case when this inequality is true is referred to as the policy improvement theorem.",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>4.3 Dynamic Programming</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-3.html#value-iteration",
+    "href": "lecture4/lecture4-3.html#value-iteration",
+    "title": "4.3 Dynamic Programming",
+    "section": "Value Iteration",
+    "text": "Value Iteration\nOne drawback of policy iteration is that policy evaluation is done iteratively, requiring convergence exactly to \\(v_{\\pi}\\) which occurs only in the limit.\nValue Iteration is truncates the policy evaluation step after just one sweep.",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>4.3 Dynamic Programming</span>"
+    ]
+  },
+  {
+    "objectID": "lecture4/lecture4-3.html#generalized-policy-iteration",
+    "href": "lecture4/lecture4-3.html#generalized-policy-iteration",
+    "title": "4.3 Dynamic Programming",
+    "section": "Generalized Policy Iteration",
+    "text": "Generalized Policy Iteration\n\n\nGeneralized Policy Iteration refers to the general idea of letting policy evaluation and policy improvement processes interact, regardless of anything else.\nAlmost all of Reinforcement Learning can be described as the policy always being improved with respect to the value function, and the value function always being driven toward the value function for the policy.",
+    "crumbs": [
+      "Lecture 4: Dynamic Programming",
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>4.3 Dynamic Programming</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lo.html",
+    "href": "lecture5/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 5: Monte Carlo (Sutton and Barto 2018) 🎯\n\n\n\n\nMonte Carlo Prediction.\nOn-Policy Monte Carlo.\nOff-Policy Monte Carlo.\nHomemade GridWorld OpenAI environment using gymnasium, pygame & numpy.\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-1.html",
+    "href": "lecture5/lecture5-1.html",
+    "title": "5.1 Monte Carlo Prediction",
+    "section": "",
+    "text": "Monte Carlo\nMonte Carlo is a powerful learning rule for estimating value functions \\(v_{\\pi}\\) and action value functions \\(q_{\\pi}\\) in associative environments.\nThe power of Monte Carlo resides in its ability to learn the dynamics of any environment, without assuming any prior knowledge, only using experience.",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>5.1 Monte Carlo Prediction</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-1.html#monte-carlo-prediction",
+    "href": "lecture5/lecture5-1.html#monte-carlo-prediction",
+    "title": "5.1 Monte Carlo Prediction",
+    "section": "Monte Carlo Prediction",
+    "text": "Monte Carlo Prediction\nMonte Carlo methods are based on averaging sample returns of trajectories following a policy \\(\\pi\\).\nRecall that returns are calculated as follows:\n\\[\nG_{t} = r_{t+1} + \\gamma G_{t+1}\n\\]\nOnly on the completion of an episode are value estimates \\(v_{\\pi}(s)\\) and action value estimates \\(q_{\\pi}(s,a)\\) updated.\n\n\n\n\n\n\nPseudocode\n\n\n\n\n  \n\n\n\nEnvironment GridWorld\nAssume \\(\\gamma = 0.9\\)\nSuppose we followed the trajectory of \\(\\pi\\) for one episode:\n\n\n\n\n\nThe following illustrates a Monte Carlo update for the trajectory:",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>5.1 Monte Carlo Prediction</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-2.html",
+    "href": "lecture5/lecture5-2.html",
+    "title": "5.2 On-Policy Monte Carlo",
+    "section": "",
+    "text": "Monte Carlo Control\nWithout a model, state values \\(v_{\\pi}(s)\\) alone are not sufficient.\nWe must explicitly estimate the value of each action \\(q_{\\pi}(s,a)\\).\nMonte Carlo methods for this are similar to state value estimation, focusing on visits to state-action pairs \\((s,a)\\).\nThe main advantage of estimating action values \\(q_{\\pi}(s,a)\\) in Monte Carlo methods lies in Control, which refers to finding approximate optimal policies \\(\\pi_{*}\\).\nProceeding with the idea of Generalized Policy Iteration (GPI), we evaluate and improve action values \\(q_{\\pi}(s,a)\\) to find optimal policies.",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>5.2 Exploring Starts Monte Carlo</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-2.html#exploring-starts",
+    "href": "lecture5/lecture5-2.html#exploring-starts",
+    "title": "5.2 On-Policy Monte Carlo",
+    "section": "Exploring Starts",
+    "text": "Exploring Starts\nThe only problem of estimating action values \\(q_{\\pi}(s,a)\\) is that some state action pairs \\((s,a)\\) may never be visited during an episode.\nWhich brings us back to the same dilemma we faced in the Multi-Armed Bandit chapter, that is:\nBalancing exploration and exploitation.\nOne “quick-fix” is to start each episode from a random state \\(s\\) and take any action \\(a\\) with probability greater than \\(0\\).\nThis “quick-fix” is referred to as Exploring Starts.\n\nPseudocode",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>5.2 Exploring Starts Monte Carlo</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-3.html",
+    "href": "lecture5/lecture5-3.html",
+    "title": "5.3 On-Policy Monte Carlo",
+    "section": "",
+    "text": "Exploration without an Initial Random State and Action\nHow can we explore without having to rely on the unrealistic assumption of an initial random state and action?\n\\[\n\\pi(a|s) &gt; 0 \\quad \\text{for all} \\quad s \\in S \\quad \\text{and} \\quad a \\in A(s)\n\\]",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>5.3 On-Policy Monte Carlo</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-3.html#exploration-without-an-initial-random-state-and-action",
+    "href": "lecture5/lecture5-3.html#exploration-without-an-initial-random-state-and-action",
+    "title": "5.3 On-Policy Monte Carlo",
+    "section": "",
+    "text": "Recall, \\(\\epsilon\\)-greedy methods for balancing exploration vs. exploitation in Multi-Armed Bandits.\n\n\nThese policies are usually referred to as \\(\\epsilon\\)-soft policies as they require that the probability of every action is non-zero for all states and actions pairs, that is:",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>5.3 On-Policy Monte Carlo</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-3.html#epsilon-greedy",
+    "href": "lecture5/lecture5-3.html#epsilon-greedy",
+    "title": "5.3 On-Policy Monte Carlo",
+    "section": "\\(\\epsilon\\)-Greedy",
+    "text": "\\(\\epsilon\\)-Greedy\nTo calculate the probabilities of selecting an action according to the \\(\\epsilon\\)-greedy policy \\(\\pi(a|s)\\), we use the following update rule:\n\\[\n\\pi(a|s) \\gets \\begin{cases}\n1 - \\epsilon + \\frac{\\epsilon}{|A(S_{t})|}  & \\text{if} \\quad a = A_{t} \\quad \\text{(exploitation)} \\\\\n\\frac{\\epsilon}{|A(S_{t})|} & \\text{if} \\quad a \\neq A_{t} \\quad \\text{(exploration)}\n\\end{cases}\n\\]\n\nPseudocode",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>5.3 On-Policy Monte Carlo</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-4.html",
+    "href": "lecture5/lecture5-4.html",
+    "title": "5.4 Off-Policy Monte Carlo",
+    "section": "",
+    "text": "Importance Sampling\nImportance Sampling is a general technique for estimating expected values under one distribution given samples from another.\nWe apply importance sampling to off-policy learning by weighting returns according to the relative probability of their trajectories occurring under the target and behavior policies, called the importance-sampling ratio.\n\\[\n\\text{Pr}\\{A_{t}, S_{t+1}, A_{t+1}, \\dots , S_{T} \\mid S_{t}, A_{t:T-1} \\sim \\pi \\} = \\prod_{k=t}^{T-1} \\frac{\\pi(A_{k} \\mid S_{k})}{b(A_{k} \\mid S_{k})}\n\\]",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>5.4 Off-Policy Monte Carlo</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-4.html#incremental-implementation",
+    "href": "lecture5/lecture5-4.html#incremental-implementation",
+    "title": "5.4 Off-Policy Monte Carlo",
+    "section": "Incremental Implementation",
+    "text": "Incremental Implementation\nSimilarly to the Multi-Armed Bandits chapter, action values \\(q_{\\pi}(s,a)\\) can be calculated incrementally.\nIn order to do so, we must first begin by calculating a cumulative sum of the weights:\n\\[\nC(S_{t},A_{t}) = C(S_{t},A_{t}) + W\n\\]\nThen, we average returns of corresponding action values:\n\\[\nQ(S_{t},A_{t}) = Q(S_{t},A_{t}) + \\frac{W}{C(S_{t},A_{t})}[G - Q(S_{t},A_{t})]\n\\]\nFinally, we update the weight according to our importance sampling ratio:\n\\[\nW = W \\frac{\\pi(A_{k} \\mid S_{k})}{b(A_{k} \\mid S_{k})}\n\\]",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>5.4 Off-Policy Monte Carlo</span>"
+    ]
+  },
+  {
+    "objectID": "lecture5/lecture5-4.html#off-policy-control",
+    "href": "lecture5/lecture5-4.html#off-policy-control",
+    "title": "5.4 Off-Policy Monte Carlo",
+    "section": "Off-Policy Control",
+    "text": "Off-Policy Control\nWe can assure Off-Policy methods to achieve control by choosing \\(b\\) to be \\(\\epsilon\\)-soft.\nThe target policy \\(\\pi\\) converges to optimal at all encountered states even though actions are selected according to a different soft policy \\(b\\), which may change between or even within episodes.\n\nPseudocode",
+    "crumbs": [
+      "Lecture 5: Monte Carlo",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>5.4 Off-Policy Monte Carlo</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lo.html",
+    "href": "lecture6/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 6: Temporal Difference (Sutton and Barto 2018) 🎯\n\n\n\n\nTemporal Difference (TD) Prediction.\nSARSA.\nQ-Learning.\nDouble Q-Learning.\n(Optional) n-step Bootstrapping.\nHomemade GridWorld OpenAI environment using gymnasium, pygame & numpy.\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-1.html",
+    "href": "lecture6/lecture6-1.html",
+    "title": "6.1 Temporal Difference (TD) Prediction",
+    "section": "",
+    "text": "TD Prediction\nTemporal Difference (TD) is a learning rule that is a combination of Monte Carlo and Dynamic Programming ideas.\nTD methods at time \\(t + 1\\) immediately form a target and make a useful update using the observed reward \\(R_{t+1}\\) and the estimate \\(V_(S_{t+1})\\) in a incremental fashion:\n\\[\nV(S_{t}) = V(S_{t}) + \\underbrace{\\alpha}_{Step \\ Size} [ \\underbrace{\\underbrace{R_{t+1} + \\gamma V(S_{t+1})}_{Target \\ Update} - V(S_{t})}_{TD \\  Error}]\n\\]",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>6.1 Temporal Difference (TD) Prediction</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-1.html#td-prediction",
+    "href": "lecture6/lecture6-1.html#td-prediction",
+    "title": "6.1 Temporal Difference (TD) Prediction",
+    "section": "",
+    "text": "TD methods, like Monte Carlo, learn from experience by updating estimates of nonterminal states along a trajectory \\(\\pi\\).\nTD methods, like Dynamic Programming, update based on an existing estimate \\(V(S_{t+1})\\).\n\n\n\n\n\n\n\n\n\nPseudocode\n\n\n\n\n  \n\n\n\nEnvironment GridWorld\nAssume \\(\\gamma = 0.9\\)\nSuppose we follow the trajectory of \\(\\pi\\) for one episode:",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>6.1 Temporal Difference (TD) Prediction</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-2.html",
+    "href": "lecture6/lecture6-2.html",
+    "title": "6.2 SARSA",
+    "section": "",
+    "text": "SARSA\nTD on-policy method we must estimate \\(q_{\\pi}(s, a)\\) for the current behavior policy \\(\\pi\\) and for all states \\(s \\in S\\) and actions \\(a \\in A(S)\\)\nThe theorems assuring the convergence of state values under TD Prediction also apply to the corresponding algorithm for action values: \\[\nQ(S_{t},A_{t}) = Q(S_{t},A_{t}) + \\alpha [ R_{t+1} + \\gamma Q(S_{t+1},A_{t+1}) - Q(S_{t},A_{t})]\n\\]\nThis rule uses every element of the quintuple of events (\\(S_{t}, A_{t}, R_{t+1}, S_{t+1}, A_{t+1}\\))",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>6.2 SARSA</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-2.html#sarsa",
+    "href": "lecture6/lecture6-2.html#sarsa",
+    "title": "6.2 SARSA",
+    "section": "",
+    "text": "Pseudocode",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>6.2 SARSA</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-3.html",
+    "href": "lecture6/lecture6-3.html",
+    "title": "6.3 Q-Learning",
+    "section": "",
+    "text": "Q-Learning\nTD off-policy method we can both update and estimate the optimal action-value function directly:\n\\[\nQ(S_{t},A_{t}) = Q(S_{t},A_{t}) + \\alpha [ R_{t+1} + \\gamma \\max_{a} Q(S_{t+1},a) - Q(S_{t},A_{t})]\n\\]\nQ-Learning is a breakthrough in reinforcement learning due to its simplification of algorithm analysis and early convergence proofs.",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>6.3 Q-Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-3.html#q-learning",
+    "href": "lecture6/lecture6-3.html#q-learning",
+    "title": "6.3 Q-Learning",
+    "section": "",
+    "text": "Pseudocode",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>6.3 Q-Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-4.html",
+    "href": "lecture6/lecture6-4.html",
+    "title": "6.4 Double Q-Learning",
+    "section": "",
+    "text": "Double Q-Learning\nOne of the drawbacks of Q-Learning is the maximization bias, where maximization of action value estimates \\(Q(s,a)\\) is higher than those of the true action values \\(q(s,a)\\), leading to a bias.\nDouble Q-Learning addresses this bias by creating two action value estimates \\(Q_{1}(s,a)\\) and \\(Q_{2}(s,a)\\).\nWith equal likelihood, one action value estimate yields the maximization action \\(A_{t}\\) and the other provides the action value estimate \\(Q(S_{t}, A_{t})\\).\n\\[\nQ_{1}(S_{t},A_{t}) = Q_{1}(S_{t},A_{t}) + \\alpha [R_{t+1} + \\gamma Q_{2}(S_{t+1},\\max_{a} Q_{1}(S_{t+1},a)) - Q_{1}(S_{t},A_{t})]\n\\]\n\\[\nQ_{2}(S_{t},A_{t}) = Q_{2}(S_{t},A_{t}) + \\alpha [R_{t+1} + \\gamma Q_{1}(S_{t+1},\\max_{a} Q_{2}(S_{t+1},a)) - Q_{2}(S_{t},A_{t})]\n\\]",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>6.4 Double Q-Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-4.html#double-q-learning",
+    "href": "lecture6/lecture6-4.html#double-q-learning",
+    "title": "6.4 Double Q-Learning",
+    "section": "",
+    "text": "Pseudocode",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>6.4 Double Q-Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-5.html",
+    "href": "lecture6/lecture6-5.html",
+    "title": "6.5 (Optional) n-step Bootstrapping",
+    "section": "",
+    "text": "n-step TD Prediction\nn-step Bootstrapping is a learning rule that is a combination of Monte Carlo and Temporal Difference ideas.",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>6.5 (Optional) n-step Bootstrapping</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-5.html#n-step-td-prediction",
+    "href": "lecture6/lecture6-5.html#n-step-td-prediction",
+    "title": "6.5 (Optional) n-step Bootstrapping",
+    "section": "",
+    "text": "Like Monte Carlo, n-step methods learn from experience.\nLike Temporal Difference, n-step methods bootstrap multiple time steps.\n\n\n\n\n\n\n\nPseudocode",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>6.5 (Optional) n-step Bootstrapping</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-5.html#n-step-sarsa",
+    "href": "lecture6/lecture6-5.html#n-step-sarsa",
+    "title": "6.5 (Optional) n-step Bootstrapping",
+    "section": "n-step SARSA",
+    "text": "n-step SARSA\nn-step SARSA extends the standard SARSA algorithm to incorporate multi-step returns. Instead of updating based on a single-step transition, it utilizes an accumulated return over n steps, striking a balance between bias and variance.\nUses an n-step return to update the action-value function.\nEnsures learning from actual experience while incorporating bootstrapping.\nBalances exploration and exploitation more effectively than 1-step SARSA.\n\n\n\n\n\n\nPseudocode",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>6.5 (Optional) n-step Bootstrapping</span>"
+    ]
+  },
+  {
+    "objectID": "lecture6/lecture6-5.html#n-step-tree-backup",
+    "href": "lecture6/lecture6-5.html#n-step-tree-backup",
+    "title": "6.5 (Optional) n-step Bootstrapping",
+    "section": "n-step Tree Backup",
+    "text": "n-step Tree Backup\nn-step Tree Backup is an extension of Q-learning that allows updates without the requirement of selecting an on-policy action. It generalizes the Expected SARSA algorithm by propagating multiple steps of information while weighting future actions by their probability under the policy.\nEliminates the need for importance sampling in off-policy learning.\nUpdates the action-value function based on expected future returns.\nIncorporates multiple time steps, making it more stable in some environments.\n\n\n\n\n\n\nPseudocode",
+    "crumbs": [
+      "Lecture 6: Temporal Difference",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>6.5 (Optional) n-step Bootstrapping</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lo.html",
+    "href": "lecture7/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 7: Function Approximation (Sutton and Barto 2018) 🎯\n\n\n\n\nValue Function Approximation.\nOn-Policy Approximation.\nLimitations of Off-Policy Approximation.\nMountainCarContinuous-v0 environment using gymnasium & numpy.\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-1.html",
+    "href": "lecture7/lecture7-1.html",
+    "title": "7.1 Value Function Approximation",
+    "section": "",
+    "text": "Motivation\nAssume state \\(\\mathbf{s}\\) is represented by a vector of continuous values.\n\\[\ns = \\begin{bmatrix} s_1 \\\\ s_2 \\\\ \\vdots \\\\ s_n \\end{bmatrix}\n\\]\nwhere \\(s_i \\in \\mathbb{R}\\) for all \\(i = 1, 2, \\ldots, n\\)\n\\(\\because s\\) is the representation of any state information.",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>7.1 Value Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-1.html#motivation",
+    "href": "lecture7/lecture7-1.html#motivation",
+    "title": "7.1 Value Function Approximation",
+    "section": "",
+    "text": "Problem\n\n\n\nTabular representation for \\(s_i\\) does not work now. What if the interval for \\(s_i\\) is infinite?\n\n\n\n\n\n\n\n\nSolution\n\n\n\nDevelop a function with parameters \\(\\mathbf{w}\\) that approximates the value of these continuous state values:\n\\[\n\\hat{V}(s; \\mathbf{w}) \\approx V_{\\pi}(s)\n\\]\nNow, we can generalize approximate values of states encountered and those we have not.",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>7.1 Value Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-1.html#types-of-value-function-approximators",
+    "href": "lecture7/lecture7-1.html#types-of-value-function-approximators",
+    "title": "7.1 Value Function Approximation",
+    "section": "Types of Value Function Approximators",
+    "text": "Types of Value Function Approximators\nThere are many ways of constructing \\(\\hat{V}(s; \\mathbf{w})\\):\n\nEnsemble methods (decision trees, nearest neighbors, etc.)\nFourier basis\nMuch more…\n\nWe will focus only on differentiable methods:\n\nLinear combination of features (today’s lecture)\nNeural networks (next lecture: DQN)\n\nThe purpose is to update our parameters \\(\\mathbf{w}\\) using mean-squared error (MSE) and stochastic gradient descent (SGD).",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>7.1 Value Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-1.html#updating-value-function-approximators",
+    "href": "lecture7/lecture7-1.html#updating-value-function-approximators",
+    "title": "7.1 Value Function Approximation",
+    "section": "Updating Value Function Approximators",
+    "text": "Updating Value Function Approximators\nRecall MSE for supervised learning:\n\\[\nF(\\mathbf{x}_{k}) = \\mathbb{E}[(\\mathbf{t}_{k} - \\mathbf{a}_{k})^2]\n\\]\nRecall SGD for supervised learning:\n\\[\n\\mathbf{x}_{k+1} = \\mathbf{x}_{k} - \\alpha \\nabla_{\\mathbf{x}_{k}} F(\\mathbf{x}_{k})\n\\]",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>7.1 Value Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-1.html#optimizing-value-function-approximators",
+    "href": "lecture7/lecture7-1.html#optimizing-value-function-approximators",
+    "title": "7.1 Value Function Approximation",
+    "section": "Optimizing Value Function Approximators",
+    "text": "Optimizing Value Function Approximators\nOur loss function will optimize for our parameter vector \\(\\mathbf{w}\\) while minimizing MSE between our approximate value \\(\\hat{V}(s; \\mathbf{w})\\) and our “true value” \\(V_{\\pi}(s)\\):\n\\[\nF(\\mathbf{w}_{t}) = \\mathbb{E}_{\\pi}[(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))^{2}]\n\\]\nSGD update for parameters \\(\\mathbf{w}\\):\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\alpha(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t})\n\\]\nDerivative of MSE loss:\n\\[\n\\nabla_{\\mathbf{w}_{t}} F(\\mathbf{w}_{t}) \\approx -2(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t})\n\\]\nPlug derivative of MSE loss into SGD equation:\n\\[\n\\begin{align}\n\\mathbf{w}_{t+1} &= \\mathbf{w}_{t} - \\alpha \\nabla_{\\mathbf{w}_{t}} F(\\mathbf{w}_{t}) \\\\[10pt]\n&= \\mathbf{w}_{t} - \\alpha (-2(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t})) \\\\[10pt]\n&= \\mathbf{w}_{t} + 2\\alpha(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t}) \\\\[10pt]\n&= \\mathbf{w}_{t} + \\alpha(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t})\n\\end{align}\n\\]",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>7.1 Value Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-1.html#feature-representations",
+    "href": "lecture7/lecture7-1.html#feature-representations",
+    "title": "7.1 Value Function Approximation",
+    "section": "Feature Representations",
+    "text": "Feature Representations\nPrior to calculating \\(\\hat{V}(s; \\mathbf{w})\\), we must preprocess \\(\\mathbf{s}\\) to construct proper feature representations:\n\\[\n\\mathbf{f}(s) = \\begin{bmatrix} s_1 \\\\ s_2 \\\\ \\vdots \\\\ s_d \\end{bmatrix}\n\\]\nSome types of feature representations \\(\\mathbf{f}\\) include:\n\nOne-hot encoding\nPolynomials\nRadial basis functions\nState normalization (homework)\nTile coding (homework)\n\nState normalization ensures consistent scaling between \\(0\\) and \\(1\\):\n\\[\n\\mathbf{f}(s) = \\begin{bmatrix}\n\\frac{s_1 - \\text{lower bound}_{1}}{\\text{upper bound}_{1} - \\text{lower bound}_{1}} \\\\\n\\frac{s_2 - \\text{lower bound}_{2}}{\\text{upper bound}_{2} - \\text{lower bound}_{2}} \\\\\n\\vdots \\\\\n\\frac{s_d - \\text{lower bound}_{d}}{\\text{upper bound}_{d} - \\text{lower bound}_{d}}\n\\end{bmatrix}\n\\]\nTile coding is a one-hot representation for multi-dimensional continuous spaces that is flexible and computationally efficient.\n\\[\n\\mathbf{f}(s) = \\begin{bmatrix}\n\\delta(s, T_1) \\\\\n\\delta(s, T_2) \\\\\n\\vdots \\\\\n\\delta(s, T_d)\n\\end{bmatrix}\n\\text{where} \\ d \\ \\text{is the number of tilings}\n\\]\n\\[\n\\delta(s, T_i) =\n\\begin{cases}\n1 & \\text{if } s \\in T_i \\\\\n0 & \\text{otherwise}\n\\end{cases}\n\\]\n\n\n\n\n\n\nExercise\nBased on your mathematical intuition using SGD, are we guaranteed convergence to a local or global minimum?\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\alpha(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t})\n\\]\n\n\n\n\n\n\nSolution",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>35</span>  <span class='chapter-title'>7.1 Value Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-2.html",
+    "href": "lecture7/lecture7-2.html",
+    "title": "7.2 On-Policy Function Approximation",
+    "section": "",
+    "text": "On-Policy Function Approximation\nApproximating state values is not sufficient to achieve control.\n\\[\n\\hat{V}(s; \\mathbf{w}) \\approx V_{\\pi}(s)\n\\]\nWe need to approximate action-value functions.\n\\[\n\\hat{Q}(s,a; \\mathbf{w}) \\approx Q_{\\pi}(s,a)\n\\]\nIn doing so, we will incorporate previously learned techniques, such as SARSA from TD learning to devise a learning algorithm.\nBecause \\(s\\) represents any state information and \\(a\\) represents all possible actions.",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>7.2 On-Policy Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-2.html#mathematical-intuition",
+    "href": "lecture7/lecture7-2.html#mathematical-intuition",
+    "title": "7.2 On-Policy Function Approximation",
+    "section": "Mathematical Intuition",
+    "text": "Mathematical Intuition\nSimilarly, MSE loss for action values:\n\\[\nF(\\mathbf{w}_{t}) = \\mathbb{E}_{\\pi}[(Q_{\\pi}(S_{t},A_{t}) - \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t}))^{2}]\n\\]\nSimilarly, SGD update for parameters \\(\\mathbf{w}\\):\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\alpha(Q_{\\pi}(S_{t},A_{t}) - \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t})\n\\]\nFinally, to implement TD learning, we substitute \\(Q_{\\pi}(s,a)\\) for our TD targets at each step:\n\\[\n\\langle S_{0}, \\ R_{1} + \\gamma \\hat{Q}(S_{1},A_{1}; \\mathbf{w}_{0})\\rangle, \\ ... \\ ,\\langle S_{T-1},R_{T}\\rangle\n\\]\nThus, our update equation for TD on-policy approximation:\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\alpha(R_{t+1} + \\gamma \\hat{Q}(S_{t+1},A_{t+1}; \\mathbf{w}_{t}) - \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t})\n\\]",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>7.2 On-Policy Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-2.html#on-policy-function-approximation-illustration",
+    "href": "lecture7/lecture7-2.html#on-policy-function-approximation-illustration",
+    "title": "7.2 On-Policy Function Approximation",
+    "section": "On-Policy Function Approximation: Illustration",
+    "text": "On-Policy Function Approximation: Illustration",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>7.2 On-Policy Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-2.html#pseudocode",
+    "href": "lecture7/lecture7-2.html#pseudocode",
+    "title": "7.2 On-Policy Function Approximation",
+    "section": "Pseudocode",
+    "text": "Pseudocode\n\n\n\n\n  \n\n\nExercise\nHow can we summarize the update equation in 3 components?\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\alpha(R_{t+1} + \\gamma \\hat{Q}(S_{t+1},A_{t+1}; \\mathbf{w}_{t}) - \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t})\n\\]\n\n\n\n\n\n\nSolution",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>36</span>  <span class='chapter-title'>7.2 On-Policy Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-3.html",
+    "href": "lecture7/lecture7-3.html",
+    "title": "7.3 On-Policy Function Approximation",
+    "section": "",
+    "text": "Limits of Off-Policy Approximation",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>7.3 Off-Policy Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture7/lecture7-3.html#limits-of-off-policy-approximation-1",
+    "href": "lecture7/lecture7-3.html#limits-of-off-policy-approximation-1",
+    "title": "7.3 On-Policy Function Approximation",
+    "section": "Limits of Off-Policy Approximation",
+    "text": "Limits of Off-Policy Approximation\nConvergence of control algorithms:\n\n\n\nAlgorithm\nTabular\nLinear\nNeural Networks\n\n\n\n\nMonte-Carlo Control\n✅\n(✅)\n❌\n\n\nSARSA\n✅\n(✅)\n❌\n\n\nQ-learning\n✅\n❌\n❌",
+    "crumbs": [
+      "Lecture 7: Function Approximation",
+      "<span class='chapter-number'>37</span>  <span class='chapter-title'>7.3 Off-Policy Function Approximation</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lo.html",
+    "href": "lecture8/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 8: Deep Q-Networks 🎯\n\n\n\n\nDeep Learning.\nDeep Q-Networks (DQN).\nALE/Breakout-v5 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-1.html",
+    "href": "lecture8/lecture8-1.html",
+    "title": "8.1 Deep Learning",
+    "section": "",
+    "text": "Motivation",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-1.html#motivation",
+    "href": "lecture8/lecture8-1.html#motivation",
+    "title": "8.1 Deep Learning",
+    "section": "",
+    "text": "Problem\n\n\n\nOne parameter vector \\(\\mathbf{w}\\) is not enough to represent \\(s\\).\n\n\n\nWhat happens if \\(s\\) is an image tensor?\n\n\n\n\n\n\n\n\nSolution\n\n\n\nWe would like to use neural networks \\(\\theta\\) for more parameters to improve our function approximation:\n\nMulti-layered Perceptrons (MLPs)\nConvolutional Neural Networks (CNNs)",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-1.html#multi-layered-perceptrons-mlps",
+    "href": "lecture8/lecture8-1.html#multi-layered-perceptrons-mlps",
+    "title": "8.1 Deep Learning",
+    "section": "Multi-Layered Perceptrons (MLPs)",
+    "text": "Multi-Layered Perceptrons (MLPs)",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-1.html#convolutional-neural-networks-cnns",
+    "href": "lecture8/lecture8-1.html#convolutional-neural-networks-cnns",
+    "title": "8.1 Deep Learning",
+    "section": "Convolutional Neural Networks (CNNs)",
+    "text": "Convolutional Neural Networks (CNNs)\n\n\n\n\n\n\n\n Exercise \nBased on your intuition, do you think it makes sense to use raw pixels as input for a Deep Q-Network (DQN) instead of preprocessed state features?\n\n\n\n\n\n\n\n\n\nSolution",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-2.html",
+    "href": "lecture8/lecture8-2.html",
+    "title": "8.2 Deep Q-Networks (DQN)",
+    "section": "",
+    "text": "Motivation\nNeed an algorithm that:",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>8.2 Deep Q-Networks</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-2.html#motivation",
+    "href": "lecture8/lecture8-2.html#motivation",
+    "title": "8.2 Deep Q-Networks (DQN)",
+    "section": "",
+    "text": "Leverages neural networks.\nLeverages a classical RL learning method (TD: Q-learning).\nImplements batch form.\nEmpirically performs well.\n\n\n\n\n\n\n\nGoogle DeepMind 2013\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>8.2 Deep Q-Networks</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-2.html#deep-q-network-mathematical-intuition",
+    "href": "lecture8/lecture8-2.html#deep-q-network-mathematical-intuition",
+    "title": "8.2 Deep Q-Networks (DQN)",
+    "section": "Deep Q-Network: Mathematical Intuition",
+    "text": "Deep Q-Network: Mathematical Intuition\n\\[\nF(\\mathbf{x}_{k}) = \\mathbb{E}[(\\mathbf{t}_{k} - \\mathbf{a}_{k})^2]\n\\]\n\\[\n\\mathbf{x}_{k+1} = \\mathbf{x}_{k} - \\alpha \\nabla_{\\mathbf{x}_{k}} F(\\mathbf{x}_{k})\n\\]\nTo implement Q-learning, substitute the oracle \\(Q_{\\pi}(s,a)\\) for our TD targets:\n\\[\n\\langle S_{0}, \\ R_{1} + \\gamma \\max_{a} \\hat{Q}(S_{1},a; \\theta_{0})\\rangle, \\ ... \\ ,\\langle S_{T-1},R_{T}\\rangle\n\\]\nGradient for the loss function:\n\\[\n\\nabla_{\\theta} F(\\theta_{t}) = (R_{t+1} + \\gamma \\max_{a} \\hat{Q}(S_{t+1},a; \\theta_{t}) - \\hat{Q}(S_{t},A_{t}; \\theta_{t}))\\nabla_{\\theta} \\hat{Q}(S_{t},A_{t}; \\theta_{t})\n\\]",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>8.2 Deep Q-Networks</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-2.html#experience-replay",
+    "href": "lecture8/lecture8-2.html#experience-replay",
+    "title": "8.2 Deep Q-Networks (DQN)",
+    "section": "Experience Replay",
+    "text": "Experience Replay\nExperience replay enables learning from mini-batches of past experiences, improving data efficiency and stability.",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>8.2 Deep Q-Networks</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-2.html#fixed-targets",
+    "href": "lecture8/lecture8-2.html#fixed-targets",
+    "title": "8.2 Deep Q-Networks (DQN)",
+    "section": "Fixed Targets",
+    "text": "Fixed Targets\nStabilizes training by holding target values constant for several updates:\n\\[\n\\hat{Q}(s,a; \\theta^{-})\n\\]\nGradient for the loss function:\n\\[\n\\nabla_\\theta F(\\theta_{t}) = (R_{t+1} + \\gamma \\max_{a} \\hat{Q}(S_{t+1},a; \\theta^{-}_{t}) - \\hat{Q}(S_{t},A_{t}; \\theta_{t}))\\nabla_\\theta \\hat{Q}(S_{t},A_{t}; \\theta_{t})\n\\]",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>8.2 Deep Q-Networks</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-2.html#deep-q-network-illustration",
+    "href": "lecture8/lecture8-2.html#deep-q-network-illustration",
+    "title": "8.2 Deep Q-Networks (DQN)",
+    "section": "Deep Q-Network: Illustration",
+    "text": "Deep Q-Network: Illustration",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>8.2 Deep Q-Networks</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-2.html#pseudocode",
+    "href": "lecture8/lecture8-2.html#pseudocode",
+    "title": "8.2 Deep Q-Networks (DQN)",
+    "section": "Pseudocode",
+    "text": "Pseudocode\n\n\n\n\n  \n\n\n Exercise \nIs there a mistake with the following loss function for DQN?\n\\[\nF(\\theta_{t}) = (\\text{TD-Target}_{j} - \\hat{Q}(S_{j+1},a; \\theta_{t}))^{2}\n\\]\nWhy does this suggest that we are updating the MSE of a scalar and a vector?  What is actually happening here during the gradient update step?\n\n\n\n\n\n\nSolution",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks (DQN)",
+      "<span class='chapter-number'>40</span>  <span class='chapter-title'>8.2 Deep Q-Networks</span>"
+    ]
+  },
+  {
+    "objectID": "lecture9/lo.html",
+    "href": "lecture9/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 9: Policy Gradients 🎯\n\n\n\n\nPolicy Gradients.\nCartPole-v1 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
+    "crumbs": [
+      "Lecture 9: Policy Gradients",
+      "<span class='chapter-number'>41</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture9/lecture9-1.html",
+    "href": "lecture9/lecture9-1.html",
+    "title": "9.1 Policy Gradients",
+    "section": "",
+    "text": "Motivation",
+    "crumbs": [
+      "Lecture 9: Policy Gradients",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
+    ]
+  },
+  {
+    "objectID": "lecture9/lecture9-1.html#motivation",
+    "href": "lecture9/lecture9-1.html#motivation",
+    "title": "9.1 Policy Gradients",
+    "section": "",
+    "text": "Problem\n\n\n\nDQN is unstable and does not guarantee convergence. Following deterministic or \\(\\epsilon\\)-greedy policies is not optimal.\n\n\n\n\nRock-Paper-Scissors\n\n\n\n\n\nGridWorld Alias\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nLet’s learn stochastic policies using differentiable methods:\n\\[\n\\pi(a|s; \\theta)\n\\]\nBy following \\(\\pi(a|s; \\theta)\\), we can find optimal policy parameters \\(\\theta\\) that maximize:\n\\[\nV^{\\pi_{\\theta}}(s) = V(S_{0}; \\theta)\n\\]",
+    "crumbs": [
+      "Lecture 9: Policy Gradients",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
+    ]
+  },
+  {
+    "objectID": "lecture9/lecture9-1.html#mathematical-intuition",
+    "href": "lecture9/lecture9-1.html#mathematical-intuition",
+    "title": "9.1 Policy Gradients",
+    "section": "Mathematical Intuition",
+    "text": "Mathematical Intuition\nPolicy gradient algorithms search for a local maximum in \\(V^{\\pi_{\\theta}}(s)\\) using stochastic gradient ascent (SGA):\n\\[\n\\Delta \\theta = \\alpha \\nabla V(S_{0}; \\theta)\n\\]\nIdeally, we want to compute this gradient analytically.\nAssume \\(\\pi\\) is differentiable where it is non-zero:\n\\[\nV(S_{0}; \\theta) = \\sum_{a} \\pi(a|S_{0}; \\theta) Q(S_{0},a; \\theta)\n\\]\nAnother formulation in terms of trajectories \\(\\tau\\):\n\\[\nV(S_{0}; \\theta) = \\sum_{\\tau} P(\\tau; \\theta) R(\\tau)\n\\]\nwhere \\(P(\\tau; \\theta)\\) is the probability and \\(R(\\tau)\\) the reward of trajectory.\nUsing likelihood ratios:\n\\[\n\\nabla_{\\theta} V(\\theta) = \\sum_{\\tau} P(\\tau; \\theta) R(\\tau) \\nabla_{\\theta} \\log P(\\tau; \\theta)\n\\]\nApproximation using empirical estimate:\n\\[\n\\nabla_{\\theta} V(\\theta) \\approx \\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1} R(\\tau^{i}) \\nabla_{\\theta} \\log P(\\tau^{i}; \\theta)\n\\]\nDecomposing dynamics into states and actions:\n\\[\n\\nabla_{\\theta} \\log P(\\tau^{i}; \\theta) = \\sum^{T-1}_{t=0} \\nabla_{\\theta} \\log \\pi(A_{t}|S_{t}, \\theta)\n\\]\nThis term is called the score function.\n\nSoft-max Policy\n\\[\n\\pi(a|s;\\theta) = \\frac{\\exp(\\theta_{\\text{logits}}(s)[a])}{\\sum_{a'} \\exp(\\theta_{\\text{logits}}(s)[a'])}\n\\]\n\n\nPolicy Gradient Theorem\nTheorem: Let \\(\\pi(a|s;\\theta)\\) be a differentiable policy. The gradient of the expected reward \\(F(\\theta)\\) with respect to \\(\\theta\\) is:\n\\[\n\\nabla_{\\theta} F(\\theta) = \\mathbb{E}_{\\pi_{\\theta}} \\left[\\nabla_{\\theta} \\log \\pi(a|s;\\theta) Q^{\\pi_{\\theta}}(s, a)\\right]\n\\]\n\n\nAddressing High Variance\nInstead of multiplying the sum of rewards by the score function:\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1} R(\\tau^{i}) \\sum^{T-1}_{t=0} \\log \\nabla_{\\theta} \\pi(A_{t}|S_{t}, \\theta)\n\\]\n\nUse temporal structure to weight rewards relevant to each time-step:\n\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_{\\theta} \\pi(A_{t}|S_{t}, \\theta) \\sum^{T-1}_{t' = t} r^{i}_{t'}\n\\]\n\n\nBaselines to Reduce Variance\nUnbiased estimators \\(b(s)\\) help adjust for expected rewards:\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_{\\theta} \\pi(A_{t}|S_{t}, \\theta) (r^{i}_{t'} - b(s))\n\\]\nDefining advantage estimates:\n\\[\n\\hat{A}_{t} = \\sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s))\n\\]\nthus,\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_{\\theta} \\pi(A_{t}|S_{t}, \\theta) \\hat{A}_{t}\n\\]",
+    "crumbs": [
+      "Lecture 9: Policy Gradients",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
+    ]
+  },
+  {
+    "objectID": "lecture9/lecture9-1.html#vanilla-policy-gradient-illustration",
+    "href": "lecture9/lecture9-1.html#vanilla-policy-gradient-illustration",
+    "title": "9.1 Policy Gradients",
+    "section": "Vanilla Policy Gradient: Illustration",
+    "text": "Vanilla Policy Gradient: Illustration\n\n\n\nVanilla Policy Gradient",
+    "crumbs": [
+      "Lecture 9: Policy Gradients",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
+    ]
+  },
+  {
+    "objectID": "lecture9/lecture9-1.html#pseudocode",
+    "href": "lecture9/lecture9-1.html#pseudocode",
+    "title": "9.1 Policy Gradients",
+    "section": "Pseudocode",
+    "text": "Pseudocode\n\n\n\n\n  \n\n\n Exercise \nMatch the following concepts:\n\n\n\n\n\n\n\nConcept\nDefinition\n\n\n\n\nLikelihood Ratio\n\\(\\frac{\\nabla_{\\theta} \\pi_{\\theta}(a|s)}{\\pi_{\\theta}(a|s)}\\)\n\n\nScore Function\n\\(\\nabla_{\\theta} \\log \\pi_{\\theta}(a|s)\\)\n\n\nPolicy Gradient\n\\(\\mathbb{E}_{\\pi_\\theta} \\left[\\nabla_\\theta \\log \\pi(a|s;\\theta) Q^{\\pi_\\theta}(s, a)\\right]\\)\n\n\nEmpirical Estimate\n\\(\\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\hat{A}_{t}\\)\n\n\nBaseline\n\\(b(s)\\)",
+    "crumbs": [
+      "Lecture 9: Policy Gradients",
+      "<span class='chapter-number'>42</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lo.html",
+    "href": "lecture10/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 10: Advanced Policy Gradients 🎯\n\n\n\n\nTrust Region Policy Optimization (TRPO).\nProximal Policy Optimization (PPO).\nHalfCheetah-v5 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>43</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lecture10-1.html",
+    "href": "lecture10/lecture10-1.html",
+    "title": "10.1 Trust Region Policy Optimization (TRPO)",
+    "section": "",
+    "text": "Motivation",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lecture10-1.html#motivation",
+    "href": "lecture10/lecture10-1.html#motivation",
+    "title": "10.1 Trust Region Policy Optimization (TRPO)",
+    "section": "",
+    "text": "Problem\nSampling is poor, preferably we would like a batch form.\n\\[\n\\hat{g} =  \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\ \\hat{A}_{t}\n\\]\nStep size \\(\\alpha\\) is hard to get right.\nSmall changes in the parameter space \\(\\theta\\) create drastic changes in the log probabilities of actions.\n\n\nSolution\nFor the sampling problem, we can store old trajectories in a buffer \\(D\\) and learn from these in a batch form.\n\nWe need a new algorithm that takes step sizes \\(\\alpha\\) without creating drastic changes in the log probabilities of actions.",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lecture10-1.html#trust-region-policy-optimization-trpo",
+    "href": "lecture10/lecture10-1.html#trust-region-policy-optimization-trpo",
+    "title": "10.1 Trust Region Policy Optimization (TRPO)",
+    "section": "Trust Region Policy Optimization (TRPO)",
+    "text": "Trust Region Policy Optimization (TRPO)\n\nU.C. Berkeley 2015\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lecture10-1.html#mathematical-intuition",
+    "href": "lecture10/lecture10-1.html#mathematical-intuition",
+    "title": "10.1 Trust Region Policy Optimization (TRPO)",
+    "section": "Mathematical Intuition",
+    "text": "Mathematical Intuition\nFor the expected discounted reward of \\(\\pi_{\\theta_{t+1}}\\):\n\\[\nF(\\pi_{\\theta_{t+1}}) = F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{\\tau \\approx \\pi_{\\theta_{t+1}}} [\\sum^{\\infty}_{t=0} \\gamma^{t} \\hat{A}_t]\n\\]\nFor the discounted visitation frequencies:\n\\[\n\\rho_{\\pi_{\\theta_{t}}} = P(S_{0}) + \\gamma P(S_{1}) + \\gamma^{2} P(S_{2}) + ...\n\\]\nWe can now rewrite in terms of sum of states and actions:\n\\[\nF(\\pi_{\\theta_{t+1}}) = F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t+1}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]\n\\(\\rho_{\\pi_{\\theta_{t+1}}}\\) makes optimizing \\(F(\\pi_{\\theta_{t+1}})\\) directly difficult.\nOne approach to this problem is to replace future sampling \\(\\rho_{\\pi_{\\theta_{t+1}}}\\) with a local approximation \\(L(\\pi_{\\theta_{t+1}})\\), or “surrogate objective”:\n\\[\nL(\\pi_{\\theta_{t+1}}) =  F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]\nTRPO’s main contribution is monotonic improvement guarantee using a KL-Divergence metric:\n\\[\nF(\\pi_{\\theta_{t+1}}) \\geq L(\\pi_{\\theta_{t+1}}) - C \\ D^{max}_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}})\n\\]",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>44</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lecture10-2.html",
+    "href": "lecture10/lecture10-2.html",
+    "title": "10.2 Proximal Policy Optimization (PPO)",
+    "section": "",
+    "text": "Mathematical Intuition",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>45</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lecture10-2.html#mathematical-intuition",
+    "href": "lecture10/lecture10-2.html#mathematical-intuition",
+    "title": "10.2 Proximal Policy Optimization (PPO)",
+    "section": "",
+    "text": "TRPO’s Main Drawback\nTRPO’s main drawback has to do with the calculation of the Hessian matrix with respect to the KL-Divergence:\n\\[\n\\mathbf{H} = \\nabla^2 D_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}})\n\\]\n\n\nProximal Policy Optimization (PPO)\n\nOpenAI 2017\nLink to Research Paper\n\n\nPPO: Surrogate Objectives\nPPO KL-Divergence Penalty:\n\\[\nL^{\\text{KL}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t - \\beta D_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}}) \\right]\n\\]\nPPO Clip:\n\\[\nL^{\\text{CLIP}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\min \\left( \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t, \\text{clip}\\left(\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)}, 1-\\epsilon, 1+\\epsilon\\right) \\hat{A}_t \\right) \\right]\n\\]\n\n\nGaussian Policy\n\\[\n\\begin{aligned}\n    \\mu(s), \\sigma(s) &= \\theta_{\\mu, \\sigma}(s) \\\\\n    \\pi(a|s; \\theta) &= \\frac{1}{\\sqrt{2 \\pi \\sigma^2(s)}} \\exp\\left(-\\frac{(a - \\mu(s))^2}{2 \\sigma^2(s)}\\right)\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>45</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lecture10-2.html#proximal-policy-optimization-illustration",
+    "href": "lecture10/lecture10-2.html#proximal-policy-optimization-illustration",
+    "title": "10.2 Proximal Policy Optimization (PPO)",
+    "section": "Proximal Policy Optimization: Illustration",
+    "text": "Proximal Policy Optimization: Illustration",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>45</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lecture10-2.html#proximal-policy-optimization-pseudocode",
+    "href": "lecture10/lecture10-2.html#proximal-policy-optimization-pseudocode",
+    "title": "10.2 Proximal Policy Optimization (PPO)",
+    "section": "Proximal Policy Optimization: Pseudocode",
+    "text": "Proximal Policy Optimization: Pseudocode\n\n\n\n\n  \n\n\n Exercise \nWhat is the key mathematical difference between the true policy gradient and a surrogate policy gradient in reinforcement learning?\n\\[\nL(\\pi_{\\theta_{t+1}}) =  F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>45</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11/lo.html",
+    "href": "lecture11/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 11: Monte Carlo Tree Search 🎯\n\n\n\n\nMonte Carlo Tree Search (MCTS).\nAdvanced Monte Carlo Tree Search.\nCartPole-v0 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
+    "crumbs": [
+      "Lecture 11: Monte Carlo Tree Search",
+      "<span class='chapter-number'>46</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11/lecture11-1.html",
+    "href": "lecture11/lecture11-1.html",
+    "title": "11.1 Monte Carlo Tree Search (MCTS)",
+    "section": "",
+    "text": "Model-based Reinforcement Learning\nProblem:\nAgents need to sample many environment interactions to learn environment dynamics.\n\\[\nP(s^{'}, r| s, a)\n\\]\nExploration is blind without a model of environment dynamics. Model-free methods focus on immediate rewards.\nSolution:\nAgents can plan future rewards by leveraging environment dynamics. Safe exploration - informed exploration.",
+    "crumbs": [
+      "Lecture 11: Monte Carlo Tree Search",
+      "<span class='chapter-number'>47</span>  <span class='chapter-title'>11.1 Monte Carlo Tree Search (MCTS)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11/lecture11-1.html#model-based-reinforcement-learning",
+    "href": "lecture11/lecture11-1.html#model-based-reinforcement-learning",
+    "title": "11.1 Monte Carlo Tree Search (MCTS)",
+    "section": "",
+    "text": "Model-based Reinforcement Learning: Illustration",
+    "crumbs": [
+      "Lecture 11: Monte Carlo Tree Search",
+      "<span class='chapter-number'>47</span>  <span class='chapter-title'>11.1 Monte Carlo Tree Search (MCTS)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11/lecture11-1.html#mcts-motivation",
+    "href": "lecture11/lecture11-1.html#mcts-motivation",
+    "title": "11.1 Monte Carlo Tree Search (MCTS)",
+    "section": "MCTS: Motivation",
+    "text": "MCTS: Motivation\nProblem:\nRequire an algorithm that demonstrates strong empirical performance and effectively plans based on the dynamics of an environment.\nSolution:\n\nUniversité Charles de Gaulle 2006\nLink to Research Paper\n\nMCTS: Illustration\n\n\n\nSimilar to UCB bandit problems, we select actions according to a confidence interval that balances exploration and exploitation, with the formula:\n\\[A_t = \\arg\\max_a \\left[ Q(s,a) + C \\sqrt{\\frac{\\ln(N(s)_{\\text{parent}})}{N(s)}} \\right]\\]\n\n\n\n\n\n\n\nMCTS: Expansion\n\n\n\nAfter selecting an action (A_t), if the corresponding child node does not exist, we expand the search tree by creating a new node for the resulting state (S^{A_t}_{t+1}).\n\n\n\n\n\n\n\nMCTS: Simulation\n\n\n\nFrom the expanded node, we simulate n-times acting randomly and calculate the average rewards for all simulations:\n\\[\\bar{R} = \\frac{1}{n} \\sum_{j=1}^{n} R_j\\]\n\n\n\n\n\n\n\nMCTS: Backpropagation\n\n\n\nAfter obtaining the average rewards, we update the values from the current node up to the root node:\n\n\\[\nN(s) = N(s) + 1\n\\]\n\\[\nQ(s,a) = Q(s,a) + \\frac{\\bar{R}}{N(s)}\n\\]\n\n\n\n\n\n\nMCTS: Summary Illustration",
+    "crumbs": [
+      "Lecture 11: Monte Carlo Tree Search",
+      "<span class='chapter-number'>47</span>  <span class='chapter-title'>11.1 Monte Carlo Tree Search (MCTS)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11/lecture11-1.html#pseudocode",
+    "href": "lecture11/lecture11-1.html#pseudocode",
+    "title": "11.1 Monte Carlo Tree Search (MCTS)",
+    "section": "Pseudocode",
+    "text": "Pseudocode\n\n\n\n\n  \n\n\n Exercise \nHow does the Upper Confidence Bound for Trees (UCT) algorithm balance exploration and exploitation in MCTS?\n\\[\nA_t = \\arg\\max_a \\left[ Q(s,a) + C \\sqrt{\\frac{\\ln(N(s)_{\\text{parent}})}{N(s)}} \\right]\n\\]",
+    "crumbs": [
+      "Lecture 11: Monte Carlo Tree Search",
+      "<span class='chapter-number'>47</span>  <span class='chapter-title'>11.1 Monte Carlo Tree Search (MCTS)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11/lecture11-2.html",
+    "href": "lecture11/lecture11-2.html",
+    "title": "11.2 Advanced Monte Carlo Tree Search",
+    "section": "",
+    "text": "Motivation",
+    "crumbs": [
+      "Lecture 11: Monte Carlo Tree Search",
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>11.2 Advanced Monte Carlo Tree Search</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11/lecture11-2.html#motivation",
+    "href": "lecture11/lecture11-2.html#motivation",
+    "title": "11.2 Advanced Monte Carlo Tree Search",
+    "section": "",
+    "text": "Problem\nRequire an algorithm that leverages neural networks for more efficient MCTS acting and updating.\n\n\nSolution\n\n\n\nGoogle DeepMind 2016\nLink to Research Paper\n\n\nGoogle DeepMind 2020\nLink to Research Paper\n\n\n\n\nAdvanced MCTS: Illustration\n\nPolicy Network: Guides expansion by prioritizing actions with high probabilities, reducing the search space:\n\n\\[\nP(a|s) \\propto \\pi(a|s; \\theta)\n\\]\n\nValue Network: Replaces random rollouts with a learned estimate of the value function:\n\\[\nQ(s,a) \\approx V(s; \\theta)\n\\]\n\n\n\nAdvanced MCTS: Steps\n\nSelecting:\n\\[\nA_t = \\arg\\max_a \\left[ Q(s, a) + C \\cdot \\pi(a | s; \\theta) \\frac{\\sqrt{\\sum_b N(s, b)}}{1 + N(s, a)} \\right]\n\\]\nExpanding:\nIf the selected node has unvisited children, expand.\nSimulating:\n\\[\nV(s; \\theta) = (1 - \\lambda) V(s; \\theta) + \\lambda R\n\\]\nUpdating:\n\\[\nN(s, a) = N(s, a) + 1\n\\]\n\n\\[\nQ(s, a) = Q(s, a) + \\frac{1}{N(s, a)} \\left( V(s; \\theta) - Q(s, a) \\right)\n\\]\n\n\nAdvanced MCTS: Results\nResults of 5-game tournament against Fan Hui (Elo in 2016: 3036).\n\nAlphaGo won all 5 games.\n\n\nMuZero MCTS with Neural Networks\n\nSelecting:\n\\[\nA_t = \\arg\\max_a \\left[ Q(s,a) + C \\frac{\\pi(a|s)}{1 + N(s,a)}  \\right]\n\\]\n\nUsing Prediction Network \\(f(s)\\) to compute \\(\\pi\\) and \\(Q\\)\n\nExpanding:\n\nUse Representation Network \\(h(o)\\) to create state\nPrediction Network \\(f(s)\\) generates initial policy/value\n\nSimulating:\n\nDynamics Network \\(g(s,a)\\) predicts next state and reward\n\nUpdating:\n\\[\nN(s,a) = N(s,a) + 1\n\\]\n\n\\[\nQ(s,a) = \\frac{1}{N(s,a)} \\sum_i V_i(s)\n\\]",
+    "crumbs": [
+      "Lecture 11: Monte Carlo Tree Search",
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>11.2 Advanced Monte Carlo Tree Search</span>"
+    ]
+  },
+  {
+    "objectID": "lecture11/lecture11-2.html#advanced-mcts-alphazero-performance",
+    "href": "lecture11/lecture11-2.html#advanced-mcts-alphazero-performance",
+    "title": "11.2 Advanced Monte Carlo Tree Search",
+    "section": "Advanced MCTS: AlphaZero Performance",
+    "text": "Advanced MCTS: AlphaZero Performance\nOrange line indicates best result of AlphaZero (AlphaGo trained purely on self-play).",
+    "crumbs": [
+      "Lecture 11: Monte Carlo Tree Search",
+      "<span class='chapter-number'>48</span>  <span class='chapter-title'>11.2 Advanced Monte Carlo Tree Search</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lo.html",
+    "href": "lecture12/lo.html",
+    "title": "Learning Objectives",
+    "section": "",
+    "text": "Learning Objectives for Lecture 12: Conclusion 🎯\n\n\n\n\nAdvanced Topics in Reinforcement Learning\nIdentify the Reinforcement Learning Application.\nOutlook of Reinforcement Learning.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>49</span>  <span class='chapter-title'>Learning Objectives</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-1.html",
+    "href": "lecture12/lecture12-1.html",
+    "title": "12.1 Advanced Topics in Reinforcement Learning",
+    "section": "",
+    "text": "Imitation Learning\nApplication: Autonomous Driving\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-1.html#imitation-learning",
+    "href": "lecture12/lecture12-1.html#imitation-learning",
+    "title": "12.1 Advanced Topics in Reinforcement Learning",
+    "section": "",
+    "text": "Learn a policy \\(\\pi(a|s)\\) by mimicking an expert’s demonstrations, \\((s, a)\\), without requiring explicit reward signals.",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-1.html#inverse-reinforcement-learning",
+    "href": "lecture12/lecture12-1.html#inverse-reinforcement-learning",
+    "title": "12.1 Advanced Topics in Reinforcement Learning",
+    "section": "Inverse Reinforcement Learning",
+    "text": "Inverse Reinforcement Learning\n\nInfer the reward function \\(R(s, a)\\) given expert trajectories to derive an optimal policy, \\(\\pi^*\\).\n\n\nApplication: Predicting Driver Behavior and Route Recommendation\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-1.html#offline-reinforcement-learning",
+    "href": "lecture12/lecture12-1.html#offline-reinforcement-learning",
+    "title": "12.1 Advanced Topics in Reinforcement Learning",
+    "section": "Offline Reinforcement Learning",
+    "text": "Offline Reinforcement Learning\n\nLearn a policy \\(\\pi(a|s)\\) from a fixed dataset \\(D = \\{(s, a, r, s')\\}\\) without further environment interaction.\n\n\nApplication: Robotic Manipulation\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-1.html#multi-agent-reinforcement-learning",
+    "href": "lecture12/lecture12-1.html#multi-agent-reinforcement-learning",
+    "title": "12.1 Advanced Topics in Reinforcement Learning",
+    "section": "Multi-Agent Reinforcement Learning",
+    "text": "Multi-Agent Reinforcement Learning\n\nOptimize multiple agents’ policies \\(\\pi_i(a|s)\\) interacting in a shared environment, considering cooperation or competition.\n\n\nApplication: Strategic Game-play in Dota2\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-1.html#hierarchical-reinforcement-learning",
+    "href": "lecture12/lecture12-1.html#hierarchical-reinforcement-learning",
+    "title": "12.1 Advanced Topics in Reinforcement Learning",
+    "section": "Hierarchical Reinforcement Learning",
+    "text": "Hierarchical Reinforcement Learning\n\nDecompose tasks into a hierarchy of policies, \\(\\pi_\\text{high}(g|s)\\) for goals and \\(\\pi_\\text{low}(a|s, g)\\) for actions.\n\n\nApplication: MuJoCo Ant Maze Path Finding\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-1.html#multi-objective-reinforcement-learning",
+    "href": "lecture12/lecture12-1.html#multi-objective-reinforcement-learning",
+    "title": "12.1 Advanced Topics in Reinforcement Learning",
+    "section": "Multi-Objective Reinforcement Learning",
+    "text": "Multi-Objective Reinforcement Learning\n\nOptimize a policy \\(\\pi(a|s)\\) under multiple conflicting objectives, \\(\\{R_1, R_2, \\dots\\}\\)\n\n\nApplication: Resource Allocation\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-1.html#meta-learning",
+    "href": "lecture12/lecture12-1.html#meta-learning",
+    "title": "12.1 Advanced Topics in Reinforcement Learning",
+    "section": "Meta Learning",
+    "text": "Meta Learning\n\nTrain agents to quickly adapt to new tasks \\(\\mathcal{T}\\) by optimizing over task distributions \\(p(\\mathcal{T})\\).\n\n\nApplication: Few Shot Learning\nLink to Research Paper",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-2.html",
+    "href": "lecture12/lecture12-2.html",
+    "title": "12.2 Identify the Reinforcement Learning Application",
+    "section": "",
+    "text": "Applications",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-2.html#applications",
+    "href": "lecture12/lecture12-2.html#applications",
+    "title": "12.2 Identify the Reinforcement Learning Application",
+    "section": "",
+    "text": "Note\n\n\n\nInstructions: For each task presented, determine whether it can be solved using:\n\nSupervised Learning\n\nUnsupervised Learning\n\nMulti-Armed Bandit\n\nClassical Reinforcement Learning\n\nDeep Reinforcement Learning\n\nForm groups of two or more and discuss the most appropriate approach for each application.",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-2.html#reinforcement-learning-framework",
+    "href": "lecture12/lecture12-2.html#reinforcement-learning-framework",
+    "title": "12.2 Identify the Reinforcement Learning Application",
+    "section": "Reinforcement Learning Framework",
+    "text": "Reinforcement Learning Framework",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-2.html#task-1-email-spam-detection",
+    "href": "lecture12/lecture12-2.html#task-1-email-spam-detection",
+    "title": "12.2 Identify the Reinforcement Learning Application",
+    "section": "Task 1: Email Spam Detection",
+    "text": "Task 1: Email Spam Detection\n\n\nAnswer: Supervised Learning\n\nSupervised Learning: Classification.\nFeatures (X):\n\nFrequency of specific keywords (e.g., “free”, “win”, “money”).\nPresence of special characters (e.g., “!”, “$”, etc.).\nSender’s domain (e.g., “trusted.com”, “unknown.com”).\n\nLabels (y):\n\n0 for Non-Spam.\n1 for Spam.\n\nExample Algorithm: Naive Bayes.",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-2.html#task-2-customer-segmentation-for-a-retail-store",
+    "href": "lecture12/lecture12-2.html#task-2-customer-segmentation-for-a-retail-store",
+    "title": "12.2 Identify the Reinforcement Learning Application",
+    "section": "Task 2: Customer Segmentation for a Retail Store",
+    "text": "Task 2: Customer Segmentation for a Retail Store\n\n\nAnswer: Unsupervised Learning\n\nUnsupervised Learning: Clustering.\nFeatures (X):\n\nCustomer age, annual income, spending score, purchase frequency.\nProduct categories purchased, total expenditure, location.\nCustomer loyalty (e.g., membership status).\n\nExample Algorithm: K-Means.",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-2.html#task-3-online-ad-optimization",
+    "href": "lecture12/lecture12-2.html#task-3-online-ad-optimization",
+    "title": "12.2 Identify the Reinforcement Learning Application",
+    "section": "Task 3: Online Ad Optimization",
+    "text": "Task 3: Online Ad Optimization\n\n\nAnswer: Multi-Armed Bandit\n\nState (S): Single state (environment does not change).\nActions (A): Display ad 1, Display ad 2, Display ad 3.\nRewards (R): Click-through rate, conversion rate, user engagement.\nExample Algorithm: Thompson Sampling.",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-2.html#task-4-warehouse-robot-path-finding",
+    "href": "lecture12/lecture12-2.html#task-4-warehouse-robot-path-finding",
+    "title": "12.2 Identify the Reinforcement Learning Application",
+    "section": "Task 4: Warehouse Robot Path-finding",
+    "text": "Task 4: Warehouse Robot Path-finding\n\n\nAnswer: Classical Reinforcement Learning\n\nExample Algorithm: Q-learning.\nState (S): Robot position, obstacles, goal location.\nActions (A): Move up, down, left, right, stay.\nRewards (R):\n\nPositive for reaching goal.\nNegative for hitting obstacles.\nSmall penalty for each step (efficiency).",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-2.html#task-5-fine-tuning-llms-with-human-feedback",
+    "href": "lecture12/lecture12-2.html#task-5-fine-tuning-llms-with-human-feedback",
+    "title": "12.2 Identify the Reinforcement Learning Application",
+    "section": "Task 5: Fine-tuning LLMs with Human Feedback",
+    "text": "Task 5: Fine-tuning LLMs with Human Feedback\n\n\nAnswer: Deep Reinforcement Learning\n\nExample Algorithm: Proximal Policy Optimization (PPO).\nState (S): Model predictions, conversation history, human feedback.\nActions (A): Adjust weights, generate responses, explore approaches.\nRewards (R):\n\nPositive for high-quality responses.\nNegative for low-quality responses.\nReward for alignment with human feedback.",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-3.html",
+    "href": "lecture12/lecture12-3.html",
+    "title": "12.3 Outlook of Reinforcement Learning",
+    "section": "",
+    "text": "Challenges in Reinforcement Learning",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-3.html#challenges-in-reinforcement-learning",
+    "href": "lecture12/lecture12-3.html#challenges-in-reinforcement-learning",
+    "title": "12.3 Outlook of Reinforcement Learning",
+    "section": "",
+    "text": "Balancing Exploration vs Exploitation\nSample Efficiency\nSparse Rewards\nConverging to optimal policies",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture12/lecture12-3.html#artificial-general-intelligence-agi",
+    "href": "lecture12/lecture12-3.html#artificial-general-intelligence-agi",
+    "title": "12.3 Outlook of Reinforcement Learning",
+    "section": "Artificial General Intelligence (AGI)",
+    "text": "Artificial General Intelligence (AGI)\n\nDefinition: AGI is AI capable of learning and applying intelligence across a wide range of tasks, similar to human cognition.\nRole of RL in AGI: RL enables autonomous learning and decision-making, key for AGI’s adaptability and problem-solving.\nCurrent Progress: Significant advancements in deep RL and multi-agent systems, though AGI remains a long-term goal.\nPotential Impact: AGI could revolutionize industries, solve global challenges, and transform work and society.",
+    "crumbs": [
+      "Lecture 12: Conclusion",
+      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework1.html",
+    "href": "homework/homework1.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "No Homework! Enjoy! 😊",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>Homework 1</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html",
+    "href": "homework/homework2.html",
+    "title": "Homework 2",
+    "section": "",
+    "text": "Question 1\nWrite some of the elements of the following sets:\nWrite the following sets in set notation:",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html#question-1",
+    "href": "homework/homework2.html#question-1",
+    "title": "Homework 2",
+    "section": "",
+    "text": "\\(\\{ 5x-1: x \\in \\mathbb{Z} \\}\\)\n\\(\\{ x \\in \\mathbb{R}: \\sin \\pi x = 0 \\}\\)\n\\(\\{X : X \\subseteq \\{3,2,a\\} \\text{ and } |X|=2 \\}\\)\n\n\n\n\\(\\{ 2, 4, 8, 16, 32, 64, ...\\}\\)\n\\(\\{0,1,4,9,16,25,36, ...\\}\\)\n\\(\\{..., \\frac{1}{8},\\frac{1}{4},\\frac{1}{2},1,2,4,8,... \\}\\)",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html#question-2",
+    "href": "homework/homework2.html#question-2",
+    "title": "Homework 2",
+    "section": "Question 2",
+    "text": "Question 2\nA retail store accepts either American Express or VISA. The percentages of customers carrying each card are: \n\nAmerican Express: \\(24%\\)\nVISA: \\(61%\\)\nBoth: \\(11%\\)\n\nWhat percentage of customers carry a card accepted by the store?",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html#question-3",
+    "href": "homework/homework2.html#question-3",
+    "title": "Homework 2",
+    "section": "Question 3",
+    "text": "Question 3\nSixty percent of students wear neither a ring nor a necklace. Given: \n\n\\(20%\\) wear a ring\n\\(30%\\) wear a necklace\n\nFind the probability that a randomly chosen student wears:\n\nA ring or a necklace\nBoth a ring and a necklace",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html#question-4",
+    "href": "homework/homework2.html#question-4",
+    "title": "Homework 2",
+    "section": "Question 4",
+    "text": "Question 4\nTwo fair dice are rolled. Find the conditional probability that at least one die lands on \\(6\\), given that they land on different numbers.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html#question-5",
+    "href": "homework/homework2.html#question-5",
+    "title": "Homework 2",
+    "section": "Question 5",
+    "text": "Question 5\nAn urn contains \\(6\\) white and \\(9\\) black balls. If \\(4\\) balls are selected without replacement, what is the probability that the first \\(2\\) are white and the last \\(2\\) are black?",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html#question-6",
+    "href": "homework/homework2.html#question-6",
+    "title": "Homework 2",
+    "section": "Question 6",
+    "text": "Question 6\nA defendant is judged guilty if at least \\(2\\) out of \\(3\\) judges vote guilty. Given:\n\nProbability of a guilty vote when defendant is guilty: \\(0.7\\) \nProbability of a guilty vote when defendant is innocent: \\(0.2\\) \n\\(70%\\) of defendants are guilty\n\nCompute the conditional probability that judge \\(3\\) votes guilty given:\n\nJudges \\(1\\) and \\(2\\) vote guilty. \nJudges \\(1\\) and \\(2\\) split votes. \nJudges \\(1\\) and \\(2\\) vote not guilty.\n\nAre the judges’ votes independent? Conditionally independent? Explain.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html#question-7",
+    "href": "homework/homework2.html#question-7",
+    "title": "Homework 2",
+    "section": "Question 7",
+    "text": "Question 7\nGiven the distribution function of \\(X\\):\n\\[\nF_{X}(x) =\n\\begin{cases}\n0, & x &lt; 0 \\\\\n\\frac{1}{2}, & 0 \\leq x &lt; 1 \\\\\n\\frac{3}{5}, & 1 \\leq x &lt; 2 \\\\\n\\frac{4}{5}, & 2 \\leq x &lt; 3 \\\\\n\\frac{9}{10}, & 3 \\leq x &lt; 3.5 \\\\\n1, & x \\geq 3.5 \\\\\n\\end{cases}\n\\]\nFind \\(p_X(x)\\).",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html#question-8",
+    "href": "homework/homework2.html#question-8",
+    "title": "Homework 2",
+    "section": "Question 8",
+    "text": "Question 8\nA player rolls a fair die and flips a fair coin. If heads, they win twice the die value; if tails, they win half. Determine the expected winnings.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework2.html#coding-exercise-1-binomial-distribution",
+    "href": "homework/homework2.html#coding-exercise-1-binomial-distribution",
+    "title": "Homework 2",
+    "section": "Coding Exercise 1: Binomial Distribution",
+    "text": "Coding Exercise 1: Binomial Distribution\nThe binomial distribution PMF is:\n\\[\np_X(x) = {n \\choose k} x^n (1-x)^{n-k}\n\\]\nUsing Python, generate binomial data and create visualizations for \\(p_X(x)\\) and \\(F_X(x)\\).",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>Homework 2</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework3.html",
+    "href": "homework/homework3.html",
+    "title": "Homework 3",
+    "section": "",
+    "text": "Coding Exercise 1: Load Environments\nLoad existing Bernoulli and Gaussian environments from create_environment function using a random seed of \\(123\\).",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>Homework 3</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework3.html#coding-exercise-2-recommendation-systems",
+    "href": "homework/homework3.html#coding-exercise-2-recommendation-systems",
+    "title": "Homework 3",
+    "section": "Coding Exercise 2: Recommendation Systems",
+    "text": "Coding Exercise 2: Recommendation Systems\nUsing the existing Epsilon Greedy (\\(\\epsilon\\) = 0.10), Upper Confidence Boundary (UCB) and Thompson Sampling code, create a recommendation system.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>Homework 3</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework3.html#coding-exercise-3-mab-performance",
+    "href": "homework/homework3.html#coding-exercise-3-mab-performance",
+    "title": "Homework 3",
+    "section": "Coding Exercise 3: MAB Performance",
+    "text": "Coding Exercise 3: MAB Performance\nFor 10,000 recommendations:\n\nDoes Epsilon-Greedy (\\(\\epsilon = 0.10\\)) perform better in the Bernoulli or Gaussian environment?\nDoes UCB perform better in the Bernoulli or Gaussian environment?\nDoes Thompson Sampling perform better in the Bernoulli or Gaussian environment?\nWhich algorithm performs best in the Bernoulli environment?\nWhich algorithm performs best in the Gaussian environment?\n\nHint: Check the performance of each MAB by observing the most frequently recommended arm.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>Homework 3</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework3.html#coding-exercise-4-random-seed-analysis",
+    "href": "homework/homework3.html#coding-exercise-4-random-seed-analysis",
+    "title": "Homework 3",
+    "section": "Coding Exercise 4: Random Seed Analysis",
+    "text": "Coding Exercise 4: Random Seed Analysis\nUsing random seeds \\(0\\)-\\(50\\), for \\(10,000\\) recommendations, do the algorithms perform the same?",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>Homework 3</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework3.html#coding-exercise-5-amazon-dataset-analysis",
+    "href": "homework/homework3.html#coding-exercise-5-amazon-dataset-analysis",
+    "title": "Homework 3",
+    "section": "Coding Exercise 5: Amazon Dataset Analysis",
+    "text": "Coding Exercise 5: Amazon Dataset Analysis\nFor the Amazon.csv advertisement dataset repeat exercise E.4. Which arm (ad) would you recommend (advertise)?",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>Homework 3</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework4.html",
+    "href": "homework/homework4.html",
+    "title": "Homework 4",
+    "section": "",
+    "text": "Question 1\nIf the current state is \\(S_{t}\\) and actions are selected according to stochastic policy \\(\\pi\\), then what is the expectation of \\(R_{t+1}\\) in terms of \\(\\pi\\) and the four-argument function \\(p\\)?",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 4</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework4.html#question-2",
+    "href": "homework/homework4.html#question-2",
+    "title": "Homework 4",
+    "section": "Question 2",
+    "text": "Question 2\nGive an equation for \\(v_{\\pi}\\) in terms of \\(q_{\\pi}\\) and \\(\\pi\\).",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 4</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework4.html#question-3",
+    "href": "homework/homework4.html#question-3",
+    "title": "Homework 4",
+    "section": "Question 3",
+    "text": "Question 3\nGive an equation for \\(q_{\\pi}\\) in terms of \\(v_{\\pi}\\) and \\(\\pi\\).",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 4</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework4.html#coding-exercise-1-markov-chain-i",
+    "href": "homework/homework4.html#coding-exercise-1-markov-chain-i",
+    "title": "Homework 4",
+    "section": "Coding Exercise 1: Markov Chain I",
+    "text": "Coding Exercise 1: Markov Chain I\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 4</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework4.html#coding-exercise-2-markov-chain-ii",
+    "href": "homework/homework4.html#coding-exercise-2-markov-chain-ii",
+    "title": "Homework 4",
+    "section": "Coding Exercise 2: Markov Chain II",
+    "text": "Coding Exercise 2: Markov Chain II\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 4</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework4.html#coding-exercise-3-value-iteration",
+    "href": "homework/homework4.html#coding-exercise-3-value-iteration",
+    "title": "Homework 4",
+    "section": "Coding Exercise 3: Value Iteration",
+    "text": "Coding Exercise 3: Value Iteration\nWith a discount factor of \\(\\gamma = 0.9\\), code Value Iteration algorithm for GridWorldEnv using the provided hyperparameters.\n\n\n\n\n\nNote: The gray shaded areas are barriers. Moving into a barrier incurs a reward of \\(R = -1\\).",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 4</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework5.html",
+    "href": "homework/homework5.html",
+    "title": "Homework 5",
+    "section": "",
+    "text": "Coding Exercise 1: On-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the On-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Homework 5</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework5.html#coding-exercise-2-off-policy-monte-carlo-control",
+    "href": "homework/homework5.html#coding-exercise-2-off-policy-monte-carlo-control",
+    "title": "Homework 5",
+    "section": "Coding Exercise 2: Off-Policy Monte Carlo Control",
+    "text": "Coding Exercise 2: Off-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the Off-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Homework 5</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework6.html",
+    "href": "homework/homework6.html",
+    "title": "Homework 6",
+    "section": "",
+    "text": "Coding Exercise 1: SARSA\nFor the GridWorldEnv environment, code the SARSA algorithm using the provided hyperparameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 6</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework6.html#coding-exercise-2-q-learning",
+    "href": "homework/homework6.html#coding-exercise-2-q-learning",
+    "title": "Homework 6",
+    "section": "Coding Exercise 2: Q-Learning",
+    "text": "Coding Exercise 2: Q-Learning\nFor the GridWorldEnv environment, code the Q-learning algorithm using the provided hyperparameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 6</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework6.html#coding-exercise-3-double-q-learning",
+    "href": "homework/homework6.html#coding-exercise-3-double-q-learning",
+    "title": "Homework 6",
+    "section": "Coding Exercise 3: Double Q-Learning",
+    "text": "Coding Exercise 3: Double Q-Learning\nFor the GridWorldEnv environment, code the Double Q-learning algorithm using the provided hyperparameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 6</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework7.html",
+    "href": "homework/homework7.html",
+    "title": "Homework 7",
+    "section": "",
+    "text": "Coding Exercise 1: Semi-Gradient SARSA\nFor the MountainCar-v0 environment, code the update function for Semi-Gradient SARSA algorithm using the provided parameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Homework 7</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework8.html",
+    "href": "homework/homework8.html",
+    "title": "Homework 8",
+    "section": "",
+    "text": "Coding Exercise 1: Deep Q-Network (DQN)\nFor the highway-v0 environment, code the update function for the Deep Q-Netowrk (DQN) algorithm using the provided parameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 8</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework9.html",
+    "href": "homework/homework9.html",
+    "title": "Homework 9",
+    "section": "",
+    "text": "Coding Exercise 1: Vanilla Policy Gradient\nFor the CartPole-v1 environment, code the update function for the Vanilla Policy Gradient algorithm using the provided parameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 9</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework10.html",
+    "href": "homework/homework10.html",
+    "title": "Homework 10",
+    "section": "",
+    "text": "Coding Exercise 1: Proximal Policy Optimization (PPO) Clip\nFor the HalfCheetah-v5 environment, code the update function for the Proximal Policy Optimization: Clip algorithm using the provided parameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 10</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework11.html",
+    "href": "homework/homework11.html",
+    "title": "Homework 11",
+    "section": "",
+    "text": "Coding Exercise 1: Monte Carlo Tree Search (MCTS)\nFor the CartPole-v0 environment, code the update function for the Monte Carlo Tree Search (MCTS) algorithm using the provided parameters.",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 11</span>"
+    ]
+  },
+  {
+    "objectID": "homework/homework12.html",
+    "href": "homework/homework12.html",
+    "title": "Homework 12",
+    "section": "",
+    "text": "No Homework! Enjoy! 😊",
+    "crumbs": [
+      "Homeworks",
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 12</span>"
+    ]
+  },
+  {
+    "objectID": "final-project/personal-finance-robo-advisor.html",
+    "href": "final-project/personal-finance-robo-advisor.html",
+    "title": "Idea 1: Personal Finance Robo Advisor",
+    "section": "",
+    "text": "Expectation",
+    "crumbs": [
+      "Final Project",
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Acero, Fernando, Parisa Zehtabi, Nicolas Marchesotti, Michael Cashmore,\nDaniele Magazzeni, and Manuela Veloso. 2024. “Deep Reinforcement\nLearning and Mean-Variance Strategies for Responsible Portfolio\nOptimization.” https://arxiv.org/abs/2403.16667.\n\n\nBertsekas, Dimitri P., and John N. Tsitsiklis. 2008. Introduction to\nProbability. 2nd ed. Belmont, MA: Athena Scientific.\n\n\nBrunskill, Emma. 2022. “CS234: Reinforcement Learning - Lecture\n1.” Course Lecture Slides, Stanford University. https://web.stanford.edu/class/cs234/slides/lecture1pre.pdf.\n\n\nFawzi, Alhussein, Matej Balog, Atri Huang, et al. 2022.\n“Discovering Faster Matrix Multiplication Algorithms with\nReinforcement Learning.” Nature 610: 47–53. https://doi.org/10.1038/s41586-022-05172-4.\n\n\nHammack, Richard H. 2013. Book of Proof. Richard Hammack.\n\n\nLevine, Sergey. 2019. “Introduction to Deep Reinforcement\nLearning.” Course Lecture Slides, Deep RL Course, UC Berkeley. https://rail.eecs.berkeley.edu/deeprlcourse/deeprlcourse/static/slides/lec-1.pdf.\n\n\nMnih, Volodymyr, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis\nAntonoglou, Daan Wierstra, and Martin Riedmiller. 2013. “Playing\nAtari with Deep Reinforcement Learning.” https://arxiv.org/abs/1312.5602.\n\n\nOuyang, Long, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright,\nPamela Mishkin, Chong Zhang, et al. 2022. “Training Language\nModels to Follow Instructions with Human Feedback.” https://arxiv.org/abs/2203.02155.\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement\nLearning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]
