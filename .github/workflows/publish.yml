@@ -27,6 +27,12 @@ jobs:
       - name: Render site
         run: quarto render
 
+      - name: Remove .git in _site (if exists)
+        run: |
+          if [ -d "./_site/.git" ]; then
+            rm -rf ./_site/.git
+          fi
+          
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
