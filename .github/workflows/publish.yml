@@ -32,7 +32,6 @@ jobs:
         with:
           branch: gh-pages
           folder: ./docs/  
-          token: ${{ secrets.API_GITHUB_TOKEN }}
           clean: true
           clean-exclude: |
             courses
