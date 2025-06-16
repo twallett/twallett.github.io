@@ -6,9 +6,6 @@
       text: "July 2025"
     - icon: book
       text: "DM"
-    # - icon: github  
-    #   text: "GitHub"
-    #   href: "https://github.com/twallett/rl.github.io"
     - icon: globe  
       text: "Course Website"
       href: "https://dats.columbian.gwu.edu/courses/data-mining"
@@ -21,9 +18,6 @@
       text: "May 2025"
     - icon: book
       text: "Data Science Bootcamp"
-    # - icon: github  
-    #   text: "GitHub"
-    #   href: "https://github.com/twallett/rl.github.io"
     - icon: globe  
       text: "Course Website"
       href: "https://dats.columbian.gwu.edu/math"
@@ -36,9 +30,6 @@
       text: "May 2025"
     - icon: book
       text: "Data Science Bootcamp"
-    # - icon: github  
-    #   text: "GitHub"
-    #   href: "https://github.com/twallett/rl.github.io"
     - icon: globe  
       text: "Course Website"
       href: "https://dats.columbian.gwu.edu/programming"
@@ -51,9 +42,6 @@
       text: "December 2024"
     - icon: book
       text: "RL"
-    - icon: github  
-      text: "GitHub"
-      href: "https://github.com/twallett/rl.github.io"
     - icon: globe  
       text: "Course Website"
-      href: "https://dats.columbian.gwu.edu/courses/reinforcement-learning"
+      href: "https://twallett.com/courses/reinforcement-learning/"

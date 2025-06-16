@@ -8,9 +8,9 @@
       text: "ML"
     - icon: github  
       text: "GitHub"
-      href: "https://github.com/twallett/machine-learning-foundations/tree/main/Optimization"
+      href: "https://github.com/twallett/optimization-foundations"
 
-- title: "Neural Networks Foundations"
+- title: "Neural Network Foundations"
   description: "This project implements neural networks using NumPy to solve regression and classification problems. Key algorithms covered include Perceptron, ADALINE and Multi-Layered Perceptron (MLP)."
   image: "imgs/MLP.gif"
   tags:
@@ -20,4 +20,4 @@
       text: "ML"
     - icon: github  
       text: "GitHub"
-      href: "https://github.com/twallett/machine-learning-foundations/tree/main/NeuralNetworks"
+      href: "https://github.com/twallett/neural-network-foundations"
