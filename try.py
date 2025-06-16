@@ -24,7 +24,6 @@ svg_file = 'output_file.svg'
 pdf_to_svg(pdf_file, svg_file)
 
 
-
 # %%
 import subprocess
 
