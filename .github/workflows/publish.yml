@@ -34,4 +34,4 @@ jobs:
           folder: ./docs/  
           clean: true
           clean-exclude: |
-            courses
+            courses/reinforcement-learning/
