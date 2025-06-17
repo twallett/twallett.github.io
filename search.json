@@ -18,14 +18,14 @@
     "href": "index.html#my-journey-so-far",
     "title": "Tyler Wallett",
     "section": "My Journey, So Far…",
-    "text": "My Journey, So Far…\nTo date, I have been involved in developing:\n\n2 Projects\n2 Research Papers\n4 Courses"
+    "text": "My Journey, So Far…\nTo date, I have been involved in developing:\n\n3 Projects\n2 Research Papers\n4 Courses"
   },
   {
     "objectID": "projects/index.html",
     "href": "projects/index.html",
     "title": "Projects",
     "section": "",
-    "text": "Optimization Foundations\n        This project applies optimization techniques using NumPy to optimize multidimensional functions. Key algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient.\n        \n    \n            \n               August 2023\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n        Neural Network Foundations\n        This project implements neural networks using NumPy to solve regression and classification problems. Key algorithms covered include Perceptron, ADALINE and Multi-Layered Perceptron (MLP).\n        \n    \n            \n               August 2023\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub"
+    "text": "Forecasting Financial and Economic Indicators using Deep Learning \n        This project forecasts S&P 500 Index, unemployment rates, corporate revenue, and real estate trends using deep learning models. Key deep learning algorithms covered include Multi-Layered Perceptron (MLP), Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU).\n        \n    \n            \n               August 2024\n            \n            \n            \n               DL\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n        Optimization Foundations\n        This project applies optimization techniques using NumPy to optimize multidimensional functions. Key optimization algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient.\n        \n    \n            \n               August 2023\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n        Neural Network Foundations\n        This project implements neural networks using NumPy to solve regression and classification problems. Key neural networks covered include Perceptron, ADALINE and Multi-Layered Perceptron (MLP).\n        \n    \n            \n               August 2023\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub"
   },
   {
     "objectID": "courses/index.html",
