@@ -46,7 +46,7 @@ for card in cards:
         <img src="{card['image']}" alt="Image" style="width: 100%; height: auto; border-radius: 8px;">
       </div>
       <div class="card-content" style="flex: 1; padding: 0.5rem;">
-        <h3 style="margin-top: 0;">{card['title']}</h3>
+        <h3 id="{card['id']}" style="margin-top: 0;">{card['title']}</h3>
         <p>{card['description']}</p>
         <div class="card-tags" style="display: flex; justify-content: center; align-items: center; gap: 4rem; margin-top: 1rem; flex-wrap: wrap;">
     '''
