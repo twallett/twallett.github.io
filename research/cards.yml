@@ -1,4 +1,5 @@
-- title: "Predicting Postoperative Complications in Laparoscopic General Surgery Using Machine and Deep Learning: A Classification Approach (Under Review)"
+- id: "postoperative-risk-prediction"
+  title: "Predicting Postoperative Complications in Laparoscopic General Surgery Using Machine and Deep Learning: A Classification Approach (Under Review)"
   description: "This research paper develops and evaluates machine learning and deep learning models to predict six critical postoperative complications: Cardiac Arrest, Myocardial Infarction, Pulmonary Embolism, Reintubation, Pneumonia, and Failure to Wean from Ventilator. "
   image: "imgs/postoperative-risk-prediction.svg"
   tags:
@@ -13,7 +14,8 @@
     #   text: "Research Paper"
     #   href: "https://doi.org/10.1007/s00521-024-10425-6"
 
-- title: "A Benchmark for Graph-Based Dynamic Recommendation Systems"
+- id: "dynamic-recommender-gnn"
+  title: "A Benchmark for Graph-Based Dynamic Recommendation Systems"
   description: "This research paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems. Key algorithms covered SAGE (GraphSAGE), GAT (Graph Attention Networks), GIN (Graph Isomorphism Networks), and additional state of the art Graph Neural Network architectures."
   image: "imgs/gnn-dynamic-recommender.svg"
   tags:
