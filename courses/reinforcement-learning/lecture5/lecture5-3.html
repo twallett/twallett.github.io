@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-088eb942fb0ffee15331ff839a6f78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDPs)</span></a>
+  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -649,18 +649,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#exploration-without-an-initial-random-state-and-action" id="toc-exploration-without-an-initial-random-state-and-action" class="nav-link active" data-scroll-target="#exploration-without-an-initial-random-state-and-action">Exploration without an Initial Random State and Action</a></li>
-  <li><a href="#epsilon-greedy" id="toc-epsilon-greedy" class="nav-link" data-scroll-target="#epsilon-greedy"><span class="math inline">\(\epsilon\)</span>-Greedy</a>
-  <ul class="collapse">
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -690,10 +680,11 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>A formal framework that defines probability using three fundamental rules, ensuring consistency in measuring uncertainty. 🎲</p>
+<p>What if we only ever learn from the way we already behave? 🔁</p>
 </div>
 </div>
 </div>
+<p>We need a better method of establishing control, or approximating optimal policies <span class="math inline">\(\approx \pi_{*}\)</span>, in associative environments without relying on unrealistic assumptions.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -704,24 +695,72 @@ On-Policy Learning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>On-Policy</em> learning evaluates or improves the policy that is used to make decisions.</p>
+<p><em>On-Policy</em> learning evaluates or improves the policy <span class="math inline">\(\pi\)</span> that is used to make decisions.</p>
 </div>
 </div>
-<section id="exploration-without-an-initial-random-state-and-action" class="level2">
-<h2 class="anchored" data-anchor-id="exploration-without-an-initial-random-state-and-action">Exploration without an Initial Random State and Action</h2>
-<p>How can we explore without having to rely on the unrealistic assumption of an initial random state and action?</p>
-<div style="margin-top: 0.6cm">
-<p>Recall, <span class="math inline">\(\epsilon\)</span>-greedy methods for balancing exploration vs.&nbsp;exploitation in Multi-Armed Bandits.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div style="margin-top: 0.6cm">
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we leverage Monte Carlo’s learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_{*}\)</span>, without having to rely on the unrealistic assumption of an initial random state and action <span class="math inline">\((s,a)\)</span>?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Life Example 🧠
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="grid">
+<div class="g-col-3">
+<p><img src="images/cp-book.jpg" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="g-col-3">
+<p><img src="images/dostoevsky.jpg" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><em>“It is better to go wrong in one’s own way than to go right in someone else’s.”</em><br>
+— Razumikhin, <em>Crime and Punishment</em></p>
+</blockquote>
+<p>Like Razumikhin suggests, you stick with your current way of doing things — even if it’s imperfect. You learn from <em>your own behavior</em> — your own actions <span class="math inline">\(a\)</span> taken in states <span class="math inline">\(s\)</span>, based on the current policy <span class="math inline">\(\pi\)</span> — and improve over time through <em>authentic experience</em>.</p>
+<p>In other words:</p>
+<ul>
+<li>Is it better to build your own project and mess up than to reuse code you don’t understand?</li>
+<li>Is it better to follow your own dreams or live out your parents’ version of success?</li>
+<li>Is it better to speak your mind and be wrong, or stay silent and be “right” by default?</li>
+<li>Is it better to take your own path and stumble than walk a perfect path that isn’t yours?</li>
+<li>Is it better to try your own strategy and fail than blindly follow someone else’s instructions?</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Recall, <span class="math inline">\(\epsilon\)</span>-greedy methods for balancing exploration and exploitation.</p>
 <p>These policies are usually referred to as <span class="math inline">\(\epsilon\)</span>-soft policies as they require that the probability of every action is non-zero for all states and actions pairs, that is:</p>
-</div>
 <p><span class="math display">\[
 \pi(a|s) &gt; 0 \quad \text{for all} \quad s \in S \quad \text{and} \quad a \in A(s)
 \]</span></p>
-</section>
-<section id="epsilon-greedy" class="level2">
-<h2 class="anchored" data-anchor-id="epsilon-greedy"><span class="math inline">\(\epsilon\)</span>-Greedy</h2>
 <p>To calculate the probabilities of selecting an action according to the <span class="math inline">\(\epsilon\)</span>-greedy policy <span class="math inline">\(\pi(a|s)\)</span>, we use the following update rule:</p>
 <p><span class="math display">\[
 \pi(a|s) \gets \begin{cases}
@@ -729,18 +768,15 @@ On-Policy Learning
 \frac{\epsilon}{|A(S_{t})|} &amp; \text{if} \quad a \neq A_{t} \quad \text{(exploration)}
 \end{cases}
 \]</span></p>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<p>By using <span class="math inline">\(\epsilon\)</span>-soft policies, we ensure that every action <span class="math inline">\(a\)</span> has a non-zero chance of being explored — even while following our current policy <span class="math inline">\(\pi\)</span>.</p>
 <div class="center" style="text-align:center;">
 <p><img src="images/5-3.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
-<div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

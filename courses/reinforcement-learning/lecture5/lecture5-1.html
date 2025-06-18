@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-088eb942fb0ffee15331ff839a6f78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDPs)</span></a>
+  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -649,19 +649,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#monte-carlo" id="toc-monte-carlo" class="nav-link active" data-scroll-target="#monte-carlo">Monte Carlo</a></li>
-  <li><a href="#monte-carlo-prediction" id="toc-monte-carlo-prediction" class="nav-link" data-scroll-target="#monte-carlo-prediction">Monte Carlo Prediction</a>
-  <ul class="collapse">
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  <li><a href="#environment-gridworld" id="toc-environment-gridworld" class="nav-link" data-scroll-target="#environment-gridworld">Environment GridWorld</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -691,39 +680,39 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>A formal framework that defines probability using three fundamental rules, ensuring consistency in measuring uncertainty. 🎲</p>
+<p>What happens if we let experience speak — one episode at a time? 🎲</p>
 </div>
 </div>
 </div>
-<section id="monte-carlo" class="level2">
-<h2 class="anchored" data-anchor-id="monte-carlo">Monte Carlo</h2>
-<p><strong>Monte Carlo</strong> is a powerful <em>learning rule</em> for estimating value functions <span class="math inline">\(v_{\pi}\)</span> and action value functions <span class="math inline">\(q_{\pi}\)</span> in associative environments.</p>
-<p>The power of Monte Carlo resides in its ability to <em>learn the dynamics of any environment, without assuming any prior knowledge, only using experience</em>.</p>
-</section>
-<section id="monte-carlo-prediction" class="level2">
-<h2 class="anchored" data-anchor-id="monte-carlo-prediction">Monte Carlo Prediction</h2>
-<p>Monte Carlo methods are based on averaging sample returns of trajectories following a policy <span class="math inline">\(\pi\)</span>.</p>
-<p>Recall that returns are calculated as follows:</p>
-<p><span class="math display">\[
-G_{t} = r_{t+1} + \gamma G_{t+1}
-\]</span></p>
-<p>Only on the completion of an episode are value estimates <span class="math inline">\(v_{\pi}(s)\)</span> and action value estimates <span class="math inline">\(q_{\pi}(s,a)\)</span> updated.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/MonteCarlo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10.0%"></p>
-</figure>
+<p>Dynamic Programming is a collection of algorithms that can be used to compute optimal policies <span class="math inline">\(\pi_{*}\)</span>.</p>
+<p>These algorithms have limited utility in Reinforcement Learning due to:</p>
+<ul>
+<li><strong>Assumption of a perfect model</strong>: All state transitions <span class="math inline">\(P(s', r \mid s, a)\)</span> are known in advance.</li>
+<li><strong>Computational expense</strong>: Dynammic Programming typically requires full sweeps over the state space <span class="math inline">\(\forall s \in S\)</span>, which is only feasible in small, tabular environments.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
-<div class="center" style="text-align:center;">
-<p><img src="images/5-1.svg" class="img-fluid" style="width:75.0%"></p>
+<div class="callout-title-container flex-fill">
+Problem
 </div>
-<div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
 </div>
-</section>
-<section id="environment-gridworld" class="level3">
-<h3 class="anchored" data-anchor-id="environment-gridworld">Environment GridWorld</h3>
+<div class="callout-body-container callout-body">
+<p>How can we find an optimal policy <span class="math inline">\(\pi_{*}\)</span>, assuming that we no prior knowledge of state transitions <span class="math inline">\(P(s', r \mid s, a)\)</span>?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: GridWorld
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Assume <span class="math inline">\(\gamma = 0.9\)</span></p>
 <p>Suppose we followed the trajectory of <span class="math inline">\(\pi\)</span> for one episode:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -737,10 +726,44 @@ G_{t} = r_{t+1} + \gamma G_{t+1}
 <p><img src="images/MonteCarloUpdate.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
 </figure>
 </div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Monte Carlo</strong> is a powerful <em>learning rule</em> for estimating value functions <span class="math inline">\(v_{\pi}\)</span> and action value functions <span class="math inline">\(q_{\pi}\)</span> in associative environments.</p>
+<p>The power of Monte Carlo resides in its ability to <em>learn the dynamics of any environment, without assuming any prior knowledge, only using experience</em>.</p>
+<p>Monte Carlo methods are based on averaging sample returns of trajectories following a policy <span class="math inline">\(\pi\)</span>.</p>
+<p>Recall that <a href="../lecture4/lecture4-2.html#goal">returns</a> are calculated as follows:</p>
+<p><span class="math display">\[
+G_{t} = r_{t+1} + \gamma G_{t+1}
+\]</span></p>
+<p>Only on the completion of an episode are value estimates <span class="math inline">\(v_{\pi}(s)\)</span> and action value estimates <span class="math inline">\(q_{\pi}(s,a)\)</span> updated.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MonteCarlo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10.0%"></p>
+</figure>
+</div>
+<div class="center" style="text-align:center;">
+<p><img src="images/5-1.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
+<div style="text-align: center;">
+<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</div>
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

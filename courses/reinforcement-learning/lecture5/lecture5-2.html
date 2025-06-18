@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5.2 On-Policy Monte Carlo</title>
+<title>5.2 Monte Carlo Exploring Starts</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-088eb942fb0ffee15331ff839a6f78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -114,7 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">5.2 On-Policy Monte Carlo</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">5.2 Monte Carlo Exploring Starts</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDPs)</span></a>
+  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -649,25 +649,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#monte-carlo-control" id="toc-monte-carlo-control" class="nav-link active" data-scroll-target="#monte-carlo-control">Monte Carlo Control</a></li>
-  <li><a href="#exploring-starts" id="toc-exploring-starts" class="nav-link" data-scroll-target="#exploring-starts">Exploring Starts</a>
-  <ul class="collapse">
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">5.2 On-Policy Monte Carlo</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">5.2 Monte Carlo Exploring Starts</span></h1>
 </div>
 
 
@@ -690,37 +680,84 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>A formal framework that defines probability using three fundamental rules, ensuring consistency in measuring uncertainty. 🎲</p>
+<p>Can randomness at the beginning help us see everything eventually? 🧭</p>
 </div>
 </div>
 </div>
-<section id="monte-carlo-control" class="level2">
-<h2 class="anchored" data-anchor-id="monte-carlo-control">Monte Carlo Control</h2>
-<p>Without a model, state values <span class="math inline">\(v_{\pi}(s)\)</span> alone are not sufficient.</p>
-<p>We must explicitly estimate the value of each action <span class="math inline">\(q_{\pi}(s,a)\)</span>.</p>
-<p>Monte Carlo methods for this are similar to state value estimation, focusing on visits to state-action pairs <span class="math inline">\((s,a)\)</span>.</p>
-<p>The main advantage of estimating action values <span class="math inline">\(q_{\pi}(s,a)\)</span> in Monte Carlo methods lies in <strong>Control</strong>, which refers to finding approximate optimal policies <span class="math inline">\(\pi_{*}\)</span>.</p>
-<p>Proceeding with the idea of Generalized Policy Iteration (GPI), we evaluate and improve action values <span class="math inline">\(q_{\pi}(s,a)\)</span> to find optimal policies.</p>
-</section>
-<section id="exploring-starts" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-starts">Exploring Starts</h2>
-<p>The only problem of estimating action values <span class="math inline">\(q_{\pi}(s,a)\)</span> is that some state action pairs <span class="math inline">\((s,a)\)</span> may never be visited during an episode.</p>
-<p>Which brings us back to the same dilemma we faced in the Multi-Armed Bandit chapter, that is:</p>
-<p>Balancing exploration and exploitation.</p>
+<p>Without a model, state values <span class="math inline">\(v_{\pi}(s)\)</span> alone are not sufficient. Without a model, we cannot derive action preferences from state values alone.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Recall
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+v_{\pi}(s) = \mathbb{E_{\pi}}[G_{t}| \ s]
+\]</span></p>
+<p><span class="math inline">\(v_{\pi}(s)\)</span> - how good it is to be in a state <span class="math inline">\(s\)</span>.</p>
+</div>
+</div>
+<p>To make action selections, we must explicitly estimate the value of each action <span class="math inline">\(q_{\pi}(s,a)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What we are really looking for…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+q_{\pi}(s, a) = \mathbb{E_{\pi}}[G_{t}| \ s, \ a]
+\]</span></p>
+<p><span class="math inline">\(q_{\pi}(s,a)\)</span> - how good it is to take action <span class="math inline">\(a\)</span> given that I am in state <span class="math inline">\(s\)</span>.</p>
+</div>
+</div>
+<p>Monte Carlo methods are similar to state value estimation, focusing on visits to state-action pairs <span class="math inline">\((s,a)\)</span>.</p>
+<p>This is crucial for <strong>Control</strong>, which refers to finding approximate optimal policies <span class="math inline">\(\approx \pi_{*}\)</span>.</p>
+<p>Following the idea of <a href="../lecture4/lecture4-3.html#generalized-policy-iteration">Generalized Policy Iteration (GPI)</a>, we evaluate and improve action values <span class="math inline">\(q_{\pi}(s,a)\)</span> to find optimal policies.</p>
+<p>However, one major issue is that of estimating action values <span class="math inline">\(q_{\pi}(s,a)\)</span> is that some state action pairs <span class="math inline">\((s,a)\)</span> may never be visited during an episode.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we leverage Monte Carlo’s learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_{*}\)</span>, while assuring that each state action pair <span class="math inline">\((s,a)\)</span> is visited?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This brings us back to the same <a href="../lecture3/lecture3-2.html">dilemma we faced in the Multi-Armed Bandit chapter</a>, that is: Balancing exploration and exploitation.</p>
 <p>One “quick-fix” is to start each episode from a random state <span class="math inline">\(s\)</span> and take any action <span class="math inline">\(a\)</span> with probability greater than <span class="math inline">\(0\)</span>.</p>
 <p>This “quick-fix” is referred to as <strong>Exploring Starts</strong>.</p>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
 <div class="center" style="text-align:center;">
 <p><img src="images/5-2.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
-<div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

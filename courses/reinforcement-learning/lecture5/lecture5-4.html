@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-088eb942fb0ffee15331ff839a6f78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDPs)</span></a>
+  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -649,19 +649,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#importance-sampling" id="toc-importance-sampling" class="nav-link active" data-scroll-target="#importance-sampling">Importance Sampling</a></li>
-  <li><a href="#incremental-implementation" id="toc-incremental-implementation" class="nav-link" data-scroll-target="#incremental-implementation">Incremental Implementation</a></li>
-  <li><a href="#off-policy-control" id="toc-off-policy-control" class="nav-link" data-scroll-target="#off-policy-control">Off-Policy Control</a>
-  <ul class="collapse">
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -691,10 +680,11 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>A formal framework that defines probability using three fundamental rules, ensuring consistency in measuring uncertainty. 🎲</p>
+<p>Can we watch others and still learn something for ourselves? 👀</p>
 </div>
 </div>
 </div>
+<p>Learning directly from the policy <span class="math inline">\(\pi\)</span> is powerful, but it would be even better if we could learn about <span class="math inline">\(\pi\)</span> while observing or following a different policy, especially one that helps us explore more broadly or leverage past experiences.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -705,23 +695,98 @@ Off-Policy Learning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Off-Policy</em> methods evaluate or improve a policy different from that used to generate the data. Typically this is accomplished using two policies:</p>
+<p><em>Off-Policy</em> methods evaluate or improve a policy <span class="math inline">\(\pi\)</span> different from that used to generate the data <span class="math inline">\(b\)</span>. Typically this is accomplished using two policies:</p>
 <ul>
 <li><p>A <strong>target policy</strong>, denoted <span class="math inline">\(\pi\)</span>, is the policy being learned.</p></li>
 <li><p>A <strong>behavior policy</strong>, denoted <span class="math inline">\(b\)</span>, is the policy used to generate behavior.</p></li>
 </ul>
 </div>
 </div>
-<section id="importance-sampling" class="level2">
-<h2 class="anchored" data-anchor-id="importance-sampling">Importance Sampling</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we leverage Monte Carlo’s learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_{*}\)</span>, while leveraging other policies <span class="math inline">\(b\)</span> apart from our own <span class="math inline">\(\pi\)</span>?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Life Example 🧠
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="grid">
+<div class="g-col-3">
+<p><img src="images/isaac-newton.jpg" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>“If I have seen further, it is by standing on the shoulders of giants.” — Isaac Newton</p>
+</blockquote>
+<p>Newton is considered one of the greatest scientists of all time. Among his many contributions:</p>
+<ul>
+<li>🧲 Formulated the <a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/newtons-laws-of-motion/">laws of motion</a> and <a href="https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation">universal gravitation</a>.</li>
+<li>🌈 Demonstrated that <a href="https://library.si.edu/exhibition/color-in-a-new-light/science">white light</a> is made of a spectrum of colors.</li>
+<li>📐 Developed <a href="https://dats.columbian.gwu.edu/math/calculus/calculus.html">calculus</a> (independently of Leibniz).</li>
+<li>🔭 Improved the <a href="https://en.wikipedia.org/wiki/Newtonian_telescope">telescope</a> and advanced optical theory.</li>
+</ul>
+<p>He would not have been able to accomplish these things without learning from the work of others — <strong>Kepler, Galileo, Descartes</strong>, and more — whose insights formed the foundation for his own breakthroughs.</p>
+<div class="grid">
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/kepler.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Kepler - Discovered the laws of planetary motion, showing that planets move in ellipses and not circles.</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/galileo.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Galileo - Studied motion and inertia, laying the groundwork for Newton’s first two laws of motion.</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/descartes.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Descartes - Developed analytic geometry and early ideas of mechanistic physics, helping bridge mathematics and physical laws.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Just like in off-policy learning, Newton didn’t need to replicate others’ paths <span class="math inline">\(\pi_{\text{Kepler, Galileo, Descartes}}\)</span> exactly. Instead, he learned from their trajectories <span class="math inline">\(b_{\text{Kepler, Galileo, Descartes}}\)</span> to improve his own <span class="math inline">\(\pi_{Newton}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><strong>Importance Sampling</strong> is a general technique for estimating expected values under one distribution given samples from another.</p>
 <p>We apply importance sampling to off-policy learning by weighting returns according to the relative probability of their trajectories occurring under the target and behavior policies, called the importance-sampling ratio.</p>
 <p><span class="math display">\[
 \text{Pr}\{A_{t}, S_{t+1}, A_{t+1}, \dots , S_{T} \mid S_{t}, A_{t:T-1} \sim \pi \} = \prod_{k=t}^{T-1} \frac{\pi(A_{k} \mid S_{k})}{b(A_{k} \mid S_{k})}
 \]</span></p>
-</section>
-<section id="incremental-implementation" class="level2">
-<h2 class="anchored" data-anchor-id="incremental-implementation">Incremental Implementation</h2>
 <p>Similarly to the Multi-Armed Bandits chapter, action values <span class="math inline">\(q_{\pi}(s,a)\)</span> can be calculated incrementally.</p>
 <p>In order to do so, we must first begin by calculating a cumulative sum of the weights:</p>
 <p><span class="math display">\[
@@ -735,23 +800,16 @@ Q(S_{t},A_{t}) = Q(S_{t},A_{t}) + \frac{W}{C(S_{t},A_{t})}[G - Q(S_{t},A_{t})]
 <p><span class="math display">\[
 W = W \frac{\pi(A_{k} \mid S_{k})}{b(A_{k} \mid S_{k})}
 \]</span></p>
-</section>
-<section id="off-policy-control" class="level2">
-<h2 class="anchored" data-anchor-id="off-policy-control">Off-Policy Control</h2>
 <p>We can assure Off-Policy methods to achieve control by choosing <span class="math inline">\(b\)</span> to be <span class="math inline">\(\epsilon\)</span>-soft.</p>
 <p>The target policy <span class="math inline">\(\pi\)</span> converges to optimal at all encountered states even though actions are selected according to a different soft policy <span class="math inline">\(b\)</span>, which may change between or even within episodes.</p>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
 <div class="center" style="text-align:center;">
 <p><img src="images/5-4.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
-<div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

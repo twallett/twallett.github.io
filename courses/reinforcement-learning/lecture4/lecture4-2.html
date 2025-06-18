@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4.2 Markov Decision Process (MDPs)</title>
+<title>4.2 Markov Decision Process (MDP)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-088eb942fb0ffee15331ff839a6f78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -114,7 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">4.2 Markov Decision Process (MDPs)</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">4.2 Markov Decision Process (MDPs)</span></a>
+  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -654,8 +654,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#markov-decision-process" id="toc-markov-decision-process" class="nav-link" data-scroll-target="#markov-decision-process">Markov Decision Process</a></li>
+  <li><a href="#markov-decision-process" id="toc-markov-decision-process" class="nav-link active" data-scroll-target="#markov-decision-process">Markov Decision Process</a></li>
   <li><a href="#sequential-interaction" id="toc-sequential-interaction" class="nav-link" data-scroll-target="#sequential-interaction">Sequential Interaction</a></li>
   <li><a href="#policy" id="toc-policy" class="nav-link" data-scroll-target="#policy">Policy</a></li>
   <li><a href="#dynamic-function" id="toc-dynamic-function" class="nav-link" data-scroll-target="#dynamic-function">Dynamic Function</a></li>
@@ -681,7 +680,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">4.2 Markov Decision Process (MDPs)</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></h1>
 </div>
 
 
@@ -704,12 +703,10 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>A framework for decision-making in fully observable environments where agents control their actions. 🎯</p>
+<p>What if every move came with choices, chances, and consequences? 🧭</p>
 </div>
 </div>
 </div>
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
 <p>Markov Chain’s are a framework for an associative environment.</p>
 <p>A Markov Chain is a model for transitions that are <em>not controlled</em> between <em>fully observable states</em>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -768,7 +765,6 @@ Solution
 </div>
 </div>
 </div>
-</section>
 <section id="markov-decision-process" class="level2">
 <h2 class="anchored" data-anchor-id="markov-decision-process">Markov Decision Process</h2>
 <p>A <strong>Markov Decision Process</strong> (MDP) is a model for transitions that are <em>controlled</em> between <em>fully observable states</em>.</p>

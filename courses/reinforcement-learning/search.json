@@ -699,18 +699,7 @@
     "href": "lecture3/lecture3-1.html",
     "title": "3.1 Multi-Armed Bandit Framework",
     "section": "",
-    "text": "Motivation\nWe saw from Lecture 1 that Reinforcement Learning is about sequential decision-making:",
-    "crumbs": [
-      "Lecture 3: Multi-Armed Bandits",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>3.1 Multi-Armed Bandit Framework</span>"
-    ]
-  },
-  {
-    "objectID": "lecture3/lecture3-1.html#motivation",
-    "href": "lecture3/lecture3-1.html#motivation",
-    "title": "3.1 Multi-Armed Bandit Framework",
-    "section": "",
-    "text": "Markov Decision Process\n\n\n\n\n\\(\\pi: S_{0}, A_{0}, R_{1}, S_{1}, A_{1}, R_{2}, ... , S_{T-1}, A_{T-1}, R_{T}\\)\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we learn to act optimally without the added complexity of changing states?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nA nonassociative environment is a setting that involves learning how to act in one state. A common example of a nonassociative environment is the Multi-Armed Bandit problem.\n\n\\(\\pi: S, A_{0}, R_{1}, S, A_{1}, R_{2}, ... , S, A_{T-1}, R_{T}\\)\n\nThis simplified setting helps us develop foundational ideas in Reinforcement Learning — like action selection and reward maximization — without worrying about state transitions.",
+    "text": "Bandit\nWe saw from Lecture 1 that Reinforcement Learning is about sequential decision-making:\nA bandit is a slot machine.\nIt is used as an analogy to represent the action an agent can make in one state.\nEach action selection is like a play of one of the slot machine’s levers, and the rewards are the payoffs for hitting the jackpot, according to its underlying probability distribution.",
     "crumbs": [
       "Lecture 3: Multi-Armed Bandits",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>3.1 Multi-Armed Bandit Framework</span>"
@@ -720,8 +709,8 @@
     "objectID": "lecture3/lecture3-1.html#bandit",
     "href": "lecture3/lecture3-1.html#bandit",
     "title": "3.1 Multi-Armed Bandit Framework",
-    "section": "Bandit",
-    "text": "Bandit\nA bandit is a slot machine.\nIt is used as an analogy to represent the action an agent can make in one state.\nEach action selection is like a play of one of the slot machine’s levers, and the rewards are the payoffs for hitting the jackpot, according to its underlying probability distribution.\n\n\n\n\n\n\\(\\Huge{\\to}\\)\nRewards",
+    "section": "",
+    "text": "\\(\\Huge{\\to}\\)\nRewards",
     "crumbs": [
       "Lecture 3: Multi-Armed Bandits",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>3.1 Multi-Armed Bandit Framework</span>"
@@ -765,18 +754,7 @@
     "href": "lecture3/lecture3-2.html",
     "title": "3.2 ε-Greedy",
     "section": "",
-    "text": "Motivation\nWe are exploring when we randomly select an action.\nWe are exploiting, or acting greedy, when an action is selected based on its expected value.",
-    "crumbs": [
-      "Lecture 3: Multi-Armed Bandits",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>3.2 &epsilon;-Greedy</span>"
-    ]
-  },
-  {
-    "objectID": "lecture3/lecture3-2.html#motivation",
-    "href": "lecture3/lecture3-2.html#motivation",
-    "title": "3.2 ε-Greedy",
-    "section": "",
-    "text": "Problem\n\n\n\nExploring all of the time does not permit you to exploit your knowledge of expected values.\nExploiting all of the time does not permit you to explore all of the options.\nHow can we select actions with the highest expected value while leveraging exploration?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you are in a Multi-Armed Bandit scenario:\n\n\\(S\\) - You are hungry and want to treat yourself to a restaurant meal.\n\\(A_{1,\\dots,k}\\) - You can choose from \\(k\\) different restaurants in your area.\n\n\\(R\\) - After eating, you rate your experience — maybe based on taste, service, or price satisfaction.\n\nIn my case:\n\n\n\n\n\nReally like Arepas\n\n\n\n\n\n\n\nEnjoy Chipotle once in a while\n\n\n\n\n\n\n\nNever tried Falafel Bowls before\n\n\n\n\nHow can I select a restaurant meal that I would enjoy while being open-minded to the idea of Falafel Bowls?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nEpsilon (\\(\\epsilon\\)) is a fixed proportion that decides whether we explore or exploit our actions.\n\\[\n  A_t \\gets\n  \\begin{cases}\n      \\text{a random action with probability } \\epsilon \\\\\n      \\arg\\max_a Q(a) \\text{ with probability } 1 - \\epsilon\n  \\end{cases}\n\\]\nHence, Epsilon Greedy is an algorithm that allows us to balance our decision-making in this simple manner.\nIn our Real Life Example, at first, you try different restaurants (exploration) to see what’s good. Over time, you start favoring the ones with better rewards (exploitation). But occasionally, you still try a new one — just in case it’s better than your current favorite.",
+    "text": "Can you stay curious without straying too far from what works? 🎯\n\n\n\nWe are exploring when we randomly select an action.\nWe are exploiting, or acting greedy, when an action is selected based on its expected value.\n\n\n\n\n\n\nProblem\n\n\n\nExploring all of the time does not permit you to exploit your knowledge of expected values.\nExploiting all of the time does not permit you to explore all of the options.\nHow can we select actions with the highest expected value while leveraging exploration?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you are in a Multi-Armed Bandit scenario:\n\n\\(S\\) - You are hungry and want to treat yourself to a restaurant meal.\n\\(A_{1,\\dots,k}\\) - You can choose from \\(k\\) different restaurants in your area.\n\n\\(R\\) - After eating, you rate your experience — maybe based on taste, service, or price satisfaction.\n\nIn my case:\n\n\n\n\n\nReally like Arepas\n\n\n\n\n\n\n\nEnjoy Chipotle once in a while\n\n\n\n\n\n\n\nNever tried Falafel Bowls before\n\n\n\n\nHow can I select a restaurant meal that I would enjoy while being open-minded to the idea of Falafel Bowls?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nEpsilon (\\(\\epsilon\\)) is a fixed proportion that decides whether we explore or exploit our actions.\n\\[\n  A_t \\gets\n  \\begin{cases}\n      \\text{a random action with probability } \\epsilon \\\\\n      \\arg\\max_a Q(a) \\text{ with probability } 1 - \\epsilon\n  \\end{cases}\n\\]\nHence, Epsilon Greedy is an algorithm that allows us to balance our decision-making in this simple manner.\nIn our Real Life Example, at first, you try different restaurants (exploration) to see what’s good. Over time, you start favoring the ones with better rewards (exploitation). But occasionally, you still try a new one — just in case it’s better than your current favorite.",
     "crumbs": [
       "Lecture 3: Multi-Armed Bandits",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>3.2 &epsilon;-Greedy</span>"
@@ -787,18 +765,7 @@
     "href": "lecture3/lecture3-3.html",
     "title": "3.3 Upper Confidence Boundary (UCB)",
     "section": "",
-    "text": "Motivation\nOne risk that we incur with \\(\\epsilon\\)-greedy is that it randomly explores — which might lead to suboptimal or redundant choices.",
-    "crumbs": [
-      "Lecture 3: Multi-Armed Bandits",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>3.3 Upper Confidence Boundary (UCB)</span>"
-    ]
-  },
-  {
-    "objectID": "lecture3/lecture3-3.html#motivation",
-    "href": "lecture3/lecture3-3.html#motivation",
-    "title": "3.3 Upper Confidence Boundary (UCB)",
-    "section": "",
-    "text": "Problem\n\n\n\nIs there a way that we can explore more intelligently?\nHint: Think about Lecture 2\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you are in a Multi-Armed Bandit scenario:\n\n\\(S\\) – It’s a beautiful day, and you’re deciding where to go for a run.\n\n\\(A_{1,\\dots,k}\\) – You can choose from \\(k\\) different running trails nearby.\n\n\\(R\\) – After each run, you mentally rate the experience - scenery, terrain or how energized you felt.\n\nIn my case:\n\n\n\n\n\nMy go-to loop\n\n\n\n\n\n\n\nOnly ran this trail once\n\n\n\n\n\n\n\nNever tried this one\n\n\n\n\nHow can I pick a trail that has the best combination of enjoyment and uncertainty — so I explore only when it is smart to?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nUpper Confidence Boundaries (UCB) allow us to select among the non-greedy actions according to their potential for actually being optimal.\n\\[\nA_t \\gets \\arg\\max_a \\left[ Q(a) + \\sqrt{\\frac{2 \\ln(t)}{N(a)}} \\right]\n\\]\n\nEach time \\(a\\) is selected, the uncertainty is presumably reduced \\(N(a)\\) increments, and as it appears in the denominator, the uncertainty term decreases.\n\\[\nVAR \\downarrow = \\sqrt{\\frac{2 \\ln(t)}{N(a)\\uparrow}}\n\\]\nEach time an action other than \\(a\\) is selected, \\(t\\) increases but \\(N(a)\\) does not; because \\(t\\) appears in the numerator, the uncertainty estimate increases.\n\\[\nVAR \\uparrow = \\sqrt{\\frac{2 \\ln(t) \\uparrow}{N(a)}}\n\\]\nIn our Real Life Example UCB says “Don’t just pick randomly. Prefer trails that are either great or still uncertain — they might surprise you.”\n\n\n\n\n\n\n\n\n\n\\(\\sqrt{\\frac{2 \\ln(t)}{N(a)}}\\) is the measure of variance of the action \\(a\\). The natural logarithm increases get smaller over time but are unbounded, so all actions will be selected.",
+    "text": "What if you trusted things that haven’t let you down — but gave others a fair shot too? 🔍\n\n\n\nOne risk that we incur with \\(\\epsilon\\)-greedy is that it randomly explores — which might lead to suboptimal or redundant choices.\n\n\n\n\n\n\nProblem\n\n\n\nIs there a way that we can explore more intelligently?\nHint: Think about Lecture 2\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you are in a Multi-Armed Bandit scenario:\n\n\\(S\\) – It’s a beautiful day, and you’re deciding where to go for a run.\n\n\\(A_{1,\\dots,k}\\) – You can choose from \\(k\\) different running trails nearby.\n\n\\(R\\) – After each run, you mentally rate the experience - scenery, terrain or how energized you felt.\n\nIn my case:\n\n\n\n\n\nMy go-to loop\n\n\n\n\n\n\n\nOnly ran this trail once\n\n\n\n\n\n\n\nNever tried this one\n\n\n\n\nHow can I pick a trail that has the best combination of enjoyment and uncertainty — so I explore only when it is smart to?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nUpper Confidence Boundaries (UCB) allow us to select among the non-greedy actions according to their potential for actually being optimal.\n\\[\nA_t \\gets \\arg\\max_a \\left[ Q(a) + \\sqrt{\\frac{2 \\ln(t)}{N(a)}} \\right]\n\\]\n\nEach time \\(a\\) is selected, the uncertainty is presumably reduced \\(N(a)\\) increments, and as it appears in the denominator, the uncertainty term decreases.\n\\[\nVAR \\downarrow = \\sqrt{\\frac{2 \\ln(t)}{N(a)\\uparrow}}\n\\]\nEach time an action other than \\(a\\) is selected, \\(t\\) increases but \\(N(a)\\) does not; because \\(t\\) appears in the numerator, the uncertainty estimate increases.\n\\[\nVAR \\uparrow = \\sqrt{\\frac{2 \\ln(t) \\uparrow}{N(a)}}\n\\]\nIn our Real Life Example UCB says “Don’t just pick randomly. Prefer trails that are either great or still uncertain — they might surprise you.”\n\n\n\n\n\n\n\n\n\n\n\\(\\sqrt{\\frac{2 \\ln(t)}{N(a)}}\\) is the measure of variance of the action \\(a\\). The natural logarithm increases get smaller over time but are unbounded, so all actions will be selected.",
     "crumbs": [
       "Lecture 3: Multi-Armed Bandits",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>3.3 Upper Confidence Boundary (UCB)</span>"
@@ -809,18 +776,7 @@
     "href": "lecture3/lecture3-4.html",
     "title": "3.4 Thompson Sampling",
     "section": "",
-    "text": "Motivation\nWe want to explore options proportionally to how likely they are to be optimal, not just randomly or based on confidence bounds.",
-    "crumbs": [
-      "Lecture 3: Multi-Armed Bandits",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>3.4 Thompson Sampling</span>"
-    ]
-  },
-  {
-    "objectID": "lecture3/lecture3-4.html#motivation",
-    "href": "lecture3/lecture3-4.html#motivation",
-    "title": "3.4 Thompson Sampling",
-    "section": "",
-    "text": "Problem\n\n\n\nIs there a way that we can select actions based out of a distribution of our beliefs?\nHint: Think about Lecture 2\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you are in a Multi-Armed Bandit scenario:\n\n\\(S\\) – It’s Friday night, and you’re deciding what show or YouTube channel to watch.\n\n\\(A_{1,\\dots,k}\\) – You can choose from \\(k\\) different shows or creators.\n\n\\(R\\) – After each episode or video, you mentally rate how entertaining or satisfying it was.\n\nIn my case:\n\n\n\n\n\nMy comfort show\n\n\n\n\n\n\n\nWatched a couple episodes\n\n\n\n\n\n\n\nNever saw this one\n\n\n\n\nHow can I select a show based on my prior beliefs?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThompson sampling is an algorithm that leverages the beta distribution for its action value method and action selections.\nInitialize beta distributed with parameters:\n\\[\n\\alpha(a) = (\\alpha_{1}, . . . , \\alpha_{k}) = 1\n\\] \\[\n\\beta(a) = (\\beta_{1}, . . . , \\beta_{k}) = 1\n\\]\nNow for each action \\(a\\), the prior probability density function of our action value method \\(Q(a)\\) is:\n\\[\n  Q(a) = \\frac{\\Gamma(\\alpha(a) + \\beta(a))}{\\Gamma(\\alpha(a)) \\ \\Gamma(\\beta(a))} a^{\\alpha(a)-1} (1 a)^{\\beta(a)-1}\n\\]\nThe agent updates its prior belief using the following action value method:\n\\[\n\\alpha(A_{t}) \\gets \\alpha(A_{t}) + R_{t}\n\\] \\[\n\\beta(A_{t}) \\gets \\beta(A_{t}) + 1 R_{t}\n\\]\nNotice that for those actions selected \\(A_t\\), we increase its corresponding \\(\\alpha\\) parameter (\\(R_t = 1\\)) and maintain its \\(\\beta\\) parameter the same as before (\\(1 - R_t = 1 - 1 = 0\\)).\nThis update allows the algorithm to draw accurate samples and strike a balance between exploring and exploiting.",
+    "text": "What if you made decisions by imagining how the world might be — over and over? 🧠\n\n\n\nWe want to explore options proportionally to how likely they are to be optimal, not just randomly or based on confidence bounds.\n\n\n\n\n\n\nProblem\n\n\n\nIs there a way that we can select actions based out of a distribution of our beliefs?\nHint: Think about Lecture 2\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you are in a Multi-Armed Bandit scenario:\n\n\\(S\\) – It’s Friday night, and you’re deciding what show or YouTube channel to watch.\n\n\\(A_{1,\\dots,k}\\) – You can choose from \\(k\\) different shows or creators.\n\n\\(R\\) – After each episode or video, you mentally rate how entertaining or satisfying it was.\n\nIn my case:\n\n\n\n\n\nMy comfort show\n\n\n\n\n\n\n\nWatched a couple episodes\n\n\n\n\n\n\n\nNever saw this one\n\n\n\n\nHow can I select a show based on my prior beliefs?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThompson sampling is an algorithm that leverages the beta distribution for its action value method and action selections.\nInitialize beta distributed with parameters:\n\\[\n\\alpha(a) = (\\alpha_{1}, . . . , \\alpha_{k}) = 1\n\\] \\[\n\\beta(a) = (\\beta_{1}, . . . , \\beta_{k}) = 1\n\\]\nNow for each action \\(a\\), the prior probability density function of our action value method \\(Q(a)\\) is:\n\\[\n  Q(a) = \\frac{\\Gamma(\\alpha(a) + \\beta(a))}{\\Gamma(\\alpha(a)) \\ \\Gamma(\\beta(a))} a^{\\alpha(a)-1} (1 a)^{\\beta(a)-1}\n\\]\nThe agent updates its prior belief using the following action value method:\n\\[\n\\alpha(A_{t}) \\gets \\alpha(A_{t}) + R_{t}\n\\] \\[\n\\beta(A_{t}) \\gets \\beta(A_{t}) + 1 R_{t}\n\\]\nNotice that for those actions selected \\(A_t\\), we increase its corresponding \\(\\alpha\\) parameter (\\(R_t = 1\\)) and maintain its \\(\\beta\\) parameter the same as before (\\(1 - R_t = 1 - 1 = 0\\)).\nThis update allows the algorithm to draw accurate samples and strike a balance between exploring and exploiting.",
     "crumbs": [
       "Lecture 3: Multi-Armed Bandits",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>3.4 Thompson Sampling</span>"
@@ -842,18 +798,7 @@
     "href": "lecture4/lecture4-1.html",
     "title": "4.1 Markov Chain",
     "section": "",
-    "text": "Motivation\nWe saw from Lecture 3 how to make optimal decisions in non-associative environments:",
-    "crumbs": [
-      "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>4.1 Markov Chain</span>"
-    ]
-  },
-  {
-    "objectID": "lecture4/lecture4-1.html#motivation",
-    "href": "lecture4/lecture4-1.html#motivation",
-    "title": "4.1 Markov Chain",
-    "section": "",
-    "text": "\\(\\pi: S, A_{0}, R_{1}, S, A_{1}, R_{2}, ... , S, A_{T-1}, R_{T}\\)\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we learn to act optimally with changing states?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nA associative environment is a setting that involves learning how to act in multiple states.\nThe best frameworks to generalize associative environments are Markov models.\nAll Markov models assume the Markov Property, meaning that future states depend only on current states and not previous states.\n\\[\nP(s’ | s, s_{t-1}, s_{t-2}, \\dots) = P(s’ | s)\n\\]\nMarkov models differ based on whether every sequential state is observable and whether the system is adjusted based on observations:\n\n\n\n\n\n\n\n\n\nStates are fully observable\nStates are partially observable\n\n\n\n\nDecision-making is not controlled\n🔶Markov Chain (MC)🔶\nHidden Markov Model (HMM)\n\n\nDecision-making is controlled\nMarkov Decision Process (MDP)\nPartially Observable Markov Decision Process (POMDP)\n\n\n\nWhile Markov Chains model state transitions, they provide the foundation for defining value functions once rewards and actions are introduced.",
+    "text": "Markov Chain\nWe saw from Lecture 3 how to make optimal decisions in non-associative environments:\nA Markov Chain is a model for transitions that are not controlled between fully observable states.\nA State is a node.\nA State Transition is one outward-going arrow.\nIn this framework, we are interested in how state probabilities evolve over time and the corresponding values of each state.",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>4.1 Markov Chain</span>"
@@ -863,8 +808,8 @@
     "objectID": "lecture4/lecture4-1.html#markov-chain",
     "href": "lecture4/lecture4-1.html#markov-chain",
     "title": "4.1 Markov Chain",
-    "section": "Markov Chain",
-    "text": "Markov Chain\nA Markov Chain is a model for transitions that are not controlled between fully observable states.\nA State is a node.\nA State Transition is one outward-going arrow.\n\n\nState transitions are conditional probabilities of going to the next state given the current state.\n\n\n\nIn this framework, we are interested in how state probabilities evolve over time and the corresponding values of each state.\n\nProbability Matrix\nSuppose a frog jumps from one lily pad to another with state transition probabilities:\n\n\n\n\\[\n\\mathbf{P} = \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\n\n\nRewards Matrix\nSuppose the frog has associated rewards:\n\n\n\n\\[\n\\mathbf{R} = \\begin{bmatrix} 6 & 1 \\\\ 1 & -2 \\end{bmatrix}\n\\]\n\n\nValue Function\nWe want to calculate the expected value of moving from state \\(i\\) to state \\(j\\) for all situations \\(s \\in \\{1,2,...,S\\}\\):\n\\[\n\\mathbf{v}(t) = \\mathbf{q} + \\mathbf{v}(t-1) \\mathbf{P}\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\begin{align*}\nv_{j}(t) & = \\sum_{i=1}^{S} p_{i,j} \\ [r_{i,j}+v_{i}(t-1)] \\\\\n& = \\sum_{i=1}^{S} p_{i,j} \\ r_{i,j} + \\sum_{i=1}^{S} p_{i,j} \\ v_{i}(t-1) \\\\\n& = \\textbf{q} + \\sum_{i=1}^{S} p_{i,j}\\ v_{i}(t-1)\n\\end{align*}\n\\]\n\n\n\nFirst, we need to calculate \\(\\textbf{q}\\), the expected reward in the next transition out of state \\(i\\):\n\\[\n\\textbf{q} =\n\\begin{bmatrix}\n    2 & -0.2\n\\end{bmatrix}\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\mathbf{q} = \\sum_{i=1}^{S} p_{i,j} r_{i,j}\n\\]\n\\[\nq_{1} = p_{1,1} \\ r_{1,1} + r_{2,1} \\ p_{2,1}\n\\]\n\\[\nq_{2} = p_{1,2} \\ r_{1,2} + r_{2,2} \\ p_{2,2}\n\\]\n\n\n\n\\[\n\\begin{bmatrix} v_{1}(t) \\ v_{2}(t) \\end{bmatrix} = \\begin{bmatrix} 2 \\ -0.2 \\end{bmatrix} + \\begin{bmatrix} v_{1}(t-1) \\ v_{2}(t-1) \\end{bmatrix} \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\nAt \\(t=100\\): \\[\n\\mathbf{v}(100) = \\begin{bmatrix} 77.88 & 76.59 \\end{bmatrix}\n\\]\nIn other words, the frogs expected value at \\(t = 100\\) is that lilly pad \\(1\\) will be greater (with \\(77.88\\) expected flies) than that of lilly pad \\(2\\) (with \\(76.59\\) expected flies)\n\n\n\n\n\nDiscounting Factor\nThe \\(\\gamma\\) allows us to place a higher value on the present rewards, rather than future uncertain rewards.\n\\[\n\\mathbf{v}(t) = \\mathbf{q} + \\gamma \\mathbf{v}(t-1) \\mathbf{P}\n\\]\n\\[\n\\begin{bmatrix} v_{1}(t) \\ v_{2}(t) \\end{bmatrix} = \\begin{bmatrix} 2 \\ -0.2 \\end{bmatrix} + \\gamma \\begin{bmatrix} v_{1}(t-1) \\ v_{2}(t-1) \\end{bmatrix} \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\nAt \\(\\gamma=0.9\\) and \\(t=100\\): \\[\n\\mathbf{v}(100) = \\begin{bmatrix} 8.47 & 7.15 \\end{bmatrix}\n\\]\n\n\n\n\n\nPython Code\nimport numpy as np\n\nGAMMA = 0.9\nP = np.array([[0.2, 0.6], [0.8, 0.4]])\nR = np.array([[6, 1], [1, -2]])\nq = np.sum(P * R, axis=1)\nv_initial = np.array([0, 0])\n\ndef value_function(v, P, q, t=100):\n    for _ in range(t):\n        v = q + GAMMA * np.dot(v, P)\n    return v\n\nv_result = value_function(v_initial, P, q)\nprint(v_result)",
+    "section": "",
+    "text": "State transitions are conditional probabilities of going to the next state given the current state.\n\n\n\n\n\nProbability Matrix\nSuppose a frog jumps from one lily pad to another with state transition probabilities:\n\n\n\n\\[\n\\mathbf{P} = \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\n\n\nRewards Matrix\nSuppose the frog has associated rewards:\n\n\n\n\\[\n\\mathbf{R} = \\begin{bmatrix} 6 & 1 \\\\ 1 & -2 \\end{bmatrix}\n\\]\n\n\nValue Function\nWe want to calculate the expected value of moving from state \\(i\\) to state \\(j\\) for all situations \\(s \\in \\{1,2,...,S\\}\\):\n\\[\n\\mathbf{v}(t) = \\mathbf{q} + \\mathbf{v}(t-1) \\mathbf{P}\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\begin{align*}\nv_{j}(t) & = \\sum_{i=1}^{S} p_{i,j} \\ [r_{i,j}+v_{i}(t-1)] \\\\\n& = \\sum_{i=1}^{S} p_{i,j} \\ r_{i,j} + \\sum_{i=1}^{S} p_{i,j} \\ v_{i}(t-1) \\\\\n& = \\textbf{q} + \\sum_{i=1}^{S} p_{i,j}\\ v_{i}(t-1)\n\\end{align*}\n\\]\n\n\n\nFirst, we need to calculate \\(\\textbf{q}\\), the expected reward in the next transition out of state \\(i\\):\n\\[\n\\textbf{q} =\n\\begin{bmatrix}\n    2 & -0.2\n\\end{bmatrix}\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\mathbf{q} = \\sum_{i=1}^{S} p_{i,j} r_{i,j}\n\\]\n\\[\nq_{1} = p_{1,1} \\ r_{1,1} + r_{2,1} \\ p_{2,1}\n\\]\n\\[\nq_{2} = p_{1,2} \\ r_{1,2} + r_{2,2} \\ p_{2,2}\n\\]\n\n\n\n\\[\n\\begin{bmatrix} v_{1}(t) \\ v_{2}(t) \\end{bmatrix} = \\begin{bmatrix} 2 \\ -0.2 \\end{bmatrix} + \\begin{bmatrix} v_{1}(t-1) \\ v_{2}(t-1) \\end{bmatrix} \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\nAt \\(t=100\\): \\[\n\\mathbf{v}(100) = \\begin{bmatrix} 77.88 & 76.59 \\end{bmatrix}\n\\]\nIn other words, the frogs expected value at \\(t = 100\\) is that lilly pad \\(1\\) will be greater (with \\(77.88\\) expected flies) than that of lilly pad \\(2\\) (with \\(76.59\\) expected flies)\n\n\n\n\n\nDiscounting Factor\nThe \\(\\gamma\\) allows us to place a higher value on the present rewards, rather than future uncertain rewards.\n\\[\n\\mathbf{v}(t) = \\mathbf{q} + \\gamma \\mathbf{v}(t-1) \\mathbf{P}\n\\]\n\\[\n\\begin{bmatrix} v_{1}(t) \\ v_{2}(t) \\end{bmatrix} = \\begin{bmatrix} 2 \\ -0.2 \\end{bmatrix} + \\gamma \\begin{bmatrix} v_{1}(t-1) \\ v_{2}(t-1) \\end{bmatrix} \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\nAt \\(\\gamma=0.9\\) and \\(t=100\\): \\[\n\\mathbf{v}(100) = \\begin{bmatrix} 8.47 & 7.15 \\end{bmatrix}\n\\]\n\n\n\n\n\nPython Code\nimport numpy as np\n\nGAMMA = 0.9\nP = np.array([[0.2, 0.6], [0.8, 0.4]])\nR = np.array([[6, 1], [1, -2]])\nq = np.sum(P * R, axis=1)\nv_initial = np.array([0, 0])\n\ndef value_function(v, P, q, t=100):\n    for _ in range(t):\n        v = q + GAMMA * np.dot(v, P)\n    return v\n\nv_result = value_function(v_initial, P, q)\nprint(v_result)",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
       "<span class='chapter-number'>20</span>  <span class='chapter-title'>4.1 Markov Chain</span>"
@@ -873,111 +818,100 @@
   {
     "objectID": "lecture4/lecture4-2.html",
     "href": "lecture4/lecture4-2.html",
-    "title": "4.2 Markov Decision Process (MDPs)",
+    "title": "4.2 Markov Decision Process (MDP)",
     "section": "",
-    "text": "Motivation\nMarkov Chain’s are a framework for an associative environment.\nA Markov Chain is a model for transitions that are not controlled between fully observable states.",
+    "text": "Markov Decision Process\nMarkov Chain’s are a framework for an associative environment.\nA Markov Chain is a model for transitions that are not controlled between fully observable states.\nA Markov Decision Process (MDP) is a model for transitions that are controlled between fully observable states.\nThe Agent is the learner and decision-maker.\nThe Environment is everything external to the agent.\nFrom an Initial State, the agent interacts with the environment through its Actions.\nThese actions continuously give rise to different States and Rewards.",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
-    ]
-  },
-  {
-    "objectID": "lecture4/lecture4-2.html#motivation",
-    "href": "lecture4/lecture4-2.html#motivation",
-    "title": "4.2 Markov Decision Process (MDPs)",
-    "section": "",
-    "text": "Problem\n\n\n\nIdeally, we would like to have an Agent that can control state transitions in any associative environment.\nHow can we learn to act optimally with changing states but controlling state transitions between fully observable states?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe need to model our environments as a Markov Decision Process (MDP).\n\n\n\n\n\n\n\n\n\nStates are fully observable\nStates are partially observable\n\n\n\n\nDecision-making is not controlled\nMarkov Chain (MC)\nHidden Markov Model (HMM)\n\n\nDecision-making is controlled\n🔶Markov Decision Process (MDP)🔶\nPartially Observable Markov Decision Process (POMDP)",
-    "crumbs": [
-      "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDP)</span>"
     ]
   },
   {
     "objectID": "lecture4/lecture4-2.html#markov-decision-process",
     "href": "lecture4/lecture4-2.html#markov-decision-process",
-    "title": "4.2 Markov Decision Process (MDPs)",
-    "section": "Markov Decision Process",
-    "text": "Markov Decision Process\nA Markov Decision Process (MDP) is a model for transitions that are controlled between fully observable states.\nThe Agent is the learner and decision-maker.\nThe Environment is everything external to the agent.\nFrom an Initial State, the agent interacts with the environment through its Actions.\nThese actions continuously give rise to different States and Rewards.\n\n\n\n\nMarkov Decision Process\n\n\n\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\n\nActions are equally likely to occur. \nActions that take the agent out of the environment receive a reward of \\(-1\\), actions that take the agent to the terminal state (shaded in gray) receive a reward of \\(+1\\), and all other actions receive a reward of \\(0\\). \nOur objective is to calculate the shortest path from any state to the optimal state.",
+    "title": "4.2 Markov Decision Process (MDP)",
+    "section": "",
+    "text": "Markov Decision Process\n\n\n\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\n\nActions are equally likely to occur. \nActions that take the agent out of the environment receive a reward of \\(-1\\), actions that take the agent to the terminal state (shaded in gray) receive a reward of \\(+1\\), and all other actions receive a reward of \\(0\\). \nOur objective is to calculate the shortest path from any state to the optimal state.",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDP)</span>"
     ]
   },
   {
     "objectID": "lecture4/lecture4-2.html#sequential-interaction",
     "href": "lecture4/lecture4-2.html#sequential-interaction",
-    "title": "4.2 Markov Decision Process (MDPs)",
+    "title": "4.2 Markov Decision Process (MDP)",
     "section": "Sequential Interaction",
     "text": "Sequential Interaction\nFor a finite discrete number of time steps \\(t = 0, 1, 2, 3...,T\\) (where \\(T\\) is the terminal time step marking the end of an episode) the sequential interaction is:\n\nThe agent receives an interpretation from the state \\(s_t \\in S\\).\nThe agent makes an action \\(a_t \\in A(s_t)\\) based on the situation.\nThe agent receives a reward \\(r_{t+1} \\in R \\subseteq \\mathbb{R}\\) from its environment and finds itself in a new state \\(s_{t+1}\\) based on the action taken.\n\nThe sequence continues in the form:\n\\[\ns_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3,...\n\\]\n\n\n\n\n\n\nExample: GridWorld\n\n\n\nSequential interaction for one episode:\n\n\n\n\n\nNotice that, for now, state transitions are deterministic. In other words, we assume a perfect model of the environment. We do not care about stochastic state transitions (this is something that we will visit in the next lectures).",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDP)</span>"
     ]
   },
   {
     "objectID": "lecture4/lecture4-2.html#policy",
     "href": "lecture4/lecture4-2.html#policy",
-    "title": "4.2 Markov Decision Process (MDPs)",
+    "title": "4.2 Markov Decision Process (MDP)",
     "section": "Policy",
     "text": "Policy\nA Policy is a mapping from states to probabilities of selecting each possible action, denoted as:\n\\[\n\\pi(a|s)\n\\]\n\n\n\n\n\n\\[\n\\sum_{a \\in A(s)} \\pi(a|s) = 1 \\quad \\text{for all } s \\in S\n\\]\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\nSince all actions are equally likely, we are said to be following a random policy:\n\\[\n\\pi(a_0|s_0) = \\frac{1}{4}\n\\]",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDP)</span>"
     ]
   },
   {
     "objectID": "lecture4/lecture4-2.html#dynamic-function",
     "href": "lecture4/lecture4-2.html#dynamic-function",
-    "title": "4.2 Markov Decision Process (MDPs)",
+    "title": "4.2 Markov Decision Process (MDP)",
     "section": "Dynamic Function",
     "text": "Dynamic Function\nThe dynamic function is a mapping of the state transition probabilities of the MDP for each possible reward:\n\\[\np(s^{'}, r | s, a)\n\\]\n\n\n\n\n\nAs mentioned before, the dynamics of GridWorld are deterministic leading to the same new state given each state and action:\n\\[\n\\sum_{s^{'} \\in S}\\sum_{r \\in R} p(s^{'}, r| s, a) = 1 \\quad \\text{for all } s \\in S \\text{ and } a \\in A(s)\n\\]\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\nAs mentioned before, the dynamics of GridWorld are deterministic, leading to the same new state given each state and action:\n\\[\np(s_{1}, r_{1}| s_0, a_{0}) = 1\n\\]",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDP)</span>"
     ]
   },
   {
     "objectID": "lecture4/lecture4-2.html#goal",
     "href": "lecture4/lecture4-2.html#goal",
-    "title": "4.2 Markov Decision Process (MDPs)",
+    "title": "4.2 Markov Decision Process (MDP)",
     "section": "Goal",
     "text": "Goal\nOur Goal \\(G_{t}\\) is to maximize the expected return of the discounted reward sequence:\n\\[\n\\begin{aligned}\nG_{t} = r_{t+1} + \\gamma r_{t+2} + \\ldots + \\gamma^{T-1} r_{T} \\\\\n     = r_{t+1} + \\gamma (r_{t+2} + \\ldots + \\gamma^{T-2} r_{T}) \\\\\n     = r_{t+1} + \\gamma G_{t+1}\n\\end{aligned}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nSuppose \\(\\gamma = 0.5\\) and the following sequence of rewards is received \\(r_{1} = -1\\), \\(r_{2} = 2\\), \\(r_{3} = 6\\), \\(r_{4} = 3\\), and \\(r_{5} = 2\\), with \\(T = 5\\). What are \\(G_{0}\\), \\(G_{1}\\), …, \\(G_{5}\\)?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\n\\begin{aligned}\nG_{5} &= r_{6} + r_{7} + \\dots = 0 \\\\\nG_{4} &= r_{5} + 0.5(G_{5}) = 2 \\\\\nG_{3} &= r_{4} + 0.5(G_{4}) = 4 \\\\\nG_{2} &= r_{3} + 0.5(G_{3}) = 8 \\\\\nG_{1} &= r_{2} + 0.5(G_{2}) = 6 \\\\\nG_{0} &= r_{1} + 0.5(G_{1}) = 2 \\\\\n\\end{aligned}\n\\]",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDP)</span>"
     ]
   },
   {
     "objectID": "lecture4/lecture4-2.html#value-functions",
     "href": "lecture4/lecture4-2.html#value-functions",
-    "title": "4.2 Markov Decision Process (MDPs)",
+    "title": "4.2 Markov Decision Process (MDP)",
     "section": "Value Functions",
     "text": "Value Functions\nValue Functions calculate the expected reward when starting from the state \\(s\\) and then interacting with the environment according to the policy \\(\\pi\\), denoted as:\n\\[\nv_{\\pi}(s) = \\mathbb{E_{\\pi}}[G_{t}| \\ s]\n\\]\n\n\n\n\n\n\nBellman Equation\nFor any policy \\(\\pi\\) and any state \\(s\\), the Bellman equation holds:\n\\[\n\\begin{aligned}\nv_{\\pi}(s) &= \\mathbb{E_{\\pi}}[G_{t}| \\ s] \\\\\n&= \\mathbb{E_{\\pi}}[r_{t+1} + \\gamma G_{t+1}| \\ s] \\\\\n&= \\sum_{a} \\pi(a|s) \\sum_{s^{'},r} p(s^{'},r|s,a)[r_{t+1} + \\gamma \\mathbb{E_{\\pi}}[G_{t+1}| \\ s]] \\\\\n&= \\underbrace{\\sum_{a} \\pi(a|s)}_{Policy} \\underbrace{\\sum_{s^{'}, r} p(s^{'},r|s,a)}_{Dynamic \\ Function}\\underbrace{[r_{t+1} + \\gamma v_{\\pi}(s^{'})]}_{Discounted \\ Reward \\ Sequence}\n\\end{aligned}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nFor the first episode, calculate the value of each state using the Bellman equation:\n\\[\nv_{\\pi}(s) = \\sum_{a} \\pi(a|s) \\sum_{s^{'}, r} p(s^{'},r|s,a)[r + \\gamma v_{\\pi}(s^{'})]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDP)</span>"
     ]
   },
   {
     "objectID": "lecture4/lecture4-2.html#action-value-functions",
     "href": "lecture4/lecture4-2.html#action-value-functions",
-    "title": "4.2 Markov Decision Process (MDPs)",
+    "title": "4.2 Markov Decision Process (MDP)",
     "section": "Action Value Functions",
     "text": "Action Value Functions\nAction Value Functions estimate how good it is for an agent to follow policy \\(\\pi\\) given the action taken under the previous state:\n\\[\nq_{\\pi}(s, a) = \\mathbb{E_{\\pi}}[G_{t}| \\ s, \\ a]\n\\]\n\n\n\n\n\n\nBellman Equation\nThe action value function is also expressed in terms of the Bellman equation:\n\\[\n\\begin{align}\n    q_{\\pi}(s, a) & = \\mathbb{E_{\\pi}}[G_{t}| \\ s, \\ a] \\\\\n     & = \\underbrace{\\sum_{s^{'}, r} p(s^{'},r|s,a)}_{Dynamic \\ Function} \\underbrace{[r + \\gamma v_{\\pi}(s^{'})]}_{Discounted \\ Reward \\  Sequence}\n\\end{align}\n\\]\nNotice that the policy is no longer calculated (since an action has already taken place according to the policy), and that the quality of following policy \\(\\pi\\) is calculated in \\(v_{\\pi}(s^{'})\\).",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDP)</span>"
     ]
   },
   {
     "objectID": "lecture4/lecture4-2.html#optimal-policy",
     "href": "lecture4/lecture4-2.html#optimal-policy",
-    "title": "4.2 Markov Decision Process (MDPs)",
+    "title": "4.2 Markov Decision Process (MDP)",
     "section": "Optimal Policy",
     "text": "Optimal Policy\nAn optimal policy \\(\\pi\\) is defined to be better than or equal to a policy \\(\\pi^{'}\\) if its expected return is greater than or equal to that of \\(\\pi^{'}\\) for all states:\n\\[\n\\pi \\geq \\pi^{'} \\quad \\text{I.F.F.} \\quad v_{\\pi} \\geq v_{\\pi^{'}} \\quad \\forall s \\in S\n\\]\nSince there may be more than one optimal policy, we denote all optimal policies by \\(\\pi_{*}\\).\n\nOptimal Value Function\n\\[\nv_{*}(s) = \\max_{a} \\sum_{s^{'}, r} p(s^{'},r|s,a) \\big[ r + \\gamma v_{*}(s^{'}) \\big]\n\\]\n\n\n\n\n\n\n\nOptimal Action-Value Function\n\\[\nq_{*}(s, a) = \\sum_{s^{'}, r} p(s^{'},r|s,a) \\big[ r + \\gamma v_{*}(s^{'}) \\big]\n\\]\n\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nFor the first episode, calculate the optimal value for each state using the bellman equation:\n\\[\nv_{*}(s) = \\max_{a} \\sum_{s^{'}, r} p(s^{'},r|s,a) \\big[ r + \\gamma v_{*}(s^{'}) \\big]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\nNotice the behavior of the optimal policy as \\(\\pi_{*} \\to \\infty\\)",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDPs)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>4.2 Markov Decision Process (MDP)</span>"
     ]
   },
   {
@@ -985,18 +919,7 @@
     "href": "lecture4/lecture4-3.html",
     "title": "4.3 Dynamic Programming",
     "section": "",
-    "text": "Motivation\nMarkov Decision Process (MDP) is a framework for an associative environment.\nA MDP is a model for transitions that are controlled between fully observable states.",
-    "crumbs": [
-      "Lecture 4: Dynamic Programming",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>4.3 Dynamic Programming</span>"
-    ]
-  },
-  {
-    "objectID": "lecture4/lecture4-3.html#motivation",
-    "href": "lecture4/lecture4-3.html#motivation",
-    "title": "4.3 Dynamic Programming",
-    "section": "",
-    "text": "Problem\n\n\n\nHow can we find an optimal policy \\(\\pi_{*}\\), assuming that we have perfect model of state transitions \\(P(s', r \\mid s, a)\\)?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nDynamic Programming is a collection of algorithms that can be used to compute optimal policies \\(\\pi_{*}\\).\nThese algorithms have limited utility in Reinforcement Learning due to:\n\nAssumption of a perfect model: All state transitions \\(P(s', r \\mid s, a)\\) are known in advance.\nComputational expense: Dynammic Programming typically requires full sweeps over the state space \\(\\forall s \\in S\\), which is only feasible in small, tabular environments.",
+    "text": "Policy Improvement\nMarkov Decision Process (MDP) is a framework for an associative environment.\nA MDP is a model for transitions that are controlled between fully observable states.",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>4.3 Dynamic Programming</span>"
@@ -1006,8 +929,8 @@
     "objectID": "lecture4/lecture4-3.html#policy-improvement",
     "href": "lecture4/lecture4-3.html#policy-improvement",
     "title": "4.3 Dynamic Programming",
-    "section": "Policy Improvement",
-    "text": "Policy Improvement\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nWe know how good it is to follow the current policy from \\(s\\) — that is \\(v_{\\pi}(s)\\) — but would it be better or worse to change to a new policy \\(\\pi^{'}\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nImagine your commute to work every day:\n\n\\(S_{1,...,k}\\) — The location you’re currently in (e.g., your home or a traffic junction).\n\\(A_{1,...,k}\\) — The route you choose (e.g., highway, back roads, or scenic route).\n\\(R\\) — Your reward could be getting to work quickly, stress-free, or on time.\n\nCurrently, you always take the highway (your policy \\(\\pi\\)), and on average, it takes you 35 minutes.\nBut one day, you try a different route (new policy \\(\\pi^{'}\\)) — maybe a side street — and even though it looks longer on the map, traffic is lighter and you reach work in 30 minutes.\nShould I switch my policy to this new route from now on?\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nOne way to check if it is better to switch from policy \\(\\pi\\) to \\(\\pi^{'}\\) is by checking if the following inequality holds:\n\\[\nq_{\\pi}(s, \\pi^{'}(s)) \\geq v_{\\pi}(s)\n\\]\nIf selecting \\(a\\) in \\(s\\) and thereafter following policy \\(\\pi\\) is better than just following \\(\\pi\\), there must be a better policy \\(\\pi^{'}\\).\nThe special case when this inequality is true is referred to as the policy improvement theorem.",
+    "section": "",
+    "text": "Question 🤔\n\n\n\nWe know how good it is to follow the current policy from \\(s\\) — that is \\(v_{\\pi}(s)\\) — but would it be better or worse to change to a new policy \\(\\pi^{'}\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nImagine your commute to work every day:\n\n\\(S_{1,...,k}\\) — The location you’re currently in (e.g., your home or a traffic junction).\n\\(A_{1,...,k}\\) — The route you choose (e.g., highway, back roads, or scenic route).\n\\(R\\) — Your reward could be getting to work quickly, stress-free, or on time.\n\nCurrently, you always take the highway (your policy \\(\\pi\\)), and on average, it takes you 35 minutes.\nBut one day, you try a different route (new policy \\(\\pi^{'}\\)) — maybe a side street — and even though it looks longer on the map, traffic is lighter and you reach work in 30 minutes.\nShould I switch my policy to this new route from now on?\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nOne way to check if it is better to switch from policy \\(\\pi\\) to \\(\\pi^{'}\\) is by checking if the following inequality holds:\n\\[\nq_{\\pi}(s, \\pi^{'}(s)) \\geq v_{\\pi}(s)\n\\]\nIf selecting \\(a\\) in \\(s\\) and thereafter following policy \\(\\pi\\) is better than just following \\(\\pi\\), there must be a better policy \\(\\pi^{'}\\).\nThe special case when this inequality is true is referred to as the policy improvement theorem.",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>4.3 Dynamic Programming</span>"
@@ -1051,18 +974,7 @@
     "href": "lecture5/lecture5-1.html",
     "title": "5.1 Monte Carlo Prediction",
     "section": "",
-    "text": "Monte Carlo\nMonte Carlo is a powerful learning rule for estimating value functions \\(v_{\\pi}\\) and action value functions \\(q_{\\pi}\\) in associative environments.\nThe power of Monte Carlo resides in its ability to learn the dynamics of any environment, without assuming any prior knowledge, only using experience.",
-    "crumbs": [
-      "Lecture 5: Monte Carlo",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>5.1 Monte Carlo Prediction</span>"
-    ]
-  },
-  {
-    "objectID": "lecture5/lecture5-1.html#monte-carlo-prediction",
-    "href": "lecture5/lecture5-1.html#monte-carlo-prediction",
-    "title": "5.1 Monte Carlo Prediction",
-    "section": "Monte Carlo Prediction",
-    "text": "Monte Carlo Prediction\nMonte Carlo methods are based on averaging sample returns of trajectories following a policy \\(\\pi\\).\nRecall that returns are calculated as follows:\n\\[\nG_{t} = r_{t+1} + \\gamma G_{t+1}\n\\]\nOnly on the completion of an episode are value estimates \\(v_{\\pi}(s)\\) and action value estimates \\(q_{\\pi}(s,a)\\) updated.\n\n\n\n\n\n\nPseudocode\n\n\n\n\n  \n\n\n\nEnvironment GridWorld\nAssume \\(\\gamma = 0.9\\)\nSuppose we followed the trajectory of \\(\\pi\\) for one episode:\n\n\n\n\n\nThe following illustrates a Monte Carlo update for the trajectory:",
+    "text": "What happens if we let experience speak — one episode at a time? 🎲\n\n\n\nDynamic Programming is a collection of algorithms that can be used to compute optimal policies \\(\\pi_{*}\\).\nThese algorithms have limited utility in Reinforcement Learning due to:\n\nAssumption of a perfect model: All state transitions \\(P(s', r \\mid s, a)\\) are known in advance.\nComputational expense: Dynammic Programming typically requires full sweeps over the state space \\(\\forall s \\in S\\), which is only feasible in small, tabular environments.\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we find an optimal policy \\(\\pi_{*}\\), assuming that we no prior knowledge of state transitions \\(P(s', r \\mid s, a)\\)?\n\n\n\n\n\n\n\n\nExample: GridWorld\n\n\n\nAssume \\(\\gamma = 0.9\\)\nSuppose we followed the trajectory of \\(\\pi\\) for one episode:\n\n\n\n\n\nThe following illustrates a Monte Carlo update for the trajectory:\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nMonte Carlo is a powerful learning rule for estimating value functions \\(v_{\\pi}\\) and action value functions \\(q_{\\pi}\\) in associative environments.\nThe power of Monte Carlo resides in its ability to learn the dynamics of any environment, without assuming any prior knowledge, only using experience.\nMonte Carlo methods are based on averaging sample returns of trajectories following a policy \\(\\pi\\).\nRecall that returns are calculated as follows:\n\\[\nG_{t} = r_{t+1} + \\gamma G_{t+1}\n\\]\nOnly on the completion of an episode are value estimates \\(v_{\\pi}(s)\\) and action value estimates \\(q_{\\pi}(s,a)\\) updated.",
     "crumbs": [
       "Lecture 5: Monte Carlo",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>5.1 Monte Carlo Prediction</span>"
@@ -1071,20 +983,9 @@
   {
     "objectID": "lecture5/lecture5-2.html",
     "href": "lecture5/lecture5-2.html",
-    "title": "5.2 On-Policy Monte Carlo",
+    "title": "5.2 Monte Carlo Exploring Starts",
     "section": "",
-    "text": "Monte Carlo Control\nWithout a model, state values \\(v_{\\pi}(s)\\) alone are not sufficient.\nWe must explicitly estimate the value of each action \\(q_{\\pi}(s,a)\\).\nMonte Carlo methods for this are similar to state value estimation, focusing on visits to state-action pairs \\((s,a)\\).\nThe main advantage of estimating action values \\(q_{\\pi}(s,a)\\) in Monte Carlo methods lies in Control, which refers to finding approximate optimal policies \\(\\pi_{*}\\).\nProceeding with the idea of Generalized Policy Iteration (GPI), we evaluate and improve action values \\(q_{\\pi}(s,a)\\) to find optimal policies.",
-    "crumbs": [
-      "Lecture 5: Monte Carlo",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>5.2 Exploring Starts Monte Carlo</span>"
-    ]
-  },
-  {
-    "objectID": "lecture5/lecture5-2.html#exploring-starts",
-    "href": "lecture5/lecture5-2.html#exploring-starts",
-    "title": "5.2 On-Policy Monte Carlo",
-    "section": "Exploring Starts",
-    "text": "Exploring Starts\nThe only problem of estimating action values \\(q_{\\pi}(s,a)\\) is that some state action pairs \\((s,a)\\) may never be visited during an episode.\nWhich brings us back to the same dilemma we faced in the Multi-Armed Bandit chapter, that is:\nBalancing exploration and exploitation.\nOne “quick-fix” is to start each episode from a random state \\(s\\) and take any action \\(a\\) with probability greater than \\(0\\).\nThis “quick-fix” is referred to as Exploring Starts.\n\nPseudocode",
+    "text": "Can randomness at the beginning help us see everything eventually? 🧭\n\n\n\nWithout a model, state values \\(v_{\\pi}(s)\\) alone are not sufficient. Without a model, we cannot derive action preferences from state values alone.\n\n\n\n\n\n\nRecall\n\n\n\n\\[\nv_{\\pi}(s) = \\mathbb{E_{\\pi}}[G_{t}| \\ s]\n\\]\n\\(v_{\\pi}(s)\\) - how good it is to be in a state \\(s\\).\n\n\nTo make action selections, we must explicitly estimate the value of each action \\(q_{\\pi}(s,a)\\).\n\n\n\n\n\n\nWhat we are really looking for…\n\n\n\n\\[\nq_{\\pi}(s, a) = \\mathbb{E_{\\pi}}[G_{t}| \\ s, \\ a]\n\\]\n\\(q_{\\pi}(s,a)\\) - how good it is to take action \\(a\\) given that I am in state \\(s\\).\n\n\nMonte Carlo methods are similar to state value estimation, focusing on visits to state-action pairs \\((s,a)\\).\nThis is crucial for Control, which refers to finding approximate optimal policies \\(\\approx \\pi_{*}\\).\nFollowing the idea of Generalized Policy Iteration (GPI), we evaluate and improve action values \\(q_{\\pi}(s,a)\\) to find optimal policies.\nHowever, one major issue is that of estimating action values \\(q_{\\pi}(s,a)\\) is that some state action pairs \\((s,a)\\) may never be visited during an episode.\n\n\n\n\n\n\nProblem\n\n\n\nHow can we leverage Monte Carlo’s learning rule to approximate the optimal policy \\(\\approx \\pi_{*}\\), while assuring that each state action pair \\((s,a)\\) is visited?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis brings us back to the same dilemma we faced in the Multi-Armed Bandit chapter, that is: Balancing exploration and exploitation.\nOne “quick-fix” is to start each episode from a random state \\(s\\) and take any action \\(a\\) with probability greater than \\(0\\).\nThis “quick-fix” is referred to as Exploring Starts.",
     "crumbs": [
       "Lecture 5: Monte Carlo",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>5.2 Exploring Starts Monte Carlo</span>"
@@ -1095,29 +996,7 @@
     "href": "lecture5/lecture5-3.html",
     "title": "5.3 On-Policy Monte Carlo",
     "section": "",
-    "text": "Exploration without an Initial Random State and Action\nHow can we explore without having to rely on the unrealistic assumption of an initial random state and action?\n\\[\n\\pi(a|s) &gt; 0 \\quad \\text{for all} \\quad s \\in S \\quad \\text{and} \\quad a \\in A(s)\n\\]",
-    "crumbs": [
-      "Lecture 5: Monte Carlo",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>5.3 On-Policy Monte Carlo</span>"
-    ]
-  },
-  {
-    "objectID": "lecture5/lecture5-3.html#exploration-without-an-initial-random-state-and-action",
-    "href": "lecture5/lecture5-3.html#exploration-without-an-initial-random-state-and-action",
-    "title": "5.3 On-Policy Monte Carlo",
-    "section": "",
-    "text": "Recall, \\(\\epsilon\\)-greedy methods for balancing exploration vs. exploitation in Multi-Armed Bandits.\n\n\nThese policies are usually referred to as \\(\\epsilon\\)-soft policies as they require that the probability of every action is non-zero for all states and actions pairs, that is:",
-    "crumbs": [
-      "Lecture 5: Monte Carlo",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>5.3 On-Policy Monte Carlo</span>"
-    ]
-  },
-  {
-    "objectID": "lecture5/lecture5-3.html#epsilon-greedy",
-    "href": "lecture5/lecture5-3.html#epsilon-greedy",
-    "title": "5.3 On-Policy Monte Carlo",
-    "section": "\\(\\epsilon\\)-Greedy",
-    "text": "\\(\\epsilon\\)-Greedy\nTo calculate the probabilities of selecting an action according to the \\(\\epsilon\\)-greedy policy \\(\\pi(a|s)\\), we use the following update rule:\n\\[\n\\pi(a|s) \\gets \\begin{cases}\n1 - \\epsilon + \\frac{\\epsilon}{|A(S_{t})|}  & \\text{if} \\quad a = A_{t} \\quad \\text{(exploitation)} \\\\\n\\frac{\\epsilon}{|A(S_{t})|} & \\text{if} \\quad a \\neq A_{t} \\quad \\text{(exploration)}\n\\end{cases}\n\\]\n\nPseudocode",
+    "text": "What if we only ever learn from the way we already behave? 🔁\n\n\n\nWe need a better method of establishing control, or approximating optimal policies \\(\\approx \\pi_{*}\\), in associative environments without relying on unrealistic assumptions.\n\n\n\n\n\n\nOn-Policy Learning\n\n\n\nOn-Policy learning evaluates or improves the policy \\(\\pi\\) that is used to make decisions.\n\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we leverage Monte Carlo’s learning rule to approximate the optimal policy \\(\\approx \\pi_{*}\\), without having to rely on the unrealistic assumption of an initial random state and action \\((s,a)\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\n\n\n\n\n\n\n\n\n\n“It is better to go wrong in one’s own way than to go right in someone else’s.”\n— Razumikhin, Crime and Punishment\n\nLike Razumikhin suggests, you stick with your current way of doing things — even if it’s imperfect. You learn from your own behavior — your own actions \\(a\\) taken in states \\(s\\), based on the current policy \\(\\pi\\) — and improve over time through authentic experience.\nIn other words:\n\nIs it better to build your own project and mess up than to reuse code you don’t understand?\nIs it better to follow your own dreams or live out your parents’ version of success?\nIs it better to speak your mind and be wrong, or stay silent and be “right” by default?\nIs it better to take your own path and stumble than walk a perfect path that isn’t yours?\nIs it better to try your own strategy and fail than blindly follow someone else’s instructions?\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nRecall, \\(\\epsilon\\)-greedy methods for balancing exploration and exploitation.\nThese policies are usually referred to as \\(\\epsilon\\)-soft policies as they require that the probability of every action is non-zero for all states and actions pairs, that is:\n\\[\n\\pi(a|s) &gt; 0 \\quad \\text{for all} \\quad s \\in S \\quad \\text{and} \\quad a \\in A(s)\n\\]\nTo calculate the probabilities of selecting an action according to the \\(\\epsilon\\)-greedy policy \\(\\pi(a|s)\\), we use the following update rule:\n\\[\n\\pi(a|s) \\gets \\begin{cases}\n1 - \\epsilon + \\frac{\\epsilon}{|A(S_{t})|}  & \\text{if} \\quad a = A_{t} \\quad \\text{(exploitation)} \\\\\n\\frac{\\epsilon}{|A(S_{t})|} & \\text{if} \\quad a \\neq A_{t} \\quad \\text{(exploration)}\n\\end{cases}\n\\]\nBy using \\(\\epsilon\\)-soft policies, we ensure that every action \\(a\\) has a non-zero chance of being explored — even while following our current policy \\(\\pi\\).",
     "crumbs": [
       "Lecture 5: Monte Carlo",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>5.3 On-Policy Monte Carlo</span>"
@@ -1128,29 +1007,7 @@
     "href": "lecture5/lecture5-4.html",
     "title": "5.4 Off-Policy Monte Carlo",
     "section": "",
-    "text": "Importance Sampling\nImportance Sampling is a general technique for estimating expected values under one distribution given samples from another.\nWe apply importance sampling to off-policy learning by weighting returns according to the relative probability of their trajectories occurring under the target and behavior policies, called the importance-sampling ratio.\n\\[\n\\text{Pr}\\{A_{t}, S_{t+1}, A_{t+1}, \\dots , S_{T} \\mid S_{t}, A_{t:T-1} \\sim \\pi \\} = \\prod_{k=t}^{T-1} \\frac{\\pi(A_{k} \\mid S_{k})}{b(A_{k} \\mid S_{k})}\n\\]",
-    "crumbs": [
-      "Lecture 5: Monte Carlo",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>5.4 Off-Policy Monte Carlo</span>"
-    ]
-  },
-  {
-    "objectID": "lecture5/lecture5-4.html#incremental-implementation",
-    "href": "lecture5/lecture5-4.html#incremental-implementation",
-    "title": "5.4 Off-Policy Monte Carlo",
-    "section": "Incremental Implementation",
-    "text": "Incremental Implementation\nSimilarly to the Multi-Armed Bandits chapter, action values \\(q_{\\pi}(s,a)\\) can be calculated incrementally.\nIn order to do so, we must first begin by calculating a cumulative sum of the weights:\n\\[\nC(S_{t},A_{t}) = C(S_{t},A_{t}) + W\n\\]\nThen, we average returns of corresponding action values:\n\\[\nQ(S_{t},A_{t}) = Q(S_{t},A_{t}) + \\frac{W}{C(S_{t},A_{t})}[G - Q(S_{t},A_{t})]\n\\]\nFinally, we update the weight according to our importance sampling ratio:\n\\[\nW = W \\frac{\\pi(A_{k} \\mid S_{k})}{b(A_{k} \\mid S_{k})}\n\\]",
-    "crumbs": [
-      "Lecture 5: Monte Carlo",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>5.4 Off-Policy Monte Carlo</span>"
-    ]
-  },
-  {
-    "objectID": "lecture5/lecture5-4.html#off-policy-control",
-    "href": "lecture5/lecture5-4.html#off-policy-control",
-    "title": "5.4 Off-Policy Monte Carlo",
-    "section": "Off-Policy Control",
-    "text": "Off-Policy Control\nWe can assure Off-Policy methods to achieve control by choosing \\(b\\) to be \\(\\epsilon\\)-soft.\nThe target policy \\(\\pi\\) converges to optimal at all encountered states even though actions are selected according to a different soft policy \\(b\\), which may change between or even within episodes.\n\nPseudocode",
+    "text": "Can we watch others and still learn something for ourselves? 👀\n\n\n\nLearning directly from the policy \\(\\pi\\) is powerful, but it would be even better if we could learn about \\(\\pi\\) while observing or following a different policy, especially one that helps us explore more broadly or leverage past experiences.\n\n\n\n\n\n\nOff-Policy Learning\n\n\n\nOff-Policy methods evaluate or improve a policy \\(\\pi\\) different from that used to generate the data \\(b\\). Typically this is accomplished using two policies:\n\nA target policy, denoted \\(\\pi\\), is the policy being learned.\nA behavior policy, denoted \\(b\\), is the policy used to generate behavior.\n\n\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we leverage Monte Carlo’s learning rule to approximate the optimal policy \\(\\approx \\pi_{*}\\), while leveraging other policies \\(b\\) apart from our own \\(\\pi\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\n\n\n\n\n\n\n“If I have seen further, it is by standing on the shoulders of giants.” — Isaac Newton\n\nNewton is considered one of the greatest scientists of all time. Among his many contributions:\n\n🧲 Formulated the laws of motion and universal gravitation.\n🌈 Demonstrated that white light is made of a spectrum of colors.\n📐 Developed calculus (independently of Leibniz).\n🔭 Improved the telescope and advanced optical theory.\n\nHe would not have been able to accomplish these things without learning from the work of others — Kepler, Galileo, Descartes, and more — whose insights formed the foundation for his own breakthroughs.\n\n\n\n\n\nKepler - Discovered the laws of planetary motion, showing that planets move in ellipses and not circles.\n\n\n\n\n\n\n\nGalileo - Studied motion and inertia, laying the groundwork for Newton’s first two laws of motion.\n\n\n\n\n\n\n\nDescartes - Developed analytic geometry and early ideas of mechanistic physics, helping bridge mathematics and physical laws.\n\n\n\n\nJust like in off-policy learning, Newton didn’t need to replicate others’ paths \\(\\pi_{\\text{Kepler, Galileo, Descartes}}\\) exactly. Instead, he learned from their trajectories \\(b_{\\text{Kepler, Galileo, Descartes}}\\) to improve his own \\(\\pi_{Newton}\\).\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nImportance Sampling is a general technique for estimating expected values under one distribution given samples from another.\nWe apply importance sampling to off-policy learning by weighting returns according to the relative probability of their trajectories occurring under the target and behavior policies, called the importance-sampling ratio.\n\\[\n\\text{Pr}\\{A_{t}, S_{t+1}, A_{t+1}, \\dots , S_{T} \\mid S_{t}, A_{t:T-1} \\sim \\pi \\} = \\prod_{k=t}^{T-1} \\frac{\\pi(A_{k} \\mid S_{k})}{b(A_{k} \\mid S_{k})}\n\\]\nSimilarly to the Multi-Armed Bandits chapter, action values \\(q_{\\pi}(s,a)\\) can be calculated incrementally.\nIn order to do so, we must first begin by calculating a cumulative sum of the weights:\n\\[\nC(S_{t},A_{t}) = C(S_{t},A_{t}) + W\n\\]\nThen, we average returns of corresponding action values:\n\\[\nQ(S_{t},A_{t}) = Q(S_{t},A_{t}) + \\frac{W}{C(S_{t},A_{t})}[G - Q(S_{t},A_{t})]\n\\]\nFinally, we update the weight according to our importance sampling ratio:\n\\[\nW = W \\frac{\\pi(A_{k} \\mid S_{k})}{b(A_{k} \\mid S_{k})}\n\\]\nWe can assure Off-Policy methods to achieve control by choosing \\(b\\) to be \\(\\epsilon\\)-soft.\nThe target policy \\(\\pi\\) converges to optimal at all encountered states even though actions are selected according to a different soft policy \\(b\\), which may change between or even within episodes.",
     "crumbs": [
       "Lecture 5: Monte Carlo",
       "<span class='chapter-number'>27</span>  <span class='chapter-title'>5.4 Off-Policy Monte Carlo</span>"

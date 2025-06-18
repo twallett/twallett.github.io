@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-088eb942fb0ffee15331ff839a6f78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -318,7 +318,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDPs)</span></a>
+  <a href="../lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -689,8 +689,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#markov-chain" id="toc-markov-chain" class="nav-link" data-scroll-target="#markov-chain">Markov Chain</a>
+  <li><a href="#markov-chain" id="toc-markov-chain" class="nav-link active" data-scroll-target="#markov-chain">Markov Chain</a>
   <ul class="collapse">
   <li><a href="#probability-matrix" id="toc-probability-matrix" class="nav-link" data-scroll-target="#probability-matrix">Probability Matrix</a></li>
   <li><a href="#rewards-matrix" id="toc-rewards-matrix" class="nav-link" data-scroll-target="#rewards-matrix">Rewards Matrix</a></li>
@@ -729,12 +728,10 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>A memoryless sequence of states where the future depends only on the present — not the past. 🔄</p>
+<p>What if your next step depended only on where you are — not where you’ve been? 🔗</p>
 </div>
 </div>
 </div>
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
 <p>We saw from Lecture 3 how to make optimal decisions in non-associative environments:</p>
 <div class="center" style="text-align:center;">
 <p><span class="math inline">\(\pi: S, A_{0}, R_{1}, S, A_{1}, R_{2}, ... , S, A_{T-1}, R_{T}\)</span></p>
@@ -801,7 +798,6 @@ P(s’ | s, s_{t-1}, s_{t-2}, \dots) = P(s’ | s)
 </div>
 </div>
 </div>
-</section>
 <section id="markov-chain" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="markov-chain">Markov Chain</h2>
 <p>A <strong>Markov Chain</strong> is a model for transitions that are <em>not controlled</em> between <em>fully observable states</em>.</p>
@@ -1349,8 +1345,8 @@ q_{2} = p_{1,2} \ r_{1,2} + r_{2,2} \ p_{2,2}
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lecture4/lecture4-2.html" class="pagination-link" aria-label="4.2 Markov Decision Process (MDPs)">
-        <span class="nav-page-text"><span class="chapter-title">4.2 Markov Decision Process (MDPs)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lecture4/lecture4-2.html" class="pagination-link" aria-label="4.2 Markov Decision Process (MDP)">
+        <span class="nav-page-text"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
