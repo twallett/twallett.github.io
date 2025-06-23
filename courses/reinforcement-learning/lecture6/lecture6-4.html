@@ -670,17 +670,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#double-q-learning" id="toc-double-q-learning" class="nav-link active" data-scroll-target="#double-q-learning">Double Q-Learning</a>
-  <ul class="collapse">
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -714,8 +705,139 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="double-q-learning" class="level2">
-<h2 class="anchored" data-anchor-id="double-q-learning">Double Q-Learning</h2>
+<p>The problem with relying with the conceptions of previous behavior <span class="math inline">\(b\)</span> is that it is susceptible to biases.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we leverage the Temporal Difference learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_*\)</span> by learning from actions we didn’t take — without falling into biases of conceptions of previous behavior <span class="math inline">\(b\)</span>?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Life Example 🧠
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Much of classical economics assumes humans make perfectly rational decisions — but Daniel Kahneman’s <em>Thinking, Fast and Slow</em> revealed how our minds often fall into predictable biases.</p>
+<div class="grid">
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/kahneman.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><em>Thinking, Fast and Slow</em> by Daniel Kahneman</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/daniel.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Daniel Kahneman - Nobel Prize Winner in Economic Sciences in 2002</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Kahneman describes two modes of thought:</p>
+<ul>
+<li>🧠 <strong>System 1</strong> — Fast, automatic, emotional, and often biased; rooted in evolutionarily older brain structures like the limbic system, designed for quick survival decisions.</li>
+<li>🧠 <strong>System 2</strong> — Slow, deliberate, logical, and effortful; associated with the prefrontal cortex, which supports planning, reasoning, and self-control.</li>
+</ul>
+<p>Your town of <span class="math inline">\(600\)</span> employees is facing budget cuts. You’re on the council deciding which policy to implement.</p>
+<section id="gain-frame-presented-as-saving-jobs" class="level4">
+<h4 class="anchored" data-anchor-id="gain-frame-presented-as-saving-jobs">🟢 Gain Frame — Presented as saving jobs</h4>
+<blockquote class="blockquote">
+<p>A vote is held on how many jobs you can <strong>guarantee to save</strong>:</p>
+</blockquote>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 43%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Description</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>Save <strong>200 jobs</strong> for sure</td>
+<td>Safe and certain</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>1/3 chance to save <strong>all 600 jobs</strong>, 2/3 chance to save <strong>none</strong></td>
+<td>🎲 Risky gamble</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>👉 Most people choose <strong>Option A</strong> — the <strong>certainty</strong> of saving 200 jobs feels comforting. Emotionally, it feels like a win.</p>
+</blockquote>
+</section>
+<section id="loss-frame-presented-as-losing-jobs" class="level4">
+<h4 class="anchored" data-anchor-id="loss-frame-presented-as-losing-jobs">🔴 Loss Frame — Presented as losing jobs</h4>
+<blockquote class="blockquote">
+<p>The same crisis is now framed as <strong>how many people will lose their jobs</strong>:</p>
+</blockquote>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 43%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Description</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C</td>
+<td><strong>400 jobs will be lost</strong> for sure</td>
+<td>Guaranteed loss</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>1/3 chance <strong>no one loses</strong> their job, 2/3 chance <strong>all 600 jobs are lost</strong></td>
+<td>🎲 Risky gamble</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>👉 Now most people choose <strong>Option D</strong> — they’d rather take a risky chance to avoid a guaranteed loss, <strong>even though the math is the same</strong>.</p>
+</blockquote>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>One of the drawbacks of Q-Learning is the maximization bias, where maximization of action value estimates <span class="math inline">\(Q(s,a)\)</span> is higher than those of the true action values <span class="math inline">\(q(s,a)\)</span>, leading to a bias.</p>
 <p>Double Q-Learning addresses this bias by creating two action value estimates <span class="math inline">\(Q_{1}(s,a)\)</span> and <span class="math inline">\(Q_{2}(s,a)\)</span>.</p>
 <p>With equal likelihood, one action value estimate yields the maximization action <span class="math inline">\(A_{t}\)</span> and the other provides the action value estimate <span class="math inline">\(Q(S_{t}, A_{t})\)</span>.</p>
@@ -725,18 +847,20 @@ Q_{1}(S_{t},A_{t}) = Q_{1}(S_{t},A_{t}) + \alpha [R_{t+1} + \gamma Q_{2}(S_{t+1}
 <p><span class="math display">\[
 Q_{2}(S_{t},A_{t}) = Q_{2}(S_{t},A_{t}) + \alpha [R_{t+1} + \gamma Q_{1}(S_{t+1},\max_{a} Q_{2}(S_{t+1},a)) - Q_{2}(S_{t},A_{t})]
 \]</span></p>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<p>This dual-system model mirrors Double Q-learning:</p>
+<ul>
+<li>One Q-estimator (<span class="math inline">\(Q_1\)</span>) makes a quick action selection — like System 1.</li>
+<li>The other Q-estimator (<span class="math inline">\(Q_2\)</span>) does the critical evaluation — like System 2.</li>
+</ul>
+<p>This separation reduces bias, much like System 2 tempers System 1’s impulsive decisions.</p>
 <div class="center" style="text-align:center;">
 <p><img src="images/6-4.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
-<div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

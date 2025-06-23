@@ -711,10 +711,7 @@ n-step SARSA
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>n-step SARSA extends the standard SARSA algorithm to incorporate multi-step returns. Instead of updating based on a single-step transition, it utilizes an accumulated return over n steps, striking a balance between bias and variance.</p>
-<p>Uses an n-step return to update the action-value function.</p>
-<p>Ensures learning from actual experience while incorporating bootstrapping.</p>
-<p>Balances exploration and exploitation more effectively than 1-step SARSA.</p>
+<p><strong>n-step SARSA</strong> extends the standard SARSA algorithm to incorporate multi-step returns. Instead of updating based on a single-step transition, it utilizes an accumulated return over n steps, striking a balance between bias and variance.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/n-stepSARSA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10.0%"></p>
@@ -735,10 +732,7 @@ n-step Tree Backup
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>n-step Tree Backup is an extension of Q-learning that allows updates without the requirement of selecting an on-policy action. It generalizes the Expected SARSA algorithm by propagating multiple steps of information while weighting future actions by their probability under the policy.</p>
-<p>Eliminates the need for importance sampling in off-policy learning.</p>
-<p>Updates the action-value function based on expected future returns.</p>
-<p>Incorporates multiple time steps, making it more stable in some environments.</p>
+<p><strong>n-step Tree Backup</strong> is an extension of Q-learning that allows updates without the requirement of selecting an on-policy action. It generalizes the Expected SARSA algorithm by propagating multiple steps of information while weighting future actions by their probability under the policy.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/n-stepTree.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:15.0%"></p>

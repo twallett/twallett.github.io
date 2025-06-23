@@ -705,6 +705,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>Ideally, we would like to have a TD method that can be <a href="../lecture5/lecture5-4.html#off-policy-monte-carlo">off-policy</a>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -715,7 +716,7 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>How can we leverage the Temporal Difference learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_*\)</span> by learning from actions we didn’t take — using the best possible next action <span class="math inline">\(A\)</span> to update our strategy, even if it wasn’t chosen by our current policy <span class="math inline">\(\pi\)</span>?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -740,29 +741,40 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/chess-position.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>You reach a familiar board position</figcaption>
+<p><img src="images/fischer-spassky.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Bobby Fischer vs.&nbsp;Boris Spassky (Game 6)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="grid">
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/familiar-position.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><span class="math inline">\(S\)</span> You arrive at a familiar position - Queen’s Gambit Declined (Tartakower Variation)</figcaption>
 </figure>
 </div>
 </div>
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/grandmaster-game.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>You recall a grandmaster’s move from memory</figcaption>
+<p><img src="images/recall.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><span class="math inline">\(A\)</span> You recall a grandmaster’s move from memory - (8. cxd5)</figcaption>
 </figure>
 </div>
 </div>
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/chess-update.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>You use their move to update your play</figcaption>
+<p><img src="images/force-exchange.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><span class="math inline">\(A \to S'\)</span> You use Bobby Fischer’s move to force an exchange</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>You don’t have to repeat the entire grandmaster game — you just need to know what move worked best in each position and adjust your own strategy accordingly.</p>
+<p>How can you improve your chess strategy by learning from the best moves of others — even if you never made those moves yourself?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -777,7 +789,7 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TD off-policy method we can both update and estimate the optimal action-value function directly:</p>
+<p><strong>Q-Learning</strong> is a TD off-policy method that can both update and estimate the optimal action-value function directly:</p>
 <p><span class="math display">\[
 Q(S_{t},A_{t}) = Q(S_{t},A_{t}) + \alpha [ R_{t+1} + \gamma \max_{a} Q(S_{t+1},a) - Q(S_{t},A_{t})]
 \]</span></p>
