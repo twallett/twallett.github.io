@@ -105,7 +105,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -674,7 +674,7 @@ window.Quarto = {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -807,8 +807,7 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>One of the drawbacks of Q-Learning is the maximization bias, where maximization of action value estimates <span class="math inline">\(Q(s,a)\)</span> is higher than those of the true action values <span class="math inline">\(q(s,a)\)</span>, leading to a bias.</p>
-<p>Double Q-Learning addresses this bias by creating two action value estimates <span class="math inline">\(Q_{1}(s,a)\)</span> and <span class="math inline">\(Q_{2}(s,a)\)</span>.</p>
+<p><strong>Double Q-Learning</strong> addresses this bias by creating two action value estimates <span class="math inline">\(Q_{1}(s,a)\)</span> and <span class="math inline">\(Q_{2}(s,a)\)</span>.</p>
 <p>With equal likelihood, one action value estimate yields the maximization action <span class="math inline">\(A_{t}\)</span> and the other provides the action value estimate <span class="math inline">\(Q(S_{t}, A_{t})\)</span>.</p>
 <p><span class="math display">\[
 Q_{1}(S_{t},A_{t}) = Q_{1}(S_{t},A_{t}) + \alpha [R_{t+1} + \gamma Q_{2}(S_{t+1},\max_{a} Q_{1}(S_{t+1},a)) - Q_{1}(S_{t},A_{t})]
@@ -821,7 +820,8 @@ Q_{2}(S_{t},A_{t}) = Q_{2}(S_{t},A_{t}) + \alpha [R_{t+1} + \gamma Q_{1}(S_{t+1}
 <li>One Q-estimator (<span class="math inline">\(Q_1\)</span>) makes a quick action selection — like System 1.</li>
 <li>The other Q-estimator (<span class="math inline">\(Q_2\)</span>) does the critical evaluation — like System 2.</li>
 </ul>
-<p>This separation reduces bias, much like System 2 tempers System 1’s impulsive decisions.</p>
+<p>This separation reduces maximization bias, much like System 2 tempers System 1’s impulsive decisions.</p>
+
 <div class="center" style="text-align:center;">
 <p><img src="images/6-4.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
@@ -831,7 +831,9 @@ Q_{2}(S_{t},A_{t}) = Q_{2}(S_{t},A_{t}) + \alpha [R_{t+1} + \gamma Q_{1}(S_{t+1}
 
 
 
-</main> <!-- /main -->
+<div class="no-row-height column-margin column-container"><div class="callout-5-contents callout-collapse collapse callout-margin-content">
+<p><strong>Maximization bias</strong> is a maximization of actual action value estimates <span class="math inline">\(Q(s,a)\)</span> is higher than those of the true action values <span class="math inline">\(q(s,a)\)</span>, leading to a bias.</p>
+</div></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
