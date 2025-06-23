@@ -605,12 +605,33 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
- <span class="menu-text">Final Project</span></a>
+ <span class="menu-text">Exams</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exams/exam1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exams/exam2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Final Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../final-project/personal-finance-robo-advisor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Idea 1: Personal Finance Robo Advisor</span></a>
@@ -649,18 +670,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#td-prediction" id="toc-td-prediction" class="nav-link active" data-scroll-target="#td-prediction">TD Prediction</a>
-  <ul class="collapse">
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  <li><a href="#environment-gridworld" id="toc-environment-gridworld" class="nav-link" data-scroll-target="#environment-gridworld">Environment GridWorld</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -694,14 +705,59 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="td-prediction" class="level2">
-<h2 class="anchored" data-anchor-id="td-prediction">TD Prediction</h2>
+<p>Monte Carlo is a powerful <em>learning rule</em> for estimating value functions <span class="math inline">\(v_{\pi}\)</span> and action value functions <span class="math inline">\(q_{\pi}\)</span> in associative environments.</p>
+<p>The power of Monte Carlo resides in its ability to <em>learn the dynamics of any environment, without assuming any prior knowledge, only using experience</em>.</p>
+<p>Monte Carlo methods are based on averaging sample returns of trajectories following a policy <span class="math inline">\(\pi\)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we design a learning rule that updates value estimates during an episode, rather than waiting until the entire trajectory <span class="math inline">\(\tau\)</span> is complete?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: GridWorld
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume <span class="math inline">\(\gamma = 0.9\)</span></p>
+<p>Suppose we follow the trajectory of <span class="math inline">\(\pi\)</span> for one episode:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GridWorldTD-Prediction.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><strong>Temporal Difference</strong> (TD) is a <em>learning rule</em> that is a combination of Monte Carlo and Dynamic Programming ideas.</p>
 <ul>
-<li>TD methods, like Monte Carlo, learn from experience by updating estimates of nonterminal states along a trajectory <span class="math inline">\(\pi\)</span>.</li>
+<li>TD methods, like Monte Carlo, learn from experience by updating estimates of nonterminal states along a trajectory <span class="math inline">\(\tau\)</span>.</li>
 <li>TD methods, like Dynamic Programming, update based on an existing estimate <span class="math inline">\(V(S_{t+1})\)</span>.</li>
 </ul>
-<p>TD methods at time <span class="math inline">\(t + 1\)</span> immediately form a target and make a useful update using the observed reward <span class="math inline">\(R_{t+1}\)</span> and the estimate <span class="math inline">\(V_(S_{t+1})\)</span> in a incremental fashion:</p>
+<p>TD methods at time <span class="math inline">\(t + 1\)</span> immediately form a target and make a useful update using the observed reward <span class="math inline">\(R_{t+1}\)</span> and the estimate <span class="math inline">\(V(S_{t+1})\)</span> in a incremental fashion:</p>
 <p><span class="math display">\[
 V(S_{t}) = V(S_{t}) + \underbrace{\alpha}_{Step \ Size} [ \underbrace{\underbrace{R_{t+1} + \gamma V(S_{t+1})}_{Target \ Update} - V(S_{t})}_{TD \  Error}]
 \]</span></p>
@@ -710,28 +766,17 @@ V(S_{t}) = V(S_{t}) + \underbrace{\alpha}_{Step \ Size} [ \underbrace{\underbrac
 <p><img src="images/TDPrediction.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10.0%"></p>
 </figure>
 </div>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
 <div class="center" style="text-align:center;">
 <p><img src="images/6-1.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
 <div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+<p><a href="https://github.com/twallett/rl-lecture-code/tree/main/06-TD/01-TDPrediction"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
 </div>
-</section>
-<section id="environment-gridworld" class="level3">
-<h3 class="anchored" data-anchor-id="environment-gridworld">Environment GridWorld</h3>
-<p>Assume <span class="math inline">\(\gamma = 0.9\)</span></p>
-<p>Suppose we follow the trajectory of <span class="math inline">\(\pi\)</span> for one episode:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/GridWorldTD-Prediction.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
-</figure>
+</div>
+</div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

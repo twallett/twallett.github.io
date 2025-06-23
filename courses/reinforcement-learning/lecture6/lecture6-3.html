@@ -605,12 +605,33 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
- <span class="menu-text">Final Project</span></a>
+ <span class="menu-text">Exams</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exams/exam1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exams/exam2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Final Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../final-project/personal-finance-robo-advisor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Idea 1: Personal Finance Robo Advisor</span></a>
@@ -649,17 +670,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#q-learning" id="toc-q-learning" class="nav-link active" data-scroll-target="#q-learning">Q-Learning</a>
-  <ul class="collapse">
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -693,8 +705,78 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="q-learning" class="level2">
-<h2 class="anchored" data-anchor-id="q-learning">Q-Learning</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Life Example 🧠
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose you’re studying chess by watching a famous game between two grandmasters:</p>
+<ul>
+<li><span class="math inline">\(S\)</span> — You recognize a familiar board position from their match.</li>
+<li><span class="math inline">\(A\)</span> — In your current game, you’re unsure what to play — but you recall the grandmaster’s move in that same position.</li>
+<li><span class="math inline">\(R\)</span> — You remember that the move they chose led to a strong positional advantage (high reward).</li>
+<li><span class="math inline">\(S'\)</span> — You predict the next likely position on the board and evaluate the possible replies.</li>
+</ul>
+<p>Even though you’re not playing exactly like the grandmasters did — and your opponent may respond differently — you use the best move from their game as your update target, trusting that it’s the optimal next action in that state.</p>
+<div class="grid">
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chess-position.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>You reach a familiar board position</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/grandmaster-game.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>You recall a grandmaster’s move from memory</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chess-update.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>You use their move to update your play</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>You don’t have to repeat the entire grandmaster game — you just need to know what move worked best in each position and adjust your own strategy accordingly.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>TD off-policy method we can both update and estimate the optimal action-value function directly:</p>
 <p><span class="math display">\[
 Q(S_{t},A_{t}) = Q(S_{t},A_{t}) + \alpha [ R_{t+1} + \gamma \max_{a} Q(S_{t+1},a) - Q(S_{t},A_{t})]
@@ -705,18 +787,14 @@ Q(S_{t},A_{t}) = Q(S_{t},A_{t}) + \alpha [ R_{t+1} + \gamma \max_{a} Q(S_{t+1},a
 </figure>
 </div>
 <p>Q-Learning is a breakthrough in reinforcement learning due to its simplification of algorithm analysis and early convergence proofs.</p>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
 <div class="center" style="text-align:center;">
 <p><img src="images/6-3.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
-<div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

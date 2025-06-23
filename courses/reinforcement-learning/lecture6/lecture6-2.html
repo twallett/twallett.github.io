@@ -605,12 +605,33 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
- <span class="menu-text">Final Project</span></a>
+ <span class="menu-text">Exams</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exams/exam1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exams/exam2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Final Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../final-project/personal-finance-robo-advisor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Idea 1: Personal Finance Robo Advisor</span></a>
@@ -649,17 +670,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#sarsa" id="toc-sarsa" class="nav-link active" data-scroll-target="#sarsa">SARSA</a>
-  <ul class="collapse">
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -693,10 +705,81 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="sarsa" class="level2">
-<h2 class="anchored" data-anchor-id="sarsa">SARSA</h2>
-<p>TD on-policy method we must estimate <span class="math inline">\(q_{\pi}(s, a)\)</span> for the current behavior policy <span class="math inline">\(\pi\)</span> and for all states <span class="math inline">\(s \in S\)</span> and actions <span class="math inline">\(a \in A(S)\)</span></p>
-<p>The theorems assuring the convergence of state values under TD Prediction also apply to the corresponding algorithm for action values: <span class="math display">\[
+<p>To move from prediction to <a href="../lecture5/lecture5-2.html">control</a>, we must estimate the action-value function <span class="math inline">\(q_{\pi}(s, a)\)</span> for the current behavior policy <span class="math inline">\(\pi\)</span> — and ensure we update it for all state-action pairs <span class="math inline">\((s, a)\)</span> encountered during interaction with the environment.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we learn an effective control policy while still exploring — ensuring every state-action pair is visited — and updating based only on the actions actually taken?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Life Example 🧠
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose you’re using a music recommendation app:</p>
+<ul>
+<li><span class="math inline">\(S\)</span> — You’re in a particular mood or environment (e.g., studying, running, relaxing).</li>
+<li><span class="math inline">\(A\)</span> — The app suggests a song based on your current preferences.</li>
+<li><span class="math inline">\(R\)</span> — You either enjoy the song, skip it, or dislike it — giving implicit feedback.</li>
+<li><span class="math inline">\(S', A'\)</span> — The next song plays, and you make another decision.</li>
+</ul>
+<p>In this case:</p>
+<div class="grid">
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.youtube.com/watch?v=gxlB1B9emDc&amp;list=RDgxlB1B9emDc&amp;start_radio=1"><img src="images/oscar-de-leon.jpeg" class="img-fluid figure-img" style="width:100.0%"></a></p>
+<figcaption>Salsa — always a win</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.youtube.com/watch?v=ZA7ZKB8Mo9k"><img src="images/feid.jpeg" class="img-fluid figure-img" style="width:100.0%"></a></p>
+<figcaption>Reggeaton — mostly hits, sometimes skips</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/jazz.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Jazz — new territory</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>How can your music app learn what you like while still exploring new genres — using your <em>actual listening behavior</em>, one song at a time?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>SARSA is an <a href="../lecture5/lecture5-3.html#on-policy-learning">on-policy</a> TD control method that updates action-value estimates based <span class="math inline">\(q_{\pi}(s, a)\)</span> on the trajectory actually followed by the current policy <span class="math inline">\(\pi\)</span> — including any exploration it performs.</p>
+<p><span class="math display">\[
 Q(S_{t},A_{t}) = Q(S_{t},A_{t}) + \alpha [ R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) - Q(S_{t},A_{t})]
 \]</span></p>
 <div class="quarto-figure quarto-figure-center">
@@ -705,18 +788,16 @@ Q(S_{t},A_{t}) = Q(S_{t},A_{t}) + \alpha [ R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) -
 </figure>
 </div>
 <p>This rule uses every element of the quintuple of events (<span class="math inline">\(S_{t}, A_{t}, R_{t+1}, S_{t+1}, A_{t+1}\)</span>)</p>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<p>That’s SARSA: learning step-by-step from your real actions, even if your current “playlist” isn’t perfect.</p>
+<p>Unlike Monte Carlo methods, which wait until the end of a full playlist (or episode) to update preferences, SARSA updates incrementally — after every song — using immediate feedback and your next action.</p>
 <div class="center" style="text-align:center;">
 <p><img src="images/6-2.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
-<div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
