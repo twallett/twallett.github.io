@@ -417,6 +417,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradients</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Reinforcement Learning with Human Feedback (RLHF)</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -441,6 +446,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Proximal Policy Optimization (PPO)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Group Relative Policy Optimization (GRPO)</span></a>
   </div>
 </li>
       </ul>
@@ -667,6 +677,170 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="images/rick.gif" class="img-fluid" style="width:100.0%"></p>
+<!-- 
+::: {.callout-note appearance="simple" icon=false}
+Exam 1: Dynamic GridWorld Competition 🌟
+:::
+
+Welcome to the Fall 2025 GridWorld Competition!
+
+## Instructions
+
+1. You will work in your current teams. 
+
+2. After class, each team will be sent an email with their specific character name. 
+
+::: {.grid}
+::: {.g-col-3}
+![Alias: BombardinoCrocodilo](images/bcroc.jpeg){width=100%}
+:::
+::: {.g-col-3}
+![Alias: TralaleroTralala](images/tralalero.jpg){width=100%}
+:::
+::: {.g-col-3}
+![Alias: TunTunTunSahur](images/sahur.jpeg){width=100%}
+:::
+::: {.g-col-3}
+![Alias: LiriliLarila](images/lirili.jpeg){width=100%}
+:::
+::: {.g-col-3}
+![Alias: BrrBrrPatapim](images/brr.jpeg){width=100%}
+:::
+::: {.g-col-3}
+![Alias: SpioniroGolubiro](images/spioniro.jpeg){width=100%}
+:::
+:::
+
+::: {.callout-important}
+**You must keep the teams alias anonymous!** 
+
+Not doing so will result in a penalty of $10\%$ of the total grade of Exam 1 for your group. 
+:::
+
+3. For each day for the next week, each team is in charge of coding one `main.py` and `model.py` for the dynamic GridWorld environment. 
+
+4. Please keep the following hyperparameters intact:
+
+```python
+SEED = 123
+SIZE = 10
+EPISODES = 100
+FPS = 0
+```
+
+::: {.callout-important}
+**Do not alter `exam_env.py`!**
+
+Doing so might result in skewed results for your team. 
+:::
+
+## Submission
+
+Each team is responsible for uploading one `ALIAS_main.py` and `ALIAS_model.py` every day for the next week. Remember to put the corresponding alias name for your team in `ALIAS_main.py`.
+
+```python
+ALIAS = 'BallerinaCappuccina'
+```
+
+::: {.callout-important}
+**Please make sure that your code runs properly!**
+
+Any code submitted with errors will not be accepted.
+:::
+
+## Grading 
+
+Summary of the grading table for each ranked team:
+
+| Rank |  Final Grade Weight |
+| ---- | ------------------ |
+| 🥇 1st Place | 25            |
+| 🥈 2nd Place  | 24-23               |
+| 🥉 3rd Place  | 22-21             |
+| 4th Place | 20-19                |
+| 5th Place  | 18-17             |
+
+## Leaderboard 
+
+Everyday a leaderboard will be updated here to display the results of each team.
+
+::: {.callout-note appearance="simple" icon=false}
+## Day 1
+| Rank | Alias               | Score |
+| ---- | ------------------- | ----- |
+| 🥇 1st Place    |  |    |
+| 🥈 2nd Place    |     |    |
+| 🥉 3rd Place    |       |    |
+| 4th Place    |        |    |
+| 5th Place    |         |    |
+:::
+
+::: {.callout-note appearance="simple" icon=false}
+## Day 2
+| Rank | Alias               | Score |
+| ---- | ------------------- | ----- |
+| 🥇 1st Place   |  |    |
+| 🥈 2nd Place    |     |    |
+| 🥉 3rd Place   |       |    |
+| 4th Place    |        |    |
+| 5th Place    |         |    |
+:::
+
+::: {.callout-note appearance="simple" icon=false}
+## Day 3
+| Rank | Alias               | Score |
+| ---- | ------------------- | ----- |
+| 🥇 1st Place    |  |    |
+| 🥈 2nd Place    |     |    |
+| 🥉 3rd Place    |       |    |
+| 4th Place    |        |    |
+| 5th Place    |         |    |
+:::
+
+::: {.callout-note appearance="simple" icon=false}
+## Day 4
+| Rank | Alias               | Score |
+| ---- | ------------------- | ----- |
+| 🥇 1st Place    |  |    |
+| 🥈 2nd Place    |     |    |
+| 🥉 3rd Place    |       |    |
+| 4th Place    |        |    |
+| 5th Place    |         |    |
+:::
+
+::: {.callout-note appearance="simple" icon=false}
+## Day 5
+| Rank | Alias               | Score |
+| ---- | ------------------- | ----- |
+| 🥇 1st Place    |  |    |
+| 🥈 2nd Place    |     |    |
+| 🥉 3rd Place    |       |    |
+| 4th Place    |        |    |
+| 5th Place    |         |    |
+:::
+
+::: {.callout-note appearance="simple" icon=false}
+## Day 6
+| Rank | Alias               | Score |
+| ---- | ------------------- | ----- |
+| 🥇 1st Place    |  |    |
+| 🥈 2nd Place    |     |    |
+| 🥉 3rd Place    |       |    |
+| 4th Place    |        |    |
+| 5th Place    |         |    |
+:::
+
+::: {.callout-note appearance="simple" icon=false}
+## Day 7
+| Rank | Alias               | Score |
+| ---- | ------------------- | ----- |
+| 🥇 1st Place    |  |    |
+| 🥈 2nd Place    |     |    |
+| 🥉 3rd Place    |       |    |
+| 4th Place   |        |    |
+| 5th Place    |         |    |
+:::
+ -->
 
 
 
