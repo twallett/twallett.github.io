@@ -1203,7 +1203,7 @@
   {
     "objectID": "lecture7/lecture7-3.html",
     "href": "lecture7/lecture7-3.html",
-    "title": "7.3 On-Policy Function Approximation",
+    "title": "7.3 Off-Policy Function Approximation",
     "section": "",
     "text": "Limits of Off-Policy Approximation",
     "crumbs": [
@@ -1214,7 +1214,7 @@
   {
     "objectID": "lecture7/lecture7-3.html#limits-of-off-policy-approximation-1",
     "href": "lecture7/lecture7-3.html#limits-of-off-policy-approximation-1",
-    "title": "7.3 On-Policy Function Approximation",
+    "title": "7.3 Off-Policy Function Approximation",
     "section": "Limits of Off-Policy Approximation",
     "text": "Limits of Off-Policy Approximation\nConvergence of control algorithms:\n\n\n\nAlgorithm\nTabular\nLinear\nNeural Networks\n\n\n\n\nMonte-Carlo Control\n✅\n(✅)\n❌\n\n\nSARSA\n✅\n(✅)\n❌\n\n\nQ-learning\n✅\n❌\n❌",
     "crumbs": [
@@ -1421,6 +1421,17 @@
     ]
   },
   {
+    "objectID": "lecture9/lecture9-2.html",
+    "href": "lecture9/lecture9-2.html",
+    "title": "9.2 Reinforcement Learning with Human Feedback (RLHF)",
+    "section": "",
+    "text": "What if your agent could learn not just from rewards — but from what people prefer? 👥",
+    "crumbs": [
+      "Lecture 9: Policy Gradients",
+      "<span class='chapter-number'>43</span>  <span class='chapter-title'>9.2 Reinforcement Learning with Human Feedback (RLHF)</span>"
+    ]
+  },
+  {
     "objectID": "lecture10/lo.html",
     "href": "lecture10/lo.html",
     "title": "Learning Objectives",
@@ -1517,6 +1528,17 @@
     "crumbs": [
       "Lecture 10: Advanced Policy Gradients",
       "<span class='chapter-number'>46</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
+    ]
+  },
+  {
+    "objectID": "lecture10/lecture10-3.html",
+    "href": "lecture10/lecture10-3.html",
+    "title": "10.3 Group Relative Policy Optimization (GRPO)",
+    "section": "",
+    "text": "What if your learning wasn’t just about being good — but being better relative to the group? 🧑‍🤝‍🧑",
+    "crumbs": [
+      "Lecture 10: Advanced Policy Gradients",
+      "<span class='chapter-number'>47</span>  <span class='chapter-title'>10.3 Group Relative Policy Optimization (GRPO)</span>"
     ]
   },
   {
