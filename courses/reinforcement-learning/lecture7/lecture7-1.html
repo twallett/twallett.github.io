@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -42,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-088eb942fb0ffee15331ff839a6f78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d12176865ab59d9dd9842621981097db.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.js"></script>
 <link href="../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -105,7 +125,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -394,17 +414,12 @@ window.Quarto = {
   <a href="../lecture7/lecture7-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.2 On-Policy Function Approximation</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lecture7/lecture7-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.3 Off-Policy Function Approximation</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
- <span class="menu-text">Lecture 8: Deep Q-Networks (DQN)</span></a>
+ <span class="menu-text">Lecture 8: Deep Q-Networks</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -422,7 +437,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture8/lecture8-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 Deep Q-Networks</span></a>
+  <a href="../lecture8/lecture8-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 Deep Q-Networks (DQN)</span></a>
   </div>
 </li>
       </ul>
@@ -685,16 +700,14 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#types-of-value-function-approximators" id="toc-types-of-value-function-approximators" class="nav-link" data-scroll-target="#types-of-value-function-approximators">Types of Value Function Approximators</a></li>
+  <li><a href="#types-of-value-function-approximators" id="toc-types-of-value-function-approximators" class="nav-link active" data-scroll-target="#types-of-value-function-approximators">Types of Value Function Approximators</a></li>
   <li><a href="#updating-value-function-approximators" id="toc-updating-value-function-approximators" class="nav-link" data-scroll-target="#updating-value-function-approximators">Updating Value Function Approximators</a></li>
-  <li><a href="#optimizing-value-function-approximators" id="toc-optimizing-value-function-approximators" class="nav-link" data-scroll-target="#optimizing-value-function-approximators">Optimizing Value Function Approximators</a></li>
-  <li><a href="#feature-representations" id="toc-feature-representations" class="nav-link" data-scroll-target="#feature-representations">Feature Representations</a></li>
+  <li><a href="#state-preprocessing" id="toc-state-preprocessing" class="nav-link" data-scroll-target="#state-preprocessing">State Preprocessing</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -725,8 +738,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
 <p>Assume state <span class="math inline">\(\mathbf{s}\)</span> is represented by a vector of continuous values.</p>
 <p><span class="math display">\[
 \mathbf{s} = \begin{bmatrix} s_1 \\ s_2 \\ \vdots \\ s_n \end{bmatrix}
@@ -745,15 +756,53 @@ Problem
 <p>Tabular representation for <span class="math inline">\(s_i\)</span> does not work now. What if the interval for <span class="math inline">\(s_i\)</span> is infinite?</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: MountainCar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the following OpenAI Gymnasium MountainCar environment <span class="citation" data-cites="Moore90efficientmemory-based">(<a href="../references.html#ref-Moore90efficientmemory-based" role="doc-biblioref">Moore 1990</a>)</span>:</p>
+<div style="text-align: center;">
+<p><a href="https://gymnasium.farama.org/environments/classic_control/mountain_car/"><img src="images/mountaincar.gif" class="img-fluid" style="width:50.0%"></a></p>
+</div>
+<p>The state information <span class="math inline">\(\mathbf{s}\)</span> is now the following vector:</p>
+<p><span class="math display">\[
+\mathbf{s} = \begin{bmatrix} p \in (-1.2,0.6) \gets \text{position of the car along the x-axis} \\ v \in (-0.07,0.07) \gets \text{velocity of the car} \\ \end{bmatrix}
+\]</span></p>
+<p>The environment has a discrete action space <span class="math inline">\(a\)</span>:</p>
+<p><span class="math display">\[
+a = \{0 \gets \text{Accelerate to the left},1 \gets \text{Don’t accelerate},2 \gets \text{Accelerate to the right}\}
+\]</span></p>
+<p>The environments state transition dynamics <span class="math inline">\(P(s',r|s,a)\)</span> are :</p>
+<p><span class="math display">\[
+v_{t+1} = v_t + (A_t - 1) * \underbrace{0.001}_{\text{force}} - cos(3 * p_t) * \underbrace{0.0025}_{\text{gravity}}
+\]</span> <span class="math display">\[
+p_{t+1} = p_t + v_{t+1}
+\]</span></p>
+<p>The goal is to reach the flag placed on top of the right hill as quickly as possible, as such the agent is penalised with a reward <span class="math inline">\(R\)</span> of <span class="math inline">\(-1\)</span> for each timestep.</p>
+<p>The episode ends <span class="math inline">\(d\)</span> (dones) if either of the following happens:</p>
+<ul>
+<li><strong>Termination</strong>: The position <span class="math inline">\(p\)</span> of the car is greater than or equal to <span class="math inline">\(0.5\)</span> (the goal position on top of the right hill)</li>
+<li><strong>Truncation</strong>: The length of the episode is <span class="math inline">\(200\)</span>.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Solution
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Develop a function with parameters <span class="math inline">\(\mathbf{w}\)</span> that approximates the value of these continuous state values:</p>
 <p><span class="math display">\[
@@ -762,7 +811,7 @@ Solution
 <p>Now, we can generalize approximate values of states encountered and those we have not.</p>
 </div>
 </div>
-</section>
+</div>
 <section id="types-of-value-function-approximators" class="level2">
 <h2 class="anchored" data-anchor-id="types-of-value-function-approximators">Types of Value Function Approximators</h2>
 <p>There are many ways of constructing <span class="math inline">\(\hat{V}(s; \mathbf{w})\)</span>:</p>
@@ -778,31 +827,38 @@ Solution
 </ul>
 <p>The purpose is to update our parameters <span class="math inline">\(\mathbf{w}\)</span> using mean-squared error (MSE) and stochastic gradient descent (SGD).</p>
 </section>
-<section id="updating-value-function-approximators" class="level2">
+<section id="updating-value-function-approximators" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="updating-value-function-approximators">Updating Value Function Approximators</h2>
-<p>Recall MSE for supervised learning:</p>
-<p><span class="math display">\[
-F(\mathbf{x}_{k}) = \mathbb{E}[(\mathbf{t}_{k} - \mathbf{a}_{k})^2]
-\]</span></p>
-<p>Recall SGD for supervised learning:</p>
-<p><span class="math display">\[
-\mathbf{x}_{k+1} = \mathbf{x}_{k} - \alpha \nabla_{\mathbf{x}_{k}} F(\mathbf{x}_{k})
-\]</span></p>
-</section>
-<section id="optimizing-value-function-approximators" class="level2">
-<h2 class="anchored" data-anchor-id="optimizing-value-function-approximators">Optimizing Value Function Approximators</h2>
 <p>Our loss function will optimize for our parameter vector <span class="math inline">\(\mathbf{w}\)</span> while minimizing MSE between our approximate value <span class="math inline">\(\hat{V}(s; \mathbf{w})\)</span> and our “true value” <span class="math inline">\(V_{\pi}(s)\)</span>:</p>
 <p><span class="math display">\[
 F(\mathbf{w}_{t}) = \mathbb{E}_{\pi}[(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}_{t}))^{2}]
 \]</span></p>
-<p>SGD update for parameters <span class="math inline">\(\mathbf{w}\)</span>:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Recall <strong>Mean Squared Error (MSE)</strong> for supervised learning:</p>
+<p><span class="math display">\[
+F(\mathbf{x}_{k}) = \mathbb{E}[(\mathbf{t}_{k} - \mathbf{a}_{k})^2]
+\]</span></p>
+<p>Recall <strong>Stochastic Gradient Descent (SGD)</strong> for supervised learning:</p>
+<p><span class="math display">\[
+\mathbf{x}_{k+1} = \mathbf{x}_{k} - \alpha \nabla_{\mathbf{x}_{k}} F(\mathbf{x}_{k})
+\]</span></p>
+</div></div><p>SGD update for parameters <span class="math inline">\(\mathbf{w}\)</span>:</p>
 <p><span class="math display">\[
 \mathbf{w}_{t+1} = \mathbf{w}_{t} + \alpha(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{V}(S_{t}; \mathbf{w}_{t})
 \]</span></p>
-<p>Derivative of MSE loss:</p>
-<p><span class="math display">\[
-\nabla_{\mathbf{w}_{t}} F(\mathbf{w}_{t}) \approx -2(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{V}(S_{t}; \mathbf{w}_{t})
-\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Derivation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Plug derivative of MSE loss into SGD equation:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -812,9 +868,12 @@ F(\mathbf{w}_{t}) = \mathbb{E}_{\pi}[(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}
 &amp;= \mathbf{w}_{t} + \alpha(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{V}(S_{t}; \mathbf{w}_{t})
 \end{align}
 \]</span></p>
+</div>
+</div>
+</div>
 </section>
-<section id="feature-representations" class="level2">
-<h2 class="anchored" data-anchor-id="feature-representations">Feature Representations</h2>
+<section id="state-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="state-preprocessing">State Preprocessing</h2>
 <p>Prior to calculating <span class="math inline">\(\hat{V}(s; \mathbf{w})\)</span>, we must preprocess <span class="math inline">\(\mathbf{s}\)</span> to construct proper feature representations:</p>
 <p><span class="math display">\[
 \mathbf{f}(s) = \begin{bmatrix} s_1 \\ s_2 \\ \vdots \\ s_d \end{bmatrix}
@@ -827,7 +886,7 @@ F(\mathbf{w}_{t}) = \mathbb{E}_{\pi}[(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}
 <li><strong>State normalization</strong> (homework)</li>
 <li><strong>Tile coding</strong> (homework)</li>
 </ul>
-<p>State normalization ensures consistent scaling between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>:</p>
+<p><strong>State normalization</strong> ensures consistent scaling between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>:</p>
 <p><span class="math display">\[
 \mathbf{f}(s) = \begin{bmatrix}
 \frac{s_1 - \text{lower bound}_{1}}{\text{upper bound}_{1} - \text{lower bound}_{1}} \\
@@ -836,7 +895,7 @@ F(\mathbf{w}_{t}) = \mathbb{E}_{\pi}[(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}
 \frac{s_d - \text{lower bound}_{d}}{\text{upper bound}_{d} - \text{lower bound}_{d}}
 \end{bmatrix}
 \]</span></p>
-<p>Tile coding is a one-hot representation for multi-dimensional continuous spaces that is flexible and computationally efficient.</p>
+<p><strong>Tile coding</strong> is a one-hot representation for multi-dimensional continuous spaces that is flexible and computationally efficient.</p>
 <p><span class="math display">\[
 \mathbf{f}(s) = \begin{bmatrix}
 \delta(s, T_1) \\
@@ -858,31 +917,51 @@ F(\mathbf{w}_{t}) = \mathbb{E}_{\pi}[(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}
 <p><img src="images/tilecoding.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
-<section id="exercise" class="level4">
-<h4 class="anchored" data-anchor-id="exercise"><u>Exercise</u></h4>
-<p>Based on your mathematical intuition using SGD, are we guaranteed convergence to a local or global minimum?</p>
-<p><span class="math display">\[
-\mathbf{w}_{t+1} = \mathbf{w}_{t} + \alpha(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{V}(S_{t}; \mathbf{w}_{t})
-\]</span></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+Question 🤔
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Based on your mathematical intuition using SGD, are we guaranteed convergence to a local or global minimum?</p>
+<p><span class="math display">\[
+\mathbf{w}_{t+1} = \mathbf{w}_{t} + \alpha(V_{\pi}(S_{t}) - \hat{V}(S_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{V}(S_{t}; \mathbf{w}_{t})
+\]</span></p>
+<p><em>Hint: Think about Lecture 1</em></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>No — because this is not supervised learning.</p>
+<ul>
+<li><span class="math inline">\(V_{\pi}(S_t)\)</span> is <strong>not a true target</strong>, but an estimate based on samples or bootstrapping.<br>
+</li>
+<li><span class="math inline">\(\nabla_{\mathbf{w}_t} \hat{V}(S_t; \mathbf{w}_t)\)</span> is a <strong>noisy gradient</strong>, not the true gradient of a fixed loss function.</li>
+</ul>
 </div>
 </div>
 </div>
 
 
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Moore90efficientmemory-based" class="csl-entry" role="listitem">
+Moore, Andrew William. 1990. <span>“Efficient Memory-Based Learning for Robot Control.”</span> University of Cambridge.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

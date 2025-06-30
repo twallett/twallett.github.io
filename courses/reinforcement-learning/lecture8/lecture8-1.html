@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-088eb942fb0ffee15331ff839a6f78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d12176865ab59d9dd9842621981097db.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.js"></script>
 <link href="../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -394,17 +394,12 @@ window.Quarto = {
   <a href="../lecture7/lecture7-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.2 On-Policy Function Approximation</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lecture7/lecture7-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.3 Off-Policy Function Approximation</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 8: Deep Q-Networks (DQN)</span></a>
+ <span class="menu-text">Lecture 8: Deep Q-Networks</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -422,7 +417,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture8/lecture8-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 Deep Q-Networks</span></a>
+  <a href="../lecture8/lecture8-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 Deep Q-Networks (DQN)</span></a>
   </div>
 </li>
       </ul>
@@ -735,11 +730,20 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>One parameter vector <span class="math inline">\(\mathbf{w}\)</span> is not enough to represent <span class="math inline">\(s\)</span>.</p>
-<div style="text-align: center;">
-<p><img src="images/ImageTensor.svg" class="img-fluid" style="width:50.0%"></p>
+<p>One parameter vector <span class="math inline">\(\mathbf{w}\)</span> is not enough to represent a state tensor <span class="math inline">\(\mathsf{S}\)</span>.</p>
+<div class="grid">
+<div class="g-col-2 text-center">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+<p><span class="math inline">\(\mathsf{S} =\)</span></p>
 </div>
-<p>What happens if <span class="math inline">\(s\)</span> is an image tensor?</p>
+</div>
+<div class="g-col-3">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+<p><img src="images/ImageTensor.svg" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</div>
+<p>What happens if <span class="math inline">\(\mathsf{S}\)</span> is an image tensor?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1211,8 +1215,8 @@ Solution
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lecture8/lecture8-2.html" class="pagination-link" aria-label="8.2 Deep Q-Networks">
-        <span class="nav-page-text"><span class="chapter-title">8.2 Deep Q-Networks</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lecture8/lecture8-2.html" class="pagination-link" aria-label="8.2 Deep Q-Networks (DQN)">
+        <span class="nav-page-text"><span class="chapter-title">8.2 Deep Q-Networks (DQN)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

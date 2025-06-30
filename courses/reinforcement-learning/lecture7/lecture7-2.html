@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,7 +50,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lecture7/lecture7-3.html" rel="next">
+<link href="../lecture8/lo.html" rel="next">
 <link href="../lecture7/lecture7-1.html" rel="prev">
 <link href="../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -42,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-088eb942fb0ffee15331ff839a6f78b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d12176865ab59d9dd9842621981097db.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.js"></script>
 <link href="../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -394,17 +414,12 @@ window.Quarto = {
   <a href="../lecture7/lecture7-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">7.2 On-Policy Function Approximation</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lecture7/lecture7-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.3 Off-Policy Function Approximation</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
- <span class="menu-text">Lecture 8: Deep Q-Networks (DQN)</span></a>
+ <span class="menu-text">Lecture 8: Deep Q-Networks</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -422,7 +437,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture8/lecture8-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 Deep Q-Networks</span></a>
+  <a href="../lecture8/lecture8-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 Deep Q-Networks (DQN)</span></a>
   </div>
 </li>
       </ul>
@@ -680,17 +695,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#on-policy-function-approximation" id="toc-on-policy-function-approximation" class="nav-link active" data-scroll-target="#on-policy-function-approximation">On-Policy Function Approximation</a></li>
-  <li><a href="#mathematical-intuition" id="toc-mathematical-intuition" class="nav-link" data-scroll-target="#mathematical-intuition">Mathematical Intuition</a></li>
-  <li><a href="#on-policy-function-approximation-illustration" id="toc-on-policy-function-approximation-illustration" class="nav-link" data-scroll-target="#on-policy-function-approximation-illustration">On-Policy Function Approximation: Illustration</a></li>
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -724,21 +730,56 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="on-policy-function-approximation" class="level2">
-<h2 class="anchored" data-anchor-id="on-policy-function-approximation">On-Policy Function Approximation</h2>
-<p>Approximating state values is not sufficient to achieve control.</p>
+<p>Approximating state values is not sufficient to achieve <a href="(../lecture5/lecture5-2.qmd)">control</a>.</p>
 <p><span class="math display">\[
 \hat{V}(s; \mathbf{w}) \approx V_{\pi}(s)
 \]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What function should we focus on approximating in order to achieve control (approximate optimal policies <span class="math inline">\(\approx \pi_*\)</span>) with continuous state information <span class="math inline">\(\mathbf{s}\)</span>?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: MountainCar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the following OpenAI Gymnasium MountainCar environment <span class="citation" data-cites="Moore90efficientmemory-based">(<a href="../references.html#ref-Moore90efficientmemory-based" role="doc-biblioref">Moore 1990</a>)</span>:</p>
+<div style="text-align: center;">
+<p><a href="https://gymnasium.farama.org/environments/classic_control/mountain_car/"><img src="images/mountaincar.gif" class="img-fluid" style="width:50.0%"></a></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>We need to approximate action-value functions.</p>
 <p><span class="math display">\[
 \hat{Q}(s,a; \mathbf{w}) \approx Q_{\pi}(s,a)
 \]</span></p>
-<p>In doing so, we will incorporate previously learned techniques, such as SARSA from TD learning to devise a learning algorithm.</p>
-<p>Because <span class="math inline">\(s\)</span> represents any state information and <span class="math inline">\(a\)</span> represents all possible actions.</p>
-</section>
-<section id="mathematical-intuition" class="level2">
-<h2 class="anchored" data-anchor-id="mathematical-intuition">Mathematical Intuition</h2>
+<p>In doing so, we will incorporate previously learned techniques, such as <a href="../lecture6/lecture6-2.html">SARSA</a> from Temporal Difference learning to devise a learning algorithm.</p>
 <p>Similarly, MSE loss for action values:</p>
 <p><span class="math display">\[
 F(\mathbf{w}_{t}) = \mathbb{E}_{\pi}[(Q_{\pi}(S_{t},A_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))^{2}]
@@ -749,55 +790,131 @@ F(\mathbf{w}_{t}) = \mathbb{E}_{\pi}[(Q_{\pi}(S_{t},A_{t}) - \hat{Q}(S_{t},A_{t}
 \]</span></p>
 <p>Finally, to implement TD learning, we substitute <span class="math inline">\(Q_{\pi}(s,a)\)</span> for our TD targets at each step:</p>
 <p><span class="math display">\[
-\langle S_{0}, \ R_{1} + \gamma \hat{Q}(S_{1},A_{1}; \mathbf{w}_{0})\rangle, \ ... \ ,\langle S_{T-1},R_{T}\rangle
+\langle S_{0}, \underbrace{\ R_{1} + \gamma \hat{Q}(S_{1},A_{1}; \mathbf{w}_{0})}_{\text{TD-target for Initial State}}\rangle, \ ... \ ,\langle S_{T-1},\underbrace{R_{T}}_{\text{TD-target for Terminal State}}\rangle
 \]</span></p>
 <p>Thus, our update equation for TD on-policy approximation:</p>
 <p><span class="math display">\[
 \mathbf{w}_{t+1} = \mathbf{w}_{t} + \alpha(R_{t+1} + \gamma \hat{Q}(S_{t+1},A_{t+1}; \mathbf{w}_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})
 \]</span></p>
-</section>
-<section id="on-policy-function-approximation-illustration" class="level2">
-<h2 class="anchored" data-anchor-id="on-policy-function-approximation-illustration">On-Policy Function Approximation: Illustration</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/SemiGradientSARSA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
-</section>
-<section id="pseudocode" class="level2">
-<h2 class="anchored" data-anchor-id="pseudocode">Pseudocode</h2>
 <div class="center" style="text-align:center;">
 <p><img src="images/7-1.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
 <div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+<p><a href="https://github.com/twallett/rl-lecture-code/tree/main/07-FA/Base"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
 </div>
-<section id="exercise" class="level4">
-<h4 class="anchored" data-anchor-id="exercise"><u>Exercise</u></h4>
-<p>How can we summarize the update equation in 3 components?</p>
-<p><span class="math display">\[
-\mathbf{w}_{t+1} = \mathbf{w}_{t} + \alpha(R_{t+1} + \gamma \hat{Q}(S_{t+1},A_{t+1}; \mathbf{w}_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})
-\]</span></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+Question 🤔
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we summarize the Semi-Gradient SARSA update equation in 3 components?</p>
+<p><span class="math display">\[
+\mathbf{w}_{t+1} = \mathbf{w}_{t} + \underbrace{\alpha}\underbrace{(R_{t+1} + \gamma \hat{Q}(S_{t+1},A_{t+1}; \mathbf{w}_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))}\underbrace{\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>The update is a product of how much to learn, how wrong we were, and how to change.</p>
+<p><span class="math display">\[
+\mathbf{w}_{t+1} = \mathbf{w}_{t} + \underbrace{\alpha}_{\text{Learning Rate}}\underbrace{(R_{t+1} + \gamma \hat{Q}(S_{t+1},A_{t+1}; \mathbf{w}_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))}_{\text{TD-Error}}\underbrace{\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})}_{\text{Gradient}}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Off-Policy Function Approximation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Baird’s Counterexample</strong> shows that even with linear function approximation, off-policy TD methods like Q-learning can diverge.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/bairdexample.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/offpolicydivergence.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A real-world demonstration of this divergence: as training progresses, value estimates explode instead of converging.</p>
+<p>Convergence of control algorithms:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Algorithm</th>
+<th>Tabular</th>
+<th>Linear</th>
+<th>Neural Networks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Monte-Carlo Control</td>
+<td>✅</td>
+<td>(✅)</td>
+<td>❌</td>
+</tr>
+<tr class="even">
+<td>SARSA</td>
+<td>✅</td>
+<td>(✅)</td>
+<td>❌</td>
+</tr>
+<tr class="odd">
+<td>Q-learning</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 
 
-</section>
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Moore90efficientmemory-based" class="csl-entry" role="listitem">
+Moore, Andrew William. 1990. <span>“Efficient Memory-Based Learning for Robot Control.”</span> University of Cambridge.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1206,8 +1323,8 @@ Solution
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lecture7/lecture7-3.html" class="pagination-link" aria-label="7.3 Off-Policy Function Approximation">
-        <span class="nav-page-text"><span class="chapter-title">7.3 Off-Policy Function Approximation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lecture8/lo.html" class="pagination-link" aria-label="Learning Objectives">
+        <span class="nav-page-text"><span class="chapter-title">Learning Objectives</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
