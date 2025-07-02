@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -675,19 +695,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#deep-q-network-mathematical-intuition" id="toc-deep-q-network-mathematical-intuition" class="nav-link" data-scroll-target="#deep-q-network-mathematical-intuition">Deep Q-Network: Mathematical Intuition</a></li>
-  <li><a href="#experience-replay" id="toc-experience-replay" class="nav-link" data-scroll-target="#experience-replay">Experience Replay</a></li>
-  <li><a href="#fixed-targets" id="toc-fixed-targets" class="nav-link" data-scroll-target="#fixed-targets">Fixed Targets</a></li>
-  <li><a href="#deep-q-network-illustration" id="toc-deep-q-network-illustration" class="nav-link" data-scroll-target="#deep-q-network-illustration">Deep Q-Network: Illustration</a></li>
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -721,87 +730,68 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<p>Need an algorithm that:</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now we just need an algorithm that:</p>
 <ul>
-<li>Leverages neural networks.</li>
+<li>Leverages neural networks <span class="math inline">\(\theta\)</span>.</li>
 <li>Leverages a classical RL learning method (TD: Q-learning).</li>
 <li>Implements batch form.</li>
 <li>Empirically performs well.</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/DQNresearchpaper.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
-</figure>
 </div>
-<ul>
-<li>Google DeepMind 2013<br>
-<a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Link to Research Paper</a></li>
-</ul>
-</section>
-<section id="deep-q-network-mathematical-intuition" class="level2">
-<h2 class="anchored" data-anchor-id="deep-q-network-mathematical-intuition">Deep Q-Network: Mathematical Intuition</h2>
-<p><span class="math display">\[
-F(\mathbf{x}_{k}) = \mathbb{E}[(\mathbf{t}_{k} - \mathbf{a}_{k})^2]
-\]</span></p>
-<p><span class="math display">\[
-\mathbf{x}_{k+1} = \mathbf{x}_{k} - \alpha \nabla_{\mathbf{x}_{k}} F(\mathbf{x}_{k})
-\]</span></p>
-<p>To implement Q-learning, substitute the oracle <span class="math inline">\(Q_{\pi}(s,a)\)</span> for our TD targets:</p>
-<p><span class="math display">\[
-\langle S_{0}, \ R_{1} + \gamma \max_{a} \hat{Q}(S_{1},a; \theta_{0})\rangle, \ ... \ ,\langle S_{T-1},R_{T}\rangle
-\]</span></p>
-<p>Gradient for the loss function:</p>
-<p><span class="math display">\[
-\nabla_{\theta} F(\theta_{t}) = (R_{t+1} + \gamma \max_{a} \hat{Q}(S_{t+1},a; \theta_{t}) - \hat{Q}(S_{t},A_{t}; \theta_{t}))\nabla_{\theta} \hat{Q}(S_{t},A_{t}; \theta_{t})
-\]</span></p>
-</section>
-<section id="experience-replay" class="level2">
-<h2 class="anchored" data-anchor-id="experience-replay">Experience Replay</h2>
-<p>Experience replay enables learning from mini-batches of past experiences, improving data efficiency and stability.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ExperienceReplay.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
-</figure>
 </div>
-</section>
-<section id="fixed-targets" class="level2">
-<h2 class="anchored" data-anchor-id="fixed-targets">Fixed Targets</h2>
-<p>Stabilizes training by holding target values constant for several updates:</p>
-<p><span class="math display">\[
-\hat{Q}(s,a; \theta^{-})
-\]</span></p>
-<p>Gradient for the loss function:</p>
-<p><span class="math display">\[
-\nabla_\theta F(\theta_{t}) = (R_{t+1} + \gamma \max_{a} \hat{Q}(S_{t+1},a; \theta^{-}_{t}) - \hat{Q}(S_{t},A_{t}; \theta_{t}))\nabla_\theta \hat{Q}(S_{t},A_{t}; \theta_{t})
-\]</span></p>
-</section>
-<section id="deep-q-network-illustration" class="level2">
-<h2 class="anchored" data-anchor-id="deep-q-network-illustration">Deep Q-Network: Illustration</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/DQN.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</section>
-<section id="pseudocode" class="level2">
-<h2 class="anchored" data-anchor-id="pseudocode">Pseudocode</h2>
-<div class="center" style="text-align:center;">
-<p><img src="images/8-1.svg" class="img-fluid" style="width:75.0%"></p>
+<div class="callout-title-container flex-fill">
+Example: Breakout
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the following Atari Breakout environment <span class="citation" data-cites="bellemare2013arcade">(<a href="../references.html#ref-bellemare2013arcade" role="doc-biblioref">Bellemare et al. 2013</a>)</span>:</p>
 <div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+<p><a href="https://ale.farama.org/environments/breakout/"><img src="images/breakout.gif" class="img-fluid" style="width:25.0%"></a></p>
 </div>
-<section id="exercise" class="level4">
-<h4 class="anchored" data-anchor-id="exercise"><u> Exercise </u></h4>
-<p>Is there a mistake with the following loss function for DQN?</p>
+<p>Suppose we set our batch to <span class="math inline">\(4\)</span>.</p>
+<p>The state information <span class="math inline">\(\mathsf{S}_{\text{batch}}\)</span> is typically represented as a stack of four consecutive tensor image frames <span class="math inline">\(\mathsf{S}\)</span>, capturing temporal dynamics and motion across time:</p>
 <p><span class="math display">\[
-F(\theta_{t}) = (\text{TD-Target}_{j} - \hat{Q}(S_{j+1},a; \theta_{t}))^{2}
+\mathsf{S}_{\text{batch}} = \begin{bmatrix}
+\mathsf{S}_t \gets \text{frame at time } t \\
+\mathsf{S}_{t-1} \gets \text{frame at time } t-1 \\
+\mathsf{S}_{t-2} \gets \text{frame at time } t-2 \\
+\mathsf{S}_{t-3} \gets \text{frame at time } t-3 \\
+\end{bmatrix}
 \]</span></p>
-<p>Why does this suggest that we are updating the MSE of a scalar and a vector? <br> What is actually happening here during the gradient update step?</p>
+<p>The environment has a discrete action space <span class="math inline">\(a\)</span>:</p>
+<p><span class="math display">\[
+a = \{0 \gets \text{Do nothing}, 1 \gets \text{Fire}, 2 \gets \text{Move right}, 3 \gets \text{Move left}\}
+\]</span></p>
+<p>The environment’s state transition dynamics <span class="math inline">\(P(s’, r \mid s, a)\)</span> are governed by a physics engine that updates the positions of the ball, paddle, and bricks based on collisions and the selected action. These dynamics are deterministic but complex due to pixel-based changes.</p>
+<p>The reward <span class="math inline">\(R\)</span> is defined by the number of bricks destroyed:</p>
+<ul>
+<li>Hitting and destroying a brick typically yields a reward of <span class="math inline">\(+1\)</span>.</li>
+<li>Missing the ball (letting it fall) typically ends a life but gives <span class="math inline">\(0\)</span> reward.</li>
+</ul>
+<p>The episode ends <span class="math inline">\(d\)</span> (dones) if either of the following happens:</p>
+<ul>
+<li><strong>Termination</strong>: The agent loses all lives (typically 5).</li>
+<li><strong>Truncation</strong>: The agent clears all bricks or reaches a built-in time limit (varies by implementation).</li>
+</ul>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -810,7 +800,76 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="text-center">
+<p><img src="images/DQNresearchpaper.png" class="img-fluid quarto-figure quarto-figure-center" style="width:50.0%"> <br> Google DeepMind 2013 <br> <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Link to Research Paper</a></p>
+</div>
+<p>To implement Q-learning, substitute <span class="math inline">\(Q_{\pi}(s,a)\)</span> for our TD targets similar to what we did for the <a href="../lecture7/lecture7-2.html">Semi-Gradient SARSA</a> algorithm:</p>
+<p><span class="math display">\[
+\langle S_{0}, \ R_{1} + \gamma \max_{a} \hat{Q}(S_{1},a; \theta_{0})\rangle, \ ... \ ,\langle S_{T-1},R_{T}\rangle
+\]</span></p>
+<p>Using SGD our update would be:</p>
+<p><span class="math display">\[
+\nabla_{\theta} F(\theta_{t}) = (R_{t+1} + \gamma \max_{a} \hat{Q}(S_{t+1},a; \theta_{t}) - \hat{Q}(S_{t},A_{t}; \theta_{t}))\nabla_{\theta} \hat{Q}(S_{t},A_{t}; \theta_{t})
+\]</span></p>
+<p><strong>Experience replay</strong> enables learning from mini-batches of past experiences, improving data efficiency and stability.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ExperienceReplay.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:20.0%"></p>
+</figure>
+</div>
+<p><strong>Fixed targets</strong> stabilize training by holding target values constant for several updates:</p>
+<p><span class="math display">\[
+\hat{Q}(s,a; \theta^{-})
+\]</span></p>
+<p>By fixing targets our new SGD update equation would be:</p>
+<p><span class="math display">\[
+\nabla_\theta F(\theta_{t}) = (R_{t+1} + \gamma \max_{a} \hat{Q}(S_{t+1},a; \theta^{-}_{t}) - \hat{Q}(S_{t},A_{t}; \theta_{t}))\nabla_\theta \hat{Q}(S_{t},A_{t}; \theta_{t})
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/DQN.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<div class="center" style="text-align:center;">
+<p><img src="images/8-1.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
+<div style="text-align: center;">
+<p><a href="https://github.com/twallett/rl-lecture-code/tree/main/08-DQN/Base"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question 🤔
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Is there a mistake with the following loss function for DQN?</p>
+<p><span class="math display">\[
+F(\theta_{t}) = (\text{TD-Target}_{j} - \hat{Q}(S_{j+1},a; \theta_{t}))^{2}
+\]</span></p>
+<p>Why does this suggest that we are updating the MSE of a scalar and a vector?</p>
+<p>What is actually happening here during the gradient update step?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 
 </div>
@@ -818,8 +877,11 @@ Solution
 </div>
 
 
-</section>
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-bellemare2013arcade" class="csl-entry" role="listitem">
+Bellemare, Marc G, Yavar Naddaf, Joel Veness, and Michael Bowling. 2013. <span>“The Arcade Learning Environment: An Evaluation Platform for General Agents.”</span> <em>Journal of Artificial Intelligence Research</em> 47: 253–79.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

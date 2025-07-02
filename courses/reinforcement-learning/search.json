@@ -1161,40 +1161,29 @@
     "href": "lecture8/lecture8-1.html",
     "title": "8.1 Deep Learning",
     "section": "",
-    "text": "Motivation",
+    "text": "Multi-Layered Perceptrons (MLPs) (Hagan et al. 2014)\nAssume state \\(\\mathsf{S}\\) is represented by a tensor of continuous values.\nOne parameter vector \\(\\mathbf{w}\\) is not enough to learn a state tensor \\(\\mathsf{S}\\).",
     "crumbs": [
       "Lecture 8: Deep Q-Networks",
       "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
     ]
   },
   {
-    "objectID": "lecture8/lecture8-1.html#motivation",
-    "href": "lecture8/lecture8-1.html#motivation",
+    "objectID": "lecture8/lecture8-1.html#multi-layered-perceptrons-mlps-hagan2014neural",
+    "href": "lecture8/lecture8-1.html#multi-layered-perceptrons-mlps-hagan2014neural",
     "title": "8.1 Deep Learning",
     "section": "",
-    "text": "Problem\n\n\n\nOne parameter vector \\(\\mathbf{w}\\) is not enough to represent a state tensor \\(\\mathsf{S}\\).\n\n\n\n\\(\\mathsf{S} =\\)\n\n\n\n\n\n\n\n\nWhat happens if \\(\\mathsf{S}\\) is an image tensor?\n\n\n\n\n\n\n\n\nSolution\n\n\n\nWe would like to use neural networks \\(\\theta\\) for more parameters to improve our function approximation:\n\nMulti-layered Perceptrons (MLPs)\nConvolutional Neural Networks (CNNs)",
+    "text": "Illustration: MLP \\(\\theta\\)\n\n\n\n\n\n\n\n\n\nMLP Forwardpropagation\nAt the beginning of MLP forwardpropagation, let \\(\\mathbf{p}\\) be the input vector:\n\\[\n\\mathbf{a}^0 = \\mathbf{p}\n\\]\nThe input then passes through a series of layers:\n\\[\n\\mathbf{a}^{m+1} = \\mathbf{f}^{m+1}(\\mathbf{W}^{m+1} \\cdot \\mathbf{a}^m + \\mathbf{b}^{m+1}) \\quad \\text{for } m = 0, 1, \\dots, M-2\n\\]\n\n\n\\(\\mathbf{a}^m\\): Output vector of layer \\(m\\)\n\\(\\mathbf{W}^{m+1}\\): Weight matrix of layer \\(m+1\\)\n\\(\\mathbf{b}^{m+1}\\): Bias vector of layer \\(m+1\\)\n\\(\\mathbf{f}^{m+1}()\\): Activation function of layer \\(m+1\\)\nFor the final layer, we compute:\n\\[\n\\mathbf{a}^M = \\text{softmax}(\\mathbf{W}^{m+1} \\cdot \\mathbf{a}^{M-1} + \\mathbf{b}^{m+1}) \\quad \\text{for } m = M-1\n\\]\n\n\n\\(\\mathbf{a}^{M-1}\\): Output vector of the last hidden layer\n\\(\\text{softmax}()\\): Softmax activation function\nThus, the output of the network is:\n\\[\n\\mathbf{a} = \\mathbf{a}^M\n\\]\n\n\nMLP Backpropagation\nIn MLP backpropagation, the sensitivity of the output layer is:\n\\[\n\\mathbf{s}^M = \\mathbf{a} - \\mathbf{t}\n\\]\n\n\n\\(\\mathbf{s}^M\\): Sensitivity of the output layer\n\\(\\mathbf{t}\\): Target class vector\nTo update sensitivities for preceding layers:\n\\[\n\\mathbf{s}^m = \\mathbf{F}^m \\cdot \\mathbf{n}^m \\cdot \\mathbf{W}^{m+1^\\top} \\cdot \\mathbf{s}^{m+1} \\quad \\text{for } m = M-1, \\dots, 2, 1\n\\]\n\n\n\\(\\mathbf{s}^m\\): Sensitivity of layer \\(m\\)\n\\(\\mathbf{F}^m\\): Derivative of activation function of layer \\(m\\)\n\\(\\mathbf{n}^m\\): Input vector to layer \\(m\\)\n\\(\\mathbf{W}^{m+1^\\top}\\): Transpose of weight matrix of layer \\(m+1\\)\n\\(\\mathbf{s}^{m+1}\\): Sensitivity of layer \\(m+1\\)\n\n\nMLP Weight and Bias Updates\nThe weights are updated using the rule:\n\\[\n\\mathbf{W}_{k+1}^m = \\mathbf{W}_k^m - \\alpha \\, \\mathbf{s}^m \\cdot (\\mathbf{a}^{{m-1}^\\top})\n\\]\n\n\n\\(\\mathbf{W}_k^m\\): Weight matrix of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{W}_{k+1}^m\\): Weight matrix at iteration \\(k+1\\)\n\\(\\mathbf{s}^m\\): Sensitivity of layer \\(m\\)\n\\(\\mathbf{a}^{{m-1}^\\top}\\): Transpose of the output from layer \\(m-1\\)\n\\(\\alpha\\): Learning rate\nThe biases are updated as:\n\\[\n\\mathbf{b}_{k+1}^m = \\mathbf{b}_k^m - \\alpha \\, \\mathbf{s}^m\n\\]\n\n\n\\(\\mathbf{b}_k^m\\): Bias vector of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{b}_{k+1}^m\\): Bias vector at iteration \\(k+1\\)",
     "crumbs": [
       "Lecture 8: Deep Q-Networks",
       "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
     ]
   },
   {
-    "objectID": "lecture8/lecture8-1.html#multi-layered-perceptrons-mlps",
-    "href": "lecture8/lecture8-1.html#multi-layered-perceptrons-mlps",
+    "objectID": "lecture8/lecture8-1.html#convolutional-neural-networks-cnns-nndesigndeeplearning2024",
+    "href": "lecture8/lecture8-1.html#convolutional-neural-networks-cnns-nndesigndeeplearning2024",
     "title": "8.1 Deep Learning",
-    "section": "Multi-Layered Perceptrons (MLPs)",
-    "text": "Multi-Layered Perceptrons (MLPs)",
-    "crumbs": [
-      "Lecture 8: Deep Q-Networks",
-      "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
-    ]
-  },
-  {
-    "objectID": "lecture8/lecture8-1.html#convolutional-neural-networks-cnns",
-    "href": "lecture8/lecture8-1.html#convolutional-neural-networks-cnns",
-    "title": "8.1 Deep Learning",
-    "section": "Convolutional Neural Networks (CNNs)",
-    "text": "Convolutional Neural Networks (CNNs)\n\n\n\n\n\n\n\n Exercise \nBased on your intuition, do you think it makes sense to use raw pixels as input for a Deep Q-Network (DQN) instead of preprocessed state features?\n\n\n\n\n\n\n\n\n\nSolution",
+    "section": "Convolutional Neural Networks (CNNs) (Martin T. Hagan 2024)",
+    "text": "Convolutional Neural Networks (CNNs) (Martin T. Hagan 2024)\n\n\n\n\n\n\nIllustration: CNN \\(\\theta\\)\n\n\n\n\n\n\n\n\n\nCNN Forwardpropagation\nAt the beginning of CNN forwardpropagation, let \\(\\mathsf{P}\\) be the input image or tensor:\n\\[\n\\mathsf{A}^0 = \\mathsf{P}\n\\]\nThe input then passes through a convolutional layer followed by a non-linear activation:\n\\[\n\\mathsf{A}^1 = \\mathbf{f}^1( \\mathsf{A}^0 \\ast \\mathbf{W}^1 + \\mathbf{B}^1 )\n\\]\n\n\n\\(\\mathsf{A}^0\\): Input image or tensor\n\\(\\ast\\): Convolution operator\n\\(\\mathbf{W}^1\\): Convolutional kernel(s)\n\\(\\mathbf{B}^1\\): Bias tensor\n\\(\\mathbf{f}^1()\\): Activation function (e.g., ReLU)\nThe resulting feature map may then be passed through an average pooling layer:\n\\[\n\\mathsf{A}^2 = \\text{AvgPool}(\\mathsf{A}^1)\n\\]\n\n\n\\(\\text{AvgPool}\\): Average pooling operation to reduce spatial dimensions\nNext, max pooling is applied:\n\\[\n\\mathsf{A}^3 = \\text{MaxPool}(\\mathsf{A}^2)\n\\]\n\n\n\\(\\text{MaxPool}\\): Max pooling operation to retain strongest features\nFinally, we flatten the pooled feature maps into a vector for input into a fully connected layer:\n\\[\n\\mathbf{a}^{\\text{flat}} = \\text{flatten}(\\mathsf{A}^3)\n\\]\n\n\n\\(\\text{flatten}()\\): Converts a 3D tensor into a 1D feature vector\n\n\nCNN Backpropagation\nDuring CNN backpropagation, we compute gradients of the loss function \\(F\\) with respect to various intermediate variables. These gradients are used to update parameters via gradient descent.\n\\[\n\\mathbf{dN} \\equiv \\frac{\\partial F}{\\partial \\mathbf{N}}, \\quad\n\\mathsf{dA} \\equiv \\frac{\\partial F}{\\partial \\mathsf{A}}, \\quad\n\\mathsf{dZ} \\equiv \\frac{\\partial F}{\\partial \\mathsf{Z}}, \\quad\n\\mathbf{dW} \\equiv \\frac{\\partial F}{\\partial \\mathbf{W}}, \\quad\n\\mathbf{db} \\equiv \\frac{\\partial F}{\\partial \\mathbf{B}}\n\\]\n\n\n\\(\\mathbf{N}\\): Output of the network\n\\(\\mathsf{A}\\): Activation map (output of nonlinearity)\n\\(\\mathsf{Z}\\): Pre-activation (input to activation function)\n\\(\\mathbf{W}\\): Convolutional filters (weights)\n\\(\\mathbf{B}\\): Bias terms\n\\(\\delta^{(\\cdot)}\\): Gradient of the loss w.r.t. each quantity\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nAssume that our state tensor \\(\\mathsf{S}\\) is an image.\nBased on your intuition, do you think it makes sense to use raw pixels as input instead of preprocessed state features?\n\n\n\n\\(\\mathsf{S} =\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\nHagan, Martin T., Howard B. Demuth, Mark H. Beale, and Orlando De Jesús. 2014. Neural Network Design. 2nd ed. Martin Hagan. https://hagan.okstate.edu/NNDesign.pdf.\n\n\nMartin T. Hagan, Amir Jafari. 2024. “NNDesignDeepLearning.” https://github.com/NNDesignDeepLearning/NNDesignDeepLearning.",
     "crumbs": [
       "Lecture 8: Deep Q-Networks",
       "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
@@ -1205,73 +1194,7 @@
     "href": "lecture8/lecture8-2.html",
     "title": "8.2 Deep Q-Networks (DQN)",
     "section": "",
-    "text": "Motivation\nNeed an algorithm that:",
-    "crumbs": [
-      "Lecture 8: Deep Q-Networks",
-      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.2 Deep Q-Networks (DQN)</span>"
-    ]
-  },
-  {
-    "objectID": "lecture8/lecture8-2.html#motivation",
-    "href": "lecture8/lecture8-2.html#motivation",
-    "title": "8.2 Deep Q-Networks (DQN)",
-    "section": "",
-    "text": "Leverages neural networks.\nLeverages a classical RL learning method (TD: Q-learning).\nImplements batch form.\nEmpirically performs well.\n\n\n\n\n\n\n\nGoogle DeepMind 2013\nLink to Research Paper",
-    "crumbs": [
-      "Lecture 8: Deep Q-Networks",
-      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.2 Deep Q-Networks (DQN)</span>"
-    ]
-  },
-  {
-    "objectID": "lecture8/lecture8-2.html#deep-q-network-mathematical-intuition",
-    "href": "lecture8/lecture8-2.html#deep-q-network-mathematical-intuition",
-    "title": "8.2 Deep Q-Networks (DQN)",
-    "section": "Deep Q-Network: Mathematical Intuition",
-    "text": "Deep Q-Network: Mathematical Intuition\n\\[\nF(\\mathbf{x}_{k}) = \\mathbb{E}[(\\mathbf{t}_{k} - \\mathbf{a}_{k})^2]\n\\]\n\\[\n\\mathbf{x}_{k+1} = \\mathbf{x}_{k} - \\alpha \\nabla_{\\mathbf{x}_{k}} F(\\mathbf{x}_{k})\n\\]\nTo implement Q-learning, substitute the oracle \\(Q_{\\pi}(s,a)\\) for our TD targets:\n\\[\n\\langle S_{0}, \\ R_{1} + \\gamma \\max_{a} \\hat{Q}(S_{1},a; \\theta_{0})\\rangle, \\ ... \\ ,\\langle S_{T-1},R_{T}\\rangle\n\\]\nGradient for the loss function:\n\\[\n\\nabla_{\\theta} F(\\theta_{t}) = (R_{t+1} + \\gamma \\max_{a} \\hat{Q}(S_{t+1},a; \\theta_{t}) - \\hat{Q}(S_{t},A_{t}; \\theta_{t}))\\nabla_{\\theta} \\hat{Q}(S_{t},A_{t}; \\theta_{t})\n\\]",
-    "crumbs": [
-      "Lecture 8: Deep Q-Networks",
-      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.2 Deep Q-Networks (DQN)</span>"
-    ]
-  },
-  {
-    "objectID": "lecture8/lecture8-2.html#experience-replay",
-    "href": "lecture8/lecture8-2.html#experience-replay",
-    "title": "8.2 Deep Q-Networks (DQN)",
-    "section": "Experience Replay",
-    "text": "Experience Replay\nExperience replay enables learning from mini-batches of past experiences, improving data efficiency and stability.",
-    "crumbs": [
-      "Lecture 8: Deep Q-Networks",
-      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.2 Deep Q-Networks (DQN)</span>"
-    ]
-  },
-  {
-    "objectID": "lecture8/lecture8-2.html#fixed-targets",
-    "href": "lecture8/lecture8-2.html#fixed-targets",
-    "title": "8.2 Deep Q-Networks (DQN)",
-    "section": "Fixed Targets",
-    "text": "Fixed Targets\nStabilizes training by holding target values constant for several updates:\n\\[\n\\hat{Q}(s,a; \\theta^{-})\n\\]\nGradient for the loss function:\n\\[\n\\nabla_\\theta F(\\theta_{t}) = (R_{t+1} + \\gamma \\max_{a} \\hat{Q}(S_{t+1},a; \\theta^{-}_{t}) - \\hat{Q}(S_{t},A_{t}; \\theta_{t}))\\nabla_\\theta \\hat{Q}(S_{t},A_{t}; \\theta_{t})\n\\]",
-    "crumbs": [
-      "Lecture 8: Deep Q-Networks",
-      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.2 Deep Q-Networks (DQN)</span>"
-    ]
-  },
-  {
-    "objectID": "lecture8/lecture8-2.html#deep-q-network-illustration",
-    "href": "lecture8/lecture8-2.html#deep-q-network-illustration",
-    "title": "8.2 Deep Q-Networks (DQN)",
-    "section": "Deep Q-Network: Illustration",
-    "text": "Deep Q-Network: Illustration",
-    "crumbs": [
-      "Lecture 8: Deep Q-Networks",
-      "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.2 Deep Q-Networks (DQN)</span>"
-    ]
-  },
-  {
-    "objectID": "lecture8/lecture8-2.html#pseudocode",
-    "href": "lecture8/lecture8-2.html#pseudocode",
-    "title": "8.2 Deep Q-Networks (DQN)",
-    "section": "Pseudocode",
-    "text": "Pseudocode\n\n\n\n\n  \n\n\n Exercise \nIs there a mistake with the following loss function for DQN?\n\\[\nF(\\theta_{t}) = (\\text{TD-Target}_{j} - \\hat{Q}(S_{j+1},a; \\theta_{t}))^{2}\n\\]\nWhy does this suggest that we are updating the MSE of a scalar and a vector?  What is actually happening here during the gradient update step?\n\n\n\n\n\n\nSolution",
+    "text": "What if a neural network could learn to act — one game, one pixel, one reward at a time? 🕹️\n\n\n\n\n\n\n\n\n\nProblem\n\n\n\nNow we just need an algorithm that:\n\nLeverages neural networks \\(\\theta\\).\nLeverages a classical RL learning method (TD: Q-learning).\nImplements batch form.\nEmpirically performs well.\n\n\n\n\n\n\n\n\n\nExample: Breakout\n\n\n\nConsider the following Atari Breakout environment (Bellemare et al. 2013):\n\n\n\nSuppose we set our batch to \\(4\\).\nThe state information \\(\\mathsf{S}_{\\text{batch}}\\) is typically represented as a stack of four consecutive tensor image frames \\(\\mathsf{S}\\), capturing temporal dynamics and motion across time:\n\\[\n\\mathsf{S}_{\\text{batch}} = \\begin{bmatrix}\n\\mathsf{S}_t \\gets \\text{frame at time } t \\\\\n\\mathsf{S}_{t-1} \\gets \\text{frame at time } t-1 \\\\\n\\mathsf{S}_{t-2} \\gets \\text{frame at time } t-2 \\\\\n\\mathsf{S}_{t-3} \\gets \\text{frame at time } t-3 \\\\\n\\end{bmatrix}\n\\]\nThe environment has a discrete action space \\(a\\):\n\\[\na = \\{0 \\gets \\text{Do nothing}, 1 \\gets \\text{Fire}, 2 \\gets \\text{Move right}, 3 \\gets \\text{Move left}\\}\n\\]\nThe environment’s state transition dynamics \\(P(s’, r \\mid s, a)\\) are governed by a physics engine that updates the positions of the ball, paddle, and bricks based on collisions and the selected action. These dynamics are deterministic but complex due to pixel-based changes.\nThe reward \\(R\\) is defined by the number of bricks destroyed:\n\nHitting and destroying a brick typically yields a reward of \\(+1\\).\nMissing the ball (letting it fall) typically ends a life but gives \\(0\\) reward.\n\nThe episode ends \\(d\\) (dones) if either of the following happens:\n\nTermination: The agent loses all lives (typically 5).\nTruncation: The agent clears all bricks or reaches a built-in time limit (varies by implementation).\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n  Google DeepMind 2013  Link to Research Paper\n\nTo implement Q-learning, substitute \\(Q_{\\pi}(s,a)\\) for our TD targets similar to what we did for the Semi-Gradient SARSA algorithm:\n\\[\n\\langle S_{0}, \\ R_{1} + \\gamma \\max_{a} \\hat{Q}(S_{1},a; \\theta_{0})\\rangle, \\ ... \\ ,\\langle S_{T-1},R_{T}\\rangle\n\\]\nUsing SGD our update would be:\n\\[\n\\nabla_{\\theta} F(\\theta_{t}) = (R_{t+1} + \\gamma \\max_{a} \\hat{Q}(S_{t+1},a; \\theta_{t}) - \\hat{Q}(S_{t},A_{t}; \\theta_{t}))\\nabla_{\\theta} \\hat{Q}(S_{t},A_{t}; \\theta_{t})\n\\]\nExperience replay enables learning from mini-batches of past experiences, improving data efficiency and stability.\n\n\n\n\n\nFixed targets stabilize training by holding target values constant for several updates:\n\\[\n\\hat{Q}(s,a; \\theta^{-})\n\\]\nBy fixing targets our new SGD update equation would be:\n\\[\n\\nabla_\\theta F(\\theta_{t}) = (R_{t+1} + \\gamma \\max_{a} \\hat{Q}(S_{t+1},a; \\theta^{-}_{t}) - \\hat{Q}(S_{t},A_{t}; \\theta_{t}))\\nabla_\\theta \\hat{Q}(S_{t},A_{t}; \\theta_{t})\n\\]\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nIs there a mistake with the following loss function for DQN?\n\\[\nF(\\theta_{t}) = (\\text{TD-Target}_{j} - \\hat{Q}(S_{j+1},a; \\theta_{t}))^{2}\n\\]\nWhy does this suggest that we are updating the MSE of a scalar and a vector?\nWhat is actually happening here during the gradient update step?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\nBellemare, Marc G, Yavar Naddaf, Joel Veness, and Michael Bowling. 2013. “The Arcade Learning Environment: An Evaluation Platform for General Agents.” Journal of Artificial Intelligence Research 47: 253–79.",
     "crumbs": [
       "Lecture 8: Deep Q-Networks",
       "<span class='chapter-number'>39</span>  <span class='chapter-title'>8.2 Deep Q-Networks (DQN)</span>"
@@ -2338,7 +2261,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Acero, Fernando, Parisa Zehtabi, Nicolas Marchesotti, Michael Cashmore,\nDaniele Magazzeni, and Manuela Veloso. 2024. “Deep Reinforcement\nLearning and Mean-Variance Strategies for Responsible Portfolio\nOptimization.” https://arxiv.org/abs/2403.16667.\n\n\nBertsekas, Dimitri P., and John N. Tsitsiklis. 2008. Introduction to\nProbability. 2nd ed. Belmont, MA: Athena Scientific.\n\n\nBrunskill, Emma. 2022. “CS234: Reinforcement Learning - Lecture\n1.” Course Lecture Slides, Stanford University. https://web.stanford.edu/class/cs234/slides/lecture1pre.pdf.\n\n\nFawzi, Alhussein, Matej Balog, Atri Huang, et al. 2022.\n“Discovering Faster Matrix Multiplication Algorithms with\nReinforcement Learning.” Nature 610: 47–53. https://doi.org/10.1038/s41586-022-05172-4.\n\n\nHammack, Richard H. 2013. Book of Proof. Richard Hammack.\n\n\nLevine, Sergey. 2019. “Introduction to Deep Reinforcement\nLearning.” Course Lecture Slides, Deep RL Course, UC Berkeley. https://rail.eecs.berkeley.edu/deeprlcourse/deeprlcourse/static/slides/lec-1.pdf.\n\n\nMnih, Volodymyr, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis\nAntonoglou, Daan Wierstra, and Martin Riedmiller. 2013. “Playing\nAtari with Deep Reinforcement Learning.” https://arxiv.org/abs/1312.5602.\n\n\nMoore, Andrew William. 1990. “Efficient Memory-Based Learning for\nRobot Control.” University of Cambridge.\n\n\nOuyang, Long, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright,\nPamela Mishkin, Chong Zhang, et al. 2022. “Training Language\nModels to Follow Instructions with Human Feedback.” https://arxiv.org/abs/2203.02155.\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement\nLearning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
+    "text": "Acero, Fernando, Parisa Zehtabi, Nicolas Marchesotti, Michael Cashmore,\nDaniele Magazzeni, and Manuela Veloso. 2024. “Deep Reinforcement\nLearning and Mean-Variance Strategies for Responsible Portfolio\nOptimization.” https://arxiv.org/abs/2403.16667.\n\n\nBellemare, Marc G, Yavar Naddaf, Joel Veness, and Michael Bowling. 2013.\n“The Arcade Learning Environment: An Evaluation Platform for\nGeneral Agents.” Journal of Artificial Intelligence\nResearch 47: 253–79.\n\n\nBertsekas, Dimitri P., and John N. Tsitsiklis. 2008. Introduction to\nProbability. 2nd ed. Belmont, MA: Athena Scientific.\n\n\nBrunskill, Emma. 2022. “CS234: Reinforcement Learning - Lecture\n1.” Course Lecture Slides, Stanford University. https://web.stanford.edu/class/cs234/slides/lecture1pre.pdf.\n\n\nFawzi, Alhussein, Matej Balog, Atri Huang, et al. 2022.\n“Discovering Faster Matrix Multiplication Algorithms with\nReinforcement Learning.” Nature 610: 47–53. https://doi.org/10.1038/s41586-022-05172-4.\n\n\nHagan, Martin T., Howard B. Demuth, Mark H. Beale, and Orlando De Jesús.\n2014. Neural Network Design. 2nd ed. Martin Hagan. https://hagan.okstate.edu/NNDesign.pdf.\n\n\nHammack, Richard H. 2013. Book of Proof. Richard Hammack.\n\n\nLevine, Sergey. 2019. “Introduction to Deep Reinforcement\nLearning.” Course Lecture Slides, Deep RL Course, UC Berkeley. https://rail.eecs.berkeley.edu/deeprlcourse/deeprlcourse/static/slides/lec-1.pdf.\n\n\nMartin T. Hagan, Amir Jafari. 2024. “NNDesignDeepLearning.”\nhttps://github.com/NNDesignDeepLearning/NNDesignDeepLearning.\n\n\nMnih, Volodymyr, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis\nAntonoglou, Daan Wierstra, and Martin Riedmiller. 2013. “Playing\nAtari with Deep Reinforcement Learning.” https://arxiv.org/abs/1312.5602.\n\n\nMoore, Andrew William. 1990. “Efficient Memory-Based Learning for\nRobot Control.” University of Cambridge.\n\n\nOuyang, Long, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright,\nPamela Mishkin, Chong Zhang, et al. 2022. “Training Language\nModels to Follow Instructions with Human Feedback.” https://arxiv.org/abs/2203.02155.\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement\nLearning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
     "crumbs": [
       "References"
     ]

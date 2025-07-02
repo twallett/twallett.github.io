@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -105,7 +125,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -680,14 +700,22 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#multi-layered-perceptrons-mlps" id="toc-multi-layered-perceptrons-mlps" class="nav-link" data-scroll-target="#multi-layered-perceptrons-mlps">Multi-Layered Perceptrons (MLPs)</a></li>
-  <li><a href="#convolutional-neural-networks-cnns" id="toc-convolutional-neural-networks-cnns" class="nav-link" data-scroll-target="#convolutional-neural-networks-cnns">Convolutional Neural Networks (CNNs)</a></li>
+  <li><a href="#multi-layered-perceptrons-mlps-hagan2014neural" id="toc-multi-layered-perceptrons-mlps-hagan2014neural" class="nav-link active" data-scroll-target="#multi-layered-perceptrons-mlps-hagan2014neural">Multi-Layered Perceptrons (MLPs) <span class="citation" data-cites="hagan2014neural">(Hagan et al. 2014)</span></a>
+  <ul class="collapse">
+  <li><a href="#mlp-forwardpropagation" id="toc-mlp-forwardpropagation" class="nav-link" data-scroll-target="#mlp-forwardpropagation">MLP Forwardpropagation</a></li>
+  <li><a href="#mlp-backpropagation" id="toc-mlp-backpropagation" class="nav-link" data-scroll-target="#mlp-backpropagation">MLP Backpropagation</a></li>
+  <li><a href="#mlp-weight-and-bias-updates" id="toc-mlp-weight-and-bias-updates" class="nav-link" data-scroll-target="#mlp-weight-and-bias-updates">MLP Weight and Bias Updates</a></li>
+  </ul></li>
+  <li><a href="#convolutional-neural-networks-cnns-nndesigndeeplearning2024" id="toc-convolutional-neural-networks-cnns-nndesigndeeplearning2024" class="nav-link" data-scroll-target="#convolutional-neural-networks-cnns-nndesigndeeplearning2024">Convolutional Neural Networks (CNNs) <span class="citation" data-cites="nndesigndeeplearning2024">(Martin T. Hagan 2024)</span></a>
+  <ul class="collapse">
+  <li><a href="#cnn-forwardpropagation" id="toc-cnn-forwardpropagation" class="nav-link" data-scroll-target="#cnn-forwardpropagation">CNN Forwardpropagation</a></li>
+  <li><a href="#cnn-backpropagation" id="toc-cnn-backpropagation" class="nav-link" data-scroll-target="#cnn-backpropagation">CNN Backpropagation</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -718,19 +746,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Problem
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>One parameter vector <span class="math inline">\(\mathbf{w}\)</span> is not enough to represent a state tensor <span class="math inline">\(\mathsf{S}\)</span>.</p>
+<p>Assume state <span class="math inline">\(\mathsf{S}\)</span> is represented by a tensor of continuous values.</p>
 <div class="grid">
 <div class="g-col-2 text-center">
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
@@ -743,52 +759,22 @@ Problem
 </div>
 </div>
 </div>
-<p>What happens if <span class="math inline">\(\mathsf{S}\)</span> is an image tensor?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>One parameter vector <span class="math inline">\(\mathbf{w}\)</span> is not enough to learn a state tensor <span class="math inline">\(\mathsf{S}\)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We would like to use neural networks <span class="math inline">\(\theta\)</span> for more parameters to improve our function approximation:</p>
-<ul>
-<li>Multi-layered Perceptrons (MLPs)</li>
-<li>Convolutional Neural Networks (CNNs)</li>
-</ul>
+<p>How can we approximate action value functions <span class="math inline">\(\hat{Q}(s,a; \mathbf{w}) \approx Q_{\pi}(s,a)\)</span> using differentiable methods?</p>
 </div>
-</div>
-</section>
-<section id="multi-layered-perceptrons-mlps" class="level2">
-<h2 class="anchored" data-anchor-id="multi-layered-perceptrons-mlps">Multi-Layered Perceptrons (MLPs)</h2>
-<div style="text-align: center;">
-<p><img src="images/AbbNota-eps-converted-to.svg" class="img-fluid" style="width:80.0%"></p>
-</div>
-<div style="text-align: center;">
-<p><img src="images/AbbNota1-eps-converted-to.svg" class="img-fluid" style="width:80.0%"></p>
-</div>
-</section>
-<section id="convolutional-neural-networks-cnns" class="level2">
-<h2 class="anchored" data-anchor-id="convolutional-neural-networks-cnns">Convolutional Neural Networks (CNNs)</h2>
-<div style="text-align: center;">
-<p><img src="images/ConvPoolingLayers-eps-converted-to.svg" class="img-fluid" style="width:80.0%"></p>
-</div>
-<div style="text-align: center;">
-<p><img src="images/ConvNetWithFullyConnected-eps-converted-to.svg" class="img-fluid" style="width:80.0%"></p>
-</div>
-<section id="exercise" class="level4">
-<h4 class="anchored" data-anchor-id="exercise"><u> Exercise </u></h4>
-<p>Based on your intuition, do you think it makes sense to use raw pixels as input for a Deep Q-Network (DQN) instead of preprocessed state features?</p>
-<div style="text-align: center;">
-<p><img src="images/ImageTensor.svg" class="img-fluid" style="width:50.0%"></p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -797,7 +783,218 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Neural networks</strong> <span class="math inline">\(\theta\)</span> offer more parameters to improve our function approximation of action value functions:</p>
+<ul>
+<li>Multi-layered Perceptrons (MLPs)</li>
+<li>Convolutional Neural Networks (CNNs)</li>
+</ul>
+</div>
+</div>
+</div>
+<section id="multi-layered-perceptrons-mlps-hagan2014neural" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="multi-layered-perceptrons-mlps-hagan2014neural">Multi-Layered Perceptrons (MLPs) <span class="citation" data-cites="hagan2014neural">(<a href="../references.html#ref-hagan2014neural" role="doc-biblioref">Hagan et al. 2014</a>)</span></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Illustration: MLP <span class="math inline">\(\theta\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div style="text-align: center;">
+<p><img src="images/AbbNota1-eps-converted-to.svg" class="img-fluid" style="width:80.0%"></p>
+</div>
+</div>
+</div>
+<section id="mlp-forwardpropagation" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="mlp-forwardpropagation">MLP Forwardpropagation</h3>
+<p>At the beginning of MLP forwardpropagation, let <span class="math inline">\(\mathbf{p}\)</span> be the input vector:</p>
+<p><span class="math display">\[
+\mathbf{a}^0 = \mathbf{p}
+\]</span></p>
+<p>The input then passes through a series of layers:</p>
+<p><span class="math display">\[
+\mathbf{a}^{m+1} = \mathbf{f}^{m+1}(\mathbf{W}^{m+1} \cdot \mathbf{a}^m + \mathbf{b}^{m+1}) \quad \text{for } m = 0, 1, \dots, M-2
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\mathbf{a}^m\)</span>: Output vector of layer <span class="math inline">\(m\)</span><br>
+<span class="math inline">\(\mathbf{W}^{m+1}\)</span>: Weight matrix of layer <span class="math inline">\(m+1\)</span><br>
+<span class="math inline">\(\mathbf{b}^{m+1}\)</span>: Bias vector of layer <span class="math inline">\(m+1\)</span><br>
+<span class="math inline">\(\mathbf{f}^{m+1}()\)</span>: Activation function of layer <span class="math inline">\(m+1\)</span></p>
+</div></div><p>For the final layer, we compute:</p>
+<p><span class="math display">\[
+\mathbf{a}^M = \text{softmax}(\mathbf{W}^{m+1} \cdot \mathbf{a}^{M-1} + \mathbf{b}^{m+1}) \quad \text{for } m = M-1
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\mathbf{a}^{M-1}\)</span>: Output vector of the last hidden layer<br>
+<span class="math inline">\(\text{softmax}()\)</span>: Softmax activation function</p>
+</div></div><p>Thus, the output of the network is:</p>
+<p><span class="math display">\[
+\mathbf{a} = \mathbf{a}^M
+\]</span></p>
+</section>
+<section id="mlp-backpropagation" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="mlp-backpropagation">MLP Backpropagation</h3>
+<p>In MLP backpropagation, the sensitivity of the output layer is:</p>
+<p><span class="math display">\[
+\mathbf{s}^M = \mathbf{a} - \mathbf{t}
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\mathbf{s}^M\)</span>: Sensitivity of the output layer<br>
+<span class="math inline">\(\mathbf{t}\)</span>: Target class vector</p>
+</div></div><p>To update sensitivities for preceding layers:</p>
+<p><span class="math display">\[
+\mathbf{s}^m = \mathbf{F}^m \cdot \mathbf{n}^m \cdot \mathbf{W}^{m+1^\top} \cdot \mathbf{s}^{m+1} \quad \text{for } m = M-1, \dots, 2, 1
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\mathbf{s}^m\)</span>: Sensitivity of layer <span class="math inline">\(m\)</span><br>
+<span class="math inline">\(\mathbf{F}^m\)</span>: Derivative of activation function of layer <span class="math inline">\(m\)</span><br>
+<span class="math inline">\(\mathbf{n}^m\)</span>: Input vector to layer <span class="math inline">\(m\)</span><br>
+<span class="math inline">\(\mathbf{W}^{m+1^\top}\)</span>: Transpose of weight matrix of layer <span class="math inline">\(m+1\)</span><br>
+<span class="math inline">\(\mathbf{s}^{m+1}\)</span>: Sensitivity of layer <span class="math inline">\(m+1\)</span></p>
+</div></div></section>
+<section id="mlp-weight-and-bias-updates" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="mlp-weight-and-bias-updates">MLP Weight and Bias Updates</h3>
+<p>The weights are updated using the rule:</p>
+<p><span class="math display">\[
+\mathbf{W}_{k+1}^m = \mathbf{W}_k^m - \alpha \, \mathbf{s}^m \cdot (\mathbf{a}^{{m-1}^\top})
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\mathbf{W}_k^m\)</span>: Weight matrix of layer <span class="math inline">\(m\)</span> at iteration <span class="math inline">\(k\)</span><br>
+<span class="math inline">\(\mathbf{W}_{k+1}^m\)</span>: Weight matrix at iteration <span class="math inline">\(k+1\)</span><br>
+<span class="math inline">\(\mathbf{s}^m\)</span>: Sensitivity of layer <span class="math inline">\(m\)</span><br>
+<span class="math inline">\(\mathbf{a}^{{m-1}^\top}\)</span>: Transpose of the output from layer <span class="math inline">\(m-1\)</span><br>
+<span class="math inline">\(\alpha\)</span>: Learning rate</p>
+</div></div><p>The biases are updated as:</p>
+<p><span class="math display">\[
+\mathbf{b}_{k+1}^m = \mathbf{b}_k^m - \alpha \, \mathbf{s}^m
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\mathbf{b}_k^m\)</span>: Bias vector of layer <span class="math inline">\(m\)</span> at iteration <span class="math inline">\(k\)</span><br>
+<span class="math inline">\(\mathbf{b}_{k+1}^m\)</span>: Bias vector at iteration <span class="math inline">\(k+1\)</span></p>
+</div></div></section>
+</section>
+<section id="convolutional-neural-networks-cnns-nndesigndeeplearning2024" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="convolutional-neural-networks-cnns-nndesigndeeplearning2024">Convolutional Neural Networks (CNNs) <span class="citation" data-cites="nndesigndeeplearning2024">(<a href="../references.html#ref-nndesigndeeplearning2024" role="doc-biblioref">Martin T. Hagan 2024</a>)</span></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Illustration: CNN <span class="math inline">\(\theta\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div style="text-align: center;">
+<p><img src="images/ConvNetWithFullyConnected-eps-converted-to.svg" class="img-fluid" style="width:80.0%"></p>
+</div>
+</div>
+</div>
+<section id="cnn-forwardpropagation" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="cnn-forwardpropagation">CNN Forwardpropagation</h3>
+<p>At the beginning of CNN forwardpropagation, let <span class="math inline">\(\mathsf{P}\)</span> be the input image or tensor:</p>
+<p><span class="math display">\[
+\mathsf{A}^0 = \mathsf{P}
+\]</span></p>
+<p>The input then passes through a convolutional layer followed by a non-linear activation:</p>
+<p><span class="math display">\[
+\mathsf{A}^1 = \mathbf{f}^1( \mathsf{A}^0 \ast \mathbf{W}^1 + \mathbf{B}^1 )
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\mathsf{A}^0\)</span>: Input image or tensor<br>
+<span class="math inline">\(\ast\)</span>: Convolution operator<br>
+<span class="math inline">\(\mathbf{W}^1\)</span>: Convolutional kernel(s)<br>
+<span class="math inline">\(\mathbf{B}^1\)</span>: Bias tensor<br>
+<span class="math inline">\(\mathbf{f}^1()\)</span>: Activation function (e.g., ReLU)</p>
+</div></div><p>The resulting feature map may then be passed through an average pooling layer:</p>
+<p><span class="math display">\[
+\mathsf{A}^2 = \text{AvgPool}(\mathsf{A}^1)
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\text{AvgPool}\)</span>: Average pooling operation to reduce spatial dimensions</p>
+</div></div><p>Next, max pooling is applied:</p>
+<p><span class="math display">\[
+\mathsf{A}^3 = \text{MaxPool}(\mathsf{A}^2)
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\text{MaxPool}\)</span>: Max pooling operation to retain strongest features</p>
+</div></div><p>Finally, we flatten the pooled feature maps into a vector for input into a fully connected layer:</p>
+<p><span class="math display">\[
+\mathbf{a}^{\text{flat}} = \text{flatten}(\mathsf{A}^3)
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\text{flatten}()\)</span>: Converts a 3D tensor into a 1D feature vector</p>
+</div></div></section>
+<section id="cnn-backpropagation" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="cnn-backpropagation">CNN Backpropagation</h3>
+<p>During CNN backpropagation, we compute gradients of the loss function <span class="math inline">\(F\)</span> with respect to various intermediate variables. These gradients are used to update parameters via gradient descent.</p>
+<p><span class="math display">\[
+\mathbf{dN} \equiv \frac{\partial F}{\partial \mathbf{N}}, \quad
+\mathsf{dA} \equiv \frac{\partial F}{\partial \mathsf{A}}, \quad
+\mathsf{dZ} \equiv \frac{\partial F}{\partial \mathsf{Z}}, \quad
+\mathbf{dW} \equiv \frac{\partial F}{\partial \mathbf{W}}, \quad
+\mathbf{db} \equiv \frac{\partial F}{\partial \mathbf{B}}
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(\mathbf{N}\)</span>: Output of the network<br>
+<span class="math inline">\(\mathsf{A}\)</span>: Activation map (output of nonlinearity)<br>
+<span class="math inline">\(\mathsf{Z}\)</span>: Pre-activation (input to activation function)<br>
+<span class="math inline">\(\mathbf{W}\)</span>: Convolutional filters (weights)<br>
+<span class="math inline">\(\mathbf{B}\)</span>: Bias terms<br>
+<span class="math inline">\(\delta^{(\cdot)}\)</span>: Gradient of the loss w.r.t. each quantity</p>
+</div></div><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question 🤔
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume that our state tensor <span class="math inline">\(\mathsf{S}\)</span> is an image.</p>
+<p>Based on your intuition, do you think it makes sense to use raw pixels as input instead of preprocessed state features?</p>
+<div class="grid">
+<div class="g-col-2 text-center">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+<p><span class="math inline">\(\mathsf{S} =\)</span></p>
+</div>
+</div>
+<div class="g-col-3">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+<p><img src="images/ImageTensor.svg" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 
 </div>
@@ -805,6 +1002,14 @@ Solution
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-hagan2014neural" class="csl-entry" role="listitem">
+Hagan, Martin T., Howard B. Demuth, Mark H. Beale, and Orlando De Jesús. 2014. <em>Neural Network Design</em>. 2nd ed. Martin Hagan. <a href="https://hagan.okstate.edu/NNDesign.pdf">https://hagan.okstate.edu/NNDesign.pdf</a>.
+</div>
+<div id="ref-nndesigndeeplearning2024" class="csl-entry" role="listitem">
+Martin T. Hagan, Amir Jafari. 2024. <span>“NNDesignDeepLearning.”</span> <a href="https://github.com/NNDesignDeepLearning/NNDesignDeepLearning" class="uri">https://github.com/NNDesignDeepLearning/NNDesignDeepLearning</a>.
+</div>
+</div>
 </section>
 </section>
 
