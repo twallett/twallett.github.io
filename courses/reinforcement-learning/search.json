@@ -261,7 +261,7 @@
     "section": "",
     "text": "Learning Objectives for Lecture 2: Mathematical Foundations (Hammack 2013) (Bertsekas and Tsitsiklis 2008) 🎯\n\n\n\n\nSet Theory\nProbability:\n\nAxiomatic Probability\nConditioning\nIndependence\nDiscrete Random Variables\nContinuous Random Variables\nProbability Distributions\n\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nBertsekas, Dimitri P., and John N. Tsitsiklis. 2008. Introduction to Probability. 2nd ed. Belmont, MA: Athena Scientific.\n\n\nHammack, Richard H. 2013. Book of Proof. Richard Hammack.",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Learning Objectives</span>"
     ]
   },
@@ -272,7 +272,7 @@
     "section": "",
     "text": "Sets\nA set is a collection of things.\nThe things are called elements of a set.\n\\[\nColors = \\{\\text{Red}, \\text{Blue}, \\text{Green}\\}\n\\]\n\\[\nNumbers = \\{1,2,3\\}\n\\]\nSets can be finite or infinite.\n\\[\nSome\\ Even\\ Integers = \\{2,4,6\\}\n\\]\n\\[\nAll\\ Even\\ Integers = \\{..., -4, -2, 0, 2, 4, ...\\}\n\\]\nThe number of elements in a set is called the cardinality.\n\\[\n|Colors| = 3\n\\]\nTwo sets are equal if they share exactly the same elements.\n\\[\nA = \\{2,4,6\\}, B = \\{4,2,6\\}, C = \\{4,2,7\\}\n\\]\n\\[\nA = B\n\\] \\[\nA \\neq C\n\\]\nTo express that \\(2\\) is an element of \\(A\\), we denote:\n\\[\n2 \\in A\n\\] \\[\n\\text{2 exists in A}\n\\]\n\\[\n5 \\notin A\n\\] \\[\n\\text{5 does not exist in A}\n\\]\nSome sets are so significant that we reserve special symbols for them:\n\\[\n\\emptyset = \\{\\} \\quad \\textbf{(empty set)}\n\\]\n\\[\n\\mathbb{N} = \\{1, 2, 3, ... \\} \\quad \\textbf{(natural numbers)}\n\\]\n\\[\n\\mathbb{Z} = \\{..., -2, -1, 0, 1, 2, ... \\} \\quad \\textbf{(integers)}\n\\]\n\\[\n\\mathbb{R} = \\{..., -0.22,...,0,...,1,..., \\pi, ... \\} \\quad \\textbf{(real numbers)}\n\\]\nWe visualize \\(\\mathbb{R}\\) as an infinitely long number line.",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
     ]
   },
@@ -283,7 +283,7 @@
     "section": "Set-Builder Notation",
     "text": "Set-Builder Notation\nA special notation called set-builder notation is used to describe sets that are too big or complex to list between braces.\n\\[\nAll\\ Even\\ Integers_{1} = \\{..., -4, -2, 0, 2, 4, ...\\}\n\\]\n\\[\nAll\\ Even\\ Integers_{2} = \\{2x: x \\in \\mathbb{Z} \\}\n\\]\n\\[\n\\text{The set of all numbers of the form } 2x \\text{ such that } x \\in \\mathbb{Z}\n\\]\n\\[\nAll\\ Even\\ Integers_{1} = All\\ Even\\ Integers_{2}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nWrite the following sets in set-builder notation:\n\n\\(\\{ 2, 4, 8, 16, 32, 64, ... \\}\\)\n\\(\\{ 0, 1, 4, 9, 16, 25, 36, ... \\}\\)\n\\(\\{ 3, 4, 5, 6, 7, 8 \\}\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(\\{ 2^x: x \\in \\mathbb{N} \\}\\)\n\\(\\{ x^2: x \\in \\mathbb{Z} \\}\\)\n\\(\\{ x \\in \\mathbb{Z}: 3 \\le x \\le 8 \\}\\)",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
     ]
   },
@@ -294,7 +294,7 @@
     "section": "Subsets",
     "text": "Subsets\nSuppose \\(A\\) and \\(B\\) are sets.\nIf every element of \\(A\\) is also an element of \\(B\\), then we say \\(A\\) is a subset of \\(B\\), denoted \\(A \\subseteq B\\).\nWe write \\(A \\not\\subseteq B\\) if \\(A\\) is not a subset of \\(B\\), that is, if it is not true that every element of \\(A\\) is also an element of \\(B\\).\nThus \\(A \\not\\subseteq B\\) means that there is at least one element of \\(A\\) that is not an element of \\(B\\).\n\\[\n\\mathbb{N} \\subseteq \\mathbb{Z} \\subseteq \\mathbb{R}\n\\]\n\\[\nA = \\{1,2\\}, B = \\{2,3,4\\}\n\\] \\[\nA \\not\\subseteq B\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nList all the subsets of the following sets:\n\n\\(\\{1,2,3\\}\\)\n\\(\\{1,\\{2,3\\}\\}\\)\n\\(\\{\\mathbb{N}, \\mathbb{Z}, \\mathbb{R}\\}\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(\\{\\}, \\{1\\}, \\{2\\}, \\{3\\}, \\{1,2\\}, \\{1,3\\}, \\{2,3\\}, \\{1,2,3\\}\\)\n\\(\\{\\}, \\{1\\}, \\{\\{2,3\\}\\}, \\{1,\\{2,3\\}\\}\\)\n\\(\\{\\}, \\{\\mathbb{N}\\}, \\{\\mathbb{Z}\\}, \\{\\mathbb{R}\\}, \\{\\mathbb{N},\\mathbb{Z}\\}, \\{\\mathbb{N},\\mathbb{R}\\}, \\{\\mathbb{Z},\\mathbb{R}\\}, \\{\\mathbb{N},\\mathbb{Z},\\mathbb{R}\\}\\)",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
     ]
   },
@@ -305,7 +305,7 @@
     "section": "Union, Intersection, and Difference",
     "text": "Union, Intersection, and Difference\nSuppose \\(A\\) and \\(B\\) are sets.\nA union of \\(A\\) and \\(B\\) is the set: \\[\nA \\cup B = \\{x: x \\in A \\text{ or } x \\in B \\}\n\\]\nA intersection of \\(A\\) and \\(B\\) is the set: \\[\nA \\cap B = \\{x: x \\in A \\text{ and } x \\in B \\}\n\\]\nA difference of \\(A\\) and \\(B\\) is the set: \\[\nA - B = \\{x: x \\in A \\text{ and } x \\notin B \\}\n\\]\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nShade in the region matching the expression:\n\n\\((A \\cap B) \\cap C\\)\n\\((A \\cup B) \\cap C\\)\n\\((A \\cup B) - C\\)\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
     ]
   },
@@ -316,7 +316,7 @@
     "section": "Complements",
     "text": "Complements\nSuppose \\(A\\) is a set.\nA universal set is a larger set that encompasses other sets.\nThe complement of \\(A\\), denoted \\(\\bar{A}\\), is the set \\(\\bar{A} = U - A\\).\n\\[\nP = \\{2, 3, 5, 7, ...\\} \\quad \\textbf{(prime numbers)}\n\\]\n\\[\n\\bar{P} = \\mathbb{N} - P = \\{1, 4, 6, ...\\}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nFind \\(\\bar{A}\\):\n\\[\nA = \\{1,2,3\\}, U = \\{0,1,2,3,4,5\\}\n\\]\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\n\\bar{A} = \\{0, 4, 5\\}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
     ]
   },
@@ -327,7 +327,7 @@
     "section": "Ordered Pair",
     "text": "Ordered Pair\nAn ordered pair is a list \\((x,y)\\) of two elements \\(x\\) and \\(y\\), enclosed in parentheses and separated by a comma.\n\\[\n(1,2)\n\\] \\[\n(2,1)\n\\]\nHowever:\n\\[\n(1,2) \\neq (2,1)\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
     ]
   },
@@ -338,7 +338,7 @@
     "section": "Cartesian Product",
     "text": "Cartesian Product\nSuppose \\(A\\) and \\(B\\) are sets.\nA cartesian product is simply the multiplication of sets denoted as \\(A\\) x \\(B\\) and defined as\n\\[\nA x B = \\{(a,b): a \\in A, \\ b \\in B \\}\n\\]\n\\[\nA = \\{a, b, c\\}, \\ B = \\{1, 2, 3\\}\n\\]\n\\[\nA \\ \\text{x} \\ B = \\{ (a,1), (a,2), (a,3), (b,1), (b,2), (b,3), (c,1), (c,2), (c,3) \\}\n\\]\nOrdered tripples such as \\((x,y,z)\\) are also possible.\n\\[\nA = \\{a, b\\}, \\ B = \\{1, 2\\}, \\ C = \\{I, II\\}\n\\]\n\\[\nA \\ \\text{x} \\ B \\ \\text{x} \\ C = \\{ (a,1,I), (a,1,II), (a,2,I), (a,2,II), (b,1,I), (b,1,II), (b,2,I), (b,2,II) \\}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
     ]
   },
@@ -349,7 +349,7 @@
     "section": "Cartesian Power",
     "text": "Cartesian Power\nA cartesian power is also possible for any integer \\(n\\) as\n\\[\nA^n = A \\ \\text{x} \\ A \\ \\text{x} \\ ... \\ \\text{x} \\ A = \\{ (x_1, x_2, ..., x_n):x_1,x_2,...,x_n \\in A\\}\n\\]\nOne famous cartesian power is \\(\\mathbb{R}^2\\), also known as the cartesian plane or a two-dimensional plane.\n\\[\n\\mathbb{R} \\ \\text{x} \\ \\mathbb{R} = \\mathbb{R}^2\n\\]\n\n\n\n\\(\\mathbb{R}^3\\) three-dimensional planes are also possible.\n\\[\n\\mathbb{R} \\ \\text{x} \\ \\mathbb{R} \\ \\text{x} \\ \\mathbb{R} = \\mathbb{R}^3\n\\]\n\n\n\nAnd we can generalize up to \\(n\\) dimensions.\n\\[\n\\mathbb{R} \\ \\text{x} \\ \\mathbb{R} \\ \\text{x} \\ ... \\ \\text{x} \\ \\mathbb{R} = \\mathbb{R}^n\n\\]\n\n\n\n\n\n\nIn Data Science, we often work in high-dimensional spaces—sometimes with thousands or even millions of dimensions. GPT-4, for example, is rumored to have over a trillion \\(\\mathbb{R}^{1,000,000,000,000,000}\\).\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nFor the following sets list the elements of their corresponding cartesian product:\n\\(A = \\{1,2,3\\}\\) \\(B = \\{1, (2,3) \\}\\) \\(C = \\{\\mathbb{Z}, \\mathbb{R}\\}\\)\n\n\\(A\\) x \\(B\\)\n\\(A\\) x \\(C\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(A \\ \\text{x} \\ B = \\{ (1,1), (1,(2,3)), (2,1), (2, (2,3)), (3,1), (3,(2,3)) \\}\\)\n\\(A \\ \\text{x} \\ C = \\{ (1,\\mathbb{Z}), (1,\\mathbb{R}), (2,\\mathbb{Z}), (2,\\mathbb{R}), (3,\\mathbb{Z}), (3,\\mathbb{R}) \\}\\)",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>2.1 Set Theory</span>"
     ]
   },
@@ -360,7 +360,7 @@
     "section": "",
     "text": "Methodology\nSteps to perform a probabilistic model:",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
     ]
   },
@@ -371,7 +371,7 @@
     "section": "",
     "text": "Specify sample space.\nDefine probability law (must align with probability axioms).\nIdentify event of interest.\nCalculate…",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
     ]
   },
@@ -382,7 +382,7 @@
     "section": "Sample Space",
     "text": "Sample Space\nA sample space is a set of all possible outcomes from an experiment. \n\\[\nSample \\ Space = \\{\\text{Heads}, \\text{Tails}\\}\n\\]\nAn experiment is any procedure that can be repeated and has a well-defined set of outcomes. \n\\[\n\\text{Flipping a fair coin}\n\\]\nAn outcome is the end result of an experiment, or an element in the sample space.\n\\[\n\\text{Heads}  \n\\]\n\n\n\n\n\n\nIllustration: Discrete Sample Space\n\n\n\nExperiment: Rolling two fair die at the same time.\n\\[\nSample \\ Space = \\{ (x, y) : x,y \\in \\mathbb{N}, 1 \\leq x, y \\leq 6  \\}\n\\]\n\n\n\n\n\n\n\n\n\n\n\nIllustration: Continuous Sample Space\n\n\n\nExperiment: Measure two continuous variables in the range \\([0,1]\\)\n\\[ Sample\\ Space = \\{ (x, y) : x,y \\in \\mathbb{R}, 0 \\leq x, y \\leq 1  \\} \\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
     ]
   },
@@ -393,7 +393,7 @@
     "section": "Events and Experiment",
     "text": "Events and Experiment\nAn event is a subset of the sample space.\nEvents are important because they ultimately get assigned probabilities.\nExperiment: Rolling a die once.\n\\[\nSample \\ Space = \\{1,2,3,4,5,6\\}\n\\]\nWhat is the event of rolling a \\(1\\)?\n\\[\n\\{1\\} \\subseteq \\{1,2,3,4,5,6\\}\n\\]\nWhat is the event of rolling an odd number?\n\\[\n\\{1, 3, 5\\} \\subseteq \\{1,2,3,4,5,6\\}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
     ]
   },
@@ -404,7 +404,7 @@
     "section": "Probability Axioms and Probability Law",
     "text": "Probability Axioms and Probability Law\nSuppose \\(A\\) and \\(B\\) are events.\nKolmogorov probability axioms are the foundations of axiomatic probability theory:\n\nNonnegativity: \\(P(Event) \\geq 0\\)\nNormalization: \\(P(Sample\\ Space) = 1\\)\nAdditivity: If \\(A \\cap B = \\emptyset, P(A \\cup B) = P(A) + P(B)\\)\n\nProbability laws are additional axioms mathematically derived from Kolmogorov probability axioms.\n\n\n\n\n\n\nExercise\n\n\n\nExperiment: Rolling two fair die at the same time.\nLet all outcomes be equally likely.\n\\[\nP(A) = \\frac{|A|}{|Sample\\ Space|}\n\\]\n\n\n\nFind the following probabilities:\n\n\\(P(die_1 = 1)\\)\n\\(P(\\text{max}(die_1, die_2) = 2)\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(P(die_1 = 1) = \\frac{6}{36} \\approx 0.1\\bar{6}\\)\n\\(P(\\text{max}(die_1, die_2) = 2) = \\frac{2}{36} \\approx 0.0\\bar{5}\\)\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nExperiment: Measure two continuous variables in the range \\([0,1]\\)\n\\[\nSample\\ Space = \\{ (x, y) : x,y \\in \\mathbb{R}, 0 \\leq x, y \\leq 1  \\}\n\\]\n\n\n\nFind the following probabilities:\n\n\\(P(x = 0.5 , y = 0.5)\\)\n\\(P(x+y \\geq 1)\\)\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\\(P(x = 0.5 , y = 0.5) = 0\\)\n\\(P(x+y \\geq 1) = 0.5\\)",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>2.2 Axiomatic Probability</span>"
     ]
   },
@@ -415,7 +415,7 @@
     "section": "",
     "text": "Conditional Probability\nSuppose \\(A\\) and \\(B\\) are events.\nConditional probability is the likelihood of an event occurring given that we know another event has occurred.\n\\[\nP(A|B) = \\frac{P(A \\cap B)}{P(B)}\n\\]\nNotice that the conditioned event becomes the new sample space.\nIf \\(P(B) \\neq 0\\), then the probability of the intersection normalized by the conditioned space. Else \\(P(B) = 0\\), then \\(P(A|B)\\) is undefined.",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>2.3 Conditioning</span>"
     ]
   },
@@ -426,7 +426,7 @@
     "section": "Product Rule",
     "text": "Product Rule\nSuppose \\(A\\) and \\(B\\) are events.\nThe product rule states that the probability of two events \\(A\\) and \\(B\\) occurring together \\(A \\cap B\\) is given by the probability of one event occurring given the other \\(P(A|B)\\) or \\(P(B|A)\\) multiplied by the probability of the other event.\n\\[\nP(A \\cap B) = P(A|B) P(B) = P(B|A) P(A)\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>2.3 Conditioning</span>"
     ]
   },
@@ -437,7 +437,7 @@
     "section": "Total Probability Theorem",
     "text": "Total Probability Theorem\nSuppose \\(A_{1,...,n}\\) and \\(B\\) are events.\nThe total probability theorem allows us to compute the likelihood of an event by summing over conditional probabilities of different partitions of the sample space.\n\\[\nP(B) = P(B|A_1) P(A_1) + P(B|A_2) P(A_2) + P(B|A_3) P(A_3)\n\\]\n\n\n\nIn general terms:\n\\[\nP(B) = P(B|A_1) P(A_1) + ... + P(B|A_n) P(A_n)\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nExperiment: Classifying emails as spam \\(S\\) or not spam \\(NS\\) based on the word \\(W\\) or not the word \\(NW\\) “free”.\n\\[\nP(S) = 0.4\n\\]\n\\[\nP(NS) = 0.6\n\\]\n\\[\nP(W|S) = 0.7\n\\]\n\\[\nP(W|NS) = 0.1\n\\]\nFind the probability of \\(P(S|W)\\):\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\nP(S|W) = \\frac{P(S \\cap W)}{P(W)} = \\underbrace{\\frac{P(W|S)P(S)}{P(W|S)P(S) + P(W|NS)P(NS)}}_{Bayes' \\ Theorem} = \\frac{0.7 * 0.4}{0.7 * 0.4 + 0.1 * 0.6} = 0.82\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>2.3 Conditioning</span>"
     ]
   },
@@ -448,7 +448,7 @@
     "section": "",
     "text": "Independent Events\nSuppose \\(A\\) and \\(B\\) are two events.\nTwo events are independent if the occurrence of event \\(B\\) provides no information about the occurrence of event \\(A\\):\n\\[\nP(A|B) = P(A)\n\\]\nAnother definition of independence:\n\\[\nP(A \\cap B) = P(A) P(B)\n\\]\nFor multiple events:\n\\[\nP(A_{1} \\cap A_{2} \\cap ... A_{n}) = P(A_{1}) P(A_{2}) ... P(A_{n})\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>2.4 Independence</span>"
     ]
   },
@@ -459,7 +459,7 @@
     "section": "Conditioning and Independence",
     "text": "Conditioning and Independence\nSuppose \\(A\\), \\(B\\), and \\(C\\) are events.\nIf \\(A\\) and \\(B\\) are independent, conditioning on \\(C\\) may remove that independence.\nWhen we condition on \\(C\\), events \\(A\\) and \\(B\\) may no longer be independent.\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nThe king comes from a family of two children. What is the probability that his sibling is female \\(F\\) and not male \\(M\\)?\nLet all outcomes be equally likely.\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\nSample \\ Space = \\{(FF), (FM), (MF), (MM)\\} = \\{(\\not F \\not F), (FM), (MF), (MM)\\}\n\\]\n\\[\nP(F|M) = \\frac{P(F \\cap M)}{M} = \\frac{2}{3} \\approx 0.6\\bar{6}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>2.4 Independence</span>"
     ]
   },
@@ -470,7 +470,7 @@
     "section": "",
     "text": "Discrete Random Variable\nA discrete random variable is a mapping \\(X\\) of all of the outcomes of a sample space to numerical values \\(x \\in \\mathbb{Z}\\).\n\\[\nX: Outcome \\in Sample \\ Space \\to x \\in \\mathbb{Z}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
     ]
   },
@@ -481,7 +481,7 @@
     "section": "Probability Mass Function (PMF)",
     "text": "Probability Mass Function (PMF)\nA probability mass function (PMF) is a mapping of values \\(x\\) of discrete random variables \\(X\\) to probabilities \\([0,1]\\).\n\\[\np_{X}(x) = P(X = x)\n\\]\nPMF has properties: \\[\np_{X}(x) \\geq 0, \\quad \\sum_{x} p_{X}(x) = 1\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
     ]
   },
@@ -492,7 +492,7 @@
     "section": "Cumulative Distribution Function (CDF)",
     "text": "Cumulative Distribution Function (CDF)\nThe cumulative distribution function (CDF) for discrete random variables is defined as:\n\\[\nF_{X}(x) = P(X \\leq x) = \\sum_{k \\leq x} p_{X}(k)\n\\]\nRelation to PMF: \\[\np_{X}(x) = \\frac{dF_{X}(x)}{dx}\n\\]\n\\[\nF_{X}(x) = \\sum_{k \\leq x}p_{X}(k)\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
     ]
   },
@@ -503,7 +503,7 @@
     "section": "Illustration: PMF and CDF",
     "text": "Illustration: PMF and CDF",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
     ]
   },
@@ -514,7 +514,7 @@
     "section": "Expectation and Variance of PMFs",
     "text": "Expectation and Variance of PMFs\nDiscrete expectation, or mean, is the average numerical value that the discrete random variable takes over the PMF. \\[\nE[X] = \\sum_{x} x \\ p_{X}(x)\n\\]\nDiscrete variance is the expected squared difference from the mean of a PMF. \\[\nVar[X] = E[(X - E[X])^{2}] = \\sum_{x}(x - E[X])^2 p_{X}(x)\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
     ]
   },
@@ -525,7 +525,7 @@
     "section": "Joint and Marginal PMFs",
     "text": "Joint and Marginal PMFs\nThe joint PMF calculates the intersection of two discrete random variables: \\[\np_{X,Y}(x_{1},x_{2}) = P(X = x_{1}, Y = x_{2})\n\\]\nFrom the previous definition we can also compute the marginal PMF for a particular random variable: \\[\np_{X}(x_{1}) = \\sum_{x_{2}} p_{X,Y}(X = x_{1},Y = x_{2})\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
     ]
   },
@@ -536,7 +536,7 @@
     "section": "Conditional Expectation of PMFs",
     "text": "Conditional Expectation of PMFs\nThe conditional PMF gives the probability distribution of a discrete random variable given that another variable has a specific value. \\[\np_{X|Y}(x_{1}| x_{2}) = \\frac{p_{X,Y}(x_{1}, x_{2})}{p_{Y}(x_{2})}\n\\]\nThe conditional expectation is the expected value of a discrete random variable given that another variable is fixed at a specific value. \\[\nE[X| Y = x_{2}] = \\sum_{x_{1}} x_{1} \\frac{p_{X,Y}(x_{1}, x_{2})}{p_{Y}(x_{2})}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
     ]
   },
@@ -547,7 +547,7 @@
     "section": "Independence",
     "text": "Independence\nTwo discrete random variables are independent if:\n\\[\np_{X,Y}(x_{1}, x_{2}) = p_{X}(x_{1}) p_{Y}(x_{2})\n\\]\nFor multiple discrete random variables: \\[\np_{X_{1},...,X_{n}}(x_{1}, ..., x_{n}) = p_{X_{1}}(x_{1}) ... \\ p_{X_{n}}(x_{n})\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>2.5 Discrete Random Variables</span>"
     ]
   },
@@ -558,7 +558,7 @@
     "section": "",
     "text": "Continuous Random Variable\nA continuous random variable is a mapping \\(X\\) of all the events of a sample space to numerical values \\(x \\in \\mathbb{R}\\). \\[\nX: Event \\in Sample \\ Space \\to x \\in \\mathbb{R}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
     ]
   },
@@ -569,7 +569,7 @@
     "section": "Probability Density Function (PDF)",
     "text": "Probability Density Function (PDF)\nA probability density function (PDF) is a mapping of values \\(x\\) of intervals of continuous random variables \\(X\\) to probabilities \\([0,1]\\).\n\\[\nP(a \\leq X \\leq b) = \\int_{a}^{b} f_{X}(x) \\ dx\n\\]\nPDF has properties: \\[\nf_{X}(x) \\geq 0, \\ \\int_{-\\infty}^{\\infty} f_{X}(x) \\ dx = 1\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
     ]
   },
@@ -580,7 +580,7 @@
     "section": "Cumulative Distribution Function (CDF)",
     "text": "Cumulative Distribution Function (CDF)\nThe cumulative distribution function (CDF) for continuous random variables is defined as:\n\\[ F_{X}(x) = P(X \\leq x) = \\int_{-\\infty}^{x} f_{X}(u) \\ du \\]\nRelation to PDF:\n\\[\nf_{X}(x) = \\frac{dF_{X}(x)}{dx}\n\\] \\[\nF_{X}(x) = \\int_{-\\infty}^{x} f_{X}(u) \\ du\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
     ]
   },
@@ -591,7 +591,7 @@
     "section": "Illustration: PDF and CDF",
     "text": "Illustration: PDF and CDF",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
     ]
   },
@@ -602,7 +602,7 @@
     "section": "Expectation and Variance of PDFs",
     "text": "Expectation and Variance of PDFs\nContinuous expectation, or mean, is the average numerical value that the continuous random variable takes over the PDF. \\[\nE[X] = \\int_{-\\infty}^{\\infty} x \\ f_{X}(x) dx\n\\]\nContinuous variance is the expected squared difference from the mean of a PDF. \\[\n\\text{Var}[X] = E[(X - E[X])^{2}] = \\int_{-\\infty}^{\\infty} (x - E[X])^2 \\ f_{X}(x) dx\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
     ]
   },
@@ -613,7 +613,7 @@
     "section": "Joint and Marginal PDFs",
     "text": "Joint and Marginal PDFs\nThe joint PDF calculates the intersection of two continuous random variables: \\[\nP((X,Y) \\in A) = \\int \\int_{A} f_{X,Y}(x_{1}, x_{2}) dx_{1} \\ dx_{2}\n\\]\nFrom the previous definition we can also compute the marginal PDF for a particular random variable:\n\\[\nf_{X}(x_{1}) = \\int_{-\\infty}^{\\infty} f_{X,Y}(x_{1}, x_{2}) dx_{2}\n\\]\n\\[\nf_{Y}(x_{2}) = \\int_{-\\infty}^{\\infty} f_{X,Y}(x_{1},x_{2}) dx_{1}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
     ]
   },
@@ -624,7 +624,7 @@
     "section": "Conditional Expectation of PDFs",
     "text": "Conditional Expectation of PDFs\nThe conditional PDF gives the probability distribution of a continuous random variable given that another variable has a specific value. \\[\nf_{X|Y}(x_{1}| x_{2}) = \\frac{f_{X,Y}(x_{1}, x_{2})}{f_{Y}(x_{2})}\n\\]\nThe conditional expectation is the expected value of a continuous random variable given that another variable is fixed at a specific value. \\[\n\\mathbb{E}[X| Y = x_{2}] = \\int_{x_{1} \\in X} x_{1} \\frac{f_{X,Y}(x_{1}, x_{2})}{f_{Y}(x_{2})} dx_{1}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
     ]
   },
@@ -635,7 +635,7 @@
     "section": "Independence",
     "text": "Independence\nTwo continuous random variables are independent if: \\[\nf_{X,Y}(x_{1}, x_{2}) = f_{X}(x_{1}) f_{Y}(x_{2})\n\\]\nThis can be extended to multiple random variables: \\[\nf_{X_{1},...,X{n}}(x_{1}, ..., x_{n}) = f_{X_{1}}(x_{1}) ... \\ f_{X_{n}}(x_{n})\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>2.6 Continuous Random Variables</span>"
     ]
   },
@@ -646,7 +646,7 @@
     "section": "",
     "text": "Bernoulli Distribution\n\\[\np_{X}(x) =\n\\begin{cases}\n    p & \\text{if } x = 1, \\\\\n    q = 1-p & \\text{if } x = 0.\n\\end{cases}\n\\]",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>2.7 Probability Distributions</span>"
     ]
   },
@@ -657,7 +657,7 @@
     "section": "",
     "text": "The discrete random variable can take value \\(1\\) with probability \\(p\\) or value \\(0\\) with probability \\(q = 1 - p\\)\nNot to be confused with the binomial distribution, since only one trial is being conducted.\n\\(\\mathbb{E}[X] = p\\)\n\\(Var[X] = pq\\) \n\n\n\nviewof p = Inputs.range([0, 1], {\n  step: 0.01,\n  value: 0.5,\n  label: tex`p`,\n  width: 200\n})\n\ndata = {\n  return [\n    {outcome: \"0\", probability: 1 - p},\n    {outcome: \"1\", probability: p}\n  ];\n}\n\nPlot.plot({\n  style: \"overflow: visible; display: block; margin: 0 auto;\",\n  width: 600,\n  height: 400,\n  y: {\n    grid: true,\n    label: \"Probability\",\n    domain: [0, 1]\n  },\n  x: {\n    label: \"Outcome\",\n    padding: 0.2\n  },\n  marks: [\n    Plot.barY(data, {\n      x: \"outcome\",\n      y: \"probability\",\n      fill: \"steelblue\"\n    }),\n    Plot.ruleY([0])\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhtml`&lt;div style=\"text-align: center; margin-top: 1em;\"&gt;\n  &lt;p&gt;${tex`\\mathbb{E}[X] =`} ${p.toFixed(3)}&lt;/p&gt;\n  &lt;p&gt;${tex`\\text{Var}(X) =`} ${(p * (1-p)).toFixed(3)}&lt;/p&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\nPython Code: Bernoulli Distribution\nTo create Bernoulli distributed data using numpy:\nimport numpy as np\n\ninterval = [0,1]\nsize = (1000,1)\np = [1-0.5, 0.5]\n\ndata = np.random.choice(interval, size, p = p)",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>2.7 Probability Distributions</span>"
     ]
   },
@@ -668,7 +668,7 @@
     "section": "Gaussian Distribution",
     "text": "Gaussian Distribution\n\\[\nf_{X}(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^{2} }}e^{-\\frac{(x-\\mu)^{2}}{2\\sigma^{2}}}\n\\]\n\nUsed frequently to represent real-valued random variables whose distributions are not known.\nIts importance is derived from the central limit theorem that states, under some conditions, the average of many samples of a random variable is itself a random variable that converges to a Gaussian distribution as it increases.\n\\(E[X] = \\mu\\)\n\\(Var[X] = \\sigma^{2}\\)\n\n\n\nviewof mu = Inputs.range([-1, 1], {\n  step: 0.1,\n  value: 0,\n  label: tex`\\mu`,\n  width: 200\n})\n\nviewof sigma = Inputs.range([0.1, 2], {\n  step: 0.1,\n  value: 1,\n  label: tex`\\sigma`,\n  width: 200\n})\n\n// Generate points for the normal distribution curve\npointsGaussian = {\n  const x = d3.range(-5, 5, 0.1);\n  return x.map(x =&gt; ({\n    x,\n    y: (1 / (sigma * Math.sqrt(2 * Math.PI))) * \n       Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2))\n  }));\n}\n\nPlot.plot({\n  style: \"overflow: visible; display: block; margin: 0 auto;\",\n  width: 600,\n  height: 400,\n  y: {\n    grid: true,\n    label: \"Density\"\n  },\n  x: {\n    label: \"x\",\n    domain: [-5, 5]\n  },\n  marks: [\n    Plot.line(pointsGaussian, {x: \"x\", y: \"y\", stroke: \"steelblue\"}),\n    Plot.ruleY([0])\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhtml`&lt;div style=\"text-align: center; margin-top: 1em;\"&gt;\n  &lt;p&gt;${tex`\\mathbb{E}[X] =`} ${mu.toFixed(3)}&lt;/p&gt;\n  &lt;p&gt;${tex`\\text{Var}(X) =`} ${(sigma * sigma).toFixed(3)}&lt;/p&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\nPython Code: Gaussian Distribution\nTo create Gaussian distributed data using numpy:\nimport numpy as np\n\nmu = 0\nsigma = 1\nsize = (1000,1)\n\ndata = np.random.normal(mu, sigma, size)",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>2.7 Probability Distributions</span>"
     ]
   },
@@ -679,7 +679,7 @@
     "section": "Beta Distribution",
     "text": "Beta Distribution\n\\[\nf_{X}(x) = {\\frac {\\Gamma (\\alpha +\\beta )}{\\Gamma (\\alpha )\\Gamma (\\beta )}}\\,x^{\\alpha -1}(1-x)^{\\beta -1}\n\\]\nwhere \\(\\Gamma\\) is the gamma function defined as:\n\\[\n\\Gamma (z)=\\int _{0}^{\\infty}t^{z-1}e^{-t}\\,dt\n\\]\n\nGamma functions are used to model factorial functions of complex numbers \\(z\\).\nBeta functions are used to model behavior of random variables in intervals of finite length.\n\\(E[X] = \\frac{\\alpha}{\\alpha+\\beta}\\)\n\\(Var[X] = \\frac{\\alpha\\beta}{(\\alpha+\\beta)^2(\\alpha+\\beta+1)}\\)\n\n\n\nviewof alpha = Inputs.range([0.1, 10], {\n  step: 0.1,\n  value: 1,\n  label: tex`\\alpha`,\n  width: 200\n})\n\nviewof beta = Inputs.range([0.1, 10], {\n  step: 0.1,\n  value: 1,\n  label: tex`\\beta`,\n  width: 200\n})\n\n// Gamma function approximation using Lanczos approximation\nfunction gamma(z) {\n    const p = [676.5203681218851, -1259.1392167224028, 771.32342877765313,\n        -176.61502916214059, 12.507343278686905, -0.13857109526572012,\n        9.9843695780195716e-6, 1.5056327351493116e-7];\n    \n    if (z &lt; 0.5) {\n        return Math.PI / (Math.sin(Math.PI * z) * gamma(1 - z));\n    }\n    \n    z -= 1;\n    let x = 0.99999999999980993;\n    for (let i = 0; i &lt; p.length; i++) {\n        x += p[i] / (z + i + 1);\n    }\n    \n    const t = z + p.length - 0.5;\n    return Math.sqrt(2 * Math.PI) * Math.pow(t, z + 0.5) * Math.exp(-t) * x;\n}\n\n// Beta function using gamma function\nfunction betaFunc(x, y) {\n    return (gamma(x) * gamma(y)) / gamma(x + y);\n}\n\n// Beta probability density function\nfunction betaPDF(x, a, b) {\n    if (x &lt;= 0 || x &gt;= 1) return 0;\n    return Math.pow(x, a - 1) * Math.pow(1 - x, b - 1) / betaFunc(a, b);\n}\n\n// Generate points for the beta distribution curve\npoints = Array.from({length: 100}, (_, i) =&gt; {\n  let x = 0.001 + i * 0.01;\n  return { x, y: betaPDF(x, alpha, beta) };\n});\n\nPlot.plot({\n  style: \"overflow: visible; display: block; margin: 0 auto;\",\n  width: 600,\n  height: 400,\n  y: {\n    grid: true,\n    label: \"Density\"\n  },\n  x: {\n    label: \"x\",\n    domain: [0, 1]\n  },\n  marks: [\n    Plot.line(points, {x: \"x\", y: \"y\", stroke: \"steelblue\"}),\n    Plot.ruleY([0])\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhtml`&lt;div style=\"text-align: center; margin-top: 1em;\"&gt;\n  &lt;p&gt;${tex`\\mathbb{E}[X] =`} ${(alpha/(alpha + beta)).toFixed(3)}&lt;/p&gt;\n  &lt;p&gt;${tex`\\text{Var}(X) =`} ${((alpha * beta)/((alpha + beta)**2 * (alpha + beta + 1))).toFixed(3)}&lt;/p&gt;\n&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\nPython Code: Beta Distribution\nTo create Beta distributed data using numpy:\nimport numpy as np \n\nalpha = 0.5\nbeta = 0.5\nsize = (1000,1)\n\ndata = np.random.beta(alpha, beta, size)",
     "crumbs": [
-      "Lecture 2: Mathematical Foundations",
+      "Lecture 2: Math Foundations",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>2.7 Probability Distributions</span>"
     ]
   },
@@ -1161,7 +1161,7 @@
     "href": "lecture8/lecture8-1.html",
     "title": "8.1 Deep Learning",
     "section": "",
-    "text": "Multi-Layered Perceptrons (MLPs) (Hagan et al. 2014)\nAssume state \\(\\mathsf{S}\\) is represented by a tensor of continuous values.\nOne parameter vector \\(\\mathbf{w}\\) is not enough to learn a state tensor \\(\\mathsf{S}\\).",
+    "text": "Multi-Layered Perceptrons (MLPs) (Hagan et al. 2014)\nAssume state \\(\\mathsf{S}\\) is represented by a tensor of continuous values.\nA single parameter vector \\(\\mathbf{w}\\) is insufficient to learn useful representations of the state tensor \\(\\mathsf{S}\\).\nIn Reinforcement Learning, MLPs are commonly used when states are represented by continuous-valued vectors \\(\\mathbf{s}\\).",
     "crumbs": [
       "Lecture 8: Deep Q-Networks",
       "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
@@ -1172,7 +1172,18 @@
     "href": "lecture8/lecture8-1.html#multi-layered-perceptrons-mlps-hagan2014neural",
     "title": "8.1 Deep Learning",
     "section": "",
-    "text": "Illustration: MLP \\(\\theta\\)\n\n\n\n\n\n\n\n\n\nMLP Forwardpropagation\nAt the beginning of MLP forwardpropagation, let \\(\\mathbf{p}\\) be the input vector:\n\\[\n\\mathbf{a}^0 = \\mathbf{p}\n\\]\nThe input then passes through a series of layers:\n\\[\n\\mathbf{a}^{m+1} = \\mathbf{f}^{m+1}(\\mathbf{W}^{m+1} \\cdot \\mathbf{a}^m + \\mathbf{b}^{m+1}) \\quad \\text{for } m = 0, 1, \\dots, M-2\n\\]\n\n\n\\(\\mathbf{a}^m\\): Output vector of layer \\(m\\)\n\\(\\mathbf{W}^{m+1}\\): Weight matrix of layer \\(m+1\\)\n\\(\\mathbf{b}^{m+1}\\): Bias vector of layer \\(m+1\\)\n\\(\\mathbf{f}^{m+1}()\\): Activation function of layer \\(m+1\\)\nFor the final layer, we compute:\n\\[\n\\mathbf{a}^M = \\text{softmax}(\\mathbf{W}^{m+1} \\cdot \\mathbf{a}^{M-1} + \\mathbf{b}^{m+1}) \\quad \\text{for } m = M-1\n\\]\n\n\n\\(\\mathbf{a}^{M-1}\\): Output vector of the last hidden layer\n\\(\\text{softmax}()\\): Softmax activation function\nThus, the output of the network is:\n\\[\n\\mathbf{a} = \\mathbf{a}^M\n\\]\n\n\nMLP Backpropagation\nIn MLP backpropagation, the sensitivity of the output layer is:\n\\[\n\\mathbf{s}^M = \\mathbf{a} - \\mathbf{t}\n\\]\n\n\n\\(\\mathbf{s}^M\\): Sensitivity of the output layer\n\\(\\mathbf{t}\\): Target class vector\nTo update sensitivities for preceding layers:\n\\[\n\\mathbf{s}^m = \\mathbf{F}^m \\cdot \\mathbf{n}^m \\cdot \\mathbf{W}^{m+1^\\top} \\cdot \\mathbf{s}^{m+1} \\quad \\text{for } m = M-1, \\dots, 2, 1\n\\]\n\n\n\\(\\mathbf{s}^m\\): Sensitivity of layer \\(m\\)\n\\(\\mathbf{F}^m\\): Derivative of activation function of layer \\(m\\)\n\\(\\mathbf{n}^m\\): Input vector to layer \\(m\\)\n\\(\\mathbf{W}^{m+1^\\top}\\): Transpose of weight matrix of layer \\(m+1\\)\n\\(\\mathbf{s}^{m+1}\\): Sensitivity of layer \\(m+1\\)\n\n\nMLP Weight and Bias Updates\nThe weights are updated using the rule:\n\\[\n\\mathbf{W}_{k+1}^m = \\mathbf{W}_k^m - \\alpha \\, \\mathbf{s}^m \\cdot (\\mathbf{a}^{{m-1}^\\top})\n\\]\n\n\n\\(\\mathbf{W}_k^m\\): Weight matrix of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{W}_{k+1}^m\\): Weight matrix at iteration \\(k+1\\)\n\\(\\mathbf{s}^m\\): Sensitivity of layer \\(m\\)\n\\(\\mathbf{a}^{{m-1}^\\top}\\): Transpose of the output from layer \\(m-1\\)\n\\(\\alpha\\): Learning rate\nThe biases are updated as:\n\\[\n\\mathbf{b}_{k+1}^m = \\mathbf{b}_k^m - \\alpha \\, \\mathbf{s}^m\n\\]\n\n\n\\(\\mathbf{b}_k^m\\): Bias vector of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{b}_{k+1}^m\\): Bias vector at iteration \\(k+1\\)",
+    "text": "Illustration: MLP \\(\\theta\\)",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-1.html#mlp-forward-propagation",
+    "href": "lecture8/lecture8-1.html#mlp-forward-propagation",
+    "title": "8.1 Deep Learning",
+    "section": "MLP Forward Propagation",
+    "text": "MLP Forward Propagation\nAt the beginning of MLP forward propagation, let \\(\\mathbf{p}\\) be the input vector:\n\\[\n\\mathbf{a}^0 = \\mathbf{p}\n\\]\nThe input passes through \\(M-1\\) hidden layers:\n\\[\n\\mathbf{a}^{m+1} = \\mathbf{f}^{m+1}(\\mathbf{W}^{m+1} \\cdot \\mathbf{a}^m + \\mathbf{b}^{m+1}) \\quad \\text{for } m = 0, 1, \\dots, M-2\n\\]\n\n\n\\(\\mathbf{a}^m\\): Output vector of layer \\(m\\)\n\\(\\mathbf{W}^{m+1}\\): Weight matrix of layer \\(m+1\\)\n\\(\\mathbf{b}^{m+1}\\): Bias vector of layer \\(m+1\\)\n\\(\\mathbf{f}^{m+1}()\\): Activation function of layer \\(m+1\\)\nFor the final (output) layer \\(M\\):\n\\[\n\\mathbf{a}^M = \\text{softmax}(\\mathbf{W}^{M} \\cdot \\mathbf{a}^{M-1} + \\mathbf{b}^{M})\n\\]\n\n\n\\(\\mathbf{a}^{M-1}\\): Output vector of the last hidden layer\n\\(\\mathbf{W}^M\\), \\(\\mathbf{b}^M\\): Weights and bias for output layer\n\\(\\text{softmax}()\\): Softmax activation function\n\nMLP Backpropagation\nIn MLP backpropagation, the sensitivity of the output layer is:\n\\[\n\\mathbf{s}^M = \\mathbf{a} - \\mathbf{t}\n\\]\n\n\n\\(\\mathbf{s}^M\\): Sensitivity of the output layer\n\\(\\mathbf{t}\\): Target class vector\nTo update sensitivities for preceding layers:\n\\[\n\\mathbf{s}^m = \\mathbf{F}^m \\cdot \\mathbf{n}^m \\cdot \\mathbf{W}^{m+1^\\top} \\cdot \\mathbf{s}^{m+1} \\quad \\text{for } m = M-1, \\dots, 2, 1\n\\]\n\n\n\\(\\mathbf{s}^m\\): Sensitivity of layer \\(m\\)\n\\(\\mathbf{F}^m\\): Derivative of activation function of layer \\(m\\)\n\\(\\mathbf{n}^m\\): Input vector to layer \\(m\\)\n\\(\\mathbf{W}^{m+1^\\top}\\): Transpose of weight matrix of layer \\(m+1\\)\n\\(\\mathbf{s}^{m+1}\\): Sensitivity of layer \\(m+1\\)\n\n\nMLP Weight and Bias Updates\nThe weights are updated using the rule:\n\\[\n\\mathbf{W}_{k+1}^m = \\mathbf{W}_k^m - \\alpha \\, \\mathbf{s}^m \\cdot (\\mathbf{a}^{{m-1}^\\top})\n\\]\n\n\n\\(\\mathbf{W}_k^m\\): Weight matrix of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{W}_{k+1}^m\\): Weight matrix at iteration \\(k+1\\)\n\\(\\mathbf{s}^m\\): Sensitivity of layer \\(m\\)\n\\(\\mathbf{a}^{{m-1}^\\top}\\): Transpose of the output from layer \\(m-1\\)\n\\(\\alpha\\): Learning rate\nThe biases are updated as:\n\\[\n\\mathbf{b}_{k+1}^m = \\mathbf{b}_k^m - \\alpha \\, \\mathbf{s}^m\n\\]\n\n\n\\(\\mathbf{b}_k^m\\): Bias vector of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{b}_{k+1}^m\\): Bias vector at iteration \\(k+1\\)",
     "crumbs": [
       "Lecture 8: Deep Q-Networks",
       "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
@@ -1183,7 +1194,29 @@
     "href": "lecture8/lecture8-1.html#convolutional-neural-networks-cnns-nndesigndeeplearning2024",
     "title": "8.1 Deep Learning",
     "section": "Convolutional Neural Networks (CNNs) (Martin T. Hagan 2024)",
-    "text": "Convolutional Neural Networks (CNNs) (Martin T. Hagan 2024)\n\n\n\n\n\n\nIllustration: CNN \\(\\theta\\)\n\n\n\n\n\n\n\n\n\nCNN Forwardpropagation\nAt the beginning of CNN forwardpropagation, let \\(\\mathsf{P}\\) be the input image or tensor:\n\\[\n\\mathsf{A}^0 = \\mathsf{P}\n\\]\nThe input then passes through a convolutional layer followed by a non-linear activation:\n\\[\n\\mathsf{A}^1 = \\mathbf{f}^1( \\mathsf{A}^0 \\ast \\mathbf{W}^1 + \\mathbf{B}^1 )\n\\]\n\n\n\\(\\mathsf{A}^0\\): Input image or tensor\n\\(\\ast\\): Convolution operator\n\\(\\mathbf{W}^1\\): Convolutional kernel(s)\n\\(\\mathbf{B}^1\\): Bias tensor\n\\(\\mathbf{f}^1()\\): Activation function (e.g., ReLU)\nThe resulting feature map may then be passed through an average pooling layer:\n\\[\n\\mathsf{A}^2 = \\text{AvgPool}(\\mathsf{A}^1)\n\\]\n\n\n\\(\\text{AvgPool}\\): Average pooling operation to reduce spatial dimensions\nNext, max pooling is applied:\n\\[\n\\mathsf{A}^3 = \\text{MaxPool}(\\mathsf{A}^2)\n\\]\n\n\n\\(\\text{MaxPool}\\): Max pooling operation to retain strongest features\nFinally, we flatten the pooled feature maps into a vector for input into a fully connected layer:\n\\[\n\\mathbf{a}^{\\text{flat}} = \\text{flatten}(\\mathsf{A}^3)\n\\]\n\n\n\\(\\text{flatten}()\\): Converts a 3D tensor into a 1D feature vector\n\n\nCNN Backpropagation\nDuring CNN backpropagation, we compute gradients of the loss function \\(F\\) with respect to various intermediate variables. These gradients are used to update parameters via gradient descent.\n\\[\n\\mathbf{dN} \\equiv \\frac{\\partial F}{\\partial \\mathbf{N}}, \\quad\n\\mathsf{dA} \\equiv \\frac{\\partial F}{\\partial \\mathsf{A}}, \\quad\n\\mathsf{dZ} \\equiv \\frac{\\partial F}{\\partial \\mathsf{Z}}, \\quad\n\\mathbf{dW} \\equiv \\frac{\\partial F}{\\partial \\mathbf{W}}, \\quad\n\\mathbf{db} \\equiv \\frac{\\partial F}{\\partial \\mathbf{B}}\n\\]\n\n\n\\(\\mathbf{N}\\): Output of the network\n\\(\\mathsf{A}\\): Activation map (output of nonlinearity)\n\\(\\mathsf{Z}\\): Pre-activation (input to activation function)\n\\(\\mathbf{W}\\): Convolutional filters (weights)\n\\(\\mathbf{B}\\): Bias terms\n\\(\\delta^{(\\cdot)}\\): Gradient of the loss w.r.t. each quantity\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nAssume that our state tensor \\(\\mathsf{S}\\) is an image.\nBased on your intuition, do you think it makes sense to use raw pixels as input instead of preprocessed state features?\n\n\n\n\\(\\mathsf{S} =\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\n\n\n\nHagan, Martin T., Howard B. Demuth, Mark H. Beale, and Orlando De Jesús. 2014. Neural Network Design. 2nd ed. Martin Hagan. https://hagan.okstate.edu/NNDesign.pdf.\n\n\nMartin T. Hagan, Amir Jafari. 2024. “NNDesignDeepLearning.” https://github.com/NNDesignDeepLearning/NNDesignDeepLearning.",
+    "text": "Convolutional Neural Networks (CNNs) (Martin T. Hagan 2024)\nIn Reinforcement Learning, CNNs are commonly used when states are represented by continuous-valued tensors \\(\\mathsf{S}\\).\n\n\n\n\n\n\nIllustration: CNN \\(\\theta\\)",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-1.html#cnn-forward-propagation",
+    "href": "lecture8/lecture8-1.html#cnn-forward-propagation",
+    "title": "8.1 Deep Learning",
+    "section": "CNN Forward Propagation",
+    "text": "CNN Forward Propagation\nAt the beginning of CNN forward propagation, let \\(\\mathsf{P}\\) be the input tensor:\n\\[\n\\mathsf{A}^0 = \\mathsf{P}\n\\]\nFor each convolutional layer, the input passes through a convolutional kernel followed by a non-linear activation function:\n\\[\n\\mathsf{A}^m = \\mathbf{f}^m\\left( \\mathbf{W}^m \\ast \\mathsf{A}^{m-1} + \\mathbf{B}^m \\right) \\quad \\text{for } m = 1, 2, \\dots, M\n\\]\n\n\n\\(\\mathsf{A}^{m-1}\\): Input to layer \\(m\\)\n\\(\\mathbf{W}^m\\): Convolutional kernel(s) at layer \\(m\\)\n\\(\\mathbf{B}^m\\): Bias tensor at layer \\(m\\)\n\\(\\mathbf{f}^m()\\): Activation function (e.g., ReLU) at layer \\(m\\)\n\\(\\ast\\): Convolution operator\nOptionally, a pooling operation can be applied after certain convolutional layers:\n\\[\n\\mathsf{A}^m_{\\text{pool}} = \\boxplus^{\\text{pool}} \\mathsf{A}^m\n\\]\n\n\n\\(\\boxplus^{\\text{pool}}\\): Pooling operator (e.g., max or average) to reduce spatial dimensions\nFinally, we flatten the final feature maps into a vector for input into the fully connected layers:\n\\[\n\\mathbf{a}^{\\text{flat}} = \\text{flatten}(\\mathsf{A}^M)\n\\]\n\n\n\\(\\text{flatten}()\\): Converts the final 3D tensor into a 1D feature vector\n\\(\\mathsf{A}^M\\): Output of the final convolutional layer\nThis flattened vector then serves as input to the MLP component:\n\\[\n\\mathbf{a}^0_{\\text{MLP}} = \\mathbf{a}^{\\text{flat}}\n\\]",
+    "crumbs": [
+      "Lecture 8: Deep Q-Networks",
+      "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
+    ]
+  },
+  {
+    "objectID": "lecture8/lecture8-1.html#cnn-backpropagation",
+    "href": "lecture8/lecture8-1.html#cnn-backpropagation",
+    "title": "8.1 Deep Learning",
+    "section": "CNN Backpropagation",
+    "text": "CNN Backpropagation\nDuring CNN backpropagation, we compute gradients of the loss function \\(F\\) with respect to various intermediate variables.\n\\[\n\\mathsf{dA}^m \\equiv \\frac{\\partial F}{\\partial \\mathsf{A}^m}, \\quad\n\\mathsf{dZ}^m \\equiv \\frac{\\partial F}{\\partial \\mathsf{Z}^m}, \\quad\n\\mathbf{dW}^m \\equiv \\frac{\\partial F}{\\partial \\mathbf{W}^m}, \\quad\n\\mathbf{dB}^m \\equiv \\frac{\\partial F}{\\partial \\mathbf{B}^m}\n\\]\n\n\n\\(\\mathsf{A}^m\\): Activated output of layer \\(m\\)\n\\(\\mathsf{Z}^m\\): Pre-activation output of layer \\(m\\) (before activation function)\n\\(\\mathbf{W}^m\\): Convolutional kernels of layer \\(m\\)\n\\(\\mathbf{B}^m\\): Bias tensor of layer \\(m\\)\n\nCNN Weight and Bias Updates\nThe convolutional weights are updated using gradient descent as follows:\n\\[\n\\mathbf{W}_{k+1}^m = \\mathbf{W}_k^m - \\alpha \\, \\mathbf{dW}^m\n\\]\n\n\n\\(\\mathbf{W}_k^m\\): Convolutional filter(s) of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{W}_{k+1}^m\\): Updated filter(s) at iteration \\(k+1\\)\n\\(\\mathbf{dW}^m\\): Gradient of the loss w.r.t. the weights of layer \\(m\\)\n\\(\\alpha\\): Learning rate\nThe biases are updated similarly:\n\\[\n\\mathbf{B}_{k+1}^m = \\mathbf{B}_k^m - \\alpha \\, \\mathbf{dB}^m\n\\]\n\n\n\\(\\mathbf{B}_k^m\\): Bias tensor of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{B}_{k+1}^m\\): Updated bias tensor at iteration \\(k+1\\)\n\\(\\mathbf{dB}^m\\): Gradient of the loss w.r.t. the biases of layer \\(m\\)\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nAssume that our state tensor \\(\\mathsf{S}\\) is an image.\nBased on your intuition, do you think it makes sense to use raw pixels as input instead of preprocessed state features?\n\n\n\n\\(\\mathsf{S} =\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nIntuitively, using raw pixels seems counterintuitive for reinforcement learning because individual pixel values have no inherent meaning about state quality - traditional RL features like “location in GridWorld map” or “position and velocity” seem much more informative for value estimation than RGB intensities.\nHowever, neural networks can help us learn useful representations directly from raw pixels. By stacking multiple layers, neural networks can automatically extract hierarchical features—such as edges, shapes, and objects—from the image input. This enables the agent to learn which aspects of the raw state are important for decision making, without requiring manual feature engineering.\n\n\n\n\n\n\n\nHagan, Martin T., Howard B. Demuth, Mark H. Beale, and Orlando De Jesús. 2014. Neural Network Design. 2nd ed. Martin Hagan. https://hagan.okstate.edu/NNDesign.pdf.\n\n\nMartin T. Hagan, Amir Jafari. 2024. “NNDesignDeepLearning.” https://github.com/NNDesignDeepLearning/NNDesignDeepLearning.",
     "crumbs": [
       "Lecture 8: Deep Q-Networks",
       "<span class='chapter-number'>38</span>  <span class='chapter-title'>8.1 Deep Learning</span>"
@@ -1207,7 +1240,7 @@
     "section": "",
     "text": "Learning Objectives for Lecture 9: Policy Gradients 🎯\n\n\n\n\nPolicy Gradients.\nCartPole-v1 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
     "crumbs": [
-      "Lecture 9: Policy Gradients",
+      "Lecture 9: Policy Gradients I",
       "<span class='chapter-number'>40</span>  <span class='chapter-title'>Learning Objectives</span>"
     ]
   },
@@ -1218,7 +1251,7 @@
     "section": "",
     "text": "Motivation",
     "crumbs": [
-      "Lecture 9: Policy Gradients",
+      "Lecture 9: Policy Gradients I",
       "<span class='chapter-number'>41</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
     ]
   },
@@ -1229,7 +1262,7 @@
     "section": "",
     "text": "Problem\n\n\n\nDQN is unstable and does not guarantee convergence. Following deterministic or \\(\\epsilon\\)-greedy policies is not optimal.\n\n\n\n\nRock-Paper-Scissors\n\n\n\n\n\nGridWorld Alias\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\nLet’s learn stochastic policies using differentiable methods:\n\\[\n\\pi(a|s; \\theta)\n\\]\nBy following \\(\\pi(a|s; \\theta)\\), we can find optimal policy parameters \\(\\theta\\) that maximize:\n\\[\nV^{\\pi_{\\theta}}(s) = V(S_{0}; \\theta)\n\\]",
     "crumbs": [
-      "Lecture 9: Policy Gradients",
+      "Lecture 9: Policy Gradients I",
       "<span class='chapter-number'>41</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
     ]
   },
@@ -1240,7 +1273,7 @@
     "section": "Mathematical Intuition",
     "text": "Mathematical Intuition\nPolicy gradient algorithms search for a local maximum in \\(V^{\\pi_{\\theta}}(s)\\) using stochastic gradient ascent (SGA):\n\\[\n\\Delta \\theta = \\alpha \\nabla V(S_{0}; \\theta)\n\\]\nIdeally, we want to compute this gradient analytically.\nAssume \\(\\pi\\) is differentiable where it is non-zero:\n\\[\nV(S_{0}; \\theta) = \\sum_{a} \\pi(a|S_{0}; \\theta) Q(S_{0},a; \\theta)\n\\]\nAnother formulation in terms of trajectories \\(\\tau\\):\n\\[\nV(S_{0}; \\theta) = \\sum_{\\tau} P(\\tau; \\theta) R(\\tau)\n\\]\nwhere \\(P(\\tau; \\theta)\\) is the probability and \\(R(\\tau)\\) the reward of trajectory.\nUsing likelihood ratios:\n\\[\n\\nabla_{\\theta} V(\\theta) = \\sum_{\\tau} P(\\tau; \\theta) R(\\tau) \\nabla_{\\theta} \\log P(\\tau; \\theta)\n\\]\nApproximation using empirical estimate:\n\\[\n\\nabla_{\\theta} V(\\theta) \\approx \\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1} R(\\tau^{i}) \\nabla_{\\theta} \\log P(\\tau^{i}; \\theta)\n\\]\nDecomposing dynamics into states and actions:\n\\[\n\\nabla_{\\theta} \\log P(\\tau^{i}; \\theta) = \\sum^{T-1}_{t=0} \\nabla_{\\theta} \\log \\pi(A_{t}|S_{t}, \\theta)\n\\]\nThis term is called the score function.\n\nSoft-max Policy\n\\[\n\\pi(a|s;\\theta) = \\frac{\\exp(\\theta_{\\text{logits}}(s)[a])}{\\sum_{a'} \\exp(\\theta_{\\text{logits}}(s)[a'])}\n\\]\n\n\nPolicy Gradient Theorem\nTheorem: Let \\(\\pi(a|s;\\theta)\\) be a differentiable policy. The gradient of the expected reward \\(F(\\theta)\\) with respect to \\(\\theta\\) is:\n\\[\n\\nabla_{\\theta} F(\\theta) = \\mathbb{E}_{\\pi_{\\theta}} \\left[\\nabla_{\\theta} \\log \\pi(a|s;\\theta) Q^{\\pi_{\\theta}}(s, a)\\right]\n\\]\n\n\nAddressing High Variance\nInstead of multiplying the sum of rewards by the score function:\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1} R(\\tau^{i}) \\sum^{T-1}_{t=0} \\log \\nabla_{\\theta} \\pi(A_{t}|S_{t}, \\theta)\n\\]\n\nUse temporal structure to weight rewards relevant to each time-step:\n\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_{\\theta} \\pi(A_{t}|S_{t}, \\theta) \\sum^{T-1}_{t' = t} r^{i}_{t'}\n\\]\n\n\nBaselines to Reduce Variance\nUnbiased estimators \\(b(s)\\) help adjust for expected rewards:\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_{\\theta} \\pi(A_{t}|S_{t}, \\theta) (r^{i}_{t'} - b(s))\n\\]\nDefining advantage estimates:\n\\[\n\\hat{A}_{t} = \\sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s))\n\\]\nthus,\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_{\\theta} \\pi(A_{t}|S_{t}, \\theta) \\hat{A}_{t}\n\\]",
     "crumbs": [
-      "Lecture 9: Policy Gradients",
+      "Lecture 9: Policy Gradients I",
       "<span class='chapter-number'>41</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
     ]
   },
@@ -1251,7 +1284,7 @@
     "section": "Vanilla Policy Gradient: Illustration",
     "text": "Vanilla Policy Gradient: Illustration\n\n\n\nVanilla Policy Gradient",
     "crumbs": [
-      "Lecture 9: Policy Gradients",
+      "Lecture 9: Policy Gradients I",
       "<span class='chapter-number'>41</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
     ]
   },
@@ -1262,7 +1295,7 @@
     "section": "Pseudocode",
     "text": "Pseudocode\n\n\n\n\n  \n\n\n Exercise \nMatch the following concepts:\n\n\n\n\n\n\n\nConcept\nDefinition\n\n\n\n\nLikelihood Ratio\n\\(\\frac{\\nabla_{\\theta} \\pi_{\\theta}(a|s)}{\\pi_{\\theta}(a|s)}\\)\n\n\nScore Function\n\\(\\nabla_{\\theta} \\log \\pi_{\\theta}(a|s)\\)\n\n\nPolicy Gradient\n\\(\\mathbb{E}_{\\pi_\\theta} \\left[\\nabla_\\theta \\log \\pi(a|s;\\theta) Q^{\\pi_\\theta}(s, a)\\right]\\)\n\n\nEmpirical Estimate\n\\(\\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\hat{A}_{t}\\)\n\n\nBaseline\n\\(b(s)\\)",
     "crumbs": [
-      "Lecture 9: Policy Gradients",
+      "Lecture 9: Policy Gradients I",
       "<span class='chapter-number'>41</span>  <span class='chapter-title'>9.1 Policy Gradients</span>"
     ]
   },
@@ -1273,7 +1306,7 @@
     "section": "",
     "text": "What if your agent could learn not just from rewards — but from what people prefer? 👥",
     "crumbs": [
-      "Lecture 9: Policy Gradients",
+      "Lecture 9: Policy Gradients I",
       "<span class='chapter-number'>42</span>  <span class='chapter-title'>9.2 Reinforcement Learning with Human Feedback (RLHF)</span>"
     ]
   },
@@ -1284,7 +1317,7 @@
     "section": "",
     "text": "Learning Objectives for Lecture 10: Advanced Policy Gradients 🎯\n\n\n\n\nTrust Region Policy Optimization (TRPO).\nProximal Policy Optimization (PPO).\nHalfCheetah-v5 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>43</span>  <span class='chapter-title'>Learning Objectives</span>"
     ]
   },
@@ -1295,7 +1328,7 @@
     "section": "",
     "text": "Motivation",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
     ]
   },
@@ -1306,7 +1339,7 @@
     "section": "",
     "text": "Problem\nSampling is poor, preferably we would like a batch form.\n\\[\n\\hat{g} =  \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\ \\hat{A}_{t}\n\\]\nStep size \\(\\alpha\\) is hard to get right.\nSmall changes in the parameter space \\(\\theta\\) create drastic changes in the log probabilities of actions.\n\n\nSolution\nFor the sampling problem, we can store old trajectories in a buffer \\(D\\) and learn from these in a batch form.\n\nWe need a new algorithm that takes step sizes \\(\\alpha\\) without creating drastic changes in the log probabilities of actions.",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
     ]
   },
@@ -1317,7 +1350,7 @@
     "section": "Trust Region Policy Optimization (TRPO)",
     "text": "Trust Region Policy Optimization (TRPO)\n\nU.C. Berkeley 2015\nLink to Research Paper",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
     ]
   },
@@ -1328,7 +1361,7 @@
     "section": "Mathematical Intuition",
     "text": "Mathematical Intuition\nFor the expected discounted reward of \\(\\pi_{\\theta_{t+1}}\\):\n\\[\nF(\\pi_{\\theta_{t+1}}) = F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{\\tau \\approx \\pi_{\\theta_{t+1}}} [\\sum^{\\infty}_{t=0} \\gamma^{t} \\hat{A}_t]\n\\]\nFor the discounted visitation frequencies:\n\\[\n\\rho_{\\pi_{\\theta_{t}}} = P(S_{0}) + \\gamma P(S_{1}) + \\gamma^{2} P(S_{2}) + ...\n\\]\nWe can now rewrite in terms of sum of states and actions:\n\\[\nF(\\pi_{\\theta_{t+1}}) = F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t+1}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]\n\\(\\rho_{\\pi_{\\theta_{t+1}}}\\) makes optimizing \\(F(\\pi_{\\theta_{t+1}})\\) directly difficult.\nOne approach to this problem is to replace future sampling \\(\\rho_{\\pi_{\\theta_{t+1}}}\\) with a local approximation \\(L(\\pi_{\\theta_{t+1}})\\), or “surrogate objective”:\n\\[\nL(\\pi_{\\theta_{t+1}}) =  F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]\nTRPO’s main contribution is monotonic improvement guarantee using a KL-Divergence metric:\n\\[\nF(\\pi_{\\theta_{t+1}}) \\geq L(\\pi_{\\theta_{t+1}}) - C \\ D^{max}_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}})\n\\]",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>44</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
     ]
   },
@@ -1339,7 +1372,7 @@
     "section": "",
     "text": "Mathematical Intuition",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>45</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
     ]
   },
@@ -1350,7 +1383,7 @@
     "section": "",
     "text": "TRPO’s Main Drawback\nTRPO’s main drawback has to do with the calculation of the Hessian matrix with respect to the KL-Divergence:\n\\[\n\\mathbf{H} = \\nabla^2 D_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}})\n\\]\n\n\nProximal Policy Optimization (PPO)\n\nOpenAI 2017\nLink to Research Paper\n\n\nPPO: Surrogate Objectives\nPPO KL-Divergence Penalty:\n\\[\nL^{\\text{KL}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t - \\beta D_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}}) \\right]\n\\]\nPPO Clip:\n\\[\nL^{\\text{CLIP}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\min \\left( \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t, \\text{clip}\\left(\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)}, 1-\\epsilon, 1+\\epsilon\\right) \\hat{A}_t \\right) \\right]\n\\]\n\n\nGaussian Policy\n\\[\n\\begin{aligned}\n    \\mu(s), \\sigma(s) &= \\theta_{\\mu, \\sigma}(s) \\\\\n    \\pi(a|s; \\theta) &= \\frac{1}{\\sqrt{2 \\pi \\sigma^2(s)}} \\exp\\left(-\\frac{(a - \\mu(s))^2}{2 \\sigma^2(s)}\\right)\n\\end{aligned}\n\\]",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>45</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
     ]
   },
@@ -1361,7 +1394,7 @@
     "section": "Proximal Policy Optimization: Illustration",
     "text": "Proximal Policy Optimization: Illustration",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>45</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
     ]
   },
@@ -1372,7 +1405,7 @@
     "section": "Proximal Policy Optimization: Pseudocode",
     "text": "Proximal Policy Optimization: Pseudocode\n\n\n\n\n  \n\n\n Exercise \nWhat is the key mathematical difference between the true policy gradient and a surrogate policy gradient in reinforcement learning?\n\\[\nL(\\pi_{\\theta_{t+1}}) =  F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>45</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
     ]
   },
@@ -1383,7 +1416,7 @@
     "section": "",
     "text": "What if your learning wasn’t just about being good — but being better relative to the group? 🧑‍🤝‍🧑",
     "crumbs": [
-      "Lecture 10: Advanced Policy Gradients",
+      "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>46</span>  <span class='chapter-title'>10.3 Group Relative Policy Optimization (GRPO)</span>"
     ]
   },

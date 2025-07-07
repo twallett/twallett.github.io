@@ -42,9 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d12176865ab59d9dd9842621981097db.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.js"></script>
-<link href="../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-05f4ad04b37af736ae6997aa872f1765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -72,6 +70,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HZVB07BZZ2"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -105,7 +112,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -126,11 +133,18 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
       <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
+      <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -178,7 +192,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Lecture 2: Mathematical Foundations</span></a>
+ <span class="menu-text">Lecture 2: Math Foundations</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -425,7 +439,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
- <span class="menu-text">Lecture 9: Policy Gradients</span></a>
+ <span class="menu-text">Lecture 9: Policy Gradients I</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -451,7 +465,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
- <span class="menu-text">Lecture 10: Advanced Policy Gradients</span></a>
+ <span class="menu-text">Lecture 10: Policy Gradients II</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -1206,38 +1220,6 @@ P(F|M) = \frac{P(F \cap M)}{M} = \frac{2}{3} \approx 0.6\bar{6}
     </div>
   </div>
 </footer>
-    <script type="text/javascript">
-    (function(d) {
-      d.querySelectorAll(".pseudocode-container").forEach(function(el) {
-        let pseudocodeOptions = {
-          indentSize: el.dataset.indentSize || "1.2em",
-          commentDelimiter: el.dataset.commentDelimiter || "//",
-          lineNumber: el.dataset.lineNumber === "true" ? true : false,
-          lineNumberPunc: el.dataset.lineNumberPunc || ":",
-          noEnd: el.dataset.noEnd === "true" ? true : false,
-          titlePrefix: el.dataset.captionPrefix || "Algorithm"
-        };
-        pseudocode.renderElement(el.querySelector(".pseudocode"), pseudocodeOptions);
-      });
-    })(document);
-    (function(d) {
-      d.querySelectorAll(".pseudocode-container").forEach(function(el) {
-        let captionSpan = el.querySelector(".ps-root > .ps-algorithm > .ps-line > .ps-keyword")
-        if (captionSpan !== null) {
-          let captionPrefix = el.dataset.captionPrefix + " ";
-          let captionNumber = "";
-          if (el.dataset.pseudocodeNumber) {
-            captionNumber = el.dataset.pseudocodeNumber + " ";
-            if (el.dataset.chapterLevel) {
-              captionNumber = el.dataset.chapterLevel + "." + captionNumber;
-            }
-          }
-          captionSpan.innerHTML = captionPrefix + captionNumber;
-        }
-      });
-    })(document);
-    </script>
-  
 
 
 
