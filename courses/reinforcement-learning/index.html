@@ -68,7 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lecture1/lecture1-1.html" rel="next">
 <link href="./data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -79,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-05f4ad04b37af736ae6997aa872f1765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-f5a0e53d4d78a8bf67d7d4c07ce11e0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -183,11 +182,13 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">DATS 6450 – Reinforcement Learning</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
@@ -482,12 +483,22 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradients</span></a>
+  <a href="./lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradient Theorem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Reinforcement Learning with Human Feedback (RLHF)</span></a>
+  <a href="./lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture9/lecture9-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 Action Selections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecture9/lecture9-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Vanilla Policy Gradient (VPG)</span></a>
   </div>
 </li>
       </ul>
@@ -514,11 +525,6 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Proximal Policy Optimization (PPO)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Group Relative Policy Optimization (GRPO)</span></a>
   </div>
 </li>
       </ul>
@@ -580,6 +586,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
@@ -708,6 +715,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -962,7 +970,7 @@ figcaption {
 </tr>
 <tr class="odd">
 <td>Sep.&nbsp;8, 2025</td>
-<td><a href="./lecture2/lo.html">Mathematical Foundations</a></td>
+<td><a href="./lecture2/lo.html">Math Foundations</a></td>
 <td></td>
 <td>• Set Theory <br> • Axiomatic Probability <br> • Conditioning <br> • Independence <br> • Random Variables <br> • Expectation <br> • Probability Distribution</td>
 </tr>
@@ -1004,13 +1012,13 @@ figcaption {
 </tr>
 <tr class="even">
 <td>Oct.&nbsp;27, 2025</td>
-<td><a href="./lecture9/lo.html">Policy Gradients</a></td>
+<td><a href="./lecture9/lo.html">Policy Gradients I</a></td>
 <td>Quiz 6</td>
 <td>• OpenAI Gymansium <code>CartPole-v1</code> <br> • Policy Gradient Theorem <br> • Vanilla Policy Gradient</td>
 </tr>
 <tr class="odd">
 <td>Nov.&nbsp;3, 2025</td>
-<td><a href="./lecture10/lo.html">Advanced Policy Gradients</a></td>
+<td><a href="./lecture10/lo.html">Policy Gradients II</a></td>
 <td>Quiz 7</td>
 <td>• OpenAI Gymansium <code>HalfCheetah-v5</code> <br> • Trust Region Policy Optimization (TRPO) <br> • Proximal Policy Optimization: KL-Divergence <br> • Proximal Policy Optimization: Clip</td>
 </tr>
@@ -1545,15 +1553,6 @@ Safety and Security
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./lecture1/lecture1-1.html" class="pagination-link" aria-label="1.1 Why should I study Reinforcement Learning?">
-        <span class="nav-page-text"><span class="chapter-title">1.1 Why should I study Reinforcement Learning?</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

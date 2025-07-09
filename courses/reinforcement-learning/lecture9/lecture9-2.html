@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9.2 Reinforcement Learning with Human Feedback (RLHF)</title>
+<title>9.2 Addressing Sparse Rewards</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,7 +50,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lecture10/lo.html" rel="next">
+<link href="../lecture9/lecture9-3.html" rel="next">
 <link href="../lecture9/lecture9-1.html" rel="prev">
 <link href="../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -42,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-05f4ad04b37af736ae6997aa872f1765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f5a0e53d4d78a8bf67d7d4c07ce11e0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -80,6 +100,35 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -92,7 +141,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">9.2 Reinforcement Learning with Human Feedback (RLHF)</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -117,11 +166,13 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DATS 6450 – Reinforcement Learning</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
@@ -416,12 +467,22 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradients</span></a>
+  <a href="../lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradient Theorem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">9.2 Reinforcement Learning with Human Feedback (RLHF)</span></a>
+  <a href="../lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture9/lecture9-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 Action Selections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture9/lecture9-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Vanilla Policy Gradient (VPG)</span></a>
   </div>
 </li>
       </ul>
@@ -448,11 +509,6 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Proximal Policy Optimization (PPO)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Group Relative Policy Optimization (GRPO)</span></a>
   </div>
 </li>
       </ul>
@@ -514,6 +570,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
@@ -642,6 +699,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
@@ -653,15 +711,23 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#addressing-sparse-rewards" id="toc-addressing-sparse-rewards" class="nav-link active" data-scroll-target="#addressing-sparse-rewards">Addressing Sparse Rewards</a></li>
+  <li><a href="#leveraging-the-temporal-structure" id="toc-leveraging-the-temporal-structure" class="nav-link" data-scroll-target="#leveraging-the-temporal-structure">1. Leveraging the Temporal Structure</a></li>
+  <li><a href="#baselines" id="toc-baselines" class="nav-link" data-scroll-target="#baselines">2. Baselines</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">9.2 Reinforcement Learning with Human Feedback (RLHF)</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></h1>
 </div>
 
 
@@ -678,18 +744,127 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </header>
 
 
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>What if your agent could learn not just from rewards — but from what people <em>prefer</em>? 👥</p>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Breakout
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the following Atari Breakout environment <span class="citation" data-cites="bellemare2013arcade">(<a href="../references.html#ref-bellemare2013arcade" role="doc-biblioref">Bellemare et al. 2013</a>)</span>:</p>
+<div style="text-align: center;">
+<p><a href="https://ale.farama.org/environments/breakout/"><img src="images/breakout.gif" class="img-fluid" style="width:25.0%"></a></p>
+</div>
+<p>Suppose we set our batch to <span class="math inline">\(4\)</span>.</p>
+<p>The state information <span class="math inline">\(\mathsf{S}_{\text{batch}}\)</span> is typically represented as a stack of four consecutive tensor image frames <span class="math inline">\(\mathsf{S}\)</span>, capturing temporal dynamics and motion across time:</p>
+<p><span class="math display">\[
+\mathsf{S}_{\text{batch}} = \begin{bmatrix}
+\mathsf{S}_t \gets \text{frame at time } t \\
+\mathsf{S}_{t-1} \gets \text{frame at time } t-1 \\
+\mathsf{S}_{t-2} \gets \text{frame at time } t-2 \\
+\mathsf{S}_{t-3} \gets \text{frame at time } t-3 \\
+\end{bmatrix}
+\]</span></p>
+<p>The environment has a discrete action space <span class="math inline">\(\mathcal{A}\)</span>:</p>
+<p><span class="math display">\[
+\mathcal{A} = \{0 \gets \text{Do nothing}, 1 \gets \text{Fire}, 2 \gets \text{Move right}, 3 \gets \text{Move left}\}
+\]</span></p>
+<p>The environment’s state transition dynamics <span class="math inline">\(P(s’, r \mid s, a)\)</span> are governed by a physics engine that updates the positions of the ball, paddle, and bricks based on collisions and the selected action. These dynamics are deterministic but complex due to pixel-based changes.</p>
+<p>The reward <span class="math inline">\(R\)</span> is defined by the number of bricks destroyed:</p>
+<ul>
+<li>Hitting and destroying a brick typically yields a reward of <span class="math inline">\(+1\)</span>.</li>
+<li>Missing the ball (letting it fall) typically ends a life but gives <span class="math inline">\(0\)</span> reward.</li>
+</ul>
+<p>The episode ends <span class="math inline">\(d\)</span> (dones) if either of the following happens:</p>
+<ul>
+<li><strong>Termination</strong>: The agent loses all lives (typically 5).</li>
+<li><strong>Truncation</strong>: The agent clears all bricks or reaches a built-in time limit (varies by implementation).</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
 </div>
 </div>
 </div>
+<section id="addressing-sparse-rewards" class="level3">
+<h3 class="anchored" data-anchor-id="addressing-sparse-rewards">Addressing Sparse Rewards</h3>
+<p>The last problem that we need to face, to construct a policy gradient algorithm, is the high variance in the reward estimate:</p>
+<p><span class="math display">\[
+\hat{g} = \frac{1}{m} \sum^{m}_{i = 1} R(\tau^{i}) \sum^{T-1}_{t=0} \text{log} \nabla_\theta \pi(A_{t}|S_{t}, \theta)
+\]</span></p>
+</section>
+<section id="leveraging-the-temporal-structure" class="level3">
+<h3 class="anchored" data-anchor-id="leveraging-the-temporal-structure">1. Leveraging the Temporal Structure</h3>
+<p>Instead of multiplying the sum of rewards over a trajectory by the score function:</p>
+<p><span class="math display">\[
+\begin{align*}
+    \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1} R(\tau^{i}) \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \\
+    &amp;= \frac{1}{m} \sum^{m}_{i = 1} \sum^{T-1}_{t=0} r^{i}_t \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta)
+\end{align*}
+\]</span></p>
+<p>We can leverage the temporal structure and multiply the sum of rewards relevant to the score function for each time-step:</p>
+<p><span class="math display">\[
+\begin{align*}
+    \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} r^{i}_{t'}
+\end{align*}
+\]</span></p>
+</section>
+<section id="baselines" class="level3">
+<h3 class="anchored" data-anchor-id="baselines">2. Baselines</h3>
+<p>Baselines <span class="math inline">\(b(s)\)</span> are unbiased estimators that are solely functions of states.</p>
+<p>The goal of a baseline is to mimic an expected reward for the sum of rewards for all time-steps.</p>
+<p><span class="math display">\[
+b(s_t) \approx \mathbb{E}[r_t + r_{t+1} + ... + r_{T-1}]
+\]</span></p>
+<p>This would increase the score function proportionally to how much returns are better than expected:</p>
+<p><span class="math display">\[
+\begin{align*}
+    \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s))
+\end{align*}
+\]</span></p>
+<p>Another way of denoting the difference between the sum of rewards and the baseline is as an advantage estimate <span class="math inline">\(\hat{A}_t\)</span>:</p>
+<p><span class="math display">\[
+\begin{align*}
+    \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s)) \\
+    &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \ \hat{A}_{t}
+\end{align*}
+\]</span></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-bellemare2013arcade" class="csl-entry" role="listitem">
+Bellemare, Marc G, Yavar Naddaf, Joel Veness, and Michael Bowling. 2013. <span>“The Arcade Learning Environment: An Evaluation Platform for General Agents.”</span> <em>Journal of Artificial Intelligence Research</em> 47: 253–79.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1093,13 +1268,13 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../lecture9/lecture9-1.html" class="pagination-link" aria-label="9.1 Policy Gradients">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">9.1 Policy Gradients</span></span>
+      <a href="../lecture9/lecture9-1.html" class="pagination-link" aria-label="9.1 Policy Gradient Theorem">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">9.1 Policy Gradient Theorem</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lecture10/lo.html" class="pagination-link" aria-label="Learning Objectives">
-        <span class="nav-page-text"><span class="chapter-title">Learning Objectives</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lecture9/lecture9-3.html" class="pagination-link" aria-label="9.3 Action Selections">
+        <span class="nav-page-text"><span class="chapter-title">9.3 Action Selections</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

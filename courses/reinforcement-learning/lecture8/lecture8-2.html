@@ -62,7 +62,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-05f4ad04b37af736ae6997aa872f1765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f5a0e53d4d78a8bf67d7d4c07ce11e0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -166,11 +166,13 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DATS 6450 – Reinforcement Learning</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
@@ -465,12 +467,22 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradients</span></a>
+  <a href="../lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradient Theorem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Reinforcement Learning with Human Feedback (RLHF)</span></a>
+  <a href="../lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture9/lecture9-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 Action Selections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture9/lecture9-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Vanilla Policy Gradient (VPG)</span></a>
   </div>
 </li>
       </ul>
@@ -497,11 +509,6 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Proximal Policy Optimization (PPO)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Group Relative Policy Optimization (GRPO)</span></a>
   </div>
 </li>
       </ul>
@@ -563,6 +570,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
@@ -691,6 +699,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
@@ -737,6 +746,19 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>Neural networks <span class="math inline">\(\theta\)</span> such as MLPs and CNNs can help us learn representations of state tensors <span class="math inline">\(\mathsf{S}\)</span>.</p>
+<div class="grid">
+<div class="g-col-2 text-center">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+<p><span class="math inline">\(\mathsf{S} =\)</span></p>
+</div>
+</div>
+<div class="g-col-3">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+<p><img src="images/ImageTensor.svg" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -750,7 +772,7 @@ Problem
 <p>Now we just need an algorithm that:</p>
 <ul>
 <li>Leverages neural networks <span class="math inline">\(\theta\)</span>.</li>
-<li>Leverages a classical RL learning method (TD: Q-learning).</li>
+<li>Leverages a classical Reinforcement Learning method (TD: Q-learning).</li>
 <li>Implements batch form.</li>
 <li>Empirically performs well.</li>
 </ul>
@@ -780,9 +802,9 @@ Example: Breakout
 \mathsf{S}_{t-3} \gets \text{frame at time } t-3 \\
 \end{bmatrix}
 \]</span></p>
-<p>The environment has a discrete action space <span class="math inline">\(a\)</span>:</p>
+<p>The environment has a discrete action space <span class="math inline">\(\mathcal{A}\)</span>:</p>
 <p><span class="math display">\[
-a = \{0 \gets \text{Do nothing}, 1 \gets \text{Fire}, 2 \gets \text{Move right}, 3 \gets \text{Move left}\}
+\mathcal{A} = \{0 \gets \text{Do nothing}, 1 \gets \text{Fire}, 2 \gets \text{Move right}, 3 \gets \text{Move left}\}
 \]</span></p>
 <p>The environment’s state transition dynamics <span class="math inline">\(P(s’, r \mid s, a)\)</span> are governed by a physics engine that updates the positions of the ball, paddle, and bricks based on collisions and the selected action. These dynamics are deterministic but complex due to pixel-based changes.</p>
 <p>The reward <span class="math inline">\(R\)</span> is defined by the number of bricks destroyed:</p>
@@ -812,6 +834,9 @@ Solution
 <div class="text-center">
 <p><img src="images/DQNresearchpaper.png" class="img-fluid quarto-figure quarto-figure-center" style="width:50.0%"> <br> Google DeepMind 2013 <br> <a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">Link to Research Paper</a></p>
 </div>
+<hr>
+<section id="td-update" class="level3">
+<h3 class="anchored" data-anchor-id="td-update">TD Update</h3>
 <p>To implement Q-learning, substitute <span class="math inline">\(Q_{\pi}(s,a)\)</span> for our TD targets similar to what we did for the <a href="../lecture7/lecture7-2.html">Semi-Gradient SARSA</a> algorithm:</p>
 <p><span class="math display">\[
 \langle S_{0}, \ R_{1} + \gamma \max_{a} \hat{Q}(S_{1},a; \theta_{0})\rangle, \ ... \ ,\langle S_{T-1},R_{T}\rangle
@@ -820,12 +845,20 @@ Solution
 <p><span class="math display">\[
 \nabla_{\theta} F(\theta_{t}) = (R_{t+1} + \gamma \max_{a} \hat{Q}(S_{t+1},a; \theta_{t}) - \hat{Q}(S_{t},A_{t}; \theta_{t}))\nabla_{\theta} \hat{Q}(S_{t},A_{t}; \theta_{t})
 \]</span></p>
+<hr>
+</section>
+<section id="batch-form-updates" class="level3">
+<h3 class="anchored" data-anchor-id="batch-form-updates">Batch Form Updates</h3>
 <p><strong>Experience replay</strong> enables learning from mini-batches of past experiences, improving data efficiency and stability.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/ExperienceReplay.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:20.0%"></p>
 </figure>
 </div>
+<hr>
+</section>
+<section id="fixing-target-updates" class="level3">
+<h3 class="anchored" data-anchor-id="fixing-target-updates">Fixing Target Updates</h3>
 <p><strong>Fixed targets</strong> stabilize training by holding target values constant for several updates:</p>
 <p><span class="math display">\[
 \hat{Q}(s,a; \theta^{-})
@@ -834,17 +867,26 @@ Solution
 <p><span class="math display">\[
 \nabla_\theta F(\theta_{t}) = (R_{t+1} + \gamma \max_{a} \hat{Q}(S_{t+1},a; \theta^{-}_{t}) - \hat{Q}(S_{t},A_{t}; \theta_{t}))\nabla_\theta \hat{Q}(S_{t},A_{t}; \theta_{t})
 \]</span></p>
+<hr>
+</section>
+<section id="illustration-dqn" class="level3">
+<h3 class="anchored" data-anchor-id="illustration-dqn">Illustration: DQN</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/DQN.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
+<hr>
+</section>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
 <div class="center" style="text-align:center;">
 <p><img src="images/8-1.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
 <div style="text-align: center;">
 <p><a href="https://github.com/twallett/rl-lecture-code/tree/main/08-DQN/Base"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
 </div>
+</section>
 </div>
 </div>
 </div>
@@ -878,7 +920,15 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>d</p>
+<p>There is <strong>no mistake</strong> in the loss function:</p>
+<p><span class="math display">\[
+F(\theta_{t}) = (\text{TD-Target}_{j} - \hat{Q}(S_{j+1},a; \theta_{t}))^{2}
+\]</span></p>
+<p>but it’s important to understand that in implementation, the Q-network outputs a full vector <span class="math inline">\(\hat{Q}(S_j, \cdot; \theta_t) \in \mathbb{R}^{|\mathcal{A}|}\)</span>, and we construct a target vector of the same shape. All values in this target vector match the predicted Q-values except at index <span class="math inline">\(A_j\)</span>, where we insert the TD target:</p>
+<p><span class="math display">\[
+\text{TD-Target}_{j} = R_{j+1} + \gamma \text{max}_a \hat{Q}(S_{j+1},a; \theta_{t}^-)
+\]</span></p>
+<p>The loss is then computed as the <strong>MSE between the predicted vector and the modified target vector</strong>. This allows efficient vectorized computation while ensuring that only the entry corresponding to action <span class="math inline">\(A_j\)</span> contributes to the gradient update.</p>
 </div>
 </div>
 </div>

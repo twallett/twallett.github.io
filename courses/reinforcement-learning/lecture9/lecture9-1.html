@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9.1 Policy Gradients</title>
+<title>9.1 Policy Gradient Theorem</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-05f4ad04b37af736ae6997aa872f1765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f5a0e53d4d78a8bf67d7d4c07ce11e0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,7 +112,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -121,7 +121,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">9.1 Policy Gradients</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">9.1 Policy Gradient Theorem</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -146,11 +146,13 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DATS 6450 – Reinforcement Learning</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
@@ -445,12 +447,22 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">9.1 Policy Gradients</span></a>
+  <a href="../lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">9.1 Policy Gradient Theorem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Reinforcement Learning with Human Feedback (RLHF)</span></a>
+  <a href="../lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture9/lecture9-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 Action Selections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture9/lecture9-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Vanilla Policy Gradient (VPG)</span></a>
   </div>
 </li>
       </ul>
@@ -477,11 +489,6 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Proximal Policy Optimization (PPO)</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Group Relative Policy Optimization (GRPO)</span></a>
   </div>
 </li>
       </ul>
@@ -543,6 +550,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
@@ -671,6 +679,7 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
@@ -687,25 +696,23 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#mathematical-intuition" id="toc-mathematical-intuition" class="nav-link" data-scroll-target="#mathematical-intuition">Mathematical Intuition</a>
+  <li><a href="#stochastic-gradient-ascent" id="toc-stochastic-gradient-ascent" class="nav-link active" data-scroll-target="#stochastic-gradient-ascent">Stochastic Gradient Ascent</a></li>
+  <li><a href="#policy-gradient-theorem" id="toc-policy-gradient-theorem" class="nav-link" data-scroll-target="#policy-gradient-theorem">Policy Gradient Theorem</a>
   <ul class="collapse">
-  <li><a href="#soft-max-policy" id="toc-soft-max-policy" class="nav-link" data-scroll-target="#soft-max-policy">Soft-max Policy</a></li>
-  <li><a href="#policy-gradient-theorem" id="toc-policy-gradient-theorem" class="nav-link" data-scroll-target="#policy-gradient-theorem">Policy Gradient Theorem</a></li>
-  <li><a href="#addressing-high-variance" id="toc-addressing-high-variance" class="nav-link" data-scroll-target="#addressing-high-variance">Addressing High Variance</a></li>
-  <li><a href="#baselines-to-reduce-variance" id="toc-baselines-to-reduce-variance" class="nav-link" data-scroll-target="#baselines-to-reduce-variance">Baselines to Reduce Variance</a></li>
+  <li><a href="#step-1-express-value-function-in-terms-of-trajectories" id="toc-step-1-express-value-function-in-terms-of-trajectories" class="nav-link" data-scroll-target="#step-1-express-value-function-in-terms-of-trajectories">Step 1: Express Value Function in Terms of Trajectories</a></li>
+  <li><a href="#step-2-leverage-likelihood-ratios" id="toc-step-2-leverage-likelihood-ratios" class="nav-link" data-scroll-target="#step-2-leverage-likelihood-ratios">Step 2: Leverage Likelihood Ratios</a></li>
+  <li><a href="#step-3-approximate-empirical-gradient" id="toc-step-3-approximate-empirical-gradient" class="nav-link" data-scroll-target="#step-3-approximate-empirical-gradient">Step 3: Approximate Empirical Gradient</a></li>
+  <li><a href="#step-4-decompose-dynamic-function" id="toc-step-4-decompose-dynamic-function" class="nav-link" data-scroll-target="#step-4-decompose-dynamic-function">Step 4: Decompose Dynamic Function</a></li>
   </ul></li>
-  <li><a href="#vanilla-policy-gradient-illustration" id="toc-vanilla-policy-gradient-illustration" class="nav-link" data-scroll-target="#vanilla-policy-gradient-illustration">Vanilla Policy Gradient: Illustration</a></li>
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">9.1 Policy Gradients</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">9.1 Policy Gradient Theorem</span></h1>
 </div>
 
 
@@ -732,8 +739,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<p><a href="../lecture8/lecture8-2.html">DQN</a> is unstable and does not guarantee convergence.</p>
+<p>Following deterministic or <span class="math inline">\(\epsilon\)</span>-soft policies is not always optimal.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -744,169 +751,182 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>DQN is unstable and does not guarantee convergence. Following deterministic or <span class="math inline">\(\epsilon\)</span>-greedy policies is not optimal.</p>
-<div style="text-align: center;">
+<p>How can we leverage neural networks <span class="math inline">\(\theta\)</span> to learn a policy <span class="math inline">\(\pi\)</span> that is more adaptive than a <span class="math inline">\(\epsilon\)</span>-soft policy?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Life Example 🧠
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose you’re playing Rock-Paper-Scissors against an adaptive opponent:</p>
+<ul>
+<li><span class="math inline">\(S\)</span> – The current game round, including your opponent’s previous moves (i.e., context).</li>
+<li><span class="math inline">\(A_{1,2,3}\)</span> – You can choose between Rock, Paper, or Scissors.</li>
+<li><span class="math inline">\(R\)</span> – You receive a reward of +1 for a win, 0 for a tie, and -1 for a loss.</li>
+</ul>
+<p>In this setup:</p>
+<div class="grid">
+<div class="g-col-12" style="text-align: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/rps.png" width="200" height="50" class="figure-img"></p>
+<p><img src="images/rps.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Rock-Paper-Scissors</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/gwalias.png" width="200" height="80" class="figure-img"></p>
-<figcaption>GridWorld Alias</figcaption>
-</figure>
 </div>
 </div>
+<p>Following a deterministic or even <span class="math inline">\(\epsilon\)</span>-soft policy can be exploited by an adaptive opponent who learns your behavior.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Solution
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let’s learn stochastic policies using differentiable methods:</p>
+<p>Let’s learn stochastic policies using neural networks <span class="math inline">\(\theta\)</span>:</p>
 <p><span class="math display">\[
 \pi(a|s; \theta)
 \]</span></p>
 <p>By following <span class="math inline">\(\pi(a|s; \theta)\)</span>, we can find optimal policy parameters <span class="math inline">\(\theta\)</span> that maximize:</p>
 <p><span class="math display">\[
-V^{\pi_{\theta}}(s) = V(S_{0}; \theta)
+V^{\pi_{\theta}}(s) = \underbrace{V(S_0; \theta)}_{\text{Value Function Parameterized by } \theta}
 \]</span></p>
+</div>
+</div>
+</div>
+<section id="stochastic-gradient-ascent" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="stochastic-gradient-ascent">Stochastic Gradient Ascent</h2>
+<p>Policy gradient algorithms search for a local maximum in <span class="math inline">\(V^{\pi_{\theta}}(s)\)</span> using stochastic gradient ascent (SGA):</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span class="math inline">\(S_0\)</span> denotes the starting state of the process or episode. Analyzing the value at the initial state is important because it represents the expected return starting from the beginning of an episode. As opposed to a general state <span class="math inline">\(s\)</span>.</p>
+</div></div><p><span class="math display">\[
+\Delta \theta = \alpha \nabla_{\theta} V(S_{0}; \theta)
+\]</span></p>
+</section>
+<section id="policy-gradient-theorem" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="policy-gradient-theorem">Policy Gradient Theorem</h2>
+<p>Assume <span class="math inline">\(\pi\)</span> is differentiable where it is non-zero.</p>
+<p>Ideally, we want to compute the gradient <span class="math inline">\(\nabla_{\theta} V(S_{0}; \theta)\)</span> <strong>analytically</strong>.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>To derive something <strong>analytically</strong> means to find an exact mathematical expression for it, rather than estimating it through sampling or approximation.</p>
+</div></div><p><span class="math display">\[
+V(S_{0}; \theta) = \sum_{a} \pi(a|S_{0}; \theta) Q(S_{0},a; \theta)
+\]</span></p>
+<section id="step-1-express-value-function-in-terms-of-trajectories" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="step-1-express-value-function-in-terms-of-trajectories">Step 1: Express Value Function in Terms of Trajectories</h3>
+<p>The value function <span class="math inline">\(V(S_{0}; \theta)\)</span> can also be expressed in terms of trajectories <span class="math inline">\(\tau\)</span>:</p>
+<p><span class="math display">\[
+\begin{align*}
+    V(S_{0}; \theta) &amp;= \sum_{a} \pi(a|S_{0}; \theta) Q(S_{0},a; \theta) \\
+    &amp;= \sum_{\tau} \underbrace{P(\tau; \theta)}_{\text{Probability of Trajectory}} \ \underbrace{R(\tau)}_{\text{Reward of Trajectory}}
+\end{align*}
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Recall that a trajectory <span class="math inline">\(\tau\)</span> is the tuple.</p>
+<p><span class="math inline">\(\tau = (S_{0},A_{0},R_{1}, ..., S_{T-1},A_{T-1},R_{T})\)</span></p>
+</div></div></section>
+<section id="step-2-leverage-likelihood-ratios" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-leverage-likelihood-ratios">Step 2: Leverage Likelihood Ratios</h3>
+<p>Now we can take the gradient with respect to neural network parameters <span class="math inline">\(\theta\)</span> using <strong>likelihood ratios</strong>:</p>
+<p><span class="math display">\[
+\nabla_\theta V(\theta) = \sum_{\tau} P(\tau; \theta) R(\tau) \nabla_\theta \text{log} P(\tau; \theta)
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Derivation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+    \nabla_\theta V(\theta) &amp;= \nabla_\theta \sum_{\tau} P(\tau; \theta) R(\tau) \\
+    &amp;= \sum_{\tau} \nabla_\theta P(\tau; \theta) R(\tau) \quad \gets \text{Swap} \sum \text{and} \nabla \\
+    &amp;= \sum_{\tau} R(\tau) \nabla_\theta P(\tau; \theta) \quad \gets \text{Switch the order of multiplication} \\
+    &amp;= \sum_{\tau} R(\tau) \nabla_\theta P(\tau; \theta) \frac{P(\tau; \theta)}{P(\tau; \theta)} \quad \gets \text{Multiply by} \ 1 \\
+    &amp;= \sum_{\tau} R(\tau) P(\tau; \theta)  \nabla_\theta \text{log} P(\tau; \theta) \quad \gets \text{Likelihood Ratio} \ \frac{\nabla_\theta P(\tau; \theta)}{P(\tau; \theta)} = \nabla_\theta \text{log} P(\tau; \theta)\\
+    &amp;= \sum_{\tau} P(\tau; \theta) R(\tau) \nabla_\theta \text{log} P(\tau; \theta)
+\end{align*}
+\]</span></p>
+</div>
 </div>
 </div>
 </section>
-<section id="mathematical-intuition" class="level2">
-<h2 class="anchored" data-anchor-id="mathematical-intuition">Mathematical Intuition</h2>
-<p>Policy gradient algorithms search for a local maximum in <span class="math inline">\(V^{\pi_{\theta}}(s)\)</span> using stochastic gradient ascent (SGA):</p>
-<p><span class="math display">\[
-\Delta \theta = \alpha \nabla V(S_{0}; \theta)
-\]</span></p>
-<p>Ideally, we want to compute this gradient analytically.</p>
-<p>Assume <span class="math inline">\(\pi\)</span> is differentiable where it is non-zero:</p>
-<p><span class="math display">\[
-V(S_{0}; \theta) = \sum_{a} \pi(a|S_{0}; \theta) Q(S_{0},a; \theta)
-\]</span></p>
-<p>Another formulation in terms of trajectories <span class="math inline">\(\tau\)</span>:</p>
-<p><span class="math display">\[
-V(S_{0}; \theta) = \sum_{\tau} P(\tau; \theta) R(\tau)
-\]</span></p>
-<p>where <span class="math inline">\(P(\tau; \theta)\)</span> is the probability and <span class="math inline">\(R(\tau)\)</span> the reward of trajectory.</p>
-<p>Using likelihood ratios:</p>
-<p><span class="math display">\[
-\nabla_{\theta} V(\theta) = \sum_{\tau} P(\tau; \theta) R(\tau) \nabla_{\theta} \log P(\tau; \theta)
-\]</span></p>
-<p>Approximation using empirical estimate:</p>
+<section id="step-3-approximate-empirical-gradient" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-approximate-empirical-gradient">Step 3: Approximate Empirical Gradient</h3>
+<p>We can approximate the expectation using an empirical estimate for <span class="math inline">\(m\)</span> sample trajectories:</p>
 <p><span class="math display">\[
 \nabla_{\theta} V(\theta) \approx \hat{g} = \frac{1}{m} \sum^{m}_{i = 1} R(\tau^{i}) \nabla_{\theta} \log P(\tau^{i}; \theta)
 \]</span></p>
-<p>Decomposing dynamics into states and actions:</p>
-<p><span class="math display">\[
-\nabla_{\theta} \log P(\tau^{i}; \theta) = \sum^{T-1}_{t=0} \nabla_{\theta} \log \pi(A_{t}|S_{t}, \theta)
-\]</span></p>
-<p>This term is called the <strong>score function</strong>.</p>
-<section id="soft-max-policy" class="level3">
-<h3 class="anchored" data-anchor-id="soft-max-policy">Soft-max Policy</h3>
-<p><span class="math display">\[
-\pi(a|s;\theta) = \frac{\exp(\theta_{\text{logits}}(s)[a])}{\sum_{a'} \exp(\theta_{\text{logits}}(s)[a'])}
-\]</span></p>
+<p>Problem is that we do not necessarily know the dynamics of trajectories <span class="math inline">\(\nabla_\theta \text{log} P(\tau^{i}; \theta)\)</span></p>
 </section>
-<section id="policy-gradient-theorem" class="level3">
-<h3 class="anchored" data-anchor-id="policy-gradient-theorem">Policy Gradient Theorem</h3>
-<p><strong>Theorem</strong>: Let <span class="math inline">\(\pi(a|s;\theta)\)</span> be a differentiable policy. The gradient of the expected reward <span class="math inline">\(F(\theta)\)</span> with respect to <span class="math inline">\(\theta\)</span> is:</p>
+<section id="step-4-decompose-dynamic-function" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-decompose-dynamic-function">Step 4: Decompose Dynamic Function</h3>
+<p>Luckily we can decompose the dynamics term into states and actions:</p>
 <p><span class="math display">\[
-\nabla_{\theta} F(\theta) = \mathbb{E}_{\pi_{\theta}} \left[\nabla_{\theta} \log \pi(a|s;\theta) Q^{\pi_{\theta}}(s, a)\right]
+\nabla_\theta \text{log} P(\tau^{i}; \theta) = \sum^{T-1}_{t=0} \text{log} \nabla_\theta \pi(A_{t}|S_{t}, \theta)
 \]</span></p>
-</section>
-<section id="addressing-high-variance" class="level3">
-<h3 class="anchored" data-anchor-id="addressing-high-variance">Addressing High Variance</h3>
-<p>Instead of multiplying the sum of rewards by the score function:</p>
-<p><span class="math display">\[
-\hat{g} = \frac{1}{m} \sum^{m}_{i = 1} R(\tau^{i}) \sum^{T-1}_{t=0} \log \nabla_{\theta} \pi(A_{t}|S_{t}, \theta)
-\]</span></p>
-<ul>
-<li>Use temporal structure to weight rewards relevant to each time-step:</li>
-</ul>
-<p><span class="math display">\[
-\hat{g} = \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_{\theta} \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} r^{i}_{t'}
-\]</span></p>
-</section>
-<section id="baselines-to-reduce-variance" class="level3">
-<h3 class="anchored" data-anchor-id="baselines-to-reduce-variance">Baselines to Reduce Variance</h3>
-<p>Unbiased estimators <span class="math inline">\(b(s)\)</span> help adjust for expected rewards:</p>
-<p><span class="math display">\[
-\hat{g} = \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_{\theta} \pi(A_{t}|S_{t}, \theta) (r^{i}_{t'} - b(s))
-\]</span></p>
-<p>Defining <strong>advantage estimates</strong>:</p>
-<p><span class="math display">\[
-\hat{A}_{t} = \sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s))
-\]</span></p>
-<p>thus,</p>
-<p><span class="math display">\[
-\hat{g} = \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_{\theta} \pi(A_{t}|S_{t}, \theta) \hat{A}_{t}
-\]</span></p>
-</section>
-</section>
-<section id="vanilla-policy-gradient-illustration" class="level2">
-<h2 class="anchored" data-anchor-id="vanilla-policy-gradient-illustration">Vanilla Policy Gradient: Illustration</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/VanillaPolicyGradient.png" class="img-fluid figure-img"></p>
-<figcaption>Vanilla Policy Gradient</figcaption>
-</figure>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</section>
-<section id="pseudocode" class="level2">
-<h2 class="anchored" data-anchor-id="pseudocode">Pseudocode</h2>
-<div class="center" style="text-align:center;">
-<p><img src="images/9-1.svg" class="img-fluid" style="width:75.0%"></p>
+<div class="callout-title-container flex-fill">
+Derivation
 </div>
-<div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<section id="exercise" class="level4">
-<h4 class="anchored" data-anchor-id="exercise"><u> Exercise </u></h4>
-<p>Match the following concepts:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 42%">
-<col style="width: 57%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Concept</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Likelihood Ratio</td>
-<td><span class="math inline">\(\frac{\nabla_{\theta} \pi_{\theta}(a|s)}{\pi_{\theta}(a|s)}\)</span></td>
-</tr>
-<tr class="even">
-<td>Score Function</td>
-<td><span class="math inline">\(\nabla_{\theta} \log \pi_{\theta}(a|s)\)</span></td>
-</tr>
-<tr class="odd">
-<td>Policy Gradient</td>
-<td><span class="math inline">\(\mathbb{E}_{\pi_\theta} \left[\nabla_\theta \log \pi(a|s;\theta) Q^{\pi_\theta}(s, a)\right]\)</span></td>
-</tr>
-<tr class="even">
-<td>Empirical Estimate</td>
-<td><span class="math inline">\(\frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \hat{A}_{t}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Baseline</td>
-<td><span class="math inline">\(b(s)\)</span></td>
-</tr>
-</tbody>
-</table>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align*}
+    \hspace{-0.7cm} \nabla_\theta \text{log} P(\tau^{i}; \theta) &amp;= \nabla_\theta \text{log} [\underbrace{\mu(S_{0})}_{\text{Initial State}} \prod^{T-1}_{t=0} \underbrace{\pi(A_{t}|S_{t};\theta)}_{\text{Policy}} \underbrace{P(S_{t+1}|S_{t},A_{t})}_{\text{Dynamic Function}}] \\
+    \hspace{-0.7cm} &amp;= \nabla_\theta [\text{log}\mu(S_{0}) + \text{log}\sum^{T-1}_{t=0} \pi(A_{t}|S_{t};\theta) + \text{log} P(S_{t+1}|S_{t},A_{t})] \gets \text{Distribute log} \\
+    \hspace{-0.7cm} &amp;= \underbrace{\nabla_\theta \text{log}\mu(S_{0})}_{=0} + \nabla_\theta \text{log}\sum^{T-1}_{t=0} \pi(A_{t}|S_{t};\theta) + \underbrace{\nabla_\theta \text{log} P(S_{t+1}|S_{t},A_{t})}_{=0} \\
+    \hspace{-0.7cm} &amp;= \sum^{T-1}_{t=0} \text{log} \nabla_\theta \pi(A_{t}|S_{t}, \theta)
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>And we arrive to a term that does not depend on any dynamics, which we call the <strong>score function</strong>.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Policy Gradient Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\pi(a|s;\theta)\)</span> be a differentiable policy. The gradient of the expected reward <span class="math inline">\(F(\theta)\)</span> with respect to the policy parameters <span class="math inline">\(\theta\)</span> is given by:</p>
+<p><span class="math display">\[
+\nabla_\theta F(\theta) = \mathbb{E}_{\pi_\theta} \left[\nabla_\theta \log \pi(a|s;\theta) Q^{\pi_\theta}(s, a)\right]
+\]</span></p>
+</div>
+</div>
 
 
 </section>
@@ -1319,8 +1339,8 @@ V(S_{0}; \theta) = \sum_{\tau} P(\tau; \theta) R(\tau)
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lecture9/lecture9-2.html" class="pagination-link" aria-label="9.2 Reinforcement Learning with Human Feedback (RLHF)">
-        <span class="nav-page-text"><span class="chapter-title">9.2 Reinforcement Learning with Human Feedback (RLHF)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lecture9/lecture9-2.html" class="pagination-link" aria-label="9.2 Addressing Sparse Rewards">
+        <span class="nav-page-text"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
