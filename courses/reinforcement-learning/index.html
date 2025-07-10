@@ -58,7 +58,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -908,7 +928,7 @@ figcaption {
 </section>
 <section id="course-description" class="level2">
 <h2 class="anchored" data-anchor-id="course-description">Course Description</h2>
-<p>The aim of this course is to provide a comprehensive understanding of the <strong>reinforcement learning framework</strong>. The course will explore the key distinctions between reinforcement learning and other artificial intelligence learning paradigms, delve into relevant industry applications, and examine both classical and deep learning approaches. Additionally, the course will cover the taxonomy of reinforcement learning and offer hands-on experience through practical implementations using <a href="https://gymnasium.farama.org/index.html">OpenAI Gymnasium</a> and other learning environments.</p>
+<p>The aim of this course is to provide a comprehensive understanding of the <strong>reinforcement learning framework</strong>. The course will explore the key distinctions between reinforcement learning and other artificial intelligence learning paradigms, delve into relevant industry applications, and examine both classical and deep learning approaches. Additionally, the course will cover the taxonomy of reinforcement learning and offer hands-on experience through practical implementations using <a href="https://gymnasium.farama.org/index.html">OpenAI Gymnasium</a> <span class="citation" data-cites="brockman2016openai">(<a href="references.html#ref-brockman2016openai" role="doc-biblioref">Brockman et al. 2016</a>)</span> and other learning environments.</p>
 <p>The <strong>classical approach</strong> will focus on learning methods designed to find optimal solutions in tabular environments, whereas the <strong>deep learning approach</strong> will tackle the challenge of finding approximate optimal solutions in large or continuous environments through the use of deep learning architectures.</p>
 <p>The course will introduce the <strong>taxonomy of reinforcement learning</strong> by focusing on model-free value-based and policy-based methods. Model-based reinforcement learning will be covered briefly, as it is allocated only one lecture.</p>
 <p>To conclude, a discussion on <strong>advanced topics, applications, and outlook</strong> of reinforcement learning will be provided.</p>
@@ -1151,6 +1171,11 @@ Safety and Security
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-brockman2016openai" class="csl-entry" role="listitem">
+Brockman, Greg, Vicki Cheung, Ludwig Pettersson, Jonas Schneider, John Schulman, Jie Tang, and Wojciech Zaremba. 2016. <span>“OpenAI Gym.”</span> <a href="https://arxiv.org/abs/1606.01540">https://arxiv.org/abs/1606.01540</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

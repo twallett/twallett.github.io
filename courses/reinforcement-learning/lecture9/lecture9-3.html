@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -691,15 +711,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#discrete-action-selection" id="toc-discrete-action-selection" class="nav-link active" data-scroll-target="#discrete-action-selection">Discrete Action Selection</a></li>
-  <li><a href="#continuous-action-selection" id="toc-continuous-action-selection" class="nav-link" data-scroll-target="#continuous-action-selection">Continuous Action Selection</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -723,25 +736,115 @@ window.Quarto = {
 </header>
 
 
-<section id="discrete-action-selection" class="level2">
-<h2 class="anchored" data-anchor-id="discrete-action-selection">Discrete Action Selection</h2>
-<p>Soft-max Policy</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>What if every choice you made wasn’t based on value — but came straight from your instinct? 🎲</p>
+</div>
+</div>
+</div>
+<p>Now that we have a robust empirical gradient:</p>
 <p><span class="math display">\[
-\pi(a|s;\theta) = \frac{\exp(\theta_{\text{logits}}(s)[a])}{\sum_{a'} \exp(\theta_{\text{logits}}(s)[a'])}
+\hat{g} = \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \ \hat{A}_{t}
 \]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If the policy <span class="math inline">\(\pi(A_{t}|S_{t}, \theta)\)</span> is parametrized by a neural network <span class="math inline">\(\theta\)</span>, how do we select actions in action spaces <span class="math inline">\(\mathcal{A}\)</span> that are discrete or continuous?</p>
+<p><em>Hint: Think about Lecture 8</em></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Pusher
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the following Pusher MuJoCo environment <span class="citation" data-cites="todorov2012mujoco">(<a href="../references.html#ref-todorov2012mujoco" role="doc-biblioref">Todorov, Erez, and Tassa 2012</a>)</span>:</p>
+<div style="text-align: center;">
+<p><a href="https://gymnasium.farama.org/environments/mujoco/pusher/"><img src="images/pusher.gif" class="img-fluid" style="width:25.0%"></a></p>
+</div>
+<p>The environment has a continuous action space <span class="math inline">\(\mathcal{A}\)</span>:</p>
+<p><span class="math display">\[
+\mathcal{A} = \begin{bmatrix} \text{Rotation of the panning the shoulder} \in (-2,2) \\
+                              \text{Rotation of the shoulder lifting joint} \in (-2,2) \\
+                              \text{Rotation of the shoulder rolling joint} \in (-2,2) \\
+                              \text{Rotation of hinge joint that flexed the elbow} \in (-2,2) \\
+                              \text{Rotation of hinge that rolls the forearm} \in (-2,2) \\
+                              \text{Rotation of flexing the wrist} \in (-2,2) \\
+                              \text{Rotation of rolling the wrist} \in (-2,2) \\
+                \end{bmatrix}
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To select actions in action spaces <span class="math inline">\(\mathcal{A}\)</span> that are discrete or continuous, we use the following policies:</p>
+<ul>
+<li>Discrete <span class="math inline">\(\mathcal{A}\)</span>: <strong>Soft-max Policy</strong></li>
+<li>Continuous <span class="math inline">\(\mathcal{A}\)</span>: <strong>Gaussian Policy</strong></li>
+</ul>
+<hr>
+<section id="discrete-action-selection-soft-max-policy" class="level3">
+<h3 class="anchored" data-anchor-id="discrete-action-selection-soft-max-policy">Discrete Action Selection: Soft-max Policy</h3>
+<p>Given a state <span class="math inline">\(s\)</span>, the policy network outputs a vector of logits <span class="math inline">\(\theta_{\text{logits}}(s)\)</span>, one for each possible action. The probability of selecting action <span class="math inline">\(a\)</span> is given by the soft-max function:</p>
+<p><span class="math display">\[
+\pi(a|s;\theta) = \frac{\exp(\theta_{\text{logits}}(s)[a])}{\sum_{a'} \exp(\theta_{\text{logits}}(s)[a'])} \quad \forall a \in \mathcal{A}
+\]</span></p>
+<p>To select an action, sample <span class="math inline">\(a\)</span> from this categorical distribution.</p>
+<hr>
 </section>
-<section id="continuous-action-selection" class="level2">
-<h2 class="anchored" data-anchor-id="continuous-action-selection">Continuous Action Selection</h2>
-<p>Gaussian Policy</p>
+<section id="continuous-action-selection-gaussian-policy" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-action-selection-gaussian-policy">Continuous Action Selection: Gaussian Policy</h3>
+<p>Given a state <span class="math inline">\(s\)</span>, the policy outputs parameters of a Gaussian distribution over actions:</p>
 <p><span class="math display">\[
 \begin{align*}
-    \mu(s), \sigma(s) &amp;= \theta_{\mu, \sigma}(s) \\
-    \pi(a|s; \theta) &amp;= \frac{1}{\sqrt{2 \pi \sigma^2(s)}} \exp\left(-\frac{(a - \mu(s))^2}{2 \sigma^2(s)}\right) \\
+  \pi(a|s; \theta)
+  &amp;= \frac{1}{\sqrt{2\pi \sigma^2(s)[a]}}
+     \exp\left(-\frac{(a - \mu(s)[a])^2}{2 \sigma^2(s)[a]}\right) \\
+  &amp;=  
+     \begin{bmatrix}
+       \mu_1(s) &amp; \mu_2(s) &amp; \cdots &amp; \mu_{|\mathcal{A}|}(s) \
+       \sigma_1(s) &amp; \sigma_2(s) &amp; \cdots &amp; \sigma_{|\mathcal{A}|}(s)
+     \end{bmatrix} \quad \forall a \in \mathcal{A}
 \end{align*}
 \]</span></p>
-
-
+<p>To select an action, sample <span class="math inline">\(a\)</span> from the Gaussian distribution <span class="math inline">\(\mathcal{N}(\mu(s), \sigma^2(s))\)</span> output by the policy network.</p>
 </section>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-todorov2012mujoco" class="csl-entry" role="listitem">
+Todorov, Emanuel, Tom Erez, and Yuval Tassa. 2012. <span>“MuJoCo: A Physics Engine for Model-Based Control.”</span> In *Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*. <a href="http://www.mujoco.org/">http://www.mujoco.org/</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

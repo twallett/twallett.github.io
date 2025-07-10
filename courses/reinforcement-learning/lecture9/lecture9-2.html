@@ -711,16 +711,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#addressing-sparse-rewards" id="toc-addressing-sparse-rewards" class="nav-link active" data-scroll-target="#addressing-sparse-rewards">Addressing Sparse Rewards</a></li>
-  <li><a href="#leveraging-the-temporal-structure" id="toc-leveraging-the-temporal-structure" class="nav-link" data-scroll-target="#leveraging-the-temporal-structure">1. Leveraging the Temporal Structure</a></li>
-  <li><a href="#baselines" id="toc-baselines" class="nav-link" data-scroll-target="#baselines">2. Baselines</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -744,6 +736,20 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>What if you had to learn from signals that show up only rarely — or not at all for a while? 🌫️</p>
+</div>
+</div>
+</div>
+<p>Before we can apply policy gradient methods effectively, we first need to solve the problem of high variance in the reward estimate:</p>
+<p><span class="math display">\[
+\hat{g} = \frac{1}{m} \sum^{m}_{i = 1} R(\tau^{i}) \sum^{T-1}_{t=0} \text{log} \nabla_\theta \pi(A_{t}|S_{t}, \theta)
+\]</span></p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -754,7 +760,7 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>How can we learn effective policies when reward signals are sparse and only received at the end of long trajectories?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -763,38 +769,64 @@ Problem
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example: Breakout
+Example: CartPole
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider the following Atari Breakout environment <span class="citation" data-cites="bellemare2013arcade">(<a href="../references.html#ref-bellemare2013arcade" role="doc-biblioref">Bellemare et al. 2013</a>)</span>:</p>
+<p>Consider the following CartPole environment <span class="citation" data-cites="barto1983neuronlike">(<a href="../references.html#ref-barto1983neuronlike" role="doc-biblioref">Barto, Sutton, and Anderson 1983</a>)</span>:</p>
 <div style="text-align: center;">
-<p><a href="https://ale.farama.org/environments/breakout/"><img src="images/breakout.gif" class="img-fluid" style="width:25.0%"></a></p>
+<p><a href="https://gymnasium.farama.org/environments/classic_control/cart_pole/"><img src="images/cartpole.gif" class="img-fluid" style="width:25.0%"></a></p>
 </div>
-<p>Suppose we set our batch to <span class="math inline">\(4\)</span>.</p>
-<p>The state information <span class="math inline">\(\mathsf{S}_{\text{batch}}\)</span> is typically represented as a stack of four consecutive tensor image frames <span class="math inline">\(\mathsf{S}\)</span>, capturing temporal dynamics and motion across time:</p>
+<p>The state information <span class="math inline">\(\mathbf{s}\)</span> is now the following vector:</p>
 <p><span class="math display">\[
-\mathsf{S}_{\text{batch}} = \begin{bmatrix}
-\mathsf{S}_t \gets \text{frame at time } t \\
-\mathsf{S}_{t-1} \gets \text{frame at time } t-1 \\
-\mathsf{S}_{t-2} \gets \text{frame at time } t-2 \\
-\mathsf{S}_{t-3} \gets \text{frame at time } t-3 \\
-\end{bmatrix}
+\mathbf{s} = \begin{bmatrix} c_p \in (-4.8,4.8) \gets \text{Cart Position} \\ c_v \in (-\inf,\inf) \gets \text{Cart Velocity} \\ p_a \in (\approx -0.418 \ \text{rad}(-24°),\approx 0.418 \ \text{rad}(-24°)) \gets \text{Pole Angle} \\ p_{av} \in (-\inf,\inf) \gets \text{Pole Angular Velocity} \\ \end{bmatrix}
 \]</span></p>
 <p>The environment has a discrete action space <span class="math inline">\(\mathcal{A}\)</span>:</p>
 <p><span class="math display">\[
-\mathcal{A} = \{0 \gets \text{Do nothing}, 1 \gets \text{Fire}, 2 \gets \text{Move right}, 3 \gets \text{Move left}\}
+\mathcal{A} = \{0 \gets \text{Push cart to the left}, 1 \gets \text{Push cart to the right}\}
 \]</span></p>
-<p>The environment’s state transition dynamics <span class="math inline">\(P(s’, r \mid s, a)\)</span> are governed by a physics engine that updates the positions of the ball, paddle, and bricks based on collisions and the selected action. These dynamics are deterministic but complex due to pixel-based changes.</p>
-<p>The reward <span class="math inline">\(R\)</span> is defined by the number of bricks destroyed:</p>
-<ul>
-<li>Hitting and destroying a brick typically yields a reward of <span class="math inline">\(+1\)</span>.</li>
-<li>Missing the ball (letting it fall) typically ends a life but gives <span class="math inline">\(0\)</span> reward.</li>
-</ul>
+<p>The environment’s state transition dynamics <span class="math inline">\(P(s’, r \mid s, a)\)</span> are calculated using <a href="https://en.wikipedia.org/wiki/Classical_mechanics">classical mechanics</a> and <a href="https://en.wikipedia.org/wiki/Euler_method">Euler Method</a>:</p>
+<p><span class="math display">\[
+\begin{align}
+    g &amp;= 9.8 \quad \gets \text{gravity} \\
+    m &amp;= 0.1 \quad \gets \text{pole mass} \\
+    M &amp;= 1.0 \quad \gets \text{cart mass} \\
+    l &amp;= 0.5 \quad \gets \text{half pole length} \\
+    \tau &amp;= 0.02 \quad \gets \text{time step} \\
+\end{align}
+\]</span></p>
+<p>Angular Acceleration:</p>
+<p><span class="math display">\[
+\ddot{p}_a = \frac{
+g \sin(p_a) + \cos(p_a) \left(-\text{action} - m l p_{av}^2 \sin(p_a)\right)/(M + m)
+}{
+l \left(\frac{4}{3} - \frac{m \cos^2(p_a)}{M + m} \right)
+}
+\]</span></p>
+<p>Cart acceleration:</p>
+<p><span class="math display">\[
+\ddot{c}_v = \frac{
+F + m l \left(p_{av}^2 \sin(p_a) - \ddot{p}_a \cos(p_a)\right)
+}{M + m}
+\]</span></p>
+<p>Euler integration:</p>
+<p><span class="math display">\[
+\begin{align}
+c_p' &amp;= c_p + \tau \cdot c_v \\
+c_v' &amp;= c_v + \tau \cdot \ddot{c}_v \\
+p_a' &amp;= p_a + \tau \cdot p_{av} \\
+p_{av}' &amp;= p_{av} + \tau \cdot \ddot{p}_a
+\end{align}
+\]</span></p>
+<p><strong>Default Reward Function</strong>:</p>
+<p>Since the goal is to keep the pole upright for as long as possible, by default, a reward of <span class="math inline">\(+1\)</span> is given for every step taken, including the termination step. The default reward threshold is <span class="math inline">\(500\)</span> for <code>v1</code> and <span class="math inline">\(200\)</span> for <code>v0</code> due to the time limit on the environment.</p>
+<p><strong>Sparse Rewards</strong>:</p>
+<p>If <code>sutton_barto_reward=True</code>, then a reward of <span class="math inline">\(0\)</span> is awarded for every non-terminating step and <span class="math inline">\(-1\)</span> for the terminating step. As a result, the reward threshold is <span class="math inline">\(0\)</span> for <code>v0</code> and <code>v1</code>.</p>
 <p>The episode ends <span class="math inline">\(d\)</span> (dones) if either of the following happens:</p>
 <ul>
-<li><strong>Termination</strong>: The agent loses all lives (typically 5).</li>
-<li><strong>Truncation</strong>: The agent clears all bricks or reaches a built-in time limit (varies by implementation).</li>
+<li><strong>Termination</strong>: Pole Angle is greater than <span class="math inline">\(\pm12°\)</span>.</li>
+<li><strong>Termination</strong>: Cart Position is greater than <span class="math inline">\(\pm2.4\)</span> (center of the cart reaches the edge of the display).</li>
+<li><strong>Truncation</strong>: Episode length is greater than 500 (200 for <code>v0</code>).</li>
 </ul>
 </div>
 </div>
@@ -810,36 +842,32 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
-</div>
-</div>
-</div>
-<section id="addressing-sparse-rewards" class="level3">
-<h3 class="anchored" data-anchor-id="addressing-sparse-rewards">Addressing Sparse Rewards</h3>
-<p>The last problem that we need to face, to construct a policy gradient algorithm, is the high variance in the reward estimate:</p>
-<p><span class="math display">\[
-\hat{g} = \frac{1}{m} \sum^{m}_{i = 1} R(\tau^{i}) \sum^{T-1}_{t=0} \text{log} \nabla_\theta \pi(A_{t}|S_{t}, \theta)
-\]</span></p>
-</section>
+<p>To face the problem of sparse rewards, we will introduce two key ideas :</p>
+<ul>
+<li>Leveraging temporal structure.</li>
+<li>Baselines.</li>
+</ul>
+<hr>
 <section id="leveraging-the-temporal-structure" class="level3">
 <h3 class="anchored" data-anchor-id="leveraging-the-temporal-structure">1. Leveraging the Temporal Structure</h3>
-<p>Instead of multiplying the sum of rewards over a trajectory by the score function:</p>
+<p>Instead of multiplying the sum of rewards over a entire trajectory by the score function:</p>
 <p><span class="math display">\[
 \begin{align*}
     \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1} R(\tau^{i}) \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \\
     &amp;= \frac{1}{m} \sum^{m}_{i = 1} \sum^{T-1}_{t=0} r^{i}_t \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta)
 \end{align*}
 \]</span></p>
-<p>We can leverage the temporal structure and multiply the sum of rewards relevant to the score function for each time-step:</p>
+<p>We only <strong>multiply the sum of rewards relevant to the score function for each time-step</strong>:</p>
 <p><span class="math display">\[
 \begin{align*}
     \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} r^{i}_{t'}
 \end{align*}
 \]</span></p>
+<hr>
 </section>
 <section id="baselines" class="level3">
 <h3 class="anchored" data-anchor-id="baselines">2. Baselines</h3>
-<p>Baselines <span class="math inline">\(b(s)\)</span> are unbiased estimators that are solely functions of states.</p>
+<p><strong>Baselines</strong> <span class="math inline">\(b(s)\)</span> are unbiased estimators that are solely functions of states.</p>
 <p>The goal of a baseline is to mimic an expected reward for the sum of rewards for all time-steps.</p>
 <p><span class="math display">\[
 b(s_t) \approx \mathbb{E}[r_t + r_{t+1} + ... + r_{T-1}]
@@ -850,21 +878,26 @@ b(s_t) \approx \mathbb{E}[r_t + r_{t+1} + ... + r_{T-1}]
     \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s))
 \end{align*}
 \]</span></p>
-<p>Another way of denoting the difference between the sum of rewards and the baseline is as an advantage estimate <span class="math inline">\(\hat{A}_t\)</span>:</p>
+<p>Another way of denoting the difference between the sum of rewards and the baseline is as an <strong>advantage estimate</strong> <span class="math inline">\(\hat{A}_t\)</span>:</p>
 <p><span class="math display">\[
 \begin{align*}
     \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s)) \\
+    &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - \underbrace{V_{\phi}(s)}_{\text{Baseline}}) \\
     &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \ \hat{A}_{t}
 \end{align*}
 \]</span></p>
+<p>There are many ways to represent a baseline, and designing effective baselines remains an open research question. In practice, <span class="math inline">\(V_{\phi}(s)\)</span> is typically a value function approximated by a neural network <span class="math inline">\(\phi\)</span>.</p>
+</section>
+</div>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-bellemare2013arcade" class="csl-entry" role="listitem">
-Bellemare, Marc G, Yavar Naddaf, Joel Veness, and Michael Bowling. 2013. <span>“The Arcade Learning Environment: An Evaluation Platform for General Agents.”</span> <em>Journal of Artificial Intelligence Research</em> 47: 253–79.
+<div id="ref-barto1983neuronlike" class="csl-entry" role="listitem">
+Barto, Andrew G, Richard S Sutton, and Charles W Anderson. 1983. <span>“Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problems.”</span> Technical Report, Institute for Cybernetic Studies, University of Massachusetts. <a href="https://psycnet.apa.org/record/1984-25798-001">https://psycnet.apa.org/record/1984-25798-001</a>.
 </div>
 </div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

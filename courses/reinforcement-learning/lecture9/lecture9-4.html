@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -691,15 +711,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#illustration-vanilla-policy-gradient" id="toc-illustration-vanilla-policy-gradient" class="nav-link active" data-scroll-target="#illustration-vanilla-policy-gradient">Illustration: Vanilla Policy Gradient</a></li>
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -723,6 +736,55 @@ window.Quarto = {
 </header>
 
 
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>What if you improved your strategy by following the slope — no tricks, no constraints, just raw feedback? 🧗‍♂️</p>
+</div>
+</div>
+</div>
+<ul>
+<li>✅ We calculated the policy gradient analytically.</li>
+<li>✅ We addressed the problem of sparse rewards.</li>
+<li>✅ We know how to select actions in discrete and continuous action spaces.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now we just need an algorithm that:</p>
+<ul>
+<li>Leverages neural networks <span class="math inline">\(\theta\)</span>.</li>
+<li>Leverages a classical Reinforcement Learning method (Monte Carlo).</li>
+<li>Leverages our empirical estimate of the gradient <span class="math inline">\(\hat{g}\)</span>.</li>
+<li>Empirically performs well.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="text-center">
+<p><img src="images/VPGresearchpaper.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> AT&amp;T 2000 <span class="citation" data-cites="sutton2000policy">(<a href="../references.html#ref-sutton2000policy" role="doc-biblioref">Sutton et al. 2000</a>)</span> <br> <a href="https://proceedings.neurips.cc/paper_files/paper/1999/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf">Link to Research Paper</a></p>
+</div>
 <hr>
 <section id="illustration-vanilla-policy-gradient" class="level3">
 <h3 class="anchored" data-anchor-id="illustration-vanilla-policy-gradient">Illustration: Vanilla Policy Gradient</h3>
@@ -741,6 +803,10 @@ window.Quarto = {
 </div>
 <div style="text-align: center;">
 <p><a href="https://github.com/twallett/rl-lecture-code/tree/main/09-PG/Base"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</section>
+</div>
+</div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -791,7 +857,11 @@ Question 🤔
 </div>
 
 
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-sutton2000policy" class="csl-entry" role="listitem">
+Sutton, Richard S., David McAllester, Satinder Singh, and Yishay Mansour. 2000. <span>“Policy Gradient Methods for Reinforcement Learning with Function Approximation.”</span> In <em>Advances in Neural Information Processing Systems (NeurIPS)</em>. Vol. 12. MIT Press.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
