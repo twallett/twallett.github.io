@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -696,7 +716,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#mathematical-intuition" id="toc-mathematical-intuition" class="nav-link active" data-scroll-target="#mathematical-intuition">Mathematical Intuition</a></li>
+  <li><a href="#trust-regions" id="toc-trust-regions" class="nav-link active" data-scroll-target="#trust-regions">Trust Regions</a>
+  <ul class="collapse">
+  <li><a href="#defining-the-preliminary-notation" id="toc-defining-the-preliminary-notation" class="nav-link" data-scroll-target="#defining-the-preliminary-notation">1. Defining the Preliminary Notation</a></li>
+  <li><a href="#express-in-terms-of-sum-of-states-and-actions" id="toc-express-in-terms-of-sum-of-states-and-actions" class="nav-link" data-scroll-target="#express-in-terms-of-sum-of-states-and-actions">1. Express in Terms of Sum of States and Actions</a></li>
+  <li><a href="#surrogate-objectives" id="toc-surrogate-objectives" class="nav-link" data-scroll-target="#surrogate-objectives">2. Surrogate Objectives</a></li>
+  <li><a href="#monotonic-improvement" id="toc-monotonic-improvement" class="nav-link" data-scroll-target="#monotonic-improvement">3. Monotonic Improvement</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -732,6 +758,14 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p><a href="../lecture9/lecture9-4.html">VPG</a> allowed us to leverage our robust empirical gradient <span class="math inline">\(\hat{g}\)</span>:</p>
+<p><span class="math display">\[
+\hat{g} = \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \ \hat{A}_{t}
+\]</span></p>
+<p>To update the neural network <span class="math inline">\(\theta\)</span> policy parameters using SGA:</p>
+<p><span class="math display">\[
+\theta_{t+1} = \theta_{t} + \alpha \hat{g}
+\]</span></p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -742,16 +776,52 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Sampling is poor, preferably we would like a batch form.</p>
-<p><span class="math display">\[
-\hat{g} =  \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \ \hat{A}_{t}
-\]</span></p>
-<p>Step size <span class="math inline">\(\alpha\)</span> is hard to get right.</p>
-<p>Small changes in the parameter space <span class="math inline">\(\theta\)</span> create drastic changes in the log probabilities of actions.</p>
+<ol type="1">
+<li><strong>Sampling is poor</strong>, preferably we would like a batch form.</li>
+<li>Step size <strong><span class="math inline">\(\alpha\)</span> is hard to get right</strong>.</li>
+<li>Small changes in the parameter space <span class="math inline">\(\theta\)</span> create <strong>drastic changes in the log probabilities of actions</strong>.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Life Example 🧠
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose you’re climbing a mountain to reach the top:</p>
+<p><span class="math inline">\(S\)</span> – Your current location on the mountain.</p>
+<p><span class="math inline">\(A_{1,\dots,k}\)</span> – Your next movement decision (e.g., reach left, step up, lean back).</p>
+<p><span class="math inline">\(R\)</span> – A reward based on progress upward (higher = better), but falls can yield large negative rewards.</p>
+<p>In this setup:</p>
+<div class="grid">
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/harness.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Climbing with a Harness</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/solo.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Solo Climbing</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Without a harness, or solo climbing, bold moves may lead to huge falls.</p>
+<p>With a harness, you can explore safely — you can test new moves, but you won’t fall too far.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -760,42 +830,75 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>For the sampling problem, we can store old trajectories in a buffer <span class="math inline">\(D\)</span> and learn from these in a batch form.</p>
-<p><img src="images/TrajectoryBuffer.svg" class="img-fluid"></p>
-<p>We need a new algorithm that takes step sizes <span class="math inline">\(\alpha\)</span> without creating drastic changes in the log probabilities of actions.</p>
-<p><img src="images/TRPO.png" class="img-fluid"></p>
-<p><strong>U.C. Berkeley 2015</strong><br>
-<a href="https://arxiv.org/pdf/1502.05477">Link to Research Paper</a></p>
+<ol type="1">
+<li>For the sampling problem, we can store old trajectories <span class="math inline">\(\tau\)</span> in a buffer <span class="math inline">\(D\)</span> and sample these in a batch form.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TrajectoryBuffer.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>&amp; 3. We need a new algorithm that takes step sizes <span class="math inline">\(\alpha\)</span> without creating drastic changes in the log probabilities of actions.</li>
+</ol>
+<div class="text-center">
+<p><img src="images/trpo.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> U.C. Berkeley 2015 <span class="citation" data-cites="schulman2015trust">(<a href="../references.html#ref-schulman2015trust" role="doc-biblioref">Schulman et al. 2015</a>)</span> <br> <a href="https://arxiv.org/pdf/1502.05477">Link to Research Paper</a></p>
 </div>
 </div>
 </div>
-<section id="mathematical-intuition" class="level2">
-<h2 class="anchored" data-anchor-id="mathematical-intuition">Mathematical Intuition</h2>
-<p>For the expected discounted reward of <span class="math inline">\(\pi_{\theta_{t+1}}\)</span>:</p>
+</div>
+<section id="trust-regions" class="level2">
+<h2 class="anchored" data-anchor-id="trust-regions">Trust Regions</h2>
+<p>Consider an infinite MDP.</p>
 <p><span class="math display">\[
-F(\pi_{\theta_{t+1}}) = F(\pi_{\theta_{t}}) + \mathbb{E}_{\tau \approx \pi_{\theta_{t+1}}} [\sum^{\infty}_{t=0} \gamma^{t} \hat{A}_t]
+s_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3,...
 \]</span></p>
-<p>For the discounted visitation frequencies:</p>
+<section id="defining-the-preliminary-notation" class="level3">
+<h3 class="anchored" data-anchor-id="defining-the-preliminary-notation">1. Defining the Preliminary Notation</h3>
+<p>We express <span class="math inline">\(\eta(\pi)\)</span> as the expected discounted reward following a stochastic policy <span class="math inline">\(\pi\)</span> as:</p>
+<p><span class="math display">\[
+\eta(\pi) = \mathbb{E}_{s_0, a_0, \dots} \left[ \sum_{t=0}^{\infty} \gamma^t r_t \right]
+\]</span></p>
+<p>With minor tweaks, we can add a <a href="../lecture9/lecture9-2.html#baselines">baseline</a> by substituting with the standard advantage notation:</p>
+<p><span class="math display">\[
+\eta(\pi) = \mathbb{E}_{s_0, a_0, \dots} \left[ \sum_{t=0}^{\infty} \gamma^t A_t \right]
+\]</span></p>
+<p>Additionally, let discounted visitation frequencies:</p>
 <p><span class="math display">\[
 \rho_{\pi_{\theta_{t}}} = P(S_{0}) + \gamma P(S_{1}) + \gamma^{2} P(S_{2}) + ...
 \]</span></p>
+</section>
+<section id="express-in-terms-of-sum-of-states-and-actions" class="level3">
+<h3 class="anchored" data-anchor-id="express-in-terms-of-sum-of-states-and-actions">1. Express in Terms of Sum of States and Actions</h3>
 <p>We can now rewrite in terms of sum of states and actions:</p>
 <p><span class="math display">\[
 F(\pi_{\theta_{t+1}}) = F(\pi_{\theta_{t}}) + \mathbb{E}_{s \approx \rho_{\pi_{\theta_{t+1}}}, a \approx \pi_{\theta_{t}}} \left[\frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)} \hat{A}_t\right]
 \]</span></p>
 <p><span class="math inline">\(\rho_{\pi_{\theta_{t+1}}}\)</span> makes optimizing <span class="math inline">\(F(\pi_{\theta_{t+1}})\)</span> directly difficult.</p>
+</section>
+<section id="surrogate-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="surrogate-objectives">2. Surrogate Objectives</h3>
 <p>One approach to this problem is to replace future sampling <span class="math inline">\(\rho_{\pi_{\theta_{t+1}}}\)</span> with a local approximation <span class="math inline">\(L(\pi_{\theta_{t+1}})\)</span>, or “surrogate objective”:</p>
 <p><span class="math display">\[
 L(\pi_{\theta_{t+1}}) =  F(\pi_{\theta_{t}}) + \mathbb{E}_{s \approx \rho_{\pi_{\theta_{t}}}, a \approx \pi_{\theta_{t}}} \left[\frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)} \hat{A}_t\right]
 \]</span></p>
+</section>
+<section id="monotonic-improvement" class="level3">
+<h3 class="anchored" data-anchor-id="monotonic-improvement">3. Monotonic Improvement</h3>
 <p>TRPO’s main contribution is monotonic improvement guarantee using a KL-Divergence metric:</p>
 <p><span class="math display">\[
 F(\pi_{\theta_{t+1}}) \geq L(\pi_{\theta_{t+1}}) - C \ D^{max}_{KL}(\pi_{\theta_{t}} \| \pi_{\theta_{t+1}})
 \]</span></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-schulman2015trust" class="csl-entry" role="listitem">
+Schulman, John, Sergey Levine, Philipp Moritz, Michael I Jordan, and Pieter Abbeel. 2015. <span>“Trust Region Policy Optimization.”</span> <em>arXiv Preprint arXiv:1502.05477</em>. <a href="https://arxiv.org/abs/1502.05477">https://arxiv.org/abs/1502.05477</a>.
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->

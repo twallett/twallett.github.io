@@ -779,7 +779,7 @@ Example: CartPole
 </div>
 <p>The state information <span class="math inline">\(\mathbf{s}\)</span> is now the following vector:</p>
 <p><span class="math display">\[
-\mathbf{s} = \begin{bmatrix} c_p \in (-4.8,4.8) \gets \text{Cart Position} \\ c_v \in (-\inf,\inf) \gets \text{Cart Velocity} \\ p_a \in (\approx -0.418 \ \text{rad}(-24°),\approx 0.418 \ \text{rad}(-24°)) \gets \text{Pole Angle} \\ p_{av} \in (-\inf,\inf) \gets \text{Pole Angular Velocity} \\ \end{bmatrix}
+\mathbf{s} = \begin{bmatrix} cp \in (-4.8,4.8) \gets \text{Cart Position} \\ cv \in (-\inf,\inf) \gets \text{Cart Velocity} \\ pa \in (\approx -0.418 \ \text{rad}(-24°),\approx 0.418 \ \text{rad}(-24°)) \gets \text{Pole Angle} \\ pav_t \in (-\inf,\inf) \gets \text{Pole Angular Velocity} \\ \end{bmatrix}
 \]</span></p>
 <p>The environment has a discrete action space <span class="math inline">\(\mathcal{A}\)</span>:</p>
 <p><span class="math display">\[
@@ -797,25 +797,25 @@ Example: CartPole
 \]</span></p>
 <p>Angular Acceleration:</p>
 <p><span class="math display">\[
-\ddot{p}_a = \frac{
-g \sin(p_a) + \cos(p_a) \left(-\text{action} - m l p_{av}^2 \sin(p_a)\right)/(M + m)
+\ddot{pa_t} = \frac{
+g \sin(pa_t) + \cos(pa_t) \left(-\text{action} - m \cdot l \cdot pav_t^2 \sin(pa_t)\right)/(M + m)
 }{
-l \left(\frac{4}{3} - \frac{m \cos^2(p_a)}{M + m} \right)
+l \left(\frac{4}{3} - \frac{m \cos^2(pa_t)}{M + m} \right)
 }
 \]</span></p>
 <p>Cart acceleration:</p>
 <p><span class="math display">\[
-\ddot{c}_v = \frac{
-F + m l \left(p_{av}^2 \sin(p_a) - \ddot{p}_a \cos(p_a)\right)
+\ddot{cv_t} = \frac{
+\text{action} + m \cdot l \left(pav_t^2 \sin(pa_t) - \ddot{p}_a \cos(pa_t)\right)
 }{M + m}
 \]</span></p>
 <p>Euler integration:</p>
 <p><span class="math display">\[
 \begin{align}
-c_p' &amp;= c_p + \tau \cdot c_v \\
-c_v' &amp;= c_v + \tau \cdot \ddot{c}_v \\
-p_a' &amp;= p_a + \tau \cdot p_{av} \\
-p_{av}' &amp;= p_{av} + \tau \cdot \ddot{p}_a
+cp_{t+1} &amp;= cp_t + \tau \cdot cv_t \\
+cv_{t+1} &amp;= cv_t + \tau \cdot \ddot{cv_t} \\
+pa_{t+1} &amp;= pa_t + \tau \cdot pav_t \\
+pav_{t+1} &amp;= pav_t + \tau \cdot \ddot{pa_t}
 \end{align}
 \]</span></p>
 <p><strong>Default Reward Function</strong>:</p>
@@ -826,7 +826,7 @@ p_{av}' &amp;= p_{av} + \tau \cdot \ddot{p}_a
 <ul>
 <li><strong>Termination</strong>: Pole Angle is greater than <span class="math inline">\(\pm12°\)</span>.</li>
 <li><strong>Termination</strong>: Cart Position is greater than <span class="math inline">\(\pm2.4\)</span> (center of the cart reaches the edge of the display).</li>
-<li><strong>Truncation</strong>: Episode length is greater than 500 (200 for <code>v0</code>).</li>
+<li><strong>Truncation</strong>: Episode length is greater than <span class="math inline">\(500\)</span> (<span class="math inline">\(200\)</span> for <code>v0</code>).</li>
 </ul>
 </div>
 </div>

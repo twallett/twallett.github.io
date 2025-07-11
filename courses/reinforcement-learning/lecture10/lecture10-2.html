@@ -697,7 +697,6 @@ window.Quarto = {
    
   <ul>
   <li><a href="#ppo-surrogate-objectives" id="toc-ppo-surrogate-objectives" class="nav-link active" data-scroll-target="#ppo-surrogate-objectives">PPO: Surrogate Objectives</a></li>
-  <li><a href="#gaussian-policy" id="toc-gaussian-policy" class="nav-link" data-scroll-target="#gaussian-policy">Gaussian Policy</a></li>
   <li><a href="#proximal-policy-optimization-illustration" id="toc-proximal-policy-optimization-illustration" class="nav-link" data-scroll-target="#proximal-policy-optimization-illustration">Proximal Policy Optimization: Illustration</a></li>
   <li><a href="#proximal-policy-optimization-pseudocode" id="toc-proximal-policy-optimization-pseudocode" class="nav-link" data-scroll-target="#proximal-policy-optimization-pseudocode">Proximal Policy Optimization: Pseudocode</a></li>
   </ul>
@@ -751,8 +750,21 @@ Problem
 \]</span></p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Life Example 🧠
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -761,7 +773,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="images/PPO.png" width="300" height="100"></p>
 <p>OpenAI 2017<br>
@@ -780,15 +792,6 @@ L^{\text{KL}}(\pi_{\theta_{t+1}}) = \mathbb{E} \left[ \frac{\pi_{\theta_{t+1}}(a
 L^{\text{CLIP}}(\pi_{\theta_{t+1}}) = \mathbb{E} \left[ \min \left( \frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)} \hat{A}_t, \text{clip}\left(\frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)}, 1-\epsilon, 1+\epsilon\right) \hat{A}_t \right) \right]
 \]</span></p>
 </section>
-<section id="gaussian-policy" class="level3">
-<h3 class="anchored" data-anchor-id="gaussian-policy">Gaussian Policy</h3>
-<p><span class="math display">\[
-\begin{aligned}
-    \mu(s), \sigma(s) &amp;= \theta_{\mu, \sigma}(s) \\
-    \pi(a|s; \theta) &amp;= \frac{1}{\sqrt{2 \pi \sigma^2(s)}} \exp\left(-\frac{(a - \mu(s))^2}{2 \sigma^2(s)}\right)
-\end{aligned}
-\]</span></p>
-</section>
 <section id="proximal-policy-optimization-illustration" class="level2">
 <h2 class="anchored" data-anchor-id="proximal-policy-optimization-illustration">Proximal Policy Optimization: Illustration</h2>
 <p><img src="images/PPOClip.png" class="img-fluid" style="width:100.0%"></p>
@@ -801,15 +804,24 @@ L^{\text{CLIP}}(\pi_{\theta_{t+1}}) = \mathbb{E} \left[ \min \left( \frac{\pi_{\
 <div style="text-align: center;">
 <p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
 </div>
-<section id="exercise" class="level4">
-<h4 class="anchored" data-anchor-id="exercise"><u> Exercise </u></h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question 🤔
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>What is the key mathematical difference between the true policy gradient and a surrogate policy gradient in reinforcement learning?</p>
 <p><span class="math display">\[
 L(\pi_{\theta_{t+1}}) =  F(\pi_{\theta_{t}}) + \mathbb{E}_{s \approx \rho_{\pi_{\theta_{t}}}, a \approx \pi_{\theta_{t}}} \left[\frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)} \hat{A}_t\right]
 \]</span></p>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
