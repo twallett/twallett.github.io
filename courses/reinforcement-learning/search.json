@@ -1333,33 +1333,11 @@
     ]
   },
   {
-    "objectID": "lecture10/lecture10-1.html#trust-region-policy-optimization-trpo",
-    "href": "lecture10/lecture10-1.html#trust-region-policy-optimization-trpo",
-    "title": "10.1 Trust Region Policy Optimization (TRPO)",
-    "section": "Trust Region Policy Optimization (TRPO)",
-    "text": "Trust Region Policy Optimization (TRPO)\n\nU.C. Berkeley 2015\nLink to Research Paper",
-    "crumbs": [
-      "Lecture 10: Policy Gradients II",
-      "<span class='chapter-number'>46</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
-    ]
-  },
-  {
     "objectID": "lecture10/lecture10-2.html",
     "href": "lecture10/lecture10-2.html",
     "title": "10.2 Proximal Policy Optimization (PPO)",
     "section": "",
-    "text": "Mathematical Intuition",
-    "crumbs": [
-      "Lecture 10: Policy Gradients II",
-      "<span class='chapter-number'>47</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
-    ]
-  },
-  {
-    "objectID": "lecture10/lecture10-2.html#mathematical-intuition",
-    "href": "lecture10/lecture10-2.html#mathematical-intuition",
-    "title": "10.2 Proximal Policy Optimization (PPO)",
-    "section": "",
-    "text": "TRPO’s Main Drawback\nTRPO’s main drawback has to do with the calculation of the Hessian matrix with respect to the KL-Divergence:\n\\[\n\\mathbf{H} = \\nabla^2 D_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}})\n\\]\n\n\nProximal Policy Optimization (PPO)\n\nOpenAI 2017\nLink to Research Paper\n\n\nPPO: Surrogate Objectives\nPPO KL-Divergence Penalty:\n\\[\nL^{\\text{KL}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t - \\beta D_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}}) \\right]\n\\]\nPPO Clip:\n\\[\nL^{\\text{CLIP}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\min \\left( \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t, \\text{clip}\\left(\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)}, 1-\\epsilon, 1+\\epsilon\\right) \\hat{A}_t \\right) \\right]\n\\]\n\n\nGaussian Policy\n\\[\n\\begin{aligned}\n    \\mu(s), \\sigma(s) &= \\theta_{\\mu, \\sigma}(s) \\\\\n    \\pi(a|s; \\theta) &= \\frac{1}{\\sqrt{2 \\pi \\sigma^2(s)}} \\exp\\left(-\\frac{(a - \\mu(s))^2}{2 \\sigma^2(s)}\\right)\n\\end{aligned}\n\\]",
+    "text": "PPO: Surrogate Objectives\nPPO KL-Divergence Penalty:\n\\[\nL^{\\text{KL}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t - \\beta D_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}}) \\right]\n\\]\nPPO Clip:\n\\[\nL^{\\text{CLIP}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\min \\left( \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t, \\text{clip}\\left(\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)}, 1-\\epsilon, 1+\\epsilon\\right) \\hat{A}_t \\right) \\right]\n\\]",
     "crumbs": [
       "Lecture 10: Policy Gradients II",
       "<span class='chapter-number'>47</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
@@ -1491,7 +1469,7 @@
     "href": "lecture12/lecture12-1.html",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "",
-    "text": "Imitation Learning\nApplication: Autonomous Driving\nLink to Research Paper",
+    "text": "Imitation Learning\nLearn a policy \\(\\pi(a|s)\\) by mimicking an expert’s demonstrations, \\((s, a)\\), without requiring explicit reward signals.",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
@@ -1502,7 +1480,7 @@
     "href": "lecture12/lecture12-1.html#imitation-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "",
-    "text": "Learn a policy \\(\\pi(a|s)\\) by mimicking an expert’s demonstrations, \\((s, a)\\), without requiring explicit reward signals.",
+    "text": "Application: Autonomous Driving  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
@@ -1513,7 +1491,7 @@
     "href": "lecture12/lecture12-1.html#inverse-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Inverse Reinforcement Learning",
-    "text": "Inverse Reinforcement Learning\n\nInfer the reward function \\(R(s, a)\\) given expert trajectories to derive an optimal policy, \\(\\pi^*\\).\n\n\nApplication: Predicting Driver Behavior and Route Recommendation\nLink to Research Paper",
+    "text": "Inverse Reinforcement Learning\nInfer the reward function \\(R(s, a)\\) given expert trajectories to derive an optimal policy, \\(\\pi^*\\).\n\n  Application: Predicting Driver Behavior and Route Recommendation  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
@@ -1524,7 +1502,7 @@
     "href": "lecture12/lecture12-1.html#offline-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Offline Reinforcement Learning",
-    "text": "Offline Reinforcement Learning\n\nLearn a policy \\(\\pi(a|s)\\) from a fixed dataset \\(D = \\{(s, a, r, s')\\}\\) without further environment interaction.\n\n\nApplication: Robotic Manipulation\nLink to Research Paper",
+    "text": "Offline Reinforcement Learning\nLearn a policy \\(\\pi(a|s)\\) from a fixed dataset \\(D = \\{(s, a, r, s')\\}\\) without further environment interaction.\n\n  Application: Robotic Manipulation  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
@@ -1535,7 +1513,7 @@
     "href": "lecture12/lecture12-1.html#multi-agent-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Multi-Agent Reinforcement Learning",
-    "text": "Multi-Agent Reinforcement Learning\n\nOptimize multiple agents’ policies \\(\\pi_i(a|s)\\) interacting in a shared environment, considering cooperation or competition.\n\n\nApplication: Strategic Game-play in Dota2\nLink to Research Paper",
+    "text": "Multi-Agent Reinforcement Learning\nOptimize multiple agents’ policies \\(\\pi_i(a|s)\\) interacting in a shared environment, considering cooperation or competition.\n\n  Application: Strategic Game-play in Dota2  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
@@ -1546,7 +1524,7 @@
     "href": "lecture12/lecture12-1.html#hierarchical-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Hierarchical Reinforcement Learning",
-    "text": "Hierarchical Reinforcement Learning\n\nDecompose tasks into a hierarchy of policies, \\(\\pi_\\text{high}(g|s)\\) for goals and \\(\\pi_\\text{low}(a|s, g)\\) for actions.\n\n\nApplication: MuJoCo Ant Maze Path Finding\nLink to Research Paper",
+    "text": "Hierarchical Reinforcement Learning\nDecompose tasks into a hierarchy of policies, \\(\\pi_\\text{high}(g|s)\\) for goals and \\(\\pi_\\text{low}(a|s, g)\\) for actions.\n\n  Application: MuJoCo Ant Maze Path Finding  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
@@ -1557,7 +1535,7 @@
     "href": "lecture12/lecture12-1.html#multi-objective-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Multi-Objective Reinforcement Learning",
-    "text": "Multi-Objective Reinforcement Learning\n\nOptimize a policy \\(\\pi(a|s)\\) under multiple conflicting objectives, \\(\\{R_1, R_2, \\dots\\}\\)\n\n\nApplication: Resource Allocation\nLink to Research Paper",
+    "text": "Multi-Objective Reinforcement Learning\nOptimize a policy \\(\\pi(a|s)\\) under multiple conflicting objectives, \\(\\{R_1, R_2, \\dots\\}\\)\n\n  Application: Resource Allocation  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
@@ -1568,7 +1546,7 @@
     "href": "lecture12/lecture12-1.html#meta-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Meta Learning",
-    "text": "Meta Learning\n\nTrain agents to quickly adapt to new tasks \\(\\mathcal{T}\\) by optimizing over task distributions \\(p(\\mathcal{T})\\).\n\n\nApplication: Few Shot Learning\nLink to Research Paper",
+    "text": "Meta Learning\nTrain agents to quickly adapt to new tasks \\(\\mathcal{T}\\) by optimizing over task distributions \\(p(\\mathcal{T})\\).\n\n  Application: Few Shot Learning  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
@@ -1579,29 +1557,7 @@
     "href": "lecture12/lecture12-2.html",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "",
-    "text": "Applications",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
-    ]
-  },
-  {
-    "objectID": "lecture12/lecture12-2.html#applications",
-    "href": "lecture12/lecture12-2.html#applications",
-    "title": "12.2 Identify the Reinforcement Learning Application",
-    "section": "",
-    "text": "Note\n\n\n\nInstructions: For each task presented, determine whether it can be solved using:\n\nSupervised Learning\n\nUnsupervised Learning\n\nMulti-Armed Bandit\n\nClassical Reinforcement Learning\n\nDeep Reinforcement Learning\n\nForm groups of two or more and discuss the most appropriate approach for each application.",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
-    ]
-  },
-  {
-    "objectID": "lecture12/lecture12-2.html#reinforcement-learning-framework",
-    "href": "lecture12/lecture12-2.html#reinforcement-learning-framework",
-    "title": "12.2 Identify the Reinforcement Learning Application",
-    "section": "Reinforcement Learning Framework",
-    "text": "Reinforcement Learning Framework",
+    "text": "Task 1: Email Spam Detection",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
@@ -1611,8 +1567,8 @@
     "objectID": "lecture12/lecture12-2.html#task-1-email-spam-detection",
     "href": "lecture12/lecture12-2.html#task-1-email-spam-detection",
     "title": "12.2 Identify the Reinforcement Learning Application",
-    "section": "Task 1: Email Spam Detection",
-    "text": "Task 1: Email Spam Detection\n\n\nAnswer: Supervised Learning\n\nSupervised Learning: Classification.\nFeatures (X):\n\nFrequency of specific keywords (e.g., “free”, “win”, “money”).\nPresence of special characters (e.g., “!”, “$”, etc.).\nSender’s domain (e.g., “trusted.com”, “unknown.com”).\n\nLabels (y):\n\n0 for Non-Spam.\n1 for Spam.\n\nExample Algorithm: Naive Bayes.",
+    "section": "",
+    "text": "Answer\n\n\n\n\n\nSupervised Learning\n\nSupervised Learning: Classification.\nFeatures (X):\n\nFrequency of specific keywords (e.g., “free”, “win”, “money”).\nPresence of special characters (e.g., “!”, “$”, etc.).\nSender’s domain (e.g., “trusted.com”, “unknown.com”).\n\nLabels (y):\n\n0 for Non-Spam.\n1 for Spam.\n\nExample Algorithm: Naive Bayes.",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
@@ -1623,7 +1579,7 @@
     "href": "lecture12/lecture12-2.html#task-2-customer-segmentation-for-a-retail-store",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "Task 2: Customer Segmentation for a Retail Store",
-    "text": "Task 2: Customer Segmentation for a Retail Store\n\n\nAnswer: Unsupervised Learning\n\nUnsupervised Learning: Clustering.\nFeatures (X):\n\nCustomer age, annual income, spending score, purchase frequency.\nProduct categories purchased, total expenditure, location.\nCustomer loyalty (e.g., membership status).\n\nExample Algorithm: K-Means.",
+    "text": "Task 2: Customer Segmentation for a Retail Store\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nUnsupervised Learning\n\nUnsupervised Learning: Clustering.\nFeatures (X):\n\nCustomer age, annual income, spending score, purchase frequency.\nProduct categories purchased, total expenditure, location.\nCustomer loyalty (e.g., membership status).\n\nExample Algorithm: K-Means.",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
@@ -1634,7 +1590,7 @@
     "href": "lecture12/lecture12-2.html#task-3-online-ad-optimization",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "Task 3: Online Ad Optimization",
-    "text": "Task 3: Online Ad Optimization\n\n\nAnswer: Multi-Armed Bandit\n\nState (S): Single state (environment does not change).\nActions (A): Display ad 1, Display ad 2, Display ad 3.\nRewards (R): Click-through rate, conversion rate, user engagement.\nExample Algorithm: Thompson Sampling.",
+    "text": "Task 3: Online Ad Optimization\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nMulti-Armed Bandit\n\nState (S): Single state (environment does not change).\nActions (A): Display ad 1, Display ad 2, Display ad 3.\nRewards (R): Click-through rate, conversion rate, user engagement.\nExample Algorithm: Thompson Sampling.",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
@@ -1645,7 +1601,7 @@
     "href": "lecture12/lecture12-2.html#task-4-warehouse-robot-path-finding",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "Task 4: Warehouse Robot Path-finding",
-    "text": "Task 4: Warehouse Robot Path-finding\n\n\nAnswer: Classical Reinforcement Learning\n\nExample Algorithm: Q-learning.\nState (S): Robot position, obstacles, goal location.\nActions (A): Move up, down, left, right, stay.\nRewards (R):\n\nPositive for reaching goal.\nNegative for hitting obstacles.\nSmall penalty for each step (efficiency).",
+    "text": "Task 4: Warehouse Robot Path-finding\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nClassical Reinforcement Learning\n\nState (S): Robot position, obstacles, goal location.\nActions (A): Move up, down, left, right, stay.\nRewards (R):\n\nPositive for reaching goal.\nNegative for hitting obstacles.\nSmall penalty for each step (efficiency).\n\nExample Algorithm: Q-learning.",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
@@ -1656,7 +1612,7 @@
     "href": "lecture12/lecture12-2.html#task-5-fine-tuning-llms-with-human-feedback",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "Task 5: Fine-tuning LLMs with Human Feedback",
-    "text": "Task 5: Fine-tuning LLMs with Human Feedback\n\n\nAnswer: Deep Reinforcement Learning\n\nExample Algorithm: Proximal Policy Optimization (PPO).\nState (S): Model predictions, conversation history, human feedback.\nActions (A): Adjust weights, generate responses, explore approaches.\nRewards (R):\n\nPositive for high-quality responses.\nNegative for low-quality responses.\nReward for alignment with human feedback.",
+    "text": "Task 5: Fine-tuning LLMs with Human Feedback\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nDeep Reinforcement Learning\n\nState (S): Model predictions, conversation history, human feedback.\nActions (A): Adjust weights, generate responses, explore approaches.\nRewards (R):\n\nPositive for high-quality responses.\nNegative for low-quality responses.\nReward for alignment with human feedback.\n\nExample Algorithm: Proximal Policy Optimization (PPO).",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"

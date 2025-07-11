@@ -696,13 +696,8 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#mathematical-intuition" id="toc-mathematical-intuition" class="nav-link active" data-scroll-target="#mathematical-intuition">Mathematical Intuition</a>
-  <ul class="collapse">
-  <li><a href="#trpos-main-drawback" id="toc-trpos-main-drawback" class="nav-link" data-scroll-target="#trpos-main-drawback">TRPO’s Main Drawback</a></li>
-  <li><a href="#proximal-policy-optimization-ppo" id="toc-proximal-policy-optimization-ppo" class="nav-link" data-scroll-target="#proximal-policy-optimization-ppo">Proximal Policy Optimization (PPO)</a></li>
-  <li><a href="#ppo-surrogate-objectives" id="toc-ppo-surrogate-objectives" class="nav-link" data-scroll-target="#ppo-surrogate-objectives">PPO: Surrogate Objectives</a></li>
+  <li><a href="#ppo-surrogate-objectives" id="toc-ppo-surrogate-objectives" class="nav-link active" data-scroll-target="#ppo-surrogate-objectives">PPO: Surrogate Objectives</a></li>
   <li><a href="#gaussian-policy" id="toc-gaussian-policy" class="nav-link" data-scroll-target="#gaussian-policy">Gaussian Policy</a></li>
-  </ul></li>
   <li><a href="#proximal-policy-optimization-illustration" id="toc-proximal-policy-optimization-illustration" class="nav-link" data-scroll-target="#proximal-policy-optimization-illustration">Proximal Policy Optimization: Illustration</a></li>
   <li><a href="#proximal-policy-optimization-pseudocode" id="toc-proximal-policy-optimization-pseudocode" class="nav-link" data-scroll-target="#proximal-policy-optimization-pseudocode">Proximal Policy Optimization: Pseudocode</a></li>
   </ul>
@@ -740,21 +735,40 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="mathematical-intuition" class="level2">
-<h2 class="anchored" data-anchor-id="mathematical-intuition">Mathematical Intuition</h2>
-<section id="trpos-main-drawback" class="level3">
-<h3 class="anchored" data-anchor-id="trpos-main-drawback">TRPO’s Main Drawback</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>TRPO’s main drawback has to do with the calculation of the Hessian matrix with respect to the KL-Divergence:</p>
 <p><span class="math display">\[
 \mathbf{H} = \nabla^2 D_{KL}(\pi_{\theta_{t}} \| \pi_{\theta_{t+1}})
 \]</span></p>
-</section>
-<section id="proximal-policy-optimization-ppo" class="level3">
-<h3 class="anchored" data-anchor-id="proximal-policy-optimization-ppo">Proximal Policy Optimization (PPO)</h3>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><img src="images/PPO.png" width="300" height="100"></p>
 <p>OpenAI 2017<br>
 <a href="https://arxiv.org/pdf/1707.06347">Link to Research Paper</a></p>
-</section>
+</div>
+</div>
+</div>
 <section id="ppo-surrogate-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="ppo-surrogate-objectives">PPO: Surrogate Objectives</h3>
 <p>PPO KL-Divergence Penalty:</p>
@@ -774,7 +788,6 @@ L^{\text{CLIP}}(\pi_{\theta_{t+1}}) = \mathbb{E} \left[ \min \left( \frac{\pi_{\
     \pi(a|s; \theta) &amp;= \frac{1}{\sqrt{2 \pi \sigma^2(s)}} \exp\left(-\frac{(a - \mu(s))^2}{2 \sigma^2(s)}\right)
 \end{aligned}
 \]</span></p>
-</section>
 </section>
 <section id="proximal-policy-optimization-illustration" class="level2">
 <h2 class="anchored" data-anchor-id="proximal-policy-optimization-illustration">Proximal Policy Optimization: Illustration</h2>

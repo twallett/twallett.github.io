@@ -740,66 +740,52 @@ window.Quarto = {
 </div>
 <section id="imitation-learning" class="level2">
 <h2 class="anchored" data-anchor-id="imitation-learning">Imitation Learning</h2>
-<ul>
-<li>Learn a policy <span class="math inline">\(\pi(a|s)\)</span> by mimicking an expert’s demonstrations, <span class="math inline">\((s, a)\)</span>, without requiring explicit reward signals.</li>
-</ul>
-<p><img src="images/ImitationLearning.png" class="img-fluid" width="200"></p>
-<p><strong>Application:</strong> Autonomous Driving<br>
-<a href="https://arxiv.org/pdf/2212.11419">Link to Research Paper</a></p>
+<p>Learn a policy <span class="math inline">\(\pi(a|s)\)</span> by mimicking an expert’s demonstrations, <span class="math inline">\((s, a)\)</span>, without requiring explicit reward signals.</p>
+<div class="text-center">
+<p><img src="images/ImitationLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Autonomous Driving <br> <a href="https://arxiv.org/pdf/2212.11419">Link to Research Paper</a></p>
+</div>
 </section>
 <section id="inverse-reinforcement-learning" class="level2">
 <h2 class="anchored" data-anchor-id="inverse-reinforcement-learning">Inverse Reinforcement Learning</h2>
-<ul>
-<li>Infer the reward function <span class="math inline">\(R(s, a)\)</span> given expert trajectories to derive an optimal policy, <span class="math inline">\(\pi^*\)</span>.</li>
-</ul>
-<p><img src="images/InverseReinforcementLearning.png" class="img-fluid" width="300"></p>
-<p><strong>Application:</strong> Predicting Driver Behavior and Route Recommendation<br>
-<a href="https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf">Link to Research Paper</a></p>
+<p>Infer the reward function <span class="math inline">\(R(s, a)\)</span> given expert trajectories to derive an optimal policy, <span class="math inline">\(\pi^*\)</span>.</p>
+<div class="text-center">
+<p><img src="images/InverseReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Predicting Driver Behavior and Route Recommendation <br> <a href="https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf">Link to Research Paper</a></p>
+</div>
 </section>
 <section id="offline-reinforcement-learning" class="level2">
 <h2 class="anchored" data-anchor-id="offline-reinforcement-learning">Offline Reinforcement Learning</h2>
-<ul>
-<li>Learn a policy <span class="math inline">\(\pi(a|s)\)</span> from a fixed dataset <span class="math inline">\(D = \{(s, a, r, s')\}\)</span> without further environment interaction.</li>
-</ul>
-<p><img src="images/OfflineReinforcementLearning.png" class="img-fluid" width="300"></p>
-<p><strong>Application:</strong> Robotic Manipulation<br>
-<a href="https://arxiv.org/pdf/2109.10813">Link to Research Paper</a></p>
+<p>Learn a policy <span class="math inline">\(\pi(a|s)\)</span> from a fixed dataset <span class="math inline">\(D = \{(s, a, r, s')\}\)</span> without further environment interaction.</p>
+<div class="text-center">
+<p><img src="images/OfflineReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Robotic Manipulation <br> <a href="https://arxiv.org/pdf/2109.10813">Link to Research Paper</a></p>
+</div>
 </section>
 <section id="multi-agent-reinforcement-learning" class="level2">
 <h2 class="anchored" data-anchor-id="multi-agent-reinforcement-learning">Multi-Agent Reinforcement Learning</h2>
-<ul>
-<li>Optimize multiple agents’ policies <span class="math inline">\(\pi_i(a|s)\)</span> interacting in a shared environment, considering cooperation or competition.</li>
-</ul>
-<p><img src="images/MultiAgentReinforcementLearning.png" class="img-fluid" width="300"></p>
-<p><strong>Application:</strong> Strategic Game-play in Dota2<br>
-<a href="https://arxiv.org/pdf/1912.06680">Link to Research Paper</a></p>
+<p>Optimize multiple agents’ policies <span class="math inline">\(\pi_i(a|s)\)</span> interacting in a shared environment, considering cooperation or competition.</p>
+<div class="text-center">
+<p><img src="images/MultiAgentReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Strategic Game-play in Dota2 <br> <a href="https://arxiv.org/pdf/1912.06680">Link to Research Paper</a></p>
+</div>
 </section>
 <section id="hierarchical-reinforcement-learning" class="level2">
 <h2 class="anchored" data-anchor-id="hierarchical-reinforcement-learning">Hierarchical Reinforcement Learning</h2>
-<ul>
-<li>Decompose tasks into a hierarchy of policies, <span class="math inline">\(\pi_\text{high}(g|s)\)</span> for goals and <span class="math inline">\(\pi_\text{low}(a|s, g)\)</span> for actions.</li>
-</ul>
-<p><img src="images/HierarchicalReinforcementLearning.png" class="img-fluid" width="300"></p>
-<p><strong>Application:</strong> MuJoCo Ant Maze Path Finding<br>
-<a href="https://arxiv.org/pdf/1710.09767">Link to Research Paper</a></p>
+<p>Decompose tasks into a hierarchy of policies, <span class="math inline">\(\pi_\text{high}(g|s)\)</span> for goals and <span class="math inline">\(\pi_\text{low}(a|s, g)\)</span> for actions.</p>
+<div class="text-center">
+<p><img src="images/HierarchicalReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: MuJoCo Ant Maze Path Finding <br> <a href="https://arxiv.org/pdf/1710.09767">Link to Research Paper</a></p>
+</div>
 </section>
 <section id="multi-objective-reinforcement-learning" class="level2">
 <h2 class="anchored" data-anchor-id="multi-objective-reinforcement-learning">Multi-Objective Reinforcement Learning</h2>
-<ul>
-<li>Optimize a policy <span class="math inline">\(\pi(a|s)\)</span> under multiple conflicting objectives, <span class="math inline">\(\{R_1, R_2, \dots\}\)</span></li>
-</ul>
-<p><img src="images/MultiObjectiveReinforcementLearning.png" class="img-fluid" width="200"></p>
-<p><strong>Application:</strong> Resource Allocation<br>
-<a href="https://dl.acm.org/doi/10.1145/1390156.1390162">Link to Research Paper</a></p>
+<p>Optimize a policy <span class="math inline">\(\pi(a|s)\)</span> under multiple conflicting objectives, <span class="math inline">\(\{R_1, R_2, \dots\}\)</span></p>
+<div class="text-center">
+<p><img src="images/MultiObjectiveReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Resource Allocation <br> <a href="https://dl.acm.org/doi/10.1145/1390156.1390162">Link to Research Paper</a></p>
+</div>
 </section>
 <section id="meta-learning" class="level2">
 <h2 class="anchored" data-anchor-id="meta-learning">Meta Learning</h2>
-<ul>
-<li>Train agents to quickly adapt to new tasks <span class="math inline">\(\mathcal{T}\)</span> by optimizing over task distributions <span class="math inline">\(p(\mathcal{T})\)</span>.</li>
-</ul>
-<p><img src="images/MetaLearning.png" class="img-fluid" width="400"></p>
-<p><strong>Application:</strong> Few Shot Learning<br>
-<a href="https://arxiv.org/pdf/1703.03400">Link to Research Paper</a></p>
+<p>Train agents to quickly adapt to new tasks <span class="math inline">\(\mathcal{T}\)</span> by optimizing over task distributions <span class="math inline">\(p(\mathcal{T})\)</span>.</p>
+<div class="text-center">
+<p><img src="images/MetaLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Few Shot Learning <br> <a href="https://arxiv.org/pdf/1703.03400">Link to Research Paper</a></p>
+</div>
 
 
 </section>
