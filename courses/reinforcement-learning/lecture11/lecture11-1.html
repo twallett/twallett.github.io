@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11.1 Monte Carlo Tree Search (MCTS)</title>
+<title>11.1 Model-based Reinforcement Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5a0e53d4d78a8bf67d7d4c07ce11e0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +121,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">11.1 Monte Carlo Tree Search (MCTS)</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">11.1 Model-based Reinforcement Learning</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -164,7 +164,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture1/lecture1-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 Why should I study Reinforcement Learning?</span></a>
+  <a href="../lecture1/lecture1-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 Why Should I Learn Reinforcement Learning?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -509,12 +509,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture11/lecture11-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">11.1 Monte Carlo Tree Search (MCTS)</span></a>
+  <a href="../lecture11/lecture11-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">11.1 Model-based Reinforcement Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture11/lecture11-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 Advanced Monte Carlo Tree Search</span></a>
+  <a href="../lecture11/lecture11-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 Monte Carlo Tree Search (MCTS)</span></a>
   </div>
 </li>
       </ul>
@@ -691,33 +691,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#model-based-reinforcement-learning" id="toc-model-based-reinforcement-learning" class="nav-link active" data-scroll-target="#model-based-reinforcement-learning">Model-based Reinforcement Learning</a>
-  <ul class="collapse">
-  <li><a href="#model-based-reinforcement-learning-illustration" id="toc-model-based-reinforcement-learning-illustration" class="nav-link" data-scroll-target="#model-based-reinforcement-learning-illustration">Model-based Reinforcement Learning: Illustration</a></li>
-  </ul></li>
-  <li><a href="#mcts-motivation" id="toc-mcts-motivation" class="nav-link" data-scroll-target="#mcts-motivation">MCTS: Motivation</a>
-  <ul class="collapse">
-  <li><a href="#mcts-illustration" id="toc-mcts-illustration" class="nav-link" data-scroll-target="#mcts-illustration">MCTS: Illustration</a></li>
-  <li><a href="#mcts-expansion" id="toc-mcts-expansion" class="nav-link" data-scroll-target="#mcts-expansion">MCTS: Expansion</a></li>
-  <li><a href="#mcts-simulation" id="toc-mcts-simulation" class="nav-link" data-scroll-target="#mcts-simulation">MCTS: Simulation</a></li>
-  <li><a href="#mcts-backpropagation" id="toc-mcts-backpropagation" class="nav-link" data-scroll-target="#mcts-backpropagation">MCTS: Backpropagation</a></li>
-  <li><a href="#mcts-summary-illustration" id="toc-mcts-summary-illustration" class="nav-link" data-scroll-target="#mcts-summary-illustration">MCTS: Summary Illustration</a></li>
-  </ul></li>
-  <li><a href="#pseudocode" id="toc-pseudocode" class="nav-link" data-scroll-target="#pseudocode">Pseudocode</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">11.1 Monte Carlo Tree Search (MCTS)</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">11.1 Model-based Reinforcement Learning</span></h1>
 </div>
 
 
@@ -744,108 +726,66 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="model-based-reinforcement-learning" class="level2">
-<h2 class="anchored" data-anchor-id="model-based-reinforcement-learning">Model-based Reinforcement Learning</h2>
-<p><strong>Problem</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Model-freeRL.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Model-free Reinforcement Learning</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Agents need to sample many environment interactions to <em>learn</em> environment dynamics.</p>
 <p><span class="math display">\[
 P(s^{'}, r| s, a)
 \]</span></p>
 <p>Exploration is blind without a model of environment dynamics. Model-free methods focus on immediate rewards.</p>
-<p><strong>Solution</strong>:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Real Life Example 🧠
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Agents can <em>plan</em> future rewards by leveraging environment dynamics. Safe exploration - informed exploration.</p>
-<section id="model-based-reinforcement-learning-illustration" class="level3">
-<h3 class="anchored" data-anchor-id="model-based-reinforcement-learning-illustration">Model-based Reinforcement Learning: Illustration</h3>
-<p><img src="images/Model-basedRL.png" class="img-fluid" style="width:80.0%"></p>
-</section>
-</section>
-<section id="mcts-motivation" class="level2">
-<h2 class="anchored" data-anchor-id="mcts-motivation">MCTS: Motivation</h2>
-<p><strong>Problem</strong>:</p>
-<p>Require an algorithm that demonstrates strong empirical performance and effectively <em>plans</em> based on the dynamics of an environment.</p>
-<p><strong>Solution</strong>:</p>
-<p><img src="images/MCTS.png" class="img-fluid" style="width:50.0%"></p>
-<p>Université Charles de Gaulle 2006<br>
-<a href="https://inria.hal.science/inria-00116992/document">Link to Research Paper</a></p>
-<section id="mcts-illustration" class="level3">
-<h3 class="anchored" data-anchor-id="mcts-illustration">MCTS: Illustration</h3>
-<div class="columns">
-<div class="column" style="width:70%;">
-<ul>
-<li><p>Similar to UCB bandit problems, we select actions according to a confidence interval that balances exploration and exploitation, with the formula:</p>
-<p><span class="math display">\[A_t = \arg\max_a \left[ Q(s,a) + C \sqrt{\frac{\ln(N(s)_{\text{parent}})}{N(s)}} \right]\]</span></p></li>
-</ul>
-</div><div class="column" style="width:30%;">
-<p><img src="images/MCTSSelecting.svg" class="img-fluid" style="width:100.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Model-basedRL.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Model-based Reinforcement Learning</figcaption>
+</figure>
 </div>
 </div>
-</section>
-<section id="mcts-expansion" class="level3">
-<h3 class="anchored" data-anchor-id="mcts-expansion">MCTS: Expansion</h3>
-<div class="columns">
-<div class="column" style="width:70%;">
-<ul>
-<li>After selecting an action (A_t), if the corresponding child node does not exist, we expand the search tree by creating a new node for the resulting state (S^{A_t}_{t+1}).</li>
-</ul>
-</div><div class="column" style="width:30%;">
-<p><img src="images/MCTSExpanding.svg" class="img-fluid" style="width:100.0%"></p>
 </div>
 </div>
-</section>
-<section id="mcts-simulation" class="level3">
-<h3 class="anchored" data-anchor-id="mcts-simulation">MCTS: Simulation</h3>
-<div class="columns">
-<div class="column" style="width:70%;">
-<ul>
-<li><p>From the expanded node, we simulate <em>n</em>-times acting randomly and calculate the average rewards for all simulations:</p>
-<p><span class="math display">\[\bar{R} = \frac{1}{n} \sum_{j=1}^{n} R_j\]</span></p></li>
-</ul>
-</div><div class="column" style="width:30%;">
-<p><img src="images/MCTSSimulating.svg" class="img-fluid" style="width:100.0%"></p>
-</div>
-</div>
-</section>
-<section id="mcts-backpropagation" class="level3">
-<h3 class="anchored" data-anchor-id="mcts-backpropagation">MCTS: Backpropagation</h3>
-<div class="columns">
-<div class="column" style="width:70%;">
-<ul>
-<li>After obtaining the average rewards, we update the values from the current node up to the root node:</li>
-</ul>
-<p><span class="math display">\[
-N(s) = N(s) + 1
-\]</span></p>
-<p><span class="math display">\[
-Q(s,a) = Q(s,a) + \frac{\bar{R}}{N(s)}
-\]</span></p>
-</div><div class="column" style="width:30%;">
-<p><img src="images/MCTSUpdating.svg" class="img-fluid" style="width:100.0%"></p>
-</div>
-</div>
-</section>
-<section id="mcts-summary-illustration" class="level3">
-<h3 class="anchored" data-anchor-id="mcts-summary-illustration">MCTS: Summary Illustration</h3>
-<p><img src="images/MCTS.svg" class="img-fluid" style="width:90.0%"></p>
-</section>
-</section>
-<section id="pseudocode" class="level2">
-<h2 class="anchored" data-anchor-id="pseudocode">Pseudocode</h2>
-<div class="center" style="text-align:center;">
-<p><img src="images/11-1.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
-<div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
-</div>
-<section id="exercise" class="level4">
-<h4 class="anchored" data-anchor-id="exercise"><u> Exercise </u></h4>
-<p>How does the Upper Confidence Bound for Trees (UCT) algorithm balance exploration and exploitation in MCTS?</p>
-<p><span class="math display">\[
-A_t = \arg\max_a \left[ Q(s,a) + C \sqrt{\frac{\ln(N(s)_{\text{parent}})}{N(s)}} \right]
-\]</span></p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1254,8 +1194,8 @@ A_t = \arg\max_a \left[ Q(s,a) + C \sqrt{\frac{\ln(N(s)_{\text{parent}})}{N(s)}}
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lecture11/lecture11-2.html" class="pagination-link" aria-label="11.2 Advanced Monte Carlo Tree Search">
-        <span class="nav-page-text"><span class="chapter-title">11.2 Advanced Monte Carlo Tree Search</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lecture11/lecture11-2.html" class="pagination-link" aria-label="11.2 Monte Carlo Tree Search (MCTS)">
+        <span class="nav-page-text"><span class="chapter-title">11.2 Monte Carlo Tree Search (MCTS)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
