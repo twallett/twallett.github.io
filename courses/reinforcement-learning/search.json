@@ -64,7 +64,7 @@
     "href": "index.html#course-outline",
     "title": "DATS 6450 – Reinforcement Learning",
     "section": "Course Outline",
-    "text": "Course Outline\nSummary of the Course Outline section.\n\n\n\nWeek\nTopic\nQuiz/Exams\nLearning Objectives\n\n\n\n\nAug. 25, 2025\nIntroduction\n\n• Why should I study Reinforcement Learning?  • What is Reinforcement Learning?  • Where is Reinforcement Learning Applied?  • How is Reinforcement Learning Structured? \n\n\nSep. 1, 2025\nLabor Day\n\n\n\n\nSep. 8, 2025\nMath Foundations\n\n• Set Theory  • Axiomatic Probability  • Conditioning  • Independence  • Random Variables  • Expectation  • Probability Distribution\n\n\nSep. 15, 2025\nMulti-Armed Bandits\nQuiz 1\n• Multi-Armed Bandit Framework  • \\(\\epsilon\\)-Greedy  • Upper Confidence Boundary (UCB)  • Thompson Sampling\n\n\nSep. 22, 2025\nDynamic Programming\nQuiz 2\n• OpenAI Gymansium GridWorldEnv  • Markov Chain  • Markov Decision Process (MDPs)  • Dynamic Programming\n\n\nSep. 29, 2025\nMonte Carlo\nQuiz 3\n• OpenAI Gymansium GridWorldEnv  • Monte Carlo Prediction  • Exploring Starts Monte Carlo  • On-Policy Monte Carlo  • Off-Policy Monte Carlo\n\n\nOct. 6, 2025\nTemporal Difference\nQuiz 4\n• OpenAI Gymansium GridWorldEnv  • Temporal Difference (TD) Prediction  • SARSA  • Q-Learning  • Double Q-Learning  • (Optional) n-step TD\n\n\nOct. 13, 2025\nFunction Approximation\nExam 1\n• OpenAI Gymansium MountainCar-v0  • Value Function Approximation (VFA)  • On-Policy Function Approximation  • Semi-gradient SARSA  • Limitations of Off-Policy Function Approximation\n\n\nOct. 20, 2025\nDeep Q-Networks\nQuiz 5\n• OpenAI Gymansium ALE/Breakout-v5  • Multi-Layered Perceprtons (MLPs)  • Convolutional Neural Networks (CNNs)  • Experience Replay  • Fixed Targets  • Vanilla Deep Q-Network\n\n\nOct. 27, 2025\nPolicy Gradients I\nQuiz 6\n• OpenAI Gymansium CartPole-v1  • Policy Gradient Theorem  • Vanilla Policy Gradient\n\n\nNov. 3, 2025\nPolicy Gradients II\nQuiz 7\n• OpenAI Gymansium HalfCheetah-v5  • Trust Region Policy Optimization (TRPO)  • Proximal Policy Optimization: KL-Divergence  • Proximal Policy Optimization: Clip\n\n\nNov. 10, 2025\nMonte Carlo Tree Search\nExam 2\n• OpenAI Gymansium CartPole-v0  • Model-based Reinforcement Learning  • Monte Carlo Tree Search  • AlphaGo  • MuZero\n\n\nNov. 17, 2025\nConclusion\n\n• Advanced Topics in Reinforcement Learning  • Identify the Reinforcement Learning Application  • Outlook of Reinforcement Learning\n\n\nNov. 24, 2025\nThanksgiving Break\n\n\n\n\nDec. 1, 2025\nFinal Project Submission",
+    "text": "Course Outline\nSummary of the Course Outline section.\n\n\n\nWeek\nTopic\nQuiz/Exams\nLearning Objectives\n\n\n\n\nAug. 25, 2025\nIntroduction\n\n• Why Should I Learn Reinforcement Learning?  • What is Reinforcement Learning?  • Where is Reinforcement Learning Applied?  • How is Reinforcement Learning Structured? \n\n\nSep. 1, 2025\nLabor Day\n\n\n\n\nSep. 8, 2025\nMath Foundations\n\n• Set Theory  • Axiomatic Probability  • Conditioning  • Independence  • Random Variables  • Expectation  • Probability Distribution\n\n\nSep. 15, 2025\nMulti-Armed Bandits\nQuiz 1\n• Multi-Armed Bandit Framework  • \\(\\epsilon\\)-Greedy  • Upper Confidence Boundary (UCB)  • Thompson Sampling\n\n\nSep. 22, 2025\nDynamic Programming\nQuiz 2\n• OpenAI Gymansium GridWorldEnv  • Markov Chain  • Markov Decision Process (MDPs)  • Dynamic Programming\n\n\nSep. 29, 2025\nMonte Carlo\nQuiz 3\n• OpenAI Gymansium GridWorldEnv  • Monte Carlo Prediction  • Exploring Starts Monte Carlo  • On-Policy Monte Carlo  • Off-Policy Monte Carlo\n\n\nOct. 6, 2025\nTemporal Difference\nQuiz 4\n• OpenAI Gymansium GridWorldEnv  • Temporal Difference (TD) Prediction  • SARSA  • Q-Learning  • Double Q-Learning  • (Optional) n-step TD\n\n\nOct. 13, 2025\nFunction Approximation\nExam 1\n• OpenAI Gymansium MountainCar-v0  • Value Function Approximation (VFA)  • On-Policy Function Approximation  • Semi-gradient SARSA  • Limitations of Off-Policy Function Approximation\n\n\nOct. 20, 2025\nDeep Q-Networks\nQuiz 5\n• OpenAI Gymansium ALE/Breakout-v5  • Multi-Layered Perceprtons (MLPs)  • Convolutional Neural Networks (CNNs)  • Experience Replay  • Fixed Targets  • Vanilla Deep Q-Network\n\n\nOct. 27, 2025\nPolicy Gradients I\nQuiz 6\n• OpenAI Gymansium CartPole-v1 and Pusher-v5  • Policy Gradient Theorem  • Addressing Sparse Rewards  • Action Selections  • Vanilla Policy Gradient\n\n\nNov. 3, 2025\nPolicy Gradients II\nQuiz 7\n• OpenAI Gymansium HalfCheetah-v5  • Trust Regions  • Monotonic Improvement  • Optimization of Parameterized Policies  • Proximal Policy Optimization (PPO)\n\n\nNov. 10, 2025\nMonte Carlo Tree Search\nExam 2\n• OpenAI Gymansium CartPole-v0  • Model-based Reinforcement Learning  • Monte Carlo Tree Search (MCTS)\n\n\nNov. 17, 2025\nConclusion\n\n• Advanced Topics in Reinforcement Learning  • Identify the Reinforcement Learning Application  • Outlook of Reinforcement Learning\n\n\nNov. 24, 2025\nThanksgiving Break\n\n\n\n\nDec. 1, 2025\nFinal Project Submission",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
     ]
@@ -930,7 +930,7 @@
     "href": "lecture4/lecture4-3.html#policy-improvement",
     "title": "4.3 Dynamic Programming",
     "section": "",
-    "text": "Question 🤔\n\n\n\nWe know how good it is to follow the current policy from \\(s\\) — that is \\(v_{\\pi}(s)\\) — but would it be better or worse to change to a new policy \\(\\pi^{'}\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nImagine your commute to work every day:\n\n\\(S_{1,...,k}\\) — The location you’re currently in (e.g., your home or a traffic junction).\n\\(A_{1,...,k}\\) — The route you choose (e.g., highway, back roads, or scenic route).\n\\(R\\) — Your reward could be getting to work quickly, stress-free, or on time.\n\nCurrently, you always take the highway (your policy \\(\\pi\\)), and on average, it takes you 35 minutes.\nBut one day, you try a different route (new policy \\(\\pi^{'}\\)) — maybe a side street — and even though it looks longer on the map, traffic is lighter and you reach work in 30 minutes.\nShould I switch my policy to this new route from now on?\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nOne way to check if it is better to switch from policy \\(\\pi\\) to \\(\\pi^{'}\\) is by checking if the following inequality holds:\n\\[\nq_{\\pi}(s, \\pi^{'}(s)) \\geq v_{\\pi}(s)\n\\]\nIf selecting \\(a\\) in \\(s\\) and thereafter following policy \\(\\pi\\) is better than just following \\(\\pi\\), there must be a better policy \\(\\pi^{'}\\).\nThe special case when this inequality is true is referred to as the policy improvement theorem.",
+    "text": "Question 🤔\n\n\n\nWe know how good it is to follow the current policy from \\(s\\) — that is \\(v_{\\pi}(s)\\) — but would it be better or worse to change to a new policy \\(\\pi^{'}\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nImagine your commute to work every day:\n\n\\(S_{1,...,k}\\) — The location you’re currently in (e.g., your home or a traffic junction).\n\\(A_{1,...,k}\\) — The route you choose (e.g., highway, back roads, or scenic route).\n\\(R\\) — Your reward could be getting to work quickly, stress-free, or on time.\n\n\n\n\n\n\nHighway\n\n\n\n\n\n\n\nSide Street\n\n\n\n\nCurrently, you always take the highway (your policy \\(\\pi\\)), and on average, it takes you 35 minutes.\nBut one day, you try a different route (new policy \\(\\pi^{'}\\)) — maybe a side street — and even though it looks longer on the map, traffic is lighter and you reach work in 30 minutes.\nShould I switch my policy to this new route from now on?\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nOne way to check if it is better to switch from policy \\(\\pi\\) to \\(\\pi^{'}\\) is by checking if the following inequality holds:\n\\[\nq_{\\pi}(s, \\pi^{'}(s)) \\geq v_{\\pi}(s)\n\\]\nIf selecting \\(a\\) in \\(s\\) and thereafter following policy \\(\\pi\\) is better than just following \\(\\pi\\), there must be a better policy \\(\\pi^{'}\\).\nThe special case when this inequality is true is referred to as the policy improvement theorem.",
     "crumbs": [
       "Lecture 4: Dynamic Programming",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>4.3 Dynamic Programming</span>"
@@ -1324,56 +1324,56 @@
   {
     "objectID": "lecture10/lecture10-1.html",
     "href": "lecture10/lecture10-1.html",
-    "title": "10.1 Trust Region Policy Optimization (TRPO)",
+    "title": "10.1 Trust Regions",
     "section": "",
     "text": "Trust Regions\nVPG allowed us to leverage our robust empirical gradient \\(\\hat{g}\\):\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\ \\hat{A}_{t}\n\\]\nTo update the neural network \\(\\theta\\) policy parameters using SGA:\n\\[\n\\theta_{t+1} = \\theta_{t} + \\alpha \\hat{g}\n\\]\nConsider an infinite MDP.\n\\[\ns_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3,...\n\\]",
     "crumbs": [
       "Lecture 10: Policy Gradients II",
-      "<span class='chapter-number'>46</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
+      "<span class='chapter-number'>46</span>  <span class='chapter-title'>10.1 Trust Regions</span>"
     ]
   },
   {
     "objectID": "lecture10/lecture10-1.html#trust-regions",
     "href": "lecture10/lecture10-1.html#trust-regions",
-    "title": "10.1 Trust Region Policy Optimization (TRPO)",
+    "title": "10.1 Trust Regions",
     "section": "",
     "text": "1. Defining the Preliminary Notation\nWe express \\(\\eta(\\pi)\\) as the expected discounted reward following a stochastic policy \\(\\pi\\) as:\n\\[\n\\eta(\\pi) = \\mathbb{E}_{s_0, a_0, \\dots} \\left[ \\sum_{t=0}^{\\infty} \\gamma^t r_t \\right]\n\\]\nWith minor tweaks, we can add a baseline by substituting with the standard advantage notation:\n\\[\n\\eta(\\pi) = \\mathbb{E}_{s_0, a_0, \\dots} \\left[ \\sum_{t=0}^{\\infty} \\gamma^t A_t \\right]\n\\]\nAdditionally, let discounted visitation frequencies:\n\\[\n\\rho_{\\pi_{\\theta_{t}}} = P(S_{0}) + \\gamma P(S_{1}) + \\gamma^{2} P(S_{2}) + ...\n\\]\n\n\n1. Express in Terms of Sum of States and Actions\nWe can now rewrite in terms of sum of states and actions:\n\\[\nF(\\pi_{\\theta_{t+1}}) = F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t+1}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]\n\\(\\rho_{\\pi_{\\theta_{t+1}}}\\) makes optimizing \\(F(\\pi_{\\theta_{t+1}})\\) directly difficult.\n\n\n2. Surrogate Objectives\nOne approach to this problem is to replace future sampling \\(\\rho_{\\pi_{\\theta_{t+1}}}\\) with a local approximation \\(L(\\pi_{\\theta_{t+1}})\\), or “surrogate objective”:\n\\[\nL(\\pi_{\\theta_{t+1}}) =  F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]\n\n\n3. Monotonic Improvement\nTRPO’s main contribution is monotonic improvement guarantee using a KL-Divergence metric:\n\\[\nF(\\pi_{\\theta_{t+1}}) \\geq L(\\pi_{\\theta_{t+1}}) - C \\ D^{max}_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}})\n\\]\n\n\n\n\nSchulman, John, Sergey Levine, Philipp Moritz, Michael I Jordan, and Pieter Abbeel. 2015. “Trust Region Policy Optimization.” arXiv Preprint arXiv:1502.05477. https://arxiv.org/abs/1502.05477.",
     "crumbs": [
       "Lecture 10: Policy Gradients II",
-      "<span class='chapter-number'>46</span>  <span class='chapter-title'>10.1 Trust Region Policy Optimization (TRPO)</span>"
+      "<span class='chapter-number'>46</span>  <span class='chapter-title'>10.1 Trust Regions</span>"
     ]
   },
   {
-    "objectID": "lecture10/lecture10-2.html",
-    "href": "lecture10/lecture10-2.html",
-    "title": "10.2 Proximal Policy Optimization (PPO)",
+    "objectID": "lecture10/lecture10-4.html",
+    "href": "lecture10/lecture10-4.html",
+    "title": "10.4 Proximal Policy Optimization (PPO)",
     "section": "",
     "text": "PPO: Surrogate Objectives\nPPO KL-Divergence Penalty:\n\\[\nL^{\\text{KL}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t - \\beta D_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}}) \\right]\n\\]\nPPO Clip:\n\\[\nL^{\\text{CLIP}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\min \\left( \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t, \\text{clip}\\left(\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)}, 1-\\epsilon, 1+\\epsilon\\right) \\hat{A}_t \\right) \\right]\n\\]",
     "crumbs": [
       "Lecture 10: Policy Gradients II",
-      "<span class='chapter-number'>47</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
+      "<span class='chapter-number'>49</span>  <span class='chapter-title'>10.4 Proximal Policy Optimization (PPO)</span>"
     ]
   },
   {
-    "objectID": "lecture10/lecture10-2.html#proximal-policy-optimization-illustration",
-    "href": "lecture10/lecture10-2.html#proximal-policy-optimization-illustration",
-    "title": "10.2 Proximal Policy Optimization (PPO)",
+    "objectID": "lecture10/lecture10-4.html#proximal-policy-optimization-illustration",
+    "href": "lecture10/lecture10-4.html#proximal-policy-optimization-illustration",
+    "title": "10.4 Proximal Policy Optimization (PPO)",
     "section": "Proximal Policy Optimization: Illustration",
     "text": "Proximal Policy Optimization: Illustration",
     "crumbs": [
       "Lecture 10: Policy Gradients II",
-      "<span class='chapter-number'>47</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
+      "<span class='chapter-number'>49</span>  <span class='chapter-title'>10.4 Proximal Policy Optimization (PPO)</span>"
     ]
   },
   {
-    "objectID": "lecture10/lecture10-2.html#proximal-policy-optimization-pseudocode",
-    "href": "lecture10/lecture10-2.html#proximal-policy-optimization-pseudocode",
-    "title": "10.2 Proximal Policy Optimization (PPO)",
+    "objectID": "lecture10/lecture10-4.html#proximal-policy-optimization-pseudocode",
+    "href": "lecture10/lecture10-4.html#proximal-policy-optimization-pseudocode",
+    "title": "10.4 Proximal Policy Optimization (PPO)",
     "section": "Proximal Policy Optimization: Pseudocode",
     "text": "Proximal Policy Optimization: Pseudocode\n\n\n\n\n  \n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nWhat is the key mathematical difference between the true policy gradient and a surrogate policy gradient in reinforcement learning?\n\\[\nL(\\pi_{\\theta_{t+1}}) =  F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]",
     "crumbs": [
       "Lecture 10: Policy Gradients II",
-      "<span class='chapter-number'>47</span>  <span class='chapter-title'>10.2 Proximal Policy Optimization (PPO)</span>"
+      "<span class='chapter-number'>49</span>  <span class='chapter-title'>10.4 Proximal Policy Optimization (PPO)</span>"
     ]
   },
   {
@@ -1384,7 +1384,7 @@
     "text": "Learning Objectives for Lecture 11: Monte Carlo Tree Search 🎯\n\n\n\n\nLet’s talk about Exam 2!\nMonte Carlo Tree Search (MCTS).\nAdvanced Monte Carlo Tree Search.\nCartPole-v0 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
     "crumbs": [
       "Lecture 11: Monte Carlo Tree Search",
-      "<span class='chapter-number'>48</span>  <span class='chapter-title'>Learning Objectives</span>"
+      "<span class='chapter-number'>50</span>  <span class='chapter-title'>Learning Objectives</span>"
     ]
   },
   {
@@ -1395,7 +1395,7 @@
     "text": "What if you could look ahead — but only explore what looks promising? 🌳\n\n\n\n\n\n\nModel-free Reinforcement Learning\n\n\n\n\n\n\n\n\nProblem\n\n\n\nAgents need to sample many environment interactions to learn environment dynamics.\n\\[\nP(s^{'}, r| s, a)\n\\]\nExploration is blind without a model of environment dynamics. Model-free methods focus on immediate rewards.\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nAgents can plan future rewards by leveraging environment dynamics. Safe exploration - informed exploration.\n\n\n\nModel-based Reinforcement Learning",
     "crumbs": [
       "Lecture 11: Monte Carlo Tree Search",
-      "<span class='chapter-number'>49</span>  <span class='chapter-title'>11.1 Model-based Reinforcement Learning</span>"
+      "<span class='chapter-number'>51</span>  <span class='chapter-title'>11.1 Model-based Reinforcement Learning</span>"
     ]
   },
   {
@@ -1406,7 +1406,7 @@
     "text": "What if you could look ahead — but only explore what looks promising? 🌳\n\n\n\n\n\n\n\n\n\nProblem\n\n\n\nRequire an algorithm that demonstrates strong empirical performance and effectively plans based on the dynamics of an environment.\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n  Université Charles de Gaulle 2006 (Coulom 2006)  Link to Research Paper\n\n\n\nMCTS Step 1: Selection\n\n\n\n\n\nMCTS Selecting\n\n\n\nSimilar to UCB bandit problems, we select actions according to a confidence interval that balances exploration and exploitation, with the formula:\n\\[\nA_t = \\arg\\max_a \\left[ Q(s,a) + C \\sqrt{\\frac{\\ln(N(s)_{\\text{parent}})}{N(s)}} \\right]\n\\]\n\n\n\n\n\nMCTS Step 2: Expansion\n\n\n\n\n\nMCTS Expanding\n\n\n\nAfter selecting an action \\(A_t\\), if the corresponding child node does not exist, we expand the search tree by creating a new node for the resulting state \\(S^{A_t}_{t+1}\\).\n\n\n\n\n\nMCTS Step 3: Simulation\n\n\n\n\n\nMCTS Simulating\n\n\n\nFrom the expanded node, we simulate n-times acting randomly and calculate the average rewards for all simulations:\n\\[\n\\bar{R} = \\frac{1}{n} \\sum_{j=1}^{n} R_j\n\\]\n\n\n\n\n\nMCTS Step 4: Backpropagation\n\n\n\n\n\nMCTS Backpropagating\n\n\n\nAfter obtaining the average rewards, we update the values from the current node up to the root node:\n\\[\nN(s) = N(s) + 1\n\\]\n\\[\nQ(s,a) = Q(s,a) + \\frac{\\bar{R}}{N(s)}\n\\]\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nHow does the Upper Confidence Bound for Trees (UCT) algorithm balance exploration and exploitation in MCTS?\n\\[\nA_t = \\arg\\max_a \\left[ Q(s,a) + C \\sqrt{\\frac{\\ln(N(s)_{\\text{parent}})}{N(s)}} \\right]\n\\]\n\n\n\n\n\n\n\nCoulom, Rémi. 2006. “Efficient Selectivity and Backup Operators in Monte-Carlo Tree Search.” In Computers and Games (CG 2006), edited by H. Jaap van den Herik, Paolo Ciancarini, and Hiroyuki Iida, 4630:72–83. Lecture Notes in Computer Science. Springer. https://doi.org/10.1007/978-3-540-75538-8_7.",
     "crumbs": [
       "Lecture 11: Monte Carlo Tree Search",
-      "<span class='chapter-number'>50</span>  <span class='chapter-title'>11.2 Monte Carlo Tree Search (MCTS)</span>"
+      "<span class='chapter-number'>52</span>  <span class='chapter-title'>11.2 Monte Carlo Tree Search (MCTS)</span>"
     ]
   },
   {
@@ -1417,7 +1417,7 @@
     "text": "Learning Objectives for Lecture 12: Conclusion 🎯\n\n\n\n\nAdvanced Topics in Reinforcement Learning\nIdentify the Reinforcement Learning Application.\nOutlook of Reinforcement Learning.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>51</span>  <span class='chapter-title'>Learning Objectives</span>"
+      "<span class='chapter-number'>53</span>  <span class='chapter-title'>Learning Objectives</span>"
     ]
   },
   {
@@ -1428,7 +1428,7 @@
     "text": "Imitation Learning\nLearn a policy \\(\\pi(a|s)\\) by mimicking an expert’s demonstrations, \\((s, a)\\), without requiring explicit reward signals.",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
     ]
   },
   {
@@ -1439,7 +1439,7 @@
     "text": "Application: Autonomous Driving  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
     ]
   },
   {
@@ -1450,7 +1450,7 @@
     "text": "Inverse Reinforcement Learning\nInfer the reward function \\(R(s, a)\\) given expert trajectories to derive an optimal policy, \\(\\pi^*\\).\n\n  Application: Predicting Driver Behavior and Route Recommendation  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
     ]
   },
   {
@@ -1461,7 +1461,7 @@
     "text": "Offline Reinforcement Learning\nLearn a policy \\(\\pi(a|s)\\) from a fixed dataset \\(D = \\{(s, a, r, s')\\}\\) without further environment interaction.\n\n  Application: Robotic Manipulation  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
     ]
   },
   {
@@ -1472,7 +1472,7 @@
     "text": "Multi-Agent Reinforcement Learning\nOptimize multiple agents’ policies \\(\\pi_i(a|s)\\) interacting in a shared environment, considering cooperation or competition.\n\n  Application: Strategic Game-play in Dota2  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
     ]
   },
   {
@@ -1483,7 +1483,7 @@
     "text": "Hierarchical Reinforcement Learning\nDecompose tasks into a hierarchy of policies, \\(\\pi_\\text{high}(g|s)\\) for goals and \\(\\pi_\\text{low}(a|s, g)\\) for actions.\n\n  Application: MuJoCo Ant Maze Path Finding  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
     ]
   },
   {
@@ -1494,7 +1494,7 @@
     "text": "Multi-Objective Reinforcement Learning\nOptimize a policy \\(\\pi(a|s)\\) under multiple conflicting objectives, \\(\\{R_1, R_2, \\dots\\}\\)\n\n  Application: Resource Allocation  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
     ]
   },
   {
@@ -1505,7 +1505,7 @@
     "text": "Meta Learning\nTrain agents to quickly adapt to new tasks \\(\\mathcal{T}\\) by optimizing over task distributions \\(p(\\mathcal{T})\\).\n\n  Application: Few Shot Learning  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>52</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
     ]
   },
   {
@@ -1516,7 +1516,7 @@
     "text": "Task 1: Email Spam Detection",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
     ]
   },
   {
@@ -1527,7 +1527,7 @@
     "text": "Answer\n\n\n\n\n\nSupervised Learning\n\nSupervised Learning: Classification.\nFeatures (X):\n\nFrequency of specific keywords (e.g., “free”, “win”, “money”).\nPresence of special characters (e.g., “!”, “$”, etc.).\nSender’s domain (e.g., “trusted.com”, “unknown.com”).\n\nLabels (y):\n\n0 for Non-Spam.\n1 for Spam.\n\nExample Algorithm: Naive Bayes.",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
     ]
   },
   {
@@ -1538,7 +1538,7 @@
     "text": "Task 2: Customer Segmentation for a Retail Store\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nUnsupervised Learning\n\nUnsupervised Learning: Clustering.\nFeatures (X):\n\nCustomer age, annual income, spending score, purchase frequency.\nProduct categories purchased, total expenditure, location.\nCustomer loyalty (e.g., membership status).\n\nExample Algorithm: K-Means.",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
     ]
   },
   {
@@ -1549,7 +1549,7 @@
     "text": "Task 3: Online Ad Optimization\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nMulti-Armed Bandit\n\nState (S): Single state (environment does not change).\nActions (A): Display ad 1, Display ad 2, Display ad 3.\nRewards (R): Click-through rate, conversion rate, user engagement.\nExample Algorithm: Thompson Sampling.",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
     ]
   },
   {
@@ -1560,7 +1560,7 @@
     "text": "Task 4: Warehouse Robot Path-finding\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nClassical Reinforcement Learning\n\nState (S): Robot position, obstacles, goal location.\nActions (A): Move up, down, left, right, stay.\nRewards (R):\n\nPositive for reaching goal.\nNegative for hitting obstacles.\nSmall penalty for each step (efficiency).\n\nExample Algorithm: Q-learning.",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
     ]
   },
   {
@@ -1571,7 +1571,7 @@
     "text": "Task 5: Fine-tuning LLMs with Human Feedback\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nDeep Reinforcement Learning\n\nState (S): Model predictions, conversation history, human feedback.\nActions (A): Adjust weights, generate responses, explore approaches.\nRewards (R):\n\nPositive for high-quality responses.\nNegative for low-quality responses.\nReward for alignment with human feedback.\n\nExample Algorithm: Proximal Policy Optimization (PPO).",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>53</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
     ]
   },
   {
@@ -1582,7 +1582,7 @@
     "text": "Challenges in Reinforcement Learning",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
     ]
   },
   {
@@ -1593,7 +1593,7 @@
     "text": "Balancing Exploration vs Exploitation\nSample Efficiency\nSparse Rewards\nConverging to optimal policies",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
     ]
   },
   {
@@ -1604,7 +1604,7 @@
     "text": "Artificial General Intelligence (AGI)\n\nDefinition: AGI is AI capable of learning and applying intelligence across a wide range of tasks, similar to human cognition.\nRole of RL in AGI: RL enables autonomous learning and decision-making, key for AGI’s adaptability and problem-solving.\nCurrent Progress: Significant advancements in deep RL and multi-agent systems, though AGI remains a long-term goal.\nPotential Impact: AGI could revolutionize industries, solve global challenges, and transform work and society.",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>54</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
     ]
   },
   {
@@ -1615,7 +1615,7 @@
     "text": "No Homework! Enjoy! 😊",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>Homework 1</span>"
+      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Homework 1</span>"
     ]
   },
   {
@@ -1626,7 +1626,7 @@
     "text": "Question 1\nWrite some of the elements of the following sets:\nWrite the following sets in set notation:",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1637,7 +1637,7 @@
     "text": "\\(\\{ 5x-1: x \\in \\mathbb{Z} \\}\\)\n\\(\\{ x \\in \\mathbb{R}: \\sin \\pi x = 0 \\}\\)\n\\(\\{X : X \\subseteq \\{3,2,a\\} \\text{ and } |X|=2 \\}\\)\n\n\n\n\\(\\{ 2, 4, 8, 16, 32, 64, ...\\}\\)\n\\(\\{0,1,4,9,16,25,36, ...\\}\\)\n\\(\\{..., \\frac{1}{8},\\frac{1}{4},\\frac{1}{2},1,2,4,8,... \\}\\)",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1648,7 +1648,7 @@
     "text": "Question 2\nA retail store accepts either American Express or VISA. The percentages of customers carrying each card are: \n\nAmerican Express: \\(24%\\)\nVISA: \\(61%\\)\nBoth: \\(11%\\)\n\nWhat percentage of customers carry a card accepted by the store?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1659,7 +1659,7 @@
     "text": "Question 3\nSixty percent of students wear neither a ring nor a necklace. Given: \n\n\\(20%\\) wear a ring\n\\(30%\\) wear a necklace\n\nFind the probability that a randomly chosen student wears:\n\nA ring or a necklace\nBoth a ring and a necklace",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1670,7 +1670,7 @@
     "text": "Question 4\nTwo fair dice are rolled. Find the conditional probability that at least one die lands on \\(6\\), given that they land on different numbers.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1681,7 +1681,7 @@
     "text": "Question 5\nAn urn contains \\(6\\) white and \\(9\\) black balls. If \\(4\\) balls are selected without replacement, what is the probability that the first \\(2\\) are white and the last \\(2\\) are black?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1692,7 +1692,7 @@
     "text": "Question 6\nA defendant is judged guilty if at least \\(2\\) out of \\(3\\) judges vote guilty. Given:\n\nProbability of a guilty vote when defendant is guilty: \\(0.7\\) \nProbability of a guilty vote when defendant is innocent: \\(0.2\\) \n\\(70%\\) of defendants are guilty\n\nCompute the conditional probability that judge \\(3\\) votes guilty given:\n\nJudges \\(1\\) and \\(2\\) vote guilty. \nJudges \\(1\\) and \\(2\\) split votes. \nJudges \\(1\\) and \\(2\\) vote not guilty.\n\nAre the judges’ votes independent? Conditionally independent? Explain.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1703,7 +1703,7 @@
     "text": "Question 7\nGiven the distribution function of \\(X\\):\n\\[\nF_{X}(x) =\n\\begin{cases}\n0, & x &lt; 0 \\\\\n\\frac{1}{2}, & 0 \\leq x &lt; 1 \\\\\n\\frac{3}{5}, & 1 \\leq x &lt; 2 \\\\\n\\frac{4}{5}, & 2 \\leq x &lt; 3 \\\\\n\\frac{9}{10}, & 3 \\leq x &lt; 3.5 \\\\\n1, & x \\geq 3.5 \\\\\n\\end{cases}\n\\]\nFind \\(p_X(x)\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1714,7 +1714,7 @@
     "text": "Question 8\nA player rolls a fair die and flips a fair coin. If heads, they win twice the die value; if tails, they win half. Determine the expected winnings.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1725,7 +1725,7 @@
     "text": "Coding Exercise 1: Binomial Distribution\nThe binomial distribution PMF is:\n\\[\np_X(x) = {n \\choose k} x^n (1-x)^{n-k}\n\\]\nUsing Python, generate binomial data and create visualizations for \\(p_X(x)\\) and \\(F_X(x)\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1736,7 +1736,7 @@
     "text": "Coding Exercise 1: Load Environments\nLoad existing Bernoulli and Gaussian environments from create_environment function using a random seed of \\(123\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1747,7 +1747,7 @@
     "text": "Coding Exercise 2: Recommendation Systems\nUsing the existing Epsilon Greedy (\\(\\epsilon\\) = 0.10), Upper Confidence Boundary (UCB) and Thompson Sampling code, create a recommendation system.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1758,7 +1758,7 @@
     "text": "Coding Exercise 3: MAB Performance\nFor 10,000 recommendations:\n\nDoes Epsilon-Greedy (\\(\\epsilon = 0.10\\)) perform better in the Bernoulli or Gaussian environment?\nDoes UCB perform better in the Bernoulli or Gaussian environment?\nDoes Thompson Sampling perform better in the Bernoulli or Gaussian environment?\nWhich algorithm performs best in the Bernoulli environment?\nWhich algorithm performs best in the Gaussian environment?\n\nHint: Check the performance of each MAB by observing the most frequently recommended arm.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1769,7 +1769,7 @@
     "text": "Coding Exercise 4: Random Seed Analysis\nUsing random seeds \\(0\\)-\\(50\\), for \\(10,000\\) recommendations, do the algorithms perform the same?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1780,7 +1780,7 @@
     "text": "Coding Exercise 5: Amazon Dataset Analysis\nFor the Amazon.csv advertisement dataset repeat exercise E.4. Which arm (ad) would you recommend (advertise)?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1791,7 +1791,7 @@
     "text": "Question 1\nIf the current state is \\(S_{t}\\) and actions are selected according to stochastic policy \\(\\pi\\), then what is the expectation of \\(R_{t+1}\\) in terms of \\(\\pi\\) and the four-argument function \\(p\\)?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1802,7 +1802,7 @@
     "text": "Question 2\nGive an equation for \\(v_{\\pi}\\) in terms of \\(q_{\\pi}\\) and \\(\\pi\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1813,7 +1813,7 @@
     "text": "Question 3\nGive an equation for \\(q_{\\pi}\\) in terms of \\(v_{\\pi}\\) and \\(\\pi\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1824,7 +1824,7 @@
     "text": "Coding Exercise 1: Markov Chain I\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1835,7 +1835,7 @@
     "text": "Coding Exercise 2: Markov Chain II\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1846,7 +1846,7 @@
     "text": "Coding Exercise 3: Value Iteration\nWith a discount factor of \\(\\gamma = 0.9\\), code Value Iteration algorithm for GridWorldEnv using the provided hyperparameters.\n\n\n\n\n\nNote: The gray shaded areas are barriers. Moving into a barrier incurs a reward of \\(R = -1\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1857,7 +1857,7 @@
     "text": "Coding Exercise 1: On-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the On-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Homework 5</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 5</span>"
     ]
   },
   {
@@ -1868,7 +1868,7 @@
     "text": "Coding Exercise 2: Off-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the Off-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Homework 5</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 5</span>"
     ]
   },
   {
@@ -1879,7 +1879,7 @@
     "text": "Coding Exercise 1: SARSA\nFor the GridWorldEnv environment, code the SARSA algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 6</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 6</span>"
     ]
   },
   {
@@ -1890,7 +1890,7 @@
     "text": "Coding Exercise 2: Q-Learning\nFor the GridWorldEnv environment, code the Q-learning algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 6</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 6</span>"
     ]
   },
   {
@@ -1901,7 +1901,7 @@
     "text": "Coding Exercise 3: Double Q-Learning\nFor the GridWorldEnv environment, code the Double Q-learning algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 6</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 6</span>"
     ]
   },
   {
@@ -1912,7 +1912,7 @@
     "text": "Coding Exercise 1: Semi-Gradient SARSA\nFor the MountainCar-v0 environment, code the update function for Semi-Gradient SARSA algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 7</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 7</span>"
     ]
   },
   {
@@ -1923,7 +1923,7 @@
     "text": "Coding Exercise 1: Deep Q-Network (DQN)\nFor the highway-v0 environment, code the update function for the Deep Q-Netowrk (DQN) algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 8</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 8</span>"
     ]
   },
   {
@@ -1934,7 +1934,7 @@
     "text": "Coding Exercise 1: Vanilla Policy Gradient\nFor the CartPole-v1 environment, code the update function for the Vanilla Policy Gradient algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 9</span>"
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 9</span>"
     ]
   },
   {
@@ -1945,7 +1945,7 @@
     "text": "Coding Exercise 1: Proximal Policy Optimization (PPO) Clip\nFor the HalfCheetah-v5 environment, code the update function for the Proximal Policy Optimization: Clip algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 10</span>"
+      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Homework 10</span>"
     ]
   },
   {
@@ -1956,7 +1956,7 @@
     "text": "Coding Exercise 1: Monte Carlo Tree Search (MCTS)\nFor the CartPole-v0 environment, code the update function for the Monte Carlo Tree Search (MCTS) algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 11</span>"
+      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Homework 11</span>"
     ]
   },
   {
@@ -1967,7 +1967,7 @@
     "text": "No Homework! Enjoy! 😊",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Homework 12</span>"
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Homework 12</span>"
     ]
   },
   {
@@ -1978,7 +1978,7 @@
     "text": "Instructions\nUsing the different Multi-Armed Bandit algorithms learned in Lecture 3, devise a novel approach to create a personal finance robo advisor. Your task is to:",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
     ]
   },
   {
@@ -1989,7 +1989,7 @@
     "text": "Define the Reinforcement Learning Framework: Formulate a Multi-Armed Bandit problem.\n\n\nDefine the data.\nSpecify the arms \\(A\\).\nSpecify the reward structure \\(R\\).\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\n\\(\\epsilon\\)-Greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.\n(Optional) Stability score: Standard deviation of the reward over time.\n(Optional) Adaptability: Performance when the environment shifts.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
     ]
   },
   {
@@ -2000,7 +2000,7 @@
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
     ]
   },
   {
@@ -2011,7 +2011,7 @@
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
     ]
   },
   {
@@ -2022,7 +2022,7 @@
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
     ]
   },
   {
@@ -2033,7 +2033,7 @@
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
     ]
   },
   {
@@ -2044,7 +2044,7 @@
     "text": "Instructions\nUsing the different Multi-Armed Bandit algorithms learned in Lecture 3, devise a novel approach to dynamically manage the weights of portfolio’s. Your task is to:",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
     ]
   },
   {
@@ -2055,7 +2055,7 @@
     "text": "Define the Reinforcement Learning Framework: Formulate a Multi-Armed Bandit problem.\n\n\nDefine the data.\nSpecify the arms \\(A\\).\nSpecify the reward structure \\(R\\).\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\n\\(\\epsilon\\)-Greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.\n(Optional) Stability score: Standard deviation of the reward over time.\n(Optional) Adaptability: Performance when the environment shifts.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
     ]
   },
   {
@@ -2066,7 +2066,7 @@
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
     ]
   },
   {
@@ -2077,7 +2077,7 @@
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
     ]
   },
   {
@@ -2088,7 +2088,7 @@
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
     ]
   },
   {
@@ -2099,7 +2099,7 @@
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
     ]
   },
   {
@@ -2110,7 +2110,7 @@
     "text": "Instructions\nUsing the different Classical and Deep Reinforcement Learning algorithms learned in Lectures 5-10, devise a novel approach to create a trading agent. Your task is to:",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
     ]
   },
   {
@@ -2121,7 +2121,7 @@
     "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\nOn-Policy Monte Carlo.\nOff-Policy Monte Carlo.\nSARSA.\nQ-Learning.\nDouble Q-Learning.\nn-step Bootstrapping.\nSemiGradient SARSA.\nDeep Q-Networks.\nVanilla Policy Gradient.\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
     ]
   },
   {
@@ -2132,7 +2132,7 @@
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
     ]
   },
   {
@@ -2143,7 +2143,7 @@
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
     ]
   },
   {
@@ -2154,7 +2154,7 @@
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
     ]
   },
   {
@@ -2165,7 +2165,7 @@
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
     ]
   },
   {
@@ -2176,7 +2176,7 @@
     "text": "Instructions\nUsing the Deep Reinforcement Learning algorithm learned in Lecture 11, devise an application that leverages Reinforcement Learning with Human Feedback (RLHF). Your task is to:",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
     ]
   },
   {
@@ -2187,7 +2187,7 @@
     "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least one Reinforcement Learning algorithm to solve the problem.\n\n\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
     ]
   },
   {
@@ -2198,7 +2198,7 @@
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
     ]
   },
   {
@@ -2209,7 +2209,7 @@
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
     ]
   },
   {
@@ -2220,7 +2220,7 @@
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
     ]
   },
   {
@@ -2231,7 +2231,7 @@
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
     ]
   },
   {
@@ -2242,7 +2242,7 @@
     "text": "Instructions\nUsing the Deep Reinforcement Learning algorithm learned in Lecture 11, devise an application that leverages Group Relative Policy Optimization (GRPO). Your task is to:",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
     ]
   },
   {
@@ -2253,7 +2253,7 @@
     "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least one Reinforcement Learning algorithm to solve the problem.\n\n\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
     ]
   },
   {
@@ -2264,7 +2264,7 @@
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
     ]
   },
   {
@@ -2275,7 +2275,7 @@
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
     ]
   },
   {
@@ -2286,7 +2286,7 @@
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
     ]
   },
   {
@@ -2297,7 +2297,7 @@
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
     ]
   },
   {

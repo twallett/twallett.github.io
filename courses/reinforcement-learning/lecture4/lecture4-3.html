@@ -483,12 +483,22 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture10/lecture10-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 Trust Region Policy Optimization (TRPO)</span></a>
+  <a href="../lecture10/lecture10-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 Trust Regions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Proximal Policy Optimization (PPO)</span></a>
+  <a href="../lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Monotonic Improvement</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Optimization of Parameterized Policies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture10/lecture10-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Proximal Policy Optimization (PPO)</span></a>
   </div>
 </li>
       </ul>
@@ -801,6 +811,24 @@ Real Life Example 🧠
 <li><span class="math inline">\(A_{1,...,k}\)</span> — The route you choose (e.g., highway, back roads, or scenic route).</li>
 <li><span class="math inline">\(R\)</span> — Your reward could be getting to work quickly, stress-free, or on time.</li>
 </ul>
+<div class="grid">
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/highway.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Highway</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sidestreet.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Side Street</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p>Currently, you always take the highway (your policy <span class="math inline">\(\pi\)</span>), and on average, it takes you <strong>35 minutes</strong>.</p>
 <p>But one day, you try a different route (new policy <span class="math inline">\(\pi^{'}\)</span>) — maybe a side street — and even though it looks longer on the map, traffic is lighter and you reach work in <strong>30 minutes</strong>.</p>
 <p>Should I switch my policy to this new route from now on?</p>

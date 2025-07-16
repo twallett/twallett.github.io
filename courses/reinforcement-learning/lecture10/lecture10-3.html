@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10.3 Group Relative Policy Optimization (GRPO)</title>
+<title>lecture10-3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../lecture11/lo.html" rel="next">
+<link href="../lecture10/lecture10-4.html" rel="next">
 <link href="../lecture10/lecture10-2.html" rel="prev">
 <link href="../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-05f4ad04b37af736ae6997aa872f1765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -83,7 +83,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -92,7 +92,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">10.3 Group Relative Policy Optimization (GRPO)</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -117,11 +117,13 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DATS 6450 – Reinforcement Learning</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
@@ -133,7 +135,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture1/lecture1-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 Why should I study Reinforcement Learning?</span></a>
+  <a href="../lecture1/lecture1-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 Why Should I Learn Reinforcement Learning?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -416,12 +418,22 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradients</span></a>
+  <a href="../lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradient Theorem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Reinforcement Learning with Human Feedback (RLHF)</span></a>
+  <a href="../lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture9/lecture9-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 Action Selections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture9/lecture9-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Vanilla Policy Gradient (VPG)</span></a>
   </div>
 </li>
       </ul>
@@ -442,17 +454,22 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture10/lecture10-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 Trust Region Policy Optimization (TRPO)</span></a>
+  <a href="../lecture10/lecture10-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 Trust Regions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Proximal Policy Optimization (PPO)</span></a>
+  <a href="../lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Monotonic Improvement</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">10.3 Group Relative Policy Optimization (GRPO)</span></a>
+  <a href="../lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">10.3 Optimization of Parameterized Policies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lecture10/lecture10-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Proximal Policy Optimization (PPO)</span></a>
   </div>
 </li>
       </ul>
@@ -473,12 +490,12 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture11/lecture11-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Monte Carlo Tree Search (MCTS)</span></a>
+  <a href="../lecture11/lecture11-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Model-based Reinforcement Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lecture11/lecture11-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 Advanced Monte Carlo Tree Search</span></a>
+  <a href="../lecture11/lecture11-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 Monte Carlo Tree Search (MCTS)</span></a>
   </div>
 </li>
       </ul>
@@ -514,6 +531,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
@@ -642,6 +660,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
@@ -653,41 +672,13 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">10.3 Group Relative Policy Optimization (GRPO)</span></h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>What if your learning wasn’t just about being good — but being better <em>relative to the group</em>? 🧑‍🤝‍🧑</p>
-</div>
-</div>
-</div>
 
 
 
@@ -1093,13 +1084,13 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../lecture10/lecture10-2.html" class="pagination-link" aria-label="10.2 Proximal Policy Optimization (PPO)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">10.2 Proximal Policy Optimization (PPO)</span></span>
+      <a href="../lecture10/lecture10-2.html" class="pagination-link" aria-label="10.2 Monotonic Improvement">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">10.2 Monotonic Improvement</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../lecture11/lo.html" class="pagination-link" aria-label="Learning Objectives">
-        <span class="nav-page-text"><span class="chapter-title">Learning Objectives</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../lecture10/lecture10-4.html" class="pagination-link" aria-label="10.4 Proximal Policy Optimization (PPO)">
+        <span class="nav-page-text"><span class="chapter-title">10.4 Proximal Policy Optimization (PPO)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
