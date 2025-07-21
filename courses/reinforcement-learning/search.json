@@ -783,8 +783,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lo.html",
-    "href": "lecture4/lo.html",
+    "objectID": "private/lecture4/lo.html",
+    "href": "private/lecture4/lo.html",
     "title": "Learning Objectives",
     "section": "",
     "text": "Learning Objectives for Lecture 4: Dynamic Programming (Sutton and Barto 2018) 🎯\n\n\n\n\nMarkov Chain.\nMarkov Decision Process (MDPs).\nDynamic Programming.\nHomemade GridWorld OpenAI environment using gymnasium, pygame & numpy.\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
@@ -794,8 +794,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-1.html",
-    "href": "lecture4/lecture4-1.html",
+    "objectID": "private/lecture4/lecture4-1.html",
+    "href": "private/lecture4/lecture4-1.html",
     "title": "4.1 Markov Chain",
     "section": "",
     "text": "Markov Chain\nWe saw from Lecture 3 how to make optimal decisions in non-associative environments:\nA Markov Chain is a model for transitions that are not controlled between fully observable states.\nA State is a node.\nA State Transition is one outward-going arrow.\nIn this framework, we are interested in how state probabilities evolve over time and the corresponding values of each state.",
@@ -805,8 +805,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-1.html#markov-chain",
-    "href": "lecture4/lecture4-1.html#markov-chain",
+    "objectID": "private/lecture4/lecture4-1.html#markov-chain",
+    "href": "private/lecture4/lecture4-1.html#markov-chain",
     "title": "4.1 Markov Chain",
     "section": "",
     "text": "State transitions are conditional probabilities of going to the next state given the current state.\n\n\n\n\n\nProbability Matrix\nSuppose a frog jumps from one lily pad to another with state transition probabilities:\n\n\n\n\\[\n\\mathbf{P} = \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\n\n\nRewards Matrix\nSuppose the frog has associated rewards:\n\n\n\n\\[\n\\mathbf{R} = \\begin{bmatrix} 6 & 1 \\\\ 1 & -2 \\end{bmatrix}\n\\]\n\n\nValue Function\nWe want to calculate the expected value of moving from state \\(i\\) to state \\(j\\) for all situations \\(s \\in \\{1,2,...,S\\}\\):\n\\[\n\\mathbf{v}(t) = \\mathbf{q} + \\mathbf{v}(t-1) \\mathbf{P}\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\begin{align*}\nv_{j}(t) & = \\sum_{i=1}^{S} p_{i,j} \\ [r_{i,j}+v_{i}(t-1)] \\\\\n& = \\sum_{i=1}^{S} p_{i,j} \\ r_{i,j} + \\sum_{i=1}^{S} p_{i,j} \\ v_{i}(t-1) \\\\\n& = \\textbf{q} + \\sum_{i=1}^{S} p_{i,j}\\ v_{i}(t-1)\n\\end{align*}\n\\]\n\n\n\nFirst, we need to calculate \\(\\textbf{q}\\), the expected reward in the next transition out of state \\(i\\):\n\\[\n\\textbf{q} =\n\\begin{bmatrix}\n    2 & -0.2\n\\end{bmatrix}\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\mathbf{q} = \\sum_{i=1}^{S} p_{i,j} r_{i,j}\n\\]\n\\[\nq_{1} = p_{1,1} \\ r_{1,1} + r_{2,1} \\ p_{2,1}\n\\]\n\\[\nq_{2} = p_{1,2} \\ r_{1,2} + r_{2,2} \\ p_{2,2}\n\\]\n\n\n\n\\[\n\\begin{bmatrix} v_{1}(t) \\ v_{2}(t) \\end{bmatrix} = \\begin{bmatrix} 2 \\ -0.2 \\end{bmatrix} + \\begin{bmatrix} v_{1}(t-1) \\ v_{2}(t-1) \\end{bmatrix} \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\nAt \\(t=100\\): \\[\n\\mathbf{v}(100) = \\begin{bmatrix} 77.88 & 76.59 \\end{bmatrix}\n\\]\nIn other words, the frogs expected value at \\(t = 100\\) is that lilly pad \\(1\\) will be greater (with \\(77.88\\) expected flies) than that of lilly pad \\(2\\) (with \\(76.59\\) expected flies)\n\n\n\n\n\nDiscounting Factor\nThe \\(\\gamma\\) allows us to place a higher value on the present rewards, rather than future uncertain rewards.\n\\[\n\\mathbf{v}(t) = \\mathbf{q} + \\gamma \\mathbf{v}(t-1) \\mathbf{P}\n\\]\n\\[\n\\begin{bmatrix} v_{1}(t) \\ v_{2}(t) \\end{bmatrix} = \\begin{bmatrix} 2 \\ -0.2 \\end{bmatrix} + \\gamma \\begin{bmatrix} v_{1}(t-1) \\ v_{2}(t-1) \\end{bmatrix} \\begin{bmatrix} 0.2 & 0.6 \\\\ 0.8 & 0.4 \\end{bmatrix}\n\\]\nAt \\(\\gamma=0.9\\) and \\(t=100\\): \\[\n\\mathbf{v}(100) = \\begin{bmatrix} 8.47 & 7.15 \\end{bmatrix}\n\\]\n\n\n\n\n\nPython Code\nimport numpy as np\n\nGAMMA = 0.9\nP = np.array([[0.2, 0.6], [0.8, 0.4]])\nR = np.array([[6, 1], [1, -2]])\nq = np.sum(P * R, axis=1)\nv_initial = np.array([0, 0])\n\ndef value_function(v, P, q, t=100):\n    for _ in range(t):\n        v = q + GAMMA * np.dot(v, P)\n    return v\n\nv_result = value_function(v_initial, P, q)\nprint(v_result)",
@@ -816,8 +816,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-2.html",
-    "href": "lecture4/lecture4-2.html",
+    "objectID": "private/lecture4/lecture4-2.html",
+    "href": "private/lecture4/lecture4-2.html",
     "title": "4.2 Markov Decision Process (MDP)",
     "section": "",
     "text": "Markov Decision Process\nMarkov Chain’s are a framework for an associative environment.\nA Markov Chain is a model for transitions that are not controlled between fully observable states.\nA Markov Decision Process (MDP) is a model for transitions that are controlled between fully observable states.\nThe Agent is the learner and decision-maker.\nThe Environment is everything external to the agent.\nFrom an Initial State, the agent interacts with the environment through its Actions.\nThese actions continuously give rise to different States and Rewards.",
@@ -827,8 +827,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-2.html#markov-decision-process",
-    "href": "lecture4/lecture4-2.html#markov-decision-process",
+    "objectID": "private/lecture4/lecture4-2.html#markov-decision-process",
+    "href": "private/lecture4/lecture4-2.html#markov-decision-process",
     "title": "4.2 Markov Decision Process (MDP)",
     "section": "",
     "text": "Markov Decision Process\n\n\n\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\n\nActions are equally likely to occur. \nActions that take the agent out of the environment receive a reward of \\(-1\\), actions that take the agent to the terminal state (shaded in gray) receive a reward of \\(+1\\), and all other actions receive a reward of \\(0\\). \nOur objective is to calculate the shortest path from any state to the optimal state.",
@@ -838,8 +838,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-2.html#sequential-interaction",
-    "href": "lecture4/lecture4-2.html#sequential-interaction",
+    "objectID": "private/lecture4/lecture4-2.html#sequential-interaction",
+    "href": "private/lecture4/lecture4-2.html#sequential-interaction",
     "title": "4.2 Markov Decision Process (MDP)",
     "section": "Sequential Interaction",
     "text": "Sequential Interaction\nFor a finite discrete number of time steps \\(t = 0, 1, 2, 3...,T\\) (where \\(T\\) is the terminal time step marking the end of an episode) the sequential interaction is:\n\nThe agent receives an interpretation from the state \\(s_t \\in S\\).\nThe agent makes an action \\(a_t \\in A(s_t)\\) based on the situation.\nThe agent receives a reward \\(r_{t+1} \\in R \\subseteq \\mathbb{R}\\) from its environment and finds itself in a new state \\(s_{t+1}\\) based on the action taken.\n\nThe sequence continues in the form:\n\\[\ns_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3,...\n\\]\n\n\n\n\n\n\nExample: GridWorld\n\n\n\nSequential interaction for one episode:\n\n\n\n\n\nNotice that, for now, state transitions are deterministic. In other words, we assume a perfect model of the environment. We do not care about stochastic state transitions (this is something that we will visit in the next lectures).",
@@ -849,8 +849,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-2.html#policy",
-    "href": "lecture4/lecture4-2.html#policy",
+    "objectID": "private/lecture4/lecture4-2.html#policy",
+    "href": "private/lecture4/lecture4-2.html#policy",
     "title": "4.2 Markov Decision Process (MDP)",
     "section": "Policy",
     "text": "Policy\nA Policy is a mapping from states to probabilities of selecting each possible action, denoted as:\n\\[\n\\pi(a|s)\n\\]\n\n\n\n\n\n\\[\n\\sum_{a \\in A(s)} \\pi(a|s) = 1 \\quad \\text{for all } s \\in S\n\\]\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\nSince all actions are equally likely, we are said to be following a random policy:\n\\[\n\\pi(a_0|s_0) = \\frac{1}{4}\n\\]",
@@ -860,8 +860,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-2.html#dynamic-function",
-    "href": "lecture4/lecture4-2.html#dynamic-function",
+    "objectID": "private/lecture4/lecture4-2.html#dynamic-function",
+    "href": "private/lecture4/lecture4-2.html#dynamic-function",
     "title": "4.2 Markov Decision Process (MDP)",
     "section": "Dynamic Function",
     "text": "Dynamic Function\nThe dynamic function is a mapping of the state transition probabilities of the MDP for each possible reward:\n\\[\np(s^{'}, r | s, a)\n\\]\n\n\n\n\n\nAs mentioned before, the dynamics of GridWorld are deterministic leading to the same new state given each state and action:\n\\[\n\\sum_{s^{'} \\in S}\\sum_{r \\in R} p(s^{'}, r| s, a) = 1 \\quad \\text{for all } s \\in S \\text{ and } a \\in A(s)\n\\]\n\n\n\n\n\n\nExample: GridWorld\n\n\n\n\n\n\n\n\nAs mentioned before, the dynamics of GridWorld are deterministic, leading to the same new state given each state and action:\n\\[\np(s_{1}, r_{1}| s_0, a_{0}) = 1\n\\]",
@@ -871,8 +871,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-2.html#goal",
-    "href": "lecture4/lecture4-2.html#goal",
+    "objectID": "private/lecture4/lecture4-2.html#goal",
+    "href": "private/lecture4/lecture4-2.html#goal",
     "title": "4.2 Markov Decision Process (MDP)",
     "section": "Goal",
     "text": "Goal\nOur Goal \\(G_{t}\\) is to maximize the expected return of the discounted reward sequence:\n\\[\n\\begin{aligned}\nG_{t} = r_{t+1} + \\gamma r_{t+2} + \\ldots + \\gamma^{T-1} r_{T} \\\\\n     = r_{t+1} + \\gamma (r_{t+2} + \\ldots + \\gamma^{T-2} r_{T}) \\\\\n     = r_{t+1} + \\gamma G_{t+1}\n\\end{aligned}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nSuppose \\(\\gamma = 0.5\\) and the following sequence of rewards is received \\(r_{1} = -1\\), \\(r_{2} = 2\\), \\(r_{3} = 6\\), \\(r_{4} = 3\\), and \\(r_{5} = 2\\), with \\(T = 5\\). What are \\(G_{0}\\), \\(G_{1}\\), …, \\(G_{5}\\)?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\\[\n\\begin{aligned}\nG_{5} &= r_{6} + r_{7} + \\dots = 0 \\\\\nG_{4} &= r_{5} + 0.5(G_{5}) = 2 \\\\\nG_{3} &= r_{4} + 0.5(G_{4}) = 4 \\\\\nG_{2} &= r_{3} + 0.5(G_{3}) = 8 \\\\\nG_{1} &= r_{2} + 0.5(G_{2}) = 6 \\\\\nG_{0} &= r_{1} + 0.5(G_{1}) = 2 \\\\\n\\end{aligned}\n\\]",
@@ -882,8 +882,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-2.html#value-functions",
-    "href": "lecture4/lecture4-2.html#value-functions",
+    "objectID": "private/lecture4/lecture4-2.html#value-functions",
+    "href": "private/lecture4/lecture4-2.html#value-functions",
     "title": "4.2 Markov Decision Process (MDP)",
     "section": "Value Functions",
     "text": "Value Functions\nValue Functions calculate the expected reward when starting from the state \\(s\\) and then interacting with the environment according to the policy \\(\\pi\\), denoted as:\n\\[\nv_{\\pi}(s) = \\mathbb{E_{\\pi}}[G_{t}| \\ s]\n\\]\n\n\n\n\n\n\nBellman Equation\nFor any policy \\(\\pi\\) and any state \\(s\\), the Bellman equation holds:\n\\[\n\\begin{aligned}\nv_{\\pi}(s) &= \\mathbb{E_{\\pi}}[G_{t}| \\ s] \\\\\n&= \\mathbb{E_{\\pi}}[r_{t+1} + \\gamma G_{t+1}| \\ s] \\\\\n&= \\sum_{a} \\pi(a|s) \\sum_{s^{'},r} p(s^{'},r|s,a)[r_{t+1} + \\gamma \\mathbb{E_{\\pi}}[G_{t+1}| \\ s]] \\\\\n&= \\underbrace{\\sum_{a} \\pi(a|s)}_{Policy} \\underbrace{\\sum_{s^{'}, r} p(s^{'},r|s,a)}_{Dynamic \\ Function}\\underbrace{[r_{t+1} + \\gamma v_{\\pi}(s^{'})]}_{Discounted \\ Reward \\ Sequence}\n\\end{aligned}\n\\]\n\n\n\n\n\n\nExercise\n\n\n\nFor the first episode, calculate the value of each state using the Bellman equation:\n\\[\nv_{\\pi}(s) = \\sum_{a} \\pi(a|s) \\sum_{s^{'}, r} p(s^{'},r|s,a)[r + \\gamma v_{\\pi}(s^{'})]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution",
@@ -893,8 +893,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-2.html#action-value-functions",
-    "href": "lecture4/lecture4-2.html#action-value-functions",
+    "objectID": "private/lecture4/lecture4-2.html#action-value-functions",
+    "href": "private/lecture4/lecture4-2.html#action-value-functions",
     "title": "4.2 Markov Decision Process (MDP)",
     "section": "Action Value Functions",
     "text": "Action Value Functions\nAction Value Functions estimate how good it is for an agent to follow policy \\(\\pi\\) given the action taken under the previous state:\n\\[\nq_{\\pi}(s, a) = \\mathbb{E_{\\pi}}[G_{t}| \\ s, \\ a]\n\\]\n\n\n\n\n\n\nBellman Equation\nThe action value function is also expressed in terms of the Bellman equation:\n\\[\n\\begin{align}\n    q_{\\pi}(s, a) & = \\mathbb{E_{\\pi}}[G_{t}| \\ s, \\ a] \\\\\n     & = \\underbrace{\\sum_{s^{'}, r} p(s^{'},r|s,a)}_{Dynamic \\ Function} \\underbrace{[r + \\gamma v_{\\pi}(s^{'})]}_{Discounted \\ Reward \\  Sequence}\n\\end{align}\n\\]\nNotice that the policy is no longer calculated (since an action has already taken place according to the policy), and that the quality of following policy \\(\\pi\\) is calculated in \\(v_{\\pi}(s^{'})\\).",
@@ -904,8 +904,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-2.html#optimal-policy",
-    "href": "lecture4/lecture4-2.html#optimal-policy",
+    "objectID": "private/lecture4/lecture4-2.html#optimal-policy",
+    "href": "private/lecture4/lecture4-2.html#optimal-policy",
     "title": "4.2 Markov Decision Process (MDP)",
     "section": "Optimal Policy",
     "text": "Optimal Policy\nAn optimal policy \\(\\pi\\) is defined to be better than or equal to a policy \\(\\pi^{'}\\) if its expected return is greater than or equal to that of \\(\\pi^{'}\\) for all states:\n\\[\n\\pi \\geq \\pi^{'} \\quad \\text{I.F.F.} \\quad v_{\\pi} \\geq v_{\\pi^{'}} \\quad \\forall s \\in S\n\\]\nSince there may be more than one optimal policy, we denote all optimal policies by \\(\\pi_{*}\\).\n\nOptimal Value Function\n\\[\nv_{*}(s) = \\max_{a} \\sum_{s^{'}, r} p(s^{'},r|s,a) \\big[ r + \\gamma v_{*}(s^{'}) \\big]\n\\]\n\n\n\n\n\n\n\nOptimal Action-Value Function\n\\[\nq_{*}(s, a) = \\sum_{s^{'}, r} p(s^{'},r|s,a) \\big[ r + \\gamma v_{*}(s^{'}) \\big]\n\\]\n\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\n\nFor the first episode, calculate the optimal value for each state using the bellman equation:\n\\[\nv_{*}(s) = \\max_{a} \\sum_{s^{'}, r} p(s^{'},r|s,a) \\big[ r + \\gamma v_{*}(s^{'}) \\big]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\n\n\nNotice the behavior of the optimal policy as \\(\\pi_{*} \\to \\infty\\)",
@@ -915,8 +915,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-3.html",
-    "href": "lecture4/lecture4-3.html",
+    "objectID": "private/lecture4/lecture4-3.html",
+    "href": "private/lecture4/lecture4-3.html",
     "title": "4.3 Dynamic Programming",
     "section": "",
     "text": "Policy Improvement\nMarkov Decision Process (MDP) is a framework for an associative environment.\nA MDP is a model for transitions that are controlled between fully observable states.",
@@ -926,8 +926,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-3.html#policy-improvement",
-    "href": "lecture4/lecture4-3.html#policy-improvement",
+    "objectID": "private/lecture4/lecture4-3.html#policy-improvement",
+    "href": "private/lecture4/lecture4-3.html#policy-improvement",
     "title": "4.3 Dynamic Programming",
     "section": "",
     "text": "Question 🤔\n\n\n\nWe know how good it is to follow the current policy from \\(s\\) — that is \\(v_{\\pi}(s)\\) — but would it be better or worse to change to a new policy \\(\\pi^{'}\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nImagine your commute to work every day:\n\n\\(S_{1,...,k}\\) — The location you’re currently in (e.g., your home or a traffic junction).\n\\(A_{1,...,k}\\) — The route you choose (e.g., highway, back roads, or scenic route).\n\\(R\\) — Your reward could be getting to work quickly, stress-free, or on time.\n\n\n\n\n\n\nHighway\n\n\n\n\n\n\n\nSide Street\n\n\n\n\nCurrently, you always take the highway (your policy \\(\\pi\\)), and on average, it takes you 35 minutes.\nBut one day, you try a different route (new policy \\(\\pi^{'}\\)) — maybe a side street — and even though it looks longer on the map, traffic is lighter and you reach work in 30 minutes.\nShould I switch my policy to this new route from now on?\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nOne way to check if it is better to switch from policy \\(\\pi\\) to \\(\\pi^{'}\\) is by checking if the following inequality holds:\n\\[\nq_{\\pi}(s, \\pi^{'}(s)) \\geq v_{\\pi}(s)\n\\]\nIf selecting \\(a\\) in \\(s\\) and thereafter following policy \\(\\pi\\) is better than just following \\(\\pi\\), there must be a better policy \\(\\pi^{'}\\).\nThe special case when this inequality is true is referred to as the policy improvement theorem.",
@@ -937,8 +937,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-3.html#value-iteration",
-    "href": "lecture4/lecture4-3.html#value-iteration",
+    "objectID": "private/lecture4/lecture4-3.html#value-iteration",
+    "href": "private/lecture4/lecture4-3.html#value-iteration",
     "title": "4.3 Dynamic Programming",
     "section": "Value Iteration",
     "text": "Value Iteration\nOne drawback of policy iteration is that policy evaluation is done iteratively, requiring convergence exactly to \\(v_{\\pi}\\) which occurs only in the limit.\nValue Iteration is truncates the policy evaluation step after just one sweep.",
@@ -948,8 +948,8 @@
     ]
   },
   {
-    "objectID": "lecture4/lecture4-3.html#generalized-policy-iteration",
-    "href": "lecture4/lecture4-3.html#generalized-policy-iteration",
+    "objectID": "private/lecture4/lecture4-3.html#generalized-policy-iteration",
+    "href": "private/lecture4/lecture4-3.html#generalized-policy-iteration",
     "title": "4.3 Dynamic Programming",
     "section": "Generalized Policy Iteration",
     "text": "Generalized Policy Iteration\n\n\nGeneralized Policy Iteration refers to the general idea of letting policy evaluation and policy improvement processes interact, regardless of anything else.\nAlmost all of Reinforcement Learning can be described as the policy always being improved with respect to the value function, and the value function always being driven toward the value function for the policy.",
@@ -959,8 +959,8 @@
     ]
   },
   {
-    "objectID": "lecture5/lo.html",
-    "href": "lecture5/lo.html",
+    "objectID": "private/lecture5/lo.html",
+    "href": "private/lecture5/lo.html",
     "title": "Learning Objectives",
     "section": "",
     "text": "Learning Objectives for Lecture 5: Monte Carlo (Sutton and Barto 2018) 🎯\n\n\n\n\nMonte Carlo Prediction.\nOn-Policy Monte Carlo.\nOff-Policy Monte Carlo.\nHomemade GridWorld OpenAI environment using gymnasium, pygame & numpy.\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
@@ -970,8 +970,8 @@
     ]
   },
   {
-    "objectID": "lecture5/lecture5-1.html",
-    "href": "lecture5/lecture5-1.html",
+    "objectID": "private/lecture5/lecture5-1.html",
+    "href": "private/lecture5/lecture5-1.html",
     "title": "5.1 Monte Carlo Prediction",
     "section": "",
     "text": "What happens if we let experience speak — one episode at a time? 🎲\n\n\n\nDynamic Programming is a collection of algorithms that can be used to compute optimal policies \\(\\pi_{*}\\).\nThese algorithms have limited utility in Reinforcement Learning due to:\n\nAssumption of a perfect model: All state transitions \\(P(s', r \\mid s, a)\\) are known in advance.\nComputational expense: Dynammic Programming typically requires full sweeps over the state space \\(\\forall s \\in S\\), which is only feasible in small, tabular environments.\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we find an optimal policy \\(\\pi_{*}\\), assuming that we no prior knowledge of state transitions \\(P(s', r \\mid s, a)\\)?\n\n\n\n\n\n\n\n\nExample: GridWorld\n\n\n\nAssume \\(\\gamma = 0.9\\)\nSuppose we followed the trajectory of \\(\\pi\\) for one episode:\n\n\n\n\n\nThe following illustrates a Monte Carlo update for the trajectory:\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nMonte Carlo is a powerful learning rule for estimating value functions \\(v_{\\pi}\\) and action value functions \\(q_{\\pi}\\) in associative environments.\nThe power of Monte Carlo resides in its ability to learn the dynamics of any environment, without assuming any prior knowledge, only using experience.\nMonte Carlo methods are based on averaging sample returns of trajectories following a policy \\(\\pi\\).\n\nOnly on the completion of an episode are value estimates \\(v_{\\pi}(s)\\) and action value estimates \\(q_{\\pi}(s,a)\\) updated.\n\n\nIllustration: Monte Carlo Prediction\n\n\n\n\n\n\n\n\nPseudocode\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\nRecall that returns are calculated as follows:\n\\[\nG_{t} = r_{t+1} + \\gamma G_{t+1}\n\\]",
@@ -981,8 +981,8 @@
     ]
   },
   {
-    "objectID": "lecture5/lecture5-2.html",
-    "href": "lecture5/lecture5-2.html",
+    "objectID": "private/lecture5/lecture5-2.html",
+    "href": "private/lecture5/lecture5-2.html",
     "title": "5.2 Monte Carlo Exploring Starts",
     "section": "",
     "text": "Can randomness at the beginning help us see everything eventually? 🧭\n\n\n\nWithout a model, state values \\(v_{\\pi}(s)\\) alone are not sufficient. Without a model, we cannot derive action preferences from state values alone.\n\n\n\n\n\n\nRecall\n\n\n\n\\[\nv_{\\pi}(s) = \\mathbb{E_{\\pi}}[G_{t}| \\ s]\n\\]\n\\(v_{\\pi}(s)\\) - how good it is to be in a state \\(s\\).\n\n\nTo make action selections, we must explicitly estimate the value of each action \\(q_{\\pi}(s,a)\\).\n\n\n\n\n\n\nWhat we are really looking for…\n\n\n\n\\[\nq_{\\pi}(s, a) = \\mathbb{E_{\\pi}}[G_{t}| \\ s, \\ a]\n\\]\n\\(q_{\\pi}(s,a)\\) - how good it is to take action \\(a\\) given that I am in state \\(s\\).\n\n\nMonte Carlo methods are similar to state value estimation, focusing on visits to state-action pairs \\((s,a)\\).\nThis is crucial for Control, which refers to finding approximate optimal policies \\(\\approx \\pi_{*}\\).\nFollowing the idea of Generalized Policy Iteration (GPI), we evaluate and improve action values \\(q_{\\pi}(s,a)\\) to find optimal policies.\nHowever, one major issue is that of estimating action values \\(q_{\\pi}(s,a)\\) is that some state action pairs \\((s,a)\\) may never be visited during an episode.\n\n\n\n\n\n\nProblem\n\n\n\nHow can we leverage Monte Carlo’s learning rule to approximate the optimal policy \\(\\approx \\pi_{*}\\), while assuring that each state action pair \\((s,a)\\) is visited?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThis brings us back to the same dilemma we faced in the Multi-Armed Bandit chapter, that is: Balancing exploration and exploitation.\nOne “quick-fix” is to start each episode from a random state \\(s\\) and take any action \\(a\\) with probability greater than \\(0\\).\nThis “quick-fix” is referred to as Exploring Starts.\n\n\nPseudocode",
@@ -992,8 +992,8 @@
     ]
   },
   {
-    "objectID": "lecture5/lecture5-3.html",
-    "href": "lecture5/lecture5-3.html",
+    "objectID": "private/lecture5/lecture5-3.html",
+    "href": "private/lecture5/lecture5-3.html",
     "title": "5.3 On-Policy Monte Carlo",
     "section": "",
     "text": "What if we only ever learn from the way we already behave? 🔁\n\n\n\nWe need a better method of establishing control, or approximating optimal policies \\(\\approx \\pi_{*}\\), in associative environments without relying on unrealistic assumptions.\n\n\n\n\n\n\nOn-Policy Learning\n\n\n\nOn-Policy learning evaluates or improves the policy \\(\\pi\\) that is used to make decisions.\n\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we leverage Monte Carlo’s learning rule to approximate the optimal policy \\(\\approx \\pi_{*}\\), without having to rely on the unrealistic assumption of an initial random state and action \\((s,a)\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\n\n\n\n\n\nCrime and Punishment Book\n\n\n\n\n\n\n\nDostoevsky\n\n\n\n\n\n“It is better to go wrong in one’s own way than to go right in someone else’s.”\n— Razumikhin, Crime and Punishment\n\nLike Razumikhin suggests, you stick with your current way of doing things — even if it’s imperfect. You learn from your own behavior — your own actions \\(a\\) taken in states \\(s\\), based on the current policy \\(\\pi\\) — and improve over time through authentic experience.\nIn other words:\n\nIs it better to build your own project and mess up than to reuse code you don’t understand?\nIs it better to follow your own dreams or live out your parents’ version of success?\nIs it better to speak your mind and be wrong, or stay silent and be “right” by default?\nIs it better to take your own path and stumble than walk a perfect path that isn’t yours?\nIs it better to try your own strategy and fail than blindly follow someone else’s instructions?\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nRecall, \\(\\epsilon\\)-greedy methods for balancing exploration and exploitation.\n\n\n\\(\\epsilon\\)-soft policy\nThese policies are usually referred to as \\(\\epsilon\\)-soft policies as they require that the probability of every action is non-zero for all states and actions pairs, that is:\n\\[\n\\pi(a|s) &gt; 0 \\quad \\text{for all} \\quad s \\in S \\quad \\text{and} \\quad a \\in A(s)\n\\]\nTo calculate the probabilities of selecting an action according to the \\(\\epsilon\\)-greedy policy \\(\\pi(a|s)\\), we use the following update rule:\n\\[\n\\pi(a|s) \\gets \\begin{cases}\n1 - \\epsilon + \\frac{\\epsilon}{|A(S_{t})|}  & \\text{if} \\quad a = A_{t} \\quad \\text{(exploitation)} \\\\\n\\frac{\\epsilon}{|A(S_{t})|} & \\text{if} \\quad a \\neq A_{t} \\quad \\text{(exploration)}\n\\end{cases}\n\\]\nBy using \\(\\epsilon\\)-soft policies, we ensure that every action \\(a\\) has a non-zero chance of being explored — even while following our current policy \\(\\pi\\).\n\n\n\nPseudocode",
@@ -1003,8 +1003,8 @@
     ]
   },
   {
-    "objectID": "lecture5/lecture5-4.html",
-    "href": "lecture5/lecture5-4.html",
+    "objectID": "private/lecture5/lecture5-4.html",
+    "href": "private/lecture5/lecture5-4.html",
     "title": "5.4 Off-Policy Monte Carlo",
     "section": "",
     "text": "Can we watch others and still learn something for ourselves? 👀\n\n\n\nLearning directly from the policy \\(\\pi\\) is powerful, but it would be even better if we could learn about \\(\\pi\\) while observing or following a different policy, especially one that helps us explore more broadly or leverage past experiences.\n\n\n\n\n\n\nOff-Policy Learning\n\n\n\nOff-Policy methods evaluate or improve a policy \\(\\pi\\) different from that used to generate the data \\(b\\). Typically this is accomplished using two policies:\n\nA target policy, denoted \\(\\pi\\), is the policy being learned.\nA behavior policy, denoted \\(b\\), is the policy used to generate behavior.\n\n\n\n\n\n\n\n\n\nProblem\n\n\n\nHow can we leverage Monte Carlo’s learning rule to approximate the optimal policy \\(\\approx \\pi_{*}\\), while leveraging other policies \\(b\\) apart from our own \\(\\pi\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\n\n\n\n\n\n\n“If I have seen further, it is by standing on the shoulders of giants.” — Isaac Newton\n\nNewton is considered one of the greatest scientists of all time. Among his many contributions:\n\n🧲 Formulated the laws of motion and universal gravitation.\n🌈 Demonstrated that white light is made of a spectrum of colors.\n📐 Developed calculus (independently of Leibniz).\n🔭 Improved the telescope and advanced optical theory.\n\nHe would not have been able to accomplish these things without learning from the work of others — Kepler, Galileo, Descartes, and more — whose insights formed the foundation for his own breakthroughs.\n\n\n\n\n\nKepler - Discovered the laws of planetary motion, showing that planets move in ellipses and not circles.\n\n\n\n\n\n\n\nGalileo - Studied motion and inertia, laying the groundwork for Newton’s first two laws of motion.\n\n\n\n\n\n\n\nDescartes - Developed analytic geometry and early ideas of mechanistic physics, helping bridge mathematics and physical laws.\n\n\n\n\nJust like in off-policy learning, Newton didn’t need to replicate others’ paths \\(\\pi_{\\text{Kepler, Galileo, Descartes}}\\) exactly. Instead, he learned from their trajectories \\(b_{\\text{Kepler, Galileo, Descartes}}\\) to improve his own \\(\\pi_{Newton}\\).\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nImportance Sampling is a general technique for estimating expected values under one distribution given samples from another.\nWe apply importance sampling to off-policy learning by weighting returns according to the relative probability of their trajectories occurring under the target and behavior policies, called the importance-sampling ratio.\n\\[\n\\text{Pr}\\{A_{t}, S_{t+1}, A_{t+1}, \\dots , S_{T} \\mid S_{t}, A_{t:T-1} \\sim \\pi \\} = \\prod_{k=t}^{T-1} \\frac{\\pi(A_{k} \\mid S_{k})}{b(A_{k} \\mid S_{k})}\n\\]\n\n\nIncremental Method\nSimilarly to the Multi-Armed Bandits chapter, action values \\(q_{\\pi}(s,a)\\) can be calculated incrementally.\nIn order to do so, we must first begin by calculating a cumulative sum of the weights:\n\\[\nC(S_{t},A_{t}) = C(S_{t},A_{t}) + W\n\\]\nThen, we average returns of corresponding action values:\n\\[\nQ(S_{t},A_{t}) = Q(S_{t},A_{t}) + \\frac{W}{C(S_{t},A_{t})}[G - Q(S_{t},A_{t})]\n\\]\nFinally, we update the weight according to our importance sampling ratio:\n\\[\nW = W \\frac{\\pi(A_{k} \\mid S_{k})}{b(A_{k} \\mid S_{k})}\n\\]\nWe can assure Off-Policy methods to achieve control by choosing \\(b\\) to be \\(\\epsilon\\)-soft.\nThe target policy \\(\\pi\\) converges to optimal at all encountered states even though actions are selected according to a different soft policy \\(b\\), which may change between or even within episodes.\n\n\n\nPseudocode",
@@ -1014,8 +1014,8 @@
     ]
   },
   {
-    "objectID": "lecture6/lo.html",
-    "href": "lecture6/lo.html",
+    "objectID": "private/lecture6/lo.html",
+    "href": "private/lecture6/lo.html",
     "title": "Learning Objectives",
     "section": "",
     "text": "Learning Objectives for Lecture 6: Temporal Difference (Sutton and Barto 2018) 🎯\n\n\n\n\nTemporal Difference (TD) Prediction.\nSARSA.\nQ-Learning.\nDouble Q-Learning.\n(Optional) n-step Bootstrapping.\nHomemade GridWorld OpenAI environment using gymnasium, pygame & numpy.\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
@@ -1025,8 +1025,8 @@
     ]
   },
   {
-    "objectID": "lecture6/lecture6-1.html",
-    "href": "lecture6/lecture6-1.html",
+    "objectID": "private/lecture6/lecture6-1.html",
+    "href": "private/lecture6/lecture6-1.html",
     "title": "6.1 Temporal Difference (TD) Prediction",
     "section": "",
     "text": "What if you made a guess — and then updated it right away, before seeing how it ends? ⏳\n\n\n\nMonte Carlo is a powerful learning rule for estimating value functions \\(v_{\\pi}\\) and action value functions \\(q_{\\pi}\\) in associative environments.\nThe power of Monte Carlo resides in its ability to learn the dynamics of any environment, without assuming any prior knowledge, only using experience.\nMonte Carlo methods are based on averaging sample returns of trajectories following a policy \\(\\pi\\).\n\n\n\n\n\n\nProblem\n\n\n\nHow can we design a learning rule that updates value estimates during an episode, rather than waiting until the entire trajectory \\(\\tau\\) is complete?\n\n\n\n\n\n\n\n\nExample: GridWorld\n\n\n\nAssume \\(\\gamma = 0.9\\)\nSuppose we follow the trajectory of \\(\\pi\\) for one episode:\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nTemporal Difference (TD) is a learning rule that is a combination of Monte Carlo and Dynamic Programming ideas.\n\nTD methods, like Monte Carlo, learn from experience by updating estimates of nonterminal states along a trajectory \\(\\tau\\).\nTD methods, like Dynamic Programming, update based on an existing estimate \\(V(S_{t+1})\\).\n\nTD methods at time \\(t + 1\\) immediately form a target and make a useful update using the observed reward \\(R_{t+1}\\) and the estimate \\(V(S_{t+1})\\) in a incremental fashion:\n\\[\nV(S_{t}) = V(S_{t}) + \\underbrace{\\alpha}_{Step \\ Size} [ \\underbrace{\\underbrace{R_{t+1} + \\gamma V(S_{t+1})}_{Target \\ Update} - V(S_{t})}_{TD \\  Error}]\n\\]\n\n\nIllustration: Temporal Difference (TD) Prediction\n\n\n\n\n\n\n\n\nPseudocode",
@@ -1036,8 +1036,8 @@
     ]
   },
   {
-    "objectID": "lecture6/lecture6-2.html",
-    "href": "lecture6/lecture6-2.html",
+    "objectID": "private/lecture6/lecture6-2.html",
+    "href": "private/lecture6/lecture6-2.html",
     "title": "6.2 SARSA",
     "section": "",
     "text": "What if your learning came from walking the path you’re already on — mistakes and all? 🚶‍♂️\n\n\n\nTo move from prediction to control, we must estimate the action-value function \\(q_{\\pi}(s, a)\\) for the current behavior policy \\(\\pi\\) — and ensure we update it for all state-action pairs \\((s, a)\\) encountered during interaction with the environment.\n\n\n\n\n\n\nProblem\n\n\n\nHow can we leverage the Temporal Difference learning rule to approximate the optimal policy \\(\\approx \\pi_{*}\\) — while still exploring, ensuring every state-action \\((s,a)\\) pair is visited, and updating only from actions actually taken by the current policy \\(\\pi\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you’re using a music recommendation app:\n\n\\(S\\) — You’re in a particular mood or environment (e.g., studying, running, relaxing).\n\\(A\\) — The app suggests a song based on your current preferences.\n\\(R\\) — You either enjoy the song, skip it, or dislike it — giving implicit feedback.\n\\(S', A'\\) — The next song plays, and you make another decision.\n\nIn this case:\n\n\n\n\n\nSalsa — always a win\n\n\n\n\n\n\n\nReggeaton — mostly hits, sometimes skips\n\n\n\n\n\n\n\nJazz — new territory\n\n\n\n\nHow can your music app learn what you like while still exploring new genres — using your actual listening behavior, one song at a time?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nSARSA is an on-policy TD control method that updates action-value estimates based \\(q_{\\pi}(s, a)\\) on the trajectory actually followed by the current policy \\(\\pi\\) — including any exploration it performs.\n\\[\nQ(S_{t},A_{t}) = Q(S_{t},A_{t}) + \\alpha [ R_{t+1} + \\gamma Q(S_{t+1},A_{t+1}) - Q(S_{t},A_{t})]\n\\]\nThis rule uses every element of the quintuple of events (\\(S_{t}, A_{t}, R_{t+1}, S_{t+1}, A_{t+1}\\))\nThat’s SARSA: learning step-by-step from your real actions, even if your current “playlist” isn’t perfect.\nUnlike Monte Carlo methods, which wait until the end of a full playlist (or episode) to update preferences, SARSA updates incrementally — after every song — using immediate feedback and your next action.\n\n\nIllustration: SARSA\n\n\n\n\n\n\n\n\nPseudocode",
@@ -1047,8 +1047,8 @@
     ]
   },
   {
-    "objectID": "lecture6/lecture6-3.html",
-    "href": "lecture6/lecture6-3.html",
+    "objectID": "private/lecture6/lecture6-3.html",
+    "href": "private/lecture6/lecture6-3.html",
     "title": "6.3 Q-Learning",
     "section": "",
     "text": "What if you learned from what could have been done — even if you didn’t do it? 👀\n\n\n\nIdeally, we would like to have a TD method that can be off-policy.\n\n\n\n\n\n\nProblem\n\n\n\nHow can we leverage the Temporal Difference learning rule to approximate the optimal policy \\(\\approx \\pi_*\\) by learning from actions we didn’t take — using the best possible next action \\(A\\) to update our strategy, even if it wasn’t chosen by our current policy \\(\\pi\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nSuppose you’re studying chess by watching a famous game between two grandmasters:\n\n\\(S\\) — You recognize a familiar board position from their match.\n\\(A\\) — In your current game, you’re unsure what to play — but you recall the grandmaster’s move in that same position.\n\\(R\\) — You remember that the move they chose led to a strong positional advantage (high reward).\n\\(S'\\) — You predict the next likely position on the board and evaluate the possible replies.\n\nEven though you’re not playing exactly like the grandmasters did — and your opponent may respond differently — you use the best move from their game as your update target, trusting that it’s the optimal next action in that state.\n\n\n\n\n\nBobby Fischer vs. Boris Spassky (Game 6)\n\n\n\n\n\n\n\n\n\n\\(S\\) You arrive at a familiar position - Queen’s Gambit Declined (Tartakower Variation)\n\n\n\n\n\n\n\n\\(A\\) You recall a grandmaster’s move from memory - (8. cxd5)\n\n\n\n\n\n\n\n\\(A \\to S'\\) You use Bobby Fischer’s move to force an exchange\n\n\n\n\nYou don’t have to repeat the entire grandmaster game — you just need to know what move worked best in each position and adjust your own strategy accordingly.\nHow can you improve your chess strategy by learning from the best moves of others — even if you never made those moves yourself?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nQ-Learning is a TD off-policy method that can both update and estimate the optimal action-value function directly:\n\\[\nQ(S_{t},A_{t}) = Q(S_{t},A_{t}) + \\alpha [ R_{t+1} + \\gamma \\max_{a} Q(S_{t+1},a) - Q(S_{t},A_{t})]\n\\]\nQ-Learning is a breakthrough in reinforcement learning due to its simplification of algorithm analysis and early convergence proofs.\n\n\nIllustration: Q-Learning\n\n\n\n\n\n\n\n\nPseudocode",
@@ -1058,8 +1058,8 @@
     ]
   },
   {
-    "objectID": "lecture6/lecture6-4.html",
-    "href": "lecture6/lecture6-4.html",
+    "objectID": "private/lecture6/lecture6-4.html",
+    "href": "private/lecture6/lecture6-4.html",
     "title": "6.4 Double Q-Learning",
     "section": "",
     "text": "What if two minds were better than one — especially to keep each other honest? 🧠🧠\n\n\n\nThe problem with relying with the conceptions of previous behavior \\(b\\) is that it is susceptible to biases.\n\n\n\n\n\n\nProblem\n\n\n\nHow can we leverage the Temporal Difference learning rule to approximate the optimal policy \\(\\approx \\pi_*\\) by learning from actions we didn’t take — without falling into biases of conceptions of previous behavior \\(b\\)?\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\nMuch of classical economics assumes humans make perfectly rational decisions — but Daniel Kahneman’s Thinking, Fast and Slow revealed how our minds often fall into predictable biases.\n\n\n\n\n\nThinking, Fast and Slow by Daniel Kahneman\n\n\n\n\n\n\n\nDaniel Kahneman - Nobel Prize Winner in Economic Sciences in 2002\n\n\n\n\nKahneman describes two modes of thought:\n\n🧠 System 1 — Fast, automatic, emotional, and often biased; rooted in evolutionarily older brain structures like the limbic system, designed for quick survival decisions.\n🧠 System 2 — Slow, deliberate, logical, and effortful; associated with the prefrontal cortex, which supports planning, reasoning, and self-control.\n\n\nWhich of the two lines is longer?\n\n\n\n\n\n\n\n\n\nExample: Lines\n\n\n\n\n\nAnswer: They are of the same length.\n\n\n\n\nImagine a pond that gets filled by an invasive species (like algae) that doubles in size every day. If the river becomes completely full on the 30th day, on which day was it half full?\n\n\n\n\n\n\nExample: Pond\n\n\n\n\n\nAnswer: Day 29.\n\n\n\nHow can keeping your fast, intuitive decisions in check with a slower, more reflective system help you avoid overconfidence — and make better choices over time?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nDouble Q-Learning addresses this bias by creating two action value estimates \\(Q_{1}(s,a)\\) and \\(Q_{2}(s,a)\\).\nWith equal likelihood, one action value estimate yields the maximization action \\(A_{t}\\) and the other provides the action value estimate \\(Q(S_{t}, A_{t})\\).\n\\[\nQ_{1}(S_{t},A_{t}) = Q_{1}(S_{t},A_{t}) + \\alpha [R_{t+1} + \\gamma Q_{2}(S_{t+1},\\max_{a} Q_{1}(S_{t+1},a)) - Q_{1}(S_{t},A_{t})]\n\\]\n\\[\nQ_{2}(S_{t},A_{t}) = Q_{2}(S_{t},A_{t}) + \\alpha [R_{t+1} + \\gamma Q_{1}(S_{t+1},\\max_{a} Q_{2}(S_{t+1},a)) - Q_{2}(S_{t},A_{t})]\n\\]\nThis dual-system model mirrors Double Q-learning:\n\nOne Q-estimator (\\(Q_1\\)) makes a quick action selection — like System 1.\nThe other Q-estimator (\\(Q_2\\)) does the critical evaluation — like System 2.\n\nThis separation reduces maximization bias, much like System 2 tempers System 1’s impulsive decisions.\n\n\n\nPseudocode\n\n\n\n\n\n\n\n\n\n\n\nMaximization bias is a maximization of actual action value estimates \\(Q(s,a)\\) is higher than those of the true action values \\(q(s,a)\\), leading to a bias.",
@@ -1069,8 +1069,8 @@
     ]
   },
   {
-    "objectID": "lecture6/lecture6-5.html",
-    "href": "lecture6/lecture6-5.html",
+    "objectID": "private/lecture6/lecture6-5.html",
+    "href": "private/lecture6/lecture6-5.html",
     "title": "6.5 (Optional) n-step Bootstrapping",
     "section": "",
     "text": "What if you waited a little longer before updating — not too soon, not too late? ⏱️\n\n\n\n\n\n\n\n\n\nn-step TD Prediction\n\n\n\nn-step Bootstrapping is a learning rule that is a combination of Monte Carlo and Temporal Difference ideas.\n\nLike Monte Carlo, n-step methods learn from experience.\nLike Temporal Difference, n-step methods bootstrap multiple time steps.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn-step SARSA\n\n\n\nn-step SARSA extends the standard SARSA algorithm to incorporate multi-step returns. Instead of updating based on a single-step transition, it utilizes an accumulated return over n steps, striking a balance between bias and variance.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn-step Tree Backup\n\n\n\nn-step Tree Backup is an extension of Q-learning that allows updates without the requirement of selecting an on-policy action. It generalizes the Expected SARSA algorithm by propagating multiple steps of information while weighting future actions by their probability under the policy.",
@@ -1080,8 +1080,8 @@
     ]
   },
   {
-    "objectID": "lecture7/lo.html",
-    "href": "lecture7/lo.html",
+    "objectID": "private/lecture7/lo.html",
+    "href": "private/lecture7/lo.html",
     "title": "Learning Objectives",
     "section": "",
     "text": "Learning Objectives for Lecture 7: Function Approximation (Sutton and Barto 2018) 🎯\n\n\n\n\nLet’s talk about Exam 1 and Final Project!\nValue Function Approximation.\nOn-Policy Approximation.\nLimitations of Off-Policy Approximation.\nMountainCarContinuous-v0 environment using gymnasium & numpy.\n\n\n\n\n\nTaxonomy of Reinforcement Learning\n\n\n\n\n\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement Learning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.",
@@ -1091,8 +1091,8 @@
     ]
   },
   {
-    "objectID": "lecture7/lecture7-1.html",
-    "href": "lecture7/lecture7-1.html",
+    "objectID": "private/lecture7/lecture7-1.html",
+    "href": "private/lecture7/lecture7-1.html",
     "title": "7.1 Value Function Approximation",
     "section": "",
     "text": "Types of Value Function Approximators\nAssume state \\(\\mathbf{s}\\) is represented by a vector of continuous values.\n\\[\n\\mathbf{s} = \\begin{bmatrix} s_1 \\\\ s_2 \\\\ \\vdots \\\\ s_n \\end{bmatrix}\n\\]\nwhere \\(s_i \\in \\mathbb{R}\\) for all \\(i = 1, 2, \\ldots, n\\)\nThere are many ways of constructing \\(\\hat{V}(s; \\mathbf{w})\\):\nWe will focus only on differentiable methods:\nThe purpose is to update our parameters \\(\\mathbf{w}\\) using mean-squared error (MSE) and stochastic gradient descent (SGD).",
@@ -1102,8 +1102,8 @@
     ]
   },
   {
-    "objectID": "lecture7/lecture7-1.html#types-of-value-function-approximators",
-    "href": "lecture7/lecture7-1.html#types-of-value-function-approximators",
+    "objectID": "private/lecture7/lecture7-1.html#types-of-value-function-approximators",
+    "href": "private/lecture7/lecture7-1.html#types-of-value-function-approximators",
     "title": "7.1 Value Function Approximation",
     "section": "",
     "text": "Ensemble methods (decision trees, nearest neighbors, etc.)\nFourier basis\nMuch more…\n\n\n\nLinear combination of features (today’s lecture)\nNeural networks (next lecture: DQN)",
@@ -1113,8 +1113,8 @@
     ]
   },
   {
-    "objectID": "lecture7/lecture7-1.html#updating-value-function-approximators",
-    "href": "lecture7/lecture7-1.html#updating-value-function-approximators",
+    "objectID": "private/lecture7/lecture7-1.html#updating-value-function-approximators",
+    "href": "private/lecture7/lecture7-1.html#updating-value-function-approximators",
     "title": "7.1 Value Function Approximation",
     "section": "Updating Value Function Approximators",
     "text": "Updating Value Function Approximators\nOur loss function will optimize for our parameter vector \\(\\mathbf{w}\\) while minimizing MSE between our approximate value \\(\\hat{V}(s; \\mathbf{w})\\) and our “true value” \\(V_{\\pi}(s)\\):\n\\[\nF(\\mathbf{w}_{t}) = \\mathbb{E}_{\\pi}[(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))^{2}]\n\\]\n\n\nRecall Mean Squared Error (MSE) for supervised learning:\n\\[\nF(\\mathbf{x}_{k}) = \\mathbb{E}[(\\mathbf{t}_{k} - \\mathbf{a}_{k})^2]\n\\]\nRecall Stochastic Gradient Descent (SGD) for supervised learning:\n\\[\n\\mathbf{x}_{k+1} = \\mathbf{x}_{k} - \\alpha \\nabla_{\\mathbf{x}_{k}} F(\\mathbf{x}_{k})\n\\]\nSGD update for parameters \\(\\mathbf{w}\\):\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\alpha(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t})\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\nPlug derivative of MSE loss into SGD equation:\n\\[\n\\begin{align}\n\\mathbf{w}_{t+1} &= \\mathbf{w}_{t} - \\alpha \\nabla_{\\mathbf{w}_{t}} F(\\mathbf{w}_{t}) \\\\[10pt]\n&= \\mathbf{w}_{t} - \\alpha (-2(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t})) \\\\[10pt]\n&= \\mathbf{w}_{t} + 2\\alpha(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t}) \\\\[10pt]\n&= \\mathbf{w}_{t} + \\alpha(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t})\n\\end{align}\n\\]",
@@ -1124,8 +1124,8 @@
     ]
   },
   {
-    "objectID": "lecture7/lecture7-1.html#state-preprocessing",
-    "href": "lecture7/lecture7-1.html#state-preprocessing",
+    "objectID": "private/lecture7/lecture7-1.html#state-preprocessing",
+    "href": "private/lecture7/lecture7-1.html#state-preprocessing",
     "title": "7.1 Value Function Approximation",
     "section": "State Preprocessing",
     "text": "State Preprocessing\nPrior to calculating \\(\\hat{V}(s; \\mathbf{w})\\), we must preprocess \\(\\mathbf{s}\\) to construct proper feature representations:\n\\[\n\\mathbf{f}(s) = \\begin{bmatrix} s_1 \\\\ s_2 \\\\ \\vdots \\\\ s_d \\end{bmatrix}\n\\]\nSome types of feature representations \\(\\mathbf{f}\\) include:\n\nOne-hot encoding\nPolynomials\nRadial basis functions\nState normalization (homework)\nTile coding (homework)\n\nState normalization ensures consistent scaling between \\(0\\) and \\(1\\):\n\\[\n\\mathbf{f}(s) = \\begin{bmatrix}\n\\frac{s_1 - \\text{lower bound}_{1}}{\\text{upper bound}_{1} - \\text{lower bound}_{1}} \\\\\n\\frac{s_2 - \\text{lower bound}_{2}}{\\text{upper bound}_{2} - \\text{lower bound}_{2}} \\\\\n\\vdots \\\\\n\\frac{s_d - \\text{lower bound}_{d}}{\\text{upper bound}_{d} - \\text{lower bound}_{d}}\n\\end{bmatrix}\n\\]\nTile coding is a one-hot representation for multi-dimensional continuous spaces that is flexible and computationally efficient.\n\\[\n\\mathbf{f}(s) = \\begin{bmatrix}\n\\delta(s, T_1) \\\\\n\\delta(s, T_2) \\\\\n\\vdots \\\\\n\\delta(s, T_d)\n\\end{bmatrix}\n\\text{where} \\ d \\ \\text{is the number of tilings}\n\\]\n\\[\n\\delta(s, T_i) =\n\\begin{cases}\n1 & \\text{if } s \\in T_i \\\\\n0 & \\text{otherwise}\n\\end{cases}\n\\]\n\n\n\n\n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nBased on your mathematical intuition using SGD, are we guaranteed convergence to a local or global minimum?\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\alpha(V_{\\pi}(S_{t}) - \\hat{V}(S_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{V}(S_{t}; \\mathbf{w}_{t})\n\\]\nHint: Think about Lecture 1\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nNo — because this is not supervised learning.\n\n\\(V_{\\pi}(S_t)\\) is not a true target, but an estimate based on samples or bootstrapping.\n\n\\(\\nabla_{\\mathbf{w}_t} \\hat{V}(S_t; \\mathbf{w}_t)\\) is a noisy gradient, not the true gradient of a fixed loss function.\n\n\n\n\n\n\n\n\nMoore, Andrew William. 1990. “Efficient Memory-Based Learning for Robot Control.” University of Cambridge.",
@@ -1135,8 +1135,8 @@
     ]
   },
   {
-    "objectID": "lecture7/lecture7-2.html",
-    "href": "lecture7/lecture7-2.html",
+    "objectID": "private/lecture7/lecture7-2.html",
+    "href": "private/lecture7/lecture7-2.html",
     "title": "7.2 On-Policy Function Approximation",
     "section": "",
     "text": "What if you could estimate how good a move is — even when the board is too large to memorize? 🎯\n\n\n\nApproximating state values is not sufficient to achieve control.\n\\[\n\\hat{V}(s; \\mathbf{w}) \\approx V_{\\pi}(s)\n\\]\n\n\n\n\n\n\nProblem\n\n\n\nWhat function should we focus on approximating in order to achieve control (approximate optimal policies \\(\\approx \\pi_*\\)) with continuous state information \\(\\mathbf{s}\\)?\n\n\n\n\n\n\n\n\nExample: MountainCar\n\n\n\nConsider the following OpenAI Gymnasium MountainCar environment (Moore 1990):\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWe need to approximate action-value functions.\n\\[\n\\hat{Q}(s,a; \\mathbf{w}) \\approx Q_{\\pi}(s,a)\n\\]\nIn doing so, we will incorporate previously learned techniques, such as SARSA from Temporal Difference learning to devise a learning algorithm.\n\n\nUpdating Action Value Function Approximators\nMSE loss for action values:\n\\[\nF(\\mathbf{w}_{t}) = \\mathbb{E}_{\\pi}[(Q_{\\pi}(S_{t},A_{t}) - \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t}))^{2}]\n\\]\nSGD update for parameters \\(\\mathbf{w}\\):\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\alpha(Q_{\\pi}(S_{t},A_{t}) - \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t})\n\\]\n\n\n\nTD Update\nFinally, to implement TD learning, we substitute \\(Q_{\\pi}(s,a)\\) for our TD targets at each step:\n\\[\n\\langle S_{0}, \\underbrace{\\ R_{1} + \\gamma \\hat{Q}(S_{1},A_{1}; \\mathbf{w}_{0})}_{\\text{TD-target for Initial State}}\\rangle, \\ ... \\ ,\\langle S_{T-1},\\underbrace{R_{T}}_{\\text{TD-target for Terminal State}}\\rangle\n\\]\nThus, our update equation for TD on-policy approximation:\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\alpha(R_{t+1} + \\gamma \\hat{Q}(S_{t+1},A_{t+1}; \\mathbf{w}_{t}) - \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t}))\\nabla_{\\mathbf{w}_{t}} \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t})\n\\]\n\n\n\nIllustration: Semi-Gradient SARSA\n\n\n\n\n\n\n\n\nPseudocode\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nHow can we summarize the Semi-Gradient SARSA update equation in 3 components?\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\underbrace{\\alpha}\\underbrace{(R_{t+1} + \\gamma \\hat{Q}(S_{t+1},A_{t+1}; \\mathbf{w}_{t}) - \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t}))}\\underbrace{\\nabla_{\\mathbf{w}_{t}} \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t})}\n\\]\n\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nThe update is a product of how much to learn, how wrong we were, and how to change.\n\\[\n\\mathbf{w}_{t+1} = \\mathbf{w}_{t} + \\underbrace{\\alpha}_{\\text{Learning Rate}}\\underbrace{(R_{t+1} + \\gamma \\hat{Q}(S_{t+1},A_{t+1}; \\mathbf{w}_{t}) - \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t}))}_{\\text{TD-Error}}\\underbrace{\\nabla_{\\mathbf{w}_{t}} \\hat{Q}(S_{t},A_{t}; \\mathbf{w}_{t})}_{\\text{Gradient}}\n\\]\n\n\n\n\n\n\n\n\n\nOff-Policy Function Approximation\n\n\n\n\n\nBaird’s Counterexample shows that even with linear function approximation, off-policy TD methods like Q-learning can diverge.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA real-world demonstration of this divergence: as training progresses, value estimates explode instead of converging.\nConvergence of control algorithms:\n\n\n\nAlgorithm\nTabular\nLinear\nNeural Networks\n\n\n\n\nMonte-Carlo Control\n✅\n(✅)\n❌\n\n\nSARSA\n✅\n(✅)\n❌\n\n\nQ-learning\n✅\n❌\n❌\n\n\n\n\n\n\n\n\n\n\nMoore, Andrew William. 1990. “Efficient Memory-Based Learning for Robot Control.” University of Cambridge.",
@@ -1146,8 +1146,8 @@
     ]
   },
   {
-    "objectID": "lecture8/lo.html",
-    "href": "lecture8/lo.html",
+    "objectID": "private/lecture8/lo.html",
+    "href": "private/lecture8/lo.html",
     "title": "Learning Objectives",
     "section": "",
     "text": "Learning Objectives for Lecture 8: Deep Q-Networks 🎯\n\n\n\n\nDeep Learning.\nDeep Q-Networks (DQN).\nALE/Breakout-v5 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
@@ -1157,8 +1157,8 @@
     ]
   },
   {
-    "objectID": "lecture8/lecture8-1.html",
-    "href": "lecture8/lecture8-1.html",
+    "objectID": "private/lecture8/lecture8-1.html",
+    "href": "private/lecture8/lecture8-1.html",
     "title": "8.1 Deep Learning",
     "section": "",
     "text": "Multi-Layered Perceptrons (MLPs) (Hagan et al. 2014)\nAssume state \\(\\mathsf{S}\\) is represented by a tensor of continuous values.\nA single parameter vector \\(\\mathbf{w}\\) is insufficient to learn useful representations of the state tensor \\(\\mathsf{S}\\).\nIn Reinforcement Learning, MLPs are commonly used when states are represented by continuous-valued vectors \\(\\mathbf{s}\\).",
@@ -1168,8 +1168,8 @@
     ]
   },
   {
-    "objectID": "lecture8/lecture8-1.html#multi-layered-perceptrons-mlps-hagan2014neural",
-    "href": "lecture8/lecture8-1.html#multi-layered-perceptrons-mlps-hagan2014neural",
+    "objectID": "private/lecture8/lecture8-1.html#multi-layered-perceptrons-mlps-hagan2014neural",
+    "href": "private/lecture8/lecture8-1.html#multi-layered-perceptrons-mlps-hagan2014neural",
     "title": "8.1 Deep Learning",
     "section": "",
     "text": "Illustration: MLP \\(\\theta\\)",
@@ -1179,8 +1179,8 @@
     ]
   },
   {
-    "objectID": "lecture8/lecture8-1.html#mlp-forward-propagation",
-    "href": "lecture8/lecture8-1.html#mlp-forward-propagation",
+    "objectID": "private/lecture8/lecture8-1.html#mlp-forward-propagation",
+    "href": "private/lecture8/lecture8-1.html#mlp-forward-propagation",
     "title": "8.1 Deep Learning",
     "section": "MLP Forward Propagation",
     "text": "MLP Forward Propagation\nAt the beginning of MLP forward propagation, let \\(\\mathbf{p}\\) be the input vector:\n\\[\n\\mathbf{a}^0 = \\mathbf{p}\n\\]\nThe input passes through \\(M-1\\) hidden layers:\n\\[\n\\mathbf{a}^{m+1} = \\mathbf{f}^{m+1}(\\mathbf{W}^{m+1} \\cdot \\mathbf{a}^m + \\mathbf{b}^{m+1}) \\quad \\text{for } m = 0, 1, \\dots, M-2\n\\]\n\n\n\\(\\mathbf{a}^m\\): Output vector of layer \\(m\\)\n\\(\\mathbf{W}^{m+1}\\): Weight matrix of layer \\(m+1\\)\n\\(\\mathbf{b}^{m+1}\\): Bias vector of layer \\(m+1\\)\n\\(\\mathbf{f}^{m+1}()\\): Activation function of layer \\(m+1\\)\nFor the final (output) layer \\(M\\):\n\\[\n\\mathbf{a}^M = \\text{softmax}(\\mathbf{W}^{M} \\cdot \\mathbf{a}^{M-1} + \\mathbf{b}^{M})\n\\]\n\n\n\\(\\mathbf{a}^{M-1}\\): Output vector of the last hidden layer\n\\(\\mathbf{W}^M\\), \\(\\mathbf{b}^M\\): Weights and bias for output layer\n\\(\\text{softmax}()\\): Softmax activation function\n\nMLP Backpropagation\nIn MLP backpropagation, the sensitivity of the output layer is:\n\\[\n\\mathbf{s}^M = \\mathbf{a} - \\mathbf{t}\n\\]\n\n\n\\(\\mathbf{s}^M\\): Sensitivity of the output layer\n\\(\\mathbf{t}\\): Target class vector\nTo update sensitivities for preceding layers:\n\\[\n\\mathbf{s}^m = \\mathbf{F}^m \\cdot \\mathbf{n}^m \\cdot \\mathbf{W}^{m+1^\\top} \\cdot \\mathbf{s}^{m+1} \\quad \\text{for } m = M-1, \\dots, 2, 1\n\\]\n\n\n\\(\\mathbf{s}^m\\): Sensitivity of layer \\(m\\)\n\\(\\mathbf{F}^m\\): Derivative of activation function of layer \\(m\\)\n\\(\\mathbf{n}^m\\): Input vector to layer \\(m\\)\n\\(\\mathbf{W}^{m+1^\\top}\\): Transpose of weight matrix of layer \\(m+1\\)\n\\(\\mathbf{s}^{m+1}\\): Sensitivity of layer \\(m+1\\)\n\n\nMLP Weight and Bias Updates\nThe weights are updated using the rule:\n\\[\n\\mathbf{W}_{k+1}^m = \\mathbf{W}_k^m - \\alpha \\, \\mathbf{s}^m \\cdot (\\mathbf{a}^{{m-1}^\\top})\n\\]\n\n\n\\(\\mathbf{W}_k^m\\): Weight matrix of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{W}_{k+1}^m\\): Weight matrix at iteration \\(k+1\\)\n\\(\\mathbf{s}^m\\): Sensitivity of layer \\(m\\)\n\\(\\mathbf{a}^{{m-1}^\\top}\\): Transpose of the output from layer \\(m-1\\)\n\\(\\alpha\\): Learning rate\nThe biases are updated as:\n\\[\n\\mathbf{b}_{k+1}^m = \\mathbf{b}_k^m - \\alpha \\, \\mathbf{s}^m\n\\]\n\n\n\\(\\mathbf{b}_k^m\\): Bias vector of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{b}_{k+1}^m\\): Bias vector at iteration \\(k+1\\)",
@@ -1190,8 +1190,8 @@
     ]
   },
   {
-    "objectID": "lecture8/lecture8-1.html#convolutional-neural-networks-cnns-nndesigndeeplearning2024",
-    "href": "lecture8/lecture8-1.html#convolutional-neural-networks-cnns-nndesigndeeplearning2024",
+    "objectID": "private/lecture8/lecture8-1.html#convolutional-neural-networks-cnns-nndesigndeeplearning2024",
+    "href": "private/lecture8/lecture8-1.html#convolutional-neural-networks-cnns-nndesigndeeplearning2024",
     "title": "8.1 Deep Learning",
     "section": "Convolutional Neural Networks (CNNs) (Martin T. Hagan 2024)",
     "text": "Convolutional Neural Networks (CNNs) (Martin T. Hagan 2024)\nIn Reinforcement Learning, CNNs are commonly used when states are represented by continuous-valued tensors \\(\\mathsf{S}\\).\n\n\n\n\n\n\nIllustration: CNN \\(\\theta\\)",
@@ -1201,8 +1201,8 @@
     ]
   },
   {
-    "objectID": "lecture8/lecture8-1.html#cnn-forward-propagation",
-    "href": "lecture8/lecture8-1.html#cnn-forward-propagation",
+    "objectID": "private/lecture8/lecture8-1.html#cnn-forward-propagation",
+    "href": "private/lecture8/lecture8-1.html#cnn-forward-propagation",
     "title": "8.1 Deep Learning",
     "section": "CNN Forward Propagation",
     "text": "CNN Forward Propagation\nAt the beginning of CNN forward propagation, let \\(\\mathsf{P}\\) be the input tensor:\n\\[\n\\mathsf{A}^0 = \\mathsf{P}\n\\]\nFor each convolutional layer, the input passes through a convolutional kernel followed by a non-linear activation function:\n\\[\n\\mathsf{A}^m = \\mathbf{f}^m\\left( \\mathbf{W}^m \\ast \\mathsf{A}^{m-1} + \\mathbf{B}^m \\right) \\quad \\text{for } m = 1, 2, \\dots, M\n\\]\n\n\n\\(\\mathsf{A}^{m-1}\\): Input to layer \\(m\\)\n\\(\\mathbf{W}^m\\): Convolutional kernel(s) at layer \\(m\\)\n\\(\\mathbf{B}^m\\): Bias tensor at layer \\(m\\)\n\\(\\mathbf{f}^m()\\): Activation function (e.g., ReLU) at layer \\(m\\)\n\\(\\ast\\): Convolution operator\nOptionally, a pooling operation can be applied after certain convolutional layers:\n\\[\n\\mathsf{A}^m_{\\text{pool}} = \\boxplus^{\\text{pool}} \\mathsf{A}^m\n\\]\n\n\n\\(\\boxplus^{\\text{pool}}\\): Pooling operator (e.g., max or average) to reduce spatial dimensions\nFinally, we flatten the final feature maps into a vector for input into the fully connected layers:\n\\[\n\\mathbf{a}^{\\text{flat}} = \\text{flatten}(\\mathsf{A}^M)\n\\]\n\n\n\\(\\text{flatten}()\\): Converts the final 3D tensor into a 1D feature vector\n\\(\\mathsf{A}^M\\): Output of the final convolutional layer\nThis flattened vector then serves as input to the MLP component:\n\\[\n\\mathbf{a}^0_{\\text{MLP}} = \\mathbf{a}^{\\text{flat}}\n\\]",
@@ -1212,8 +1212,8 @@
     ]
   },
   {
-    "objectID": "lecture8/lecture8-1.html#cnn-backpropagation",
-    "href": "lecture8/lecture8-1.html#cnn-backpropagation",
+    "objectID": "private/lecture8/lecture8-1.html#cnn-backpropagation",
+    "href": "private/lecture8/lecture8-1.html#cnn-backpropagation",
     "title": "8.1 Deep Learning",
     "section": "CNN Backpropagation",
     "text": "CNN Backpropagation\nDuring CNN backpropagation, we compute gradients of the loss function \\(F\\) with respect to various intermediate variables.\n\\[\n\\mathsf{dA}^m \\equiv \\frac{\\partial F}{\\partial \\mathsf{A}^m}, \\quad\n\\mathsf{dZ}^m \\equiv \\frac{\\partial F}{\\partial \\mathsf{Z}^m}, \\quad\n\\mathbf{dW}^m \\equiv \\frac{\\partial F}{\\partial \\mathbf{W}^m}, \\quad\n\\mathbf{dB}^m \\equiv \\frac{\\partial F}{\\partial \\mathbf{B}^m}\n\\]\n\n\n\\(\\mathsf{A}^m\\): Activated output of layer \\(m\\)\n\\(\\mathsf{Z}^m\\): Pre-activation output of layer \\(m\\) (before activation function)\n\\(\\mathbf{W}^m\\): Convolutional kernels of layer \\(m\\)\n\\(\\mathbf{B}^m\\): Bias tensor of layer \\(m\\)\n\nCNN Weight and Bias Updates\nThe convolutional weights are updated using gradient descent as follows:\n\\[\n\\mathbf{W}_{k+1}^m = \\mathbf{W}_k^m - \\alpha \\, \\mathbf{dW}^m\n\\]\n\n\n\\(\\mathbf{W}_k^m\\): Convolutional filter(s) of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{W}_{k+1}^m\\): Updated filter(s) at iteration \\(k+1\\)\n\\(\\mathbf{dW}^m\\): Gradient of the loss w.r.t. the weights of layer \\(m\\)\n\\(\\alpha\\): Learning rate\nThe biases are updated similarly:\n\\[\n\\mathbf{B}_{k+1}^m = \\mathbf{B}_k^m - \\alpha \\, \\mathbf{dB}^m\n\\]\n\n\n\\(\\mathbf{B}_k^m\\): Bias tensor of layer \\(m\\) at iteration \\(k\\)\n\\(\\mathbf{B}_{k+1}^m\\): Updated bias tensor at iteration \\(k+1\\)\n\\(\\mathbf{dB}^m\\): Gradient of the loss w.r.t. the biases of layer \\(m\\)\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nAssume that our state tensor \\(\\mathsf{S}\\) is an image.\nBased on your intuition, do you think it makes sense to use raw pixels as input instead of preprocessed state features?\n\n\n\n\\(\\mathsf{S} =\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nIntuitively, using raw pixels seems counterintuitive for reinforcement learning because individual pixel values have no inherent meaning about state quality - traditional RL features like “location in GridWorld map” or “position and velocity” seem much more informative for value estimation than RGB intensities.\nHowever, neural networks can help us learn useful representations directly from raw pixels. By stacking multiple layers, neural networks can automatically extract hierarchical features—such as edges, shapes, and objects—from the image input. This enables the agent to learn which aspects of the raw state are important for decision making, without requiring manual feature engineering.\n\n\n\n\n\n\n\nHagan, Martin T., Howard B. Demuth, Mark H. Beale, and Orlando De Jesús. 2014. Neural Network Design. 2nd ed. Martin Hagan. https://hagan.okstate.edu/NNDesign.pdf.\n\n\nMartin T. Hagan, Amir Jafari. 2024. “NNDesignDeepLearning.” https://github.com/NNDesignDeepLearning/NNDesignDeepLearning.",
@@ -1223,8 +1223,8 @@
     ]
   },
   {
-    "objectID": "lecture8/lecture8-2.html",
-    "href": "lecture8/lecture8-2.html",
+    "objectID": "private/lecture8/lecture8-2.html",
+    "href": "private/lecture8/lecture8-2.html",
     "title": "8.2 Deep Q-Networks (DQN)",
     "section": "",
     "text": "What if a neural network could learn to act — one game, one pixel, one reward at a time? 🕹️\n\n\n\nNeural networks \\(\\theta\\) such as MLPs and CNNs can help us learn representations of state tensors \\(\\mathsf{S}\\).\n\n\n\n\\(\\mathsf{S} =\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem\n\n\n\nNow we just need an algorithm that:\n\nLeverages neural networks \\(\\theta\\).\nLeverages a classical Reinforcement Learning method (TD: Q-learning).\nImplements batch form.\nEmpirically performs well.\n\n\n\n\n\n\n\n\n\nExample: Breakout\n\n\n\nConsider the following Atari Breakout environment (Bellemare et al. 2013):\n\n\n\nSuppose we set our batch to \\(4\\).\nThe state information \\(\\mathsf{S}_{\\text{batch}}\\) is typically represented as a stack of four consecutive tensor image frames \\(\\mathsf{S}\\), capturing temporal dynamics and motion across time:\n\\[\n\\mathsf{S}_{\\text{batch}} = \\begin{bmatrix}\n\\mathsf{S}_t \\gets \\text{frame at time } t \\\\\n\\mathsf{S}_{t-1} \\gets \\text{frame at time } t-1 \\\\\n\\mathsf{S}_{t-2} \\gets \\text{frame at time } t-2 \\\\\n\\mathsf{S}_{t-3} \\gets \\text{frame at time } t-3 \\\\\n\\end{bmatrix}\n\\]\nThe environment has a discrete action space \\(\\mathcal{A}\\):\n\\[\n\\mathcal{A} = \\{0 \\gets \\text{Do nothing}, 1 \\gets \\text{Fire}, 2 \\gets \\text{Move right}, 3 \\gets \\text{Move left}\\}\n\\]\nThe environment’s state transition dynamics \\(P(s’, r \\mid s, a)\\) are governed by a physics engine that updates the positions of the ball, paddle, and bricks based on collisions and the selected action. These dynamics are deterministic but complex due to pixel-based changes.\nThe reward \\(R\\) is defined by the number of bricks destroyed:\n\nHitting and destroying a brick typically yields a reward of \\(+1\\).\nMissing the ball (letting it fall) typically ends a life but gives \\(0\\) reward.\n\nThe episode ends \\(d\\) (dones) if either of the following happens:\n\nTermination: The agent loses all lives (typically 5).\nTruncation: The agent clears all bricks or reaches a built-in time limit (varies by implementation).\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n  Google DeepMind 2013 (Mnih et al. 2013)  Link to Research Paper\n\n\n\nTD Update\nTo implement Q-learning, substitute \\(Q_{\\pi}(s,a)\\) for our TD targets similar to what we did for the Semi-Gradient SARSA algorithm:\n\\[\n\\langle S_{0}, \\ R_{1} + \\gamma \\max_{a} \\hat{Q}(S_{1},a; \\theta_{0})\\rangle, \\ ... \\ ,\\langle S_{T-1},R_{T}\\rangle\n\\]\nUsing SGD our update would be:\n\\[\n\\nabla_{\\theta} F(\\theta_{t}) = (R_{t+1} + \\gamma \\max_{a} \\hat{Q}(S_{t+1},a; \\theta_{t}) - \\hat{Q}(S_{t},A_{t}; \\theta_{t}))\\nabla_{\\theta} \\hat{Q}(S_{t},A_{t}; \\theta_{t})\n\\]\n\n\n\nBatch Form Updates\nExperience replay enables learning from mini-batches of past experiences, improving data efficiency and stability.\n\n\n\n\n\n\n\n\nFixing Target Updates\nFixed targets stabilize training by holding target values constant for several updates:\n\\[\n\\hat{Q}(s,a; \\theta^{-})\n\\]\nBy fixing targets our new SGD update equation would be:\n\\[\n\\nabla_\\theta F(\\theta_{t}) = (R_{t+1} + \\gamma \\max_{a} \\hat{Q}(S_{t+1},a; \\theta^{-}_{t}) - \\hat{Q}(S_{t},A_{t}; \\theta_{t}))\\nabla_\\theta \\hat{Q}(S_{t},A_{t}; \\theta_{t})\n\\]\n\n\n\nIllustration: DQN\n\n\n\n\n\n\n\n\nPseudocode\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nIs there a mistake with the following loss function for DQN?\n\\[\nF(\\theta_{t}) = (\\text{TD-Target}_{j} - \\hat{Q}(S_{j+1},a; \\theta_{t}))^{2}\n\\]\nWhy does this suggest that we are updating the MSE of a scalar and a vector?\nWhat is actually happening here during the gradient update step?\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThere is no mistake in the loss function:\n\\[\nF(\\theta_{t}) = (\\text{TD-Target}_{j} - \\hat{Q}(S_{j+1},a; \\theta_{t}))^{2}\n\\]\nbut it’s important to understand that in implementation, the Q-network outputs a full vector \\(\\hat{Q}(S_j, \\cdot; \\theta_t) \\in \\mathbb{R}^{|\\mathcal{A}|}\\), and we construct a target vector of the same shape. All values in this target vector match the predicted Q-values except at index \\(A_j\\), where we insert the TD target:\n\\[\n\\text{TD-Target}_{j} = R_{j+1} + \\gamma \\text{max}_a \\hat{Q}(S_{j+1},a; \\theta_{t}^-)\n\\]\nThe loss is then computed as the MSE between the predicted vector and the modified target vector. This allows efficient vectorized computation while ensuring that only the entry corresponding to action \\(A_j\\) contributes to the gradient update.\n\n\n\n\n\n\n\nBellemare, Marc G, Yavar Naddaf, Joel Veness, and Michael Bowling. 2013. “The Arcade Learning Environment: An Evaluation Platform for General Agents.” Journal of Artificial Intelligence Research 47: 253–79.\n\n\nMnih, Volodymyr, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis Antonoglou, Daan Wierstra, and Martin Riedmiller. 2013. “Playing Atari with Deep Reinforcement Learning.” https://arxiv.org/abs/1312.5602.",
@@ -1234,8 +1234,8 @@
     ]
   },
   {
-    "objectID": "lecture9/lo.html",
-    "href": "lecture9/lo.html",
+    "objectID": "private/lecture9/lo.html",
+    "href": "private/lecture9/lo.html",
     "title": "Learning Objectives",
     "section": "",
     "text": "Learning Objectives for Lecture 9: Policy Gradients 🎯\n\n\n\n\nPolicy Gradients.\nCartPole-v1 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
@@ -1245,8 +1245,8 @@
     ]
   },
   {
-    "objectID": "lecture9/lecture9-1.html",
-    "href": "lecture9/lecture9-1.html",
+    "objectID": "private/lecture9/lecture9-1.html",
+    "href": "private/lecture9/lecture9-1.html",
     "title": "9.1 Policy Gradient Theorem",
     "section": "",
     "text": "Stochastic Gradient Ascent\nDQN is unstable and does not guarantee convergence.\nFollowing deterministic or \\(\\epsilon\\)-soft policies is not always optimal.\nPolicy gradient algorithms search for a local maximum in \\(V^{\\pi_{\\theta}}(s)\\) using stochastic gradient ascent (SGA):\n\\[\n\\Delta \\theta = \\alpha \\nabla_{\\theta} V(S_{0}; \\theta)\n\\]",
@@ -1256,8 +1256,8 @@
     ]
   },
   {
-    "objectID": "lecture9/lecture9-1.html#stochastic-gradient-ascent",
-    "href": "lecture9/lecture9-1.html#stochastic-gradient-ascent",
+    "objectID": "private/lecture9/lecture9-1.html#stochastic-gradient-ascent",
+    "href": "private/lecture9/lecture9-1.html#stochastic-gradient-ascent",
     "title": "9.1 Policy Gradient Theorem",
     "section": "",
     "text": "\\(S_0\\) denotes the starting state of the process or episode. Analyzing the value at the initial state is important because it represents the expected return starting from the beginning of an episode. As opposed to a general state \\(s\\).",
@@ -1267,8 +1267,8 @@
     ]
   },
   {
-    "objectID": "lecture9/lecture9-1.html#policy-gradient-theorem",
-    "href": "lecture9/lecture9-1.html#policy-gradient-theorem",
+    "objectID": "private/lecture9/lecture9-1.html#policy-gradient-theorem",
+    "href": "private/lecture9/lecture9-1.html#policy-gradient-theorem",
     "title": "9.1 Policy Gradient Theorem",
     "section": "Policy Gradient Theorem",
     "text": "Policy Gradient Theorem\nAssume \\(\\pi\\) is differentiable where it is non-zero.\nIdeally, we want to compute the gradient \\(\\nabla_{\\theta} V(S_{0}; \\theta)\\) analytically.\n\n\nTo derive something analytically means to find an exact mathematical expression for it, rather than estimating it through sampling or approximation.\n\\[\nV(S_{0}; \\theta) = \\sum_{a} \\pi(a|S_{0}; \\theta) Q(S_{0},a; \\theta)\n\\]\n\nStep 1: Express Value Function in Terms of Trajectories\nThe value function \\(V(S_{0}; \\theta)\\) can also be expressed in terms of trajectories \\(\\tau\\):\n\\[\n\\begin{align*}\n    V(S_{0}; \\theta) &= \\sum_{a} \\pi(a|S_{0}; \\theta) Q(S_{0},a; \\theta) \\\\\n    &= \\sum_{\\tau} \\underbrace{P(\\tau; \\theta)}_{\\text{Probability of Trajectory}} \\ \\underbrace{R(\\tau)}_{\\text{Reward of Trajectory}}\n\\end{align*}\n\\]\n\n\nRecall that a trajectory \\(\\tau\\) is the tuple.\n\\(\\tau = (S_{0},A_{0},R_{1}, ..., S_{T-1},A_{T-1},R_{T})\\)\n\n\nStep 2: Leverage Likelihood Ratios\nNow we can take the gradient with respect to neural network parameters \\(\\theta\\) using likelihood ratios:\n\\[\n\\nabla_\\theta V(\\theta) = \\sum_{\\tau} P(\\tau; \\theta) R(\\tau) \\nabla_\\theta \\text{log} P(\\tau; \\theta)\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\begin{align*}\n    \\nabla_\\theta V(\\theta) &= \\nabla_\\theta \\sum_{\\tau} P(\\tau; \\theta) R(\\tau) \\\\\n    &= \\sum_{\\tau} \\nabla_\\theta P(\\tau; \\theta) R(\\tau) \\quad \\gets \\text{Swap} \\sum \\text{and} \\nabla \\\\\n    &= \\sum_{\\tau} R(\\tau) \\nabla_\\theta P(\\tau; \\theta) \\quad \\gets \\text{Switch the order of multiplication} \\\\\n    &= \\sum_{\\tau} R(\\tau) \\nabla_\\theta P(\\tau; \\theta) \\frac{P(\\tau; \\theta)}{P(\\tau; \\theta)} \\quad \\gets \\text{Multiply by} \\ 1 \\\\\n    &= \\sum_{\\tau} R(\\tau) P(\\tau; \\theta)  \\nabla_\\theta \\text{log} P(\\tau; \\theta) \\quad \\gets \\text{Likelihood Ratio} \\ \\frac{\\nabla_\\theta P(\\tau; \\theta)}{P(\\tau; \\theta)} = \\nabla_\\theta \\text{log} P(\\tau; \\theta)\\\\\n    &= \\sum_{\\tau} P(\\tau; \\theta) R(\\tau) \\nabla_\\theta \\text{log} P(\\tau; \\theta)\n\\end{align*}\n\\]\n\n\n\n\n\nStep 3: Approximate Empirical Gradient\nWe can approximate the expectation using an empirical estimate for \\(m\\) sample trajectories:\n\\[\n\\nabla_{\\theta} V(\\theta) \\approx \\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1} R(\\tau^{i}) \\nabla_{\\theta} \\log P(\\tau^{i}; \\theta)\n\\]\nProblem is that we do not necessarily know the dynamics of trajectories \\(\\nabla_\\theta \\text{log} P(\\tau^{i}; \\theta)\\)\n\n\nStep 4: Decompose Dynamic Function\nLuckily we can decompose the dynamics term into states and actions:\n\\[\n\\nabla_\\theta \\text{log} P(\\tau^{i}; \\theta) = \\sum^{T-1}_{t=0} \\text{log} \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta)\n\\]\n\n\n\n\n\n\nDerivation\n\n\n\n\n\n\\[\n\\begin{align*}\n    \\hspace{-0.7cm} \\nabla_\\theta \\text{log} P(\\tau^{i}; \\theta) &= \\nabla_\\theta \\text{log} [\\underbrace{\\mu(S_{0})}_{\\text{Initial State}} \\prod^{T-1}_{t=0} \\underbrace{\\pi(A_{t}|S_{t};\\theta)}_{\\text{Policy}} \\underbrace{P(S_{t+1}|S_{t},A_{t})}_{\\text{Dynamic Function}}] \\\\\n    \\hspace{-0.7cm} &= \\nabla_\\theta [\\text{log}\\mu(S_{0}) + \\text{log}\\sum^{T-1}_{t=0} \\pi(A_{t}|S_{t};\\theta) + \\text{log} P(S_{t+1}|S_{t},A_{t})] \\gets \\text{Distribute log} \\\\\n    \\hspace{-0.7cm} &= \\underbrace{\\nabla_\\theta \\text{log}\\mu(S_{0})}_{=0} + \\nabla_\\theta \\text{log}\\sum^{T-1}_{t=0} \\pi(A_{t}|S_{t};\\theta) + \\underbrace{\\nabla_\\theta \\text{log} P(S_{t+1}|S_{t},A_{t})}_{=0} \\\\\n    \\hspace{-0.7cm} &= \\sum^{T-1}_{t=0} \\text{log} \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta)\n\\end{align*}\n\\]\n\n\n\nAnd we arrive to a term that does not depend on any dynamics, which we call the score function.\n\n\n\n\n\n\nPolicy Gradient Theorem\n\n\n\nLet \\(\\pi(a|s;\\theta)\\) be a differentiable policy. The gradient of the expected reward \\(F(\\theta)\\) with respect to the policy parameters \\(\\theta\\) is given by:\n\\[\n\\nabla_\\theta F(\\theta) = \\mathbb{E}_{\\pi_\\theta} \\left[\\nabla_\\theta \\log \\pi(a|s;\\theta) Q^{\\pi_\\theta}(s, a)\\right]\n\\]",
@@ -1278,8 +1278,8 @@
     ]
   },
   {
-    "objectID": "lecture9/lecture9-2.html",
-    "href": "lecture9/lecture9-2.html",
+    "objectID": "private/lecture9/lecture9-2.html",
+    "href": "private/lecture9/lecture9-2.html",
     "title": "9.2 Addressing Sparse Rewards",
     "section": "",
     "text": "What if you had to learn from signals that show up only rarely — or not at all for a while? 🌫️\n\n\n\nBefore we can apply policy gradient methods effectively, we first need to solve the problem of high variance in the reward estimate:\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1} R(\\tau^{i}) \\sum^{T-1}_{t=0} \\text{log} \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta)\n\\]\n\n\n\n\n\n\nProblem\n\n\n\nHow can we learn effective policies when reward signals are sparse and only received at the end of long trajectories?\n\n\n\n\n\n\n\n\nExample: CartPole\n\n\n\nConsider the following CartPole environment (Barto, Sutton, and Anderson 1983):\n\n\n\nThe state information \\(\\mathbf{s}\\) is now the following vector:\n\\[\n\\mathbf{s} = \\begin{bmatrix} cp \\in (-4.8,4.8) \\gets \\text{Cart Position} \\\\ cv \\in (-\\inf,\\inf) \\gets \\text{Cart Velocity} \\\\ pa \\in (\\approx -0.418 \\ \\text{rad}(-24°),\\approx 0.418 \\ \\text{rad}(-24°)) \\gets \\text{Pole Angle} \\\\ pav_t \\in (-\\inf,\\inf) \\gets \\text{Pole Angular Velocity} \\\\ \\end{bmatrix}\n\\]\nThe environment has a discrete action space \\(\\mathcal{A}\\):\n\\[\n\\mathcal{A} = \\{0 \\gets \\text{Push cart to the left}, 1 \\gets \\text{Push cart to the right}\\}\n\\]\nThe environment’s state transition dynamics \\(P(s’, r \\mid s, a)\\) are calculated using classical mechanics and Euler Method:\n\\[\n\\begin{align}\n    g &= 9.8 \\quad \\gets \\text{gravity} \\\\\n    m &= 0.1 \\quad \\gets \\text{pole mass} \\\\\n    M &= 1.0 \\quad \\gets \\text{cart mass} \\\\\n    l &= 0.5 \\quad \\gets \\text{half pole length} \\\\\n    \\tau &= 0.02 \\quad \\gets \\text{time step} \\\\\n\\end{align}\n\\]\nAngular Acceleration:\n\\[\n\\ddot{pa_t} = \\frac{\ng \\sin(pa_t) + \\cos(pa_t) \\left(-\\text{action} - m \\cdot l \\cdot pav_t^2 \\sin(pa_t)\\right)/(M + m)\n}{\nl \\left(\\frac{4}{3} - \\frac{m \\cos^2(pa_t)}{M + m} \\right)\n}\n\\]\nCart acceleration:\n\\[\n\\ddot{cv_t} = \\frac{\n\\text{action} + m \\cdot l \\left(pav_t^2 \\sin(pa_t) - \\ddot{p}_a \\cos(pa_t)\\right)\n}{M + m}\n\\]\nEuler integration:\n\\[\n\\begin{align}\ncp_{t+1} &= cp_t + \\tau \\cdot cv_t \\\\\ncv_{t+1} &= cv_t + \\tau \\cdot \\ddot{cv_t} \\\\\npa_{t+1} &= pa_t + \\tau \\cdot pav_t \\\\\npav_{t+1} &= pav_t + \\tau \\cdot \\ddot{pa_t}\n\\end{align}\n\\]\nDefault Reward Function:\nSince the goal is to keep the pole upright for as long as possible, by default, a reward of \\(+1\\) is given for every step taken, including the termination step. The default reward threshold is \\(500\\) for v1 and \\(200\\) for v0 due to the time limit on the environment.\nSparse Rewards:\nIf sutton_barto_reward=True, then a reward of \\(0\\) is awarded for every non-terminating step and \\(-1\\) for the terminating step. As a result, the reward threshold is \\(0\\) for v0 and v1.\nThe episode ends \\(d\\) (dones) if either of the following happens:\n\nTermination: Pole Angle is greater than \\(\\pm12°\\).\nTermination: Cart Position is greater than \\(\\pm2.4\\) (center of the cart reaches the edge of the display).\nTruncation: Episode length is greater than \\(500\\) (\\(200\\) for v0).\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nTo face the problem of sparse rewards, we will introduce two key ideas :\n\nLeveraging temporal structure.\nBaselines.\n\n\n\n1. Leveraging the Temporal Structure\nInstead of multiplying the sum of rewards over a entire trajectory by the score function:\n\\[\n\\begin{align*}\n    \\hat{g} &= \\frac{1}{m} \\sum^{m}_{i = 1} R(\\tau^{i}) \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\\\\n    &= \\frac{1}{m} \\sum^{m}_{i = 1} \\sum^{T-1}_{t=0} r^{i}_t \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta)\n\\end{align*}\n\\]\nWe only multiply the sum of rewards relevant to the score function for each time-step:\n\\[\n\\begin{align*}\n    \\hat{g} &= \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\sum^{T-1}_{t' = t} r^{i}_{t'}\n\\end{align*}\n\\]\n\n\n\n2. Baselines\nBaselines \\(b(s)\\) are unbiased estimators that are solely functions of states.\nThe goal of a baseline is to mimic an expected reward for the sum of rewards for all time-steps.\n\\[\nb(s_t) \\approx \\mathbb{E}[r_t + r_{t+1} + ... + r_{T-1}]\n\\]\nThis would increase the score function proportionally to how much returns are better than expected:\n\\[\n\\begin{align*}\n    \\hat{g} &= \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s))\n\\end{align*}\n\\]\nAnother way of denoting the difference between the sum of rewards and the baseline is as an advantage estimate \\(\\hat{A}_t\\):\n\\[\n\\begin{align*}\n    \\hat{g} &= \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s)) \\\\\n    &= \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\sum^{T-1}_{t' = t} (r^{i}_{t'} - \\underbrace{V_{\\phi}(s)}_{\\text{Baseline}}) \\\\\n    &= \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\ \\hat{A}_{t}\n\\end{align*}\n\\]\nThere are many ways to represent a baseline, and designing effective baselines remains an open research question. In practice, \\(V_{\\phi}(s)\\) is typically a value function approximated by a neural network \\(\\phi\\).\n\n\n\n\n\n\n\n\nBarto, Andrew G, Richard S Sutton, and Charles W Anderson. 1983. “Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problems.” Technical Report, Institute for Cybernetic Studies, University of Massachusetts. https://psycnet.apa.org/record/1984-25798-001.",
@@ -1289,8 +1289,8 @@
     ]
   },
   {
-    "objectID": "lecture9/lecture9-3.html",
-    "href": "lecture9/lecture9-3.html",
+    "objectID": "private/lecture9/lecture9-3.html",
+    "href": "private/lecture9/lecture9-3.html",
     "title": "9.3 Action Selections",
     "section": "",
     "text": "What if every choice you made wasn’t based on value — but came straight from your instinct? 🎲\n\n\n\nNow that we have a robust empirical gradient:\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\ \\hat{A}_{t}\n\\]\n\n\n\n\n\n\nProblem\n\n\n\nIf the policy \\(\\pi(A_{t}|S_{t}, \\theta)\\) is parametrized by a neural network \\(\\theta\\), how do we select actions in action spaces \\(\\mathcal{A}\\) that are discrete or continuous?\nHint: Think about Lecture 8\n\n\n\n\n\n\n\n\nExample: Pusher\n\n\n\nConsider the following Pusher MuJoCo environment (Todorov, Erez, and Tassa 2012):\n\n\n\nThe environment has a continuous action space \\(\\mathcal{A}\\):\n\\[\n\\mathcal{A} = \\begin{bmatrix} \\text{Rotation of the panning the shoulder} \\in (-2,2) \\\\\n                              \\text{Rotation of the shoulder lifting joint} \\in (-2,2) \\\\\n                              \\text{Rotation of the shoulder rolling joint} \\in (-2,2) \\\\\n                              \\text{Rotation of hinge joint that flexed the elbow} \\in (-2,2) \\\\\n                              \\text{Rotation of hinge that rolls the forearm} \\in (-2,2) \\\\\n                              \\text{Rotation of flexing the wrist} \\in (-2,2) \\\\\n                              \\text{Rotation of rolling the wrist} \\in (-2,2) \\\\\n                \\end{bmatrix}\n\\]\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nTo select actions in action spaces \\(\\mathcal{A}\\) that are discrete or continuous, we use the following policies:\n\nDiscrete \\(\\mathcal{A}\\): Soft-max Policy\nContinuous \\(\\mathcal{A}\\): Gaussian Policy\n\n\n\nDiscrete Action Selection: Soft-max Policy\nGiven a state \\(s\\), the policy network outputs a vector of logits \\(\\theta_{\\text{logits}}(s)\\), one for each possible action. The probability of selecting action \\(a\\) is given by the soft-max function:\n\\[\n\\pi(a|s;\\theta) = \\frac{\\exp(\\theta_{\\text{logits}}(s)[a])}{\\sum_{a'} \\exp(\\theta_{\\text{logits}}(s)[a'])} \\quad \\forall a \\in \\mathcal{A}\n\\]\nTo select an action, sample \\(a\\) from this categorical distribution.\n\n\n\nContinuous Action Selection: Gaussian Policy\nGiven a state \\(s\\), the policy outputs parameters of a Gaussian distribution over actions:\n\\[\n\\begin{align*}\n  \\pi(a|s; \\theta)\n  &= \\frac{1}{\\sqrt{2\\pi \\sigma^2(s)[a]}}\n     \\exp\\left(-\\frac{(a - \\mu(s)[a])^2}{2 \\sigma^2(s)[a]}\\right) \\\\\n  &=  \n     \\begin{bmatrix}\n       \\mu_1(s) & \\mu_2(s) & \\cdots & \\mu_{|\\mathcal{A}|}(s) \\\n       \\sigma_1(s) & \\sigma_2(s) & \\cdots & \\sigma_{|\\mathcal{A}|}(s)\n     \\end{bmatrix} \\quad \\forall a \\in \\mathcal{A}\n\\end{align*}\n\\]\nTo select an action, sample \\(a\\) from the Gaussian distribution \\(\\mathcal{N}(\\mu(s), \\sigma^2(s))\\) output by the policy network.\n\n\n\n\n\n\n\n\nTodorov, Emanuel, Tom Erez, and Yuval Tassa. 2012. “MuJoCo: A Physics Engine for Model-Based Control.” In *Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)*. http://www.mujoco.org/.",
@@ -1300,8 +1300,8 @@
     ]
   },
   {
-    "objectID": "lecture9/lecture9-4.html",
-    "href": "lecture9/lecture9-4.html",
+    "objectID": "private/lecture9/lecture9-4.html",
+    "href": "private/lecture9/lecture9-4.html",
     "title": "9.4 Vanilla Policy Gradient",
     "section": "",
     "text": "What if you improved your strategy by following the slope — no tricks, no constraints, just raw feedback? 🧗‍♂️\n\n\n\n\n✅ We calculated the policy gradient analytically.\n✅ We addressed the problem of sparse rewards.\n✅ We know how to select actions in discrete and continuous action spaces.\n\n\n\n\n\n\n\nProblem\n\n\n\nNow we just need an algorithm that:\n\nLeverages neural networks \\(\\theta\\).\nLeverages a classical Reinforcement Learning method (Monte Carlo).\nLeverages our empirical estimate of the gradient \\(\\hat{g}\\).\nEmpirically performs well.\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n  AT&T 2000 (Sutton et al. 2000)  Link to Research Paper\n\n\n\nIllustration: Vanilla Policy Gradient\n\n\n\nVanilla Policy Gradient\n\n\n\n\n\nPseudocode\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nMatch the following concepts:\n\n\n\n\n\n\n\nConcept\nNotation\n\n\n\n\nLikelihood Ratio\n\\(\\frac{\\nabla_{\\theta} \\pi_{\\theta}(a|s)}{\\pi_{\\theta}(a|s)}\\)\n\n\nScore Function\n\\(\\nabla_{\\theta} \\log \\pi_{\\theta}(a|s)\\)\n\n\nPolicy Gradient\n\\(\\mathbb{E}_{\\pi_\\theta} \\left[\\nabla_\\theta \\log \\pi(a|s;\\theta) Q^{\\pi_\\theta}(s, a)\\right]\\)\n\n\nEmpirical Estimate\n\\(\\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\hat{A}_{t}\\)\n\n\nBaseline\n\\(b(s)\\)\n\n\n\n\n\n\n\n\n\nSutton, Richard S., David McAllester, Satinder Singh, and Yishay Mansour. 2000. “Policy Gradient Methods for Reinforcement Learning with Function Approximation.” In Advances in Neural Information Processing Systems (NeurIPS). Vol. 12. MIT Press.",
@@ -1311,8 +1311,8 @@
     ]
   },
   {
-    "objectID": "lecture10/lo.html",
-    "href": "lecture10/lo.html",
+    "objectID": "private/lecture10/lo.html",
+    "href": "private/lecture10/lo.html",
     "title": "Learning Objectives",
     "section": "",
     "text": "Learning Objectives for Lecture 10: Advanced Policy Gradients 🎯\n\n\n\n\nTrust Region Policy Optimization (TRPO).\nProximal Policy Optimization (PPO).\nHalfCheetah-v5 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
@@ -1322,8 +1322,8 @@
     ]
   },
   {
-    "objectID": "lecture10/lecture10-1.html",
-    "href": "lecture10/lecture10-1.html",
+    "objectID": "private/lecture10/lecture10-1.html",
+    "href": "private/lecture10/lecture10-1.html",
     "title": "10.1 Trust Regions",
     "section": "",
     "text": "Trust Regions\nVPG allowed us to leverage our robust empirical gradient \\(\\hat{g}\\):\n\\[\n\\hat{g} = \\frac{1}{m} \\sum^{m}_{i = 1}  \\sum^{T-1}_{t=0} \\log \\nabla_\\theta \\pi(A_{t}|S_{t}, \\theta) \\ \\hat{A}_{t}\n\\]\nTo update the neural network \\(\\theta\\) policy parameters using SGA:\n\\[\n\\theta_{t+1} = \\theta_{t} + \\alpha \\hat{g}\n\\]\nConsider an infinite MDP.\n\\[\ns_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3,...\n\\]",
@@ -1333,8 +1333,8 @@
     ]
   },
   {
-    "objectID": "lecture10/lecture10-1.html#trust-regions",
-    "href": "lecture10/lecture10-1.html#trust-regions",
+    "objectID": "private/lecture10/lecture10-1.html#trust-regions",
+    "href": "private/lecture10/lecture10-1.html#trust-regions",
     "title": "10.1 Trust Regions",
     "section": "",
     "text": "1. Defining the Preliminary Notation\nWe express \\(\\eta(\\pi)\\) as the expected discounted reward following a stochastic policy \\(\\pi\\) as:\n\\[\n\\eta(\\pi) = \\mathbb{E}_{s_0, a_0, \\dots} \\left[ \\sum_{t=0}^{\\infty} \\gamma^t r_t \\right]\n\\]\nWith minor tweaks, we can add a baseline by substituting with the standard advantage notation:\n\\[\n\\eta(\\pi) = \\mathbb{E}_{s_0, a_0, \\dots} \\left[ \\sum_{t=0}^{\\infty} \\gamma^t A_t \\right]\n\\]\nAdditionally, let discounted visitation frequencies:\n\\[\n\\rho_{\\pi_{\\theta_{t}}} = P(S_{0}) + \\gamma P(S_{1}) + \\gamma^{2} P(S_{2}) + ...\n\\]\n\n\n1. Express in Terms of Sum of States and Actions\nWe can now rewrite in terms of sum of states and actions:\n\\[\nF(\\pi_{\\theta_{t+1}}) = F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t+1}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]\n\\(\\rho_{\\pi_{\\theta_{t+1}}}\\) makes optimizing \\(F(\\pi_{\\theta_{t+1}})\\) directly difficult.\n\n\n2. Surrogate Objectives\nOne approach to this problem is to replace future sampling \\(\\rho_{\\pi_{\\theta_{t+1}}}\\) with a local approximation \\(L(\\pi_{\\theta_{t+1}})\\), or “surrogate objective”:\n\\[\nL(\\pi_{\\theta_{t+1}}) =  F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]\n\n\n3. Monotonic Improvement\nTRPO’s main contribution is monotonic improvement guarantee using a KL-Divergence metric:\n\\[\nF(\\pi_{\\theta_{t+1}}) \\geq L(\\pi_{\\theta_{t+1}}) - C \\ D^{max}_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}})\n\\]\n\n\n\n\nSchulman, John, Sergey Levine, Philipp Moritz, Michael I Jordan, and Pieter Abbeel. 2015. “Trust Region Policy Optimization.” arXiv Preprint arXiv:1502.05477. https://arxiv.org/abs/1502.05477.",
@@ -1344,8 +1344,8 @@
     ]
   },
   {
-    "objectID": "lecture10/lecture10-4.html",
-    "href": "lecture10/lecture10-4.html",
+    "objectID": "private/lecture10/lecture10-4.html",
+    "href": "private/lecture10/lecture10-4.html",
     "title": "10.4 Proximal Policy Optimization (PPO)",
     "section": "",
     "text": "PPO: Surrogate Objectives\nPPO KL-Divergence Penalty:\n\\[\nL^{\\text{KL}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t - \\beta D_{KL}(\\pi_{\\theta_{t}} \\| \\pi_{\\theta_{t+1}}) \\right]\n\\]\nPPO Clip:\n\\[\nL^{\\text{CLIP}}(\\pi_{\\theta_{t+1}}) = \\mathbb{E} \\left[ \\min \\left( \\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t, \\text{clip}\\left(\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)}, 1-\\epsilon, 1+\\epsilon\\right) \\hat{A}_t \\right) \\right]\n\\]",
@@ -1355,8 +1355,8 @@
     ]
   },
   {
-    "objectID": "lecture10/lecture10-4.html#proximal-policy-optimization-illustration",
-    "href": "lecture10/lecture10-4.html#proximal-policy-optimization-illustration",
+    "objectID": "private/lecture10/lecture10-4.html#proximal-policy-optimization-illustration",
+    "href": "private/lecture10/lecture10-4.html#proximal-policy-optimization-illustration",
     "title": "10.4 Proximal Policy Optimization (PPO)",
     "section": "Proximal Policy Optimization: Illustration",
     "text": "Proximal Policy Optimization: Illustration",
@@ -1366,8 +1366,8 @@
     ]
   },
   {
-    "objectID": "lecture10/lecture10-4.html#proximal-policy-optimization-pseudocode",
-    "href": "lecture10/lecture10-4.html#proximal-policy-optimization-pseudocode",
+    "objectID": "private/lecture10/lecture10-4.html#proximal-policy-optimization-pseudocode",
+    "href": "private/lecture10/lecture10-4.html#proximal-policy-optimization-pseudocode",
     "title": "10.4 Proximal Policy Optimization (PPO)",
     "section": "Proximal Policy Optimization: Pseudocode",
     "text": "Proximal Policy Optimization: Pseudocode\n\n\n\n\n  \n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nWhat is the key mathematical difference between the true policy gradient and a surrogate policy gradient in reinforcement learning?\n\\[\nL(\\pi_{\\theta_{t+1}}) =  F(\\pi_{\\theta_{t}}) + \\mathbb{E}_{s \\approx \\rho_{\\pi_{\\theta_{t}}}, a \\approx \\pi_{\\theta_{t}}} \\left[\\frac{\\pi_{\\theta_{t+1}}(a|s)}{\\pi_{\\theta_{t}}(a|s)} \\hat{A}_t\\right]\n\\]",
@@ -1377,8 +1377,8 @@
     ]
   },
   {
-    "objectID": "lecture11/lo.html",
-    "href": "lecture11/lo.html",
+    "objectID": "private/lecture11/lo.html",
+    "href": "private/lecture11/lo.html",
     "title": "Learning Objectives",
     "section": "",
     "text": "Learning Objectives for Lecture 11: Monte Carlo Tree Search 🎯\n\n\n\n\nLet’s talk about Exam 2!\nMonte Carlo Tree Search (MCTS).\nAdvanced Monte Carlo Tree Search.\nCartPole-v0 environment using gymnasium & tensorflow.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
@@ -1388,8 +1388,8 @@
     ]
   },
   {
-    "objectID": "lecture11/lecture11-1.html",
-    "href": "lecture11/lecture11-1.html",
+    "objectID": "private/lecture11/lecture11-1.html",
+    "href": "private/lecture11/lecture11-1.html",
     "title": "11.1 Model-based Reinforcement Learning",
     "section": "",
     "text": "What if you could look ahead — but only explore what looks promising? 🌳\n\n\n\n\n\n\nModel-free Reinforcement Learning\n\n\n\n\n\n\n\n\nProblem\n\n\n\nAgents need to sample many environment interactions to learn environment dynamics.\n\\[\nP(s^{'}, r| s, a)\n\\]\nExploration is blind without a model of environment dynamics. Model-free methods focus on immediate rewards.\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nAgents can plan future rewards by leveraging environment dynamics. Safe exploration - informed exploration.\n\n\n\nModel-based Reinforcement Learning",
@@ -1399,8 +1399,8 @@
     ]
   },
   {
-    "objectID": "lecture11/lecture11-2.html",
-    "href": "lecture11/lecture11-2.html",
+    "objectID": "private/lecture11/lecture11-2.html",
+    "href": "private/lecture11/lecture11-2.html",
     "title": "11.2 Monte Carlo Tree Search (MCTS)",
     "section": "",
     "text": "What if you could look ahead — but only explore what looks promising? 🌳\n\n\n\n\n\n\n\n\n\nProblem\n\n\n\nRequire an algorithm that demonstrates strong empirical performance and effectively plans based on the dynamics of an environment.\n\n\n\n\n\n\n\n\nReal Life Example 🧠\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n  Université Charles de Gaulle 2006 (Coulom 2006)  Link to Research Paper\n\n\n\nMCTS Step 1: Selection\n\n\n\n\n\nMCTS Selecting\n\n\n\nSimilar to UCB bandit problems, we select actions according to a confidence interval that balances exploration and exploitation, with the formula:\n\\[\nA_t = \\arg\\max_a \\left[ Q(s,a) + C \\sqrt{\\frac{\\ln(N(s)_{\\text{parent}})}{N(s)}} \\right]\n\\]\n\n\n\n\n\nMCTS Step 2: Expansion\n\n\n\n\n\nMCTS Expanding\n\n\n\nAfter selecting an action \\(A_t\\), if the corresponding child node does not exist, we expand the search tree by creating a new node for the resulting state \\(S^{A_t}_{t+1}\\).\n\n\n\n\n\nMCTS Step 3: Simulation\n\n\n\n\n\nMCTS Simulating\n\n\n\nFrom the expanded node, we simulate n-times acting randomly and calculate the average rewards for all simulations:\n\\[\n\\bar{R} = \\frac{1}{n} \\sum_{j=1}^{n} R_j\n\\]\n\n\n\n\n\nMCTS Step 4: Backpropagation\n\n\n\n\n\nMCTS Backpropagating\n\n\n\nAfter obtaining the average rewards, we update the values from the current node up to the root node:\n\\[\nN(s) = N(s) + 1\n\\]\n\\[\nQ(s,a) = Q(s,a) + \\frac{\\bar{R}}{N(s)}\n\\]\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\nQuestion 🤔\n\n\n\nHow does the Upper Confidence Bound for Trees (UCT) algorithm balance exploration and exploitation in MCTS?\n\\[\nA_t = \\arg\\max_a \\left[ Q(s,a) + C \\sqrt{\\frac{\\ln(N(s)_{\\text{parent}})}{N(s)}} \\right]\n\\]\n\n\n\n\n\n\n\nCoulom, Rémi. 2006. “Efficient Selectivity and Backup Operators in Monte-Carlo Tree Search.” In Computers and Games (CG 2006), edited by H. Jaap van den Herik, Paolo Ciancarini, and Hiroyuki Iida, 4630:72–83. Lecture Notes in Computer Science. Springer. https://doi.org/10.1007/978-3-540-75538-8_7.",
@@ -1410,8 +1410,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lo.html",
-    "href": "lecture12/lo.html",
+    "objectID": "private/lecture12/lo.html",
+    "href": "private/lecture12/lo.html",
     "title": "Learning Objectives",
     "section": "",
     "text": "Learning Objectives for Lecture 12: Conclusion 🎯\n\n\n\n\nAdvanced Topics in Reinforcement Learning\nIdentify the Reinforcement Learning Application.\nOutlook of Reinforcement Learning.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
@@ -1421,8 +1421,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-1.html",
-    "href": "lecture12/lecture12-1.html",
+    "objectID": "private/lecture12/lecture12-1.html",
+    "href": "private/lecture12/lecture12-1.html",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "",
     "text": "Imitation Learning\nLearn a policy \\(\\pi(a|s)\\) by mimicking an expert’s demonstrations, \\((s, a)\\), without requiring explicit reward signals.",
@@ -1432,8 +1432,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-1.html#imitation-learning",
-    "href": "lecture12/lecture12-1.html#imitation-learning",
+    "objectID": "private/lecture12/lecture12-1.html#imitation-learning",
+    "href": "private/lecture12/lecture12-1.html#imitation-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "",
     "text": "Application: Autonomous Driving  Link to Research Paper",
@@ -1443,8 +1443,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-1.html#inverse-reinforcement-learning",
-    "href": "lecture12/lecture12-1.html#inverse-reinforcement-learning",
+    "objectID": "private/lecture12/lecture12-1.html#inverse-reinforcement-learning",
+    "href": "private/lecture12/lecture12-1.html#inverse-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Inverse Reinforcement Learning",
     "text": "Inverse Reinforcement Learning\nInfer the reward function \\(R(s, a)\\) given expert trajectories to derive an optimal policy, \\(\\pi^*\\).\n\n  Application: Predicting Driver Behavior and Route Recommendation  Link to Research Paper",
@@ -1454,8 +1454,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-1.html#offline-reinforcement-learning",
-    "href": "lecture12/lecture12-1.html#offline-reinforcement-learning",
+    "objectID": "private/lecture12/lecture12-1.html#offline-reinforcement-learning",
+    "href": "private/lecture12/lecture12-1.html#offline-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Offline Reinforcement Learning",
     "text": "Offline Reinforcement Learning\nLearn a policy \\(\\pi(a|s)\\) from a fixed dataset \\(D = \\{(s, a, r, s')\\}\\) without further environment interaction.\n\n  Application: Robotic Manipulation  Link to Research Paper",
@@ -1465,8 +1465,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-1.html#multi-agent-reinforcement-learning",
-    "href": "lecture12/lecture12-1.html#multi-agent-reinforcement-learning",
+    "objectID": "private/lecture12/lecture12-1.html#multi-agent-reinforcement-learning",
+    "href": "private/lecture12/lecture12-1.html#multi-agent-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Multi-Agent Reinforcement Learning",
     "text": "Multi-Agent Reinforcement Learning\nOptimize multiple agents’ policies \\(\\pi_i(a|s)\\) interacting in a shared environment, considering cooperation or competition.\n\n  Application: Strategic Game-play in Dota2  Link to Research Paper",
@@ -1476,8 +1476,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-1.html#hierarchical-reinforcement-learning",
-    "href": "lecture12/lecture12-1.html#hierarchical-reinforcement-learning",
+    "objectID": "private/lecture12/lecture12-1.html#hierarchical-reinforcement-learning",
+    "href": "private/lecture12/lecture12-1.html#hierarchical-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Hierarchical Reinforcement Learning",
     "text": "Hierarchical Reinforcement Learning\nDecompose tasks into a hierarchy of policies, \\(\\pi_\\text{high}(g|s)\\) for goals and \\(\\pi_\\text{low}(a|s, g)\\) for actions.\n\n  Application: MuJoCo Ant Maze Path Finding  Link to Research Paper",
@@ -1487,8 +1487,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-1.html#multi-objective-reinforcement-learning",
-    "href": "lecture12/lecture12-1.html#multi-objective-reinforcement-learning",
+    "objectID": "private/lecture12/lecture12-1.html#multi-objective-reinforcement-learning",
+    "href": "private/lecture12/lecture12-1.html#multi-objective-reinforcement-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Multi-Objective Reinforcement Learning",
     "text": "Multi-Objective Reinforcement Learning\nOptimize a policy \\(\\pi(a|s)\\) under multiple conflicting objectives, \\(\\{R_1, R_2, \\dots\\}\\)\n\n  Application: Resource Allocation  Link to Research Paper",
@@ -1498,8 +1498,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-1.html#meta-learning",
-    "href": "lecture12/lecture12-1.html#meta-learning",
+    "objectID": "private/lecture12/lecture12-1.html#meta-learning",
+    "href": "private/lecture12/lecture12-1.html#meta-learning",
     "title": "12.1 Advanced Topics in Reinforcement Learning",
     "section": "Meta Learning",
     "text": "Meta Learning\nTrain agents to quickly adapt to new tasks \\(\\mathcal{T}\\) by optimizing over task distributions \\(p(\\mathcal{T})\\).\n\n  Application: Few Shot Learning  Link to Research Paper",
@@ -1509,8 +1509,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-2.html",
-    "href": "lecture12/lecture12-2.html",
+    "objectID": "private/lecture12/lecture12-2.html",
+    "href": "private/lecture12/lecture12-2.html",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "",
     "text": "Task 1: Email Spam Detection",
@@ -1520,8 +1520,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-2.html#task-1-email-spam-detection",
-    "href": "lecture12/lecture12-2.html#task-1-email-spam-detection",
+    "objectID": "private/lecture12/lecture12-2.html#task-1-email-spam-detection",
+    "href": "private/lecture12/lecture12-2.html#task-1-email-spam-detection",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "",
     "text": "Answer\n\n\n\n\n\nSupervised Learning\n\nSupervised Learning: Classification.\nFeatures (X):\n\nFrequency of specific keywords (e.g., “free”, “win”, “money”).\nPresence of special characters (e.g., “!”, “$”, etc.).\nSender’s domain (e.g., “trusted.com”, “unknown.com”).\n\nLabels (y):\n\n0 for Non-Spam.\n1 for Spam.\n\nExample Algorithm: Naive Bayes.",
@@ -1531,8 +1531,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-2.html#task-2-customer-segmentation-for-a-retail-store",
-    "href": "lecture12/lecture12-2.html#task-2-customer-segmentation-for-a-retail-store",
+    "objectID": "private/lecture12/lecture12-2.html#task-2-customer-segmentation-for-a-retail-store",
+    "href": "private/lecture12/lecture12-2.html#task-2-customer-segmentation-for-a-retail-store",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "Task 2: Customer Segmentation for a Retail Store",
     "text": "Task 2: Customer Segmentation for a Retail Store\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nUnsupervised Learning\n\nUnsupervised Learning: Clustering.\nFeatures (X):\n\nCustomer age, annual income, spending score, purchase frequency.\nProduct categories purchased, total expenditure, location.\nCustomer loyalty (e.g., membership status).\n\nExample Algorithm: K-Means.",
@@ -1542,8 +1542,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-2.html#task-3-online-ad-optimization",
-    "href": "lecture12/lecture12-2.html#task-3-online-ad-optimization",
+    "objectID": "private/lecture12/lecture12-2.html#task-3-online-ad-optimization",
+    "href": "private/lecture12/lecture12-2.html#task-3-online-ad-optimization",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "Task 3: Online Ad Optimization",
     "text": "Task 3: Online Ad Optimization\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nMulti-Armed Bandit\n\nState (S): Single state (environment does not change).\nActions (A): Display ad 1, Display ad 2, Display ad 3.\nRewards (R): Click-through rate, conversion rate, user engagement.\nExample Algorithm: Thompson Sampling.",
@@ -1553,8 +1553,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-2.html#task-4-warehouse-robot-path-finding",
-    "href": "lecture12/lecture12-2.html#task-4-warehouse-robot-path-finding",
+    "objectID": "private/lecture12/lecture12-2.html#task-4-warehouse-robot-path-finding",
+    "href": "private/lecture12/lecture12-2.html#task-4-warehouse-robot-path-finding",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "Task 4: Warehouse Robot Path-finding",
     "text": "Task 4: Warehouse Robot Path-finding\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nClassical Reinforcement Learning\n\nState (S): Robot position, obstacles, goal location.\nActions (A): Move up, down, left, right, stay.\nRewards (R):\n\nPositive for reaching goal.\nNegative for hitting obstacles.\nSmall penalty for each step (efficiency).\n\nExample Algorithm: Q-learning.",
@@ -1564,8 +1564,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-2.html#task-5-fine-tuning-llms-with-human-feedback",
-    "href": "lecture12/lecture12-2.html#task-5-fine-tuning-llms-with-human-feedback",
+    "objectID": "private/lecture12/lecture12-2.html#task-5-fine-tuning-llms-with-human-feedback",
+    "href": "private/lecture12/lecture12-2.html#task-5-fine-tuning-llms-with-human-feedback",
     "title": "12.2 Identify the Reinforcement Learning Application",
     "section": "Task 5: Fine-tuning LLMs with Human Feedback",
     "text": "Task 5: Fine-tuning LLMs with Human Feedback\n\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nDeep Reinforcement Learning\n\nState (S): Model predictions, conversation history, human feedback.\nActions (A): Adjust weights, generate responses, explore approaches.\nRewards (R):\n\nPositive for high-quality responses.\nNegative for low-quality responses.\nReward for alignment with human feedback.\n\nExample Algorithm: Proximal Policy Optimization (PPO).",
@@ -1575,8 +1575,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-3.html",
-    "href": "lecture12/lecture12-3.html",
+    "objectID": "private/lecture12/lecture12-3.html",
+    "href": "private/lecture12/lecture12-3.html",
     "title": "12.3 Outlook of Reinforcement Learning",
     "section": "",
     "text": "Challenges in Reinforcement Learning",
@@ -1586,8 +1586,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-3.html#challenges-in-reinforcement-learning",
-    "href": "lecture12/lecture12-3.html#challenges-in-reinforcement-learning",
+    "objectID": "private/lecture12/lecture12-3.html#challenges-in-reinforcement-learning",
+    "href": "private/lecture12/lecture12-3.html#challenges-in-reinforcement-learning",
     "title": "12.3 Outlook of Reinforcement Learning",
     "section": "",
     "text": "Balancing Exploration vs Exploitation\nSample Efficiency\nSparse Rewards\nConverging to optimal policies",
@@ -1597,8 +1597,8 @@
     ]
   },
   {
-    "objectID": "lecture12/lecture12-3.html#artificial-general-intelligence-agi",
-    "href": "lecture12/lecture12-3.html#artificial-general-intelligence-agi",
+    "objectID": "private/lecture12/lecture12-3.html#artificial-general-intelligence-agi",
+    "href": "private/lecture12/lecture12-3.html#artificial-general-intelligence-agi",
     "title": "12.3 Outlook of Reinforcement Learning",
     "section": "Artificial General Intelligence (AGI)",
     "text": "Artificial General Intelligence (AGI)\n\nDefinition: AGI is AI capable of learning and applying intelligence across a wide range of tasks, similar to human cognition.\nRole of RL in AGI: RL enables autonomous learning and decision-making, key for AGI’s adaptability and problem-solving.\nCurrent Progress: Significant advancements in deep RL and multi-agent systems, though AGI remains a long-term goal.\nPotential Impact: AGI could revolutionize industries, solve global challenges, and transform work and society.",
@@ -1608,8 +1608,8 @@
     ]
   },
   {
-    "objectID": "homework/homework1.html",
-    "href": "homework/homework1.html",
+    "objectID": "private/homework/homework1.html",
+    "href": "private/homework/homework1.html",
     "title": "Homework 1",
     "section": "",
     "text": "No Homework! Enjoy! 😊",
@@ -1619,8 +1619,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html",
-    "href": "homework/homework2.html",
+    "objectID": "private/homework/homework2.html",
+    "href": "private/homework/homework2.html",
     "title": "Homework 2",
     "section": "",
     "text": "Question 1\nWrite some of the elements of the following sets:\nWrite the following sets in set notation:",
@@ -1630,8 +1630,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html#question-1",
-    "href": "homework/homework2.html#question-1",
+    "objectID": "private/homework/homework2.html#question-1",
+    "href": "private/homework/homework2.html#question-1",
     "title": "Homework 2",
     "section": "",
     "text": "\\(\\{ 5x-1: x \\in \\mathbb{Z} \\}\\)\n\\(\\{ x \\in \\mathbb{R}: \\sin \\pi x = 0 \\}\\)\n\\(\\{X : X \\subseteq \\{3,2,a\\} \\text{ and } |X|=2 \\}\\)\n\n\n\n\\(\\{ 2, 4, 8, 16, 32, 64, ...\\}\\)\n\\(\\{0,1,4,9,16,25,36, ...\\}\\)\n\\(\\{..., \\frac{1}{8},\\frac{1}{4},\\frac{1}{2},1,2,4,8,... \\}\\)",
@@ -1641,8 +1641,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html#question-2",
-    "href": "homework/homework2.html#question-2",
+    "objectID": "private/homework/homework2.html#question-2",
+    "href": "private/homework/homework2.html#question-2",
     "title": "Homework 2",
     "section": "Question 2",
     "text": "Question 2\nA retail store accepts either American Express or VISA. The percentages of customers carrying each card are: \n\nAmerican Express: \\(24%\\)\nVISA: \\(61%\\)\nBoth: \\(11%\\)\n\nWhat percentage of customers carry a card accepted by the store?",
@@ -1652,8 +1652,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html#question-3",
-    "href": "homework/homework2.html#question-3",
+    "objectID": "private/homework/homework2.html#question-3",
+    "href": "private/homework/homework2.html#question-3",
     "title": "Homework 2",
     "section": "Question 3",
     "text": "Question 3\nSixty percent of students wear neither a ring nor a necklace. Given: \n\n\\(20%\\) wear a ring\n\\(30%\\) wear a necklace\n\nFind the probability that a randomly chosen student wears:\n\nA ring or a necklace\nBoth a ring and a necklace",
@@ -1663,8 +1663,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html#question-4",
-    "href": "homework/homework2.html#question-4",
+    "objectID": "private/homework/homework2.html#question-4",
+    "href": "private/homework/homework2.html#question-4",
     "title": "Homework 2",
     "section": "Question 4",
     "text": "Question 4\nTwo fair dice are rolled. Find the conditional probability that at least one die lands on \\(6\\), given that they land on different numbers.",
@@ -1674,8 +1674,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html#question-5",
-    "href": "homework/homework2.html#question-5",
+    "objectID": "private/homework/homework2.html#question-5",
+    "href": "private/homework/homework2.html#question-5",
     "title": "Homework 2",
     "section": "Question 5",
     "text": "Question 5\nAn urn contains \\(6\\) white and \\(9\\) black balls. If \\(4\\) balls are selected without replacement, what is the probability that the first \\(2\\) are white and the last \\(2\\) are black?",
@@ -1685,8 +1685,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html#question-6",
-    "href": "homework/homework2.html#question-6",
+    "objectID": "private/homework/homework2.html#question-6",
+    "href": "private/homework/homework2.html#question-6",
     "title": "Homework 2",
     "section": "Question 6",
     "text": "Question 6\nA defendant is judged guilty if at least \\(2\\) out of \\(3\\) judges vote guilty. Given:\n\nProbability of a guilty vote when defendant is guilty: \\(0.7\\) \nProbability of a guilty vote when defendant is innocent: \\(0.2\\) \n\\(70%\\) of defendants are guilty\n\nCompute the conditional probability that judge \\(3\\) votes guilty given:\n\nJudges \\(1\\) and \\(2\\) vote guilty. \nJudges \\(1\\) and \\(2\\) split votes. \nJudges \\(1\\) and \\(2\\) vote not guilty.\n\nAre the judges’ votes independent? Conditionally independent? Explain.",
@@ -1696,8 +1696,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html#question-7",
-    "href": "homework/homework2.html#question-7",
+    "objectID": "private/homework/homework2.html#question-7",
+    "href": "private/homework/homework2.html#question-7",
     "title": "Homework 2",
     "section": "Question 7",
     "text": "Question 7\nGiven the distribution function of \\(X\\):\n\\[\nF_{X}(x) =\n\\begin{cases}\n0, & x &lt; 0 \\\\\n\\frac{1}{2}, & 0 \\leq x &lt; 1 \\\\\n\\frac{3}{5}, & 1 \\leq x &lt; 2 \\\\\n\\frac{4}{5}, & 2 \\leq x &lt; 3 \\\\\n\\frac{9}{10}, & 3 \\leq x &lt; 3.5 \\\\\n1, & x \\geq 3.5 \\\\\n\\end{cases}\n\\]\nFind \\(p_X(x)\\).",
@@ -1707,8 +1707,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html#question-8",
-    "href": "homework/homework2.html#question-8",
+    "objectID": "private/homework/homework2.html#question-8",
+    "href": "private/homework/homework2.html#question-8",
     "title": "Homework 2",
     "section": "Question 8",
     "text": "Question 8\nA player rolls a fair die and flips a fair coin. If heads, they win twice the die value; if tails, they win half. Determine the expected winnings.",
@@ -1718,8 +1718,8 @@
     ]
   },
   {
-    "objectID": "homework/homework2.html#coding-exercise-1-binomial-distribution",
-    "href": "homework/homework2.html#coding-exercise-1-binomial-distribution",
+    "objectID": "private/homework/homework2.html#coding-exercise-1-binomial-distribution",
+    "href": "private/homework/homework2.html#coding-exercise-1-binomial-distribution",
     "title": "Homework 2",
     "section": "Coding Exercise 1: Binomial Distribution",
     "text": "Coding Exercise 1: Binomial Distribution\nThe binomial distribution PMF is:\n\\[\np_X(x) = {n \\choose k} x^n (1-x)^{n-k}\n\\]\nUsing Python, generate binomial data and create visualizations for \\(p_X(x)\\) and \\(F_X(x)\\).",
@@ -1729,8 +1729,8 @@
     ]
   },
   {
-    "objectID": "homework/homework3.html",
-    "href": "homework/homework3.html",
+    "objectID": "private/homework/homework3.html",
+    "href": "private/homework/homework3.html",
     "title": "Homework 3",
     "section": "",
     "text": "Coding Exercise 1: Load Environments\nLoad existing Bernoulli and Gaussian environments from create_environment function using a random seed of \\(123\\).",
@@ -1740,8 +1740,8 @@
     ]
   },
   {
-    "objectID": "homework/homework3.html#coding-exercise-2-recommendation-systems",
-    "href": "homework/homework3.html#coding-exercise-2-recommendation-systems",
+    "objectID": "private/homework/homework3.html#coding-exercise-2-recommendation-systems",
+    "href": "private/homework/homework3.html#coding-exercise-2-recommendation-systems",
     "title": "Homework 3",
     "section": "Coding Exercise 2: Recommendation Systems",
     "text": "Coding Exercise 2: Recommendation Systems\nUsing the existing Epsilon Greedy (\\(\\epsilon\\) = 0.10), Upper Confidence Boundary (UCB) and Thompson Sampling code, create a recommendation system.",
@@ -1751,8 +1751,8 @@
     ]
   },
   {
-    "objectID": "homework/homework3.html#coding-exercise-3-mab-performance",
-    "href": "homework/homework3.html#coding-exercise-3-mab-performance",
+    "objectID": "private/homework/homework3.html#coding-exercise-3-mab-performance",
+    "href": "private/homework/homework3.html#coding-exercise-3-mab-performance",
     "title": "Homework 3",
     "section": "Coding Exercise 3: MAB Performance",
     "text": "Coding Exercise 3: MAB Performance\nFor 10,000 recommendations:\n\nDoes Epsilon-Greedy (\\(\\epsilon = 0.10\\)) perform better in the Bernoulli or Gaussian environment?\nDoes UCB perform better in the Bernoulli or Gaussian environment?\nDoes Thompson Sampling perform better in the Bernoulli or Gaussian environment?\nWhich algorithm performs best in the Bernoulli environment?\nWhich algorithm performs best in the Gaussian environment?\n\nHint: Check the performance of each MAB by observing the most frequently recommended arm.",
@@ -1762,8 +1762,8 @@
     ]
   },
   {
-    "objectID": "homework/homework3.html#coding-exercise-4-random-seed-analysis",
-    "href": "homework/homework3.html#coding-exercise-4-random-seed-analysis",
+    "objectID": "private/homework/homework3.html#coding-exercise-4-random-seed-analysis",
+    "href": "private/homework/homework3.html#coding-exercise-4-random-seed-analysis",
     "title": "Homework 3",
     "section": "Coding Exercise 4: Random Seed Analysis",
     "text": "Coding Exercise 4: Random Seed Analysis\nUsing random seeds \\(0\\)-\\(50\\), for \\(10,000\\) recommendations, do the algorithms perform the same?",
@@ -1773,8 +1773,8 @@
     ]
   },
   {
-    "objectID": "homework/homework3.html#coding-exercise-5-amazon-dataset-analysis",
-    "href": "homework/homework3.html#coding-exercise-5-amazon-dataset-analysis",
+    "objectID": "private/homework/homework3.html#coding-exercise-5-amazon-dataset-analysis",
+    "href": "private/homework/homework3.html#coding-exercise-5-amazon-dataset-analysis",
     "title": "Homework 3",
     "section": "Coding Exercise 5: Amazon Dataset Analysis",
     "text": "Coding Exercise 5: Amazon Dataset Analysis\nFor the Amazon.csv advertisement dataset repeat exercise E.4. Which arm (ad) would you recommend (advertise)?",
@@ -1784,8 +1784,8 @@
     ]
   },
   {
-    "objectID": "homework/homework4.html",
-    "href": "homework/homework4.html",
+    "objectID": "private/homework/homework4.html",
+    "href": "private/homework/homework4.html",
     "title": "Homework 4",
     "section": "",
     "text": "Question 1\nIf the current state is \\(S_{t}\\) and actions are selected according to stochastic policy \\(\\pi\\), then what is the expectation of \\(R_{t+1}\\) in terms of \\(\\pi\\) and the four-argument function \\(p\\)?",
@@ -1795,8 +1795,8 @@
     ]
   },
   {
-    "objectID": "homework/homework4.html#question-2",
-    "href": "homework/homework4.html#question-2",
+    "objectID": "private/homework/homework4.html#question-2",
+    "href": "private/homework/homework4.html#question-2",
     "title": "Homework 4",
     "section": "Question 2",
     "text": "Question 2\nGive an equation for \\(v_{\\pi}\\) in terms of \\(q_{\\pi}\\) and \\(\\pi\\).",
@@ -1806,8 +1806,8 @@
     ]
   },
   {
-    "objectID": "homework/homework4.html#question-3",
-    "href": "homework/homework4.html#question-3",
+    "objectID": "private/homework/homework4.html#question-3",
+    "href": "private/homework/homework4.html#question-3",
     "title": "Homework 4",
     "section": "Question 3",
     "text": "Question 3\nGive an equation for \\(q_{\\pi}\\) in terms of \\(v_{\\pi}\\) and \\(\\pi\\).",
@@ -1817,8 +1817,8 @@
     ]
   },
   {
-    "objectID": "homework/homework4.html#coding-exercise-1-markov-chain-i",
-    "href": "homework/homework4.html#coding-exercise-1-markov-chain-i",
+    "objectID": "private/homework/homework4.html#coding-exercise-1-markov-chain-i",
+    "href": "private/homework/homework4.html#coding-exercise-1-markov-chain-i",
     "title": "Homework 4",
     "section": "Coding Exercise 1: Markov Chain I",
     "text": "Coding Exercise 1: Markov Chain I\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
@@ -1828,8 +1828,8 @@
     ]
   },
   {
-    "objectID": "homework/homework4.html#coding-exercise-2-markov-chain-ii",
-    "href": "homework/homework4.html#coding-exercise-2-markov-chain-ii",
+    "objectID": "private/homework/homework4.html#coding-exercise-2-markov-chain-ii",
+    "href": "private/homework/homework4.html#coding-exercise-2-markov-chain-ii",
     "title": "Homework 4",
     "section": "Coding Exercise 2: Markov Chain II",
     "text": "Coding Exercise 2: Markov Chain II\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
@@ -1839,8 +1839,8 @@
     ]
   },
   {
-    "objectID": "homework/homework4.html#coding-exercise-3-value-iteration",
-    "href": "homework/homework4.html#coding-exercise-3-value-iteration",
+    "objectID": "private/homework/homework4.html#coding-exercise-3-value-iteration",
+    "href": "private/homework/homework4.html#coding-exercise-3-value-iteration",
     "title": "Homework 4",
     "section": "Coding Exercise 3: Value Iteration",
     "text": "Coding Exercise 3: Value Iteration\nWith a discount factor of \\(\\gamma = 0.9\\), code Value Iteration algorithm for GridWorldEnv using the provided hyperparameters.\n\n\n\n\n\nNote: The gray shaded areas are barriers. Moving into a barrier incurs a reward of \\(R = -1\\).",
@@ -1850,8 +1850,8 @@
     ]
   },
   {
-    "objectID": "homework/homework5.html",
-    "href": "homework/homework5.html",
+    "objectID": "private/homework/homework5.html",
+    "href": "private/homework/homework5.html",
     "title": "Homework 5",
     "section": "",
     "text": "Coding Exercise 1: On-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the On-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
@@ -1861,8 +1861,8 @@
     ]
   },
   {
-    "objectID": "homework/homework5.html#coding-exercise-2-off-policy-monte-carlo-control",
-    "href": "homework/homework5.html#coding-exercise-2-off-policy-monte-carlo-control",
+    "objectID": "private/homework/homework5.html#coding-exercise-2-off-policy-monte-carlo-control",
+    "href": "private/homework/homework5.html#coding-exercise-2-off-policy-monte-carlo-control",
     "title": "Homework 5",
     "section": "Coding Exercise 2: Off-Policy Monte Carlo Control",
     "text": "Coding Exercise 2: Off-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the Off-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
@@ -1872,8 +1872,8 @@
     ]
   },
   {
-    "objectID": "homework/homework6.html",
-    "href": "homework/homework6.html",
+    "objectID": "private/homework/homework6.html",
+    "href": "private/homework/homework6.html",
     "title": "Homework 6",
     "section": "",
     "text": "Coding Exercise 1: SARSA\nFor the GridWorldEnv environment, code the SARSA algorithm using the provided hyperparameters.",
@@ -1883,8 +1883,8 @@
     ]
   },
   {
-    "objectID": "homework/homework6.html#coding-exercise-2-q-learning",
-    "href": "homework/homework6.html#coding-exercise-2-q-learning",
+    "objectID": "private/homework/homework6.html#coding-exercise-2-q-learning",
+    "href": "private/homework/homework6.html#coding-exercise-2-q-learning",
     "title": "Homework 6",
     "section": "Coding Exercise 2: Q-Learning",
     "text": "Coding Exercise 2: Q-Learning\nFor the GridWorldEnv environment, code the Q-learning algorithm using the provided hyperparameters.",
@@ -1894,8 +1894,8 @@
     ]
   },
   {
-    "objectID": "homework/homework6.html#coding-exercise-3-double-q-learning",
-    "href": "homework/homework6.html#coding-exercise-3-double-q-learning",
+    "objectID": "private/homework/homework6.html#coding-exercise-3-double-q-learning",
+    "href": "private/homework/homework6.html#coding-exercise-3-double-q-learning",
     "title": "Homework 6",
     "section": "Coding Exercise 3: Double Q-Learning",
     "text": "Coding Exercise 3: Double Q-Learning\nFor the GridWorldEnv environment, code the Double Q-learning algorithm using the provided hyperparameters.",
@@ -1905,8 +1905,8 @@
     ]
   },
   {
-    "objectID": "homework/homework7.html",
-    "href": "homework/homework7.html",
+    "objectID": "private/homework/homework7.html",
+    "href": "private/homework/homework7.html",
     "title": "Homework 7",
     "section": "",
     "text": "Coding Exercise 1: Semi-Gradient SARSA\nFor the MountainCar-v0 environment, code the update function for Semi-Gradient SARSA algorithm using the provided parameters.",
@@ -1916,8 +1916,8 @@
     ]
   },
   {
-    "objectID": "homework/homework8.html",
-    "href": "homework/homework8.html",
+    "objectID": "private/homework/homework8.html",
+    "href": "private/homework/homework8.html",
     "title": "Homework 8",
     "section": "",
     "text": "Coding Exercise 1: Deep Q-Network (DQN)\nFor the highway-v0 environment, code the update function for the Deep Q-Netowrk (DQN) algorithm using the provided parameters.",
@@ -1927,8 +1927,8 @@
     ]
   },
   {
-    "objectID": "homework/homework9.html",
-    "href": "homework/homework9.html",
+    "objectID": "private/homework/homework9.html",
+    "href": "private/homework/homework9.html",
     "title": "Homework 9",
     "section": "",
     "text": "Coding Exercise 1: Vanilla Policy Gradient\nFor the CartPole-v1 environment, code the update function for the Vanilla Policy Gradient algorithm using the provided parameters.",
@@ -1938,8 +1938,8 @@
     ]
   },
   {
-    "objectID": "homework/homework10.html",
-    "href": "homework/homework10.html",
+    "objectID": "private/homework/homework10.html",
+    "href": "private/homework/homework10.html",
     "title": "Homework 10",
     "section": "",
     "text": "Coding Exercise 1: Proximal Policy Optimization (PPO) Clip\nFor the HalfCheetah-v5 environment, code the update function for the Proximal Policy Optimization: Clip algorithm using the provided parameters.",
@@ -1949,8 +1949,8 @@
     ]
   },
   {
-    "objectID": "homework/homework11.html",
-    "href": "homework/homework11.html",
+    "objectID": "private/homework/homework11.html",
+    "href": "private/homework/homework11.html",
     "title": "Homework 11",
     "section": "",
     "text": "Coding Exercise 1: Monte Carlo Tree Search (MCTS)\nFor the CartPole-v0 environment, code the update function for the Monte Carlo Tree Search (MCTS) algorithm using the provided parameters.",
@@ -1960,8 +1960,8 @@
     ]
   },
   {
-    "objectID": "homework/homework12.html",
-    "href": "homework/homework12.html",
+    "objectID": "private/homework/homework12.html",
+    "href": "private/homework/homework12.html",
     "title": "Homework 12",
     "section": "",
     "text": "No Homework! Enjoy! 😊",
@@ -1971,8 +1971,8 @@
     ]
   },
   {
-    "objectID": "final-project/personal-finance-robo-advisor.html",
-    "href": "final-project/personal-finance-robo-advisor.html",
+    "objectID": "private/final-project/personal-finance-robo-advisor.html",
+    "href": "private/final-project/personal-finance-robo-advisor.html",
     "title": "Idea 1: Personal Finance Robo Advisor",
     "section": "",
     "text": "Instructions\nUsing the different Multi-Armed Bandit algorithms learned in Lecture 3, devise a novel approach to create a personal finance robo advisor. Your task is to:",
@@ -1982,8 +1982,8 @@
     ]
   },
   {
-    "objectID": "final-project/personal-finance-robo-advisor.html#instructions",
-    "href": "final-project/personal-finance-robo-advisor.html#instructions",
+    "objectID": "private/final-project/personal-finance-robo-advisor.html#instructions",
+    "href": "private/final-project/personal-finance-robo-advisor.html#instructions",
     "title": "Idea 1: Personal Finance Robo Advisor",
     "section": "",
     "text": "Define the Reinforcement Learning Framework: Formulate a Multi-Armed Bandit problem.\n\n\nDefine the data.\nSpecify the arms \\(A\\).\nSpecify the reward structure \\(R\\).\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\n\\(\\epsilon\\)-Greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.\n(Optional) Stability score: Standard deviation of the reward over time.\n(Optional) Adaptability: Performance when the environment shifts.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
@@ -1993,8 +1993,8 @@
     ]
   },
   {
-    "objectID": "final-project/personal-finance-robo-advisor.html#presentation",
-    "href": "final-project/personal-finance-robo-advisor.html#presentation",
+    "objectID": "private/final-project/personal-finance-robo-advisor.html#presentation",
+    "href": "private/final-project/personal-finance-robo-advisor.html#presentation",
     "title": "Idea 1: Personal Finance Robo Advisor",
     "section": "Presentation",
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
@@ -2004,8 +2004,8 @@
     ]
   },
   {
-    "objectID": "final-project/personal-finance-robo-advisor.html#submission",
-    "href": "final-project/personal-finance-robo-advisor.html#submission",
+    "objectID": "private/final-project/personal-finance-robo-advisor.html#submission",
+    "href": "private/final-project/personal-finance-robo-advisor.html#submission",
     "title": "Idea 1: Personal Finance Robo Advisor",
     "section": "Submission",
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
@@ -2015,8 +2015,8 @@
     ]
   },
   {
-    "objectID": "final-project/personal-finance-robo-advisor.html#grading",
-    "href": "final-project/personal-finance-robo-advisor.html#grading",
+    "objectID": "private/final-project/personal-finance-robo-advisor.html#grading",
+    "href": "private/final-project/personal-finance-robo-advisor.html#grading",
     "title": "Idea 1: Personal Finance Robo Advisor",
     "section": "Grading",
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
@@ -2026,8 +2026,8 @@
     ]
   },
   {
-    "objectID": "final-project/personal-finance-robo-advisor.html#optional-research",
-    "href": "final-project/personal-finance-robo-advisor.html#optional-research",
+    "objectID": "private/final-project/personal-finance-robo-advisor.html#optional-research",
+    "href": "private/final-project/personal-finance-robo-advisor.html#optional-research",
     "title": "Idea 1: Personal Finance Robo Advisor",
     "section": "(Optional) Research",
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
@@ -2037,8 +2037,8 @@
     ]
   },
   {
-    "objectID": "final-project/dynamic-portfolio-management.html",
-    "href": "final-project/dynamic-portfolio-management.html",
+    "objectID": "private/final-project/dynamic-portfolio-management.html",
+    "href": "private/final-project/dynamic-portfolio-management.html",
     "title": "Idea 2: Dynamic Portfolio Management",
     "section": "",
     "text": "Instructions\nUsing the different Multi-Armed Bandit algorithms learned in Lecture 3, devise a novel approach to dynamically manage the weights of portfolio’s. Your task is to:",
@@ -2048,8 +2048,8 @@
     ]
   },
   {
-    "objectID": "final-project/dynamic-portfolio-management.html#instructions",
-    "href": "final-project/dynamic-portfolio-management.html#instructions",
+    "objectID": "private/final-project/dynamic-portfolio-management.html#instructions",
+    "href": "private/final-project/dynamic-portfolio-management.html#instructions",
     "title": "Idea 2: Dynamic Portfolio Management",
     "section": "",
     "text": "Define the Reinforcement Learning Framework: Formulate a Multi-Armed Bandit problem.\n\n\nDefine the data.\nSpecify the arms \\(A\\).\nSpecify the reward structure \\(R\\).\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\n\\(\\epsilon\\)-Greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.\n(Optional) Stability score: Standard deviation of the reward over time.\n(Optional) Adaptability: Performance when the environment shifts.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
@@ -2059,8 +2059,8 @@
     ]
   },
   {
-    "objectID": "final-project/dynamic-portfolio-management.html#presentation",
-    "href": "final-project/dynamic-portfolio-management.html#presentation",
+    "objectID": "private/final-project/dynamic-portfolio-management.html#presentation",
+    "href": "private/final-project/dynamic-portfolio-management.html#presentation",
     "title": "Idea 2: Dynamic Portfolio Management",
     "section": "Presentation",
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
@@ -2070,8 +2070,8 @@
     ]
   },
   {
-    "objectID": "final-project/dynamic-portfolio-management.html#submission",
-    "href": "final-project/dynamic-portfolio-management.html#submission",
+    "objectID": "private/final-project/dynamic-portfolio-management.html#submission",
+    "href": "private/final-project/dynamic-portfolio-management.html#submission",
     "title": "Idea 2: Dynamic Portfolio Management",
     "section": "Submission",
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
@@ -2081,8 +2081,8 @@
     ]
   },
   {
-    "objectID": "final-project/dynamic-portfolio-management.html#grading",
-    "href": "final-project/dynamic-portfolio-management.html#grading",
+    "objectID": "private/final-project/dynamic-portfolio-management.html#grading",
+    "href": "private/final-project/dynamic-portfolio-management.html#grading",
     "title": "Idea 2: Dynamic Portfolio Management",
     "section": "Grading",
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
@@ -2092,8 +2092,8 @@
     ]
   },
   {
-    "objectID": "final-project/dynamic-portfolio-management.html#optional-research",
-    "href": "final-project/dynamic-portfolio-management.html#optional-research",
+    "objectID": "private/final-project/dynamic-portfolio-management.html#optional-research",
+    "href": "private/final-project/dynamic-portfolio-management.html#optional-research",
     "title": "Idea 2: Dynamic Portfolio Management",
     "section": "(Optional) Research",
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
@@ -2103,8 +2103,8 @@
     ]
   },
   {
-    "objectID": "final-project/trading-agent.html",
-    "href": "final-project/trading-agent.html",
+    "objectID": "private/final-project/trading-agent.html",
+    "href": "private/final-project/trading-agent.html",
     "title": "Idea 3: Trading Agent",
     "section": "",
     "text": "Instructions\nUsing the different Classical and Deep Reinforcement Learning algorithms learned in Lectures 5-10, devise a novel approach to create a trading agent. Your task is to:",
@@ -2114,8 +2114,8 @@
     ]
   },
   {
-    "objectID": "final-project/trading-agent.html#instructions",
-    "href": "final-project/trading-agent.html#instructions",
+    "objectID": "private/final-project/trading-agent.html#instructions",
+    "href": "private/final-project/trading-agent.html#instructions",
     "title": "Idea 3: Trading Agent",
     "section": "",
     "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\nOn-Policy Monte Carlo.\nOff-Policy Monte Carlo.\nSARSA.\nQ-Learning.\nDouble Q-Learning.\nn-step Bootstrapping.\nSemiGradient SARSA.\nDeep Q-Networks.\nVanilla Policy Gradient.\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
@@ -2125,8 +2125,8 @@
     ]
   },
   {
-    "objectID": "final-project/trading-agent.html#presentation",
-    "href": "final-project/trading-agent.html#presentation",
+    "objectID": "private/final-project/trading-agent.html#presentation",
+    "href": "private/final-project/trading-agent.html#presentation",
     "title": "Idea 3: Trading Agent",
     "section": "Presentation",
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
@@ -2136,8 +2136,8 @@
     ]
   },
   {
-    "objectID": "final-project/trading-agent.html#submission",
-    "href": "final-project/trading-agent.html#submission",
+    "objectID": "private/final-project/trading-agent.html#submission",
+    "href": "private/final-project/trading-agent.html#submission",
     "title": "Idea 3: Trading Agent",
     "section": "Submission",
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
@@ -2147,8 +2147,8 @@
     ]
   },
   {
-    "objectID": "final-project/trading-agent.html#grading",
-    "href": "final-project/trading-agent.html#grading",
+    "objectID": "private/final-project/trading-agent.html#grading",
+    "href": "private/final-project/trading-agent.html#grading",
     "title": "Idea 3: Trading Agent",
     "section": "Grading",
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
@@ -2158,8 +2158,8 @@
     ]
   },
   {
-    "objectID": "final-project/trading-agent.html#optional-research",
-    "href": "final-project/trading-agent.html#optional-research",
+    "objectID": "private/final-project/trading-agent.html#optional-research",
+    "href": "private/final-project/trading-agent.html#optional-research",
     "title": "Idea 3: Trading Agent",
     "section": "(Optional) Research",
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
@@ -2169,8 +2169,8 @@
     ]
   },
   {
-    "objectID": "final-project/rlhf.html",
-    "href": "final-project/rlhf.html",
+    "objectID": "private/final-project/rlhf.html",
+    "href": "private/final-project/rlhf.html",
     "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
     "section": "",
     "text": "Instructions\nUsing the Deep Reinforcement Learning algorithm learned in Lecture 11, devise an application that leverages Reinforcement Learning with Human Feedback (RLHF). Your task is to:",
@@ -2180,8 +2180,8 @@
     ]
   },
   {
-    "objectID": "final-project/rlhf.html#instructions",
-    "href": "final-project/rlhf.html#instructions",
+    "objectID": "private/final-project/rlhf.html#instructions",
+    "href": "private/final-project/rlhf.html#instructions",
     "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
     "section": "",
     "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least one Reinforcement Learning algorithm to solve the problem.\n\n\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
@@ -2191,8 +2191,8 @@
     ]
   },
   {
-    "objectID": "final-project/rlhf.html#presentation",
-    "href": "final-project/rlhf.html#presentation",
+    "objectID": "private/final-project/rlhf.html#presentation",
+    "href": "private/final-project/rlhf.html#presentation",
     "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
     "section": "Presentation",
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
@@ -2202,8 +2202,8 @@
     ]
   },
   {
-    "objectID": "final-project/rlhf.html#submission",
-    "href": "final-project/rlhf.html#submission",
+    "objectID": "private/final-project/rlhf.html#submission",
+    "href": "private/final-project/rlhf.html#submission",
     "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
     "section": "Submission",
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
@@ -2213,8 +2213,8 @@
     ]
   },
   {
-    "objectID": "final-project/rlhf.html#grading",
-    "href": "final-project/rlhf.html#grading",
+    "objectID": "private/final-project/rlhf.html#grading",
+    "href": "private/final-project/rlhf.html#grading",
     "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
     "section": "Grading",
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
@@ -2224,8 +2224,8 @@
     ]
   },
   {
-    "objectID": "final-project/rlhf.html#optional-research",
-    "href": "final-project/rlhf.html#optional-research",
+    "objectID": "private/final-project/rlhf.html#optional-research",
+    "href": "private/final-project/rlhf.html#optional-research",
     "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
     "section": "(Optional) Research",
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
@@ -2235,8 +2235,8 @@
     ]
   },
   {
-    "objectID": "final-project/grpo.html",
-    "href": "final-project/grpo.html",
+    "objectID": "private/final-project/grpo.html",
+    "href": "private/final-project/grpo.html",
     "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
     "section": "",
     "text": "Instructions\nUsing the Deep Reinforcement Learning algorithm learned in Lecture 11, devise an application that leverages Group Relative Policy Optimization (GRPO). Your task is to:",
@@ -2246,8 +2246,8 @@
     ]
   },
   {
-    "objectID": "final-project/grpo.html#instructions",
-    "href": "final-project/grpo.html#instructions",
+    "objectID": "private/final-project/grpo.html#instructions",
+    "href": "private/final-project/grpo.html#instructions",
     "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
     "section": "",
     "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least one Reinforcement Learning algorithm to solve the problem.\n\n\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
@@ -2257,8 +2257,8 @@
     ]
   },
   {
-    "objectID": "final-project/grpo.html#presentation",
-    "href": "final-project/grpo.html#presentation",
+    "objectID": "private/final-project/grpo.html#presentation",
+    "href": "private/final-project/grpo.html#presentation",
     "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
     "section": "Presentation",
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
@@ -2268,8 +2268,8 @@
     ]
   },
   {
-    "objectID": "final-project/grpo.html#submission",
-    "href": "final-project/grpo.html#submission",
+    "objectID": "private/final-project/grpo.html#submission",
+    "href": "private/final-project/grpo.html#submission",
     "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
     "section": "Submission",
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
@@ -2279,8 +2279,8 @@
     ]
   },
   {
-    "objectID": "final-project/grpo.html#grading",
-    "href": "final-project/grpo.html#grading",
+    "objectID": "private/final-project/grpo.html#grading",
+    "href": "private/final-project/grpo.html#grading",
     "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
     "section": "Grading",
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
@@ -2290,8 +2290,8 @@
     ]
   },
   {
-    "objectID": "final-project/grpo.html#optional-research",
-    "href": "final-project/grpo.html#optional-research",
+    "objectID": "private/final-project/grpo.html#optional-research",
+    "href": "private/final-project/grpo.html#optional-research",
     "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
     "section": "(Optional) Research",
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
