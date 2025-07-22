@@ -6,9 +6,9 @@
       text: "July 2025"
     - icon: book
       text: "DM"
-    - icon: globe  
-      text: "Course Website"
-      href: "https://dats.columbian.gwu.edu/courses/data-mining"
+    # - icon: globe  
+    #   text: "Course Website"
+    #   href: "https://dats.columbian.gwu.edu/courses/data-mining"
 
 - title: "Math for Data Science"
   description: "This course introduces fundamental mathematical concepts for Data Science. Key subjects covered include Set Theory, Linear Algebra, Calculus and Probability, with real-world interview questions."
