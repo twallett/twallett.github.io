@@ -20,7 +20,7 @@
       text: "Data Science Bootcamp"
     - icon: globe  
       text: "Course Website"
-      href: "https://dats.columbian.gwu.edu/math"
+      href: "https://dats.columbian.gwu.edu/courses/math"
 
 - title: "Programming for Data Science"
   description: "This course introduces fundamental programming concepts for Data Science. Key programming languages covered include Python, R and SQL, with real-world interview questions."
@@ -32,7 +32,7 @@
       text: "Data Science Bootcamp"
     - icon: globe  
       text: "Course Website"
-      href: "https://dats.columbian.gwu.edu/programming"
+      href: "https://dats.columbian.gwu.edu/courses/programming"
 
 - title: "DATS 6450: Reinforcement Learning"
   description: "This course introduces reinforcement learning through classical and deep architectures. Key algorithms covered include Monte Carlo (MC), Temporal Difference (TD), Value Function Approximation (VFA), Deep Q-Networks (DQN), Vanilla Policy Gradient (VPG), Proximal Policy Optimization (PPO), and Monte Carlo Tree Search (MCTS), with hands-on projects and real-world applications."
