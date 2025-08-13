@@ -25,7 +25,7 @@ I am from Venezuela 🇻🇪 and Canada 🇨🇦. I am deeply passionate 💖 ab
 
 To date, I have been involved in developing:
 
-- 5 [Projects](projects/) 
+- 3 [Projects](projects/) 
 - 2 [Research Papers](research/)
 - 4 [Courses](courses/)
 <!-- - 3 [Events]() -->

@@ -1,42 +1,3 @@
-# - id: "grpo-foundations"
-#   title: "Group Relative Policy Optimization (GRPO) Foundations"
-#   description: "This project forecasts S&P 500 Index, unemployment rates, corporate revenue, and real estate trends using deep learning models. Key deep learning algorithms covered include Multi-Layered Perceptron (MLP), Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU)."
-#   image: "imgs/GRU_SPY_forecast.png"
-#   tags:
-#     - icon: calendar
-#       text: "June 2025"
-#     - icon: book
-#       text: "RL"
-#     # - icon: github  
-#     #   text: "GitHub"
-#     #   href: "https://github.com/twallett/forecasting-deep-learning"
-
-# - id: "rlhf-foundations"
-#   title: "Reinforcement Learning with Human Feedback (RLHF) Foundations"
-#   description: "This project forecasts S&P 500 Index, unemployment rates, corporate revenue, and real estate trends using deep learning models. Key deep learning algorithms covered include Multi-Layered Perceptron (MLP), Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU)."
-#   image: "imgs/GRU_SPY_forecast.png"
-#   tags:
-#     - icon: calendar
-#       text: "June 2025"
-#     - icon: book
-#       text: "RL"
-#     # - icon: github  
-#     #   text: "GitHub"
-#     #   href: "https://github.com/twallett/forecasting-deep-learning"
-
-# - id: "trading-agent-rl"
-#   title: "Trading Agent using Reinforcement Learning"
-#   description: "This project forecasts S&P 500 Index, unemployment rates, corporate revenue, and real estate trends using deep learning models. Key deep learning algorithms covered include Multi-Layered Perceptron (MLP), Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU)."
-#   image: "imgs/GRU_SPY_forecast.png"
-#   tags:
-#     - icon: calendar
-#       text: "June 2025"
-#     - icon: book
-#       text: "RL"
-#     # - icon: github  
-#     #   text: "GitHub"
-#     #   href: "https://github.com/twallett/forecasting-deep-learning"
-
 - id: "yield-optimization-rl"
   title: "High-Yield Savings Account Optimization using Reinforcement Learning"
   description: "This project implements Multi-Armed Bandit (MAB) algorithms using reinforcement learning to optimize High-Yield Savings Account (HYSA) allocation. Key algorithms covered include Epsilon-Greedy, Upper Confidence Bound (UCB), and Thompson Sampling strategies."
@@ -49,32 +10,6 @@
     # - icon: github  
     #   text: "GitHub"
     #   href: "https://github.com/twallett/forecasting-deep-learning"
-
-- id: "portfolio-strategy-rl"
-  title: "Portfolio Strategy Recommendation using Reinforcement Learning "
-  description: "This project implements Multi-Armed Bandit (MAB) algorithms to recommend optimal portfolio strategies using reinforcement learning. Key algorithms include Epsilon-Greedy, Upper Confidence Bound (UCB), and Thompson Sampling for adaptive portfolio selection."
-  image: "imgs/portfolio-strategy.png"
-  tags:
-    - icon: calendar
-      text: "July 2025"
-    - icon: book
-      text: "RL"
-    # - icon: github  
-    #   text: "GitHub"
-    #   href: "https://github.com/twallett/forecasting-deep-learning"
-
-- id: "forecasting-deep-learning"
-  title: "Forecasting Financial and Economic Indicators using Deep Learning "
-  description: "This project forecasts S&P 500 Index, unemployment rates, corporate revenue, and real estate trends using deep learning models. Key deep learning algorithms covered include Multi-Layered Perceptron (MLP), Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU)."
-  image: "imgs/forecasting-deep-learning.png"
-  tags:
-    - icon: calendar
-      text: "August 2024"
-    - icon: book
-      text: "DL"
-    - icon: github  
-      text: "GitHub"
-      href: "https://github.com/twallett/forecasting-deep-learning"
 
 - id: "optimization-foundations"
   title: "Optimization Foundations"
