@@ -11,6 +11,22 @@
     #   text: "GitHub"
     #   href: "https://github.com/twallett/forecasting-deep-learning"
 
+- id: "fcps-dashboard-dm"
+  title: "Fairfax County Public Schools Dashboard"
+  description: "This project presents an interactive Streamlit dashboard analyzing Fairfax County Public Schools (FCPS) meal data, featuring production trends, sales insights, and future opportunities for data-driven decision-making."
+  image: "imgs/fcps-demo.png"
+  tags:
+    - icon: calendar
+      text: "June 2025"
+    - icon: book
+      text: "DM"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/amir-jafari/Public_Research"
+    - icon: globe  
+      text: "Demo"
+      href: "https://fsps-schools.streamlit.app/"
+
 - id: "optimization-foundations"
   title: "Optimization Foundations"
   description: "This project applies optimization techniques using NumPy to optimize multidimensional functions. Key optimization algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient."
