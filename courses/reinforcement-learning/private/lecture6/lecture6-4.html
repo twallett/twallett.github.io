@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,7 +112,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked slimcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -705,7 +705,7 @@ window.Quarto = {
         
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -750,7 +750,7 @@ Problem
 <p>How can we leverage the Temporal Difference learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_*\)</span> by learning from actions we didn’t take — without falling into biases of conceptions of previous behavior <span class="math inline">\(b\)</span>?</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="image-grid callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -765,7 +765,7 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/kahneman.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/kahneman.jpg" class="equal-img img-fluid figure-img"></p>
 <figcaption><em>Thinking, Fast and Slow</em> by Daniel Kahneman</figcaption>
 </figure>
 </div>
@@ -773,12 +773,27 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/daniel.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/daniel.png" class="equal-img img-fluid figure-img"></p>
 <figcaption>Daniel Kahneman - Nobel Prize Winner in Economic Sciences in 2002</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<style>
+.image-grid {
+  gap: 10px;              /* spacing between images */
+  max-width: 1000px;       /* controls how wide the grid can be */
+  margin: 0 auto;         /* centers the grid horizontally */
+  justify-content: center; /* keeps columns centered inside grid */
+}
+
+.equal-img {
+  width: 100%;
+  height: 300px; 
+  object-fit: cover;
+  display: block;
+}
+</style>
 <p>Kahneman describes two modes of thought:</p>
 <ul>
 <li>🧠 <strong>System 1</strong> — Fast, automatic, emotional, and often biased; rooted in evolutionarily older brain structures like the limbic system, designed for quick survival decisions.</li>
@@ -801,7 +816,7 @@ Example: Lines
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Answer: They are of the same length.</p>
+<!-- Answer: They are of the same length. -->
 </div>
 </div>
 </div>
@@ -819,7 +834,7 @@ Example: Pond
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Answer: Day 29.</p>
+<!-- Answer: Day 29. -->
 </div>
 </div>
 </div>
@@ -838,37 +853,43 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Double Q-Learning</strong> addresses this bias by creating two action value estimates <span class="math inline">\(Q_{1}(s,a)\)</span> and <span class="math inline">\(Q_{2}(s,a)\)</span>.</p>
-<p>With equal likelihood, one action value estimate yields the maximization action <span class="math inline">\(A_{t}\)</span> and the other provides the action value estimate <span class="math inline">\(Q(S_{t}, A_{t})\)</span>.</p>
-<p><span class="math display">\[
+<!-- **Double Q-Learning** addresses this bias by creating two action value estimates $Q_{1}(s,a)$ and $Q_{2}(s,a)$.
+
+With equal likelihood, one action value estimate yields the maximization action $A_{t}$ and the other provides the action value estimate $Q(S_{t}, A_{t})$.
+
+$$
 Q_{1}(S_{t},A_{t}) = Q_{1}(S_{t},A_{t}) + \alpha [R_{t+1} + \gamma Q_{2}(S_{t+1},\max_{a} Q_{1}(S_{t+1},a)) - Q_{1}(S_{t},A_{t})]
-\]</span></p>
-<p><span class="math display">\[
+$$
+
+$$
 Q_{2}(S_{t},A_{t}) = Q_{2}(S_{t},A_{t}) + \alpha [R_{t+1} + \gamma Q_{1}(S_{t+1},\max_{a} Q_{2}(S_{t+1},a)) - Q_{2}(S_{t},A_{t})]
-\]</span></p>
-<p>This dual-system model mirrors Double Q-learning:</p>
-<ul>
-<li>One Q-estimator (<span class="math inline">\(Q_1\)</span>) makes a quick action selection — like System 1.</li>
-<li>The other Q-estimator (<span class="math inline">\(Q_2\)</span>) does the critical evaluation — like System 2.</li>
-</ul>
-<p>This separation reduces maximization bias, much like System 2 tempers System 1’s impulsive decisions.</p>
+$$
 
-<hr>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
-<div class="center" style="text-align:center;">
-<p><img src="images/6-4.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
-</section>
+This dual-system model mirrors Double Q-learning:
+
+- One Q-estimator ($Q_1$) makes a quick action selection — like System 1.
+- The other Q-estimator ($Q_2$) does the critical evaluation — like System 2.
+
+This separation reduces maximization bias, much like System 2 tempers System 1’s impulsive decisions.
+
+::: {.column-margin}
+**Maximization bias** is a maximization of actual action value estimates $Q(s,a)$ is higher than those of the true action values $q(s,a)$, leading to a bias.
+:::
+
+---
+
+### Pseudocode
+
+::: {.center style="text-align:center;"}
+![](images/6-4.svg){width=75%}
+::: -->
 </div>
 </div>
 </div>
 
 
 
-<div class="no-row-height column-margin column-container"><div class="callout-5-contents callout-collapse collapse callout-margin-content">
-<p><strong>Maximization bias</strong> is a maximization of actual action value estimates <span class="math inline">\(Q(s,a)\)</span> is higher than those of the true action values <span class="math inline">\(q(s,a)\)</span>, leading to a bias.</p>
-</div></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

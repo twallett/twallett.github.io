@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -59,10 +59,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -813,38 +813,43 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>To select actions in action spaces <span class="math inline">\(\mathcal{A}\)</span> that are discrete or continuous, we use the following policies:</p>
-<ul>
-<li>Discrete <span class="math inline">\(\mathcal{A}\)</span>: <strong>Soft-max Policy</strong></li>
-<li>Continuous <span class="math inline">\(\mathcal{A}\)</span>: <strong>Gaussian Policy</strong></li>
-</ul>
-<hr>
-<section id="discrete-action-selection-soft-max-policy" class="level3">
-<h3 class="anchored" data-anchor-id="discrete-action-selection-soft-max-policy">Discrete Action Selection: Soft-max Policy</h3>
-<p>Given a state <span class="math inline">\(s\)</span>, the policy network outputs a vector of logits <span class="math inline">\(\theta_{\text{logits}}(s)\)</span>, one for each possible action. The probability of selecting action <span class="math inline">\(a\)</span> is given by the soft-max function:</p>
-<p><span class="math display">\[
+<!-- To select actions in action spaces $\mathcal{A}$ that are discrete or continuous, we use the following policies:
+
+- Discrete $\mathcal{A}$: **Soft-max Policy**
+- Continuous $\mathcal{A}$: **Gaussian Policy** 
+
+---
+
+### Discrete Action Selection: Soft-max Policy
+
+Given a state $s$, the policy network outputs a vector of logits $\theta_{\text{logits}}(s)$, one for each possible action. The probability of selecting action $a$ is given by the soft-max function:
+
+$$
 \pi(a|s;\theta) = \frac{\exp(\theta_{\text{logits}}(s)[a])}{\sum_{a'} \exp(\theta_{\text{logits}}(s)[a'])} \quad \forall a \in \mathcal{A}
-\]</span></p>
-<p>To select an action, sample <span class="math inline">\(a\)</span> from this categorical distribution.</p>
-<hr>
-</section>
-<section id="continuous-action-selection-gaussian-policy" class="level3">
-<h3 class="anchored" data-anchor-id="continuous-action-selection-gaussian-policy">Continuous Action Selection: Gaussian Policy</h3>
-<p>Given a state <span class="math inline">\(s\)</span>, the policy outputs parameters of a Gaussian distribution over actions:</p>
-<p><span class="math display">\[
+$$
+
+To select an action, sample $a$ from this categorical distribution.
+
+--- 
+
+### Continuous Action Selection: Gaussian Policy 
+
+Given a state $s$, the policy outputs parameters of a Gaussian distribution over actions:
+
+$$
 \begin{align*}
-  \pi(a|s; \theta)
-  &amp;= \frac{1}{\sqrt{2\pi \sigma^2(s)[a]}}
+  \pi(a|s; \theta) 
+  &= \frac{1}{\sqrt{2\pi \sigma^2(s)[a]}} 
      \exp\left(-\frac{(a - \mu(s)[a])^2}{2 \sigma^2(s)[a]}\right) \\
-  &amp;=  
+  &=  
      \begin{bmatrix}
-       \mu_1(s) &amp; \mu_2(s) &amp; \cdots &amp; \mu_{|\mathcal{A}|}(s) \
-       \sigma_1(s) &amp; \sigma_2(s) &amp; \cdots &amp; \sigma_{|\mathcal{A}|}(s)
+       \mu_1(s) & \mu_2(s) & \cdots & \mu_{|\mathcal{A}|}(s) \ 
+       \sigma_1(s) & \sigma_2(s) & \cdots & \sigma_{|\mathcal{A}|}(s) 
      \end{bmatrix} \quad \forall a \in \mathcal{A}
 \end{align*}
-\]</span></p>
-<p>To select an action, sample <span class="math inline">\(a\)</span> from the Gaussian distribution <span class="math inline">\(\mathcal{N}(\mu(s), \sigma^2(s))\)</span> output by the policy network.</p>
-</section>
+$$
+
+To select an action, sample $a$ from the Gaussian distribution $\mathcal{N}(\mu(s), \sigma^2(s))$ output by the policy network. -->
 </div>
 </div>
 </div>

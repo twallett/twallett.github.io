@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -59,10 +59,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -801,54 +801,65 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>We need to approximate action-value functions.</p>
-<p><span class="math display">\[
+<!-- We need to approximate action-value functions.
+
+$$
 \hat{Q}(s,a; \mathbf{w}) \approx Q_{\pi}(s,a)
-\]</span></p>
-<p>In doing so, we will incorporate previously learned techniques, such as <a href="../../private/lecture6/lecture6-2.html">SARSA</a> from Temporal Difference learning to devise a learning algorithm.</p>
-<hr>
-<section id="updating-action-value-function-approximators" class="level3">
-<h3 class="anchored" data-anchor-id="updating-action-value-function-approximators">Updating Action Value Function Approximators</h3>
-<p>MSE loss for action values:</p>
-<p><span class="math display">\[
+$$
+
+In doing so, we will incorporate previously learned techniques, such as [SARSA](../lecture6/lecture6-2.qmd) from Temporal Difference learning to devise a learning algorithm.
+
+---
+
+### Updating Action Value Function Approximators
+
+MSE loss for action values:
+
+$$
 F(\mathbf{w}_{t}) = \mathbb{E}_{\pi}[(Q_{\pi}(S_{t},A_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))^{2}]
-\]</span></p>
-<p>SGD update for parameters <span class="math inline">\(\mathbf{w}\)</span>:</p>
-<p><span class="math display">\[
+$$
+
+SGD update for parameters $\mathbf{w}$:
+
+$$
 \mathbf{w}_{t+1} = \mathbf{w}_{t} + \alpha(Q_{\pi}(S_{t},A_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})
-\]</span></p>
-<hr>
-</section>
-<section id="td-update" class="level3">
-<h3 class="anchored" data-anchor-id="td-update">TD Update</h3>
-<p>Finally, to implement TD learning, we substitute <span class="math inline">\(Q_{\pi}(s,a)\)</span> for our TD targets at each step:</p>
-<p><span class="math display">\[
+$$
+
+---
+
+### TD Update
+
+Finally, to implement TD learning, we substitute $Q_{\pi}(s,a)$ for our TD targets at each step:
+
+$$
 \langle S_{0}, \underbrace{\ R_{1} + \gamma \hat{Q}(S_{1},A_{1}; \mathbf{w}_{0})}_{\text{TD-target for Initial State}}\rangle, \ ... \ ,\langle S_{T-1},\underbrace{R_{T}}_{\text{TD-target for Terminal State}}\rangle
-\]</span></p>
-<p>Thus, our update equation for TD on-policy approximation:</p>
-<p><span class="math display">\[
+$$
+
+Thus, our update equation for TD on-policy approximation:
+
+$$
 \mathbf{w}_{t+1} = \mathbf{w}_{t} + \alpha(R_{t+1} + \gamma \hat{Q}(S_{t+1},A_{t+1}; \mathbf{w}_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})
-\]</span></p>
-<hr>
-</section>
-<section id="illustration-semi-gradient-sarsa" class="level3">
-<h3 class="anchored" data-anchor-id="illustration-semi-gradient-sarsa">Illustration: Semi-Gradient SARSA</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/SemiGradientSARSA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-<hr>
-</section>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
-<div class="center" style="text-align:center;">
-<p><img src="images/7-1.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
+$$
+
+---
+
+### Illustration: Semi-Gradient SARSA
+
+![](images/SemiGradientSARSA.png){width=100% fig-align="center"}
+
+---
+
+### Pseudocode
+
+::: {.center style="text-align:center;"}
+![](images/7-1.svg){width=75%}
+:::
+
 <div style="text-align: center;">
-<p><a href="https://github.com/twallett/rl-lecture-code/tree/main/07-FA/Base"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
-</div>
-</section>
+  <a href="https://github.com/twallett/rl-lecture-code/tree/main/07-FA/Base">
+    <img src="images/github.svg" alt="GitHub" width="5%"/> 
+  </a>
+</div> -->
 </div>
 </div>
 </div>
@@ -880,24 +891,23 @@ Answer
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The update is a product of how much to learn, how wrong we were, and how to change.</p>
-<p><span class="math display">\[
+<!-- The update is a product of how much to learn, how wrong we were, and how to change.
+
+$$
 \mathbf{w}_{t+1} = \mathbf{w}_{t} + \underbrace{\alpha}_{\text{Learning Rate}}\underbrace{(R_{t+1} + \gamma \hat{Q}(S_{t+1},A_{t+1}; \mathbf{w}_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))}_{\text{TD-Error}}\underbrace{\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})}_{\text{Gradient}}
-\]</span></p>
+$$ -->
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Off-Policy Function Approximation
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Baird’s Counterexample</strong> shows that even with linear function approximation, off-policy TD methods like Q-learning can diverge.</p>
 <div class="columns">
@@ -947,7 +957,6 @@ Off-Policy Function Approximation
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 

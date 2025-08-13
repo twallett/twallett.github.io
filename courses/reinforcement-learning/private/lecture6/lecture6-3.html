@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -820,27 +820,27 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Q-Learning</strong> is a TD off-policy method that can both update and estimate the optimal action-value function directly:</p>
-<p><span class="math display">\[
+<!-- **Q-Learning** is a TD off-policy method that can both update and estimate the optimal action-value function directly:
+
+$$
 Q(S_{t},A_{t}) = Q(S_{t},A_{t}) + \alpha [ R_{t+1} + \gamma \max_{a} Q(S_{t+1},a) - Q(S_{t},A_{t})]
-\]</span></p>
-<p>Q-Learning is a breakthrough in reinforcement learning due to its simplification of algorithm analysis and early convergence proofs.</p>
-<hr>
-<section id="illustration-q-learning" class="level3">
-<h3 class="anchored" data-anchor-id="illustration-q-learning">Illustration: Q-Learning</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Q-Learning.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:22.0%"></p>
-</figure>
-</div>
-<hr>
-</section>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
-<div class="center" style="text-align:center;">
-<p><img src="images/6-3.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
-</section>
+$$
+
+Q-Learning is a breakthrough in reinforcement learning due to its simplification of algorithm analysis and early convergence proofs.
+
+---
+
+### Illustration: Q-Learning
+
+![](images/Q-Learning.png){width=22% fig-align="center"}
+
+---
+
+### Pseudocode
+
+::: {.center style="text-align:center;"}
+![](images/6-3.svg){width=75%}
+::: -->
 </div>
 </div>
 </div>

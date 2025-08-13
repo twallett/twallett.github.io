@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -59,10 +59,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -852,52 +852,63 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>To face the problem of sparse rewards, we will introduce two key ideas :</p>
-<ul>
-<li>Leveraging temporal structure.</li>
-<li>Baselines.</li>
-</ul>
-<hr>
-<section id="leveraging-the-temporal-structure" class="level3">
-<h3 class="anchored" data-anchor-id="leveraging-the-temporal-structure">1. Leveraging the Temporal Structure</h3>
-<p>Instead of multiplying the sum of rewards over a entire trajectory by the score function:</p>
-<p><span class="math display">\[
+<!-- To face the problem of sparse rewards, we will introduce two key ideas :
+
+- Leveraging temporal structure.
+- Baselines.
+
+---
+
+### 1. Leveraging the Temporal Structure
+
+Instead of multiplying the sum of rewards over a entire trajectory by the score function: 
+
+$$
 \begin{align*}
-    \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1} R(\tau^{i}) \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \\
-    &amp;= \frac{1}{m} \sum^{m}_{i = 1} \sum^{T-1}_{t=0} r^{i}_t \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta)
+    \hat{g} &= \frac{1}{m} \sum^{m}_{i = 1} R(\tau^{i}) \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \\ 
+    &= \frac{1}{m} \sum^{m}_{i = 1} \sum^{T-1}_{t=0} r^{i}_t \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) 
 \end{align*}
-\]</span></p>
-<p>We only <strong>multiply the sum of rewards relevant to the score function for each time-step</strong>:</p>
-<p><span class="math display">\[
+$$
+
+We only **multiply the sum of rewards relevant to the score function for each time-step**:
+
+$$
 \begin{align*}
-    \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} r^{i}_{t'}
+    \hat{g} &= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} r^{i}_{t'}
 \end{align*}
-\]</span></p>
-<hr>
-</section>
-<section id="baselines" class="level3">
-<h3 class="anchored" data-anchor-id="baselines">2. Baselines</h3>
-<p><strong>Baselines</strong> <span class="math inline">\(b(s)\)</span> are unbiased estimators that are solely functions of states.</p>
-<p>The goal of a baseline is to mimic an expected reward for the sum of rewards for all time-steps.</p>
-<p><span class="math display">\[
+$$
+
+---
+
+### 2. Baselines
+
+**Baselines** $b(s)$ are unbiased estimators that are solely functions of states. 
+
+The goal of a baseline is to mimic an expected reward for the sum of rewards for all time-steps.
+
+$$
 b(s_t) \approx \mathbb{E}[r_t + r_{t+1} + ... + r_{T-1}]
-\]</span></p>
-<p>This would increase the score function proportionally to how much returns are better than expected:</p>
-<p><span class="math display">\[
+$$
+
+This would increase the score function proportionally to how much returns are better than expected:
+
+$$
 \begin{align*}
-    \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s))
+    \hat{g} &= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s))
 \end{align*}
-\]</span></p>
-<p>Another way of denoting the difference between the sum of rewards and the baseline is as an <strong>advantage estimate</strong> <span class="math inline">\(\hat{A}_t\)</span>:</p>
-<p><span class="math display">\[
+$$
+
+Another way of denoting the difference between the sum of rewards and the baseline is as an **advantage estimate** $\hat{A}_t$:
+
+$$
 \begin{align*}
-    \hat{g} &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s)) \\
-    &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - \underbrace{V_{\phi}(s)}_{\text{Baseline}}) \\
-    &amp;= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \ \hat{A}_{t}
+    \hat{g} &= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - b(s)) \\ 
+    &= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \sum^{T-1}_{t' = t} (r^{i}_{t'} - \underbrace{V_{\phi}(s)}_{\text{Baseline}}) \\ 
+    &= \frac{1}{m} \sum^{m}_{i = 1}  \sum^{T-1}_{t=0} \log \nabla_\theta \pi(A_{t}|S_{t}, \theta) \ \hat{A}_{t}
 \end{align*}
-\]</span></p>
-<p>There are many ways to represent a baseline, and designing effective baselines remains an open research question. In practice, <span class="math inline">\(V_{\phi}(s)\)</span> is typically a value function approximated by a neural network <span class="math inline">\(\phi\)</span>.</p>
-</section>
+$$
+
+There are many ways to represent a baseline, and designing effective baselines remains an open research question. In practice, $V_{\phi}(s)$ is typically a value function approximated by a neural network $\phi$. -->
 </div>
 </div>
 </div>

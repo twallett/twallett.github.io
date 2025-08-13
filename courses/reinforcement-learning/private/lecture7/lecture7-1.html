@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -59,10 +59,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -830,11 +830,14 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Develop a function with parameters <span class="math inline">\(\mathbf{w}\)</span> that approximates the value of these continuous state values:</p>
-<p><span class="math display">\[
+<!-- 
+Develop a function with parameters $\mathbf{w}$ that approximates the value of these continuous state values:
+
+$$
 \hat{V}(s; \mathbf{w}) \approx V_{\pi}(s)
-\]</span></p>
-<p>Now, we can generalize approximate values of states encountered and those we have not.</p>
+$$
+
+Now, we can generalize approximate values of states encountered and those we have not. -->
 </div>
 </div>
 </div>
@@ -972,12 +975,10 @@ Answer
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>No — because this is not supervised learning.</p>
-<ul>
-<li><span class="math inline">\(V_{\pi}(S_t)\)</span> is <strong>not a true target</strong>, but an estimate based on samples or bootstrapping.<br>
-</li>
-<li><span class="math inline">\(\nabla_{\mathbf{w}_t} \hat{V}(S_t; \mathbf{w}_t)\)</span> is a <strong>noisy gradient</strong>, not the true gradient of a fixed loss function.</li>
-</ul>
+<!-- No — because this is not supervised learning.
+
+- $V_{\pi}(S_t)$ is **not a true target**, but an estimate based on samples or bootstrapping.  
+- $\nabla_{\mathbf{w}_t} \hat{V}(S_t; \mathbf{w}_t)$ is a **noisy gradient**, not the true gradient of a fixed loss function. -->
 </div>
 </div>
 </div>

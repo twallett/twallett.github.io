@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -770,11 +770,11 @@ Real Life Example 🧠
 <li><span class="math inline">\(R\)</span> – After each episode or video, you mentally rate how entertaining or satisfying it was.</li>
 </ul>
 <p>In my case:</p>
-<div class="grid">
+<div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/black-mirror.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/seinfeld.jpg" class="equal-img img-fluid figure-img"></p>
 <figcaption>My comfort show</figcaption>
 </figure>
 </div>
@@ -782,7 +782,7 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/love-death-robots.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/the-office.jpg" class="equal-img img-fluid figure-img"></p>
 <figcaption>Watched a couple episodes</figcaption>
 </figure>
 </div>
@@ -790,7 +790,7 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/leave.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/leave.jpg" class="equal-img img-fluid figure-img"></p>
 <figcaption>Never saw this one</figcaption>
 </figure>
 </div>
@@ -799,6 +799,21 @@ Real Life Example 🧠
 <p>How can I select a show based on my prior beliefs?</p>
 </div>
 </div>
+<style>
+.image-grid {
+  gap: 10px;              /* spacing between images */
+  max-width: 900px;       /* controls how wide the grid can be */
+  margin: 0 auto;         /* centers the grid horizontally */
+  justify-content: center; /* keeps columns centered inside grid */
+}
+
+.equal-img {
+  width: 100%;
+  height: 300px; 
+  object-fit: cover;
+  display: block;
+}
+</style>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -811,36 +826,48 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Thompson sampling</strong> is an algorithm that leverages the beta distribution for its action value method and action selections.</p>
-<p>Initialize beta distributed with parameters:</p>
-<p><span class="math display">\[
+<!-- 
+**Thompson sampling** is an algorithm that leverages the beta distribution for its action value method and action selections.
+
+Initialize beta distributed with parameters:
+
+$$
 \alpha(a) = (\alpha_{1}, . . . , \alpha_{k}) = 1
-\]</span> <span class="math display">\[
+$$
+$$
 \beta(a) = (\beta_{1}, . . . , \beta_{k}) = 1
-\]</span></p>
-<p>Now for each action <span class="math inline">\(a\)</span>, the prior probability density function of our action value method <span class="math inline">\(Q(a)\)</span> is:</p>
-<p><span class="math display">\[
+$$
+
+Now for each action $a$, the prior probability density function of our action value method $Q(a)$ is:
+
+$$
   Q(a) = \frac{\Gamma(\alpha(a) + \beta(a))}{\Gamma(\alpha(a)) \ \Gamma(\beta(a))} a^{\alpha(a)-1} (1 a)^{\beta(a)-1}
-\]</span></p>
-<hr>
-<section id="balancing-exploration-and-exploitation" class="level3">
-<h3 class="anchored" data-anchor-id="balancing-exploration-and-exploitation">Balancing Exploration and Exploitation</h3>
-<p>The agent updates its prior belief using the following action value method:</p>
-<p><span class="math display">\[
+$$
+
+---
+
+### Balancing Exploration and Exploitation
+
+The agent updates its prior belief using the following action value method:
+
+$$
 \alpha(A_{t}) \gets \alpha(A_{t}) + R_{t}
-\]</span> <span class="math display">\[
+$$
+$$
 \beta(A_{t}) \gets \beta(A_{t}) + 1 R_{t}
-\]</span></p>
-<p>Notice that for those actions selected <span class="math inline">\(A_t\)</span>, we increase its corresponding <span class="math inline">\(\alpha\)</span> parameter (<span class="math inline">\(R_t = 1\)</span>) and maintain its <span class="math inline">\(\beta\)</span> parameter the same as before (<span class="math inline">\(1 - R_t = 1 - 1 = 0\)</span>).</p>
-<p>This update allows the algorithm to draw accurate samples and strike a balance between exploring and exploiting.</p>
-<hr>
-</section>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
-<div class="center" style="text-align:center;">
-<p><img src="images/3-3.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
-</section>
+$$
+
+Notice that for those actions selected $A_t$, we increase its corresponding $\alpha$ parameter ($R_t = 1$) and maintain its $\beta$ parameter the same as before ($1 - R_t = 1 - 1 = 0$).
+
+This update allows the algorithm to draw accurate samples and strike a balance between exploring and exploiting.
+
+---
+
+### Pseudocode
+
+::: {.center style="text-align:center;"}
+![](images/3-3.svg){width=75%}
+::: -->
 </div>
 </div>
 </div>

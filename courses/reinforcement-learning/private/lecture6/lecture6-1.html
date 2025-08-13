@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -783,34 +783,37 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Temporal Difference</strong> (TD) is a <em>learning rule</em> that is a combination of Monte Carlo and Dynamic Programming ideas.</p>
-<ul>
-<li>TD methods, like Monte Carlo, learn from experience by updating estimates of nonterminal states along a trajectory <span class="math inline">\(\tau\)</span>.</li>
-<li>TD methods, like Dynamic Programming, update based on an existing estimate <span class="math inline">\(V(S_{t+1})\)</span>.</li>
-</ul>
-<p>TD methods at time <span class="math inline">\(t + 1\)</span> immediately form a target and make a useful update using the observed reward <span class="math inline">\(R_{t+1}\)</span> and the estimate <span class="math inline">\(V(S_{t+1})\)</span> in a incremental fashion:</p>
-<p><span class="math display">\[
+<!-- 
+**Temporal Difference** (TD) is a *learning rule* that is a combination of Monte Carlo and Dynamic Programming ideas.
+
+- TD methods, like Monte Carlo, learn from experience by updating estimates of nonterminal states along a trajectory $\tau$.
+- TD methods, like Dynamic Programming, update based on an existing estimate $V(S_{t+1})$.
+
+TD methods at time $t + 1$ immediately form a target and make a useful update using the observed reward $R_{t+1}$ and the estimate $V(S_{t+1})$ in a incremental fashion:
+
+$$
 V(S_{t}) = V(S_{t}) + \underbrace{\alpha}_{Step \ Size} [ \underbrace{\underbrace{R_{t+1} + \gamma V(S_{t+1})}_{Target \ Update} - V(S_{t})}_{TD \  Error}]
-\]</span></p>
-<hr>
-<section id="illustration-temporal-difference-td-prediction" class="level3">
-<h3 class="anchored" data-anchor-id="illustration-temporal-difference-td-prediction">Illustration: Temporal Difference (TD) Prediction</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/TDPrediction.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10.0%"></p>
-</figure>
-</div>
-<hr>
-</section>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
-<div class="center" style="text-align:center;">
-<p><img src="images/6-1.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
+$$
+
+---
+
+### Illustration: Temporal Difference (TD) Prediction 
+
+![](images/TDPrediction.png){width=10% fig-align="center"}
+
+---
+
+### Pseudocode
+
+::: {.center style="text-align:center;"}
+![](images/6-1.svg){width=75%}
+:::
+
 <div style="text-align: center;">
-<p><a href="https://github.com/twallett/rl-lecture-code/tree/main/06-TD/01-TDPrediction"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
-</div>
-</section>
+  <a href="https://github.com/twallett/rl-lecture-code/tree/main/06-TD/01-TDPrediction">
+    <img src="images/github.svg" alt="GitHub" width="5%"/> 
+  </a>
+</div> -->
 </div>
 </div>
 </div>

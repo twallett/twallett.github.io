@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -59,10 +39,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -842,20 +822,17 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>For the sampling problem, we can store old trajectories <span class="math inline">\(\tau\)</span> in a buffer <span class="math inline">\(D\)</span> and sample these in a batch form.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/TrajectoryBuffer.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
-</figure>
-</div>
-<ol start="2" type="1">
-<li>&amp; 3. We need a new algorithm that takes step sizes <span class="math inline">\(\alpha\)</span> without creating drastic changes in the log probabilities of actions.</li>
-</ol>
+<!-- 1. For the sampling problem, we can store old trajectories $\tau$ in a buffer $D$ and sample these in a batch form.
+
+![](images/TrajectoryBuffer.svg){width=25% fig-align="center"}
+
+2. \& 3. We need a new algorithm that takes step sizes $\alpha$ without creating drastic changes in the log probabilities of actions.
+
 <div class="text-center">
-<p><img src="images/trpo.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> U.C. Berkeley 2015 <span class="citation" data-cites="schulman2015trust">(<a href="../../references.html#ref-schulman2015trust" role="doc-biblioref">Schulman et al. 2015</a>)</span> <br> <a href="https://arxiv.org/pdf/1502.05477">Link to Research Paper</a></p>
-</div>
+  ![](images/trpo.svg){width=75% fig-align="center"} <br>
+  U.C. Berkeley 2015 [@schulman2015trust] <br>
+  [Link to Research Paper](https://arxiv.org/pdf/1502.05477)
+</div> -->
 </div>
 </div>
 </div>
@@ -903,11 +880,6 @@ F(\pi_{\theta_{t+1}}) \geq L(\pi_{\theta_{t+1}}) - C \ D^{max}_{KL}(\pi_{\theta_
 \]</span></p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-schulman2015trust" class="csl-entry" role="listitem">
-Schulman, John, Sergey Levine, Philipp Moritz, Michael I Jordan, and Pieter Abbeel. 2015. <span>“Trust Region Policy Optimization.”</span> <em>arXiv Preprint arXiv:1502.05477</em>. <a href="https://arxiv.org/abs/1502.05477">https://arxiv.org/abs/1502.05477</a>.
-</div>
-</div>
 </section>
 </section>
 

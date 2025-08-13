@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -771,12 +771,12 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Dynamic Programming</strong> is a collection of algorithms that can be used to compute optimal policies <span class="math inline">\(\pi_{*}\)</span>.</p>
-<p>These algorithms have limited utility in Reinforcement Learning due to:</p>
-<ul>
-<li><strong>Assumption of a perfect model</strong>: All state transitions <span class="math inline">\(P(s', r \mid s, a)\)</span> are known in advance.</li>
-<li><strong>Computational expense</strong>: Dynammic Programming typically requires full sweeps over the state space <span class="math inline">\(\forall s \in S\)</span>, which is only feasible in small, tabular environments.</li>
-</ul>
+<!-- **Dynamic Programming** is a collection of algorithms that can be used to compute optimal policies $\pi_{*}$.
+
+These algorithms have limited utility in Reinforcement Learning due to:
+
+- **Assumption of a perfect model**: All state transitions $P(s', r \mid s, a)$ are known in advance.
+- **Computational expense**: Dynammic Programming typically requires full sweeps over the state space $\forall s \in S$, which is only feasible in small, tabular environments. -->
 </div>
 </div>
 </div>
@@ -846,12 +846,15 @@ Answer
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>One way to check if it is better to switch from policy <span class="math inline">\(\pi\)</span> to <span class="math inline">\(\pi^{'}\)</span> is by checking if the following inequality holds:</p>
-<p><span class="math display">\[
-q_{\pi}(s, \pi^{'}(s)) \geq v_{\pi}(s)
-\]</span></p>
-<p>If selecting <span class="math inline">\(a\)</span> in <span class="math inline">\(s\)</span> and thereafter following policy <span class="math inline">\(\pi\)</span> is better than just following <span class="math inline">\(\pi\)</span>, there must be a better policy <span class="math inline">\(\pi^{'}\)</span>.</p>
-<p>The special case when this inequality is true is referred to as the <strong>policy improvement theorem</strong>.</p>
+<!-- One way to check if it is better to switch from policy $\pi$ to $\pi^{'}$ is by checking if the following inequality holds:
+
+$$ 
+q_{\pi}(s, \pi^{'}(s)) \geq v_{\pi}(s) 
+$$
+
+If selecting $a$ in $s$ and thereafter following policy $\pi$ is better than just following $\pi$, there must be a better policy $\pi^{'}$.
+
+The special case when this inequality is true is referred to as the **policy improvement theorem**. -->
 </div>
 </div>
 </div>

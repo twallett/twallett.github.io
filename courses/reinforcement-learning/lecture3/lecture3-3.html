@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,7 +112,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked slimcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -705,7 +705,7 @@ window.Quarto = {
         
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -770,11 +770,11 @@ Real Life Example 🧠
 <li><span class="math inline">\(R\)</span> – After each run, you mentally rate the experience - scenery, terrain or how energized you felt.</li>
 </ul>
 <p>In my case:</p>
-<div class="grid">
+<div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/trail-a.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/trail-a.jpg" class="equal-img img-fluid figure-img"></p>
 <figcaption>My go-to loop</figcaption>
 </figure>
 </div>
@@ -782,7 +782,7 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/trail-b.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/trail-b.jpg" class="equal-img img-fluid figure-img"></p>
 <figcaption>Only ran this trail once</figcaption>
 </figure>
 </div>
@@ -790,12 +790,27 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/trail-c.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/trail-c.jpg" class="equal-img img-fluid figure-img"></p>
 <figcaption>Never tried this one</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<style>
+.image-grid {
+  gap: 10px;              /* spacing between images */
+  max-width: 1000px;       /* controls how wide the grid can be */
+  margin: 0 auto;         /* centers the grid horizontally */
+  justify-content: center; /* keeps columns centered inside grid */
+}
+
+.equal-img {
+  width: 100%;
+  height: 300px; 
+  object-fit: cover;
+  display: block;
+}
+</style>
 <p>How can I pick a trail that has the best combination of enjoyment and uncertainty — so I explore only when it is smart to?</p>
 </div>
 </div>
@@ -811,40 +826,51 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Upper Confidence Boundaries (UCB)</strong> allow us to select among the non-greedy actions according to their potential for actually being optimal.</p>
-<p><span class="math display">\[
+<!-- **Upper Confidence Boundaries (UCB)** allow us to select among the non-greedy actions according to their potential for actually being optimal.
+
+$$
 A_t \gets \arg\max_a \left[ Q(a) + \sqrt{\frac{2 \ln(t)}{N(a)}} \right]
-\]</span></p>
+$$
 
-<hr>
-<section id="balancing-exploration-and-exploitation" class="level3">
-<h3 class="anchored" data-anchor-id="balancing-exploration-and-exploitation">Balancing Exploration and Exploitation</h3>
-<p>Each time <span class="math inline">\(a\)</span> is selected, the uncertainty is presumably reduced <span class="math inline">\(N(a)\)</span> increments, and as it appears in the denominator, the uncertainty term decreases.</p>
-<p><span class="math display">\[
+::: {.column-margin}
+
+$\sqrt{\frac{2 \ln(t)}{N(a)}}$ is the measure of variance of the action $a$. The natural logarithm increases get smaller over time but are unbounded, so all actions will be selected.
+
+:::
+
+---
+
+### Balancing Exploration and Exploitation
+
+Each time $a$ is selected, the uncertainty is presumably reduced $N(a)$ increments, and as it appears in the denominator, the uncertainty term decreases.
+
+
+$$
 VAR \downarrow = \sqrt{\frac{2 \ln(t)}{N(a)\uparrow}}
-\]</span></p>
-<p>Each time an action other than <span class="math inline">\(a\)</span> is selected, <span class="math inline">\(t\)</span> increases but <span class="math inline">\(N(a)\)</span> does not; because <span class="math inline">\(t\)</span> appears in the numerator, the uncertainty estimate increases.</p>
-<p><span class="math display">\[
+$$
+
+Each time an action other than $a$ is selected, $t$ increases but $N(a)$ does not; because $t$ appears in the numerator, the uncertainty estimate increases.
+
+$$
 VAR \uparrow = \sqrt{\frac{2 \ln(t) \uparrow}{N(a)}}
-\]</span></p>
-<p>In our Real Life Example UCB says “Don’t just pick randomly. Prefer trails that are either great <strong>or</strong> still uncertain — they might surprise you.”</p>
-<hr>
-</section>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
-<div class="center" style="text-align:center;">
-<p><img src="images/3-2.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
-</section>
+$$
+
+In our Real Life Example UCB says "Don't just pick randomly. Prefer trails that are either great **or** still uncertain — they might surprise you."
+
+---
+
+### Pseudocode
+
+::: {.center style="text-align:center;"}
+![](images/3-2.svg){width=75%}
+::: -->
 </div>
 </div>
 </div>
 
 
 
-<div class="no-row-height column-margin column-container"><div class="callout-3-contents callout-collapse collapse callout-margin-content">
-<p><span class="math inline">\(\sqrt{\frac{2 \ln(t)}{N(a)}}\)</span> is the measure of variance of the action <span class="math inline">\(a\)</span>. The natural logarithm increases get smaller over time but are unbounded, so all actions will be selected.</p>
-</div></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

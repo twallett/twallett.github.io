@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f199200b7ae9796b0fb84573f89602fb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7066b28eb904c10af1a0b37b42758f78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -768,11 +768,11 @@ Real Life Example 🧠
 <li><span class="math inline">\(S', A'\)</span> — The next song plays, and you make another decision.</li>
 </ul>
 <p>In this case:</p>
-<div class="grid">
+<div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://www.youtube.com/watch?v=gxlB1B9emDc&amp;list=RDgxlB1B9emDc&amp;start_radio=1"><img src="images/oscar-de-leon.jpeg" class="img-fluid figure-img" style="width:100.0%"></a></p>
+<p><a href="https://www.youtube.com/watch?v=gxlB1B9emDc&amp;list=RDgxlB1B9emDc&amp;start_radio=1"><img src="images/oscar-de-leon.jpeg" class="equal-img img-fluid figure-img"></a></p>
 <figcaption>Salsa — always a win</figcaption>
 </figure>
 </div>
@@ -780,7 +780,7 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://www.youtube.com/watch?v=ZA7ZKB8Mo9k"><img src="images/feid.jpeg" class="img-fluid figure-img" style="width:100.0%"></a></p>
+<p><a href="https://www.youtube.com/watch?v=ZA7ZKB8Mo9k"><img src="images/feid.jpeg" class="equal-img img-fluid figure-img"></a></p>
 <figcaption>Reggeaton — mostly hits, sometimes skips</figcaption>
 </figure>
 </div>
@@ -788,12 +788,27 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/jazz.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/jazz.png" class="equal-img img-fluid figure-img"></p>
 <figcaption>Jazz — new territory</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<style>
+.image-grid {
+  gap: 10px;              /* spacing between images */
+  max-width: 100%;       /* controls how wide the grid can be */
+  margin: 0 auto;         /* centers the grid horizontally */
+  justify-content: center; /* keeps columns centered inside grid */
+}
+
+.equal-img {
+  width: 100%;
+  height: 300px; 
+  object-fit: cover;
+  display: block;
+}
+</style>
 <p>How can your music app learn what you like while still exploring new genres — using your <em>actual listening behavior</em>, one song at a time?</p>
 </div>
 </div>
@@ -809,29 +824,31 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>SARSA is an <a href="../../private/lecture5/lecture5-3.html#on-policy-learning">on-policy</a> TD control method that updates action-value estimates based <span class="math inline">\(q_{\pi}(s, a)\)</span> on the trajectory actually followed by the current policy <span class="math inline">\(\pi\)</span> — including any exploration it performs.</p>
-<p><span class="math display">\[
+<!-- SARSA is an [on-policy](../lecture5/lecture5-3.qmd#on-policy-learning) TD control method that updates action-value estimates based $q_{\pi}(s, a)$ on the trajectory actually followed by the current policy $\pi$ — including any exploration it performs.
+
+$$
 Q(S_{t},A_{t}) = Q(S_{t},A_{t}) + \alpha [ R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) - Q(S_{t},A_{t})]
-\]</span></p>
-<p>This rule uses every element of the quintuple of events (<span class="math inline">\(S_{t}, A_{t}, R_{t+1}, S_{t+1}, A_{t+1}\)</span>)</p>
-<p>That’s SARSA: learning step-by-step from your real actions, even if your current “playlist” isn’t perfect.</p>
-<p>Unlike Monte Carlo methods, which wait until the end of a full playlist (or episode) to update preferences, SARSA updates incrementally — after every song — using immediate feedback and your next action.</p>
-<hr>
-<section id="illustration-sarsa" class="level3">
-<h3 class="anchored" data-anchor-id="illustration-sarsa">Illustration: SARSA</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/SARSA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:11.0%"></p>
-</figure>
-</div>
-<hr>
-</section>
-<section id="pseudocode" class="level3">
-<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
-<div class="center" style="text-align:center;">
-<p><img src="images/6-2.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
-</section>
+$$
+
+This rule uses every element of the quintuple of events ($S_{t}, A_{t}, R_{t+1}, S_{t+1}, A_{t+1}$)
+
+That’s SARSA: learning step-by-step from your real actions, even if your current “playlist” isn’t perfect.  
+
+Unlike Monte Carlo methods, which wait until the end of a full playlist (or episode) to update preferences, SARSA updates incrementally — after every song — using immediate feedback and your next action.
+
+---
+
+### Illustration: SARSA
+
+![](images/SARSA.png){width=11% fig-align="center"}
+
+---
+
+### Pseudocode
+
+::: {.center style="text-align:center;"}
+![](images/6-2.svg){width=75%}
+::: -->
 </div>
 </div>
 </div>
