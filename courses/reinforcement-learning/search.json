@@ -1975,7 +1975,7 @@
     "href": "private/exams/exam1.html",
     "title": "Exam 1",
     "section": "",
-    "text": "Exam Information - Coming Soon 📢",
+    "text": "Exam 1 Information - Coming Soon 📢",
     "crumbs": [
       "Exams",
       "<span class='chapter-number'>69</span>  <span class='chapter-title'>Exam 1</span>"
@@ -1986,7 +1986,7 @@
     "href": "private/exams/exam2.html",
     "title": "Exam 2",
     "section": "",
-    "text": "Exam Information - Coming Soon 📢",
+    "text": "Exam 2 Information - Coming Soon 📢",
     "crumbs": [
       "Exams",
       "<span class='chapter-number'>70</span>  <span class='chapter-title'>Exam 2</span>"
@@ -1997,62 +1997,7 @@
     "href": "private/final-project/final-project-overview.html",
     "title": "Final Project Overview",
     "section": "",
-    "text": "Instructions\nUsing the different Multi-Armed Bandit algorithms learned in Lecture 3, devise a novel approach to dynamically manage the weights of portfolio’s. Your task is to:",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-overview.html#instructions",
-    "href": "private/final-project/final-project-overview.html#instructions",
-    "title": "Final Project Overview",
-    "section": "",
-    "text": "Define the Reinforcement Learning Framework: Formulate a Multi-Armed Bandit problem.\n\n\nDefine the data.\nSpecify the arms \\(A\\).\nSpecify the reward structure \\(R\\).\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\n\\(\\epsilon\\)-Greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.\n(Optional) Stability score: Standard deviation of the reward over time.\n(Optional) Adaptability: Performance when the environment shifts.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-overview.html#presentation",
-    "href": "private/final-project/final-project-overview.html#presentation",
-    "title": "Final Project Overview",
-    "section": "Presentation",
-    "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-overview.html#submission",
-    "href": "private/final-project/final-project-overview.html#submission",
-    "title": "Final Project Overview",
-    "section": "Submission",
-    "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-overview.html#grading",
-    "href": "private/final-project/final-project-overview.html#grading",
-    "title": "Final Project Overview",
-    "section": "Grading",
-    "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-overview.html#optional-research",
-    "href": "private/final-project/final-project-overview.html#optional-research",
-    "title": "Final Project Overview",
-    "section": "(Optional) Research",
-    "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
+    "text": "Final Project Information - Coming Soon 📢",
     "crumbs": [
       "Final Project",
       "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
@@ -2063,62 +2008,7 @@
     "href": "private/final-project/final-project-ideas.html",
     "title": "Final Project Ideas",
     "section": "",
-    "text": "Instructions\nUsing the Deep Reinforcement Learning algorithm learned in Lecture 11, devise an application that leverages Group Relative Policy Optimization (GRPO). Your task is to:",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-ideas.html#instructions",
-    "href": "private/final-project/final-project-ideas.html#instructions",
-    "title": "Final Project Ideas",
-    "section": "",
-    "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least one Reinforcement Learning algorithm to solve the problem.\n\n\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-ideas.html#presentation",
-    "href": "private/final-project/final-project-ideas.html#presentation",
-    "title": "Final Project Ideas",
-    "section": "Presentation",
-    "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-ideas.html#submission",
-    "href": "private/final-project/final-project-ideas.html#submission",
-    "title": "Final Project Ideas",
-    "section": "Submission",
-    "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-ideas.html#grading",
-    "href": "private/final-project/final-project-ideas.html#grading",
-    "title": "Final Project Ideas",
-    "section": "Grading",
-    "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/final-project-ideas.html#optional-research",
-    "href": "private/final-project/final-project-ideas.html#optional-research",
-    "title": "Final Project Ideas",
-    "section": "(Optional) Research",
-    "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
+    "text": "Final Project Information - Coming Soon 📢",
     "crumbs": [
       "Final Project",
       "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"

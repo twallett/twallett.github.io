@@ -80,35 +80,6 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -686,18 +657,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#presentation" id="toc-presentation" class="nav-link" data-scroll-target="#presentation">Presentation</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
-  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
-  <li><a href="#optional-research" id="toc-optional-research" class="nav-link" data-scroll-target="#optional-research">(Optional) Research</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -727,125 +688,118 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Idea 2: Dynamic Portfolio Management 🏁</p>
+<p>Final Project Information - Coming Soon 📢</p>
 </div>
 </div>
 </div>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>Using the different Multi-Armed Bandit algorithms learned in <a href="../../lecture3/lo.html">Lecture 3</a>, devise a novel approach to <strong>dynamically manage the weights of portfolio’s</strong>. Your task is to:</p>
-<ol type="1">
-<li><strong>Define the Reinforcement Learning Framework</strong>: Formulate a Multi-Armed Bandit problem.</li>
-</ol>
-<ul>
-<li>Define the data.</li>
-<li>Specify the arms <span class="math inline">\(A\)</span>.</li>
-<li>Specify the reward structure <span class="math inline">\(R\)</span>.</li>
-</ul>
-<ol start="2" type="1">
-<li><strong>Define the model</strong>: Implement at least two Reinforcement Learning algorithms to solve the problem.</li>
-</ol>
-<ul>
-<li><a href="../../lecture3/lecture3-2.html"><span class="math inline">\(\epsilon\)</span>-Greedy</a>.</li>
-<li><a href="../../lecture3/lecture3-3.html">Upper Confidence Boundary (UCB)</a>.</li>
-<li><a href="../../lecture3/lecture3-4.html">Thompson Sampling</a>.</li>
-</ul>
-<ol start="3" type="1">
-<li><strong>Define the metrics</strong>: To evaluate performance, we will use:</li>
-</ol>
-<ul>
-<li>Cumulative reward: Total return over a time horizon.</li>
-<li>(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.</li>
-<li>(Optional) Stability score: Standard deviation of the reward over time.</li>
-<li>(Optional) Adaptability: Performance when the environment shifts.</li>
-</ul>
-<ol start="4" type="1">
-<li><strong>Effectively communicate your findings</strong>: CV style.</li>
-</ol>
-<blockquote class="blockquote">
-<p>Accomplished [X] as measured by [Y], by doing [Z].</p>
-<p>Example: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning <span class="math inline">\(\epsilon\)</span> in an <span class="math inline">\(\epsilon\)</span>-Greedy policy.</p>
-</blockquote>
-<!-- ::: {.callout-note}
-## Example
+<!-- 
+::: {.callout-note appearance="simple" icon=false}
+Final Project Overview 🏁
+:::
 
-draw.io
+## Instructions
 
-::: -->
-</section>
-<section id="presentation" class="level2">
-<h2 class="anchored" data-anchor-id="presentation">Presentation</h2>
-<p>Your team must clearly present all of the following points:</p>
-<ul>
-<li><strong>Define the Reinforcement Learning Framework</strong>.</li>
-<li><strong>Define the model</strong>.</li>
-<li><strong>Define the metrics</strong>.</li>
-<li><strong>Effectively communicate your findings</strong>.</li>
-<li><strong>Conclusion</strong>.</li>
-</ul>
-<p>Use clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.</p>
-</section>
-<section id="submission" class="level2">
-<h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>Each team must submit prior to the deadline, each of the following:</p>
-<ul>
-<li><strong>Code <code>.zip</code></strong>: A fully functional implementation of your Reinforcement Learning algorithms, with <code>main.py</code>, <code>model.py</code> and <code>data.csv</code>.</li>
-<li><strong>Report <code>.pdf</code></strong>: A detailed report summarizing your approach, findings, and conclusions.</li>
-<li><strong>Presentation <code>.pdf</code></strong>: A concise and clear presentation of your work, including visuals and key takeaways.</li>
-</ul>
-<p>Late submissions will incur a <span class="math inline">\(10\%\)</span> penalty for the team.</p>
-</section>
-<section id="grading" class="level2">
-<h2 class="anchored" data-anchor-id="grading">Grading</h2>
-<p>Summary of the grading table:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 29%">
-<col style="width: 64%">
-<col style="width: 6%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Criteria</th>
-<th>Description</th>
-<th>Weight</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Problem Formulation</strong></td>
-<td>Clear definition of the Reinforcement Learning framework, including data, arms, and rewards.</td>
-<td>20%</td>
-</tr>
-<tr class="even">
-<td><strong>Algorithm Implementation</strong></td>
-<td>Correct and efficient implementation of at least two Reinforcement Learning algorithms.</td>
-<td>30%</td>
-</tr>
-<tr class="odd">
-<td><strong>Performance Evaluation</strong></td>
-<td>Use of appropriate metrics to evaluate the algorithms’ performance.</td>
-<td>20%</td>
-</tr>
-<tr class="even">
-<td><strong>Communication of Findings</strong></td>
-<td>Clear and concise presentation of results, including visuals and insights.</td>
-<td>20%</td>
-</tr>
-<tr class="odd">
-<td><strong>Code Quality and Documentation</strong></td>
-<td>Well-structured, readable, and documented code.</td>
-<td>10%</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="optional-research" class="level2">
-<h2 class="anchored" data-anchor-id="optional-research">(Optional) Research</h2>
-<p>If you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at <a href="mailto:twallett@gwu.edu">twallett@gwu.edu</a>.</p>
+Instruction table for the Final Project.
+
+::: {.panel-tabset}
+
+## Multi-Armed Bandit (MAB)
+
+Using the different Multi-Armed Bandit algorithms learned in [Lecture 3](../../lecture3/lo.qmd). Your task is to:
+
+1. **Define the Reinforcement Learning Framework**: Formulate a Multi-Armed Bandit problem. 
+
+- Define the data.
+- Specify the arms $A$.
+- Specify the reward structure $R$.
+
+2. **Define the model**: Implement at least two Reinforcement Learning algorithms to solve the problem.
+
+- [$\epsilon$-Greedy](../../lecture3/lecture3-2.qmd). 
+- [Upper Confidence Boundary (UCB)](../../lecture3/lecture3-3.qmd).
+- [Thompson Sampling](../../lecture3/lecture3-4.qmd).
+
+3. **Define the metrics**: To evaluate performance, we will use:
+
+- Cumulative reward: Total return over a time horizon.
+- (Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.
+- (Optional) Stability score: Standard deviation of the reward over time.
+- (Optional) Adaptability: Performance when the environment shifts.
+
+4. **Effectively communicate your findings**: CV style. 
+
+Accomplished [X] as measured by [Y], by doing [Z].
+
+Example: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning $\epsilon$ in an $\epsilon$-Greedy policy.
+
+## Classical/Deep Reinforcement Learning
+
+Using the Deep Reinforcement Learning algorithm learned in [Lecture 11](../lecture10/lecture10-2.qmd). Your task is to:
+
+1. **Define the Reinforcement Learning Framework**: Formulate a Markov Decision Process (MDP).
+
+- Define the environment dynamics $P(s',r|s,a)$.
+- Define the state space $S$. 
+- Define the action space $A$. 
+- Define the reward function $R$.  
+- Define the episode structure.
+
+2. **Define the model**: Implement at least one Reinforcement Learning algorithm to solve the problem.
+
+- [Proximal Policy Optimization (PPO)](../lecture10/lecture10-2.qmd).
+
+3. **Define the metrics**: To evaluate performance, we will use:
+
+- Cumulative reward: Total return over a time horizon.
+- (Optional) Stability score: Standard deviation of the reward over time.
+
+4. **Effectively communicate your findings**: CV style. 
+   
+Accomplished [X] as measured by [Y], by doing [Z].
+
+Example: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning $\epsilon$ in an $\epsilon$-Greedy policy.
+
+:::
+
+## Presentation 
+
+Your team must clearly present all of the following points:
+
+- **Define the Reinforcement Learning Framework**.
+- **Define the model**.
+- **Define the metrics**.
+- **Effectively communicate your findings**.
+- **Conclusion**.
+  
+Use clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.
+
+## Submission 
+
+Each team must submit prior to the deadline, each of the following:
+
+- **Code `.zip`**: A fully functional implementation of your Reinforcement Learning algorithms, with `main.py`, `model.py` and `data.csv`.
+- **Report `.pdf`**: A detailed report summarizing your approach, findings, and conclusions.
+- **Presentation `.pdf`**: A concise and clear presentation of your work, including visuals and key takeaways.
+
+Late submissions will incur a $10\%$ penalty for the team.
+
+## Grading 
+
+Summary of the grading table:
+
+| Criteria                          | Description                                                                 | Weight |
+|-----------------------------------|-----------------------------------------------------------------------------|--------|
+| **Problem Formulation**           | Clear definition of the Reinforcement Learning framework, including data, arms, and rewards.   | 20%    |
+| **Algorithm Implementation**      | Correct and efficient implementation of at least two Reinforcement Learning algorithms.        | 30%    |
+| **Performance Evaluation**        | Use of appropriate metrics to evaluate the algorithms' performance.         | 20%    |
+| **Communication of Findings**     | Clear and concise presentation of results, including visuals and insights.  | 20%    |
+| **Code Quality and Documentation**| Well-structured, readable, and documented code.                             | 10%    |
+
+## (Optional) Research
+
+If you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at [twallett@gwu.edu](mailto:twallett@gwu.edu).  -->
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
