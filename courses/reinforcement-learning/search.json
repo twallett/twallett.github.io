@@ -14,7 +14,7 @@
     "href": "index.html#instructor-information",
     "title": "DATS 6450 – Reinforcement Learning",
     "section": "",
-    "text": "Name: Tyler Wallett\nTerm: Fall 2025\n\nClass location: MON 114\nClass hours: 06:10 PM - 08:40 PM\nOffice location: Samson Hall Room 310\n\nOffice hours: TBD\n\nE-mail: twallett@gwu.edu\n\nGitHub: twallett",
+    "text": "Name: Tyler Wallett\nTerm: Fall 2025\n\nClass location: MON 114\nClass hours: 06:10 PM - 08:40 PM\nOffice location: Samson Hall Room 310\n\nOffice hours: Thursday’s 2 - 4 PM\n\nE-mail: twallett@gwu.edu\n\nGitHub: twallett",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
     ]
@@ -54,7 +54,7 @@
     "href": "index.html#software-requirements",
     "title": "DATS 6450 – Reinforcement Learning",
     "section": "Software Requirements",
-    "text": "Software Requirements\n\nProgramming Language: Python.\n\npip install numpy tensorflow pygame gymnasium pickle tqdm tensorboard\n\nCloud Services: Google Colab.\nVersion Control: GitHub.",
+    "text": "Software Requirements\n\nProgramming Language: Python.\n\npip install numpy tensorflow pygame gymnasium pickle tqdm tensorboard\n\nCloud-based GPU Environment: Google Colab.\nVersion Control: GitHub.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
     ]
@@ -64,7 +64,7 @@
     "href": "index.html#course-outline",
     "title": "DATS 6450 – Reinforcement Learning",
     "section": "Course Outline",
-    "text": "Course Outline\nSummary of the Course Outline section.\n\n\n\nWeek\nTopic\nQuiz/Exams\nLearning Objectives\n\n\n\n\nAug. 25, 2025\nIntroduction\n\n• Why Should I Learn Reinforcement Learning?  • What is Reinforcement Learning?  • Where is Reinforcement Learning Applied?  • How is Reinforcement Learning Structured? \n\n\nSep. 1, 2025\nLabor Day\n\n\n\n\nSep. 8, 2025\nMath Foundations\n\n• Set Theory  • Axiomatic Probability  • Conditioning  • Independence  • Random Variables  • Expectation  • Probability Distribution\n\n\nSep. 15, 2025\nMulti-Armed Bandits\nQuiz 1\n• Multi-Armed Bandit Framework  • \\(\\epsilon\\)-Greedy  • Upper Confidence Boundary (UCB)  • Thompson Sampling\n\n\nSep. 22, 2025\nDynamic Programming\nQuiz 2\n• OpenAI Gymansium GridWorldEnv  • Markov Chain  • Markov Decision Process (MDPs)  • Dynamic Programming\n\n\nSep. 29, 2025\nMonte Carlo\nQuiz 3\n• OpenAI Gymansium GridWorldEnv  • Monte Carlo Prediction  • Exploring Starts Monte Carlo  • On-Policy Monte Carlo  • Off-Policy Monte Carlo\n\n\nOct. 6, 2025\nTemporal Difference\nQuiz 4\n• OpenAI Gymansium GridWorldEnv  • Temporal Difference (TD) Prediction  • SARSA  • Q-Learning  • Double Q-Learning  • (Optional) n-step TD\n\n\nOct. 13, 2025\nFunction Approximation\nExam 1\n• OpenAI Gymansium MountainCar-v0  • Value Function Approximation (VFA)  • On-Policy Function Approximation  • Semi-gradient SARSA  • Limitations of Off-Policy Function Approximation\n\n\nOct. 20, 2025\nDeep Q-Networks\nQuiz 5\n• OpenAI Gymansium ALE/Breakout-v5  • Multi-Layered Perceprtons (MLPs)  • Convolutional Neural Networks (CNNs)  • Experience Replay  • Fixed Targets  • Vanilla Deep Q-Network\n\n\nOct. 27, 2025\nPolicy Gradients I\nQuiz 6\n• OpenAI Gymansium CartPole-v1 and Pusher-v5  • Policy Gradient Theorem  • Addressing Sparse Rewards  • Action Selections  • Vanilla Policy Gradient\n\n\nNov. 3, 2025\nPolicy Gradients II\nQuiz 7\n• OpenAI Gymansium HalfCheetah-v5  • Trust Regions  • Monotonic Improvement  • Optimization of Parameterized Policies  • Proximal Policy Optimization (PPO)\n\n\nNov. 10, 2025\nMonte Carlo Tree Search\nExam 2\n• OpenAI Gymansium CartPole-v0  • Model-based Reinforcement Learning  • Monte Carlo Tree Search (MCTS)\n\n\nNov. 17, 2025\nConclusion\n\n• Advanced Topics in Reinforcement Learning  • Identify the Reinforcement Learning Application  • Outlook of Reinforcement Learning\n\n\nNov. 24, 2025\nThanksgiving Break\n\n\n\n\nDec. 1, 2025\nFinal Project Submission",
+    "text": "Course Outline\nSummary of the Course Outline section.\n\n\n\nWeek\nTopic\nQuiz/Exams\nLearning Objectives\n\n\n\n\nAug. 25, 2025\nIntroduction\n\n• Why Should I Learn Reinforcement Learning?  • What is Reinforcement Learning?  • Where is Reinforcement Learning Applied?  • How is Reinforcement Learning Structured? \n\n\nSep. 1, 2025\nLabor Day\n\n\n\n\nSep. 8, 2025\nMath Foundations\n\n• Set Theory  • Axiomatic Probability  • Conditioning  • Independence  • Random Variables  • Expectation  • Probability Distribution\n\n\nSep. 15, 2025\nMulti-Armed Bandits\nQuiz 1\n• Multi-Armed Bandit Framework  • \\(\\epsilon\\)-Greedy  • Upper Confidence Boundary (UCB)  • Thompson Sampling\n\n\nSep. 22, 2025\nDynamic Programming\nQuiz 2\n• OpenAI Gymansium GridWorldEnv  • Markov Chain  • Markov Decision Process (MDPs)  • Dynamic Programming\n\n\nSep. 29, 2025\nMonte Carlo\nQuiz 3\n• OpenAI Gymansium GridWorldEnv  • Monte Carlo Prediction  • Exploring Starts Monte Carlo  • On-Policy Monte Carlo  • Off-Policy Monte Carlo\n\n\nOct. 6, 2025\nTemporal Difference\nQuiz 4\n• OpenAI Gymansium GridWorldEnv  • Temporal Difference (TD) Prediction  • SARSA  • Q-Learning  • Double Q-Learning  • (Optional) n-step TD\n\n\nOct. 13, 2025\nFunction Approximation\nExam 1\n• OpenAI Gymansium MountainCar-v0  • Value Function Approximation (VFA)  • On-Policy Function Approximation  • Semi-gradient SARSA  • Limitations of Off-Policy Function Approximation\n\n\nOct. 20, 2025\nDeep Q-Networks\nQuiz 5\n• OpenAI Gymansium ALE/Breakout-v5  • Multi-Layered Perceprtons (MLPs)  • Convolutional Neural Networks (CNNs)  • Experience Replay  • Fixed Targets  • Vanilla Deep Q-Network\n\n\nOct. 27, 2025\nPolicy Gradients I\nQuiz 6\n• OpenAI Gymansium CartPole-v1 and Pusher-v5  • Policy Gradient Theorem  • Addressing Sparse Rewards  • Action Selections  • Vanilla Policy Gradient\n\n\nNov. 3, 2025\nPolicy Gradients II\nQuiz 7\n• OpenAI Gymansium HalfCheetah-v5  • Trust Regions  • Monotonic Improvement  • Optimization of Parameterized Policies  • Proximal Policy Optimization (PPO)\n\n\nNov. 10, 2025\nMonte Carlo Tree Search\nExam 2\n• OpenAI Gymansium CartPole-v0  • Model-based Reinforcement Learning  • Monte Carlo Tree Search (MCTS)\n\n\nNov. 17, 2025\nConclusion\n\n• Advanced Topics in Reinforcement Learning  • Identify the Reinforcement Learning Application  • Outlook of Reinforcement Learning\n\n\nNov. 24, 2025\nThanksgiving Break\n\n\n\n\nDec. 1, 2025\nFinal Project Presentation\n\n\n\n\nDec. 8, 2025\nFinal Project Submission",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>DATS 6450 – Reinforcement Learning</span>"
     ]
@@ -1920,7 +1920,7 @@
     "href": "private/homework/homework8.html",
     "title": "Homework 8",
     "section": "",
-    "text": "Coding Exercise 1: Deep Q-Network (DQN)\nFor the highway-v0 environment, code the update function for the Deep Q-Netowrk (DQN) algorithm using the provided parameters.",
+    "text": "Coding Exercise 1: Deep Q-Network (DQN)\nFor the CartPole-v1 environment, code the update function for the Deep Q-Netowrk (DQN) algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
       "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 8</span>"
@@ -1971,333 +1971,157 @@
     ]
   },
   {
-    "objectID": "private/final-project/personal-finance-robo-advisor.html",
-    "href": "private/final-project/personal-finance-robo-advisor.html",
-    "title": "Idea 1: Personal Finance Robo Advisor",
+    "objectID": "private/exams/exam1.html",
+    "href": "private/exams/exam1.html",
+    "title": "Exam 1",
     "section": "",
-    "text": "Instructions\nUsing the different Multi-Armed Bandit algorithms learned in Lecture 3, devise a novel approach to create a personal finance robo advisor. Your task is to:",
+    "text": "Exam Information - Coming Soon 📢",
     "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
+      "Exams",
+      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Exam 1</span>"
     ]
   },
   {
-    "objectID": "private/final-project/personal-finance-robo-advisor.html#instructions",
-    "href": "private/final-project/personal-finance-robo-advisor.html#instructions",
-    "title": "Idea 1: Personal Finance Robo Advisor",
+    "objectID": "private/exams/exam2.html",
+    "href": "private/exams/exam2.html",
+    "title": "Exam 2",
     "section": "",
-    "text": "Define the Reinforcement Learning Framework: Formulate a Multi-Armed Bandit problem.\n\n\nDefine the data.\nSpecify the arms \\(A\\).\nSpecify the reward structure \\(R\\).\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\n\\(\\epsilon\\)-Greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.\n(Optional) Stability score: Standard deviation of the reward over time.\n(Optional) Adaptability: Performance when the environment shifts.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
+    "text": "Exam Information - Coming Soon 📢",
     "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
+      "Exams",
+      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Exam 2</span>"
     ]
   },
   {
-    "objectID": "private/final-project/personal-finance-robo-advisor.html#presentation",
-    "href": "private/final-project/personal-finance-robo-advisor.html#presentation",
-    "title": "Idea 1: Personal Finance Robo Advisor",
-    "section": "Presentation",
-    "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/personal-finance-robo-advisor.html#submission",
-    "href": "private/final-project/personal-finance-robo-advisor.html#submission",
-    "title": "Idea 1: Personal Finance Robo Advisor",
-    "section": "Submission",
-    "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/personal-finance-robo-advisor.html#grading",
-    "href": "private/final-project/personal-finance-robo-advisor.html#grading",
-    "title": "Idea 1: Personal Finance Robo Advisor",
-    "section": "Grading",
-    "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/personal-finance-robo-advisor.html#optional-research",
-    "href": "private/final-project/personal-finance-robo-advisor.html#optional-research",
-    "title": "Idea 1: Personal Finance Robo Advisor",
-    "section": "(Optional) Research",
-    "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Idea 1: Personal Finance Robo Advisor</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/dynamic-portfolio-management.html",
-    "href": "private/final-project/dynamic-portfolio-management.html",
-    "title": "Idea 2: Dynamic Portfolio Management",
+    "objectID": "private/final-project/final-project-overview.html",
+    "href": "private/final-project/final-project-overview.html",
+    "title": "Final Project Overview",
     "section": "",
     "text": "Instructions\nUsing the different Multi-Armed Bandit algorithms learned in Lecture 3, devise a novel approach to dynamically manage the weights of portfolio’s. Your task is to:",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
-    "objectID": "private/final-project/dynamic-portfolio-management.html#instructions",
-    "href": "private/final-project/dynamic-portfolio-management.html#instructions",
-    "title": "Idea 2: Dynamic Portfolio Management",
+    "objectID": "private/final-project/final-project-overview.html#instructions",
+    "href": "private/final-project/final-project-overview.html#instructions",
+    "title": "Final Project Overview",
     "section": "",
     "text": "Define the Reinforcement Learning Framework: Formulate a Multi-Armed Bandit problem.\n\n\nDefine the data.\nSpecify the arms \\(A\\).\nSpecify the reward structure \\(R\\).\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\n\\(\\epsilon\\)-Greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.\n(Optional) Stability score: Standard deviation of the reward over time.\n(Optional) Adaptability: Performance when the environment shifts.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
-    "objectID": "private/final-project/dynamic-portfolio-management.html#presentation",
-    "href": "private/final-project/dynamic-portfolio-management.html#presentation",
-    "title": "Idea 2: Dynamic Portfolio Management",
+    "objectID": "private/final-project/final-project-overview.html#presentation",
+    "href": "private/final-project/final-project-overview.html#presentation",
+    "title": "Final Project Overview",
     "section": "Presentation",
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
-    "objectID": "private/final-project/dynamic-portfolio-management.html#submission",
-    "href": "private/final-project/dynamic-portfolio-management.html#submission",
-    "title": "Idea 2: Dynamic Portfolio Management",
+    "objectID": "private/final-project/final-project-overview.html#submission",
+    "href": "private/final-project/final-project-overview.html#submission",
+    "title": "Final Project Overview",
     "section": "Submission",
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
-    "objectID": "private/final-project/dynamic-portfolio-management.html#grading",
-    "href": "private/final-project/dynamic-portfolio-management.html#grading",
-    "title": "Idea 2: Dynamic Portfolio Management",
+    "objectID": "private/final-project/final-project-overview.html#grading",
+    "href": "private/final-project/final-project-overview.html#grading",
+    "title": "Final Project Overview",
     "section": "Grading",
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
-    "objectID": "private/final-project/dynamic-portfolio-management.html#optional-research",
-    "href": "private/final-project/dynamic-portfolio-management.html#optional-research",
-    "title": "Idea 2: Dynamic Portfolio Management",
+    "objectID": "private/final-project/final-project-overview.html#optional-research",
+    "href": "private/final-project/final-project-overview.html#optional-research",
+    "title": "Final Project Overview",
     "section": "(Optional) Research",
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Idea 2: Dynamic Portfolio Management</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
-    "objectID": "private/final-project/trading-agent.html",
-    "href": "private/final-project/trading-agent.html",
-    "title": "Idea 3: Trading Agent",
-    "section": "",
-    "text": "Instructions\nUsing the different Classical and Deep Reinforcement Learning algorithms learned in Lectures 5-10, devise a novel approach to create a trading agent. Your task is to:",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/trading-agent.html#instructions",
-    "href": "private/final-project/trading-agent.html#instructions",
-    "title": "Idea 3: Trading Agent",
-    "section": "",
-    "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\nOn-Policy Monte Carlo.\nOff-Policy Monte Carlo.\nSARSA.\nQ-Learning.\nDouble Q-Learning.\nn-step Bootstrapping.\nSemiGradient SARSA.\nDeep Q-Networks.\nVanilla Policy Gradient.\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/trading-agent.html#presentation",
-    "href": "private/final-project/trading-agent.html#presentation",
-    "title": "Idea 3: Trading Agent",
-    "section": "Presentation",
-    "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/trading-agent.html#submission",
-    "href": "private/final-project/trading-agent.html#submission",
-    "title": "Idea 3: Trading Agent",
-    "section": "Submission",
-    "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/trading-agent.html#grading",
-    "href": "private/final-project/trading-agent.html#grading",
-    "title": "Idea 3: Trading Agent",
-    "section": "Grading",
-    "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/trading-agent.html#optional-research",
-    "href": "private/final-project/trading-agent.html#optional-research",
-    "title": "Idea 3: Trading Agent",
-    "section": "(Optional) Research",
-    "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Idea 3: Trading Agent</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/rlhf.html",
-    "href": "private/final-project/rlhf.html",
-    "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
-    "section": "",
-    "text": "Instructions\nUsing the Deep Reinforcement Learning algorithm learned in Lecture 11, devise an application that leverages Reinforcement Learning with Human Feedback (RLHF). Your task is to:",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/rlhf.html#instructions",
-    "href": "private/final-project/rlhf.html#instructions",
-    "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
-    "section": "",
-    "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least one Reinforcement Learning algorithm to solve the problem.\n\n\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/rlhf.html#presentation",
-    "href": "private/final-project/rlhf.html#presentation",
-    "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
-    "section": "Presentation",
-    "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/rlhf.html#submission",
-    "href": "private/final-project/rlhf.html#submission",
-    "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
-    "section": "Submission",
-    "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/rlhf.html#grading",
-    "href": "private/final-project/rlhf.html#grading",
-    "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
-    "section": "Grading",
-    "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/rlhf.html#optional-research",
-    "href": "private/final-project/rlhf.html#optional-research",
-    "title": "Idea 4: Reinforcement Learning with Human Feedback (RLHF)",
-    "section": "(Optional) Research",
-    "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
-    "crumbs": [
-      "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Idea 4: Reinforcement Learning with Human Feedback (RLHF)</span>"
-    ]
-  },
-  {
-    "objectID": "private/final-project/grpo.html",
-    "href": "private/final-project/grpo.html",
-    "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
+    "objectID": "private/final-project/final-project-ideas.html",
+    "href": "private/final-project/final-project-ideas.html",
+    "title": "Final Project Ideas",
     "section": "",
     "text": "Instructions\nUsing the Deep Reinforcement Learning algorithm learned in Lecture 11, devise an application that leverages Group Relative Policy Optimization (GRPO). Your task is to:",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
     ]
   },
   {
-    "objectID": "private/final-project/grpo.html#instructions",
-    "href": "private/final-project/grpo.html#instructions",
-    "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
+    "objectID": "private/final-project/final-project-ideas.html#instructions",
+    "href": "private/final-project/final-project-ideas.html#instructions",
+    "title": "Final Project Ideas",
     "section": "",
     "text": "Define the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(S\\).\nDefine the action space \\(A\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least one Reinforcement Learning algorithm to solve the problem.\n\n\nProximal Policy Optimization (PPO).\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
     ]
   },
   {
-    "objectID": "private/final-project/grpo.html#presentation",
-    "href": "private/final-project/grpo.html#presentation",
-    "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
+    "objectID": "private/final-project/final-project-ideas.html#presentation",
+    "href": "private/final-project/final-project-ideas.html#presentation",
+    "title": "Final Project Ideas",
     "section": "Presentation",
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
     ]
   },
   {
-    "objectID": "private/final-project/grpo.html#submission",
-    "href": "private/final-project/grpo.html#submission",
-    "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
+    "objectID": "private/final-project/final-project-ideas.html#submission",
+    "href": "private/final-project/final-project-ideas.html#submission",
+    "title": "Final Project Ideas",
     "section": "Submission",
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and data.csv.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
     ]
   },
   {
-    "objectID": "private/final-project/grpo.html#grading",
-    "href": "private/final-project/grpo.html#grading",
-    "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
+    "objectID": "private/final-project/final-project-ideas.html#grading",
+    "href": "private/final-project/final-project-ideas.html#grading",
+    "title": "Final Project Ideas",
     "section": "Grading",
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework, including data, arms, and rewards.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
     ]
   },
   {
-    "objectID": "private/final-project/grpo.html#optional-research",
-    "href": "private/final-project/grpo.html#optional-research",
-    "title": "Idea 5: Group Relative Policy Optimization (GRPO)",
+    "objectID": "private/final-project/final-project-ideas.html#optional-research",
+    "href": "private/final-project/final-project-ideas.html#optional-research",
+    "title": "Final Project Ideas",
     "section": "(Optional) Research",
     "text": "(Optional) Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Idea 5: Group Relative Policy Optimization (GRPO)</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Final Project Ideas</span>"
     ]
   },
   {

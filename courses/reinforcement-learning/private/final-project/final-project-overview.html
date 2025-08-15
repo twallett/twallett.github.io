@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Learning Objectives</title>
+<title>Final Project Overview</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,8 +30,8 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../private/lecture5/lecture5-1.html" rel="next">
-<link href="../../private/lecture4/lecture4-3.html" rel="prev">
+<link href="../../private/final-project/final-project-ideas.html" rel="next">
+<link href="../../private/exams/exam2.html" rel="prev">
 <link href="../../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -100,6 +80,35 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -112,7 +121,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">Learning Objectives</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">Final Project Overview</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -295,16 +304,16 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Lecture 5: Monte Carlo</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture5/lo.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../../private/lecture5/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -646,16 +655,16 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true">
  <span class="menu-text">Final Project</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/final-project/final-project-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Final Project Overview</span></a>
+  <a href="../../private/final-project/final-project-overview.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Final Project Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -677,15 +686,25 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#presentation" id="toc-presentation" class="nav-link" data-scroll-target="#presentation">Presentation</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#optional-research" id="toc-optional-research" class="nav-link" data-scroll-target="#optional-research">(Optional) Research</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">Learning Objectives</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">Final Project Overview</span></h1>
 </div>
 
 
@@ -708,31 +727,125 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Learning Objectives for Lecture 5: Monte Carlo <span class="citation" data-cites="sutton2018reinforcement">(<a href="../../references.html#ref-sutton2018reinforcement" role="doc-biblioref">Sutton and Barto 2018</a>)</span> 🎯</p>
+<p>Idea 2: Dynamic Portfolio Management 🏁</p>
 </div>
 </div>
 </div>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>Using the different Multi-Armed Bandit algorithms learned in <a href="../../lecture3/lo.html">Lecture 3</a>, devise a novel approach to <strong>dynamically manage the weights of portfolio’s</strong>. Your task is to:</p>
+<ol type="1">
+<li><strong>Define the Reinforcement Learning Framework</strong>: Formulate a Multi-Armed Bandit problem.</li>
+</ol>
 <ul>
-<li>Monte Carlo Prediction.</li>
-<li>On-Policy Monte Carlo.</li>
-<li>Off-Policy Monte Carlo.</li>
-<li>Homemade GridWorld OpenAI environment using <code>gymnasium</code>, <code>pygame</code> &amp; <code>numpy</code>.</li>
+<li>Define the data.</li>
+<li>Specify the arms <span class="math inline">\(A\)</span>.</li>
+<li>Specify the reward structure <span class="math inline">\(R\)</span>.</li>
 </ul>
-<div style="text-align:center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Lecture5.drawio.svg" class="img-fluid figure-img"></p>
-<figcaption>Taxonomy of Reinforcement Learning</figcaption>
-</figure>
-</div>
-</div>
+<ol start="2" type="1">
+<li><strong>Define the model</strong>: Implement at least two Reinforcement Learning algorithms to solve the problem.</li>
+</ol>
+<ul>
+<li><a href="../../lecture3/lecture3-2.html"><span class="math inline">\(\epsilon\)</span>-Greedy</a>.</li>
+<li><a href="../../lecture3/lecture3-3.html">Upper Confidence Boundary (UCB)</a>.</li>
+<li><a href="../../lecture3/lecture3-4.html">Thompson Sampling</a>.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Define the metrics</strong>: To evaluate performance, we will use:</li>
+</ol>
+<ul>
+<li>Cumulative reward: Total return over a time horizon.</li>
+<li>(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.</li>
+<li>(Optional) Stability score: Standard deviation of the reward over time.</li>
+<li>(Optional) Adaptability: Performance when the environment shifts.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Effectively communicate your findings</strong>: CV style.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Accomplished [X] as measured by [Y], by doing [Z].</p>
+<p>Example: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning <span class="math inline">\(\epsilon\)</span> in an <span class="math inline">\(\epsilon\)</span>-Greedy policy.</p>
+</blockquote>
+<!-- ::: {.callout-note}
+## Example
+
+draw.io
+
+::: -->
+</section>
+<section id="presentation" class="level2">
+<h2 class="anchored" data-anchor-id="presentation">Presentation</h2>
+<p>Your team must clearly present all of the following points:</p>
+<ul>
+<li><strong>Define the Reinforcement Learning Framework</strong>.</li>
+<li><strong>Define the model</strong>.</li>
+<li><strong>Define the metrics</strong>.</li>
+<li><strong>Effectively communicate your findings</strong>.</li>
+<li><strong>Conclusion</strong>.</li>
+</ul>
+<p>Use clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.</p>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>Each team must submit prior to the deadline, each of the following:</p>
+<ul>
+<li><strong>Code <code>.zip</code></strong>: A fully functional implementation of your Reinforcement Learning algorithms, with <code>main.py</code>, <code>model.py</code> and <code>data.csv</code>.</li>
+<li><strong>Report <code>.pdf</code></strong>: A detailed report summarizing your approach, findings, and conclusions.</li>
+<li><strong>Presentation <code>.pdf</code></strong>: A concise and clear presentation of your work, including visuals and key takeaways.</li>
+</ul>
+<p>Late submissions will incur a <span class="math inline">\(10\%\)</span> penalty for the team.</p>
+</section>
+<section id="grading" class="level2">
+<h2 class="anchored" data-anchor-id="grading">Grading</h2>
+<p>Summary of the grading table:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 64%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>Description</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Problem Formulation</strong></td>
+<td>Clear definition of the Reinforcement Learning framework, including data, arms, and rewards.</td>
+<td>20%</td>
+</tr>
+<tr class="even">
+<td><strong>Algorithm Implementation</strong></td>
+<td>Correct and efficient implementation of at least two Reinforcement Learning algorithms.</td>
+<td>30%</td>
+</tr>
+<tr class="odd">
+<td><strong>Performance Evaluation</strong></td>
+<td>Use of appropriate metrics to evaluate the algorithms’ performance.</td>
+<td>20%</td>
+</tr>
+<tr class="even">
+<td><strong>Communication of Findings</strong></td>
+<td>Clear and concise presentation of results, including visuals and insights.</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>Code Quality and Documentation</strong></td>
+<td>Well-structured, readable, and documented code.</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="optional-research" class="level2">
+<h2 class="anchored" data-anchor-id="optional-research">(Optional) Research</h2>
+<p>If you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at <a href="mailto:twallett@gwu.edu">twallett@gwu.edu</a>.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-sutton2018reinforcement" class="csl-entry" role="listitem">
-Sutton, Richard S., and Andrew G. Barto. 2018. <em>Reinforcement Learning: An Introduction</em>. 2nd ed. Cambridge, MA: MIT Press.
-</div>
-</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1136,13 +1249,13 @@ Sutton, Richard S., and Andrew G. Barto. 2018. <em>Reinforcement Learning: An In
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../private/lecture4/lecture4-3.html" class="pagination-link" aria-label="4.3 Dynamic Programming">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">4.3 Dynamic Programming</span></span>
+      <a href="../../private/exams/exam2.html" class="pagination-link" aria-label="Exam 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Exam 2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../private/lecture5/lecture5-1.html" class="pagination-link" aria-label="5.1 Monte Carlo Prediction">
-        <span class="nav-page-text"><span class="chapter-title">5.1 Monte Carlo Prediction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../private/final-project/final-project-ideas.html" class="pagination-link" aria-label="Final Project Ideas">
+        <span class="nav-page-text"><span class="chapter-title">Final Project Ideas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
