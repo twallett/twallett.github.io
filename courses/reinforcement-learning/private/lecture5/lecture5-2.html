@@ -297,7 +297,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Dynamic Programming</span></a>
+  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -757,7 +762,7 @@ q_{\pi}(s, a) = \mathbb{E_{\pi}}[G_{t}| \ s, \ a]
 </div>
 <p>Monte Carlo methods are similar to state value estimation, focusing on visits to state-action pairs <span class="math inline">\((s,a)\)</span>.</p>
 <p>This is crucial for <strong>Control</strong>, which refers to finding approximate optimal policies <span class="math inline">\(\approx \pi_{*}\)</span>.</p>
-<p>Following the idea of <a href="../../private/lecture4/lecture4-3.html#generalized-policy-iteration">Generalized Policy Iteration (GPI)</a>, we evaluate and improve action values <span class="math inline">\(q_{\pi}(s,a)\)</span> to find optimal policies.</p>
+<p>Following the idea of <a href="../../private/lecture4/lecture4-4.html">Generalized Policy Iteration (GPI)</a>, we evaluate and improve action values <span class="math inline">\(q_{\pi}(s,a)\)</span> to find optimal policies.</p>
 <p>However, one major issue is that of estimating action values <span class="math inline">\(q_{\pi}(s,a)\)</span> is that some state action pairs <span class="math inline">\((s,a)\)</span> may never be visited during an episode.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">

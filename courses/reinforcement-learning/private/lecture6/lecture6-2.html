@@ -297,7 +297,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Dynamic Programming</span></a>
+  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -747,26 +752,28 @@ Real Life Example 🧠
 <div class="callout-body-container callout-body">
 <p>Suppose you’re using a music recommendation app:</p>
 <ul>
-<li><span class="math inline">\(S\)</span> — You’re in a particular mood or environment (e.g., studying, running, relaxing).</li>
-<li><span class="math inline">\(A\)</span> — The app suggests a song based on your current preferences.</li>
-<li><span class="math inline">\(R\)</span> — You either enjoy the song, skip it, or dislike it — giving implicit feedback.</li>
+<li><span class="math inline">\(S\)</span> — Your current mood or environment (e.g., studying, running, relaxing).<br>
+</li>
+<li><span class="math inline">\(A\)</span> — The app suggests a song based on your current preferences.<br>
+</li>
+<li><span class="math inline">\(R\)</span> — You either enjoy the song, skip it, or dislike it — giving implicit feedback.<br>
+</li>
 <li><span class="math inline">\(S', A'\)</span> — The next song plays, and you make another decision.</li>
 </ul>
-<p>In this case:</p>
 <div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://www.youtube.com/watch?v=gxlB1B9emDc&amp;list=RDgxlB1B9emDc&amp;start_radio=1"><img src="images/oscar-de-leon.jpeg" class="equal-img img-fluid figure-img"></a></p>
-<figcaption>Salsa — always a win</figcaption>
+<p><img src="images/oscar-de-leon.jpeg" class="equal-img img-fluid figure-img"></p>
+<figcaption>State <span class="math inline">\(S\)</span>: Feeling energetic. Action <span class="math inline">\(A\)</span>: Play Salsa (Oscar De León). Reward <span class="math inline">\(R\)</span>: Always enjoyable — positive feedback reinforces this choice. Next state <span class="math inline">\(S'\)</span> and action <span class="math inline">\(A'\)</span> follow after this song.</figcaption>
 </figure>
 </div>
 </div>
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://www.youtube.com/watch?v=ZA7ZKB8Mo9k"><img src="images/feid.jpeg" class="equal-img img-fluid figure-img"></a></p>
-<figcaption>Reggeaton — mostly hits, sometimes skips</figcaption>
+<p><img src="images/feid.jpeg" class="equal-img img-fluid figure-img"></p>
+<figcaption>State <span class="math inline">\(S\)</span>: Feeling upbeat. Action <span class="math inline">\(A\)</span>: Play Reggaeton (Feid). Reward <span class="math inline">\(R\)</span>: Mostly hits, sometimes skipped — app updates preference based on this feedback.</figcaption>
 </figure>
 </div>
 </div>
@@ -774,22 +781,22 @@ Real Life Example 🧠
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/jazz.png" class="equal-img img-fluid figure-img"></p>
-<figcaption>Jazz — new territory</figcaption>
+<figcaption>State <span class="math inline">\(S\)</span>: Feeling calm. Action <span class="math inline">\(A\)</span>: Play Jazz. Reward <span class="math inline">\(R\)</span>: New genre, unknown feedback — exploration allows the app to learn preferences.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <style>
 .image-grid {
-  gap: 10px;              /* spacing between images */
-  max-width: 100%;       /* controls how wide the grid can be */
-  margin: 0 auto;         /* centers the grid horizontally */
-  justify-content: center; /* keeps columns centered inside grid */
+  gap: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .equal-img {
   width: 100%;
-  height: 300px; 
+  height: 200px; 
   object-fit: cover;
   display: block;
 }

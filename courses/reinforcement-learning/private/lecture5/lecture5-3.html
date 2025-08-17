@@ -297,7 +297,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Dynamic Programming</span></a>
+  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -735,19 +740,6 @@ On-Policy Learning
 <p><em>On-Policy</em> learning evaluates or improves the policy <span class="math inline">\(\pi\)</span> that is used to make decisions.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Problem
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>How can we leverage Monte Carlo’s learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_{*}\)</span>, without having to rely on the unrealistic assumption of an initial random state and action <span class="math inline">\((s,a)\)</span>?</p>
-</div>
-</div>
 <div class="image-grid callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -758,20 +750,12 @@ Real Life Example 🧠
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="grid">
-<div class="g-col-3">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/cp-book.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>Crime and Punishment Book</figcaption>
-</figure>
-</div>
-</div>
+<div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/dostoevsky.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>Dostoevsky</figcaption>
+<figcaption>Fyodor Dostoevsky</figcaption>
 </figure>
 </div>
 </div>
@@ -793,17 +777,27 @@ Real Life Example 🧠
 </style>
 <blockquote class="blockquote">
 <p><em>“It is better to go wrong in one’s own way than to go right in someone else’s.”</em><br>
-— Razumikhin, <em>Crime and Punishment</em></p>
+— Fyodor Dostoevsky</p>
 </blockquote>
-<p>Like Razumikhin suggests, you stick with your current way of doing things — even if it’s imperfect. You learn from <em>your own behavior</em> — your own actions <span class="math inline">\(a\)</span> taken in states <span class="math inline">\(s\)</span>, based on the current policy <span class="math inline">\(\pi\)</span> — and improve over time through <em>authentic experience</em>.</p>
-<p>In other words:</p>
+<p>Like Dostoevsky suggests, you stick with your current way of doing things — even if it’s imperfect. You learn from <em>your own behavior</em> — your own actions <span class="math inline">\(a\)</span> taken in states <span class="math inline">\(s\)</span>, based on the current policy <span class="math inline">\(\pi\)</span> — and improve over time through <em>authentic experience</em>.</p>
+<p>For example:</p>
 <ul>
-<li>Is it better to build your own project and mess up than to reuse code you don’t understand?</li>
-<li>Is it better to follow your own dreams or live out your parents’ version of success?</li>
-<li>Is it better to speak your mind and be wrong, or stay silent and be “right” by default?</li>
-<li>Is it better to take your own path and stumble than walk a perfect path that isn’t yours?</li>
-<li>Is it better to try your own strategy and fail than blindly follow someone else’s instructions?</li>
+<li><p>Is it better to try your own coding solution and learn from mistakes, rather than copying someone else’s code?</p></li>
+<li><p>How does observing the outcomes of your own actions help you improve your policy over time?</p></li>
 </ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we leverage Monte Carlo’s learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_{*}\)</span>, without having to rely on the unrealistic assumption of an initial random state and action <span class="math inline">\((s,a)\)</span>?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">

@@ -297,7 +297,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Dynamic Programming</span></a>
+  <a href="../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -752,15 +757,14 @@ Real Life Example 🧠
 </li>
 <li><span class="math inline">\(A_{1,\dots,k}\)</span> – You can choose from <span class="math inline">\(k\)</span> different running trails nearby.<br>
 </li>
-<li><span class="math inline">\(R\)</span> – After each run, you mentally rate the experience - scenery, terrain or how energized you felt.</li>
+<li><span class="math inline">\(R\)</span> – After each run, you mentally rate the experience — scenery, terrain, or how energized you felt.</li>
 </ul>
-<p>In my case:</p>
 <div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/trail-a.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>My go-to loop</figcaption>
+<figcaption>Action <span class="math inline">\(A_1\)</span>: Running Trail A. Reward <span class="math inline">\(R\)</span>: This loop has consistently provided the highest enjoyment — strong scenery and terrain make it the best-known choice.</figcaption>
 </figure>
 </div>
 </div>
@@ -768,7 +772,7 @@ Real Life Example 🧠
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/trail-b.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>Only ran this trail once</figcaption>
+<figcaption>Action <span class="math inline">\(A_2\)</span>: Running Trail B. Reward <span class="math inline">\(R\)</span>: A modest performer so far, but not explored much. With more runs, it could reveal higher potential than currently estimated.</figcaption>
 </figure>
 </div>
 </div>
@@ -776,7 +780,7 @@ Real Life Example 🧠
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/trail-c.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>Never tried this one</figcaption>
+<figcaption>Action <span class="math inline">\(A_3\)</span>: Running Trail C. Reward <span class="math inline">\(R\)</span>: A completely new option — its value is entirely uncertain, and initial selections may not be the most informative.</figcaption>
 </figure>
 </div>
 </div>
@@ -784,19 +788,19 @@ Real Life Example 🧠
 <style>
 .image-grid {
   gap: 10px;              /* spacing between images */
-  max-width: 1000px;       /* controls how wide the grid can be */
+  max-width: 1100px;       /* controls how wide the grid can be */
   margin: 0 auto;         /* centers the grid horizontally */
   justify-content: center; /* keeps columns centered inside grid */
 }
 
 .equal-img {
-  width: 100%;
-  height: 300px; 
+  width: 105%;
+  height: 200px; 
   object-fit: cover;
   display: block;
 }
 </style>
-<p>How can I pick a trail that has the best combination of enjoyment and uncertainty — so I explore only when it is smart to?</p>
+<p>Should you keep exploiting Trail A’s high reward, or sometimes choose Trail B — which has modest results but higher potential upside — instead of immediately exploring the completely unknown Trail C?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">

@@ -297,7 +297,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Dynamic Programming</span></a>
+  <a href="../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -750,18 +755,18 @@ Real Life Example 🧠
 <div class="callout-body-container callout-body">
 <p>Suppose you are in a Multi-Armed Bandit scenario:</p>
 <ul>
-<li><span class="math inline">\(S\)</span> - You are hungry and want to treat yourself to a restaurant meal.</li>
-<li><span class="math inline">\(A_{1,\dots,k}\)</span> - You can choose from <span class="math inline">\(k\)</span> different restaurants in your area.<br>
+<li><span class="math inline">\(S\)</span> – You are hungry and want to treat yourself to a restaurant meal.<br>
 </li>
-<li><span class="math inline">\(R\)</span> - After eating, you rate your experience — maybe based on taste, service, or price satisfaction.</li>
+<li><span class="math inline">\(A_{1,\dots,k}\)</span> – You can choose from <span class="math inline">\(k\)</span> different restaurants in your area.<br>
+</li>
+<li><span class="math inline">\(R\)</span> – After eating, you rate your experience — maybe based on taste, service, or price satisfaction.</li>
 </ul>
-<p>In my case:</p>
 <div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/arepa.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>Really like Arepas</figcaption>
+<figcaption>Action <span class="math inline">\(A_1\)</span>: Choosing Arepas. Reward <span class="math inline">\(R\)</span>: Based on past visits, this option seems to give the highest satisfaction — taste, service, and value are consistently strong.</figcaption>
 </figure>
 </div>
 </div>
@@ -769,7 +774,7 @@ Real Life Example 🧠
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/chipotle.jpeg" class="equal-img img-fluid figure-img"></p>
-<figcaption>Enjoy Chipotle once in a while</figcaption>
+<figcaption>Action <span class="math inline">\(A_2\)</span>: Choosing Chipotle. Reward <span class="math inline">\(R\)</span>: A familiar option with decent satisfaction, though not as rewarding as Arepas on average.</figcaption>
 </figure>
 </div>
 </div>
@@ -777,7 +782,7 @@ Real Life Example 🧠
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/falafel.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>Never tried Falafel Bowls before</figcaption>
+<figcaption>Action <span class="math inline">\(A_3\)</span>: Trying Falafel Bowls. Reward <span class="math inline">\(R\)</span>: An unexplored option — the reward is uncertain until you try it.</figcaption>
 </figure>
 </div>
 </div>
@@ -792,12 +797,12 @@ Real Life Example 🧠
 
 .equal-img {
   width: 100%;
-  height: 300px; 
+  height: 200px; 
   object-fit: cover;
   display: block;
 }
 </style>
-<p>How can I select a restaurant meal that I would enjoy while being open-minded to the idea of Falafel Bowls?</p>
+<p>How can you select a restaurant meal that maximizes your enjoyment while still being open to exploring something new like Falafel Bowls?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">

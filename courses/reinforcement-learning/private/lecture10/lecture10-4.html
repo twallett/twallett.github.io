@@ -297,7 +297,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Dynamic Programming</span></a>
+  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -686,16 +691,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#ppo-surrogate-objectives" id="toc-ppo-surrogate-objectives" class="nav-link active" data-scroll-target="#ppo-surrogate-objectives">PPO: Surrogate Objectives</a></li>
-  <li><a href="#proximal-policy-optimization-illustration" id="toc-proximal-policy-optimization-illustration" class="nav-link" data-scroll-target="#proximal-policy-optimization-illustration">Proximal Policy Optimization: Illustration</a></li>
-  <li><a href="#proximal-policy-optimization-pseudocode" id="toc-proximal-policy-optimization-pseudocode" class="nav-link" data-scroll-target="#proximal-policy-optimization-pseudocode">Proximal Policy Optimization: Pseudocode</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -773,9 +770,6 @@ Solution
 <p><img src="images/PPO.png" width="300" height="100"></p>
 <p>OpenAI 2017<br>
 <a href="https://arxiv.org/pdf/1707.06347">Link to Research Paper</a></p>
-</div>
-</div>
-</div>
 <section id="ppo-surrogate-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="ppo-surrogate-objectives">PPO: Surrogate Objectives</h3>
 <p>PPO KL-Divergence Penalty:</p>
@@ -799,6 +793,10 @@ L^{\text{CLIP}}(\pi_{\theta_{t+1}}) = \mathbb{E} \left[ \min \left( \frac{\pi_{\
 <div style="text-align: center;">
 <p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
 </div>
+</section>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -817,7 +815,6 @@ L(\pi_{\theta_{t+1}}) =  F(\pi_{\theta_{t}}) + \mathbb{E}_{s \approx \rho_{\pi_{
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

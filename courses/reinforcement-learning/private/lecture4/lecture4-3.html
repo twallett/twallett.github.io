@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4.3 Dynamic Programming</title>
+<title>4.3 Iterative Policy Evaluation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../private/lecture5/lo.html" rel="next">
+<link href="../../private/lecture4/lecture4-4.html" rel="next">
 <link href="../../private/lecture4/lecture4-2.html" rel="prev">
 <link href="../../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -121,7 +121,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">4.3 Dynamic Programming</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -297,7 +297,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">4.3 Dynamic Programming</span></a>
+  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -686,23 +691,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#policy-improvement" id="toc-policy-improvement" class="nav-link active" data-scroll-target="#policy-improvement">Policy Improvement</a></li>
-  <li><a href="#value-iteration" id="toc-value-iteration" class="nav-link" data-scroll-target="#value-iteration">Value Iteration</a></li>
-  <li><a href="#generalized-policy-iteration" id="toc-generalized-policy-iteration" class="nav-link" data-scroll-target="#generalized-policy-iteration">Generalized Policy Iteration</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">4.3 Dynamic Programming</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></h1>
 </div>
 
 
@@ -725,7 +722,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>What if the answer to your big question was hiding in the answers to smaller ones? 🧩</p>
+<p>How do we measure the long-term value of a plan if we keep trying it over and over again? 🔁</p>
 </div>
 </div>
 </div>
@@ -765,8 +762,6 @@ These algorithms have limited utility in Reinforcement Learning due to:
 </div>
 </div>
 </div>
-<section id="policy-improvement" class="level2">
-<h2 class="anchored" data-anchor-id="policy-improvement">Policy Improvement</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -792,31 +787,62 @@ Real Life Example 🧠
 <div class="callout-body-container callout-body">
 <p>Imagine your commute to work every day:</p>
 <ul>
-<li><span class="math inline">\(S_{1,...,k}\)</span> — The location you’re currently in (e.g., your home or a traffic junction).</li>
-<li><span class="math inline">\(A_{1,...,k}\)</span> — The route you choose (e.g., highway, back roads, or scenic route).</li>
+<li><span class="math inline">\(S\)</span> — The location you’re currently in (e.g., your home or a traffic junction). More generally, <span class="math inline">\(S_{1,...,k}\)</span> can represent multiple possible locations.</li>
+<li><span class="math inline">\(A_{1,...,k}\)</span> — The route you choose (e.g., highway, back streets, scenic route, parkway, or alternate street).<br>
+</li>
 <li><span class="math inline">\(R\)</span> — Your reward could be getting to work quickly, stress-free, or on time.</li>
 </ul>
-<div class="grid">
+<div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/highway.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Highway</figcaption>
+<p><img src="images/highway.jpg" class="equal-img img-fluid figure-img"></p>
+<figcaption>Action <span class="math inline">\(A_1\)</span>: Choosing the highway from your current location <span class="math inline">\(S\)</span>. Reward <span class="math inline">\(R\)</span>: Travel time may be shorter or longer depending on traffic.</figcaption>
 </figure>
 </div>
 </div>
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/sidestreet.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Side Street</figcaption>
+<p><img src="images/sidestreet.jpg" class="equal-img img-fluid figure-img"></p>
+<figcaption>Action <span class="math inline">\(A_2\)</span>: Taking the side street from your current location <span class="math inline">\(S\)</span>. Reward <span class="math inline">\(R\)</span>: Usually reliable, but travel time is a bit longer on average.</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/parkway.jpg" class="equal-img img-fluid figure-img"></p>
+<figcaption>Action <span class="math inline">\(A_3\)</span>: Taking the parkway from your current location <span class="math inline">\(S\)</span>. Reward <span class="math inline">\(R\)</span>: Might have moderate traffic but pleasant scenery.</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/backroad.jpg" class="equal-img img-fluid figure-img"></p>
+<figcaption>Action <span class="math inline">\(A_4\)</span>: Using an alternate back road from your current location <span class="math inline">\(S\)</span>. Reward <span class="math inline">\(R\)</span>: Unfamiliar, so travel time is uncertain.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Currently, you always take the side street (your policy <span class="math inline">\(\pi\)</span>), and on average, it takes you <strong>35 minutes</strong>.</p>
-<p>But one day, you try a different route (new policy <span class="math inline">\(\pi^{'}\)</span>) — maybe a side street — and even though it looks longer on the map, traffic is lighter and you reach work in <strong>30 minutes</strong>.</p>
-<p>Should I switch my policy to this new route from now on?</p>
+<style>
+.image-grid {
+  gap: 10px;              /* spacing between images */
+  max-width: 1100px;       /* controls how wide the grid can be */
+  margin: 0 auto;         /* centers the grid horizontally */
+  justify-content: center; /* keeps columns centered inside grid */
+}
+
+.equal-img {
+  width: 105%;
+  height: 200px; 
+  object-fit: cover;
+  display: block;
+}
+</style>
+<p>Suppose your current route always takes the side street, and on average it takes <strong>35 minutes</strong> to reach work. One day, you try a different route and notice it only takes <strong>30 minutes</strong>, even though it looked longer on the map.</p>
+<p>How could you systematically figure out which route is truly the best, and decide whether to stick with your usual route or switch to a new one?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -839,42 +865,22 @@ $$
 
 If selecting $a$ in $s$ and thereafter following policy $\pi$ is better than just following $\pi$, there must be a better policy $\pi^{'}$.
 
-The special case when this inequality is true is referred to as the **policy improvement theorem**. -->
-</div>
-</div>
-</div>
-<div class="center" style="text-align:center;">
-<p><img src="images/4-1.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
+The special case when this inequality is true is referred to as the **policy improvement theorem**.
+
+::: {.center style="text-align:center;"}
+![](images/4-1.svg){width=75%}
+:::
+
 <div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
-</div>
-</section>
-<section id="value-iteration" class="level2">
-<h2 class="anchored" data-anchor-id="value-iteration">Value Iteration</h2>
-<p>One drawback of policy iteration is that policy evaluation is done iteratively, requiring convergence exactly to <span class="math inline">\(v_{\pi}\)</span> which occurs only in the limit.</p>
-<p><strong>Value Iteration</strong> is truncates the policy evaluation step after just one sweep.</p>
-<div class="center" style="text-align:center;">
-<p><img src="images/4-2.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
-</section>
-<section id="generalized-policy-iteration" class="level2">
-<h2 class="anchored" data-anchor-id="generalized-policy-iteration">Generalized Policy Iteration</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Generalized Policy Iteration</strong> refers to the general idea of letting policy evaluation and policy improvement processes interact, regardless of anything else.</p>
-<p>Almost all of Reinforcement Learning can be described as the policy always being improved with respect to the value function, and the value function always being driven toward the value function for the policy.</p>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/GPI.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
-</figure>
+  <a href="https://github.com/">
+    <img src="images/github.svg" alt="GitHub" width="5%"/> 
+  </a>
+</div> -->
 </div>
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1283,8 +1289,8 @@ The special case when this inequality is true is referred to as the **policy imp
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../private/lecture5/lo.html" class="pagination-link" aria-label="Learning Objectives">
-        <span class="nav-page-text"><span class="chapter-title">Learning Objectives</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../private/lecture4/lecture4-4.html" class="pagination-link" aria-label="4.4 Value Iteration">
+        <span class="nav-page-text"><span class="chapter-title">4.4 Value Iteration</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

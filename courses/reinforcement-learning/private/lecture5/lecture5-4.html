@@ -297,7 +297,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Dynamic Programming</span></a>
+  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -739,19 +744,6 @@ Off-Policy Learning
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Problem
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>How can we leverage Monte Carlo’s learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_{*}\)</span>, while leveraging other policies <span class="math inline">\(b\)</span> apart from our own <span class="math inline">\(\pi\)</span>?</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -820,6 +812,19 @@ Real Life Example 🧠
 }
 </style>
 <p>Just like in off-policy learning, Newton didn’t need to replicate others’ paths <span class="math inline">\(\pi_{\text{Kepler, Galileo, Descartes}}\)</span> exactly. Instead, he learned from their trajectories <span class="math inline">\(b_{\text{Kepler, Galileo, Descartes}}\)</span> to improve his own <span class="math inline">\(\pi_{Newton}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we leverage Monte Carlo’s learning rule to approximate the optimal policy <span class="math inline">\(\approx \pi_{*}\)</span>, while leveraging other policies <span class="math inline">\(b\)</span> apart from our own <span class="math inline">\(\pi\)</span>?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">

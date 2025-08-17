@@ -297,7 +297,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Dynamic Programming</span></a>
+  <a href="../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -754,13 +759,12 @@ Real Life Example 🧠
 </li>
 <li><span class="math inline">\(R\)</span> – After each episode or video, you mentally rate how entertaining or satisfying it was.</li>
 </ul>
-<p>In my case:</p>
 <div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/seinfeld.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>My comfort show</figcaption>
+<figcaption>Action <span class="math inline">\(A_1\)</span>: Watching Seinfeld. Reward <span class="math inline">\(R\)</span>: Your comfort show — consistently delivers strong enjoyment, so its reward distribution is centered high.</figcaption>
 </figure>
 </div>
 </div>
@@ -768,20 +772,20 @@ Real Life Example 🧠
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/the-office.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>Watched a couple episodes</figcaption>
+<figcaption>Action <span class="math inline">\(A_2\)</span>: Watching The Office. Reward <span class="math inline">\(R\)</span>: Only a few episodes watched — the distribution is more uncertain, leaving room for it to surprise you.</figcaption>
 </figure>
 </div>
 </div>
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/leave.jpg" class="equal-img img-fluid figure-img"></p>
-<figcaption>Never saw this one</figcaption>
+<p><img src="images/house.jpg" class="equal-img img-fluid figure-img"></p>
+<figcaption>Action <span class="math inline">\(A_3\)</span>: Watching House. Reward <span class="math inline">\(R\)</span>: A completely new show — no data yet, so its distribution is wide and uncertain.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>How can I select a show based on my prior beliefs?</p>
+<p>How can you select a show using your prior beliefs, while still leaving room for updates as new evidence comes in?</p>
 </div>
 </div>
 <style>
