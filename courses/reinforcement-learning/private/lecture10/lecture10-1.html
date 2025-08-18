@@ -498,12 +498,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Optimization of Parameterized Policies</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Proximal Policy Optimization (PPO)</span></a>
+  <a href="../../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Proximal Policy Optimization (PPO)</span></a>
   </div>
 </li>
       </ul>
@@ -699,9 +694,8 @@ window.Quarto = {
   <li><a href="#trust-regions" id="toc-trust-regions" class="nav-link active" data-scroll-target="#trust-regions">Trust Regions</a>
   <ul class="collapse">
   <li><a href="#defining-the-preliminary-notation" id="toc-defining-the-preliminary-notation" class="nav-link" data-scroll-target="#defining-the-preliminary-notation">1. Defining the Preliminary Notation</a></li>
-  <li><a href="#express-in-terms-of-sum-of-states-and-actions" id="toc-express-in-terms-of-sum-of-states-and-actions" class="nav-link" data-scroll-target="#express-in-terms-of-sum-of-states-and-actions">1. Express in Terms of Sum of States and Actions</a></li>
-  <li><a href="#surrogate-objectives" id="toc-surrogate-objectives" class="nav-link" data-scroll-target="#surrogate-objectives">2. Surrogate Objectives</a></li>
-  <li><a href="#monotonic-improvement" id="toc-monotonic-improvement" class="nav-link" data-scroll-target="#monotonic-improvement">3. Monotonic Improvement</a></li>
+  <li><a href="#defining-a-local-approximation-to-eta" id="toc-defining-a-local-approximation-to-eta" class="nav-link" data-scroll-target="#defining-a-local-approximation-to-eta">2. Defining a Local Approximation to <span class="math inline">\(\eta\)</span></a></li>
+  <li><a href="#conservative-policy-iteration" id="toc-conservative-policy-iteration" class="nav-link" data-scroll-target="#conservative-policy-iteration">3. Conservative Policy Iteration</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -774,9 +768,11 @@ Real Life Example 🧠
 </div>
 <div class="callout-body-container callout-body">
 <p>Suppose you’re climbing a mountain to reach the top:</p>
-<p><span class="math inline">\(S\)</span> – Your current location on the mountain.</p>
-<p><span class="math inline">\(A_{1,\dots,k}\)</span> – Your next movement decision (e.g., reach left, step up, lean back).</p>
-<p><span class="math inline">\(R\)</span> – A reward based on progress upward (higher = better), but falls can yield large negative rewards.</p>
+<ul>
+<li><span class="math inline">\(S\)</span> – Your current location on the mountain.</li>
+<li><span class="math inline">\(A_{1,\dots,k}\)</span> – Your next movement decision (e.g., reach left, step up, lean back).</li>
+<li><span class="math inline">\(R\)</span> – A reward based on progress upward (higher = better), but falls can yield large negative rewards.</li>
+</ul>
 <p>In this setup:</p>
 <div class="grid">
 <div class="g-col-3">
@@ -819,9 +815,9 @@ Solution
 2. \& 3. We need a new algorithm that takes step sizes $\alpha$ without creating drastic changes in the log probabilities of actions.
 
 <div class="text-center">
-  ![](images/trpo.svg){width=75% fig-align="center"} <br>
-  U.C. Berkeley 2015 [@schulman2015trust] <br>
-  [Link to Research Paper](https://arxiv.org/pdf/1502.05477)
+  ![](images/kakade.svg){width=100% fig-align="center"} <br>
+  ICML 2002 [@Kakade+Langford:2002] <br>
+  [Link to Research Paper](https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/KakadeLangford-icml2002.pdf)
 </div> -->
 </div>
 </div>
@@ -840,34 +836,61 @@ s_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3,...
 \]</span></p>
 <p>With minor tweaks, we can add a <a href="../../private/lecture9/lecture9-2.html#baselines">baseline</a> by substituting with the standard advantage notation:</p>
 <p><span class="math display">\[
-\eta(\pi) = \mathbb{E}_{s_0, a_0, \dots} \left[ \sum_{t=0}^{\infty} \gamma^t A_t \right]
+\eta(\pi) = \mathbb{E}_{s_0, a_0, \dots} \left[ \sum_{t=0}^{\infty} \gamma^t A_\pi(s, a) \right]
 \]</span></p>
-<p>Additionally, let discounted visitation frequencies:</p>
+<p>The following useful identity expresses the expected return of another policy <span class="math inline">\(\tilde{\pi}\)</span> in terms of the advantage over <span class="math inline">\(\pi\)</span>, accumulated over timesteps:</p>
 <p><span class="math display">\[
-\rho_{\pi_{\theta_{t}}} = P(S_{0}) + \gamma P(S_{1}) + \gamma^{2} P(S_{2}) + ...
+\eta(\tilde{\pi}) = \eta(\pi) + \mathbb{E}_{s_0, a_0, \dots \sim \tilde{\pi}} \left[ \sum_{t=0}^{\infty} \gamma^t A_\pi(s_t, a_t) \right]
 \]</span></p>
+<p><strong>Proof Appendix A</strong></p>
+<p>Additionally, let <span class="math inline">\(\rho_{\pi}(s)\)</span> be the discounted visitation frequencies following <span class="math inline">\(\pi\)</span>:</p>
+<p><span class="math display">\[
+\rho_{\pi}(s) = P(s_{0}) + \gamma P(s_{1}) + \gamma^{2} P(s_{2}) + ...
+\]</span></p>
+<p>Now we can rewrite <span class="math inline">\(\eta(\tilde{\pi})\)</span> equation to sum over states instead of timesteps by introducing <span class="math inline">\(\rho_{\pi}(s)\)</span>:</p>
+<p><span class="math display">\[
+\eta(\tilde{\pi}) = \eta(\pi) + \sum_s \rho_{\tilde{\pi}}(s) \sum_a \tilde{\pi}(a|s) A_\pi(s, a)
+\]</span></p>
+<p><strong>Derivation</strong></p>
+<p>This equation tells us something important:</p>
+<p>If we update our policy from <span class="math inline">\(\pi\)</span> to <span class="math inline">\(\tilde{\pi}\)</span> so that, at every state <span class="math inline">\(s\)</span>, the expected advantage is nonnegative (i.e., <span class="math inline">\(\sum_a \tilde{\pi}(a|s)A_\pi(s, a) \geq 0\)</span>), then the new policy will perform at least as well as the old one. If the expected advantage is strictly positive anywhere, the new policy will do better.</p>
+<p>This is the same idea as the <a href="../../private/lecture4/lecture4-3.html">Policy Improvement Theorem</a> from Lecture 4.</p>
+<p>However, in practice, things are not so simple. For approximate or stochastic policies, there may be some states where the expected advantage is negative due to estimation errors or function approximation. This makes it hard to guarantee improvement everywhere, and direct optimization becomes challenging.</p>
 </section>
-<section id="express-in-terms-of-sum-of-states-and-actions" class="level3">
-<h3 class="anchored" data-anchor-id="express-in-terms-of-sum-of-states-and-actions">1. Express in Terms of Sum of States and Actions</h3>
-<p>We can now rewrite in terms of sum of states and actions:</p>
+<section id="defining-a-local-approximation-to-eta" class="level3">
+<h3 class="anchored" data-anchor-id="defining-a-local-approximation-to-eta">2. Defining a Local Approximation to <span class="math inline">\(\eta\)</span></h3>
+<p>To make things simpler, let’s use an easier approximation for <span class="math inline">\(\eta\)</span> that doesn’t depend on the new policy’s state visitation frequencies <span class="math inline">\(\rho_{\tilde{\pi}}(s)\)</span>.</p>
+<p>We define a local approximation:</p>
 <p><span class="math display">\[
-F(\pi_{\theta_{t+1}}) = F(\pi_{\theta_{t}}) + \mathbb{E}_{s \approx \rho_{\pi_{\theta_{t+1}}}, a \approx \pi_{\theta_{t}}} \left[\frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)} \hat{A}_t\right]
+L_\pi(\tilde{\pi}) = \eta(\pi) + \sum_s \rho_{\pi}(s) \sum_a \tilde{\pi}(a|s) A_\pi(s, a)
 \]</span></p>
-<p><span class="math inline">\(\rho_{\pi_{\theta_{t+1}}}\)</span> makes optimizing <span class="math inline">\(F(\pi_{\theta_{t+1}})\)</span> directly difficult.</p>
+<p>This formula is a shortcut: instead of tracking how the new policy changes which states we visit, we just use the old policy’s frequencies.</p>
+<p>Why is this useful? If we use a parameterized policy <span class="math inline">\(\pi_\theta\)</span>, where <span class="math inline">\(\theta\)</span> are the parameters, this local approximation <span class="math inline">\(L\)</span> matches the true return <span class="math inline">\(\eta\)</span> at the current parameters:</p>
+<p><span class="math display">\[
+L_{\pi_{\theta_0}}(\pi_{\theta_0}) = \eta(\pi_{\theta_0}),
+\]</span></p>
+<p>and the gradients also match at <span class="math inline">\(\theta_0\)</span>:</p>
+<p><span class="math display">\[
+\nabla_\theta L_{\pi_{\theta_0}}(\pi_\theta) \Big|_{\theta = \theta_0} = \nabla_\theta \eta(\pi_\theta) \Big|_{\theta = \theta_0}.
+\]</span></p>
+<p>So, if we take a small step from <span class="math inline">\(\theta_0\)</span> to a new <span class="math inline">\(\tilde{\theta}\)</span> that improves <span class="math inline">\(L\)</span>, it will also improve the true return <span class="math inline">\(\eta\)</span>—at least for small steps.</p>
 </section>
-<section id="surrogate-objectives" class="level3">
-<h3 class="anchored" data-anchor-id="surrogate-objectives">2. Surrogate Objectives</h3>
-<p>One approach to this problem is to replace future sampling <span class="math inline">\(\rho_{\pi_{\theta_{t+1}}}\)</span> with a local approximation <span class="math inline">\(L(\pi_{\theta_{t+1}})\)</span>, or “surrogate objective”:</p>
+<section id="conservative-policy-iteration" class="level3">
+<h3 class="anchored" data-anchor-id="conservative-policy-iteration">3. Conservative Policy Iteration</h3>
+<p>Kakade and Langford’s key insight was to find a guaranteed lower bound on how much your policy can improve after an update.</p>
 <p><span class="math display">\[
-L(\pi_{\theta_{t+1}}) =  F(\pi_{\theta_{t}}) + \mathbb{E}_{s \approx \rho_{\pi_{\theta_{t}}}, a \approx \pi_{\theta_{t}}} \left[\frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)} \hat{A}_t\right]
+\eta(\pi_{\text{new}}) \geq L_{\pi_{\text{old}}}(\pi_{\text{new}}) - \frac{2 \epsilon \gamma}{(1 - \gamma)^2} \alpha^2
 \]</span></p>
-</section>
-<section id="monotonic-improvement" class="level3">
-<h3 class="anchored" data-anchor-id="monotonic-improvement">3. Monotonic Improvement</h3>
-<p>TRPO’s main contribution is monotonic improvement guarantee using a KL-Divergence metric:</p>
+<p>where</p>
 <p><span class="math display">\[
-F(\pi_{\theta_{t+1}}) \geq L(\pi_{\theta_{t+1}}) - C \ D^{max}_{KL}(\pi_{\theta_{t}} \| \pi_{\theta_{t+1}})
+\epsilon = \max_s \left| \mathbb{E}_{a \sim \pi_0(a|s)} \left[ A_\pi(s, a) \right] \right|
 \]</span></p>
+<p>This means: if you use this formula, you can be sure your new policy will do at least as well as the right-hand side, no matter what.</p>
+<p>However, this guarantee only works for a special kind of policy update called a “mixture policy,” which is just a weighted average of your old policy and a new candidate policy:</p>
+<p><span class="math display">\[
+\pi_{\text{new}}(a|s) = (1 - \alpha)\,\pi_{\text{old}}(a|s) + \alpha\,\pi^{'}(a|s)
+\]</span></p>
+<p>In other words, you don’t jump all the way to a new policy—you blend a little bit of the new policy into the old one, controlled by <span class="math inline">\(\alpha\)</span>.</p>
 
 
 </section>

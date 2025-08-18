@@ -498,12 +498,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Optimization of Parameterized Policies</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Proximal Policy Optimization (PPO)</span></a>
+  <a href="../../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Proximal Policy Optimization (PPO)</span></a>
   </div>
 </li>
       </ul>
@@ -726,9 +721,20 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Lectures 5-10 focused on Model-free Reinforcement Learning.</p>
-<p>In Model-free Reinforcement Learning we learned learning</p>
-<p><img src="images/Model-freeRL.png" class="img-fluid" style="width:50.0%"></p>
+<p>In Lectures 5-10, we explored Model-free Reinforcement Learning.</p>
+<p>Model-free Reinforcement Learning emphasizes learning directly from interactions with the environment <em>without relying on a model of its dynamics</em>.</p>
+<div class="text-center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Model-freeRL.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<p>Agents need to sample many environment interactions to <em>learn</em> environment dynamics.</p>
+<p><span class="math display">\[
+P(s^{'}, r| s, a)
+\]</span></p>
+<p>Exploration is blind without a model of environment dynamics. Model-free methods focus on immediate rewards.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -739,11 +745,7 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Agents need to sample many environment interactions to <em>learn</em> environment dynamics.</p>
-<p><span class="math display">\[
-P(s^{'}, r| s, a)
-\]</span></p>
-<p>Exploration is blind without a model of environment dynamics. Model-free methods focus on immediate rewards.</p>
+<p>But what if agents could predict the outcomes of their actions without directly interacting with the environment? Could this lead to more efficient learning?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -756,7 +758,50 @@ Real Life Example 🧠
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>Think about how we humans often plan.</p>
+<p>For example, imagine you are about to graduate from GW. You could take two possible actions:</p>
+<div class="grid image-grid">
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/consulting-job.png" class="equal-img img-fluid figure-img"></p>
+<figcaption>Action <span class="math inline">\(A_1\)</span>: Consulting Job. Reward <span class="math inline">\(R\)</span>: This path has consistently provided the highest immediate payoff — strong career growth and financial stability make it the best-known choice.</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/phd.png" class="equal-img img-fluid figure-img"></p>
+<figcaption>Action <span class="math inline">\(A_2\)</span>: PhD Program. Reward <span class="math inline">\(R\)</span>: A modest performer so far, but not explored much. With more investment, it could reveal higher potential in research opportunities and long-term impact.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<style>
+.image-grid {
+  gap: 10px;              /* spacing between images */
+  max-width: 1100px;       /* controls how wide the grid can be */
+  margin: 0 auto;         /* centers the grid horizontally */
+  justify-content: center; /* keeps columns centered inside grid */
+}
 
+.equal-img {
+  width: 105%;
+  height: 200px; 
+  object-fit: cover;
+  display: block;
+}
+</style>
+<p>The outcomes of each choice are not immediately visible — you can’t just try both and “reset.” Instead, you have to <strong>simulate in your head</strong> what the future might look like based on your prior knowledge and expectations:</p>
+<ul>
+<li>What career growth might the consulting job bring?<br>
+</li>
+<li>What opportunities could the PhD open up?<br>
+</li>
+<li>How long will each path take?</li>
+</ul>
+<p>Unlike trial-and-error learning, where feedback comes directly from experience, here you are relying on a <strong>mental model of the world</strong> to forecast what might happen and make a choice.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -771,13 +816,11 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Agents can <em>plan</em> future rewards by leveraging environment dynamics. Safe exploration - informed exploration.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Model-basedRL.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Model-based Reinforcement Learning</figcaption>
-</figure>
-</div>
+<!-- **Model-based Reinforcement Learning** provides a solution by enabling agents to *plan* future rewards using a model of environment dynamics. This approach allows agents to simulate potential outcomes and make informed decisions without direct interaction with the environment.
+
+By leveraging environment dynamics, agents can perform safe and informed exploration, reducing the need for blind trial-and-error. This leads to more efficient learning and better long-term outcomes.
+
+![Model-based Reinforcement Learning](images/Model-basedRL.png){width=50%} -->
 </div>
 </div>
 </div>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10.3 Optimization of Parametrized Policies</title>
+<title>10.3 Proximal Policy Optimization (PPO)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../private/lecture10/lecture10-4.html" rel="next">
+<link href="../../private/lecture11/lo.html" rel="next">
 <link href="../../private/lecture10/lecture10-2.html" rel="prev">
 <link href="../../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -79,7 +114,38 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -92,7 +158,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">10.3 Optimization of Parametrized Policies</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">10.3 Proximal Policy Optimization (PPO)</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -469,12 +535,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">10.3 Optimization of Parameterized Policies</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Proximal Policy Optimization (PPO)</span></a>
+  <a href="../../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">10.3 Proximal Policy Optimization (PPO)</span></a>
   </div>
 </li>
       </ul>
@@ -670,7 +731,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">10.3 Optimization of Parametrized Policies</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">10.3 Proximal Policy Optimization (PPO)</span></h1>
 </div>
 
 
@@ -693,7 +754,184 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>What happens when we tune the knobs of a policy directly, treating decisions as parameters to optimize? 🎚️</p>
+<p>What if you could move fast — but with guardrails that keep you from tipping over? 🎛️</p>
+</div>
+</div>
+</div>
+<p>TRPO’s main drawback has to do with the calculation of the Hessian matrix with respect to the KL-Divergence:</p>
+<p><span class="math display">\[
+\mathbf{H} = \nabla^2 D_{KL}(\pi_{\theta_{t}} \| \pi_{\theta_{t+1}})
+\]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How can we design an algorithm that achieves stable policy updates like TRPO, but avoids the computational complexity of calculating the Hessian matrix? Could clipping the probability ratio be a simpler yet effective solution?</p>
+</div>
+</div>
+<div id="observable">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="31" data-source-offset="-13"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 30;"><span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>viewof r <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">1.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`r = </span><span class="sc">\f</span><span class="vs">rac{</span><span class="sc">\p</span><span class="vs">i_</span><span class="sc">\t</span><span class="vs">heta}{</span><span class="sc">\p</span><span class="vs">i_{</span><span class="sc">\t</span><span class="vs">ext{old}}}`</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span>})</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>viewof A <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">1.0</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\h</span><span class="vs">at{A}`</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span>})</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>viewof eps <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.5</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\e</span><span class="vs">psilon`</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span>})</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">// Function to compute PPO clipped objective at a single ratio</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ppoClipObj</span>(ratio<span class="op">,</span> advantage<span class="op">,</span> epsilon) {</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> clip_ratio <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">1</span> <span class="op">+</span> epsilon<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">1</span> <span class="op">-</span> epsilon<span class="op">,</span> ratio))</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (advantage <span class="op">&gt;=</span> <span class="dv">0</span>) {</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(ratio <span class="op">*</span> advantage<span class="op">,</span> clip_ratio <span class="op">*</span> advantage)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(ratio <span class="op">*</span> advantage<span class="op">,</span> clip_ratio <span class="op">*</span> advantage)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co">// Compute current objective at slider r</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>objective <span class="op">=</span> <span class="fu">ppoClipObj</span>(r<span class="op">,</span> A<span class="op">,</span> eps)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co">// Data for visualization</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>ratio_values <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="fl">2.01</span><span class="op">,</span> <span class="fl">0.01</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>curve_data <span class="op">=</span> ratio_values<span class="op">.</span><span class="fu">map</span>(rr <span class="kw">=&gt;</span> ({</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">r</span><span class="op">:</span> rr<span class="op">,</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">unclipped_obj</span><span class="op">:</span> rr <span class="op">*</span> A<span class="op">,</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">clipped_obj</span><span class="op">:</span> <span class="fu">ppoClipObj</span>(rr<span class="op">,</span> A<span class="op">,</span> eps)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">// Plot the surrogate objective vs ratio</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> <span class="st">"overflow: visible; display: block; margin: 0 auto;"</span><span class="op">,</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">600</span><span class="op">,</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Objective Value"</span>}<span class="op">,</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Probability Ratio r"</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span><span class="dv">2</span>]}<span class="op">,</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(curve_data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"unclipped_obj"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Unclipped"</span>})<span class="op">,</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(curve_data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"clipped_obj"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"orange"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Clipped"</span>})<span class="op">,</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="dv">1</span> <span class="op">-</span> eps<span class="op">,</span> <span class="dv">1</span> <span class="op">+</span> eps]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"red"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,4"</span>})</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-8" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="71" data-source-offset="-1526"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 70;"><span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-top: 1em;"&gt;</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>tex<span class="op">.</span><span class="fu">block</span><span class="vs">`L^{</span><span class="sc">\t</span><span class="vs">ext{CLIP}}(</span><span class="sc">\t</span><span class="vs">heta) = </span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>A <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"</span><span class="sc">\\</span><span class="st">min(r</span><span class="sc">\\</span><span class="st">hat{A}, </span><span class="sc">\\</span><span class="st">text{clip}(r,1-</span><span class="sc">\\</span><span class="st">epsilon,1+</span><span class="sc">\\</span><span class="st">epsilon)</span><span class="sc">\\</span><span class="st">hat{A})"</span> <span class="op">:</span> </span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>                <span class="st">"</span><span class="sc">\\</span><span class="st">max(r</span><span class="sc">\\</span><span class="st">hat{A}, </span><span class="sc">\\</span><span class="st">text{clip}(r,1-</span><span class="sc">\\</span><span class="st">epsilon,1+</span><span class="sc">\\</span><span class="st">epsilon)</span><span class="sc">\\</span><span class="st">hat{A})"</span><span class="sc">}</span><span class="vs">`</span><span class="sc">}</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>tex<span class="op">.</span><span class="fu">block</span><span class="vs">`= </span><span class="sc">${</span>objective<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs"> </span><span class="sc">\q</span><span class="vs">uad (</span><span class="sc">\h</span><span class="vs">at{A} = </span><span class="sc">${</span>A<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">, r = </span><span class="sc">${</span>r<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">, </span><span class="sc">\e</span><span class="vs">psilon = </span><span class="sc">${</span>eps<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">)`</span><span class="sc">}</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\t</span><span class="vs">ext{Red dashed lines show the clipping range } [1-</span><span class="sc">\e</span><span class="vs">psilon, 1+</span><span class="sc">\e</span><span class="vs">psilon]`</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-9" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- <div class="text-center">
+  ![](images/PPO.svg){width=75% fig-align="center"} <br>
+  OpenAI 2017 [@schulman2017proximal] <br>
+  [Link to Research Paper](https://arxiv.org/pdf/1707.06347)
+</div> 
+
+--- 
+
+### PPO Clip: Surrogate Objective
+
+$$
+L^{\text{CLIP}}(\pi_{\theta_{t+1}}) = \mathbb{E} \left[ \min \left( \frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)} \hat{A}_t, \text{clip}\left(\frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)}, 1-\epsilon, 1+\epsilon\right) \hat{A}_t \right) \right]
+$$
+
+---
+
+### Illustration: PPO
+
+![](images/PPOClip.png){width=100%}
+
+---
+
+### Pseudocode
+
+::: {.center style="text-align:center;"}
+![](images/10-1.svg){width=75%}
+:::
+
+<div style="text-align: center;">
+  <a href="https://github.com/">
+    <img src="images/github.svg" alt="GitHub" width="5%"/> 
+  </a>
+</div> -->
 </div>
 </div>
 </div>
@@ -701,6 +939,17 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gQ29udHJvbHNcbnZpZXdvZiByID0gSW5wdXRzLnJhbmdlKFswLCAyXSwge3N0ZXA6IDAuMDEsIHZhbHVlOiAxLjIsIGxhYmVsOiB0ZXhgciA9IFxcZnJhY3tcXHBpX1xcdGhldGF9e1xccGlfe1xcdGV4dHtvbGR9fX1gLCB3aWR0aDogMjUwfSlcbnZpZXdvZiBBID0gSW5wdXRzLnJhbmdlKFstMiwgMl0sIHtzdGVwOiAwLjEsIHZhbHVlOiAxLjAsIGxhYmVsOiB0ZXhgXFxoYXR7QX1gLCB3aWR0aDogMjUwfSlcbnZpZXdvZiBlcHMgPSBJbnB1dHMucmFuZ2UoWzAsIDAuNV0sIHtzdGVwOiAwLjAxLCB2YWx1ZTogMC4yLCBsYWJlbDogdGV4YFxcZXBzaWxvbmAsIHdpZHRoOiAyNTB9KVxuXG4vLyBGdW5jdGlvbiB0byBjb21wdXRlIFBQTyBjbGlwcGVkIG9iamVjdGl2ZSBhdCBhIHNpbmdsZSByYXRpb1xuZnVuY3Rpb24gcHBvQ2xpcE9iaihyYXRpbywgYWR2YW50YWdlLCBlcHNpbG9uKSB7XG4gIGNvbnN0IGNsaXBfcmF0aW8gPSBNYXRoLm1pbigxICsgZXBzaWxvbiwgTWF0aC5tYXgoMSAtIGVwc2lsb24sIHJhdGlvKSlcbiAgaWYgKGFkdmFudGFnZSA+PSAwKSB7XG4gICAgcmV0dXJuIE1hdGgubWluKHJhdGlvICogYWR2YW50YWdlLCBjbGlwX3JhdGlvICogYWR2YW50YWdlKVxuICB9IGVsc2Uge1xuICAgIHJldHVybiBNYXRoLm1heChyYXRpbyAqIGFkdmFudGFnZSwgY2xpcF9yYXRpbyAqIGFkdmFudGFnZSlcbiAgfVxufVxuXG4vLyBDb21wdXRlIGN1cnJlbnQgb2JqZWN0aXZlIGF0IHNsaWRlciByXG5vYmplY3RpdmUgPSBwcG9DbGlwT2JqKHIsIEEsIGVwcylcblxuLy8gRGF0YSBmb3IgdmlzdWFsaXphdGlvblxucmF0aW9fdmFsdWVzID0gZDMucmFuZ2UoMCwgMi4wMSwgMC4wMSlcbmN1cnZlX2RhdGEgPSByYXRpb192YWx1ZXMubWFwKHJyID0+ICh7XG4gIHI6IHJyLFxuICB1bmNsaXBwZWRfb2JqOiByciAqIEEsXG4gIGNsaXBwZWRfb2JqOiBwcG9DbGlwT2JqKHJyLCBBLCBlcHMpXG59KSlcblxuLy8gUGxvdCB0aGUgc3Vycm9nYXRlIG9iamVjdGl2ZSB2cyByYXRpb1xuUGxvdC5wbG90KHtcbiAgc3R5bGU6IFwib3ZlcmZsb3c6IHZpc2libGU7IGRpc3BsYXk6IGJsb2NrOyBtYXJnaW46IDAgYXV0bztcIixcbiAgd2lkdGg6IDYwMCxcbiAgaGVpZ2h0OiA0MDAsXG4gIHk6IHtncmlkOiB0cnVlLCBsYWJlbDogXCJPYmplY3RpdmUgVmFsdWVcIn0sXG4gIHg6IHtsYWJlbDogXCJQcm9iYWJpbGl0eSBSYXRpbyByXCIsIGRvbWFpbjogWzAsMl19LFxuICBtYXJrczogW1xuICAgIFBsb3QubGluZShjdXJ2ZV9kYXRhLCB7eDogXCJyXCIsIHk6IFwidW5jbGlwcGVkX29ialwiLCBzdHJva2U6IFwic3RlZWxibHVlXCIsIHN0cm9rZVdpZHRoOiAyLCBsYWJlbDogXCJVbmNsaXBwZWRcIn0pLFxuICAgIFBsb3QubGluZShjdXJ2ZV9kYXRhLCB7eDogXCJyXCIsIHk6IFwiY2xpcHBlZF9vYmpcIiwgc3Ryb2tlOiBcIm9yYW5nZVwiLCBzdHJva2VXaWR0aDogMiwgbGFiZWw6IFwiQ2xpcHBlZFwifSksXG4gICAgUGxvdC5ydWxlWChbMSAtIGVwcywgMSArIGVwc10sIHtzdHJva2U6IFwicmVkXCIsIHN0cm9rZURhc2hhcnJheTogXCI0LDRcIn0pXG4gIF1cbn0pXG5cbi8vIFNob3cgZm9ybXVsYSBhbmQgY3VycmVudCB2YWx1ZVxuaHRtbGA8ZGl2IHN0eWxlPVwidGV4dC1hbGlnbjogY2VudGVyOyBtYXJnaW4tdG9wOiAxZW07XCI+XG4gICR7dGV4LmJsb2NrYExee1xcdGV4dHtDTElQfX0oXFx0aGV0YSkgPSBcbiAgICAke0EgPj0gMCA/IFwiXFxcXG1pbihyXFxcXGhhdHtBfSwgXFxcXHRleHR7Y2xpcH0ociwxLVxcXFxlcHNpbG9uLDErXFxcXGVwc2lsb24pXFxcXGhhdHtBfSlcIiA6IFxuICAgICAgICAgICAgICAgIFwiXFxcXG1heChyXFxcXGhhdHtBfSwgXFxcXHRleHR7Y2xpcH0ociwxLVxcXFxlcHNpbG9uLDErXFxcXGVwc2lsb24pXFxcXGhhdHtBfSlcIn1gfVxuICAke3RleC5ibG9ja2A9ICR7b2JqZWN0aXZlLnRvRml4ZWQoMyl9IFxccXVhZCAoXFxoYXR7QX0gPSAke0EudG9GaXhlZCgyKX0sIHIgPSAke3IudG9GaXhlZCgyKX0sIFxcZXBzaWxvbiA9ICR7ZXBzLnRvRml4ZWQoMil9KWB9XG4gIDxwPiR7dGV4YFxcdGV4dHtSZWQgZGFzaGVkIGxpbmVzIHNob3cgdGhlIGNsaXBwaW5nIHJhbmdlIH0gWzEtXFxlcHNpbG9uLCAxK1xcZXBzaWxvbl1gfTwvcD5cbjwvZGl2PmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdBJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2VwcycpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../private/lecture10";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1107,8 +1356,8 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../private/lecture10/lecture10-4.html" class="pagination-link" aria-label="10.4 Proximal Policy Optimization (PPO)">
-        <span class="nav-page-text"><span class="chapter-title">10.4 Proximal Policy Optimization (PPO)</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../private/lecture11/lo.html" class="pagination-link" aria-label="Learning Objectives">
+        <span class="nav-page-text"><span class="chapter-title">Learning Objectives</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

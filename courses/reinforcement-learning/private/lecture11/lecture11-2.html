@@ -20,27 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -518,12 +498,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Optimization of Parameterized Policies</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 Proximal Policy Optimization (PPO)</span></a>
+  <a href="../../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Proximal Policy Optimization (PPO)</span></a>
   </div>
 </li>
       </ul>
@@ -746,6 +721,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>Model-based RL leverages environment dynamics to <em>plan</em> actions.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -756,7 +732,7 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Require an algorithm that demonstrates strong empirical performance and effectively <em>plans</em> based on the dynamics of an environment.</p>
+<p>How can we focus our search on the most promising actions to make planning more effective?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -769,7 +745,43 @@ Real Life Example 🧠
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>Suppose you are playing a game of chess and arrive at a complicated position:</p>
+<ul>
+<li><span class="math inline">\(S\)</span> — The current board position in front of you.<br>
+</li>
+<li><span class="math inline">\(A\)</span> — Several possible candidate moves you could make.<br>
+</li>
+<li><span class="math inline">\(R\)</span> — You won’t know the true reward immediately — but you can simulate outcomes by imagining how the game might unfold.<br>
+</li>
+<li><span class="math inline">\(S'...\)</span> — For each action, you mentally “roll out” future positions by predicting your opponent’s possible replies and continuing a few moves ahead.</li>
+</ul>
+<p>You don’t need to explore <em>every</em> line to the very end of the game — instead, you simulate a sample of promising moves, update your estimates, and bias future simulations toward the moves that look strongest.</p>
+<div class="grid">
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/familiar-position.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><span class="math inline">\(S\)</span> Current position on the board — you must choose a move.</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/candidate-moves.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><span class="math inline">\(A\)</span> Candidate moves: knight jump, pawn exchange, or rook lift.</figcaption>
+</figure>
+</div>
+</div>
+<div class="g-col-3">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/simulated-rollouts.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><span class="math inline">\(S'...\)</span> Simulated rollouts of each move against possible replies.</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -784,113 +796,123 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="text-center">
-<p><img src="images/monte-carlo-tree-search.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> Université Charles de Gaulle 2006 <span class="citation" data-cites="coulom2006efficient">(<a href="../../references.html#ref-coulom2006efficient" role="doc-biblioref">Coulom 2006</a>)</span> <br> <a href="https://inria.hal.science/inria-00116992/document">Link to Research Paper</a></p>
+<!-- <div class="text-center">
+  ![](images/monte-carlo-tree-search.svg){width=75% fig-align="center"} <br>
+  Université Charles de Gaulle 2006 [@coulom2006efficient] <br>
+  [Link to Research Paper](https://inria.hal.science/inria-00116992/document)
 </div>
-<hr>
-<section id="mcts-step-1-selection" class="level3">
-<h3 class="anchored" data-anchor-id="mcts-step-1-selection">MCTS Step 1: Selection</h3>
-<div class="columns" style="text-align:center;">
-<div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/MCTSSelecting.svg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>MCTS Selecting</figcaption>
-</figure>
-</div>
-</div><div class="column">
-<p>Similar to UCB bandit problems, we select actions according to a confidence interval that balances exploration and exploitation, with the formula:</p>
-<p><span class="math display">\[
+
+---
+
+### MCTS Step 1: Selection
+
+::: {.columns style="text-align:center;"}
+
+::: {.column}
+![MCTS Selecting](images/MCTSSelecting.svg){width=50%}
+:::
+
+::: {.column}
+Similar to UCB bandit problems, we select actions according to a confidence interval that balances exploration and exploitation, with the formula:
+
+$$
 A_t = \arg\max_a \left[ Q(s,a) + C \sqrt{\frac{\ln(N(s)_{\text{parent}})}{N(s)}} \right]
-\]</span></p>
-</div>
-</div>
-<hr>
-</section>
-<section id="mcts-step-2-expansion" class="level3">
-<h3 class="anchored" data-anchor-id="mcts-step-2-expansion">MCTS Step 2: Expansion</h3>
-<div class="columns" style="text-align:center;">
-<div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/MCTSExpanding.svg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>MCTS Expanding</figcaption>
-</figure>
-</div>
-</div><div class="column">
-<p>After selecting an action <span class="math inline">\(A_t\)</span>, if the corresponding child node does not exist, we expand the search tree by creating a new node for the resulting state <span class="math inline">\(S^{A_t}_{t+1}\)</span>.</p>
-</div>
-</div>
-<hr>
-</section>
-<section id="mcts-step-3-simulation" class="level3">
-<h3 class="anchored" data-anchor-id="mcts-step-3-simulation">MCTS Step 3: Simulation</h3>
-<div class="columns" style="text-align:center;">
-<div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/MCTSSimulating.svg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>MCTS Simulating</figcaption>
-</figure>
-</div>
-</div><div class="column">
-<p>From the expanded node, we simulate <em>n</em>-times acting randomly and calculate the average rewards for all simulations:</p>
-<p><span class="math display">\[
+$$
+
+:::
+
+:::
+
+---
+
+### MCTS Step 2: Expansion
+
+::: {.columns style="text-align:center;"}
+
+::: {.column}
+![MCTS Expanding](images/MCTSExpanding.svg){width=50%}
+:::
+
+::: {.column}
+After selecting an action $A_t$, if the corresponding child node does not exist, we expand the search tree by creating a new node for the resulting state $S^{A_t}_{t+1}$.
+:::
+
+:::
+
+---
+
+### MCTS Step 3: Simulation
+
+::: {.columns style="text-align:center;"}
+
+::: {.column}
+![MCTS Simulating](images/MCTSSimulating.svg){width=50%}
+:::
+
+::: {.column}
+From the expanded node, we simulate *n*-times acting randomly and calculate the average rewards for all simulations:
+
+$$
 \bar{R} = \frac{1}{n} \sum_{j=1}^{n} R_j
-\]</span></p>
-</div>
-</div>
-<hr>
-</section>
-<section id="mcts-step-4-backpropagation" class="level3">
-<h3 class="anchored" data-anchor-id="mcts-step-4-backpropagation">MCTS Step 4: Backpropagation</h3>
-<div class="columns" style="text-align:center;">
-<div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/MCTSUpdating.svg" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>MCTS Backpropagating</figcaption>
-</figure>
-</div>
-</div><div class="column">
-<p>After obtaining the average rewards, we update the values from the current node up to the root node:</p>
-<p><span class="math display">\[
+$$
+
+:::
+
+:::
+
+---
+
+### MCTS Step 4: Backpropagation
+
+::: {.columns style="text-align:center;"}
+
+::: {.column}
+![MCTS Backpropagating](images/MCTSUpdating.svg){width=50%}
+:::
+
+::: {.column}
+After obtaining the average rewards, we update the values from the current node up to the root node:
+
+$$
 N(s) = N(s) + 1
-\]</span></p>
-<p><span class="math display">\[
+$$  
+
+$$
 Q(s,a) = Q(s,a) + \frac{\bar{R}}{N(s)}
-\]</span></p>
-</div>
-</div>
-<hr>
-<p><img src="images/MCTS.svg" class="img-fluid" style="width:90.0%"></p>
-<hr>
-<div class="center" style="text-align:center;">
-<p><img src="images/11-1.svg" class="img-fluid" style="width:75.0%"></p>
-</div>
+$$
+
+:::
+
+:::
+
+---
+
+![](images/MCTS.svg){width=90%}
+
+---
+
+::: {.center style="text-align:center;"}
+![](images/11-1.svg){width=75%}
+:::
+
 <div style="text-align: center;">
-<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
-</div>
-</section>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Question 🤔
+  <a href="https://github.com/">
+    <img src="images/github.svg" alt="GitHub" width="5%"/> 
+  </a>
+</div> -->
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>How does the Upper Confidence Bound for Trees (UCT) algorithm balance exploration and exploitation in MCTS?</p>
-<p><span class="math display">\[
+</div>
+<!-- ::: {.callout-note}
+## Question 🤔
+
+How does the Upper Confidence Bound for Trees (UCT) algorithm balance exploration and exploitation in MCTS?
+
+$$
 A_t = \arg\max_a \left[ Q(s,a) + C \sqrt{\frac{\ln(N(s)_{\text{parent}})}{N(s)}} \right]
-\]</span></p>
-</div>
-</div>
+$$
+
+::: -->
 <!-- 
 ::: {.callout-note appearance="simple" icon=false}
 What if your search became smarter over time — learning *how* to explore more like a master? 🧠🌲
@@ -999,11 +1021,6 @@ Orange line indicates best result of AlphaZero (AlphaGo trained purely on self-p
 ![](images/MuzeroResults.png){width=80%} -->
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-coulom2006efficient" class="csl-entry" role="listitem">
-Coulom, Rémi. 2006. <span>“Efficient Selectivity and Backup Operators in Monte-Carlo Tree Search.”</span> In <em>Computers and Games (CG 2006)</em>, edited by H. Jaap van den Herik, Paolo Ciancarini, and Hiroyuki Iida, 4630:72–83. Lecture Notes in Computer Science. Springer. <a href="https://doi.org/10.1007/978-3-540-75538-8_7">https://doi.org/10.1007/978-3-540-75538-8_7</a>.
-</div>
-</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
