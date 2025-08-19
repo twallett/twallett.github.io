@@ -731,9 +731,7 @@ window.Quarto = {
   <li><a href="#monotonic-improvement" id="toc-monotonic-improvement" class="nav-link active" data-scroll-target="#monotonic-improvement">Monotonic Improvement</a>
   <ul class="collapse">
   <li><a href="#bounding-with-kl-divergence" id="toc-bounding-with-kl-divergence" class="nav-link" data-scroll-target="#bounding-with-kl-divergence">1. Bounding with KL Divergence</a></li>
-  <li><a href="#trust-region-policy-optimization-trpo" id="toc-trust-region-policy-optimization-trpo" class="nav-link" data-scroll-target="#trust-region-policy-optimization-trpo">2. Trust Region Policy Optimization (TRPO)</a></li>
-  <li><a href="#surrogate-objectives" id="toc-surrogate-objectives" class="nav-link" data-scroll-target="#surrogate-objectives">3. Surrogate Objectives</a></li>
-  <li><a href="#optimization-of-parameterized-policies" id="toc-optimization-of-parameterized-policies" class="nav-link" data-scroll-target="#optimization-of-parameterized-policies">4. Optimization of Parameterized Policies</a></li>
+  <li><a href="#surrogate-objectives" id="toc-surrogate-objectives" class="nav-link" data-scroll-target="#surrogate-objectives">2. Surrogate Objectives</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -944,17 +942,53 @@ Solution
 </div>
 <section id="monotonic-improvement" class="level2">
 <h2 class="anchored" data-anchor-id="monotonic-improvement">Monotonic Improvement</h2>
+<p>To guarantee monotonic improvement, we need to find a way to extend conservative policy iteration to general stochastic policies rather than mixture policies.</p>
+<p>To do this we replace <span class="math inline">\(\alpha\)</span> with a distance measure between <span class="math inline">\(\pi\)</span> and <span class="math inline">\(\tilde{\pi}\)</span>, and changing the constant <span class="math inline">\(\epsilon\)</span> appropriately.</p>
 <section id="bounding-with-kl-divergence" class="level3">
 <h3 class="anchored" data-anchor-id="bounding-with-kl-divergence">1. Bounding with KL Divergence</h3>
-</section>
-<section id="trust-region-policy-optimization-trpo" class="level3">
-<h3 class="anchored" data-anchor-id="trust-region-policy-optimization-trpo">2. Trust Region Policy Optimization (TRPO)</h3>
+<p>The distance measure used is KL Divergence for discrete probability distributions (as illustrated in the demo above):</p>
+<p><span class="math display">\[
+D_{TV}(p||q) = \frac{1}{2} \sum_{i}|p_i - q_i|
+\]</span></p>
+<p>Particularly, to solve the issue of the mixture policies we introduce the distance measure as the total variation divergence between two policies:</p>
+<p><span class="math display">\[
+D_{TV}(\pi||\tilde{\pi}) = \text{max}_s D_{TV}(\pi(\cdot | s) || \tilde{\pi}(\cdot | s))
+\]</span></p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Monotonic Improvement Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\alpha = D^{\text{max}}_{TV}(\pi||\tilde{\pi})\)</span>. Then the following bound holds:</p>
+<p><span class="math display">\[
+\eta(\pi_{\text{new}}) \geq L_{\pi_{\text{old}}}(\pi_{\text{new}}) - \frac{4 \epsilon \gamma}{(1 - \gamma)^2} \alpha^2
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\epsilon = \max_{s,a} \left|  A_\pi(s, a) \right|
+\]</span></p>
+</div>
+</div>
+<p><strong>Proof</strong></p>
 </section>
 <section id="surrogate-objectives" class="level3">
-<h3 class="anchored" data-anchor-id="surrogate-objectives">3. Surrogate Objectives</h3>
-</section>
-<section id="optimization-of-parameterized-policies" class="level3">
-<h3 class="anchored" data-anchor-id="optimization-of-parameterized-policies">4. Optimization of Parameterized Policies</h3>
+<h3 class="anchored" data-anchor-id="surrogate-objectives">2. Surrogate Objectives</h3>
+<p>All that is left to do now is to maximize our <strong>surrogate objective</strong> <span class="math inline">\(L_{\theta_{\text{old}}}\)</span> subject to:</p>
+<p><span class="math display">\[
+D_{TV}(\pi_{\theta_{\text{old}}}(\cdot | s) || \pi_{\theta}(\cdot | s)) \leq \delta
+\]</span></p>
+<p>This optimization</p>
+<p>With the following algorithm having the steps:</p>
+<ol type="1">
+<li><p>Collect state action pairs (s,a) along with Monte Carlo estimates of their Q-values.</p></li>
+<li><p>By averaging over samples, construct estimated objectives.</p></li>
+<li><p>Approximately solve this constrained optimization problem to update the policy’s parameter vector <span class="math inline">\(\theta\)</span> using conjugate gradient method.</p></li>
+</ol>
 
 
 </section>

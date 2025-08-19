@@ -728,11 +728,16 @@ We know why it matters and what it’s all about. Now, let’s dive into:
 </div>
 <section id="recommendation-systems" class="level2">
 <h2 class="anchored" data-anchor-id="recommendation-systems">Recommendation Systems</h2>
-<p>Reinforcement Learning powers modern recommendation systems by dynamically adapting to user preferences, optimizing content suggestions in platforms like Netflix, YouTube, and Spotify using techniques such as Multi-Armed Bandits (MAB).</p>
+<p>Reinforcement Learning powers modern recommendation systems by dynamically adapting to user preferences, optimizing content suggestions in platforms like Netflix, YouTube, and Spotify. Techniques such as Multi-Armed Bandits (MAB) and Q-Learning—used in tools like Google Research’s RecSim—enable these systems to learn from user interactions and improve recommendations over time.</p>
 <div class="text-center">
 <p><img src="images/Neflix.png" class="img-fluid" style="width:50.0%" alt="Netflix: Recommendation Systems"><br>
-Trained using MAB (Lecture 2)<br>
+Trained using MAB (Lecture 3)<br>
 <a href="https://netflixtechblog.com/artwork-personalization-c589f074ad76">Link to Online Article</a></p>
+</div>
+<div class="text-center">
+<p><img src="images/recsim.png" class="img-fluid" style="width:50.0%" alt="Google: RecSim"><br>
+Trained using Q-Learning (Lecture 6)<br>
+<a href="https://github.com/google-research/recsim">Link to GitHub Repository</a></p>
 </div>
 </section>
 <section id="games" class="level2">
@@ -740,24 +745,29 @@ Trained using MAB (Lecture 2)<br>
 <p>Reinforcement Learning has revolutionized gaming by enabling AI to master complex environments, from Atari classics <span class="citation" data-cites="mnih2013playingatarideepreinforcement">(<a href="../references.html#ref-mnih2013playingatarideepreinforcement" role="doc-biblioref">Mnih et al. 2013</a>)</span> to advanced strategy games, using deep learning techniques like Deep Q-Networks (DQN) to achieve superhuman performance.</p>
 <div class="text-center">
 <p><img src="images/breakout.gif" style="height:70.0%" alt="Atari: Breakout"><br>
-Trained using DQN (Lecture 9)<br>
+Trained using DQN (Lecture 8)<br>
 <a href="https://arxiv.org/pdf/1312.5602">Link to Research Paper</a></p>
 </div>
 </section>
 <section id="robotics" class="level2">
 <h2 class="anchored" data-anchor-id="robotics">Robotics</h2>
-<p>In robotics, Reinforcement Learning enables autonomous agents to learn complex motor skills, such as dexterous manipulation and locomotion, through continuous interaction and training with Proximal Policy Optimization (PPO).</p>
+<p>In robotics, Reinforcement Learning enables autonomous agents to learn complex motor skills, such as dexterous manipulation and locomotion, through continuous interaction and training with algorithms like Proximal Policy Optimization (PPO). Platforms such as NVIDIA Isaac Gym provide high-performance simulation environments that accelerate RL training for these tasks.</p>
 <div class="text-center">
 <p><img src="images/openaidactyl.png" class="img-fluid" style="width:55.0%" alt="OpenAI’s Dactyl"><br>
-Trained using PPO (Lecture 11)<br>
+Trained using PPO (Lecture 10)<br>
 <a href="https://openai.com/index/solving-rubiks-cube/">Link to Blog</a></p>
+</div>
+<div class="text-center">
+<p><img src="images/nvidia.png" class="img-fluid" style="width:55.0%" alt="NVIDIA Isaac"><br>
+Trained using MCTS (Lecture 11)<br>
+<a href="https://isaac-sim.github.io/IsaacLab/main/index.html">Link to Documentation</a></p>
 </div>
 </section>
 <section id="autonomous-vehicles" class="level2">
 <h2 class="anchored" data-anchor-id="autonomous-vehicles">Autonomous Vehicles</h2>
 <p>Self-driving cars rely on Reinforcement Learning to navigate complex environments, optimize decision-making, and improve safety, often incorporating PPO and deep learning to refine real-time control strategies.</p>
 <div class="text-center">
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/hubWIuuz-e4" frameborder="0" allowfullscreen=""> </iframe> <br> Partly trained using PPO (Lecture 11)</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/hubWIuuz-e4" frameborder="0" allowfullscreen=""> </iframe> <br> Partly trained using PPO (Lecture 10)</p>
 </div>
 </section>
 <section id="natural-language-processing" class="level2">
@@ -765,7 +775,7 @@ Trained using PPO (Lecture 11)<br>
 <p>Reinforcement Learning from Human Feedback (RLHF) <span class="citation" data-cites="ouyang2022traininglanguagemodelsfollow">(<a href="../references.html#ref-ouyang2022traininglanguagemodelsfollow" role="doc-biblioref">Ouyang et al. 2022</a>)</span> enhances AI language models like ChatGPT, allowing them to refine responses based on user interactions and align better with human preferences.</p>
 <div class="text-center">
 <p><img src="images/rlhf.png" class="img-fluid" style="width:70.0%" alt="ChatGPT: RLHF"><br>
-Trained using PPO (Lecture 11)<br>
+Trained using PPO (Lecture 10)<br>
 <a href="https://arxiv.org/pdf/2203.02155">Link to Research Paper</a></p>
 </div>
 </section>
@@ -774,7 +784,7 @@ Trained using PPO (Lecture 11)<br>
 <p>In financial markets, Reinforcement Learning is applied to portfolio optimization <span class="citation" data-cites="acero2024deepreinforcementlearningmeanvariance">(<a href="../references.html#ref-acero2024deepreinforcementlearningmeanvariance" role="doc-biblioref">Acero et al. 2024</a>)</span>, algorithmic trading, and risk management, leveraging techniques like PPO to make data-driven investment decisions.</p>
 <div class="text-center">
 <p><img src="images/finance.svg" class="img-fluid" style="width:70.0%" alt="J.P. Morgan Chase: Portfolio Optimization"><br>
-Trained using PPO (Lecture 11)<br>
+Trained using PPO (Lecture 10)<br>
 <a href="https://arxiv.org/pdf/2403.16667">Link to Research Paper</a></p>
 </div>
 
