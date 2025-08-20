@@ -774,11 +774,11 @@ Real Life Example 🧠
 <li><span class="math inline">\(R\)</span> – A reward based on progress upward (higher = better), but falls can yield large negative rewards.</li>
 </ul>
 <p>In this setup:</p>
-<div class="grid">
+<div class="grid image-grid">
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/harness.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/harness.jpeg" class="equal-img img-fluid figure-img"></p>
 <figcaption>Climbing with a Harness</figcaption>
 </figure>
 </div>
@@ -786,12 +786,27 @@ Real Life Example 🧠
 <div class="g-col-3">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/solo.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/solo.jpeg" class="equal-img img-fluid figure-img"></p>
 <figcaption>Solo Climbing</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<style>
+.image-grid {
+  gap: 10px;              /* spacing between images */
+  max-width: 1100px;       /* controls how wide the grid can be */
+  margin: 0 auto;         /* centers the grid horizontally */
+  justify-content: center; /* keeps columns centered inside grid */
+}
+
+.equal-img {
+  width: 105%;
+  height: 200px; 
+  object-fit: cover;
+  display: block;
+}
+</style>
 <p>Without a harness, or solo climbing, bold moves may lead to huge falls.</p>
 <p>With a harness, you can explore safely — you can test new moves, but you won’t fall too far.</p>
 </div>
@@ -842,7 +857,7 @@ s_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3,...
 <p><span class="math display">\[
 \eta(\tilde{\pi}) = \eta(\pi) + \mathbb{E}_{s_0, a_0, \dots \sim \tilde{\pi}} \left[ \sum_{t=0}^{\infty} \gamma^t A_\pi(s_t, a_t) \right]
 \]</span></p>
-<p><strong>Proof Appendix A</strong></p>
+<!-- **Proof Appendix A** -->
 <p>Additionally, let <span class="math inline">\(\rho_{\pi}(s)\)</span> be the discounted visitation frequencies following <span class="math inline">\(\pi\)</span>:</p>
 <p><span class="math display">\[
 \rho_{\pi}(s) = P(s_{0}) + \gamma P(s_{1}) + \gamma^{2} P(s_{2}) + ...
@@ -851,7 +866,7 @@ s_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3,...
 <p><span class="math display">\[
 \eta(\tilde{\pi}) = \eta(\pi) + \sum_s \rho_{\tilde{\pi}}(s) \sum_a \tilde{\pi}(a|s) A_\pi(s, a)
 \]</span></p>
-<p><strong>Derivation</strong></p>
+<!-- **Derivation** -->
 <p>This equation tells us something important:</p>
 <p>If we update our policy from <span class="math inline">\(\pi\)</span> to <span class="math inline">\(\tilde{\pi}\)</span> so that, at every state <span class="math inline">\(s\)</span>, the expected advantage is nonnegative (i.e., <span class="math inline">\(\sum_a \tilde{\pi}(a|s)A_\pi(s, a) \geq 0\)</span>), then the new policy will perform at least as well as the old one. If the expected advantage is strictly positive anywhere, the new policy will do better.</p>
 <p>This is the same idea as the <a href="../../private/lecture4/lecture4-3.html">Policy Improvement Theorem</a> from Lecture 4.</p>

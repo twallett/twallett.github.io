@@ -974,20 +974,36 @@ Monotonic Improvement Theorem
 \]</span></p>
 </div>
 </div>
-<p><strong>Proof</strong></p>
+<!-- **Proof** -->
 </section>
 <section id="surrogate-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="surrogate-objectives">2. Surrogate Objectives</h3>
-<p>All that is left to do now is to maximize our <strong>surrogate objective</strong> <span class="math inline">\(L_{\theta_{\text{old}}}\)</span> subject to:</p>
+<p>All that is left to do now is to maximize our <strong>surrogate objective</strong> <span class="math inline">\(L_{\theta_{\text{old}}}\)</span> subject to the trust region constraint:</p>
 <p><span class="math display">\[
 D_{TV}(\pi_{\theta_{\text{old}}}(\cdot | s) || \pi_{\theta}(\cdot | s)) \leq \delta
 \]</span></p>
-<p>This optimization</p>
-<p>With the following algorithm having the steps:</p>
+<p>This leads to the following optimization problem:</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\max_{\theta} \quad &amp;
+\mathbb{E}_{s \sim \rho_{\theta_{\text{old}}}, \, a \sim q}
+\left[
+\frac{\pi_{\theta}(a|s)}{q(a|s)} Q_{\theta_{\text{old}}}(s,a)
+\right] \\
+\text{subject to} \quad &amp;
+\mathbb{E}_{s \sim \rho_{\theta_{\text{old}}}}
+\left[ D_{\text{KL}} \!\left(
+\pi_{\theta_{\text{old}}}(\cdot|s) \,\|\, \pi_{\theta}(\cdot|s)
+\right) \right] \leq \delta.
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>The procedure for solving this optimization can be summarized as follows:</p>
 <ol type="1">
-<li><p>Collect state action pairs (s,a) along with Monte Carlo estimates of their Q-values.</p></li>
-<li><p>By averaging over samples, construct estimated objectives.</p></li>
-<li><p>Approximately solve this constrained optimization problem to update the policy’s parameter vector <span class="math inline">\(\theta\)</span> using conjugate gradient method.</p></li>
+<li><strong>Collect data</strong>: Sample state–action pairs <span class="math inline">\((s,a)\)</span> together with Monte Carlo estimates of their Q-values.</li>
+<li><strong>Estimate the objective</strong>: Use these samples to form empirical estimates of the surrogate objective.</li>
+<li><strong>Optimize under constraints</strong>: Approximately solve the constrained optimization problem to update the policy parameters <span class="math inline">\(\theta\)</span>, typically using the conjugate gradient method.</li>
 </ol>
 
 
