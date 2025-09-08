@@ -18,7 +18,7 @@
     "href": "index.html#my-journey-so-far",
     "title": "Tyler Wallett",
     "section": "My Journey, So Far…",
-    "text": "My Journey, So Far…\nTo date, I have been involved in developing:\n\n4 Projects\n2 Research Papers\n4 Courses"
+    "text": "My Journey, So Far…\nTo date, I have been involved in developing:\n\n\n4 Projects\n2 Research Papers\n4 Courses"
   },
   {
     "objectID": "projects/index.html",
@@ -40,5 +40,12 @@
     "title": "Research",
     "section": "",
     "text": "Predicting Postoperative Complications in Laparoscopic General Surgery Using Machine and Deep Learning: A Classification Approach (Under Review)\n        This research paper develops and evaluates machine learning and deep learning models to predict six critical postoperative complications: Cardiac Arrest, Myocardial Infarction, Pulmonary Embolism, Reintubation, Pneumonia, and Failure to Wean from Ventilator. \n        \n    \n            \n               May 2025\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n         A Benchmark for Graph-Based Dynamic Recommendation Systems\n        This research paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems. Key algorithms covered SAGE (GraphSAGE), GAT (Graph Attention Networks), GIN (Graph Isomorphism Networks), and additional state of the art Graph Neural Network architectures.\n        \n    \n            \n               May 2024\n            \n            \n            \n               GNN\n            \n            \n            \n               GitHub\n            \n            \n            \n               Research Paper"
+  },
+  {
+    "objectID": "experience/index.html",
+    "href": "experience/index.html",
+    "title": "Data Science Experience",
+    "section": "",
+    "text": "George Washington University - Instructional Technologist and Professional Lecturer\n        Leading full-stack development of custom educational domain hosting math and coding resources. Integrating and developing Data Science course curriculum within custom domain. Administering HPC and AWS cloud infrastructure ensuring reliable GPU resources.\n        \n    \n            \n               January 2025 - Present\n            \n            \n            \n               Website\n            \n            \n    \n      \n        \n      \n      \n        eSource Capital - Junior Data Scientist\n        Developed multi-modal RAG to automate marketing analysis report generation. Leveraged agent-based modeling to simulate virtual markets to analyze market dynamics and economic behaviors.\n        \n    \n            \n               August 2024 - March 2025 (8 months)\n            \n            \n            \n               Website\n            \n            \n    \n      \n        \n      \n      \n        World Bank - Data Science Consultant\n        Developed Data Science I and II certifications to evaluate Data Lab personnel’s competencies. Utilized Python and R to assess Data Preprocessing, Exploratory Analysis, Time-Series Analysis, and Machine Learning.\n        \n    \n            \n               March - May 2024 (3 months)\n            \n            \n            \n               Website\n            \n            \n    \n      \n        \n      \n      \n        Base Operations - Data Science Intern\n        Developed an ARIMA predictive model to enhance forecasting of crime outcomes in North America and Europe. Enhanced existing dashboard by adding time-series visualizations and resolving temporal inconsistencies in data.\n        \n    \n            \n               May - August 2023 (4 months)\n            \n            \n            \n               Website"
   }
 ]
