@@ -11,6 +11,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      # - href: experience/index.qmd
+      #   text: Data Science Experience
       - href: projects/index.qmd
         text: Projects
       - href: research/index.qmd

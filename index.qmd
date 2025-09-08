@@ -25,6 +25,7 @@ I am from Venezuela 🇻🇪 and Canada 🇨🇦. I am deeply passionate 💖 ab
 
 To date, I have been involved in developing:
 
+<!-- - $\approx$ 2 yrs. [Data Science Experience](experience/) -->
 - 4 [Projects](projects/) 
 - 2 [Research Papers](research/)
 - 4 [Courses](courses/)
