@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Learning Objectives</title>
+<title>Recommendation Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +85,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../private/lecture8/lecture8-1.html" rel="next">
-<link href="../../private/lecture7/lecture7-2.html" rel="prev">
 <link href="../../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -80,6 +133,35 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -92,7 +174,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">Learning Objectives</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">Recommendation Systems</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -388,16 +470,16 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Lecture 8: Deep Q-Networks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture8/lo.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../../private/lecture8/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -539,16 +621,16 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
  <span class="menu-text">Applications</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/applications/recommendation-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Recommendation Systems</span></a>
+  <a href="../../private/applications/recommendation-systems.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Recommendation Systems</span></a>
   </div>
 </li>
       </ul>
@@ -687,7 +769,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">Learning Objectives</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">Recommendation Systems</span></h1>
 </div>
 
 
@@ -710,25 +792,175 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Learning Objectives for Lecture 8: Deep Q-Networks 🎯</p>
+<p>Application: Recommendations Systems 💡</p>
 </div>
 </div>
 </div>
-<ul>
-<li>Deep Learning.</li>
-<li>Deep Q-Networks (DQN).</li>
-<li><code>ALE/Breakout-v5</code> environment using <code>gymnasium</code> &amp; <code>tensorflow</code>.</li>
-</ul>
-<div style="text-align:center;">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Fairfax County Public Schools (FCPS) Recommendation Systems
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fairfax County Public Schools (FCPS) <code>sales.csv</code> and <code>production.csv</code> preprocessed data enables us to construct recommendation systems leveraging <a href="../../lecture3/lecture3-5.html">Contextual Multi-Armed Bandits</a> (CMAB).</p>
+<section id="health-aware-school-meal-recommendations-capstone-group-8" class="level3">
+<h3 class="anchored" data-anchor-id="health-aware-school-meal-recommendations-capstone-group-8">Health-Aware School Meal Recommendations (Capstone Group 8)</h3>
+<p>Using FCPS <code>sales.csv</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/Lecture8.drawio.svg" class="img-fluid figure-img"></p>
-<figcaption>Taxonomy of Reinforcement Learning</figcaption>
+<p><img src="images/example-pdf-sales.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
+<p>Suppose that our action space <span class="math inline">\(\mathcal{A}\)</span> is composed of our menu items being served:</p>
+<p><span class="math display">\[
+\mathcal{A} \gets \{ \text{Cereal} , ... , \text{Bagels} \}
+\]</span></p>
+<p>For a particular date <span class="math inline">\(t\)</span>, we restrict our selection of menu items to only those that were actually served (mask):</p>
+<p><span class="math display">\[
+\mathcal{A}_{t} \gets \{  \text{Cereal} , \text{Apples} , \text{Juice} \}
+\]</span></p>
+<p>For each available item <span class="math inline">\(a \in \mathcal{A}_t\)</span>, we construct feature vectors <span class="math inline">\(\mathbf{x}_{t,a}\)</span> that include nutritional, popularity and school related information:</p>
+<p><span class="math display">\[
+\mathbf{x}_{t,a} = \begin{bmatrix} p \in \mathbb{R} \gets \text{protein grams (one serving)} \\
+                            c \in \mathbb{R} \gets \text{carbohydrate grams (one serving)} \\
+                            f_a \in \mathbb{R} \gets \text{fats grams (one serving)} \\
+                            f_i \in \mathbb{R} \gets \text{fiber grams (one serving)} \\
+                            s \in \mathbb{R} \gets \text{sugar grams (one serving)} \\
+                            h \in \mathbb{N} \gets \text{historical sales count} \\
+                            g \gets \text{grade level} \\
+                            d \gets \text{day of week} \\
+                            \vdots \end{bmatrix}
+\]</span></p>
+<p>We then compute the parameter estimates <span class="math inline">\(\hat{\boldsymbol{\theta}}_a\)</span> and evaluate the scores <span class="math inline">\(\mathbf{p}_{t,a}\)</span>. The action is selected according to</p>
+<p><span class="math display">\[
+R_t = \text{total sales count} + \lambda \ \text{health score}
+\]</span></p>
+<p>where <span class="math inline">\(\lambda\)</span> is a penalization factor that controls the trade-off between popularity (sales) and nutritional quality (health). A higher <span class="math inline">\(\lambda\)</span> places greater emphasis on nutritional value, while a lower <span class="math inline">\(\lambda\)</span> prioritizes maximizing sales volume.</p>
+</section>
+<section id="waste-minimization-recommendations-capstone-group-1" class="level3">
+<h3 class="anchored" data-anchor-id="waste-minimization-recommendations-capstone-group-1">Waste Minimization Recommendations (Capstone Group 1)</h3>
+<p>Using FCPS <code>production.csv</code>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/example-html-prod.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Suppose that our action space <span class="math inline">\(\mathcal{A}\)</span> is composed of our menu items being served:</p>
+<p><span class="math display">\[
+\mathcal{A} \gets \{ \text{Cereal} , ... , \text{Bagels} \}
+\]</span></p>
+<p>For a particular date <span class="math inline">\(t\)</span>, we restrict our selection of menu items to only those that were actually served (mask):</p>
+<p><span class="math display">\[
+\mathcal{A}_{t} \gets \{  \text{Cereal} , \text{Apples} , \text{Juice} \}
+\]</span></p>
+<p>For each available item <span class="math inline">\(a \in \mathcal{A}_t\)</span>, we construct feature vectors <span class="math inline">\(\mathbf{x}_{t,a}\)</span> that include nutritional factors and contextual information:</p>
+<p><span class="math display">\[
+\mathbf{x}_{t,a} = \begin{bmatrix} l \in \mathbb{N} \gets \text{Historical Leftover} \\
+                            s \in \mathbb{N} \gets \text{Historical Served Count} \\
+                            g \gets \text{grade level} \\
+                            d \gets \text{day of week} \\
+                            \vdots \end{bmatrix}
+\]</span></p>
+<p>We then compute the parameter estimates <span class="math inline">\(\hat{\boldsymbol{\theta}}_a\)</span> and evaluate the scores <span class="math inline">\(\mathbf{p}_{t,a}\)</span>. The action is selected according to the negative discarded cost:</p>
+<p><span class="math display">\[
+R_t = - (\text{Left Over Cost} + \text{Discarded Cost})
+\]</span></p>
+<p>where the bandit aims to minimize waste. A higher (less negative) reward corresponds to items with lower discarded cost, guiding the algorithm to favor menu items that are both consumed and cost-efficient.</p>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Google RecSim
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As seen in <a href="../../lecture1/lecture1-3.html">lecture 1</a>, Google provides configurable recommendation system using <a href="https://gymnasium.farama.org/index.html">OpenAI Gymnasium</a>.</p>
+<div class="text-center">
+<p><img src="images/recsim.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> Google Research 2019 <span class="citation" data-cites="ie2019recsim">(<a href="../../references.html#ref-ie2019recsim" role="doc-biblioref">Ie et al. 2019</a>)</span> <br> <a href="https://arxiv.org/pdf/1909.04847">Link to Research Paper</a></p>
+</div>
+<p>To install <code>recsim</code> simply just run the following pip command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install recsim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>main.py</code> should run as follows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/recsim_at_a_glance.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+<p><code>environment.py</code> should contain the following:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/recsim_architecture_agent_centered.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+<section id="adaptation-to-user-preference-drift-capstone-group-12-greedy-policy-crew" class="level3">
+<h3 class="anchored" data-anchor-id="adaptation-to-user-preference-drift-capstone-group-12-greedy-policy-crew">Adaptation to User Preference Drift (Capstone Group 12 &amp; Greedy Policy Crew 💰)</h3>
+<p><a href="https://github.com/google-research/recsim/blob/master/recsim/colab/RecSim_Overview.ipynb"><em>Demo of how to run recsim</em></a> by Google.</p>
+<section id="environment-capstone-group-12" class="level4">
+<h4 class="anchored" data-anchor-id="environment-capstone-group-12">Environment (Capstone Group 12)</h4>
+<p><a href="https://github.com/google-research/recsim/blob/55e50e4be736d222ffe8c2477ed1981b40f91605/recsim/colab/RecSim_Developing_an_Environment.ipynb"><em>Demo of how to create a enviornment</em></a> by Google.</p>
+<p><strong>Environment Document Database</strong></p>
+<ul>
+<li><code>DriftingDocument</code> (subclass of <code>recsim.document.AbstractDocument</code>) <br> <em>This class would hold documents <span class="math inline">\(d_i\)</span> with features: <span class="math inline">\(\mathbf{x}\)</span> topic, <span class="math inline">\(p\)</span> popularity score, and <span class="math inline">\(q\)</span> quality score.</em></li>
+</ul>
+<p><span class="math display">\[
+d_i = \Big( \mathbf{x}_i, \; p_i, \; q_i \Big)
+\]</span></p>
+<ul>
+<li><code>DriftingDocumentSampler</code> (subclass of <code>recsim.document.AbstractDocumentSampler</code>) <br> <em>This class would generate documents at each time step by sampling their features <span class="math inline">\(\Big( \mathbf{x}, \; p, \; q \Big)\)</span> from a distribution.</em></li>
+</ul>
+<p><span class="math display">\[
+\mathcal{D}_t = \{ d_1, d_2, \dots, d_{N_t} \}, \quad d_i \sim P_D(\mathbf{x}, p, q)
+\]</span></p>
+<p><strong>Environment User</strong></p>
+<ul>
+<li><code>DriftingUserState</code> (subclass of <code>recsim.user.AbstractUserState</code>) <br> <em>This class would store for a particular user <span class="math inline">\(\ u_j \ \)</span> at time <span class="math inline">\(\ t\)</span>: <span class="math inline">\(\boldsymbol{\theta}_{j,t}\)</span> latent preference vector, <span class="math inline">\(\sigma_{j,t}\)</span> user satisfaction or engagement score, <span class="math inline">\(\phi_{j,t}\)</span> fatigue variable, and <span class="math inline">\(\tau_{j,t}\)</span> current timestep.</em></li>
+</ul>
+<p><span class="math display">\[
+u_{j,t} = (\boldsymbol{\theta}_{j,t}, \; \sigma_{j,t}, \; \phi_{j,t}, \; \tau_{j,t})
+\]</span></p>
+<ul>
+<li><code>DriftingUserSampler</code> (subclass of <code>recsim.user.AbstractUserSampler</code>) <br> <em>This class would generate a population of users <span class="math inline">\(\mathcal{U}_0\)</span> at time <span class="math inline">\(t=0\)</span>:</em></li>
+</ul>
+<p><span class="math display">\[
+\mathcal{U}_0 = \{ u_{1,0}, u_{2,0}, \dots, u_{M,0} \}, \quad u_{j,0} \sim P_U(\boldsymbol{\theta}, \sigma, \phi)
+\]</span></p>
+<ul>
+<li><code>DriftingResponseModel</code> (subclass of <code>recsim.user.AbstractResponseModel</code>) <br> <em>This class would define how a user reacts to a document, mapping (user state, document features) into probabilities of click.</em></li>
+</ul>
+<p><span class="math display">\[
+\Pr(\text{click}_{j,i,t} = 1) = \sigma \Big( \boldsymbol{\theta}_{j,t}^\top \mathbf{x}_i + \beta_1 q_i + \beta_2 p_i + \epsilon_{j,i,t} \Big)
+\]</span></p>
+<ul>
+<li><code>DriftingUserModel</code> (subclass of <code>recsim.user.AbstractUserModel</code>) <br> <em>This class would coordinate the simulation: advancing the user state, calling the response model, and updating preferences via a drift process.</em></li>
+</ul>
+<p><span class="math display">\[
+\boldsymbol{\theta}_{j,t+1} = (1-\alpha)\boldsymbol{\theta}_{j,t} + \alpha \mathbf{x}_{i,t} + \boldsymbol{\epsilon}_{j,t}
+\]</span></p>
+<!-- **Agent (Greedy Policy Crew 💰)**
+
+[_Demo of how to create a agent_](https://github.com/google-research/recsim/blob/55e50e4be736d222ffe8c2477ed1981b40f91605/recsim/colab/RecSim_Developing_an_Agent.ipynb) by Google.
+
+-  -->
+</section>
+</section>
+</div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-ie2019recsim" class="csl-entry" role="listitem">
+Ie, Eugene, Chih-wei Hsu, Martin Mladenov, Vihan Jain, Sanmit Narvekar, Jing Wang, Rui Wu, and Craig Boutilier. 2019. <span>“RecSim: A Configurable Simulation Platform for Recommender Systems.”</span> <a href="https://arxiv.org/abs/1909.04847">https://arxiv.org/abs/1909.04847</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1130,18 +1362,6 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../private/lecture7/lecture7-2.html" class="pagination-link" aria-label="7.2 On-Policy Function Approximation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">7.2 On-Policy Function Approximation</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../private/lecture8/lecture8-1.html" class="pagination-link" aria-label="8.1 Deep Learning">
-        <span class="nav-page-text"><span class="chapter-title">8.1 Deep Learning</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

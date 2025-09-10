@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Learning Objectives</title>
+<title>3.5 (Optional) Contextual Multi-Armed Bandits (CMAB)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +20,49 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../private/lecture8/lecture8-1.html" rel="next">
-<link href="../../private/lecture7/lecture7-2.html" rel="prev">
-<link href="../../data/images/rl-logo.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-49a5039582c9901cb7946e5ab882116c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../private/lecture4/lo.html" rel="next">
+<link href="../lecture3/lecture3-4.html" rel="prev">
+<link href="../data/images/rl-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-49a5039582c9901cb7946e5ab882116c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -80,6 +100,35 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -92,7 +141,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">Learning Objectives</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">3.5 (Optional) Contextual Multi-Armed Bandits (CMAB)</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -106,8 +155,8 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../data/images/rl-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -120,7 +169,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DATS 6450 – Reinforcement Learning</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DATS 6450 – Reinforcement Learning</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -135,22 +184,22 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture1/lecture1-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 Why Should I Learn Reinforcement Learning?</span></a>
+  <a href="../lecture1/lecture1-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 Why Should I Learn Reinforcement Learning?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture1/lecture1-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.2 What is Reinforcement Learning?</span></a>
+  <a href="../lecture1/lecture1-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.2 What is Reinforcement Learning?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture1/lecture1-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.3 Where is Reinforcement Learning Applied?</span></a>
+  <a href="../lecture1/lecture1-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.3 Where is Reinforcement Learning Applied?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture1/lecture1-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.4 How is Reinforcement Learning Structured?</span></a>
+  <a href="../lecture1/lecture1-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.4 How is Reinforcement Learning Structured?</span></a>
   </div>
 </li>
       </ul>
@@ -166,83 +215,83 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture2/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../lecture2/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture2/lecture2-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.1 Set Theory</span></a>
+  <a href="../lecture2/lecture2-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.1 Set Theory</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture2/lecture2-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.2 Axiomatic Probability</span></a>
+  <a href="../lecture2/lecture2-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.2 Axiomatic Probability</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture2/lecture2-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.3 Conditioning</span></a>
+  <a href="../lecture2/lecture2-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.3 Conditioning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture2/lecture2-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.4 Independence</span></a>
+  <a href="../lecture2/lecture2-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.4 Independence</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture2/lecture2-5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.5 Discrete Random Variables</span></a>
+  <a href="../lecture2/lecture2-5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.5 Discrete Random Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture2/lecture2-6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.6 Continuous Random Variables</span></a>
+  <a href="../lecture2/lecture2-6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.6 Continuous Random Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture2/lecture2-7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.7 Probability Distributions</span></a>
+  <a href="../lecture2/lecture2-7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.7 Probability Distributions</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Lecture 3: Multi-Armed Bandits</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture3/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../lecture3/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture3/lecture3-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.1 Multi-Armed Bandit Framework</span></a>
+  <a href="../lecture3/lecture3-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.1 Multi-Armed Bandit Framework</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture3/lecture3-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.2 ε-Greedy</span></a>
+  <a href="../lecture3/lecture3-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.2 ε-Greedy</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture3/lecture3-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.3 Upper Confidence Boundary (UCB)</span></a>
+  <a href="../lecture3/lecture3-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.3 Upper Confidence Boundary (UCB)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture3/lecture3-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.4 Thompson Sampling</span></a>
+  <a href="../lecture3/lecture3-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.4 Thompson Sampling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../lecture3/lecture3-5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.5 (Optional) Contextual Multi-Armed Bandits (CMAB)</span></a>
+  <a href="../lecture3/lecture3-5.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">3.5 (Optional) Contextual Multi-Armed Bandits (CMAB)</span></a>
   </div>
 </li>
       </ul>
@@ -258,27 +307,27 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../private/lecture4/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1 Markov Chain</span></a>
+  <a href="../private/lecture4/lecture4-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1 Markov Chain</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></a>
+  <a href="../private/lecture4/lecture4-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 Markov Decision Process (MDP)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
+  <a href="../private/lecture4/lecture4-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 Iterative Policy Evaluation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
+  <a href="../private/lecture4/lecture4-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Value Iteration</span></a>
   </div>
 </li>
       </ul>
@@ -294,27 +343,27 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture5/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../private/lecture5/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture5/lecture5-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Monte Carlo Prediction</span></a>
+  <a href="../private/lecture5/lecture5-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 Monte Carlo Prediction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture5/lecture5-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 Exploring Starts Monte Carlo</span></a>
+  <a href="../private/lecture5/lecture5-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 Exploring Starts Monte Carlo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture5/lecture5-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 On-Policy Monte Carlo</span></a>
+  <a href="../private/lecture5/lecture5-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 On-Policy Monte Carlo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture5/lecture5-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Off-Policy Monte Carlo</span></a>
+  <a href="../private/lecture5/lecture5-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 Off-Policy Monte Carlo</span></a>
   </div>
 </li>
       </ul>
@@ -330,32 +379,32 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture6/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../private/lecture6/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture6/lecture6-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.1 Temporal Difference (TD) Prediction</span></a>
+  <a href="../private/lecture6/lecture6-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.1 Temporal Difference (TD) Prediction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture6/lecture6-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.2 SARSA</span></a>
+  <a href="../private/lecture6/lecture6-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.2 SARSA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture6/lecture6-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.3 Q-Learning</span></a>
+  <a href="../private/lecture6/lecture6-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.3 Q-Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture6/lecture6-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.4 Double Q-Learning</span></a>
+  <a href="../private/lecture6/lecture6-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.4 Double Q-Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture6/lecture6-5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 (Optional) n-step Bootstrapping</span></a>
+  <a href="../private/lecture6/lecture6-5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 (Optional) n-step Bootstrapping</span></a>
   </div>
 </li>
       </ul>
@@ -371,43 +420,43 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture7/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../private/lecture7/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture7/lecture7-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.1 Value Function Approximation</span></a>
+  <a href="../private/lecture7/lecture7-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.1 Value Function Approximation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture7/lecture7-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.2 On-Policy Function Approximation</span></a>
+  <a href="../private/lecture7/lecture7-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.2 On-Policy Function Approximation</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Lecture 8: Deep Q-Networks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture8/lo.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../private/lecture8/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture8/lecture8-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.1 Deep Learning</span></a>
+  <a href="../private/lecture8/lecture8-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.1 Deep Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture8/lecture8-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 Deep Q-Networks (DQN)</span></a>
+  <a href="../private/lecture8/lecture8-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 Deep Q-Networks (DQN)</span></a>
   </div>
 </li>
       </ul>
@@ -423,27 +472,27 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture9/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../private/lecture9/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradient Theorem</span></a>
+  <a href="../private/lecture9/lecture9-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 Policy Gradient Theorem</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></a>
+  <a href="../private/lecture9/lecture9-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 Addressing Sparse Rewards</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture9/lecture9-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 Action Selections</span></a>
+  <a href="../private/lecture9/lecture9-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 Action Selections</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture9/lecture9-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Vanilla Policy Gradient (VPG)</span></a>
+  <a href="../private/lecture9/lecture9-4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 Vanilla Policy Gradient (VPG)</span></a>
   </div>
 </li>
       </ul>
@@ -459,22 +508,22 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../private/lecture10/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 Trust Regions</span></a>
+  <a href="../private/lecture10/lecture10-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 Trust Regions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Monotonic Improvement</span></a>
+  <a href="../private/lecture10/lecture10-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 Monotonic Improvement</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Proximal Policy Optimization (PPO)</span></a>
+  <a href="../private/lecture10/lecture10-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 Proximal Policy Optimization (PPO)</span></a>
   </div>
 </li>
       </ul>
@@ -490,17 +539,17 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture11/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../private/lecture11/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture11/lecture11-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Model-based Reinforcement Learning</span></a>
+  <a href="../private/lecture11/lecture11-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 Model-based Reinforcement Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture11/lecture11-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 Monte Carlo Tree Search (MCTS)</span></a>
+  <a href="../private/lecture11/lecture11-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 Monte Carlo Tree Search (MCTS)</span></a>
   </div>
 </li>
       </ul>
@@ -516,22 +565,22 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../private/lecture12/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Advanced Topics in Reinforcement Learning</span></a>
+  <a href="../private/lecture12/lecture12-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Advanced Topics in Reinforcement Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></a>
+  <a href="../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 Outlook of Reinforcement Learning</span></a>
+  <a href="../private/lecture12/lecture12-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 Outlook of Reinforcement Learning</span></a>
   </div>
 </li>
       </ul>
@@ -548,7 +597,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/applications/recommendation-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Recommendation Systems</span></a>
+  <a href="../private/applications/recommendation-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Recommendation Systems</span></a>
   </div>
 </li>
       </ul>
@@ -565,62 +614,62 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 1</span></a>
+  <a href="../private/homework/homework1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 2</span></a>
+  <a href="../private/homework/homework2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 3</span></a>
+  <a href="../private/homework/homework3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 4</span></a>
+  <a href="../private/homework/homework4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 5</span></a>
+  <a href="../private/homework/homework5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 5</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 6</span></a>
+  <a href="../private/homework/homework6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 6</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 7</span></a>
+  <a href="../private/homework/homework7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 7</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework8.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 8</span></a>
+  <a href="../private/homework/homework8.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 8</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 9</span></a>
+  <a href="../private/homework/homework9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 9</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework10.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 10</span></a>
+  <a href="../private/homework/homework10.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 10</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework11.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 11</span></a>
+  <a href="../private/homework/homework11.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 11</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/homework/homework12.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 12</span></a>
+  <a href="../private/homework/homework12.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Homework 12</span></a>
   </div>
 </li>
       </ul>
@@ -636,12 +685,12 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/exams/exam1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 1</span></a>
+  <a href="../private/exams/exam1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/exams/exam2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 2</span></a>
+  <a href="../private/exams/exam2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Exam 2</span></a>
   </div>
 </li>
       </ul>
@@ -657,12 +706,12 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/final-project/final-project-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Final Project Overview</span></a>
+  <a href="../private/final-project/final-project-overview.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Final Project Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/final-project/final-project-ideas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Final Project Ideas</span></a>
+  <a href="../private/final-project/final-project-ideas.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Final Project Ideas</span></a>
   </div>
 </li>
       </ul>
@@ -670,7 +719,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -687,7 +736,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">Learning Objectives</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">3.5 (Optional) Contextual Multi-Armed Bandits (CMAB)</span></h1>
 </div>
 
 
@@ -710,25 +759,36 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Learning Objectives for Lecture 8: Deep Q-Networks 🎯</p>
+<p>What if the best choice depended not just on luck — but on the situation you’re in? 🎭</p>
 </div>
 </div>
 </div>
-<ul>
-<li>Deep Learning.</li>
-<li>Deep Q-Networks (DQN).</li>
-<li><code>ALE/Breakout-v5</code> environment using <code>gymnasium</code> &amp; <code>tensorflow</code>.</li>
-</ul>
-<div style="text-align:center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Lecture8.drawio.svg" class="img-fluid figure-img"></p>
-<figcaption>Taxonomy of Reinforcement Learning</figcaption>
-</figure>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+LinUCB
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>LinUCB</strong> is a contextual multi-armed bandit algorithm where the expected reward of arm <span class="math inline">\(a\)</span> at time <span class="math inline">\(t\)</span> is modeled as a linear function of its feature vector <span class="math inline">\(\mathbf{x}_{t,a} \in \mathbb{R}^d\)</span>.</p>
+<div class="text-center">
+<p><img src="images/linucb.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> Yahoo! 2010 <span class="citation" data-cites="li2010linucb">(<a href="../references.html#ref-li2010linucb" role="doc-biblioref">Li et al. 2010</a>)</span> <br> <a href="https://arxiv.org/pdf/1003.0146">Link to Research Paper</a></p>
+</div>
+<div class="center" style="text-align:center;">
+<p><img src="images/3-4.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-li2010linucb" class="csl-entry" role="listitem">
+Li, Lihong, Wei Chu, John Langford, and Robert E. Schapire. 2010. <span>“A Contextual-Bandit Approach to Personalized News Article Recommendation.”</span> In <em>Proceedings of the 19th International Conference on World Wide Web</em>, 661–70. ACM.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1132,13 +1192,13 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../private/lecture7/lecture7-2.html" class="pagination-link" aria-label="7.2 On-Policy Function Approximation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">7.2 On-Policy Function Approximation</span></span>
+      <a href="../lecture3/lecture3-4.html" class="pagination-link" aria-label="3.4 Thompson Sampling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">3.4 Thompson Sampling</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../private/lecture8/lecture8-1.html" class="pagination-link" aria-label="8.1 Deep Learning">
-        <span class="nav-page-text"><span class="chapter-title">8.1 Deep Learning</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../private/lecture4/lo.html" class="pagination-link" aria-label="Learning Objectives">
+        <span class="nav-page-text"><span class="chapter-title">Learning Objectives</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
