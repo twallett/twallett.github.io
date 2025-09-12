@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,14 +35,15 @@ ul.task-list li input[type="checkbox"] {
 <link href="../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-49a5039582c9901cb7946e5ab882116c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3c4a3ab178b7446e71c6607ccdae01e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -94,7 +95,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -112,7 +113,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -136,7 +137,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -712,7 +714,7 @@ window.Quarto = {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -750,7 +752,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Problem
+<span class="screen-reader-only">Warning</span>Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -764,7 +766,7 @@ Problem
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Real Life Example 🧠
+<span class="screen-reader-only">Note</span>Real Life Example 🧠
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -821,62 +823,51 @@ Real Life Example 🧠
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- **Upper Confidence Boundaries (UCB)** allow us to select among the non-greedy actions according to their potential for actually being optimal.
-
-$$
+<p><strong>Upper Confidence Boundaries (UCB)</strong> allow us to select among the non-greedy actions according to their potential for actually being optimal.</p>
+<p><span class="math display">\[
 A_t \gets \arg\max_a \left[ Q(a) + \sqrt{\frac{2 \ln(t)}{N(a)}} \right]
-$$
+\]</span></p>
 
-::: {.column-margin}
-
-$\sqrt{\frac{2 \ln(t)}{N(a)}}$ is the measure of variance of the action $a$. The natural logarithm increases get smaller over time but are unbounded, so all actions will be selected.
-
-:::
-
----
-
-### Balancing Exploration and Exploitation
-
-Each time $a$ is selected, the uncertainty is presumably reduced $N(a)$ increments, and as it appears in the denominator, the uncertainty term decreases.
-
-
-$$
+<hr>
+<section id="balancing-exploration-and-exploitation" class="level3">
+<h3 class="anchored" data-anchor-id="balancing-exploration-and-exploitation">Balancing Exploration and Exploitation</h3>
+<p>Each time <span class="math inline">\(a\)</span> is selected, the uncertainty is presumably reduced <span class="math inline">\(N(a)\)</span> increments, and as it appears in the denominator, the uncertainty term decreases.</p>
+<p><span class="math display">\[
 VAR \downarrow = \sqrt{\frac{2 \ln(t)}{N(a)\uparrow}}
-$$
-
-Each time an action other than $a$ is selected, $t$ increases but $N(a)$ does not; because $t$ appears in the numerator, the uncertainty estimate increases.
-
-$$
+\]</span></p>
+<p>Each time an action other than <span class="math inline">\(a\)</span> is selected, <span class="math inline">\(t\)</span> increases but <span class="math inline">\(N(a)\)</span> does not; because <span class="math inline">\(t\)</span> appears in the numerator, the uncertainty estimate increases.</p>
+<p><span class="math display">\[
 VAR \uparrow = \sqrt{\frac{2 \ln(t) \uparrow}{N(a)}}
-$$
-
-In our Real Life Example UCB says "Don't just pick randomly. Prefer trails that are either great **or** still uncertain — they might surprise you."
-
----
-
-### Pseudocode
-
-::: {.center style="text-align:center;"}
-![](images/3-2.svg){width=75%}
-::: -->
+\]</span></p>
+<p>In our Real Life Example UCB says “Don’t just pick randomly. Prefer trails that are either great <strong>or</strong> still uncertain — they might surprise you.”</p>
+<hr>
+</section>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<div class="center" style="text-align:center;">
+<p><img src="images/3-2.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
+</section>
 </div>
 </div>
 </div>
 
 
 
-</main> <!-- /main -->
+<div class="no-row-height column-margin column-container"><div class="callout-3-contents callout-collapse collapse callout-margin-content">
+<p><span class="math inline">\(\sqrt{\frac{2 \ln(t)}{N(a)}}\)</span> is the measure of variance of the action <span class="math inline">\(a\)</span>. The natural logarithm increases get smaller over time but are unbounded, so all actions will be selected.</p>
+</div></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -928,13 +919,14 @@ In our Real Life Example UCB says "Don't just pick randomly. Prefer trails that 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

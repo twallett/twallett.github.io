@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,14 +70,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-49a5039582c9901cb7946e5ab882116c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3c4a3ab178b7446e71c6607ccdae01e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -131,7 +132,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -173,7 +174,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -814,7 +816,7 @@ p_{X}(x) =
 </ul>
 <div id="observable">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="32" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 31;"><span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>viewof p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="32" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 31;"><span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>viewof p <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`p`</span><span class="op">,</span></span>
@@ -849,7 +851,7 @@ p_{X}(x) =
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -871,10 +873,10 @@ p_{X}(x) =
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="69" data-source-offset="-565"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 68;"><span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-top: 1em;"&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="69" data-source-offset="-565"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 68;"><span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-top: 1em;"&gt;</span></span>
 <span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\m</span><span class="vs">athbb{E}[X] =`</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>p<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
 <span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\t</span><span class="vs">ext{Var}(X) =`</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>(p <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>p))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-4" data-nodetype="expression">
@@ -887,13 +889,13 @@ p_{X}(x) =
 <section id="python-code-bernoulli-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="python-code-bernoulli-distribution">Python Code: Bernoulli Distribution</h3>
 <p>To create Bernoulli distributed data using <code>numpy</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>interval <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>]</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> (<span class="dv">1000</span>,<span class="dv">1</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> [<span class="dv">1</span><span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>]</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.choice(interval, size, p <span class="op">=</span> p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.choice(interval, size, p <span class="op">=</span> p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="gaussian-distribution" class="level2">
@@ -909,7 +911,7 @@ f_{X}(x)=\frac{1}{\sqrt{2\pi\sigma^{2} }}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}
 </ul>
 <div id="observable">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="107" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 106;"><span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>viewof mu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="107" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 106;"><span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>viewof mu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {</span>
 <span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span></span>
 <span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
 <span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\m</span><span class="vs">u`</span><span class="op">,</span></span>
@@ -949,7 +951,7 @@ f_{X}(x)=\frac{1}{\sqrt{2\pi\sigma^{2} }}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}
 <span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(pointsGaussian<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span>})<span class="op">,</span></span>
 <span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
 <span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -978,10 +980,10 @@ f_{X}(x)=\frac{1}{\sqrt{2\pi\sigma^{2} }}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="149" data-source-offset="-761"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 148;"><span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-top: 1em;"&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="149" data-source-offset="-761"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 148;"><span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-top: 1em;"&gt;</span></span>
 <span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\m</span><span class="vs">athbb{E}[X] =`</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>mu<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
 <span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\t</span><span class="vs">ext{Var}(X) =`</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>(sigma <span class="op">*</span> sigma)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
-<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-5" data-nodetype="expression">
@@ -994,13 +996,13 @@ f_{X}(x)=\frac{1}{\sqrt{2\pi\sigma^{2} }}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}
 <section id="python-code-gaussian-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="python-code-gaussian-distribution">Python Code: Gaussian Distribution</h3>
 <p>To create Gaussian distributed data using <code>numpy</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> (<span class="dv">1000</span>,<span class="dv">1</span>)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.normal(mu, sigma, size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.normal(mu, sigma, size)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="beta-distribution" class="level2">
@@ -1020,7 +1022,7 @@ f_{X}(x) = {\frac {\Gamma (\alpha +\beta )}{\Gamma (\alpha )\Gamma (\beta )}}\,x
 </ul>
 <div id="observable">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="193" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb7-193"><a href="#cb7-193" aria-hidden="true" tabindex="-1"></a>viewof alpha <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.1</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="193" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb7-193"><a href="#cb7-193" aria-hidden="true" tabindex="-1"></a>viewof alpha <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.1</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {</span>
 <span id="cb7-194"><a href="#cb7-194" aria-hidden="true" tabindex="-1"></a>  <span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span></span>
 <span id="cb7-195"><a href="#cb7-195" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
 <span id="cb7-196"><a href="#cb7-196" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\a</span><span class="vs">lpha`</span><span class="op">,</span></span>
@@ -1087,7 +1089,7 @@ f_{X}(x) = {\frac {\Gamma (\alpha +\beta )}{\Gamma (\alpha )\Gamma (\beta )}}\,x
 <span id="cb7-257"><a href="#cb7-257" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(points<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span>})<span class="op">,</span></span>
 <span id="cb7-258"><a href="#cb7-258" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
 <span id="cb7-259"><a href="#cb7-259" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb7-260"><a href="#cb7-260" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-260"><a href="#cb7-260" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -1137,10 +1139,10 @@ f_{X}(x) = {\frac {\Gamma (\alpha +\beta )}{\Gamma (\alpha )\Gamma (\beta )}}\,x
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="262" data-source-offset="-1603"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 261;"><span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-top: 1em;"&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="262" data-source-offset="-1603"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 261;"><span id="cb8-262"><a href="#cb8-262" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-top: 1em;"&gt;</span></span>
 <span id="cb8-263"><a href="#cb8-263" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\m</span><span class="vs">athbb{E}[X] =`</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>(alpha<span class="op">/</span>(alpha <span class="op">+</span> beta))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
 <span id="cb8-264"><a href="#cb8-264" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\t</span><span class="vs">ext{Var}(X) =`</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>((alpha <span class="op">*</span> beta)<span class="op">/</span>((alpha <span class="op">+</span> beta)<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> (alpha <span class="op">+</span> beta <span class="op">+</span> <span class="dv">1</span>)))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
-<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-265"><a href="#cb8-265" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-8" data-nodetype="expression">
@@ -1153,13 +1155,13 @@ f_{X}(x) = {\frac {\Gamma (\alpha +\beta )}{\Gamma (\alpha )\Gamma (\beta )}}\,x
 <section id="python-code-beta-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="python-code-beta-distribution">Python Code: Beta Distribution</h3>
 <p>To create Beta distributed data using <code>numpy</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.5</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>beta <span class="op">=</span> <span class="fl">0.5</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> (<span class="dv">1000</span>,<span class="dv">1</span>)</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.beta(alpha, beta, size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.beta(alpha, beta, size)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
@@ -1228,13 +1230,14 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

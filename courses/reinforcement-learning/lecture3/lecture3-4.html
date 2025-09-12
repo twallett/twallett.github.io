@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,14 +35,15 @@ ul.task-list li input[type="checkbox"] {
 <link href="../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-49a5039582c9901cb7946e5ab882116c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3c4a3ab178b7446e71c6607ccdae01e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -94,7 +95,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -136,7 +137,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -750,7 +752,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Problem
+<span class="screen-reader-only">Warning</span>Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -764,7 +766,7 @@ Problem
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Real Life Example 🧠
+<span class="screen-reader-only">Note</span>Real Life Example 🧠
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -821,59 +823,47 @@ Real Life Example 🧠
 }
 </style>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- 
-**Thompson sampling** is an algorithm that leverages the beta distribution for its action value method and action selections.
-
-Initialize beta distributed with parameters:
-
-$$
+<p><strong>Thompson sampling</strong> is an algorithm that leverages the beta distribution for its action value method and action selections.</p>
+<p>Initialize beta distributed with parameters:</p>
+<p><span class="math display">\[
 \alpha(a) = (\alpha_{1}, . . . , \alpha_{k}) = 1
-$$
-$$
+\]</span> <span class="math display">\[
 \beta(a) = (\beta_{1}, . . . , \beta_{k}) = 1
-$$
-
-Now for each action $a$, the prior probability density function of our action value method $Q(a)$ is:
-
-$$
-  Q(a) = \frac{\Gamma(\alpha(a) + \beta(a))}{\Gamma(\alpha(a)) \ \Gamma(\beta(a))} a^{\alpha(a)-1} (1 a)^{\beta(a)-1}
-$$
-
----
-
-### Balancing Exploration and Exploitation
-
-The agent updates its prior belief using the following action value method:
-
-$$
+\]</span></p>
+<p>Now for each action <span class="math inline">\(a\)</span>, the prior probability density function of our action value method <span class="math inline">\(Q(a)\)</span> is:</p>
+<p><span class="math display">\[
+  Q(a) = \frac{\Gamma(\alpha(a) + \beta(a))}{\Gamma(\alpha(a)) \ \Gamma(\beta(a))} a^{\alpha(a)-1} (1 - a)^{\beta(a)-1}
+\]</span></p>
+<hr>
+<section id="balancing-exploration-and-exploitation" class="level3">
+<h3 class="anchored" data-anchor-id="balancing-exploration-and-exploitation">Balancing Exploration and Exploitation</h3>
+<p>The agent updates its prior belief using the following action value method:</p>
+<p><span class="math display">\[
 \alpha(A_{t}) \gets \alpha(A_{t}) + R_{t}
-$$
-$$
-\beta(A_{t}) \gets \beta(A_{t}) + 1 R_{t}
-$$
-
-Notice that for those actions selected $A_t$, we increase its corresponding $\alpha$ parameter ($R_t = 1$) and maintain its $\beta$ parameter the same as before ($1 - R_t = 1 - 1 = 0$).
-
-This update allows the algorithm to draw accurate samples and strike a balance between exploring and exploiting.
-
----
-
-### Pseudocode
-
-::: {.center style="text-align:center;"}
-![](images/3-3.svg){width=75%}
-::: -->
+\]</span> <span class="math display">\[
+\beta(A_{t}) \gets \beta(A_{t}) + 1 - R_{t}
+\]</span></p>
+<p>Notice that for those actions selected <span class="math inline">\(A_t\)</span>, we increase its corresponding <span class="math inline">\(\alpha\)</span> parameter (<span class="math inline">\(R_t = 1\)</span>) and maintain its <span class="math inline">\(\beta\)</span> parameter the same as before (<span class="math inline">\(1 - R_t = 1 - 1 = 0\)</span>).</p>
+<p>This update allows the algorithm to draw accurate samples and strike a balance between exploring and exploiting.</p>
+<hr>
+</section>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<div class="center" style="text-align:center;">
+<p><img src="images/3-3.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
+</section>
 </div>
 </div>
 </div>
@@ -932,13 +922,14 @@ This update allows the algorithm to draw accurate samples and strike a balance b
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,14 +35,15 @@ ul.task-list li input[type="checkbox"] {
 <link href="../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-49a5039582c9901cb7946e5ab882116c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3c4a3ab178b7446e71c6607ccdae01e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -94,7 +95,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -136,7 +137,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../data/images/rl-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -770,7 +772,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Problem
+<span class="screen-reader-only">Warning</span>Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -778,24 +780,22 @@ Problem
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- A _nonassociative environment_ is a setting that involves learning how to act in one state. A common example of a nonassociative environment is the **Multi-Armed Bandit** problem.
-
-::: {.center style="text-align:center;"}
-$\pi: S, A_{0}, R_{1}, S, A_{1}, R_{2}, ... , S, A_{T-1}, R_{T}$
-:::
-
-This simplified setting helps us develop foundational ideas in Reinforcement Learning — like action selection and reward maximization — without worrying about state transitions.  -->
+<p>A <em>nonassociative environment</em> is a setting that involves learning how to act in one state. A common example of a nonassociative environment is the <strong>Multi-Armed Bandit</strong> problem.</p>
+<div class="center" style="text-align:center;">
+<p><span class="math inline">\(\pi: S, A_{0}, R_{1}, S, A_{1}, R_{2}, ... , S, A_{T-1}, R_{T}\)</span></p>
+</div>
+<p>This simplified setting helps us develop foundational ideas in Reinforcement Learning — like action selection and reward maximization — without worrying about state transitions.</p>
 </div>
 </div>
 </div>
@@ -817,7 +817,7 @@ This simplified setting helps us develop foundational ideas in Reinforcement Lea
 </div>
 </div>
 </section>
-<section id="multi-armed-bandit" class="level2">
+<section id="multi-armed-bandit" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="multi-armed-bandit">Multi-Armed Bandit</h2>
 <p>A <strong>Multi-Armed Bandit</strong> can be interpreted as <em>k-actions</em>, or <em>k-arms</em> of the slot machines, to decide from.</p>
 <p>Through repeated action selections, you maximize your winnings by concentrating actions on the best levers.</p>
@@ -849,7 +849,7 @@ This simplified setting helps us develop foundational ideas in Reinforcement Lea
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Question 🤔
+<span class="screen-reader-only">Note</span>Question 🤔
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -857,34 +857,30 @@ Question 🤔
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+<span class="screen-reader-only">Tip</span>Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- We calculate the expectation of a Bandit!
-
-Each bandit has an expected reward given a particular action is selected, called the **action value**.
-
-$$
+<p>We calculate the expectation of a Bandit!</p>
+<p>Each bandit has an expected reward given a particular action is selected, called the <strong>action value</strong>.</p>
+<p><span class="math display">\[
 Q_t(a) = \mathbb{E}[R_t | A_t = a]
-$$
+\]</span></p>
 
-::: {.column-margin}
-$Q_t(a)$ is the _conditional expectation_ of the rewards $R_t$ given the selection of an action $A_t$. $R_t$ is the _random variable_ for the reward at time step $t$. $A_t$ is the _random variable_ for the action selected at time step $t$.
-:::
-
-Note that $Q_t(a)$ tells us how _good_ an action is at time step $t$ for a particular action $a$. This is fundamental concept to **Value-based Reinforcement Learning** algorithms. -->
+<p>Note that <span class="math inline">\(Q_t(a)\)</span> tells us how <em>good</em> an action is at time step <span class="math inline">\(t\)</span> for a particular action <span class="math inline">\(a\)</span>. This is fundamental concept to <strong>Value-based Reinforcement Learning</strong> algorithms.</p>
 </div>
 </div>
 </div>
-</section>
+<div class="no-row-height column-margin column-container"><div class="callout-4-contents callout-collapse collapse callout-margin-content">
+<p><span class="math inline">\(Q_t(a)\)</span> is the <em>conditional expectation</em> of the rewards <span class="math inline">\(R_t\)</span> given the selection of an action <span class="math inline">\(A_t\)</span>. <span class="math inline">\(R_t\)</span> is the <em>random variable</em> for the reward at time step <span class="math inline">\(t\)</span>. <span class="math inline">\(A_t\)</span> is the <em>random variable</em> for the action selected at time step <span class="math inline">\(t\)</span>.</p>
+</div></div></section>
 <section id="action-value-predicate-method" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="action-value-predicate-method">Action Value: Predicate Method</h2>
 <p>One way to compute action values is using a predicate:</p>
@@ -908,7 +904,7 @@ Q_t(a) = \frac{\sum_{i=1}^{t-1} R_i * \mathbf{1}_{A_i = a}}{\sum_{i=1}^{t-1} \ma
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Question 🤔
+<span class="screen-reader-only">Note</span>Question 🤔
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -916,20 +912,19 @@ Question 🤔
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+<span class="screen-reader-only">Tip</span>Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- No, always picking actions with the highest expected value will disallow us to _explore_ other actions! 
-
-Let's see how we can solve this problem in the [next page](lecture3-2.qmd) 😊 -->
+<p>No, always picking actions with the highest expected value will disallow us to <em>explore</em> other actions!</p>
+<p>Let’s see how we can solve this problem in the <a href="../lecture3/lecture3-2.html">next page</a> 😊</p>
 </div>
 </div>
 </div>
@@ -989,13 +984,14 @@ Let's see how we can solve this problem in the [next page](lecture3-2.qmd) 😊 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

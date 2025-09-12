@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,14 +91,15 @@ div.csl-indent {
 <link href="./data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-49a5039582c9901cb7946e5ab882116c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3c4a3ab178b7446e71c6607ccdae01e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -150,7 +151,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -192,7 +193,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./data/images/rl-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./data/images/rl-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./data/images/rl-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -974,7 +976,7 @@ figcaption {
 <ul>
 <li><strong>Programming Language:</strong> Python.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install numpy tensorflow pygame gymnasium pickle tqdm tensorboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install numpy tensorflow pygame gymnasium pickle tqdm tensorboard</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><p><strong>Cloud-based GPU Environment:</strong> Google Colab.</p></li>
 <li><p><strong>Version Control:</strong> GitHub.</p></li>
@@ -1127,7 +1129,7 @@ figcaption {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Average Learning Per Week
+<span class="screen-reader-only">Note</span>Average Learning Per Week
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1140,7 +1142,7 @@ Average Learning Per Week
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Online Resources
+<span class="screen-reader-only">Note</span>Online Resources
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1153,7 +1155,7 @@ Online Resources
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Classroom Recording
+<span class="screen-reader-only">Note</span>Classroom Recording
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1166,7 +1168,7 @@ Classroom Recording
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Virtual Academic Support
+<span class="screen-reader-only">Tip</span>Virtual Academic Support
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1179,7 +1181,7 @@ Virtual Academic Support
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Safety and Security
+<span class="screen-reader-only">Warning</span>Safety and Security
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1247,13 +1249,14 @@ Brockman, Greg, Vicki Cheung, Ludwig Pettersson, Jonas Schneider, John Schulman,
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

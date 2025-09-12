@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,14 +70,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-49a5039582c9901cb7946e5ab882116c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-3c4a3ab178b7446e71c6607ccdae01e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -131,7 +132,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -173,7 +174,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../data/images/rl-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../data/images/rl-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../data/images/rl-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -790,7 +792,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Problem
+<span class="screen-reader-only">Warning</span>Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -799,7 +801,7 @@ Problem
 </div>
 <div id="observable">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="31" data-source-offset="-13"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 30;"><span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>viewof r <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">1.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`r = </span><span class="sc">\f</span><span class="vs">rac{</span><span class="sc">\p</span><span class="vs">i_</span><span class="sc">\t</span><span class="vs">heta}{</span><span class="sc">\p</span><span class="vs">i_{</span><span class="sc">\t</span><span class="vs">ext{old}}}`</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span>})</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="31" data-source-offset="-13"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 30;"><span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>viewof r <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">1.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`r = </span><span class="sc">\f</span><span class="vs">rac{</span><span class="sc">\p</span><span class="vs">i_</span><span class="sc">\t</span><span class="vs">heta}{</span><span class="sc">\p</span><span class="vs">i_{</span><span class="sc">\t</span><span class="vs">ext{old}}}`</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span>})</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>viewof A <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">1.0</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\h</span><span class="vs">at{A}`</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span>})</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>viewof eps <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.5</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="fu">tex</span><span class="vs">`</span><span class="sc">\e</span><span class="vs">psilon`</span><span class="op">,</span> <span class="dt">width</span><span class="op">:</span> <span class="dv">250</span>})</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
@@ -836,7 +838,7 @@ Problem
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(curve_data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"r"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"clipped_obj"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"orange"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Clipped"</span>})<span class="op">,</span></span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="dv">1</span> <span class="op">-</span> eps<span class="op">,</span> <span class="dv">1</span> <span class="op">+</span> eps]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"red"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,4"</span>})</span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -893,13 +895,13 @@ Problem
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="71" data-source-offset="-1526"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 70;"><span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-top: 1em;"&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="71" data-source-offset="-1526"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 70;"><span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="text-align: center; margin-top: 1em;"&gt;</span></span>
 <span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>tex<span class="op">.</span><span class="fu">block</span><span class="vs">`L^{</span><span class="sc">\t</span><span class="vs">ext{CLIP}}(</span><span class="sc">\t</span><span class="vs">heta) = </span></span>
 <span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>A <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"</span><span class="sc">\\</span><span class="st">min(r</span><span class="sc">\\</span><span class="st">hat{A}, </span><span class="sc">\\</span><span class="st">text{clip}(r,1-</span><span class="sc">\\</span><span class="st">epsilon,1+</span><span class="sc">\\</span><span class="st">epsilon)</span><span class="sc">\\</span><span class="st">hat{A})"</span> <span class="op">:</span> </span>
 <span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>                <span class="st">"</span><span class="sc">\\</span><span class="st">max(r</span><span class="sc">\\</span><span class="st">hat{A}, </span><span class="sc">\\</span><span class="st">text{clip}(r,1-</span><span class="sc">\\</span><span class="st">epsilon,1+</span><span class="sc">\\</span><span class="st">epsilon)</span><span class="sc">\\</span><span class="st">hat{A})"</span><span class="sc">}</span><span class="vs">`</span><span class="sc">}</span></span>
 <span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>tex<span class="op">.</span><span class="fu">block</span><span class="vs">`= </span><span class="sc">${</span>objective<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span></span>
 <span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;</span><span class="sc">${</span><span class="fu">tex</span><span class="vs">`</span><span class="sc">\t</span><span class="vs">ext{Red dashed lines show the clipping range } [1-</span><span class="sc">\e</span><span class="vs">psilon, 1+</span><span class="sc">\e</span><span class="vs">psilon]`</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-9" data-nodetype="expression">
@@ -910,12 +912,12 @@ Problem
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1023,13 +1025,14 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
