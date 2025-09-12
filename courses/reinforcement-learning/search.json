@@ -1755,7 +1755,7 @@
     "href": "private/homework/homework3.html#coding-exercise-5-amazon-dataset-analysis",
     "title": "Homework 3",
     "section": "Coding Exercise 5: Amazon Dataset Analysis",
-    "text": "Coding Exercise 5: Amazon Dataset Analysis\nFor the Amazon.csv advertisement dataset repeat exercise E.4. Which arm (ad) would you recommend (advertise)?",
+    "text": "Coding Exercise 5: Amazon Dataset Analysis\nFor the Amazon.csv advertisement dataset repeat exercise E.4. Which arm (ad) would you recommend (advertise)?\n Download Amazon.csv here",
     "crumbs": [
       "Homeworks",
       "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 3</span>"
