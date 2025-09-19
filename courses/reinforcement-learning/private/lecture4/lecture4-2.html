@@ -796,12 +796,33 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- We need to model our environments as a Markov Decision Process (MDP).
-
-|                             | States are fully observable         | States are partially observable                       |
-|-----------------------------|-------------------------------------|--------------------------------------------------------|
-| **Decision-making is not controlled** | Markov Chain (MC)                         | Hidden Markov Model (HMM)                                  |
-| **Decision-making is controlled**     | 🔶**Markov Decision Process (MDP)🔶**            | Partially Observable Markov Decision Process (POMDP)          | -->
+<p>We need to model our environments as a Markov Decision Process (MDP).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>States are fully observable</th>
+<th>States are partially observable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Decision-making is not controlled</strong></td>
+<td>Markov Chain (MC)</td>
+<td>Hidden Markov Model (HMM)</td>
+</tr>
+<tr class="even">
+<td><strong>Decision-making is controlled</strong></td>
+<td><strong>Markov Decision Process (MDP)</strong></td>
+<td>Partially Observable Markov Decision Process (POMDP)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -983,16 +1004,16 @@ G_{t} = r_{t+1} + \gamma r_{t+2} + \ldots + \gamma^{T-1} r_{T} \\
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- $$
+<p><span class="math display">\[
 \begin{aligned}
-G_{5} &= r_{6} + r_{7} + \dots = 0 \\
-G_{4} &= r_{5} + 0.5(G_{5}) = 2 \\
-G_{3} &= r_{4} + 0.5(G_{4}) = 4 \\
-G_{2} &= r_{3} + 0.5(G_{3}) = 8 \\
-G_{1} &= r_{2} + 0.5(G_{2}) = 6 \\
-G_{0} &= r_{1} + 0.5(G_{1}) = 2 \\
+G_{5} &amp;= r_{6} + r_{7} + \dots = 0 \\
+G_{4} &amp;= r_{5} + 0.5(G_{5}) = 2 \\
+G_{3} &amp;= r_{4} + 0.5(G_{4}) = 4 \\
+G_{2} &amp;= r_{3} + 0.5(G_{3}) = 8 \\
+G_{1} &amp;= r_{2} + 0.5(G_{2}) = 6 \\
+G_{0} &amp;= r_{1} + 0.5(G_{1}) = 2 \\
 \end{aligned}
-$$ -->
+\]</span></p>
 </div>
 </div>
 </div>
@@ -1052,7 +1073,11 @@ v_{\pi}(s) = \sum_{a} \pi(a|s) \sum_{s^{'}, r} p(s^{'},r|s,a)[r + \gamma v_{\pi}
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- ![](images/GridWorldSolution.png){width=75% fig-align="center"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GridWorldSolution.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>

@@ -822,24 +822,40 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- A _associative environment_ is a setting that involves learning how to act in multiple states.
-
-The best frameworks to generalize associative environments are **Markov models**.
-
-All Markov models assume the **Markov Property**, meaning that _future states depend only on current states and not previous states_.
-
-$$
+<p>A <em>associative environment</em> is a setting that involves learning how to act in multiple states.</p>
+<p>The best frameworks to generalize associative environments are <strong>Markov models</strong>.</p>
+<p>All Markov models assume the <strong>Markov Property</strong>, meaning that <em>future states depend only on current states and not previous states</em>.</p>
+<p><span class="math display">\[
 P(s’ | s, s_{t-1}, s_{t-2}, \dots) = P(s’ | s)
-$$
-
-Markov models differ based on whether every sequential state is observable and whether the system is adjusted based on observations:
-
-|                             | States are fully observable         | States are partially observable                       |
-|-----------------------------|-------------------------------------|--------------------------------------------------------|
-| **Decision-making is not controlled** | 🔶**Markov Chain (MC)**🔶                         | Hidden Markov Model (HMM)                                  |
-| **Decision-making is controlled**     | Markov Decision Process (MDP)            | Partially Observable Markov Decision Process (POMDP)          |
-
-While Markov Chains model state transitions, they provide the foundation for defining value functions once rewards and actions are introduced. -->
+\]</span></p>
+<p>Markov models differ based on whether every sequential state is observable and whether the system is adjusted based on observations:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 30%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>States are fully observable</th>
+<th>States are partially observable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Decision-making is not controlled</strong></td>
+<td><strong>Markov Chain (MC)</strong></td>
+<td>Hidden Markov Model (HMM)</td>
+</tr>
+<tr class="even">
+<td><strong>Decision-making is controlled</strong></td>
+<td>Markov Decision Process (MDP)</td>
+<td>Partially Observable Markov Decision Process (POMDP)</td>
+</tr>
+</tbody>
+</table>
+<p>While Markov Chains model state transitions, they provide the foundation for defining value functions once rewards and actions are introduced.</p>
 </div>
 </div>
 </div>
