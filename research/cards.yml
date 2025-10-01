@@ -1,5 +1,5 @@
 - id: "postoperative-risk-prediction"
-  title: "Predicting Postoperative Complications in Laparoscopic General Surgery Using Machine and Deep Learning: A Classification Approach (Under Review)"
+  title: "Predicting Postoperative Complications in Laparoscopic General Surgery Using Machine and Deep Learning: A Classification Approach"
   description: "This research paper develops and evaluates machine learning and deep learning models to predict six critical postoperative complications: Cardiac Arrest, Myocardial Infarction, Pulmonary Embolism, Reintubation, Pneumonia, and Failure to Wean from Ventilator. "
   image: "imgs/postoperative-risk-prediction.svg"
   tags:

@@ -1,0 +1,41 @@
+---
+title: "More Stuff About Me"
+---
+
+Some more niche stuff to get to know the man behind the numbers 🤓
+
+## Education
+
+MSc. Data Science (GPA 3.9) 2022-2024
+
+B.B.A. Finance Bishop's University (GPA 3.7) 2018-2022
+
+## Research Interests  
+
+The research topics I am interested are:
+
+- Statistical Learning 📊
+- Neural Networks 🧠
+- Recurrent Neural Networks 🧠 + ⏳
+- Graph-Neural Networks 🧠 + 🔗
+- Bandit Algorithms 🎰
+- Reinforcement Learning 🤖
+
+My research is motivated by designing systems that can infer, predict, recommend, and aid human decision-making. My
+interests revolve around systems that are adaptive, robust, handle non-stationarity, ensure safe exploration, and optimize across
+multiple objectives. The goal behind my research is to address real-world challenges in finance, economics, healthcare, education
+and human decision-making.
+
+## Hobbies 
+
+Ultramarathon runner (I like to run alot).
+
+Love to play chess (I used to play international competitions representing Venezuela; currenlty I think my elo is something around 1700).
+
+FC Barcelona fan (the best team in the world).
+
+## Fun Facts
+
+- My first declared major was in Philosophy.
+- My favourite author is Fyodor Dostoevsky.
+- My biggest regret $\rho$ is not buying Bitcoin (BTC) when I was 10 years old.

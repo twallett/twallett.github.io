@@ -5,20 +5,21 @@ resources:
   - CNAME
 
 website:
-  title: "Tyler Wallett"
-  favicon: imgs/me.png
+  title: "Tyler J. Wallett"
+  favicon: imgs/me.jpg
   navbar:
     left:
       - href: index.qmd
         text: Home
-      # - href: experience/index.qmd
-      #   text: Data Science Experience
       - href: projects/index.qmd
         text: Projects
       - href: research/index.qmd
-        text: Research
+        text: Publications
       - href: courses/index.qmd
         text: Courses
+    # right:
+    #   - href: cv.qmd
+    #     text: CV
   page-footer:
     left: "© Tyler Wallett, 2025–."
 

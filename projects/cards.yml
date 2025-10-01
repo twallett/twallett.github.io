@@ -1,17 +1,17 @@
-- id: "yield-optimization-rl"
-  title: "High-Yield Savings Account Optimization using Reinforcement Learning"
-  description: "This project implements Multi-Armed Bandit (MAB) algorithms using reinforcement learning to optimize High-Yield Savings Account (HYSA) allocation. Key algorithms covered include Epsilon-Greedy, Upper Confidence Bound (UCB), and Thompson Sampling strategies."
-  image: "imgs/yield-optimization.png"
-  tags:
-    - icon: calendar
-      text: "August 2025"
-    - icon: book
-      text: "RL"
-    # - icon: github  
-    #   text: "GitHub"
-    #   href: "https://github.com/twallett/forecasting-deep-learning"
+# - id: "pyrl"
+#   title: "pyrl"
+#   description: "A modular Python library for classical and deep Reinforcement Learning (RL) using Tensorflow."
+#   image: "imgs/pyrl.png"
+#   tags:
+#     - icon: calendar
+#       text: "In-Progress"
+#     - icon: book
+#       text: "RL"
+#     - icon: github  
+#       text: "GitHub"
+#       href: "https://github.com/twallett/pyrl"
 
-- id: "fcps-dashboard-dm"
+- id: "fcps-dashboard"
   title: "Fairfax County Public Schools Dashboard"
   description: "This project presents an interactive Streamlit dashboard analyzing Fairfax County Public Schools (FCPS) meal data, featuring production trends, sales insights, and future opportunities for data-driven decision-making."
   image: "imgs/fcps-demo.png"
