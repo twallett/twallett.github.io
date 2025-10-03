@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-40a068987ec753b21c9a1f7bcf34aa0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -113,7 +113,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -714,7 +714,7 @@ window.Quarto = {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -801,50 +801,42 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- **Monte Carlo** is a powerful *learning rule* for estimating value functions $v_{\pi}$ and action value functions $q_{\pi}$ in associative environments.
+<p><strong>Monte Carlo</strong> is a powerful <em>learning rule</em> for estimating value functions <span class="math inline">\(v_{\pi}\)</span> and action value functions <span class="math inline">\(q_{\pi}\)</span> in associative environments.</p>
+<p>The power of Monte Carlo resides in its ability to <em>learn the dynamics of any environment, without assuming any prior knowledge, only using experience</em>.</p>
+<p>Monte Carlo methods are based on averaging sample returns of trajectories following a policy <span class="math inline">\(\pi\)</span>.</p>
 
-The power of Monte Carlo resides in its ability to _learn the dynamics of any environment, without assuming any prior knowledge, only using experience_.
-
-Monte Carlo methods are based on averaging sample returns of trajectories following a policy $\pi$.
-
-::: {.column-margin}
-
-Recall that [returns](../lecture4/lecture4-2.qmd#goal) are calculated as follows:
-
-$$ 
-G_{t} = r_{t+1} + \gamma G_{t+1} 
-$$
-
-:::
-
-Only on the completion of an episode are value estimates $v_{\pi}(s)$ and action value estimates $q_{\pi}(s,a)$ updated.
-
----
-
-### Illustration: Monte Carlo Prediction
-
-![](images/MonteCarlo.png){width=10% fig-align="center"}
-
----
-
-### Pseudocode
-
-::: {.center style="text-align:center;"}
-![](images/5-1.svg){width=75%}
-:::
-
+<p>Only on the completion of an episode are value estimates <span class="math inline">\(v_{\pi}(s)\)</span> and action value estimates <span class="math inline">\(q_{\pi}(s,a)\)</span> updated.</p>
+<hr>
+<section id="illustration-monte-carlo-prediction" class="level3">
+<h3 class="anchored" data-anchor-id="illustration-monte-carlo-prediction">Illustration: Monte Carlo Prediction</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MonteCarlo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10.0%"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<div class="center" style="text-align:center;">
+<p><img src="images/5-1.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
 <div style="text-align: center;">
-  <a href="https://github.com/">
-    <img src="images/github.svg" alt="GitHub" width="5%"/> 
-  </a>
-</div> -->
+<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</section>
 </div>
 </div>
 </div>
 
 
 
-</main> <!-- /main -->
+<div class="no-row-height column-margin column-container"><div class="callout-3-contents callout-collapse collapse callout-margin-content">
+<p>Recall that <a href="../../private/lecture4/lecture4-2.html#goal">returns</a> are calculated as follows:</p>
+<p><span class="math display">\[
+G_{t} = r_{t+1} + \gamma G_{t+1}
+\]</span></p>
+</div></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
