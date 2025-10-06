@@ -1,15 +1,15 @@
-# - id: "pyrl"
-#   title: "pyrl"
-#   description: "A modular Python library for classical and deep Reinforcement Learning (RL) using Tensorflow."
-#   image: "imgs/pyrl.png"
-#   tags:
-#     - icon: calendar
-#       text: "In-Progress"
-#     - icon: book
-#       text: "RL"
-#     - icon: github  
-#       text: "GitHub"
-#       href: "https://github.com/twallett/pyrl"
+- id: "pyrl"
+  title: "pyrl"
+  description: "A modular Python library for classical and deep Reinforcement Learning (RL)."
+  image: "imgs/pyrl.png"
+  tags:
+    - icon: calendar
+      text: "In-Progress"
+    - icon: book
+      text: "RL"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/twallett/pyrl"
 
 - id: "fcps-dashboard"
   title: "Fairfax County Public Schools Dashboard"
