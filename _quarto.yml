@@ -11,6 +11,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: mip/index.qmd
+        text: Manuscripts In Preparation
       - href: projects/index.qmd
         text: Projects
       - href: research/index.qmd

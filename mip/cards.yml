@@ -1,0 +1,38 @@
+- id: "pseudo-labeling-rl"
+  title: "A Framework for Pseudo-labeling with Deep Reinforcement Learning"
+  description: "Supervising four Data Science master’s students on Reinforcement Learning capstone project. Designing OpenAI Gymnasium environment to study and enhance pseudo-labeling model performance."
+  image: "imgs/pseudo.png"
+  tags:
+    - icon: calendar
+      text: "Expected 2026"
+    - icon: book
+      text: "RL"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/phanindra-max/fall-2025-group11"
+
+- id: "recsim-adaptation-rl"
+  title: "Adaptation to User Preference Drift using RecSim"
+  description: "Supervising three Data Science master’s students on Reinforcement Learning capstone project. Developing Google recsim environment to simulate user preference drift and evaluate algorithmic adaptation."
+  image: "imgs/recsim.png"
+  tags:
+    - icon: calendar
+      text: "Expected 2026"
+    - icon: book
+      text: "RL"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/Z-HemaP/fall-2025-group12"
+
+- id: "education-recommender-bandit"
+  title: "Education Sector Recommendations with Contextual Bandits"
+  description: "Supervising five Data Science master’s students on Bandit capstone project. Implementing health-aware and waste minimization meal recommendations using Fairfax County Public Schools data."
+  image: "imgs/fcps.png"
+  tags:
+    - icon: calendar
+      text: "Expected 2026"
+    - icon: book
+      text: "BA"
+    - icon: github  
+      text: "GitHub"
+      href: "https://github.com/75Dineshchandra/fall-2025-group8"

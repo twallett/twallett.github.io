@@ -25,6 +25,7 @@ I am from Caracas, [Venezuela](https://en.wikipedia.org/wiki/Arepa) 🇻🇪 and
 
 To date, I have been involved in developing:
 
+- <i class="bi bi-pencil-square"></i> 3 [Manuscripts In Preparation](mip/) 
 - <i class="bi bi-code-slash"></i> 3 [Open Source Projects](projects/) 
 - <i class="bi bi-journal-text"></i> 2 [Publications](research/)
 - <i class="bi bi-book"></i> 4 [Courses](courses/)
