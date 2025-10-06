@@ -1,45 +1,10 @@
 [
   {
-    "objectID": "experience/index.html",
-    "href": "experience/index.html",
-    "title": "Data Science Experience",
+    "objectID": "research/index.html",
+    "href": "research/index.html",
+    "title": "Research",
     "section": "",
-    "text": "George Washington University - Instructional Technologist and Professional Lecturer\n        Leading full-stack development of custom educational domain hosting math and coding resources. Integrating and developing Data Science course curriculum within custom domain. Administering HPC and AWS cloud infrastructure ensuring reliable GPU resources.\n        \n    \n            \n               January 2025 - Present\n            \n            \n            \n               Website\n            \n            \n    \n      \n        \n      \n      \n        eSource Capital - Junior Data Scientist\n        Developed multi-modal RAG to automate marketing analysis report generation. Leveraged agent-based modeling to simulate virtual markets to analyze market dynamics and economic behaviors.\n        \n    \n            \n               August 2024 - January 2025\n            \n            \n            \n               Website\n            \n            \n    \n      \n        \n      \n      \n        World Bank - Data Science Consultant\n        Developed Data Science I and II certifications to evaluate Data Lab personnel’s competencies. Utilized Python and R to assess Data Preprocessing, Exploratory Analysis, Time-Series Analysis, and Machine Learning.\n        \n    \n            \n               March - May 2024\n            \n            \n            \n               Website\n            \n            \n    \n      \n        \n      \n      \n        Base Operations - Data Science Intern\n        Developed an ARIMA predictive model to enhance forecasting of crime outcomes in North America and Europe. Enhanced existing dashboard by adding time-series visualizations and resolving temporal inconsistencies in data.\n        \n    \n            \n               May - August 2023\n            \n            \n            \n               Website"
-  },
-  {
-    "objectID": "courses/index.html",
-    "href": "courses/index.html",
-    "title": "Courses",
-    "section": "",
-    "text": "DATS 6103: Data Mining\n        This course introduces basic concepts of data mining as applied to Data Science, using Python as the programming language. Key algorithms covered include Linear/Logistic Regression (LR), Decision Trees (DT), Random Forests (RF), K-Nearest Neighbors (KNN), Support Vector Machines (SVM) and K-Means, with hands-on projects and real-world applications.\n        \n    \n            \n               July 2025\n            \n            \n            \n               DM\n            \n            \n            \n               Course Website\n            \n            \n    \n      \n        \n      \n      \n        Math for Data Science\n        This course introduces fundamental mathematical concepts for Data Science. Key subjects covered include Set Theory, Linear Algebra, Calculus and Probability, with real-world interview questions.\n        \n    \n            \n               May 2025\n            \n            \n            \n               Data Science Bootcamp\n            \n            \n            \n               Course Website\n            \n            \n    \n      \n        \n      \n      \n        Programming for Data Science\n        This course introduces fundamental programming concepts for Data Science. Key programming languages covered include Python, R and SQL, with real-world interview questions.\n        \n    \n            \n               May 2025\n            \n            \n            \n               Data Science Bootcamp\n            \n            \n            \n               Course Website\n            \n            \n    \n      \n        \n      \n      \n        DATS 6450: Reinforcement Learning\n        This course introduces reinforcement learning through classical and deep architectures. Key algorithms covered include Monte Carlo (MC), Temporal Difference (TD), Value Function Approximation (VFA), Deep Q-Networks (DQN), Vanilla Policy Gradient (VPG), Proximal Policy Optimization (PPO), and Monte Carlo Tree Search (MCTS), with hands-on projects and real-world applications.\n        \n    \n            \n               December 2024\n            \n            \n            \n               RL\n            \n            \n            \n               Course Website"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Tyler J. Wallett",
-    "section": "",
-    "text": "I am from Caracas, Venezuela 🇻🇪 and Quebec, Canada 🇨🇦. I am deeply passionate 💖 about computers 💻, specifically teaching computers 👨‍🏫 how to learn from lots and lots of data 🗂️."
-  },
-  {
-    "objectID": "index.html#bio",
-    "href": "index.html#bio",
-    "title": "Tyler J. Wallett",
-    "section": "",
-    "text": "I am from Caracas, Venezuela 🇻🇪 and Quebec, Canada 🇨🇦. I am deeply passionate 💖 about computers 💻, specifically teaching computers 👨‍🏫 how to learn from lots and lots of data 🗂️."
-  },
-  {
-    "objectID": "index.html#so-far-so-good",
-    "href": "index.html#so-far-so-good",
-    "title": "Tyler J. Wallett",
-    "section": "So Far, So Good…",
-    "text": "So Far, So Good…\nTo date, I have been involved in developing:\n\n 3 Open Source Projects\n 2 Publications\n 4 Courses\n\n\n  More Stuff About Me"
-  },
-  {
-    "objectID": "projects/index.html",
-    "href": "projects/index.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Fairfax County Public Schools Dashboard\n        This project presents an interactive Streamlit dashboard analyzing Fairfax County Public Schools (FCPS) meal data, featuring production trends, sales insights, and future opportunities for data-driven decision-making.\n        \n    \n            \n               June 2025\n            \n            \n            \n               DM\n            \n            \n            \n               GitHub\n            \n            \n            \n               Demo\n            \n            \n    \n      \n        \n      \n      \n        Optimization Foundations\n        This project applies optimization techniques using NumPy to optimize multidimensional functions. Key optimization algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient.\n        \n    \n            \n               August 2023\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n        Neural Network Foundations\n        This project implements neural networks using NumPy to solve regression and classification problems. Key neural networks covered include Perceptron, ADALINE and Multi-Layered Perceptron (MLP).\n        \n    \n            \n               August 2023\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub"
+    "text": "Predicting Postoperative Complications in Laparoscopic General Surgery Using Machine and Deep Learning: A Classification Approach\n        This research paper develops and evaluates machine learning and deep learning models to predict six critical postoperative complications: Cardiac Arrest, Myocardial Infarction, Pulmonary Embolism, Reintubation, Pneumonia, and Failure to Wean from Ventilator. \n        \n    \n            \n               May 2025\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n         A Benchmark for Graph-Based Dynamic Recommendation Systems\n        This research paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems. Key algorithms covered SAGE (GraphSAGE), GAT (Graph Attention Networks), GIN (Graph Isomorphism Networks), and additional state of the art Graph Neural Network architectures.\n        \n    \n            \n               May 2024\n            \n            \n            \n               GNN\n            \n            \n            \n               GitHub\n            \n            \n            \n               Research Paper"
   },
   {
     "objectID": "about.html",
@@ -77,10 +42,45 @@
     "text": "Fun Facts\n\nMy first declared major was in Philosophy.\nMy favourite author is Fyodor Dostoevsky.\nMy biggest regret \\(\\rho\\) is not buying Bitcoin (BTC) when I was 10 years old."
   },
   {
-    "objectID": "research/index.html",
-    "href": "research/index.html",
-    "title": "Research",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Tyler J. Wallett",
     "section": "",
-    "text": "Predicting Postoperative Complications in Laparoscopic General Surgery Using Machine and Deep Learning: A Classification Approach\n        This research paper develops and evaluates machine learning and deep learning models to predict six critical postoperative complications: Cardiac Arrest, Myocardial Infarction, Pulmonary Embolism, Reintubation, Pneumonia, and Failure to Wean from Ventilator. \n        \n    \n            \n               May 2025\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n         A Benchmark for Graph-Based Dynamic Recommendation Systems\n        This research paper aims to provide a comprehensive benchmarking framework for evaluating the performance of graph-based dynamic recommendation systems. Key algorithms covered SAGE (GraphSAGE), GAT (Graph Attention Networks), GIN (Graph Isomorphism Networks), and additional state of the art Graph Neural Network architectures.\n        \n    \n            \n               May 2024\n            \n            \n            \n               GNN\n            \n            \n            \n               GitHub\n            \n            \n            \n               Research Paper"
+    "text": "I am from Caracas, Venezuela 🇻🇪 and Quebec, Canada 🇨🇦. I am deeply passionate 💖 about computers 💻, specifically teaching computers 👨‍🏫 how to learn from lots and lots of data 🗂️."
+  },
+  {
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
+    "title": "Tyler J. Wallett",
+    "section": "",
+    "text": "I am from Caracas, Venezuela 🇻🇪 and Quebec, Canada 🇨🇦. I am deeply passionate 💖 about computers 💻, specifically teaching computers 👨‍🏫 how to learn from lots and lots of data 🗂️."
+  },
+  {
+    "objectID": "index.html#so-far-so-good",
+    "href": "index.html#so-far-so-good",
+    "title": "Tyler J. Wallett",
+    "section": "So Far, So Good…",
+    "text": "So Far, So Good…\nTo date, I have been involved in developing:\n\n 3 Manuscripts In Preparation\n 3 Open Source Projects\n 2 Publications\n 4 Courses\n\n\n  More Stuff About Me"
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Fairfax County Public Schools Dashboard\n        This project presents an interactive Streamlit dashboard analyzing Fairfax County Public Schools (FCPS) meal data, featuring production trends, sales insights, and future opportunities for data-driven decision-making.\n        \n    \n            \n               June 2025\n            \n            \n            \n               DM\n            \n            \n            \n               GitHub\n            \n            \n            \n               Demo\n            \n            \n    \n      \n        \n      \n      \n        Optimization Foundations\n        This project applies optimization techniques using NumPy to optimize multidimensional functions. Key optimization algorithms covered include Gradient Descent, Linear Minimization, Newton's Method and Conjugate Gradient.\n        \n    \n            \n               August 2023\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n        Neural Network Foundations\n        This project implements neural networks using NumPy to solve regression and classification problems. Key neural networks covered include Perceptron, ADALINE and Multi-Layered Perceptron (MLP).\n        \n    \n            \n               August 2023\n            \n            \n            \n               ML\n            \n            \n            \n               GitHub"
+  },
+  {
+    "objectID": "mip/index.html",
+    "href": "mip/index.html",
+    "title": "Manuscripts In Preparation",
+    "section": "",
+    "text": "A Framework for Pseudo-labeling with Deep Reinforcement Learning\n        Supervising four Data Science master’s students on Reinforcement Learning capstone project. Designing OpenAI Gymnasium environment to study and enhance pseudo-labeling model performance.\n        \n    \n            \n               Expected 2026\n            \n            \n            \n               RL\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n        Adaptation to User Preference Drift using RecSim\n        Supervising three Data Science master’s students on Reinforcement Learning capstone project. Developing Google recsim environment to simulate user preference drift and evaluate algorithmic adaptation.\n        \n    \n            \n               Expected 2026\n            \n            \n            \n               RL\n            \n            \n            \n               GitHub\n            \n            \n    \n      \n        \n      \n      \n        Education Sector Recommendations with Contextual Bandits\n        Supervising five Data Science master’s students on Bandit capstone project. Implementing health-aware and waste minimization meal recommendations using Fairfax County Public Schools data.\n        \n    \n            \n               Expected 2026\n            \n            \n            \n               BA\n            \n            \n            \n               GitHub"
+  },
+  {
+    "objectID": "courses/index.html",
+    "href": "courses/index.html",
+    "title": "Courses",
+    "section": "",
+    "text": "DATS 6103: Data Mining\n        This course introduces basic concepts of data mining as applied to Data Science, using Python as the programming language. Key algorithms covered include Linear/Logistic Regression (LR), Decision Trees (DT), Random Forests (RF), K-Nearest Neighbors (KNN), Support Vector Machines (SVM) and K-Means, with hands-on projects and real-world applications.\n        \n    \n            \n               July 2025\n            \n            \n            \n               DM\n            \n            \n            \n               Course Website\n            \n            \n    \n      \n        \n      \n      \n        Math for Data Science\n        This course introduces fundamental mathematical concepts for Data Science. Key subjects covered include Set Theory, Linear Algebra, Calculus and Probability, with real-world interview questions.\n        \n    \n            \n               May 2025\n            \n            \n            \n               Data Science Bootcamp\n            \n            \n            \n               Course Website\n            \n            \n    \n      \n        \n      \n      \n        Programming for Data Science\n        This course introduces fundamental programming concepts for Data Science. Key programming languages covered include Python, R and SQL, with real-world interview questions.\n        \n    \n            \n               May 2025\n            \n            \n            \n               Data Science Bootcamp\n            \n            \n            \n               Course Website\n            \n            \n    \n      \n        \n      \n      \n        DATS 6450: Reinforcement Learning\n        This course introduces reinforcement learning through classical and deep architectures. Key algorithms covered include Monte Carlo (MC), Temporal Difference (TD), Value Function Approximation (VFA), Deep Q-Networks (DQN), Vanilla Policy Gradient (VPG), Proximal Policy Optimization (PPO), and Monte Carlo Tree Search (MCTS), with hands-on projects and real-world applications.\n        \n    \n            \n               December 2024\n            \n            \n            \n               RL\n            \n            \n            \n               Course Website"
   }
 ]
