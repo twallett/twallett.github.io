@@ -1,7 +1,7 @@
-- id: "pyrl"
-  title: "pyrl"
+- id: "modrl"
+  title: "modrl"
   description: "A modular Python library for classical and deep Reinforcement Learning (RL)."
-  image: "imgs/pyrl.png"
+  image: "imgs/modrl.png"
   tags:
     - icon: calendar
       text: "In-Progress"
@@ -9,7 +9,7 @@
       text: "RL"
     - icon: github  
       text: "GitHub"
-      href: "https://github.com/twallett/pyrl"
+      href: "https://github.com/twallett/modrl"
 
 - id: "fcps-dashboard"
   title: "Fairfax County Public Schools Dashboard"
