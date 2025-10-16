@@ -1586,6 +1586,17 @@
     ]
   },
   {
+    "objectID": "private/applications/pseudo-labeling.html",
+    "href": "private/applications/pseudo-labeling.html",
+    "title": "Pseudo-Labeling",
+    "section": "",
+    "text": "Application: Pseudo-Labeling 💡\n\n\n\n\n\n\n\n\n\nNoteA Framework for Pseudo-labeling with Deep Reinforcement Learning (Capstone Group 11)\n\n\n\n\n\n\n\n\nSelf-supervised learning is a type of learning in machine learning (alongside supervised and unsupervised learning) where the task is to train a model (usually referred to as the downstream model) to generate supervisory signals for creating labels. Reinforcement learning can be used in this context to leverage sequential decision-making to improve the performance of the downstream model.\nSuppose the dataset selected is CIFAR-10.\nThe state space \\(\\mathcal{S}\\) consists of the state vector \\(\\mathbf{s}\\), which is constructed as a flattened concatenation of:\n\\[\n\\mathbf{s} =\n\\begin{bmatrix}\n\\mathbf{X} \\gets \\text{features at the current timestep} \\\\\n\\text{softmax}(\\mathbf{y}) \\gets \\text{softmax labels predicted by the downstream model} \\\\\n\\mathcal{L} \\gets \\text{current loss value} \\\\\n\\end{bmatrix}\n\\]\nThe action space \\(\\mathcal{A}\\) consists of the dataset labels and an additional option to skip labeling:\n\\[\n\\mathcal{A} = \\{ 0, 1, \\ldots, 9, \\ \\text{skip} \\}\n\\]\nThe piecewise reward function \\(R\\) is defined as:\n\\[\nR =\n\\begin{cases}\n-1 & \\text{if } a = \\text{skip}, \\\\\n\\text{metric}_t - \\text{metric}_{t-1} & \\text{if } a \\neq \\text{skip}.\n\\end{cases}\n\\]\nThe environment dynamics \\(P(s', r \\mid s, a)\\) correspond to transitioning to the next feature in the dataset.\nThe episode ends when the agent has processed all samples in the dataset:\n\nTermination: once the complete length of the dataset has been reached.",
+    "crumbs": [
+      "Applications",
+      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Pseudo-Labeling</span>"
+    ]
+  },
+  {
     "objectID": "private/homework/homework1.html",
     "href": "private/homework/homework1.html",
     "title": "Homework 1",
@@ -1593,7 +1604,7 @@
     "text": "No Homework! Enjoy! 😊",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>59</span>  <span class='chapter-title'>Homework 1</span>"
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 1</span>"
     ]
   },
   {
@@ -1604,7 +1615,7 @@
     "text": "Question 1\nWrite some of the elements of the following sets:\nWrite the following sets in set notation:",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1615,7 +1626,7 @@
     "text": "\\(\\{ 5x-1: x \\in \\mathbb{Z} \\}\\)\n\\(\\{ x \\in \\mathbb{R}: \\sin \\pi x = 0 \\}\\)\n\\(\\{X : X \\subseteq \\{3,2,a\\} \\text{ and } |X|=2 \\}\\)\n\n\n\n\\(\\{ 2, 4, 8, 16, 32, 64, ...\\}\\)\n\\(\\{0,1,4,9,16,25,36, ...\\}\\)\n\\(\\{..., \\frac{1}{8},\\frac{1}{4},\\frac{1}{2},1,2,4,8,... \\}\\)",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1626,7 +1637,7 @@
     "text": "Question 2\nA retail store accepts either American Express or VISA. The percentages of customers carrying each card are: \n\nAmerican Express: \\(24%\\)\nVISA: \\(61%\\)\nBoth: \\(11%\\)\n\nWhat percentage of customers carry a card accepted by the store?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1637,7 +1648,7 @@
     "text": "Question 3\nSixty percent of students wear neither a ring nor a necklace. Given: \n\n\\(20%\\) wear a ring\n\\(30%\\) wear a necklace\n\nFind the probability that a randomly chosen student wears:\n\nA ring or a necklace\nBoth a ring and a necklace",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1648,7 +1659,7 @@
     "text": "Question 4\nTwo fair dice are rolled. Find the conditional probability that at least one die lands on \\(6\\), given that they land on different numbers.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1659,7 +1670,7 @@
     "text": "Question 5\nAn urn contains \\(6\\) white and \\(9\\) black balls. If \\(4\\) balls are selected without replacement, what is the probability that the first \\(2\\) are white and the last \\(2\\) are black?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1670,7 +1681,7 @@
     "text": "Question 6\nA defendant is judged guilty if at least \\(2\\) out of \\(3\\) judges vote guilty. Given:\n\nProbability of a guilty vote when defendant is guilty: \\(0.7\\) \nProbability of a guilty vote when defendant is innocent: \\(0.2\\) \n\\(70%\\) of defendants are guilty\n\nCompute the conditional probability that judge \\(3\\) votes guilty given:\n\nJudges \\(1\\) and \\(2\\) vote guilty. \nJudges \\(1\\) and \\(2\\) split votes. \nJudges \\(1\\) and \\(2\\) vote not guilty.\n\nAre the judges’ votes independent? Conditionally independent? Explain.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1681,7 +1692,7 @@
     "text": "Question 7\nGiven the distribution function of \\(X\\):\n\\[\nF_{X}(x) =\n\\begin{cases}\n0, & x &lt; 0 \\\\\n\\frac{1}{2}, & 0 \\leq x &lt; 1 \\\\\n\\frac{3}{5}, & 1 \\leq x &lt; 2 \\\\\n\\frac{4}{5}, & 2 \\leq x &lt; 3 \\\\\n\\frac{9}{10}, & 3 \\leq x &lt; 3.5 \\\\\n1, & x \\geq 3.5 \\\\\n\\end{cases}\n\\]\nFind \\(p_X(x)\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1692,7 +1703,7 @@
     "text": "Question 8\nA player rolls a fair die and flips a fair coin. If heads, they win twice the die value; if tails, they win half. Determine the expected winnings.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1703,7 +1714,7 @@
     "text": "Coding Exercise 1: Binomial Distribution\nThe binomial distribution PMF is:\n\\[\np_X(x) = {n \\choose k} x^n (1-x)^{n-k}\n\\]\nUsing Python, generate binomial data and create visualizations for \\(p_X(x)\\) and \\(F_X(x)\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1714,7 +1725,7 @@
     "text": "Coding Exercise 1: Load Environments\nLoad existing Bernoulli and Gaussian environments from create_environment function using a random seed of \\(123\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1725,7 +1736,7 @@
     "text": "Coding Exercise 2: Recommendation Systems\nUsing the existing Epsilon Greedy (\\(\\epsilon\\) = 0.10), Upper Confidence Boundary (UCB) and Thompson Sampling code, create a recommendation system.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1736,7 +1747,7 @@
     "text": "Coding Exercise 3: MAB Performance\nFor 10,000 recommendations:\n\nDoes Epsilon-Greedy (\\(\\epsilon = 0.10\\)) perform better in the Bernoulli or Gaussian environment?\nDoes UCB perform better in the Bernoulli or Gaussian environment?\nDoes Thompson Sampling perform better in the Bernoulli or Gaussian environment?\nWhich algorithm performs best in the Bernoulli environment?\nWhich algorithm performs best in the Gaussian environment?\n\nHint: Check the performance of each MAB by observing the most frequently recommended arm.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1747,7 +1758,7 @@
     "text": "Coding Exercise 4: Random Seed Analysis\nUsing random seeds \\(0\\)-\\(50\\), for \\(10,000\\) recommendations, do the algorithms perform the same?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1758,7 +1769,7 @@
     "text": "Coding Exercise 5: Amazon Dataset Analysis\nFor the Amazon.csv advertisement dataset repeat exercise E.4. Which arm (ad) would you recommend (advertise)?\n Download Amazon.csv here",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1769,7 +1780,7 @@
     "text": "Question 1\nIf the current state is \\(S_{t}\\) and actions are selected according to stochastic policy \\(\\pi\\), then what is the expectation of \\(R_{t+1}\\) in terms of \\(\\pi\\) and the four-argument function \\(p\\)?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1780,7 +1791,7 @@
     "text": "Question 2\nGive an equation for \\(v_{\\pi}\\) in terms of \\(q_{\\pi}\\) and \\(\\pi\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1791,7 +1802,7 @@
     "text": "Question 3\nGive an equation for \\(q_{\\pi}\\) in terms of \\(v_{\\pi}\\) and \\(\\pi\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1802,7 +1813,7 @@
     "text": "Coding Exercise 1: Markov Chain I\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1813,7 +1824,7 @@
     "text": "Coding Exercise 2: Markov Chain II\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1824,7 +1835,7 @@
     "text": "Coding Exercise 3: Value Iteration\nWith a discount factor of \\(\\gamma = 0.9\\), code Value Iteration algorithm for GridWorldEnv using the provided hyperparameters.\n\n\n\n\n\nNote: The gray shaded areas are barriers. Moving into a barrier incurs a reward of \\(R = -1\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1835,7 +1846,7 @@
     "text": "Coding Exercise 1: On-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the On-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 5</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 5</span>"
     ]
   },
   {
@@ -1846,7 +1857,7 @@
     "text": "Coding Exercise 2: Off-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the Off-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 5</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 5</span>"
     ]
   },
   {
@@ -1857,7 +1868,7 @@
     "text": "Coding Exercise 1: SARSA\nFor the GridWorldEnv environment, code the SARSA algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 6</span>"
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 6</span>"
     ]
   },
   {
@@ -1868,7 +1879,7 @@
     "text": "Coding Exercise 2: Q-Learning\nFor the GridWorldEnv environment, code the Q-learning algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 6</span>"
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 6</span>"
     ]
   },
   {
@@ -1879,7 +1890,7 @@
     "text": "Coding Exercise 3: Double Q-Learning\nFor the GridWorldEnv environment, code the Double Q-learning algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 6</span>"
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 6</span>"
     ]
   },
   {
@@ -1890,7 +1901,7 @@
     "text": "Coding Exercise 1: Semi-Gradient SARSA\nFor the MountainCar-v0 environment, code the update function for Semi-Gradient SARSA algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 7</span>"
+      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Homework 7</span>"
     ]
   },
   {
@@ -1901,7 +1912,7 @@
     "text": "Coding Exercise 1: Deep Q-Network (DQN)\nFor the CartPole-v1 environment, code the update function for the Deep Q-Netowrk (DQN) algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Homework 8</span>"
+      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Homework 8</span>"
     ]
   },
   {
@@ -1912,7 +1923,7 @@
     "text": "Coding Exercise 1: Vanilla Policy Gradient\nFor the CartPole-v1 environment, code the update function for the Vanilla Policy Gradient algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Homework 9</span>"
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Homework 9</span>"
     ]
   },
   {
@@ -1923,7 +1934,7 @@
     "text": "Coding Exercise 1: Proximal Policy Optimization (PPO) Clip\nFor the HalfCheetah-v5 environment, code the update function for the Proximal Policy Optimization: Clip algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Homework 10</span>"
+      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Homework 10</span>"
     ]
   },
   {
@@ -1934,7 +1945,7 @@
     "text": "Coding Exercise 1: Monte Carlo Tree Search (MCTS)\nFor the CartPole-v0 environment, code the update function for the Monte Carlo Tree Search (MCTS) algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Homework 11</span>"
+      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Homework 11</span>"
     ]
   },
   {
@@ -1945,7 +1956,7 @@
     "text": "No Homework! Enjoy! 😊",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Homework 12</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Homework 12</span>"
     ]
   },
   {
@@ -1953,10 +1964,43 @@
     "href": "private/exams/exam1.html",
     "title": "Exam 1",
     "section": "",
-    "text": "Exam 1 Information - Coming Soon 📢",
+    "text": "Instructions\nOnly Classical Reinforcement Learning algorithms that are model-free will be considered:",
     "crumbs": [
       "Exams",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Exam 1</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Exam 1</span>"
+    ]
+  },
+  {
+    "objectID": "private/exams/exam1.html#instructions",
+    "href": "private/exams/exam1.html#instructions",
+    "title": "Exam 1",
+    "section": "",
+    "text": "You will work in your current teams.\nAfter class, each team will be sent an email with their specific alias name and exam_env.py.\n\n\n\n\n\n\n\nImportant\n\n\n\nYou must keep the teams alias anonymous!\nNot doing so will result in a penalty of \\(10\\%\\) of the total grade of Exam 1 for you and your group.\n\n\n\nFrom Monday (October 20th) to Friday (October 24th), each team is in charge of coding one main.py and model.py for the Dynamic GridWorld environment.\n\n\n\nOn-Policy Monte Carlo\nOff-Policy Monte Carlo\nSARSA\nQ-Learning\nDouble Q-Learning\nn-step Bootstrapping\n\n\nPlease keep the following hyperparameters intact:\n\nSEED = 123\nSIZE = 10\nEPISODES = 100\nFPS = 0\n\n\n\n\n\n\nImportant\n\n\n\nDo not alter exam_env.py!\nDoing so might result in skewed results for your team.",
+    "crumbs": [
+      "Exams",
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Exam 1</span>"
+    ]
+  },
+  {
+    "objectID": "private/exams/exam1.html#submission",
+    "href": "private/exams/exam1.html#submission",
+    "title": "Exam 1",
+    "section": "Submission",
+    "text": "Submission\nEach team is responsible for submitting one ALIAS_main.py and ALIAS_model.py as a DAY#_ALIAS.zip.\nRemember to put the corresponding alias name for your team in ALIAS_main.py.\nALIAS = 'your alias goes here'\n\n\n\n\n\n\nTip\n\n\n\nSubmit your work on the same email!\nRemember the email you and your team members will get after class with your alias name? Submit your DAY#_ALIAS.zip by simply replying to that email chain.\n\n\n\n\n\n\n\n\nImportant\n\n\n\nPlease make sure that your code runs properly!\nAny submission that is not following any of the steps above or does not run in ALIAS_main.py will not be accepted.",
+    "crumbs": [
+      "Exams",
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Exam 1</span>"
+    ]
+  },
+  {
+    "objectID": "private/exams/exam1.html#leaderboard",
+    "href": "private/exams/exam1.html#leaderboard",
+    "title": "Exam 1",
+    "section": "Leaderboard",
+    "text": "Leaderboard\nEach day a leaderboard will be updated here to display the results of each team.\n\n\n\n\n\n\nNoteDay 1 (Monday, October 20th)\n\n\n\n\n\n\nRank\nAlias\nScore\n\n\n\n\n🥇 1st Place\n\n\n\n\n🥈 2nd Place\n\n\n\n\n🥉 3rd Place\n\n\n\n\n4th Place\n\n\n\n\n5th Place",
+    "crumbs": [
+      "Exams",
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Exam 1</span>"
     ]
   },
   {
@@ -1967,7 +2011,7 @@
     "text": "Exam 2 Information - Coming Soon 📢",
     "crumbs": [
       "Exams",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Exam 2</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Exam 2</span>"
     ]
   },
   {
@@ -1975,10 +2019,65 @@
     "href": "private/final-project/final-project-overview.html",
     "title": "Final Project Overview",
     "section": "",
-    "text": "Final Project Information - Coming Soon 📢",
+    "text": "Instructions\nInstruction table for the Final Project.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Final Project Overview</span>"
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+    ]
+  },
+  {
+    "objectID": "private/final-project/final-project-overview.html#instructions",
+    "href": "private/final-project/final-project-overview.html#instructions",
+    "title": "Final Project Overview",
+    "section": "",
+    "text": "Multi-Armed Bandit (MAB)Classical/Deep Reinforcement Learning\n\n\nUsing the different Multi-Armed Bandit algorithms learned in Lecture 3. Your task is to:\n\nDefine the Reinforcement Learning Framework: Formulate a Multi-Armed Bandit problem.\n\n\nDefine the data.\nSpecify the action space \\(\\mathcal{A}\\).\nSpecify the reward structure \\(R\\).\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\n\\(\\epsilon\\)-Greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.\n(Optional) Stability score: Standard deviation of the reward over time.\n(Optional) Adaptability: Performance when the environment shifts.\n\n\nEffectively communicate your findings: CV style.\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.\n\n\nUsing a Classical or Deep Reinforcement Learning algorithm learned in Lectures 5-11. Your task is to:\n\nDefine the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(\\mathcal{S}\\).\nDefine the action space \\(\\mathcal{A}\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least one Reinforcement Learning algorithm to solve the problem.\n\n\nOn-Policy Monte Carlo\nOff-Policy Monte Carlo\nSARSA\nQ-Learning\nDouble Q-Learning\nn-step Bootstrapping\nSemi-Gradient SARSA\nDeep Q-Network (DQN)\nVanilla Policy Gradient (VPG)\nProximal Policy Optimization (PPO)\nMonte Carlo Tree Search (MCTS)\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
+    "crumbs": [
+      "Final Project",
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+    ]
+  },
+  {
+    "objectID": "private/final-project/final-project-overview.html#presentation",
+    "href": "private/final-project/final-project-overview.html#presentation",
+    "title": "Final Project Overview",
+    "section": "Presentation",
+    "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.\nHere’s an example from Capstone Group 11:",
+    "crumbs": [
+      "Final Project",
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+    ]
+  },
+  {
+    "objectID": "private/final-project/final-project-overview.html#submission",
+    "href": "private/final-project/final-project-overview.html#submission",
+    "title": "Final Project Overview",
+    "section": "Submission",
+    "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and env.py.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
+    "crumbs": [
+      "Final Project",
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+    ]
+  },
+  {
+    "objectID": "private/final-project/final-project-overview.html#grading",
+    "href": "private/final-project/final-project-overview.html#grading",
+    "title": "Final Project Overview",
+    "section": "Grading",
+    "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
+    "crumbs": [
+      "Final Project",
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+    ]
+  },
+  {
+    "objectID": "private/final-project/final-project-overview.html#optional-capstone-or-research",
+    "href": "private/final-project/final-project-overview.html#optional-capstone-or-research",
+    "title": "Final Project Overview",
+    "section": "(Optional) Capstone or Research",
+    "text": "(Optional) Capstone or Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
+    "crumbs": [
+      "Final Project",
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
@@ -1986,10 +2085,10 @@
     "href": "private/final-project/final-project-ideas.html",
     "title": "Final Project Ideas",
     "section": "",
-    "text": "Final Project Information - Coming Soon 📢",
+    "text": "Final Project Ideas 🏁\n\n\n\n\nMulti-Armed Bandits (MAB)Classical/Deep Reinforcement Learning\n\n\n\n\n\n\n\n\nTipSmart Ad Click Optimizer\n\n\n\n\n\nBuild a system that learns which ads get clicked most often. Start with fake ad data and test different strategies like ε-greedy (sometimes try random ads) and Thompson Sampling (use probability to guide choices).\nWhat you’ll learn: How to balance exploring new options vs. using what works best.\n\n\n\n\n\n\n\n\n\nTipPersonalized Article Recommender\n\n\n\n\n\nCreate a recommendation system that suggests articles based on context (time of day, device type, user history). Uses contextual bandits that consider multiple factors when making decisions.\nWhat you’ll learn: How to incorporate user context into decision-making.\n\n\n\n\n\n\n\n\n\nTipDynamic Pricing Bot\n\n\n\n\n\nBuild a pricing algorithm that adjusts product prices daily based on demand patterns. The system learns optimal pricing to maximize revenue while adapting to market changes.\nWhat you’ll learn: How to handle changing environments and non-stationary problems.\n\n\n\n\n\n\n\n\n\nTipWebsite Banner Optimizer\n\n\n\n\n\nAutomatically choose which banner ad to show on a website to get the most clicks. The system adapts in real-time as user preferences change throughout the day.\nWhat you’ll learn: Real-time optimization and A/B testing with learning algorithms.\n\n\n\n\n\n\n\n\n\nTipSmart Menu Recommender for Food Apps\n\n\n\n\n\nSimulate a food delivery app that learns which dishes to highlight based on factors like time of day, weather, and day of the week to increase orders.\nWhat you’ll learn: Seasonal patterns and time-based optimization.\n\n\n\n\n\n\n\n\n\n\n\nTipRL-Driven Recommendation Engine (Google RecSim Inspired)\n\n\n\n\n\nBuild a small-scale recommendation system using RL to model long-term engagement, inspired by Google’s RecSim research, but on a synthetic dataset.\nWhat you’ll learn: Sequential user interaction modeling and long-term recommendation optimization.\n\nGoogle RecSim – Official Repository\n\nRecSim Research Paper – arXiv\n\nGoogle AI Blog – RecSim Platform\n\nRecSim Implementation Example – GitHub\n\n\n\n\n\n\n\n\n\n\nTipHighway Driving AI Agent\n\n\n\n\n\nTrain a virtual car to drive on highways using the highway-env simulator. The agent learns lane changing, speed control, and safe overtaking maneuvers.\nWhat you’ll learn: Continuous control and safety constraints in RL.\n\nHighway-Env RL Project – GitHub\nHighway-Env RL Documentation\n\n\n\n\n\n\n\n\n\n\nTipRobot Arm Controller\n\n\n\n\n\nTrain a simulated robot to pick up and place objects using Gymnasium’s robot environments. Start with simple reaching tasks and progress to manipulation.\nWhat you’ll learn: Robotics control and continuous action spaces.\n\nRobotics-Env RL Project - GitHub\n\nRobotics-Env RL Documentation\n\n\n\n\n\n\n\n\n\n\nTipAI Trading Bot with FinRL\n\n\n\n\n\nCreate a trading algorithm that learns to buy and sell stocks/ETFs using historical data. Focus on risk management and portfolio optimization strategies.\nWhat you’ll learn: Financial applications of RL and risk-reward optimization.\nhttps://finrl.readthedocs.io/en/latest/index.html\n\nFinRL - GitHub\n\nFinRL Documentation\n\n\n\n\n\n\n\n\n\n\nTipHuman Feedback Learning Interface\n\n\n\n\n\nBuild a web app where users rate AI-generated text responses. The system learns from human preferences to improve its outputs over time (simplified RLHF demo).\nWhat you’ll learn: Human-in-the-loop learning and preference modeling.\n\nTRL Examples - HuggingFace\nRLHF – Medium\n\nStreamlit Documentation",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Ideas</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Final Project Ideas</span>"
     ]
   },
   {

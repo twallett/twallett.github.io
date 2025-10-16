@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -43,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-40a068987ec753b21c9a1f7bcf34aa0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-65c80836bbc1bc6763c1e34001d75c83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,6 +116,35 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -553,6 +617,11 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   <a href="../../private/applications/recommendation-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Recommendation Systems</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../private/applications/pseudo-labeling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pseudo-Labeling</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -681,8 +750,16 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#leaderboard" id="toc-leaderboard" class="nav-link" data-scroll-target="#leaderboard">Leaderboard</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -706,91 +783,164 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </header>
 
 
+<!-- ::: {.callout-note appearance="simple" icon=false}
+Exam 1 Information - Coming Soon 📢
+::: -->
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Exam 1 Information - Coming Soon 📢</p>
+<p>Exam 1: Dynamic GridWorld Competition 🌟</p>
 </div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/exam1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<ol type="1">
+<li><p>You will work in your current teams.</p></li>
+<li><p>After class, each team will be sent an email with their specific alias name and <code>exam_env.py</code>.</p></li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>You must keep the teams alias anonymous!</strong></p>
+<p>Not doing so will result in a penalty of <span class="math inline">\(10\%\)</span> of the total grade of Exam 1 for you and your group.</p>
+</div>
+</div>
+<ol start="3" type="1">
+<li>From <strong>Monday (October 20th) to Friday (October 24th)</strong>, each team is in charge of coding one <code>main.py</code> and <code>model.py</code> for the Dynamic GridWorld environment.</li>
+</ol>
+<p>Only Classical Reinforcement Learning algorithms that are model-free will be considered:</p>
+<ul>
+<li><a href="../../private/lecture5/lecture5-3.html">On-Policy Monte Carlo</a></li>
+<li><a href="../../private/lecture5/lecture5-4.html">Off-Policy Monte Carlo</a></li>
+<li><a href="../../private/lecture6/lecture6-2.html">SARSA</a></li>
+<li><a href="../../private/lecture6/lecture6-3.html">Q-Learning</a></li>
+<li><a href="../../private/lecture6/lecture6-4.html">Double Q-Learning</a></li>
+<li><a href="../../private/lecture6/lecture6-5.html">n-step Bootstrapping</a></li>
+</ul>
+<ol start="4" type="1">
+<li>Please keep the following hyperparameters intact:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>SEED <span class="op">=</span> <span class="dv">123</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>SIZE <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>EPISODES <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>FPS <span class="op">=</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Do not alter <code>exam_env.py</code>!</strong></p>
+<p>Doing so might result in skewed results for your team.</p>
+</div>
+</div>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p>Each team is responsible for submitting one <code>ALIAS_main.py</code> and <code>ALIAS_model.py</code> as a <code>DAY#_ALIAS.zip</code>.</p>
+<p>Remember to put the corresponding alias name for your team in <code>ALIAS_main.py</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ALIAS <span class="op">=</span> <span class="st">'your alias goes here'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Submit your work on the same email!</strong></p>
+<p>Remember the email you and your team members will get after class with your alias name? Submit your <code>DAY#_ALIAS.zip</code> by simply replying to that email chain.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Please make sure that your code runs properly!</strong></p>
+<p>Any submission that is not following any of the steps above or does not run in <code>ALIAS_main.py</code> will not be accepted.</p>
+</div>
+</div>
+</section>
+<section id="leaderboard" class="level2">
+<h2 class="anchored" data-anchor-id="leaderboard">Leaderboard</h2>
+<p>Each day a leaderboard will be updated here to display the results of each team.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Day 1 (Monday, October 20th)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Rank</th>
+<th>Alias</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🥇 1st Place</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>🥈 2nd Place</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>🥉 3rd Place</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4th Place</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5th Place</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <!-- ::: {.callout-note appearance="simple" icon=false}
-Exam 1: Dynamic GridWorld Competition 🌟
-:::
-
-## Instructions
-
-1. You will work in your current teams. 
-
-2. After class, each team will be sent an email with their specific alias name. 
-
-::: {.callout-important}
-**You must keep the teams alias anonymous!** 
-
-Not doing so will result in a penalty of $10\%$ of the total grade of Exam 1 for your group. 
-:::
-
-3. For each day for the next week, each team is in charge of coding one `main.py` and `model.py` for the dynamic GridWorld environment. 
-
-4. Please keep the following hyperparameters intact:
-
-```python
-SEED = 123
-SIZE = 10
-EPISODES = 100
-FPS = 0
-```
-
-::: {.callout-important}
-**Do not alter `exam_env.py`!**
-
-Doing so might result in skewed results for your team. 
-:::
-
-## Submission
-
-Each team is responsible for uploading one `ALIAS_main.py` and `ALIAS_model.py` every day for the next week. Remember to put the corresponding alias name for your team in `ALIAS_main.py`.
-
-```python
-ALIAS = 'alias'
-```
-
-::: {.callout-important}
-**Please make sure that your code runs properly!**
-
-Any code submitted with errors will not be accepted.
-:::
-
-## Grading 
-
-Summary of the grading table for each ranked team:
-
-| Rank |  Final Grade Weight |
-| ---- | ------------------ |
-| 🥇 1st Place | 25            |
-| 🥈 2nd Place  | 24-23               |
-| 🥉 3rd Place  | 22-21             |
-| 4th Place | 20-19                |
-| 5th Place  | 18-17             |
-
-## Leaderboard 
-
-Everyday a leaderboard will be updated here to display the results of each team.
-
-::: {.callout-note appearance="simple" icon=false}
-## Day 1
-| Rank | Alias               | Score |
-| ---- | ------------------- | ----- |
-| 🥇 1st Place    |  |    |
-| 🥈 2nd Place    |     |    |
-| 🥉 3rd Place    |       |    |
-| 4th Place    |        |    |
-| 5th Place    |         |    |
-:::
-
-::: {.callout-note appearance="simple" icon=false}
 ## Day 2
 | Rank | Alias               | Score |
 | ---- | ------------------- | ----- |
@@ -832,31 +982,10 @@ Everyday a leaderboard will be updated here to display the results of each team.
 | 🥉 3rd Place    |       |    |
 | 4th Place    |        |    |
 | 5th Place    |         |    |
-:::
-
-::: {.callout-note appearance="simple" icon=false}
-## Day 6
-| Rank | Alias               | Score |
-| ---- | ------------------- | ----- |
-| 🥇 1st Place    |  |    |
-| 🥈 2nd Place    |     |    |
-| 🥉 3rd Place    |       |    |
-| 4th Place    |        |    |
-| 5th Place    |         |    |
-:::
-
-::: {.callout-note appearance="simple" icon=false}
-## Day 7
-| Rank | Alias               | Score |
-| ---- | ------------------- | ----- |
-| 🥇 1st Place    |  |    |
-| 🥈 2nd Place    |     |    |
-| 🥉 3rd Place    |       |    |
-| 4th Place   |        |    |
-| 5th Place    |         |    |
 ::: -->
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-40a068987ec753b21c9a1f7bcf34aa0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-65c80836bbc1bc6763c1e34001d75c83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -552,6 +552,11 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   <a href="../../private/applications/recommendation-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Recommendation Systems</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../private/applications/pseudo-labeling.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pseudo-Labeling</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -705,147 +710,228 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </header>
 
 
+<!-- ::: {.callout-note appearance="simple" icon=false}
+Final Project Information - Coming Soon 📢
+::: -->
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Final Project Information - Coming Soon 📢</p>
+<p>Final Project Ideas 🏁</p>
 </div>
 </div>
 </div>
-<!-- ::: {.callout-note appearance="simple" icon=false}
-Final Project Ideas 🏁
-:::
-
-::: {.panel-tabset}
-
-## Multi-Armed Bandits (MAB)
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## Smart Ad Click Optimizer
- 
-Build a system that learns which ads get clicked most often. Start with fake ad data and test different strategies like ε-greedy (sometimes try random ads) and Thompson Sampling (use probability to guide choices).
-
-**What you'll learn:** How to balance exploring new options vs. using what works best.
-
-:::
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## Personalized Article Recommender
- 
-Create a recommendation system that suggests articles based on context (time of day, device type, user history). Uses contextual bandits that consider multiple factors when making decisions.
-
-**What you'll learn:** How to incorporate user context into decision-making.
-
-:::
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## Dynamic Pricing Bot
- 
-Build a pricing algorithm that adjusts product prices daily based on demand patterns. The system learns optimal pricing to maximize revenue while adapting to market changes.
-
-**What you'll learn:** How to handle changing environments and non-stationary problems. 
-
-:::
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## Website Banner Optimizer
- 
-Automatically choose which banner ad to show on a website to get the most clicks. The system adapts in real-time as user preferences change throughout the day.
-
-**What you'll learn:** Real-time optimization and A/B testing with learning algorithms. 
-
-:::
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## Smart Menu Recommender for Food Apps
- 
-Simulate a food delivery app that learns which dishes to highlight based on factors like time of day, weather, and day of the week to increase orders.
-
-**What you'll learn:** Seasonal patterns and time-based optimization.
-
-:::
-
-## Classical/Deep Reinforcement Learning
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## RL-Driven Recommendation Engine (Google RecSim Inspired)
-
-Build a small-scale recommendation system using RL to model long-term engagement, inspired by Google's RecSim research, but on a synthetic dataset.
-
-**What you'll learn:** Sequential user interaction modeling and long-term recommendation optimization.  
-
-- [Google RecSim – Official Repository](https://github.com/google-research/recsim)  
-- [RecSim Research Paper – arXiv](https://arxiv.org/abs/1909.04847)  
-- [Google AI Blog – RecSim Platform](https://ai.googleblog.com/2019/11/recsim-configurable-simulation-platform.html)  
-- [RecSim Implementation Example – GitHub](https://github.com/ummadiviany/recsim-implementation)
-
-:::
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## Highway Driving AI Agent
-
-Train a virtual car to drive on highways using the highway-env simulator. The agent learns lane changing, speed control, and safe overtaking maneuvers.
-
-**What you'll learn:** Continuous control and safety constraints in RL. 
-
-- [Highway-Env RL Project – GitHub](https://github.com/Farama-Foundation/HighwayEnv)
-- [Highway-Env RL Documentation](https://highway-env.farama.org/)
-
-:::
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## Robot Arm Controller
-
-Train a simulated robot to pick up and place objects using Gymnasium's robot environments. Start with simple reaching tasks and progress to manipulation.
-
-**What you'll learn:** Robotics control and continuous action spaces.  
-
-- [Robotics-Env RL Project - GitHub](https://github.com/Farama-Foundation/Gymnasium-Robotics)  
-- [Robotics-Env RL Documentation](https://robotics.farama.org/)
-
-:::
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## AI Trading Bot with FinRL
-
-Create a trading algorithm that learns to buy and sell stocks/ETFs using historical data. Focus on risk management and portfolio optimization strategies.
-
-**What you'll learn:** Financial applications of RL and risk-reward optimization.
-
-https://finrl.readthedocs.io/en/latest/index.html
-
-- [FinRL - GitHub](https://github.com/AI4Finance-Foundation/FinRL)  
-- [FinRL Documentation](https://finrl.readthedocs.io/en/latest/index.html)
-
-:::
-
-::: {.callout-tip appearance="simple" collapse="true"}
-
-## Human Feedback Learning Interface
-
-Build a web app where users rate AI-generated text responses. The system learns from human preferences to improve its outputs over time (simplified RLHF demo).
-
-**What you'll learn:** Human-in-the-loop learning and preference modeling. 
-
-- [TRL Examples - HuggingFace](https://huggingface.co/docs/trl/example_overview)
-- [RLHF – Medium](https://vijayasriiyer.medium.com/rlhf-training-pipeline-for-llms-using-huggingface-821b76fc45c4)  
-- [Streamlit Documentation](https://docs.streamlit.io/)
-
-:::
-
-::: -->
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Multi-Armed Bandits (MAB)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Classical/Deep Reinforcement Learning</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Smart Ad Click Optimizer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Build a system that learns which ads get clicked most often. Start with fake ad data and test different strategies like ε-greedy (sometimes try random ads) and Thompson Sampling (use probability to guide choices).</p>
+<p><strong>What you’ll learn:</strong> How to balance exploring new options vs.&nbsp;using what works best.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Personalized Article Recommender
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Create a recommendation system that suggests articles based on context (time of day, device type, user history). Uses contextual bandits that consider multiple factors when making decisions.</p>
+<p><strong>What you’ll learn:</strong> How to incorporate user context into decision-making.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Dynamic Pricing Bot
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Build a pricing algorithm that adjusts product prices daily based on demand patterns. The system learns optimal pricing to maximize revenue while adapting to market changes.</p>
+<p><strong>What you’ll learn:</strong> How to handle changing environments and non-stationary problems.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Website Banner Optimizer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Automatically choose which banner ad to show on a website to get the most clicks. The system adapts in real-time as user preferences change throughout the day.</p>
+<p><strong>What you’ll learn:</strong> Real-time optimization and A/B testing with learning algorithms.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Smart Menu Recommender for Food Apps
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Simulate a food delivery app that learns which dishes to highlight based on factors like time of day, weather, and day of the week to increase orders.</p>
+<p><strong>What you’ll learn:</strong> Seasonal patterns and time-based optimization.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>RL-Driven Recommendation Engine (Google RecSim Inspired)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Build a small-scale recommendation system using RL to model long-term engagement, inspired by Google’s RecSim research, but on a synthetic dataset.</p>
+<p><strong>What you’ll learn:</strong> Sequential user interaction modeling and long-term recommendation optimization.</p>
+<ul>
+<li><a href="https://github.com/google-research/recsim">Google RecSim – Official Repository</a><br>
+</li>
+<li><a href="https://arxiv.org/abs/1909.04847">RecSim Research Paper – arXiv</a><br>
+</li>
+<li><a href="https://ai.googleblog.com/2019/11/recsim-configurable-simulation-platform.html">Google AI Blog – RecSim Platform</a><br>
+</li>
+<li><a href="https://github.com/ummadiviany/recsim-implementation">RecSim Implementation Example – GitHub</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Highway Driving AI Agent
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Train a virtual car to drive on highways using the highway-env simulator. The agent learns lane changing, speed control, and safe overtaking maneuvers.</p>
+<p><strong>What you’ll learn:</strong> Continuous control and safety constraints in RL.</p>
+<ul>
+<li><a href="https://github.com/Farama-Foundation/HighwayEnv">Highway-Env RL Project – GitHub</a></li>
+<li><a href="https://highway-env.farama.org/">Highway-Env RL Documentation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Robot Arm Controller
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Train a simulated robot to pick up and place objects using Gymnasium’s robot environments. Start with simple reaching tasks and progress to manipulation.</p>
+<p><strong>What you’ll learn:</strong> Robotics control and continuous action spaces.</p>
+<ul>
+<li><a href="https://github.com/Farama-Foundation/Gymnasium-Robotics">Robotics-Env RL Project - GitHub</a><br>
+</li>
+<li><a href="https://robotics.farama.org/">Robotics-Env RL Documentation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>AI Trading Bot with FinRL
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Create a trading algorithm that learns to buy and sell stocks/ETFs using historical data. Focus on risk management and portfolio optimization strategies.</p>
+<p><strong>What you’ll learn:</strong> Financial applications of RL and risk-reward optimization.</p>
+<p>https://finrl.readthedocs.io/en/latest/index.html</p>
+<ul>
+<li><a href="https://github.com/AI4Finance-Foundation/FinRL">FinRL - GitHub</a><br>
+</li>
+<li><a href="https://finrl.readthedocs.io/en/latest/index.html">FinRL Documentation</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Human Feedback Learning Interface
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Build a web app where users rate AI-generated text responses. The system learns from human preferences to improve its outputs over time (simplified RLHF demo).</p>
+<p><strong>What you’ll learn:</strong> Human-in-the-loop learning and preference modeling.</p>
+<ul>
+<li><a href="https://huggingface.co/docs/trl/example_overview">TRL Examples - HuggingFace</a></li>
+<li><a href="https://vijayasriiyer.medium.com/rlhf-training-pipeline-for-llms-using-huggingface-821b76fc45c4">RLHF – Medium</a><br>
+</li>
+<li><a href="https://docs.streamlit.io/">Streamlit Documentation</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 
