@@ -1,5 +1,5 @@
 ---
-title: "Manuscripts In Preparation"
+title: "Manuscripts in Preparation"
 format: html
 page-layout: full
 jupyter: python3
