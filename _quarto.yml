@@ -12,7 +12,7 @@ website:
       - href: index.qmd
         text: Home
       - href: mip/index.qmd
-        text: Manuscripts In Preparation
+        text: Manuscripts in Preparation
       - href: projects/index.qmd
         text: Projects
       - href: research/index.qmd
