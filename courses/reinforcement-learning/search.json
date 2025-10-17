@@ -1575,14 +1575,14 @@
     ]
   },
   {
-    "objectID": "private/applications/recommendation-systems.html",
-    "href": "private/applications/recommendation-systems.html",
-    "title": "Recommendation Systems",
+    "objectID": "private/applications/finance.html",
+    "href": "private/applications/finance.html",
+    "title": "Finance",
     "section": "",
-    "text": "Application: Recommendations Systems 💡\n\n\n\n\n\n\n\n\n\nNoteFairfax County Public Schools (FCPS) Recommendation Systems\n\n\n\nFairfax County Public Schools (FCPS) sales.csv and production.csv preprocessed data enables us to construct recommendation systems leveraging Contextual Multi-Armed Bandits (CMAB).\n\nHealth-Aware School Meal Recommendations (Capstone Group 8)\nUsing FCPS sales.csv:\n\n\n\n\n\nSuppose that our action space \\(\\mathcal{A}\\) is composed of our menu items being served:\n\\[\n\\mathcal{A} \\gets \\{ \\text{Cereal} , ... , \\text{Bagels} \\}\n\\]\nFor a particular date \\(t\\), we restrict our selection of menu items to only those that were actually served (mask):\n\\[\n\\mathcal{A}_{t} \\gets \\{  \\text{Cereal} , \\text{Apples} , \\text{Juice} \\}\n\\]\nFor each available item \\(a \\in \\mathcal{A}_t\\), we construct feature vectors \\(\\mathbf{x}_{t,a}\\) that include nutritional, popularity and school related information:\n\\[\n\\mathbf{x}_{t,a} = \\begin{bmatrix} p \\in \\mathbb{R} \\gets \\text{protein grams (one serving)} \\\\\n                            c \\in \\mathbb{R} \\gets \\text{carbohydrate grams (one serving)} \\\\\n                            f_a \\in \\mathbb{R} \\gets \\text{fats grams (one serving)} \\\\\n                            f_i \\in \\mathbb{R} \\gets \\text{fiber grams (one serving)} \\\\\n                            s \\in \\mathbb{R} \\gets \\text{sugar grams (one serving)} \\\\\n                            h \\in \\mathbb{N} \\gets \\text{historical sales count} \\\\\n                            g \\gets \\text{grade level} \\\\\n                            d \\gets \\text{day of week} \\\\\n                            \\vdots \\end{bmatrix}\n\\]\nWe then compute the parameter estimates \\(\\hat{\\boldsymbol{\\theta}}_a\\) and evaluate the scores \\(\\mathbf{p}_{t,a}\\). The action is selected according to\n\\[\nR_t = \\text{total sales count} + \\lambda \\ \\text{health score}\n\\]\nwhere \\(\\lambda\\) is a penalization factor that controls the trade-off between popularity (sales) and nutritional quality (health). A higher \\(\\lambda\\) places greater emphasis on nutritional value, while a lower \\(\\lambda\\) prioritizes maximizing sales volume.\n\n\nWaste Minimization Recommendations (Capstone Group 1)\nUsing FCPS production.csv:\n\n\n\n\n\nSuppose that our action space \\(\\mathcal{A}\\) is composed of our menu items being served:\n\\[\n\\mathcal{A} \\gets \\{ \\text{Cereal} , ... , \\text{Bagels} \\}\n\\]\nFor a particular date \\(t\\), we restrict our selection of menu items to only those that were actually served (mask):\n\\[\n\\mathcal{A}_{t} \\gets \\{  \\text{Cereal} , \\text{Apples} , \\text{Juice} \\}\n\\]\nFor each available item \\(a \\in \\mathcal{A}_t\\), we construct feature vectors \\(\\mathbf{x}_{t,a}\\) that include nutritional factors and contextual information:\n\\[\n\\mathbf{x}_{t,a} = \\begin{bmatrix} l \\in \\mathbb{N} \\gets \\text{Historical Leftover} \\\\\n                            s \\in \\mathbb{N} \\gets \\text{Historical Served Count} \\\\\n                            g \\gets \\text{grade level} \\\\\n                            d \\gets \\text{day of week} \\\\\n                            \\vdots \\end{bmatrix}\n\\]\nWe then compute the parameter estimates \\(\\hat{\\boldsymbol{\\theta}}_a\\) and evaluate the scores \\(\\mathbf{p}_{t,a}\\). The action is selected according to the negative discarded cost:\n\\[\nR_t = - (\\text{Left Over Cost} + \\text{Discarded Cost})\n\\]\nwhere the bandit aims to minimize waste. A higher (less negative) reward corresponds to items with lower discarded cost, guiding the algorithm to favor menu items that are both consumed and cost-efficient.\n\n\n\n\n\n\n\n\n\nNoteGoogle RecSim\n\n\n\nAs seen in lecture 1, Google provides configurable recommendation system using OpenAI Gymnasium.\n\n  Google Research 2019 (Ie et al. 2019)  Link to Research Paper\n\nTo install recsim simply just run the following pip command:\npip install recsim\nmain.py should run as follows:\n\n\n\n\n\nenvironment.py should contain the following:\n\n\n\n\n\n\nAdaptation to User Preference Drift (Capstone Group 12 & Greedy Policy Crew 💰)\nDemo of how to run recsim by Google.\n\nEnvironment (Capstone Group 12)\nDemo of how to create a enviornment by Google.\nEnvironment Document Database\n\nDriftingDocument (subclass of recsim.document.AbstractDocument)  This class would hold documents \\(d_i\\) with features: \\(\\mathbf{x}\\) topic, \\(p\\) popularity score, and \\(q\\) quality score.\n\n\\[\nd_i = \\Big( \\mathbf{x}_i, \\; p_i, \\; q_i \\Big)\n\\]\n\nDriftingDocumentSampler (subclass of recsim.document.AbstractDocumentSampler)  This class would generate documents at each time step by sampling their features \\(\\Big( \\mathbf{x}, \\; p, \\; q \\Big)\\) from a distribution.\n\n\\[\n\\mathcal{D}_t = \\{ d_1, d_2, \\dots, d_{N_t} \\}, \\quad d_i \\sim P_D(\\mathbf{x}, p, q)\n\\]\nEnvironment User\n\nDriftingUserState (subclass of recsim.user.AbstractUserState)  This class would store for a particular user \\(\\ u_j \\ \\) at time \\(\\ t\\): \\(\\boldsymbol{\\theta}_{j,t}\\) latent preference vector, \\(\\sigma_{j,t}\\) user satisfaction or engagement score, \\(\\phi_{j,t}\\) fatigue variable, and \\(\\tau_{j,t}\\) current timestep.\n\n\\[\nu_{j,t} = (\\boldsymbol{\\theta}_{j,t}, \\; \\sigma_{j,t}, \\; \\phi_{j,t}, \\; \\tau_{j,t})\n\\]\n\nDriftingUserSampler (subclass of recsim.user.AbstractUserSampler)  This class would generate a population of users \\(\\mathcal{U}_0\\) at time \\(t=0\\):\n\n\\[\n\\mathcal{U}_0 = \\{ u_{1,0}, u_{2,0}, \\dots, u_{M,0} \\}, \\quad u_{j,0} \\sim P_U(\\boldsymbol{\\theta}, \\sigma, \\phi)\n\\]\n\nDriftingResponseModel (subclass of recsim.user.AbstractResponseModel)  This class would define how a user reacts to a document, mapping (user state, document features) into probabilities of click.\n\n\\[\n\\Pr(\\text{click}_{j,i,t} = 1) = \\sigma \\Big( \\boldsymbol{\\theta}_{j,t}^\\top \\mathbf{x}_i + \\beta_1 q_i + \\beta_2 p_i + \\epsilon_{j,i,t} \\Big)\n\\]\n\nDriftingUserModel (subclass of recsim.user.AbstractUserModel)  This class would coordinate the simulation: advancing the user state, calling the response model, and updating preferences via a drift process.\n\n\\[\n\\boldsymbol{\\theta}_{j,t+1} = (1-\\alpha)\\boldsymbol{\\theta}_{j,t} + \\alpha \\mathbf{x}_{i,t} + \\boldsymbol{\\epsilon}_{j,t}\n\\]\n\n\n\n\n\n\n\n\n\nIe, Eugene, Chih-wei Hsu, Martin Mladenov, Vihan Jain, Sanmit Narvekar, Jing Wang, Rui Wu, and Craig Boutilier. 2019. “RecSim: A Configurable Simulation Platform for Recommender Systems.” https://arxiv.org/abs/1909.04847.",
+    "text": "Application: Finance 💡\n\n\n\n\n\n\n\n\n\nNoteFinancial Asset Recommendation using Bandit Algorithm Techniques (Capstone Group 10)\n\n\n\n\n\n\n\n\nThe research paper FAR-Trans: An Investment Dataset for Financial Asset Recommendation (Sanz-Cruzado, Droukas, and McCreadie 2024) provides a public dataset on Financial Asset Recommendations (FAR), composed of a rich collection of user investment transactions.\n\n\nUniversity of Glasgow & National Bank of Greece (2024) (Sanz-Cruzado, Droukas, and McCreadie 2024)  Link to Research Paper\n\nLeveraging this public dataset, the goal of this research project three-fold:\n\nDesigning a bandit framework for FAR.\n\nUnifying a single regret-based metric \\(\\rho_{\\text{empirical}}\\) to benchmark collaborative filtering, non-contextual (\\(\\epsilon\\)-greedy, Upper Confidence Boudary (UCB) and Thompson Sampling), and contextual bandit models (LinUCB).\n\nAddressing the non-stationarity of arms and asset returns, where each arm \\(a \\in \\mathcal{A}\\) represents a unique financial asset.\n\nThe action space \\(\\mathcal{A}\\) consists of the available financial assets:\n\\[\n\\mathcal{A} = \\{ \\text{Asset}_1, \\ \\text{Asset}_2, \\ldots, \\ \\text{Asset}_n \\}\n\\]\nTo organize the features over time, assets, and dimensions, we define a feature tensor \\(\\mathsf{X}\\) as:\n\\[\n\\mathsf{X}_{(T, |\\mathcal{A}|, d)} =\n\\begin{bmatrix}\n[ \\mathbf{x}_{1,1} & \\mathbf{x}_{1,2} & \\cdots & \\mathbf{x}_{1,|\\mathcal{A}|} ] \\\\\n[ \\mathbf{x}_{2,1} & \\mathbf{x}_{2,2} & \\cdots & \\mathbf{x}_{2,|\\mathcal{A}|} ] \\\\\n\\vdots & \\vdots & & \\vdots \\\\\n[ \\mathbf{x}_{T,1} & \\mathbf{x}_{T,2} & \\cdots & \\mathbf{x}_{T,|\\mathcal{A}|} ]\n\\end{bmatrix},\n\\quad\n\\mathbf{x}_{t,a} \\in \\mathbb{R}^{1 \\times d}\n\\]\nThe reward function \\(R\\) is defined as the relative change in closing prices between consecutive time steps:\n\\[\nR = \\frac{\\text{Closing Price}[A_t]_t - \\text{Closing Price}[A_t]_{t-1}}{\\text{Closing Price}[A_t]_{t-1}}\n\\]\nThe empirical regret quantifies the performance gap between the optimal policy and the agent’s chosen policy. In this case, it would quantify the best relative change in closing price for all assets minus the one experienced:\n\\[\n\\rho_T^\\text{empirical} = \\sum_{t=1}^{T} \\Big( \\max_{k \\in \\{1,\\dots,K\\}} r_t^k - r_t^{A_t} \\Big)\n\\]\n\n\n\n\n\n\nSanz-Cruzado, Javier, Nikolaos Droukas, and Richard McCreadie. 2024. “FAR-Trans: An Investment Dataset for Financial Asset Recommendation.” https://arxiv.org/abs/2407.08692.",
     "crumbs": [
       "Applications",
-      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Recommendation Systems</span>"
+      "<span class='chapter-number'>58</span>  <span class='chapter-title'>Finance</span>"
     ]
   },
   {
@@ -1597,6 +1597,17 @@
     ]
   },
   {
+    "objectID": "private/applications/recommendation-systems.html",
+    "href": "private/applications/recommendation-systems.html",
+    "title": "Recommendation Systems",
+    "section": "",
+    "text": "Application: Recommendations Systems 💡\n\n\n\n\n\n\n\n\n\nNoteFairfax County Public Schools (FCPS) Recommendation Systems\n\n\n\nFairfax County Public Schools (FCPS) sales.csv and production.csv preprocessed data enables us to construct recommendation systems leveraging Contextual Multi-Armed Bandits (CMAB).\n\nHealth-Aware School Meal Recommendations (Capstone Group 8)\nUsing FCPS sales.csv:\n\n\n\n\n\nSuppose that our action space \\(\\mathcal{A}\\) is composed of our menu items being served:\n\\[\n\\mathcal{A} \\gets \\{ \\text{Cereal} , ... , \\text{Bagels} \\}\n\\]\nFor a particular date \\(t\\), we restrict our selection of menu items to only those that were actually served (mask):\n\\[\n\\mathcal{A}_{t} \\gets \\{  \\text{Cereal} , \\text{Apples} , \\text{Juice} \\}\n\\]\nFor each available item \\(a \\in \\mathcal{A}_t\\), we construct feature vectors \\(\\mathbf{x}_{t,a}\\) that include nutritional, popularity and school related information:\n\\[\n\\mathbf{x}_{t,a} = \\begin{bmatrix} p \\in \\mathbb{R} \\gets \\text{protein grams (one serving)} \\\\\n                            c \\in \\mathbb{R} \\gets \\text{carbohydrate grams (one serving)} \\\\\n                            f_a \\in \\mathbb{R} \\gets \\text{fats grams (one serving)} \\\\\n                            f_i \\in \\mathbb{R} \\gets \\text{fiber grams (one serving)} \\\\\n                            s \\in \\mathbb{R} \\gets \\text{sugar grams (one serving)} \\\\\n                            h \\in \\mathbb{N} \\gets \\text{historical sales count} \\\\\n                            g \\gets \\text{grade level} \\\\\n                            d \\gets \\text{day of week} \\\\\n                            \\vdots \\end{bmatrix}\n\\]\nWe then compute the parameter estimates \\(\\hat{\\boldsymbol{\\theta}}_a\\) and evaluate the scores \\(\\mathbf{p}_{t,a}\\). The action is selected according to\n\\[\nR_t = \\text{total sales count} + \\lambda \\ \\text{health score}\n\\]\nwhere \\(\\lambda\\) is a penalization factor that controls the trade-off between popularity (sales) and nutritional quality (health). A higher \\(\\lambda\\) places greater emphasis on nutritional value, while a lower \\(\\lambda\\) prioritizes maximizing sales volume.\n\n\nWaste Minimization Recommendations (Capstone Group 1)\nUsing FCPS production.csv:\n\n\n\n\n\nSuppose that our action space \\(\\mathcal{A}\\) is composed of our menu items being served:\n\\[\n\\mathcal{A} \\gets \\{ \\text{Cereal} , ... , \\text{Bagels} \\}\n\\]\nFor a particular date \\(t\\), we restrict our selection of menu items to only those that were actually served (mask):\n\\[\n\\mathcal{A}_{t} \\gets \\{  \\text{Cereal} , \\text{Apples} , \\text{Juice} \\}\n\\]\nFor each available item \\(a \\in \\mathcal{A}_t\\), we construct feature vectors \\(\\mathbf{x}_{t,a}\\) that include nutritional factors and contextual information:\n\\[\n\\mathbf{x}_{t,a} = \\begin{bmatrix} l \\in \\mathbb{N} \\gets \\text{Historical Leftover} \\\\\n                            s \\in \\mathbb{N} \\gets \\text{Historical Served Count} \\\\\n                            g \\gets \\text{grade level} \\\\\n                            d \\gets \\text{day of week} \\\\\n                            \\vdots \\end{bmatrix}\n\\]\nWe then compute the parameter estimates \\(\\hat{\\boldsymbol{\\theta}}_a\\) and evaluate the scores \\(\\mathbf{p}_{t,a}\\). The action is selected according to the negative discarded cost:\n\\[\nR_t = - (\\text{Left Over Cost} + \\text{Discarded Cost})\n\\]\nwhere the bandit aims to minimize waste. A higher (less negative) reward corresponds to items with lower discarded cost, guiding the algorithm to favor menu items that are both consumed and cost-efficient.\n\n\n\n\n\n\n\n\n\nNoteGoogle RecSim\n\n\n\nAs seen in lecture 1, Google provides configurable recommendation system using OpenAI Gymnasium.\n\n  Google Research 2019 (Ie et al. 2019)  Link to Research Paper\n\nTo install recsim simply just run the following pip command:\npip install recsim\nmain.py should run as follows:\n\n\n\n\n\nenvironment.py should contain the following:\n\n\n\n\n\n\nAdaptation to User Preference Drift (Capstone Group 12 & Greedy Policy Crew 💰)\nDemo of how to run recsim by Google.\n\nEnvironment (Capstone Group 12)\nDemo of how to create a enviornment by Google.\nEnvironment Document Database\n\nDriftingDocument (subclass of recsim.document.AbstractDocument)  This class would hold documents \\(d_i\\) with features: \\(\\mathbf{x}\\) topic, \\(p\\) popularity score, and \\(q\\) quality score.\n\n\\[\nd_i = \\Big( \\mathbf{x}_i, \\; p_i, \\; q_i \\Big)\n\\]\n\nDriftingDocumentSampler (subclass of recsim.document.AbstractDocumentSampler)  This class would generate documents at each time step by sampling their features \\(\\Big( \\mathbf{x}, \\; p, \\; q \\Big)\\) from a distribution.\n\n\\[\n\\mathcal{D}_t = \\{ d_1, d_2, \\dots, d_{N_t} \\}, \\quad d_i \\sim P_D(\\mathbf{x}, p, q)\n\\]\nEnvironment User\n\nDriftingUserState (subclass of recsim.user.AbstractUserState)  This class would store for a particular user \\(\\ u_j \\ \\) at time \\(\\ t\\): \\(\\boldsymbol{\\theta}_{j,t}\\) latent preference vector, \\(\\sigma_{j,t}\\) user satisfaction or engagement score, \\(\\phi_{j,t}\\) fatigue variable, and \\(\\tau_{j,t}\\) current timestep.\n\n\\[\nu_{j,t} = (\\boldsymbol{\\theta}_{j,t}, \\; \\sigma_{j,t}, \\; \\phi_{j,t}, \\; \\tau_{j,t})\n\\]\n\nDriftingUserSampler (subclass of recsim.user.AbstractUserSampler)  This class would generate a population of users \\(\\mathcal{U}_0\\) at time \\(t=0\\):\n\n\\[\n\\mathcal{U}_0 = \\{ u_{1,0}, u_{2,0}, \\dots, u_{M,0} \\}, \\quad u_{j,0} \\sim P_U(\\boldsymbol{\\theta}, \\sigma, \\phi)\n\\]\n\nDriftingResponseModel (subclass of recsim.user.AbstractResponseModel)  This class would define how a user reacts to a document, mapping (user state, document features) into probabilities of click.\n\n\\[\n\\Pr(\\text{click}_{j,i,t} = 1) = \\sigma \\Big( \\boldsymbol{\\theta}_{j,t}^\\top \\mathbf{x}_i + \\beta_1 q_i + \\beta_2 p_i + \\epsilon_{j,i,t} \\Big)\n\\]\n\nDriftingUserModel (subclass of recsim.user.AbstractUserModel)  This class would coordinate the simulation: advancing the user state, calling the response model, and updating preferences via a drift process.\n\n\\[\n\\boldsymbol{\\theta}_{j,t+1} = (1-\\alpha)\\boldsymbol{\\theta}_{j,t} + \\alpha \\mathbf{x}_{i,t} + \\boldsymbol{\\epsilon}_{j,t}\n\\]\n\n\n\n\n\n\n\n\n\nIe, Eugene, Chih-wei Hsu, Martin Mladenov, Vihan Jain, Sanmit Narvekar, Jing Wang, Rui Wu, and Craig Boutilier. 2019. “RecSim: A Configurable Simulation Platform for Recommender Systems.” https://arxiv.org/abs/1909.04847.",
+    "crumbs": [
+      "Applications",
+      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Recommendation Systems</span>"
+    ]
+  },
+  {
     "objectID": "private/homework/homework1.html",
     "href": "private/homework/homework1.html",
     "title": "Homework 1",
@@ -1604,7 +1615,7 @@
     "text": "No Homework! Enjoy! 😊",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>60</span>  <span class='chapter-title'>Homework 1</span>"
+      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 1</span>"
     ]
   },
   {
@@ -1615,7 +1626,7 @@
     "text": "Question 1\nWrite some of the elements of the following sets:\nWrite the following sets in set notation:",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1626,7 +1637,7 @@
     "text": "\\(\\{ 5x-1: x \\in \\mathbb{Z} \\}\\)\n\\(\\{ x \\in \\mathbb{R}: \\sin \\pi x = 0 \\}\\)\n\\(\\{X : X \\subseteq \\{3,2,a\\} \\text{ and } |X|=2 \\}\\)\n\n\n\n\\(\\{ 2, 4, 8, 16, 32, 64, ...\\}\\)\n\\(\\{0,1,4,9,16,25,36, ...\\}\\)\n\\(\\{..., \\frac{1}{8},\\frac{1}{4},\\frac{1}{2},1,2,4,8,... \\}\\)",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1637,7 +1648,7 @@
     "text": "Question 2\nA retail store accepts either American Express or VISA. The percentages of customers carrying each card are: \n\nAmerican Express: \\(24%\\)\nVISA: \\(61%\\)\nBoth: \\(11%\\)\n\nWhat percentage of customers carry a card accepted by the store?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1648,7 +1659,7 @@
     "text": "Question 3\nSixty percent of students wear neither a ring nor a necklace. Given: \n\n\\(20%\\) wear a ring\n\\(30%\\) wear a necklace\n\nFind the probability that a randomly chosen student wears:\n\nA ring or a necklace\nBoth a ring and a necklace",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1659,7 +1670,7 @@
     "text": "Question 4\nTwo fair dice are rolled. Find the conditional probability that at least one die lands on \\(6\\), given that they land on different numbers.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1670,7 +1681,7 @@
     "text": "Question 5\nAn urn contains \\(6\\) white and \\(9\\) black balls. If \\(4\\) balls are selected without replacement, what is the probability that the first \\(2\\) are white and the last \\(2\\) are black?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1681,7 +1692,7 @@
     "text": "Question 6\nA defendant is judged guilty if at least \\(2\\) out of \\(3\\) judges vote guilty. Given:\n\nProbability of a guilty vote when defendant is guilty: \\(0.7\\) \nProbability of a guilty vote when defendant is innocent: \\(0.2\\) \n\\(70%\\) of defendants are guilty\n\nCompute the conditional probability that judge \\(3\\) votes guilty given:\n\nJudges \\(1\\) and \\(2\\) vote guilty. \nJudges \\(1\\) and \\(2\\) split votes. \nJudges \\(1\\) and \\(2\\) vote not guilty.\n\nAre the judges’ votes independent? Conditionally independent? Explain.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1692,7 +1703,7 @@
     "text": "Question 7\nGiven the distribution function of \\(X\\):\n\\[\nF_{X}(x) =\n\\begin{cases}\n0, & x &lt; 0 \\\\\n\\frac{1}{2}, & 0 \\leq x &lt; 1 \\\\\n\\frac{3}{5}, & 1 \\leq x &lt; 2 \\\\\n\\frac{4}{5}, & 2 \\leq x &lt; 3 \\\\\n\\frac{9}{10}, & 3 \\leq x &lt; 3.5 \\\\\n1, & x \\geq 3.5 \\\\\n\\end{cases}\n\\]\nFind \\(p_X(x)\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1703,7 +1714,7 @@
     "text": "Question 8\nA player rolls a fair die and flips a fair coin. If heads, they win twice the die value; if tails, they win half. Determine the expected winnings.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1714,7 +1725,7 @@
     "text": "Coding Exercise 1: Binomial Distribution\nThe binomial distribution PMF is:\n\\[\np_X(x) = {n \\choose k} x^n (1-x)^{n-k}\n\\]\nUsing Python, generate binomial data and create visualizations for \\(p_X(x)\\) and \\(F_X(x)\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>61</span>  <span class='chapter-title'>Homework 2</span>"
+      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 2</span>"
     ]
   },
   {
@@ -1725,7 +1736,7 @@
     "text": "Coding Exercise 1: Load Environments\nLoad existing Bernoulli and Gaussian environments from create_environment function using a random seed of \\(123\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1736,7 +1747,7 @@
     "text": "Coding Exercise 2: Recommendation Systems\nUsing the existing Epsilon Greedy (\\(\\epsilon\\) = 0.10), Upper Confidence Boundary (UCB) and Thompson Sampling code, create a recommendation system.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1747,7 +1758,7 @@
     "text": "Coding Exercise 3: MAB Performance\nFor 10,000 recommendations:\n\nDoes Epsilon-Greedy (\\(\\epsilon = 0.10\\)) perform better in the Bernoulli or Gaussian environment?\nDoes UCB perform better in the Bernoulli or Gaussian environment?\nDoes Thompson Sampling perform better in the Bernoulli or Gaussian environment?\nWhich algorithm performs best in the Bernoulli environment?\nWhich algorithm performs best in the Gaussian environment?\n\nHint: Check the performance of each MAB by observing the most frequently recommended arm.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1758,7 +1769,7 @@
     "text": "Coding Exercise 4: Random Seed Analysis\nUsing random seeds \\(0\\)-\\(50\\), for \\(10,000\\) recommendations, do the algorithms perform the same?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1769,7 +1780,7 @@
     "text": "Coding Exercise 5: Amazon Dataset Analysis\nFor the Amazon.csv advertisement dataset repeat exercise E.4. Which arm (ad) would you recommend (advertise)?\n Download Amazon.csv here",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>62</span>  <span class='chapter-title'>Homework 3</span>"
+      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 3</span>"
     ]
   },
   {
@@ -1780,7 +1791,7 @@
     "text": "Question 1\nIf the current state is \\(S_{t}\\) and actions are selected according to stochastic policy \\(\\pi\\), then what is the expectation of \\(R_{t+1}\\) in terms of \\(\\pi\\) and the four-argument function \\(p\\)?",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1791,7 +1802,7 @@
     "text": "Question 2\nGive an equation for \\(v_{\\pi}\\) in terms of \\(q_{\\pi}\\) and \\(\\pi\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1802,7 +1813,7 @@
     "text": "Question 3\nGive an equation for \\(q_{\\pi}\\) in terms of \\(v_{\\pi}\\) and \\(\\pi\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1813,7 +1824,7 @@
     "text": "Coding Exercise 1: Markov Chain I\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1824,7 +1835,7 @@
     "text": "Coding Exercise 2: Markov Chain II\nWith a discount factor of \\(\\gamma = 0.9\\), calculate \\(v(t)\\) when \\(t = 100\\) for the following Markov Chain:",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1835,7 +1846,7 @@
     "text": "Coding Exercise 3: Value Iteration\nWith a discount factor of \\(\\gamma = 0.9\\), code Value Iteration algorithm for GridWorldEnv using the provided hyperparameters.\n\n\n\n\n\nNote: The gray shaded areas are barriers. Moving into a barrier incurs a reward of \\(R = -1\\).",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>63</span>  <span class='chapter-title'>Homework 4</span>"
+      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 4</span>"
     ]
   },
   {
@@ -1846,7 +1857,7 @@
     "text": "Coding Exercise 1: On-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the On-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 5</span>"
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 5</span>"
     ]
   },
   {
@@ -1857,7 +1868,7 @@
     "text": "Coding Exercise 2: Off-Policy Monte Carlo Control\nFor the GridWorldEnv environment, code the Off-Policy Monte Carlo Control algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>64</span>  <span class='chapter-title'>Homework 5</span>"
+      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 5</span>"
     ]
   },
   {
@@ -1868,7 +1879,7 @@
     "text": "Coding Exercise 1: SARSA\nFor the GridWorldEnv environment, code the SARSA algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 6</span>"
+      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Homework 6</span>"
     ]
   },
   {
@@ -1879,7 +1890,7 @@
     "text": "Coding Exercise 2: Q-Learning\nFor the GridWorldEnv environment, code the Q-learning algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 6</span>"
+      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Homework 6</span>"
     ]
   },
   {
@@ -1890,7 +1901,7 @@
     "text": "Coding Exercise 3: Double Q-Learning\nFor the GridWorldEnv environment, code the Double Q-learning algorithm using the provided hyperparameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>65</span>  <span class='chapter-title'>Homework 6</span>"
+      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Homework 6</span>"
     ]
   },
   {
@@ -1901,7 +1912,7 @@
     "text": "Coding Exercise 1: Semi-Gradient SARSA\nFor the MountainCar-v0 environment, code the update function for Semi-Gradient SARSA algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>66</span>  <span class='chapter-title'>Homework 7</span>"
+      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Homework 7</span>"
     ]
   },
   {
@@ -1912,7 +1923,7 @@
     "text": "Coding Exercise 1: Deep Q-Network (DQN)\nFor the CartPole-v1 environment, code the update function for the Deep Q-Netowrk (DQN) algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>67</span>  <span class='chapter-title'>Homework 8</span>"
+      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Homework 8</span>"
     ]
   },
   {
@@ -1923,7 +1934,7 @@
     "text": "Coding Exercise 1: Vanilla Policy Gradient\nFor the CartPole-v1 environment, code the update function for the Vanilla Policy Gradient algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>68</span>  <span class='chapter-title'>Homework 9</span>"
+      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Homework 9</span>"
     ]
   },
   {
@@ -1934,7 +1945,7 @@
     "text": "Coding Exercise 1: Proximal Policy Optimization (PPO) Clip\nFor the HalfCheetah-v5 environment, code the update function for the Proximal Policy Optimization: Clip algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>69</span>  <span class='chapter-title'>Homework 10</span>"
+      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Homework 10</span>"
     ]
   },
   {
@@ -1945,7 +1956,7 @@
     "text": "Coding Exercise 1: Monte Carlo Tree Search (MCTS)\nFor the CartPole-v0 environment, code the update function for the Monte Carlo Tree Search (MCTS) algorithm using the provided parameters.",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>70</span>  <span class='chapter-title'>Homework 11</span>"
+      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Homework 11</span>"
     ]
   },
   {
@@ -1956,7 +1967,7 @@
     "text": "No Homework! Enjoy! 😊",
     "crumbs": [
       "Homeworks",
-      "<span class='chapter-number'>71</span>  <span class='chapter-title'>Homework 12</span>"
+      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Homework 12</span>"
     ]
   },
   {
@@ -1967,7 +1978,7 @@
     "text": "Instructions\nOnly Classical Reinforcement Learning algorithms that are model-free will be considered:",
     "crumbs": [
       "Exams",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Exam 1</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Exam 1</span>"
     ]
   },
   {
@@ -1978,7 +1989,7 @@
     "text": "You will work in your current teams.\nAfter class, each team will be sent an email with their specific alias name and exam_env.py.\n\n\n\n\n\n\n\nImportant\n\n\n\nYou must keep the teams alias anonymous!\nNot doing so will result in a penalty of \\(10\\%\\) of the total grade of Exam 1 for you and your group.\n\n\n\nFrom Monday (October 20th) to Friday (October 24th), each team is in charge of coding one main.py and model.py for the Dynamic GridWorld environment.\n\n\n\nOn-Policy Monte Carlo\nOff-Policy Monte Carlo\nSARSA\nQ-Learning\nDouble Q-Learning\nn-step Bootstrapping\n\n\nPlease keep the following hyperparameters intact:\n\nSEED = 123\nSIZE = 10\nEPISODES = 100\nFPS = 0\n\n\n\n\n\n\nImportant\n\n\n\nDo not alter exam_env.py!\nDoing so might result in skewed results for your team.",
     "crumbs": [
       "Exams",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Exam 1</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Exam 1</span>"
     ]
   },
   {
@@ -1989,7 +2000,7 @@
     "text": "Submission\nEach team is responsible for submitting one ALIAS_main.py and ALIAS_model.py as a DAY#_ALIAS.zip.\nRemember to put the corresponding alias name for your team in ALIAS_main.py.\nALIAS = 'your alias goes here'\n\n\n\n\n\n\nTip\n\n\n\nSubmit your work on the same email!\nRemember the email you and your team members will get after class with your alias name? Submit your DAY#_ALIAS.zip by simply replying to that email chain.\n\n\n\n\n\n\n\n\nImportant\n\n\n\nPlease make sure that your code runs properly!\nAny submission that is not following any of the steps above or does not run in ALIAS_main.py will not be accepted.",
     "crumbs": [
       "Exams",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Exam 1</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Exam 1</span>"
     ]
   },
   {
@@ -2000,7 +2011,7 @@
     "text": "Leaderboard\nEach day a leaderboard will be updated here to display the results of each team.\n\n\n\n\n\n\nNoteDay 1 (Monday, October 20th)\n\n\n\n\n\n\nRank\nAlias\nScore\n\n\n\n\n🥇 1st Place\n\n\n\n\n🥈 2nd Place\n\n\n\n\n🥉 3rd Place\n\n\n\n\n4th Place\n\n\n\n\n5th Place",
     "crumbs": [
       "Exams",
-      "<span class='chapter-number'>72</span>  <span class='chapter-title'>Exam 1</span>"
+      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Exam 1</span>"
     ]
   },
   {
@@ -2011,7 +2022,7 @@
     "text": "Exam 2 Information - Coming Soon 📢",
     "crumbs": [
       "Exams",
-      "<span class='chapter-number'>73</span>  <span class='chapter-title'>Exam 2</span>"
+      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Exam 2</span>"
     ]
   },
   {
@@ -2022,7 +2033,7 @@
     "text": "Instructions\nInstruction table for the Final Project.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
@@ -2033,7 +2044,7 @@
     "text": "Multi-Armed Bandit (MAB)Classical/Deep Reinforcement Learning\n\n\nUsing the different Multi-Armed Bandit algorithms learned in Lecture 3. Your task is to:\n\nDefine the Reinforcement Learning Framework: Formulate a Multi-Armed Bandit problem.\n\n\nDefine the data.\nSpecify the action space \\(\\mathcal{A}\\).\nSpecify the reward structure \\(R\\).\n\n\nDefine the model: Implement at least two Reinforcement Learning algorithms to solve the problem.\n\n\n\\(\\epsilon\\)-Greedy.\nUpper Confidence Boundary (UCB).\nThompson Sampling.\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Regret: The difference between the reward of the best fixed arm and the reward obtained by the algorithm.\n(Optional) Stability score: Standard deviation of the reward over time.\n(Optional) Adaptability: Performance when the environment shifts.\n\n\nEffectively communicate your findings: CV style.\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.\n\n\nUsing a Classical or Deep Reinforcement Learning algorithm learned in Lectures 5-11. Your task is to:\n\nDefine the Reinforcement Learning Framework: Formulate a Markov Decision Process (MDP).\n\n\nDefine the environment dynamics \\(P(s',r|s,a)\\).\nDefine the state space \\(\\mathcal{S}\\).\nDefine the action space \\(\\mathcal{A}\\).\nDefine the reward function \\(R\\).\n\nDefine the episode structure.\n\n\nDefine the model: Implement at least one Reinforcement Learning algorithm to solve the problem.\n\n\nOn-Policy Monte Carlo\nOff-Policy Monte Carlo\nSARSA\nQ-Learning\nDouble Q-Learning\nn-step Bootstrapping\nSemi-Gradient SARSA\nDeep Q-Network (DQN)\nVanilla Policy Gradient (VPG)\nProximal Policy Optimization (PPO)\nMonte Carlo Tree Search (MCTS)\n\n\nDefine the metrics: To evaluate performance, we will use:\n\n\nCumulative reward: Total return over a time horizon.\n(Optional) Stability score: Standard deviation of the reward over time.\n\n\nEffectively communicate your findings: CV style.\n\nAccomplished [X] as measured by [Y], by doing [Z].\nExample: Improved asset allocation strategy stability as measured by lower reward variance across trials, by tuning \\(\\epsilon\\) in an \\(\\epsilon\\)-Greedy policy.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
@@ -2044,7 +2055,7 @@
     "text": "Presentation\nYour team must clearly present all of the following points:\n\nDefine the Reinforcement Learning Framework.\nDefine the model.\nDefine the metrics.\nEffectively communicate your findings.\nConclusion.\n\nUse clear and concise slides with visuals (e.g., charts, diagrams) to support your points. Ensure the presentation is structured logically and is easy to follow.\nHere’s an example from Capstone Group 11:",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
@@ -2055,7 +2066,7 @@
     "text": "Submission\nEach team must submit prior to the deadline, each of the following:\n\nCode .zip: A fully functional implementation of your Reinforcement Learning algorithms, with main.py, model.py and env.py.\nReport .pdf: A detailed report summarizing your approach, findings, and conclusions.\nPresentation .pdf: A concise and clear presentation of your work, including visuals and key takeaways.\n\nLate submissions will incur a \\(10\\%\\) penalty for the team.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
@@ -2066,7 +2077,7 @@
     "text": "Grading\nSummary of the grading table:\n\n\n\n\n\n\n\n\nCriteria\nDescription\nWeight\n\n\n\n\nProblem Formulation\nClear definition of the Reinforcement Learning framework.\n20%\n\n\nAlgorithm Implementation\nCorrect and efficient implementation of at least two Reinforcement Learning algorithms.\n30%\n\n\nPerformance Evaluation\nUse of appropriate metrics to evaluate the algorithms’ performance.\n20%\n\n\nCommunication of Findings\nClear and concise presentation of results, including visuals and insights.\n20%\n\n\nCode Quality and Documentation\nWell-structured, readable, and documented code.\n10%",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
@@ -2077,7 +2088,7 @@
     "text": "(Optional) Capstone or Research\nIf you or your team would like to discuss this project or potential research opportunities in more detail, feel free to reach out to me at twallett@gwu.edu.",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>74</span>  <span class='chapter-title'>Final Project Overview</span>"
+      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Final Project Overview</span>"
     ]
   },
   {
@@ -2088,7 +2099,7 @@
     "text": "Final Project Ideas 🏁\n\n\n\n\nMulti-Armed Bandits (MAB)Classical/Deep Reinforcement Learning\n\n\n\n\n\n\n\n\nTipSmart Ad Click Optimizer\n\n\n\n\n\nBuild a system that learns which ads get clicked most often. Start with fake ad data and test different strategies like ε-greedy (sometimes try random ads) and Thompson Sampling (use probability to guide choices).\nWhat you’ll learn: How to balance exploring new options vs. using what works best.\n\n\n\n\n\n\n\n\n\nTipPersonalized Article Recommender\n\n\n\n\n\nCreate a recommendation system that suggests articles based on context (time of day, device type, user history). Uses contextual bandits that consider multiple factors when making decisions.\nWhat you’ll learn: How to incorporate user context into decision-making.\n\n\n\n\n\n\n\n\n\nTipDynamic Pricing Bot\n\n\n\n\n\nBuild a pricing algorithm that adjusts product prices daily based on demand patterns. The system learns optimal pricing to maximize revenue while adapting to market changes.\nWhat you’ll learn: How to handle changing environments and non-stationary problems.\n\n\n\n\n\n\n\n\n\nTipWebsite Banner Optimizer\n\n\n\n\n\nAutomatically choose which banner ad to show on a website to get the most clicks. The system adapts in real-time as user preferences change throughout the day.\nWhat you’ll learn: Real-time optimization and A/B testing with learning algorithms.\n\n\n\n\n\n\n\n\n\nTipSmart Menu Recommender for Food Apps\n\n\n\n\n\nSimulate a food delivery app that learns which dishes to highlight based on factors like time of day, weather, and day of the week to increase orders.\nWhat you’ll learn: Seasonal patterns and time-based optimization.\n\n\n\n\n\n\n\n\n\n\n\nTipRL-Driven Recommendation Engine (Google RecSim Inspired)\n\n\n\n\n\nBuild a small-scale recommendation system using RL to model long-term engagement, inspired by Google’s RecSim research, but on a synthetic dataset.\nWhat you’ll learn: Sequential user interaction modeling and long-term recommendation optimization.\n\nGoogle RecSim – Official Repository\n\nRecSim Research Paper – arXiv\n\nGoogle AI Blog – RecSim Platform\n\nRecSim Implementation Example – GitHub\n\n\n\n\n\n\n\n\n\n\nTipHighway Driving AI Agent\n\n\n\n\n\nTrain a virtual car to drive on highways using the highway-env simulator. The agent learns lane changing, speed control, and safe overtaking maneuvers.\nWhat you’ll learn: Continuous control and safety constraints in RL.\n\nHighway-Env RL Project – GitHub\nHighway-Env RL Documentation\n\n\n\n\n\n\n\n\n\n\nTipRobot Arm Controller\n\n\n\n\n\nTrain a simulated robot to pick up and place objects using Gymnasium’s robot environments. Start with simple reaching tasks and progress to manipulation.\nWhat you’ll learn: Robotics control and continuous action spaces.\n\nRobotics-Env RL Project - GitHub\n\nRobotics-Env RL Documentation\n\n\n\n\n\n\n\n\n\n\nTipAI Trading Bot with FinRL\n\n\n\n\n\nCreate a trading algorithm that learns to buy and sell stocks/ETFs using historical data. Focus on risk management and portfolio optimization strategies.\nWhat you’ll learn: Financial applications of RL and risk-reward optimization.\nhttps://finrl.readthedocs.io/en/latest/index.html\n\nFinRL - GitHub\n\nFinRL Documentation\n\n\n\n\n\n\n\n\n\n\nTipHuman Feedback Learning Interface\n\n\n\n\n\nBuild a web app where users rate AI-generated text responses. The system learns from human preferences to improve its outputs over time (simplified RLHF demo).\nWhat you’ll learn: Human-in-the-loop learning and preference modeling.\n\nTRL Examples - HuggingFace\nRLHF – Medium\n\nStreamlit Documentation",
     "crumbs": [
       "Final Project",
-      "<span class='chapter-number'>75</span>  <span class='chapter-title'>Final Project Ideas</span>"
+      "<span class='chapter-number'>76</span>  <span class='chapter-title'>Final Project Ideas</span>"
     ]
   },
   {
@@ -2096,7 +2107,7 @@
     "href": "references.html",
     "title": "References",
     "section": "",
-    "text": "Acero, Fernando, Parisa Zehtabi, Nicolas Marchesotti, Michael Cashmore,\nDaniele Magazzeni, and Manuela Veloso. 2024. “Deep Reinforcement\nLearning and Mean-Variance Strategies for Responsible Portfolio\nOptimization.” https://arxiv.org/abs/2403.16667.\n\n\nBarto, Andrew G, Richard S Sutton, and Charles W Anderson. 1983.\n“Neuronlike Adaptive Elements That Can Solve Difficult Learning\nControl Problems.” Technical Report, Institute for Cybernetic\nStudies, University of Massachusetts. https://psycnet.apa.org/record/1984-25798-001.\n\n\nBellemare, Marc G, Yavar Naddaf, Joel Veness, and Michael Bowling. 2013.\n“The Arcade Learning Environment: An Evaluation Platform for\nGeneral Agents.” Journal of Artificial Intelligence\nResearch 47: 253–79.\n\n\nBertsekas, Dimitri P., and John N. Tsitsiklis. 2008. Introduction to\nProbability. 2nd ed. Belmont, MA: Athena Scientific.\n\n\nBrockman, Greg, Vicki Cheung, Ludwig Pettersson, Jonas Schneider, John\nSchulman, Jie Tang, and Wojciech Zaremba. 2016. “OpenAI\nGym.” https://arxiv.org/abs/1606.01540.\n\n\nBrunskill, Emma. 2022. “CS234: Reinforcement Learning - Lecture\n1.” Course Lecture Slides, Stanford University. https://web.stanford.edu/class/cs234/slides/lecture1pre.pdf.\n\n\nFawzi, Alhussein, Matej Balog, Atri Huang, et al. 2022.\n“Discovering Faster Matrix Multiplication Algorithms with\nReinforcement Learning.” Nature 610: 47–53. https://doi.org/10.1038/s41586-022-05172-4.\n\n\nHagan, Martin T., Howard B. Demuth, Mark H. Beale, and Orlando De Jesús.\n2014. Neural Network Design. 2nd ed. Martin Hagan. https://hagan.okstate.edu/NNDesign.pdf.\n\n\nHammack, Richard H. 2013. Book of Proof. Richard Hammack.\n\n\nIe, Eugene, Chih-wei Hsu, Martin Mladenov, Vihan Jain, Sanmit Narvekar,\nJing Wang, Rui Wu, and Craig Boutilier. 2019. “RecSim: A\nConfigurable Simulation Platform for Recommender Systems.” https://arxiv.org/abs/1909.04847.\n\n\nLevine, Sergey. 2019. “Introduction to Deep Reinforcement\nLearning.” Course Lecture Slides, Deep RL Course, UC Berkeley. https://rail.eecs.berkeley.edu/deeprlcourse/deeprlcourse/static/slides/lec-1.pdf.\n\n\nLi, Lihong, Wei Chu, John Langford, and Robert E. Schapire. 2010.\n“A Contextual-Bandit Approach to Personalized News Article\nRecommendation.” In Proceedings of the 19th International\nConference on World Wide Web, 661–70. ACM.\n\n\nMartin T. Hagan, Amir Jafari. 2024. “NNDesignDeepLearning.”\nhttps://github.com/NNDesignDeepLearning/NNDesignDeepLearning.\n\n\nMnih, Volodymyr, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis\nAntonoglou, Daan Wierstra, and Martin Riedmiller. 2013. “Playing\nAtari with Deep Reinforcement Learning.” https://arxiv.org/abs/1312.5602.\n\n\nMoore, Andrew William. 1990. “Efficient Memory-Based Learning for\nRobot Control.” University of Cambridge.\n\n\nOuyang, Long, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright,\nPamela Mishkin, Chong Zhang, et al. 2022. “Training Language\nModels to Follow Instructions with Human Feedback.” https://arxiv.org/abs/2203.02155.\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement\nLearning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.\n\n\nTodorov, Emanuel, Tom Erez, and Yuval Tassa. 2012. “MuJoCo: A\nPhysics Engine for Model-Based Control.” In *Proceedings of the\nIEEE/RSJ International Conference on Intelligent Robots and Systems\n(IROS)*. http://www.mujoco.org/.",
+    "text": "Acero, Fernando, Parisa Zehtabi, Nicolas Marchesotti, Michael Cashmore,\nDaniele Magazzeni, and Manuela Veloso. 2024. “Deep Reinforcement\nLearning and Mean-Variance Strategies for Responsible Portfolio\nOptimization.” https://arxiv.org/abs/2403.16667.\n\n\nBarto, Andrew G, Richard S Sutton, and Charles W Anderson. 1983.\n“Neuronlike Adaptive Elements That Can Solve Difficult Learning\nControl Problems.” Technical Report, Institute for Cybernetic\nStudies, University of Massachusetts. https://psycnet.apa.org/record/1984-25798-001.\n\n\nBellemare, Marc G, Yavar Naddaf, Joel Veness, and Michael Bowling. 2013.\n“The Arcade Learning Environment: An Evaluation Platform for\nGeneral Agents.” Journal of Artificial Intelligence\nResearch 47: 253–79.\n\n\nBertsekas, Dimitri P., and John N. Tsitsiklis. 2008. Introduction to\nProbability. 2nd ed. Belmont, MA: Athena Scientific.\n\n\nBrockman, Greg, Vicki Cheung, Ludwig Pettersson, Jonas Schneider, John\nSchulman, Jie Tang, and Wojciech Zaremba. 2016. “OpenAI\nGym.” https://arxiv.org/abs/1606.01540.\n\n\nBrunskill, Emma. 2022. “CS234: Reinforcement Learning - Lecture\n1.” Course Lecture Slides, Stanford University. https://web.stanford.edu/class/cs234/slides/lecture1pre.pdf.\n\n\nFawzi, Alhussein, Matej Balog, Atri Huang, et al. 2022.\n“Discovering Faster Matrix Multiplication Algorithms with\nReinforcement Learning.” Nature 610: 47–53. https://doi.org/10.1038/s41586-022-05172-4.\n\n\nHagan, Martin T., Howard B. Demuth, Mark H. Beale, and Orlando De Jesús.\n2014. Neural Network Design. 2nd ed. Martin Hagan. https://hagan.okstate.edu/NNDesign.pdf.\n\n\nHammack, Richard H. 2013. Book of Proof. Richard Hammack.\n\n\nIe, Eugene, Chih-wei Hsu, Martin Mladenov, Vihan Jain, Sanmit Narvekar,\nJing Wang, Rui Wu, and Craig Boutilier. 2019. “RecSim: A\nConfigurable Simulation Platform for Recommender Systems.” https://arxiv.org/abs/1909.04847.\n\n\nLevine, Sergey. 2019. “Introduction to Deep Reinforcement\nLearning.” Course Lecture Slides, Deep RL Course, UC Berkeley. https://rail.eecs.berkeley.edu/deeprlcourse/deeprlcourse/static/slides/lec-1.pdf.\n\n\nLi, Lihong, Wei Chu, John Langford, and Robert E. Schapire. 2010.\n“A Contextual-Bandit Approach to Personalized News Article\nRecommendation.” In Proceedings of the 19th International\nConference on World Wide Web, 661–70. ACM.\n\n\nMartin T. Hagan, Amir Jafari. 2024. “NNDesignDeepLearning.”\nhttps://github.com/NNDesignDeepLearning/NNDesignDeepLearning.\n\n\nMnih, Volodymyr, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis\nAntonoglou, Daan Wierstra, and Martin Riedmiller. 2013. “Playing\nAtari with Deep Reinforcement Learning.” https://arxiv.org/abs/1312.5602.\n\n\nMoore, Andrew William. 1990. “Efficient Memory-Based Learning for\nRobot Control.” University of Cambridge.\n\n\nOuyang, Long, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright,\nPamela Mishkin, Chong Zhang, et al. 2022. “Training Language\nModels to Follow Instructions with Human Feedback.” https://arxiv.org/abs/2203.02155.\n\n\nSanz-Cruzado, Javier, Nikolaos Droukas, and Richard McCreadie. 2024.\n“FAR-Trans: An Investment Dataset for Financial Asset\nRecommendation.” https://arxiv.org/abs/2407.08692.\n\n\nSutton, Richard S., and Andrew G. Barto. 2018. Reinforcement\nLearning: An Introduction. 2nd ed. Cambridge, MA: MIT Press.\n\n\nTodorov, Emanuel, Tom Erez, and Yuval Tassa. 2012. “MuJoCo: A\nPhysics Engine for Model-Based Control.” In *Proceedings of the\nIEEE/RSJ International Conference on Intelligent Robots and Systems\n(IROS)*. http://www.mujoco.org/.",
     "crumbs": [
       "References"
     ]

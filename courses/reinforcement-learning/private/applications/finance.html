@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12.2 Identify the Reinforcement Learning Application</title>
+<title>Finance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +50,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../private/lecture12/lecture12-3.html" rel="next">
-<link href="../../private/lecture12/lecture12-1.html" rel="prev">
+<link href="../../private/applications/pseudo-labeling.html" rel="next">
 <link href="../../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -81,6 +100,35 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -93,7 +141,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">Finance</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -509,13 +557,13 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
  <span class="menu-text">Lecture 12: Conclusion</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../private/lecture12/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
@@ -528,7 +576,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></a>
+  <a href="../../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -541,16 +589,16 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
  <span class="menu-text">Applications</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/applications/finance.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Finance</span></a>
+  <a href="../../private/applications/finance.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Finance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -691,25 +739,15 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#task-1-email-spam-detection" id="toc-task-1-email-spam-detection" class="nav-link active" data-scroll-target="#task-1-email-spam-detection">Task 1: Email Spam Detection</a></li>
-  <li><a href="#task-2-customer-segmentation-for-a-retail-store" id="toc-task-2-customer-segmentation-for-a-retail-store" class="nav-link" data-scroll-target="#task-2-customer-segmentation-for-a-retail-store">Task 2: Customer Segmentation for a Retail Store</a></li>
-  <li><a href="#task-3-online-ad-optimization" id="toc-task-3-online-ad-optimization" class="nav-link" data-scroll-target="#task-3-online-ad-optimization">Task 3: Online Ad Optimization</a></li>
-  <li><a href="#task-4-warehouse-robot-path-finding" id="toc-task-4-warehouse-robot-path-finding" class="nav-link" data-scroll-target="#task-4-warehouse-robot-path-finding">Task 4: Warehouse Robot Path-finding</a></li>
-  <li><a href="#task-5-fine-tuning-llms-with-human-feedback" id="toc-task-5-fine-tuning-llms-with-human-feedback" class="nav-link" data-scroll-target="#task-5-fine-tuning-llms-with-human-feedback">Task 5: Fine-tuning LLMs with Human Feedback</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">Finance</span></h1>
 </div>
 
 
@@ -732,7 +770,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Can you spot where hidden decision-making is shaping the world around you? 🔍</p>
+<p>Application: Finance 💡</p>
 </div>
 </div>
 </div>
@@ -742,171 +780,61 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Financial Asset Recommendation using Bandit Algorithm Techniques (Capstone Group 10)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Instructions:</strong> For each task presented, determine whether it can be solved using:</p>
-<ul>
-<li>Supervised Learning<br>
-</li>
-<li>Unsupervised Learning<br>
-</li>
-<li>Multi-Armed Bandit<br>
-</li>
-<li>Classical Reinforcement Learning<br>
-</li>
-<li>Deep Reinforcement Learning</li>
-</ul>
-<p>Form groups of two or more and discuss the most appropriate approach for each application.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/ReinforcementLearningFramework.svg" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Reinforcement Learning Framework</figcaption>
+<p><img src="images/assets.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
 </figure>
 </div>
+<p>The research paper <em>FAR-Trans: An Investment Dataset for Financial Asset Recommendation</em> <span class="citation" data-cites="sanzcruzado2024fartransinvestmentdatasetfinancial">(<a href="../../references.html#ref-sanzcruzado2024fartransinvestmentdatasetfinancial" role="doc-biblioref">Sanz-Cruzado, Droukas, and McCreadie 2024</a>)</span> provides a public dataset on Financial Asset Recommendations (FAR), composed of a rich collection of user investment transactions.</p>
+<div class="text-center">
+<p><img src="images/fartrans.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"><br>
+University of Glasgow &amp; National Bank of Greece (2024) <span class="citation" data-cites="sanzcruzado2024fartransinvestmentdatasetfinancial">(<a href="../../references.html#ref-sanzcruzado2024fartransinvestmentdatasetfinancial" role="doc-biblioref">Sanz-Cruzado, Droukas, and McCreadie 2024</a>)</span> <br> <a href="https://arxiv.org/pdf/2407.08692">Link to Research Paper</a></p>
 </div>
-</div>
-<section id="task-1-email-spam-detection" class="level2">
-<h2 class="anchored" data-anchor-id="task-1-email-spam-detection">Task 1: Email Spam Detection</h2>
-<p><img src="images/SupervisedLearning.png" class="img-fluid" style="width:50.0%"></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<!-- ### Supervised Learning
-
-- **Supervised Learning:** Classification.
-- **Features (X):**
-  - Frequency of specific keywords (e.g., "free", "win", "money").
-  - Presence of special characters (e.g., "!", "$", etc.).
-  - Sender’s domain (e.g., "trusted.com", "unknown.com").
-- **Labels (y):**
-  - 0 for Non-Spam.
-  - 1 for Spam.
-- **Example Algorithm:** Naive Bayes. -->
-</div>
-</div>
-</div>
-</section>
-<section id="task-2-customer-segmentation-for-a-retail-store" class="level2">
-<h2 class="anchored" data-anchor-id="task-2-customer-segmentation-for-a-retail-store">Task 2: Customer Segmentation for a Retail Store</h2>
-<p><img src="images/UnsupervisedLearning.png" class="img-fluid" style="width:50.0%"></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<!-- ### Unsupervised Learning
-
-- **Unsupervised Learning:** Clustering.
-- **Features (X):**
-  - Customer age, annual income, spending score, purchase frequency.
-  - Product categories purchased, total expenditure, location.
-  - Customer loyalty (e.g., membership status).
-- **Example Algorithm:** K-Means. -->
-</div>
-</div>
-</div>
-</section>
-<section id="task-3-online-ad-optimization" class="level2">
-<h2 class="anchored" data-anchor-id="task-3-online-ad-optimization">Task 3: Online Ad Optimization</h2>
-<p><img src="images/MultiArmedBandit.png" class="img-fluid" style="width:50.0%"></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<!-- ### Multi-Armed Bandit
-
-- **State (S):** Single state (environment does not change).
-- **Actions (A):** Display ad 1, Display ad 2, Display ad 3.
-- **Rewards (R):** Click-through rate, conversion rate, user engagement.
-- **Example Algorithm:** Thompson Sampling. -->
-</div>
-</div>
-</div>
-</section>
-<section id="task-4-warehouse-robot-path-finding" class="level2">
-<h2 class="anchored" data-anchor-id="task-4-warehouse-robot-path-finding">Task 4: Warehouse Robot Path-finding</h2>
-<p><img src="images/ClassicalReinforcementLearning.png" class="img-fluid" style="width:50.0%"></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<!-- ### Classical Reinforcement Learning
-
-- **State (S):** Robot position, obstacles, goal location.
-- **Actions (A):** Move up, down, left, right, stay.
-- **Rewards (R):**
-  - Positive for reaching goal.
-  - Negative for hitting obstacles.
-  - Small penalty for each step (efficiency).
-- **Example Algorithm:** Q-learning. -->
-</div>
-</div>
-</div>
-</section>
-<section id="task-5-fine-tuning-llms-with-human-feedback" class="level2">
-<h2 class="anchored" data-anchor-id="task-5-fine-tuning-llms-with-human-feedback">Task 5: Fine-tuning LLMs with Human Feedback</h2>
-<p><img src="images/DeepReinforcementLearning.png" class="img-fluid" style="width:50.0%"></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<!-- ### Deep Reinforcement Learning
-
-- **State (S):** Model predictions, conversation history, human feedback.
-- **Actions (A):** Adjust weights, generate responses, explore approaches.
-- **Rewards (R):**
-  - Positive for high-quality responses.
-  - Negative for low-quality responses.
-  - Reward for alignment with human feedback.
-- **Example Algorithm:** Proximal Policy Optimization (PPO). -->
-</div>
+<p>Leveraging this public dataset, the goal of this research project three-fold:</p>
+<ul>
+<li><strong>Designing a bandit framework for FAR</strong>.<br>
+</li>
+<li><strong>Unifying a single regret-based metric</strong> <span class="math inline">\(\rho_{\text{empirical}}\)</span> to benchmark <a href="https://en.wikipedia.org/wiki/Collaborative_filtering">collaborative filtering</a>, non-contextual (<a href="../../lecture3/lecture3-2.html"><span class="math inline">\(\epsilon\)</span>-greedy</a>, <a href="(../../lecture3/lecture3-3.qmd)">Upper Confidence Boudary (UCB)</a> and <a href="(../../lecture3/lecture3-4.qmd)">Thompson Sampling</a>), and contextual bandit models (<a href="(../../lecture3/lecture3-5.qmd)">LinUCB</a>).<br>
+</li>
+<li><strong>Addressing the non-stationarity</strong> of arms and asset returns, where each arm <span class="math inline">\(a \in \mathcal{A}\)</span> represents a unique financial asset.</li>
+</ul>
+<p>The action space <span class="math inline">\(\mathcal{A}\)</span> consists of the available financial assets:</p>
+<p><span class="math display">\[
+\mathcal{A} = \{ \text{Asset}_1, \ \text{Asset}_2, \ldots, \ \text{Asset}_n \}
+\]</span></p>
+<p>To organize the features over time, assets, and dimensions, we define a feature tensor <span class="math inline">\(\mathsf{X}\)</span> as:</p>
+<p><span class="math display">\[
+\mathsf{X}_{(T, |\mathcal{A}|, d)} =
+\begin{bmatrix}
+[ \mathbf{x}_{1,1} &amp; \mathbf{x}_{1,2} &amp; \cdots &amp; \mathbf{x}_{1,|\mathcal{A}|} ] \\
+[ \mathbf{x}_{2,1} &amp; \mathbf{x}_{2,2} &amp; \cdots &amp; \mathbf{x}_{2,|\mathcal{A}|} ] \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+[ \mathbf{x}_{T,1} &amp; \mathbf{x}_{T,2} &amp; \cdots &amp; \mathbf{x}_{T,|\mathcal{A}|} ]
+\end{bmatrix},
+\quad
+\mathbf{x}_{t,a} \in \mathbb{R}^{1 \times d}
+\]</span></p>
+<p>The reward function <span class="math inline">\(R\)</span> is defined as the relative change in closing prices between consecutive time steps:</p>
+<p><span class="math display">\[
+R = \frac{\text{Closing Price}[A_t]_t - \text{Closing Price}[A_t]_{t-1}}{\text{Closing Price}[A_t]_{t-1}}
+\]</span></p>
+<p>The empirical regret quantifies the performance gap between the optimal policy and the agent’s chosen policy. In this case, it would quantify the best relative change in closing price for all assets minus the one experienced:</p>
+<p><span class="math display">\[
+\rho_T^\text{empirical} = \sum_{t=1}^{T} \Big( \max_{k \in \{1,\dots,K\}} r_t^k - r_t^{A_t} \Big)
+\]</span></p>
 </div>
 </div>
 
 
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-sanzcruzado2024fartransinvestmentdatasetfinancial" class="csl-entry" role="listitem">
+Sanz-Cruzado, Javier, Nikolaos Droukas, and Richard McCreadie. 2024. <span>“FAR-Trans: An Investment Dataset for Financial Asset Recommendation.”</span> <a href="https://arxiv.org/abs/2407.08692">https://arxiv.org/abs/2407.08692</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1311,13 +1239,10 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../private/lecture12/lecture12-1.html" class="pagination-link" aria-label="12.1 Advanced Topics in Reinforcement Learning">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">12.1 Advanced Topics in Reinforcement Learning</span></span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../private/lecture12/lecture12-3.html" class="pagination-link" aria-label="12.3 Outlook of Reinforcement Learning">
-        <span class="nav-page-text"><span class="chapter-title">12.3 Outlook of Reinforcement Learning</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../private/applications/pseudo-labeling.html" class="pagination-link" aria-label="Pseudo-Labeling">
+        <span class="nav-page-text"><span class="chapter-title">Pseudo-Labeling</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
