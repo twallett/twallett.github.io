@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-65c80836bbc1bc6763c1e34001d75c83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-40a068987ec753b21c9a1f7bcf34aa0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,7 +113,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -719,7 +719,7 @@ window.Quarto = {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -830,7 +830,7 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- Answer: They are of the same length. -->
+<p>Answer: They are of the same length.</p>
 </div>
 </div>
 </div>
@@ -848,7 +848,7 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- Answer: Day 29. -->
+<p>Answer: Day 29.</p>
 </div>
 </div>
 </div>
@@ -867,43 +867,37 @@ window.Quarto = {
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- **Double Q-Learning** addresses this bias by creating two action value estimates $Q_{1}(s,a)$ and $Q_{2}(s,a)$.
-
-With equal likelihood, one action value estimate yields the maximization action $A_{t}$ and the other provides the action value estimate $Q(S_{t}, A_{t})$.
-
-$$
+<p><strong>Double Q-Learning</strong> addresses this bias by creating two action value estimates <span class="math inline">\(Q_{1}(s,a)\)</span> and <span class="math inline">\(Q_{2}(s,a)\)</span>.</p>
+<p>With equal likelihood, one action value estimate yields the maximization action <span class="math inline">\(A_{t}\)</span> and the other provides the action value estimate <span class="math inline">\(Q(S_{t}, A_{t})\)</span>.</p>
+<p><span class="math display">\[
 Q_{1}(S_{t},A_{t}) = Q_{1}(S_{t},A_{t}) + \alpha [R_{t+1} + \gamma Q_{2}(S_{t+1},\max_{a} Q_{1}(S_{t+1},a)) - Q_{1}(S_{t},A_{t})]
-$$
-
-$$
+\]</span></p>
+<p><span class="math display">\[
 Q_{2}(S_{t},A_{t}) = Q_{2}(S_{t},A_{t}) + \alpha [R_{t+1} + \gamma Q_{1}(S_{t+1},\max_{a} Q_{2}(S_{t+1},a)) - Q_{2}(S_{t},A_{t})]
-$$
+\]</span></p>
+<p>This dual-system model mirrors Double Q-learning:</p>
+<ul>
+<li>One Q-estimator (<span class="math inline">\(Q_1\)</span>) makes a quick action selection — like System 1.</li>
+<li>The other Q-estimator (<span class="math inline">\(Q_2\)</span>) does the critical evaluation — like System 2.</li>
+</ul>
+<p>This separation reduces maximization bias, much like System 2 tempers System 1’s impulsive decisions.</p>
 
-This dual-system model mirrors Double Q-learning:
-
-- One Q-estimator ($Q_1$) makes a quick action selection — like System 1.
-- The other Q-estimator ($Q_2$) does the critical evaluation — like System 2.
-
-This separation reduces maximization bias, much like System 2 tempers System 1’s impulsive decisions.
-
-::: {.column-margin}
-**Maximization bias** is a maximization of actual action value estimates $Q(s,a)$ is higher than those of the true action values $q(s,a)$, leading to a bias.
-:::
-
----
-
-### Pseudocode
-
-::: {.center style="text-align:center;"}
-![](images/6-4.svg){width=75%}
-::: -->
+<hr>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<div class="center" style="text-align:center;">
+<p><img src="images/6-4.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
+</section>
 </div>
 </div>
 </div>
 
 
 
-</main> <!-- /main -->
+<div class="no-row-height column-margin column-container"><div class="callout-5-contents callout-collapse collapse callout-margin-content">
+<p><strong>Maximization bias</strong> is a maximization of actual action value estimates <span class="math inline">\(Q(s,a)\)</span> is higher than those of the true action values <span class="math inline">\(q(s,a)\)</span>, leading to a bias.</p>
+</div></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

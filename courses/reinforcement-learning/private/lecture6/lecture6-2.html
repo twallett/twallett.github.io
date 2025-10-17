@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-65c80836bbc1bc6763c1e34001d75c83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-40a068987ec753b21c9a1f7bcf34aa0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -840,31 +840,29 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- SARSA is an [on-policy](../lecture5/lecture5-3.qmd#on-policy-learning) TD control method that updates action-value estimates based $q_{\pi}(s, a)$ on the trajectory actually followed by the current policy $\pi$ — including any exploration it performs.
-
-$$
+<p>SARSA is an <a href="../../private/lecture5/lecture5-3.html#on-policy-learning">on-policy</a> TD control method that updates action-value estimates based <span class="math inline">\(q_{\pi}(s, a)\)</span> on the trajectory actually followed by the current policy <span class="math inline">\(\pi\)</span> — including any exploration it performs.</p>
+<p><span class="math display">\[
 Q(S_{t},A_{t}) = Q(S_{t},A_{t}) + \alpha [ R_{t+1} + \gamma Q(S_{t+1},A_{t+1}) - Q(S_{t},A_{t})]
-$$
-
-This rule uses every element of the quintuple of events ($S_{t}, A_{t}, R_{t+1}, S_{t+1}, A_{t+1}$)
-
-That’s SARSA: learning step-by-step from your real actions, even if your current “playlist” isn’t perfect.  
-
-Unlike Monte Carlo methods, which wait until the end of a full playlist (or episode) to update preferences, SARSA updates incrementally — after every song — using immediate feedback and your next action.
-
----
-
-### Illustration: SARSA
-
-![](images/SARSA.png){width=11% fig-align="center"}
-
----
-
-### Pseudocode
-
-::: {.center style="text-align:center;"}
-![](images/6-2.svg){width=75%}
-::: -->
+\]</span></p>
+<p>This rule uses every element of the quintuple of events (<span class="math inline">\(S_{t}, A_{t}, R_{t+1}, S_{t+1}, A_{t+1}\)</span>)</p>
+<p>That’s SARSA: learning step-by-step from your real actions, even if your current “playlist” isn’t perfect.</p>
+<p>Unlike Monte Carlo methods, which wait until the end of a full playlist (or episode) to update preferences, SARSA updates incrementally — after every song — using immediate feedback and your next action.</p>
+<hr>
+<section id="illustration-sarsa" class="level3">
+<h3 class="anchored" data-anchor-id="illustration-sarsa">Illustration: SARSA</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/SARSA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:11.0%"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<div class="center" style="text-align:center;">
+<p><img src="images/6-2.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
+</section>
 </div>
 </div>
 </div>
