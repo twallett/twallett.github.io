@@ -1,6 +1,6 @@
 - id: "financial-asset-bandit"
   title: "Financial Asset Recommendation using Bandit Algorithm Techniques"
-  description: "Advising one Data Science master’s student on Bandit capstone project. Developing recommendation system to recommend optimal assets to users."
+  description: "Advising one Data Science master’s student on Bandit capstone project. Designing bandit framework and benchmark to recommend optimal assets to users."
   image: "imgs/assets.png"
   tags:
     - icon: calendar
