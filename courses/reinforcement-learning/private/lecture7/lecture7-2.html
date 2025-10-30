@@ -820,65 +820,54 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- We need to approximate action-value functions.
-
-$$
+<p>We need to approximate action-value functions.</p>
+<p><span class="math display">\[
 \hat{Q}(s,a; \mathbf{w}) \approx Q_{\pi}(s,a)
-$$
-
-In doing so, we will incorporate previously learned techniques, such as [SARSA](../lecture6/lecture6-2.qmd) from Temporal Difference learning to devise a learning algorithm.
-
----
-
-### Updating Action Value Function Approximators
-
-MSE loss for action values:
-
-$$
+\]</span></p>
+<p>In doing so, we will incorporate previously learned techniques, such as <a href="../../private/lecture6/lecture6-2.html">SARSA</a> from Temporal Difference learning to devise a learning algorithm.</p>
+<hr>
+<section id="updating-action-value-function-approximators" class="level3">
+<h3 class="anchored" data-anchor-id="updating-action-value-function-approximators">Updating Action Value Function Approximators</h3>
+<p>MSE loss for action values:</p>
+<p><span class="math display">\[
 F(\mathbf{w}_{t}) = \mathbb{E}_{\pi}[(Q_{\pi}(S_{t},A_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))^{2}]
-$$
-
-SGD update for parameters $\mathbf{w}$:
-
-$$
+\]</span></p>
+<p>SGD update for parameters <span class="math inline">\(\mathbf{w}\)</span>:</p>
+<p><span class="math display">\[
 \mathbf{w}_{t+1} = \mathbf{w}_{t} + \alpha(Q_{\pi}(S_{t},A_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})
-$$
-
----
-
-### TD Update
-
-Finally, to implement TD learning, we substitute $Q_{\pi}(s,a)$ for our TD targets at each step:
-
-$$
+\]</span></p>
+<hr>
+</section>
+<section id="td-update" class="level3">
+<h3 class="anchored" data-anchor-id="td-update">TD Update</h3>
+<p>Finally, to implement TD learning, we substitute <span class="math inline">\(Q_{\pi}(s,a)\)</span> for our TD targets at each step:</p>
+<p><span class="math display">\[
 \langle S_{0}, \underbrace{\ R_{1} + \gamma \hat{Q}(S_{1},A_{1}; \mathbf{w}_{0})}_{\text{TD-target for Initial State}}\rangle, \ ... \ ,\langle S_{T-1},\underbrace{R_{T}}_{\text{TD-target for Terminal State}}\rangle
-$$
-
-Thus, our update equation for TD on-policy approximation:
-
-$$
+\]</span></p>
+<p>Thus, our update equation for TD on-policy approximation:</p>
+<p><span class="math display">\[
 \mathbf{w}_{t+1} = \mathbf{w}_{t} + \alpha(R_{t+1} + \gamma \hat{Q}(S_{t+1},A_{t+1}; \mathbf{w}_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})
-$$
-
----
-
-### Illustration: Semi-Gradient SARSA
-
-![](images/SemiGradientSARSA.png){width=100% fig-align="center"}
-
----
-
-### Pseudocode
-
-::: {.center style="text-align:center;"}
-![](images/7-1.svg){width=75%}
-:::
-
+\]</span></p>
+<hr>
+</section>
+<section id="illustration-semi-gradient-sarsa" class="level3">
+<h3 class="anchored" data-anchor-id="illustration-semi-gradient-sarsa">Illustration: Semi-Gradient SARSA</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/SemiGradientSARSA.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<div class="center" style="text-align:center;">
+<p><img src="images/7-1.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
 <div style="text-align: center;">
-  <a href="https://github.com/twallett/rl-lecture-code/tree/main/07-FA/Base">
-    <img src="images/github.svg" alt="GitHub" width="5%"/> 
-  </a>
-</div> -->
+<p><a href="https://github.com/twallett/rl-lecture-code/tree/main/07-FA/Base"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</section>
 </div>
 </div>
 </div>
@@ -910,11 +899,10 @@ $$
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- The update is a product of how much to learn, how wrong we were, and how to change.
-
-$$
+<p>The update is a product of how much to learn, how wrong we were, and how to change.</p>
+<p><span class="math display">\[
 \mathbf{w}_{t+1} = \mathbf{w}_{t} + \underbrace{\alpha}_{\text{Learning Rate}}\underbrace{(R_{t+1} + \gamma \hat{Q}(S_{t+1},A_{t+1}; \mathbf{w}_{t}) - \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t}))}_{\text{TD-Error}}\underbrace{\nabla_{\mathbf{w}_{t}} \hat{Q}(S_{t},A_{t}; \mathbf{w}_{t})}_{\text{Gradient}}
-$$ -->
+\]</span></p>
 </div>
 </div>
 </div>

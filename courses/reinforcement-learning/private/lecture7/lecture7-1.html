@@ -849,14 +849,11 @@ p_{t+1} = p_t + v_{t+1}
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- 
-Develop a function with parameters $\mathbf{w}$ that approximates the value of these continuous state values:
-
-$$
+<p>Develop a function with parameters <span class="math inline">\(\mathbf{w}\)</span> that approximates the value of these continuous state values:</p>
+<p><span class="math display">\[
 \hat{V}(s; \mathbf{w}) \approx V_{\pi}(s)
-$$
-
-Now, we can generalize approximate values of states encountered and those we have not. -->
+\]</span></p>
+<p>Now, we can generalize approximate values of states encountered and those we have not.</p>
 </div>
 </div>
 </div>
@@ -994,10 +991,12 @@ F(\mathbf{x}_{k}) = \mathbb{E}[(\mathbf{t}_{k} - \mathbf{a}_{k})^2]
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- No — because this is not supervised learning.
-
-- $V_{\pi}(S_t)$ is **not a true target**, but an estimate based on samples or bootstrapping.  
-- $\nabla_{\mathbf{w}_t} \hat{V}(S_t; \mathbf{w}_t)$ is a **noisy gradient**, not the true gradient of a fixed loss function. -->
+<p>No — because this is not supervised learning.</p>
+<ul>
+<li><span class="math inline">\(V_{\pi}(S_t)\)</span> is <strong>not a true target</strong>, but an estimate based on samples or bootstrapping.<br>
+</li>
+<li><span class="math inline">\(\nabla_{\mathbf{w}_t} \hat{V}(S_t; \mathbf{w}_t)\)</span> is a <strong>noisy gradient</strong>, not the true gradient of a fixed loss function.</li>
+</ul>
 </div>
 </div>
 </div>
