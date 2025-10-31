@@ -832,43 +832,38 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- To select actions in action spaces $\mathcal{A}$ that are discrete or continuous, we use the following policies:
-
-- Discrete $\mathcal{A}$: **Soft-max Policy**
-- Continuous $\mathcal{A}$: **Gaussian Policy** 
-
----
-
-### Discrete Action Selection: Soft-max Policy
-
-Given a state $s$, the policy network outputs a vector of logits $\theta_{\text{logits}}(s)$, one for each possible action. The probability of selecting action $a$ is given by the soft-max function:
-
-$$
+<p>To select actions in action spaces <span class="math inline">\(\mathcal{A}\)</span> that are discrete or continuous, we use the following policies:</p>
+<ul>
+<li>Discrete <span class="math inline">\(\mathcal{A}\)</span>: <strong>Soft-max Policy</strong></li>
+<li>Continuous <span class="math inline">\(\mathcal{A}\)</span>: <strong>Gaussian Policy</strong></li>
+</ul>
+<hr>
+<section id="discrete-action-selection-soft-max-policy" class="level3">
+<h3 class="anchored" data-anchor-id="discrete-action-selection-soft-max-policy">Discrete Action Selection: Soft-max Policy</h3>
+<p>Given a state <span class="math inline">\(s\)</span>, the policy network outputs a vector of logits <span class="math inline">\(\theta_{\text{logits}}(s)\)</span>, one for each possible action. The probability of selecting action <span class="math inline">\(a\)</span> is given by the soft-max function:</p>
+<p><span class="math display">\[
 \pi(a|s;\theta) = \frac{\exp(\theta_{\text{logits}}(s)[a])}{\sum_{a'} \exp(\theta_{\text{logits}}(s)[a'])} \quad \forall a \in \mathcal{A}
-$$
-
-To select an action, sample $a$ from this categorical distribution.
-
---- 
-
-### Continuous Action Selection: Gaussian Policy 
-
-Given a state $s$, the policy outputs parameters of a Gaussian distribution over actions:
-
-$$
+\]</span></p>
+<p>To select an action, sample <span class="math inline">\(a\)</span> from this categorical distribution.</p>
+<hr>
+</section>
+<section id="continuous-action-selection-gaussian-policy" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-action-selection-gaussian-policy">Continuous Action Selection: Gaussian Policy</h3>
+<p>Given a state <span class="math inline">\(s\)</span>, the policy outputs parameters of a Gaussian distribution over actions:</p>
+<p><span class="math display">\[
 \begin{align*}
-  \pi(a|s; \theta) 
-  &= \frac{1}{\sqrt{2\pi \sigma^2(s)[a]}} 
+  \pi(a|s; \theta)
+  &amp;= \frac{1}{\sqrt{2\pi \sigma^2(s)[a]}}
      \exp\left(-\frac{(a - \mu(s)[a])^2}{2 \sigma^2(s)[a]}\right) \\
-  &=  
+  &amp;=  
      \begin{bmatrix}
-       \mu_1(s) & \mu_2(s) & \cdots & \mu_{|\mathcal{A}|}(s) \ 
-       \sigma_1(s) & \sigma_2(s) & \cdots & \sigma_{|\mathcal{A}|}(s) 
+       \mu_1(s) &amp; \mu_2(s) &amp; \cdots &amp; \mu_{|\mathcal{A}|}(s) \
+       \sigma_1(s) &amp; \sigma_2(s) &amp; \cdots &amp; \sigma_{|\mathcal{A}|}(s)
      \end{bmatrix} \quad \forall a \in \mathcal{A}
 \end{align*}
-$$
-
-To select an action, sample $a$ from the Gaussian distribution $\mathcal{N}(\mu(s), \sigma^2(s))$ output by the policy network. -->
+\]</span></p>
+<p>To select an action, sample <span class="math inline">\(a\)</span> from the Gaussian distribution <span class="math inline">\(\mathcal{N}(\mu(s), \sigma^2(s))\)</span> output by the policy network.</p>
+</section>
 </div>
 </div>
 </div>
