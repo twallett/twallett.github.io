@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -791,31 +811,29 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- <div class="text-center">
-  ![](images/VPGresearchpaper.svg){width=75% fig-align="center"} <br>
-  AT\&T 2000 [@sutton2000policy] <br>
-  [Link to Research Paper](https://proceedings.neurips.cc/paper_files/paper/1999/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf)
+<div class="text-center">
+<p><img src="images/VPGresearchpaper.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> AT&amp;T 2000 <span class="citation" data-cites="sutton2000policy">(<a href="../../references.html#ref-sutton2000policy" role="doc-biblioref">Sutton et al. 2000</a>)</span> <br> <a href="https://proceedings.neurips.cc/paper_files/paper/1999/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf">Link to Research Paper</a></p>
 </div>
-
----
-
-### Illustration: Vanilla Policy Gradient
-
-![Vanilla Policy Gradient](images/VanillaPolicyGradient.png)
-
----
-
-### Pseudocode
-
-::: {.center style="text-align:center;"}
-![](images/9-1.svg){width=75%}
-:::
-
+<hr>
+<section id="illustration-vanilla-policy-gradient" class="level3">
+<h3 class="anchored" data-anchor-id="illustration-vanilla-policy-gradient">Illustration: Vanilla Policy Gradient</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/VanillaPolicyGradient.png" class="img-fluid figure-img"></p>
+<figcaption>Vanilla Policy Gradient</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<div class="center" style="text-align:center;">
+<p><img src="images/9-1.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
 <div style="text-align: center;">
-  <a href="https://github.com/twallett/rl-lecture-code/tree/main/09-PG/Base">
-    <img src="images/github.svg" alt="GitHub" width="5%"/> 
-  </a>
-</div> -->
+<p><a href="https://github.com/twallett/rl-lecture-code/tree/main/09-PG/Base"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</section>
 </div>
 </div>
 </div>
@@ -868,6 +886,11 @@ window.Quarto = {
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-sutton2000policy" class="csl-entry" role="listitem">
+Sutton, Richard S., David McAllester, Satinder Singh, and Yishay Mansour. 2000. <span>“Policy Gradient Methods for Reinforcement Learning with Function Approximation.”</span> In <em>Advances in Neural Information Processing Systems (NeurIPS)</em>. Vol. 12. MIT Press.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

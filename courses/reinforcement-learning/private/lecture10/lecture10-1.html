@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -857,17 +877,20 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- 1. For the sampling problem, we can store old trajectories $\tau$ in a buffer $D$ and sample these in a batch form.
-
-![](images/TrajectoryBuffer.svg){width=25% fig-align="center"}
-
-2. \& 3. We need a new algorithm that takes step sizes $\alpha$ without creating drastic changes in the log probabilities of actions.
-
+<ol type="1">
+<li>For the sampling problem, we can store old trajectories <span class="math inline">\(\tau\)</span> in a buffer <span class="math inline">\(D\)</span> and sample these in a batch form.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TrajectoryBuffer.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>&amp; 3. We need a new algorithm that takes step sizes <span class="math inline">\(\alpha\)</span> without creating drastic changes in the log probabilities of actions.</li>
+</ol>
 <div class="text-center">
-  ![](images/kakade.svg){width=100% fig-align="center"} <br>
-  ICML 2002 [@Kakade+Langford:2002] <br>
-  [Link to Research Paper](https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/KakadeLangford-icml2002.pdf)
-</div> -->
+<p><img src="images/kakade.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:100.0%"> <br> ICML 2002 <span class="citation" data-cites="Kakade+Langford:2002">(<a href="../../references.html#ref-Kakade+Langford:2002" role="doc-biblioref">Kakade and Langford 2002</a>)</span> <br> <a href="https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/KakadeLangford-icml2002.pdf">Link to Research Paper</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -942,6 +965,11 @@ L_{\pi_{\theta_0}}(\pi_{\theta_0}) = \eta(\pi_{\theta_0}),
 <p>In other words, you don’t jump all the way to a new policy—you blend a little bit of the new policy into the old one, controlled by <span class="math inline">\(\alpha\)</span>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Kakade+Langford:2002" class="csl-entry" role="listitem">
+Kakade, Sham, and John Langford. 2002. <span>“Approximately Optimal Approximate Reinforcement Learning.”</span> In <em>Proceedings of the Nineteenth International Conference on Machine Learning (ICML 2002)</em>, edited by Claude Sammut and Achim Hoffman, 267–74. San Francisco, CA, USA: Morgan Kaufmann. <a href="https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/KakadeLangford-icml2002.pdf">https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/KakadeLangford-icml2002.pdf</a>.
+</div>
+</div>
 </section>
 </section>
 

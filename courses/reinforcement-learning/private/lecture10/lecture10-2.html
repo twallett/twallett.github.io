@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -940,7 +960,7 @@ L_\pi(\tilde{\pi}) = \eta(\pi) + \sum_s \rho_{\pi}(s) \sum_a \tilde{\pi}(a|s) A_
 <span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="vs">    + (1-</span><span class="sc">${</span>p_new<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">) </span><span class="sc">\l</span><span class="vs">og </span><span class="sc">\f</span><span class="vs">rac{</span><span class="sc">${</span>(<span class="dv">1</span><span class="op">-</span>p_new)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">}{</span><span class="sc">${</span>(<span class="dv">1</span><span class="op">-</span>p_old)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">}`</span><span class="sc">}</span></span>
 <span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>tex<span class="op">.</span><span class="fu">block</span><span class="vs">`= </span><span class="sc">${</span><span class="pp">isNaN</span>(kl) <span class="op">?</span> <span class="st">"</span><span class="sc">\\</span><span class="st">text{undefined}"</span> <span class="op">:</span> kl<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">`</span><span class="sc">}</span></span>
 <span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p style="color: </span><span class="sc">${</span>within_bound <span class="op">?</span> <span class="st">"green"</span> <span class="op">:</span> <span class="st">"red"</span><span class="sc">}</span><span class="vs">;"&gt;</span></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>within_bound <span class="op">?</span> <span class="st">"✅ Within trust region — update allowed"</span> <span class="op">:</span> <span class="st">"❌ Exceeds trust region — update rejected"</span><span class="sc">}</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>within_bound <span class="op">?</span> <span class="st">"Within trust region — update allowed"</span> <span class="op">:</span> <span class="st">"Exceeds trust region — update rejected"</span><span class="sc">}</span></span>
 <span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/p&gt;</span></span>
 <span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -964,13 +984,10 @@ L_\pi(\tilde{\pi}) = \eta(\pi) + \sum_s \rho_{\pi}(s) \sum_a \tilde{\pi}(a|s) A_
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- The research paper **Trust Region Policy Optimization (TRPO)** introduces the idea of bounding this lower limit using a KL divergence factor.
-
+<p>The research paper <strong>Trust Region Policy Optimization (TRPO)</strong> introduces the idea of bounding this lower limit using a KL divergence factor.</p>
 <div class="text-center">
-  ![](images/trpo.svg){width=75% fig-align="center"} <br>
-  U.C. Berkeley 2015 [@schulman2015trust] <br>
-  [Link to Research Paper](https://arxiv.org/pdf/1502.05477)
-</div> -->
+<p><img src="images/trpo.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> U.C. Berkeley 2015 <span class="citation" data-cites="schulman2015trust">(<a href="../../references.html#ref-schulman2015trust" role="doc-biblioref">Schulman et al. 2015</a>)</span> <br> <a href="https://arxiv.org/pdf/1502.05477">Link to Research Paper</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -1041,12 +1058,17 @@ D_{TV}(\pi_{\theta_{\text{old}}}(\cdot | s) || \pi_{\theta}(\cdot | s)) \leq \de
 </ol>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-schulman2015trust" class="csl-entry" role="listitem">
+Schulman, John, Sergey Levine, Philipp Moritz, Michael I Jordan, and Pieter Abbeel. 2015. <span>“Trust Region Policy Optimization.”</span> <em>arXiv Preprint arXiv:1502.05477</em>. <a href="https://arxiv.org/abs/1502.05477">https://arxiv.org/abs/1502.05477</a>.
+</div>
+</div>
 </section>
 </section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gQ29udHJvbHMgZm9yIHR3byBzaW1wbGUgQmVybm91bGxpIHBvbGljaWVzIM+AX29sZCBhbmQgz4BfbmV3XG52aWV3b2YgcF9vbGQgPSBJbnB1dHMucmFuZ2UoWzAsIDFdLCB7c3RlcDogMC4wMSwgdmFsdWU6IDAuNSwgbGFiZWw6IHRleGBcXHBpX3tcXHRleHR7b2xkfX1gLCB3aWR0aDogMjAwfSlcbnZpZXdvZiBwX25ldyA9IElucHV0cy5yYW5nZShbMCwgMV0sIHtzdGVwOiAwLjAxLCB2YWx1ZTogMC43LCBsYWJlbDogdGV4YFxccGlfe1xcdGV4dHtuZXd9fWAsIHdpZHRoOiAyMDB9KVxudmlld29mIGRlbHRhID0gSW5wdXRzLnJhbmdlKFswLCAxXSwge3N0ZXA6IDAuMDEsIHZhbHVlOiAwLjEsIGxhYmVsOiB0ZXhgXFxkZWx0YWAsIHdpZHRoOiAyMDB9KVxuXG4vLyBDb21wdXRlIHByb2JhYmlsaXRpZXNcbnBvbGljeV9vbGQgPSBbXG4gIHtvdXRjb21lOiBcIjBcIiwgcHJvYmFiaWxpdHk6IDEgLSBwX29sZH0sXG4gIHtvdXRjb21lOiBcIjFcIiwgcHJvYmFiaWxpdHk6IHBfb2xkfVxuXVxuXG5wb2xpY3lfbmV3ID0gW1xuICB7b3V0Y29tZTogXCIwXCIsIHByb2JhYmlsaXR5OiAxIC0gcF9uZXd9LFxuICB7b3V0Y29tZTogXCIxXCIsIHByb2JhYmlsaXR5OiBwX25ld31cbl1cblxuLy8gS0wgRGl2ZXJnZW5jZSBEX0tMKM+AX25ldyB8fCDPgF9vbGQpXG5rbCA9IChwX25ldyA+IDAgJiYgcF9vbGQgPiAwICYmIHBfbmV3IDwgMSAmJiBwX29sZCA8IDEpXG4gID8gKHBfbmV3ICogTWF0aC5sb2cocF9uZXcvcF9vbGQpICsgKDEtcF9uZXcpICogTWF0aC5sb2coKDEtcF9uZXcpLygxLXBfb2xkKSkpXG4gIDogTmFOXG5cbi8vIENoZWNrIGlmIEtMIGlzIHdpdGhpbiBUUlBPIGJvdW5kXG53aXRoaW5fYm91bmQgPSAhaXNOYU4oa2wpICYmIGtsIDw9IGRlbHRhXG5cbi8vIFBsb3QgYm90aCBkaXN0cmlidXRpb25zXG5QbG90LnBsb3Qoe1xuICBzdHlsZTogXCJvdmVyZmxvdzogdmlzaWJsZTsgZGlzcGxheTogYmxvY2s7IG1hcmdpbjogMCBhdXRvO1wiLFxuICB3aWR0aDogNjAwLFxuICBoZWlnaHQ6IDQwMCxcbiAgeToge1xuICAgIGdyaWQ6IHRydWUsXG4gICAgbGFiZWw6IFwiUHJvYmFiaWxpdHlcIixcbiAgICBkb21haW46IFswLCAxXVxuICB9LFxuICB4OiB7XG4gICAgbGFiZWw6IFwiT3V0Y29tZVwiLFxuICAgIHBhZGRpbmc6IDAuMlxuICB9LFxuICBtYXJrczogW1xuICAgIFBsb3QuYmFyWShwb2xpY3lfb2xkLCB7eDogXCJvdXRjb21lXCIsIHk6IFwicHJvYmFiaWxpdHlcIiwgZmlsbDogXCJzdGVlbGJsdWVcIiwgb3BhY2l0eTogMC42fSksXG4gICAgUGxvdC5iYXJZKHBvbGljeV9uZXcsIHt4OiBcIm91dGNvbWVcIiwgeTogXCJwcm9iYWJpbGl0eVwiLCBmaWxsOiB3aXRoaW5fYm91bmQgPyBcIm9yYW5nZVwiIDogXCJyZWRcIiwgb3BhY2l0eTogMC42fSksXG4gICAgUGxvdC5ydWxlWShbMF0pXG4gIF1cbn0pXG5cbi8vIFNob3cgZm9ybXVsYSwgc3Vic3RpdHV0aW9uLCBudW1lcmljIHJlc3VsdCwgYW5kIHdoZXRoZXIgd2l0aGluIM60XG5odG1sYDxkaXYgc3R5bGU9XCJ0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi10b3A6IDFlbTtcIj5cbiAgJHt0ZXguYmxvY2tgRF97XFx0ZXh0e0tMfX0oXFxwaV97XFx0ZXh0e25ld319IFxcLHx8XFwsIFxccGlfe1xcdGV4dHtvbGR9fSkgXG4gICAgPSBcXHBpX3tcXHRleHR7bmV3fX0gXFxsb2cgXFxmcmFje1xccGlfe1xcdGV4dHtuZXd9fX17XFxwaV97XFx0ZXh0e29sZH19fSBcbiAgICArICgxLVxccGlfe1xcdGV4dHtuZXd9fSkgXFxsb2cgXFxmcmFjezEtXFxwaV97XFx0ZXh0e25ld319fXsxLVxccGlfe1xcdGV4dHtvbGR9fX1gfVxuICAke3RleC5ibG9ja2A9ICgke3BfbmV3LnRvRml4ZWQoMil9KSBcXGxvZyBcXGZyYWN7JHtwX25ldy50b0ZpeGVkKDIpfX17JHtwX29sZC50b0ZpeGVkKDIpfX0gXG4gICAgKyAoMS0ke3BfbmV3LnRvRml4ZWQoMil9KSBcXGxvZyBcXGZyYWN7JHsoMS1wX25ldykudG9GaXhlZCgyKX19eyR7KDEtcF9vbGQpLnRvRml4ZWQoMil9fWB9XG4gICR7dGV4LmJsb2NrYD0gJHtpc05hTihrbCkgPyBcIlxcXFx0ZXh0e3VuZGVmaW5lZH1cIiA6IGtsLnRvRml4ZWQoMyl9YH1cbiAgPHAgc3R5bGU9XCJjb2xvcjogJHt3aXRoaW5fYm91bmQgPyBcImdyZWVuXCIgOiBcInJlZFwifTtcIj5cbiAgICAke3dpdGhpbl9ib3VuZCA/IFwi4pyFIFdpdGhpbiB0cnVzdCByZWdpb24g4oCUIHVwZGF0ZSBhbGxvd2VkXCIgOiBcIuKdjCBFeGNlZWRzIHRydXN0IHJlZ2lvbiDigJQgdXBkYXRlIHJlamVjdGVkXCJ9XG4gIDwvcD5cbjwvZGl2PmBcblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwX29sZCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwX25ldycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdkZWx0YScpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gQ29udHJvbHMgZm9yIHR3byBzaW1wbGUgQmVybm91bGxpIHBvbGljaWVzIM+AX29sZCBhbmQgz4BfbmV3XG52aWV3b2YgcF9vbGQgPSBJbnB1dHMucmFuZ2UoWzAsIDFdLCB7c3RlcDogMC4wMSwgdmFsdWU6IDAuNSwgbGFiZWw6IHRleGBcXHBpX3tcXHRleHR7b2xkfX1gLCB3aWR0aDogMjAwfSlcbnZpZXdvZiBwX25ldyA9IElucHV0cy5yYW5nZShbMCwgMV0sIHtzdGVwOiAwLjAxLCB2YWx1ZTogMC43LCBsYWJlbDogdGV4YFxccGlfe1xcdGV4dHtuZXd9fWAsIHdpZHRoOiAyMDB9KVxudmlld29mIGRlbHRhID0gSW5wdXRzLnJhbmdlKFswLCAxXSwge3N0ZXA6IDAuMDEsIHZhbHVlOiAwLjEsIGxhYmVsOiB0ZXhgXFxkZWx0YWAsIHdpZHRoOiAyMDB9KVxuXG4vLyBDb21wdXRlIHByb2JhYmlsaXRpZXNcbnBvbGljeV9vbGQgPSBbXG4gIHtvdXRjb21lOiBcIjBcIiwgcHJvYmFiaWxpdHk6IDEgLSBwX29sZH0sXG4gIHtvdXRjb21lOiBcIjFcIiwgcHJvYmFiaWxpdHk6IHBfb2xkfVxuXVxuXG5wb2xpY3lfbmV3ID0gW1xuICB7b3V0Y29tZTogXCIwXCIsIHByb2JhYmlsaXR5OiAxIC0gcF9uZXd9LFxuICB7b3V0Y29tZTogXCIxXCIsIHByb2JhYmlsaXR5OiBwX25ld31cbl1cblxuLy8gS0wgRGl2ZXJnZW5jZSBEX0tMKM+AX25ldyB8fCDPgF9vbGQpXG5rbCA9IChwX25ldyA+IDAgJiYgcF9vbGQgPiAwICYmIHBfbmV3IDwgMSAmJiBwX29sZCA8IDEpXG4gID8gKHBfbmV3ICogTWF0aC5sb2cocF9uZXcvcF9vbGQpICsgKDEtcF9uZXcpICogTWF0aC5sb2coKDEtcF9uZXcpLygxLXBfb2xkKSkpXG4gIDogTmFOXG5cbi8vIENoZWNrIGlmIEtMIGlzIHdpdGhpbiBUUlBPIGJvdW5kXG53aXRoaW5fYm91bmQgPSAhaXNOYU4oa2wpICYmIGtsIDw9IGRlbHRhXG5cbi8vIFBsb3QgYm90aCBkaXN0cmlidXRpb25zXG5QbG90LnBsb3Qoe1xuICBzdHlsZTogXCJvdmVyZmxvdzogdmlzaWJsZTsgZGlzcGxheTogYmxvY2s7IG1hcmdpbjogMCBhdXRvO1wiLFxuICB3aWR0aDogNjAwLFxuICBoZWlnaHQ6IDQwMCxcbiAgeToge1xuICAgIGdyaWQ6IHRydWUsXG4gICAgbGFiZWw6IFwiUHJvYmFiaWxpdHlcIixcbiAgICBkb21haW46IFswLCAxXVxuICB9LFxuICB4OiB7XG4gICAgbGFiZWw6IFwiT3V0Y29tZVwiLFxuICAgIHBhZGRpbmc6IDAuMlxuICB9LFxuICBtYXJrczogW1xuICAgIFBsb3QuYmFyWShwb2xpY3lfb2xkLCB7eDogXCJvdXRjb21lXCIsIHk6IFwicHJvYmFiaWxpdHlcIiwgZmlsbDogXCJzdGVlbGJsdWVcIiwgb3BhY2l0eTogMC42fSksXG4gICAgUGxvdC5iYXJZKHBvbGljeV9uZXcsIHt4OiBcIm91dGNvbWVcIiwgeTogXCJwcm9iYWJpbGl0eVwiLCBmaWxsOiB3aXRoaW5fYm91bmQgPyBcIm9yYW5nZVwiIDogXCJyZWRcIiwgb3BhY2l0eTogMC42fSksXG4gICAgUGxvdC5ydWxlWShbMF0pXG4gIF1cbn0pXG5cbi8vIFNob3cgZm9ybXVsYSwgc3Vic3RpdHV0aW9uLCBudW1lcmljIHJlc3VsdCwgYW5kIHdoZXRoZXIgd2l0aGluIM60XG5odG1sYDxkaXYgc3R5bGU9XCJ0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi10b3A6IDFlbTtcIj5cbiAgJHt0ZXguYmxvY2tgRF97XFx0ZXh0e0tMfX0oXFxwaV97XFx0ZXh0e25ld319IFxcLHx8XFwsIFxccGlfe1xcdGV4dHtvbGR9fSkgXG4gICAgPSBcXHBpX3tcXHRleHR7bmV3fX0gXFxsb2cgXFxmcmFje1xccGlfe1xcdGV4dHtuZXd9fX17XFxwaV97XFx0ZXh0e29sZH19fSBcbiAgICArICgxLVxccGlfe1xcdGV4dHtuZXd9fSkgXFxsb2cgXFxmcmFjezEtXFxwaV97XFx0ZXh0e25ld319fXsxLVxccGlfe1xcdGV4dHtvbGR9fX1gfVxuICAke3RleC5ibG9ja2A9ICgke3BfbmV3LnRvRml4ZWQoMil9KSBcXGxvZyBcXGZyYWN7JHtwX25ldy50b0ZpeGVkKDIpfX17JHtwX29sZC50b0ZpeGVkKDIpfX0gXG4gICAgKyAoMS0ke3BfbmV3LnRvRml4ZWQoMil9KSBcXGxvZyBcXGZyYWN7JHsoMS1wX25ldykudG9GaXhlZCgyKX19eyR7KDEtcF9vbGQpLnRvRml4ZWQoMil9fWB9XG4gICR7dGV4LmJsb2NrYD0gJHtpc05hTihrbCkgPyBcIlxcXFx0ZXh0e3VuZGVmaW5lZH1cIiA6IGtsLnRvRml4ZWQoMyl9YH1cbiAgPHAgc3R5bGU9XCJjb2xvcjogJHt3aXRoaW5fYm91bmQgPyBcImdyZWVuXCIgOiBcInJlZFwifTtcIj5cbiAgICAke3dpdGhpbl9ib3VuZCA/IFwiV2l0aGluIHRydXN0IHJlZ2lvbiDigJQgdXBkYXRlIGFsbG93ZWRcIiA6IFwiRXhjZWVkcyB0cnVzdCByZWdpb24g4oCUIHVwZGF0ZSByZWplY3RlZFwifVxuICA8L3A+XG48L2Rpdj5gXG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncF9vbGQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncF9uZXcnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZGVsdGEnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

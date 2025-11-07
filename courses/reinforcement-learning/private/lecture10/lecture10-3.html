@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -933,44 +953,41 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- <div class="text-center">
-  ![](images/PPO.svg){width=75% fig-align="center"} <br>
-  OpenAI 2017 [@schulman2017proximal] <br>
-  [Link to Research Paper](https://arxiv.org/pdf/1707.06347)
-</div> 
-
---- 
-
-### PPO Clip: Surrogate Objective
-
-$$
+<div class="text-center">
+<p><img src="images/PPO.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> OpenAI 2017 <span class="citation" data-cites="schulman2017proximal">(<a href="../../references.html#ref-schulman2017proximal" role="doc-biblioref">Schulman et al. 2017</a>)</span> <br> <a href="https://arxiv.org/pdf/1707.06347">Link to Research Paper</a></p>
+</div>
+<hr>
+<section id="ppo-clip-surrogate-objective" class="level3">
+<h3 class="anchored" data-anchor-id="ppo-clip-surrogate-objective">PPO Clip: Surrogate Objective</h3>
+<p><span class="math display">\[
 L^{\text{CLIP}}(\pi_{\theta_{t+1}}) = \mathbb{E} \left[ \min \left( \frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)} \hat{A}_t, \text{clip}\left(\frac{\pi_{\theta_{t+1}}(a|s)}{\pi_{\theta_{t}}(a|s)}, 1-\epsilon, 1+\epsilon\right) \hat{A}_t \right) \right]
-$$
-
----
-
-### Illustration: PPO
-
-![](images/PPOClip.png){width=100%}
-
----
-
-### Pseudocode
-
-::: {.center style="text-align:center;"}
-![](images/10-1.svg){width=75%}
-:::
-
+\]</span></p>
+<hr>
+</section>
+<section id="illustration-ppo" class="level3">
+<h3 class="anchored" data-anchor-id="illustration-ppo">Illustration: PPO</h3>
+<p><img src="images/PPOClip.png" class="img-fluid" style="width:100.0%"></p>
+<hr>
+</section>
+<section id="pseudocode" class="level3">
+<h3 class="anchored" data-anchor-id="pseudocode">Pseudocode</h3>
+<div class="center" style="text-align:center;">
+<p><img src="images/10-1.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
 <div style="text-align: center;">
-  <a href="https://github.com/">
-    <img src="images/github.svg" alt="GitHub" width="5%"/> 
-  </a>
-</div> -->
+<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</section>
 </div>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-schulman2017proximal" class="csl-entry" role="listitem">
+Schulman, John, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov. 2017. <span>“Proximal Policy Optimization Algorithms.”</span> <em>arXiv Preprint arXiv:1707.06347</em>. <a href="https://arxiv.org/abs/1707.06347">https://arxiv.org/abs/1707.06347</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
