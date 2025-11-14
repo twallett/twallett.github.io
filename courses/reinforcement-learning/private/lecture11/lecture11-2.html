@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -40,7 +60,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-40a068987ec753b21c9a1f7bcf34aa0a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -838,110 +858,94 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- <div class="text-center">
-  ![](images/monte-carlo-tree-search.svg){width=75% fig-align="center"} <br>
-  Université Charles de Gaulle 2006 [@coulom2006efficient] <br>
-  [Link to Research Paper](https://inria.hal.science/inria-00116992/document)
+<div class="text-center">
+<p><img src="images/monte-carlo-tree-search.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:75.0%"> <br> Université Charles de Gaulle 2006 <span class="citation" data-cites="coulom2006efficient">(<a href="../../references.html#ref-coulom2006efficient" role="doc-biblioref">Coulom 2006</a>)</span> <br> <a href="https://inria.hal.science/inria-00116992/document">Link to Research Paper</a></p>
 </div>
-
----
-
-### MCTS Step 1: Selection
-
-::: {.columns style="text-align:center;"}
-
-::: {.column}
-![MCTS Selecting](images/MCTSSelecting.svg){width=50%}
-:::
-
-::: {.column}
-Similar to UCB bandit problems, we select actions according to a confidence interval that balances exploration and exploitation, with the formula:
-
-$$
+<hr>
+<section id="mcts-step-1-selection" class="level3">
+<h3 class="anchored" data-anchor-id="mcts-step-1-selection">MCTS Step 1: Selection</h3>
+<div class="columns" style="text-align:center;">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MCTSSelecting.svg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>MCTS Selecting</figcaption>
+</figure>
+</div>
+</div><div class="column">
+<p>Similar to UCB bandit problems, we select actions according to a confidence interval that balances exploration and exploitation, with the formula:</p>
+<p><span class="math display">\[
 A_t = \arg\max_a \left[ Q(s,a) + C \sqrt{\frac{\ln(N(s)_{\text{parent}})}{N(s)}} \right]
-$$
-
-:::
-
-:::
-
----
-
-### MCTS Step 2: Expansion
-
-::: {.columns style="text-align:center;"}
-
-::: {.column}
-![MCTS Expanding](images/MCTSExpanding.svg){width=50%}
-:::
-
-::: {.column}
-After selecting an action $A_t$, if the corresponding child node does not exist, we expand the search tree by creating a new node for the resulting state $S^{A_t}_{t+1}$.
-:::
-
-:::
-
----
-
-### MCTS Step 3: Simulation
-
-::: {.columns style="text-align:center;"}
-
-::: {.column}
-![MCTS Simulating](images/MCTSSimulating.svg){width=50%}
-:::
-
-::: {.column}
-From the expanded node, we simulate *n*-times acting randomly and calculate the average rewards for all simulations:
-
-$$
+\]</span></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="mcts-step-2-expansion" class="level3">
+<h3 class="anchored" data-anchor-id="mcts-step-2-expansion">MCTS Step 2: Expansion</h3>
+<div class="columns" style="text-align:center;">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MCTSExpanding.svg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>MCTS Expanding</figcaption>
+</figure>
+</div>
+</div><div class="column">
+<p>After selecting an action <span class="math inline">\(A_t\)</span>, if the corresponding child node does not exist, we expand the search tree by creating a new node for the resulting state <span class="math inline">\(S^{A_t}_{t+1}\)</span>.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="mcts-step-3-simulation" class="level3">
+<h3 class="anchored" data-anchor-id="mcts-step-3-simulation">MCTS Step 3: Simulation</h3>
+<div class="columns" style="text-align:center;">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MCTSSimulating.svg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>MCTS Simulating</figcaption>
+</figure>
+</div>
+</div><div class="column">
+<p>From the expanded node, we simulate <em>n</em>-times acting randomly and calculate the average rewards for all simulations:</p>
+<p><span class="math display">\[
 \bar{R} = \frac{1}{n} \sum_{j=1}^{n} R_j
-$$
-
-:::
-
-:::
-
----
-
-### MCTS Step 4: Backpropagation
-
-::: {.columns style="text-align:center;"}
-
-::: {.column}
-![MCTS Backpropagating](images/MCTSUpdating.svg){width=50%}
-:::
-
-::: {.column}
-After obtaining the average rewards, we update the values from the current node up to the root node:
-
-$$
+\]</span></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="mcts-step-4-backpropagation" class="level3">
+<h3 class="anchored" data-anchor-id="mcts-step-4-backpropagation">MCTS Step 4: Backpropagation</h3>
+<div class="columns" style="text-align:center;">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/MCTSUpdating.svg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>MCTS Backpropagating</figcaption>
+</figure>
+</div>
+</div><div class="column">
+<p>After obtaining the average rewards, we update the values from the current node up to the root node:</p>
+<p><span class="math display">\[
 N(s) = N(s) + 1
-$$  
-
-$$
+\]</span></p>
+<p><span class="math display">\[
 Q(s,a) = Q(s,a) + \frac{\bar{R}}{N(s)}
-$$
-
-:::
-
-:::
-
----
-
-![](images/MCTS.svg){width=90%}
-
----
-
-::: {.center style="text-align:center;"}
-![](images/11-1.svg){width=75%}
-:::
-
+\]</span></p>
+</div>
+</div>
+<hr>
+<p><img src="images/MCTS.svg" class="img-fluid" style="width:90.0%"></p>
+<hr>
+<div class="center" style="text-align:center;">
+<p><img src="images/11-1.svg" class="img-fluid" style="width:75.0%"></p>
+</div>
 <div style="text-align: center;">
-  <a href="https://github.com/">
-    <img src="images/github.svg" alt="GitHub" width="5%"/> 
-  </a>
-</div> -->
+<p><a href="https://github.com/"> <img src="images/github.svg" alt="GitHub" width="5%"> </a></p>
+</div>
+</section>
 </div>
 </div>
 </div>
@@ -1063,6 +1067,11 @@ Orange line indicates best result of AlphaZero (AlphaGo trained purely on self-p
 ![](images/MuzeroResults.png){width=80%} -->
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-coulom2006efficient" class="csl-entry" role="listitem">
+Coulom, Rémi. 2006. <span>“Efficient Selectivity and Backup Operators in Monte-Carlo Tree Search.”</span> In <em>Computers and Games (CG 2006)</em>, edited by H. Jaap van den Herik, Paolo Ciancarini, and Hiroyuki Iida, 4630:72–83. Lecture Notes in Computer Science. Springer. <a href="https://doi.org/10.1007/978-3-540-75538-8_7">https://doi.org/10.1007/978-3-540-75538-8_7</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
