@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12.1 Advanced Topics in Reinforcement Learning</title>
+<title>12.1 Advanced Topics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,7 +122,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">12.1 Advanced Topics in Reinforcement Learning</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">12.1 Advanced Topics</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -552,17 +552,17 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">12.1 Advanced Topics in Reinforcement Learning</span></a>
+  <a href="../../private/lecture12/lecture12-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">12.1 Advanced Topics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></a>
+  <a href="../../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 Identify the Application</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 Outlook of Reinforcement Learning</span></a>
+  <a href="../../private/lecture12/lecture12-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 Outlook</span></a>
   </div>
 </li>
       </ul>
@@ -740,7 +740,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">12.1 Advanced Topics in Reinforcement Learning</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">12.1 Advanced Topics</span></h1>
 </div>
 
 
@@ -767,50 +767,50 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="imitation-learning" class="level2">
-<h2 class="anchored" data-anchor-id="imitation-learning">Imitation Learning</h2>
-<p>Learn a policy <span class="math inline">\(\pi(a|s)\)</span> by mimicking an expert’s demonstrations, <span class="math inline">\((s, a)\)</span>, without requiring explicit reward signals.</p>
+<section id="imitation-learning" class="level3">
+<h3 class="anchored" data-anchor-id="imitation-learning">Imitation Learning</h3>
+<p>Learn a policy <span class="math inline">\(\pi(a|s)\)</span> by mimicking an expert’s demonstrations <span class="math inline">\((s, a)\)</span> without requiring explicit reward signals.</p>
 <div class="text-center">
 <p><img src="images/ImitationLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Autonomous Driving <br> <a href="https://arxiv.org/pdf/2212.11419">Link to Research Paper</a></p>
 </div>
 </section>
-<section id="inverse-reinforcement-learning" class="level2">
-<h2 class="anchored" data-anchor-id="inverse-reinforcement-learning">Inverse Reinforcement Learning</h2>
-<p>Infer the reward function <span class="math inline">\(R(s, a)\)</span> given expert trajectories to derive an optimal policy, <span class="math inline">\(\pi^*\)</span>.</p>
+<section id="inverse-reinforcement-learning" class="level3">
+<h3 class="anchored" data-anchor-id="inverse-reinforcement-learning">Inverse Reinforcement Learning</h3>
+<p>Infer the reward function <span class="math inline">\(R_{\theta}(s, a)\)</span> given expert trajectories to derive an optimal policy <span class="math inline">\(\pi^*\)</span>.</p>
 <div class="text-center">
 <p><img src="images/InverseReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Predicting Driver Behavior and Route Recommendation <br> <a href="https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf">Link to Research Paper</a></p>
 </div>
 </section>
-<section id="offline-reinforcement-learning" class="level2">
-<h2 class="anchored" data-anchor-id="offline-reinforcement-learning">Offline Reinforcement Learning</h2>
+<section id="offline-reinforcement-learning" class="level3">
+<h3 class="anchored" data-anchor-id="offline-reinforcement-learning">Offline Reinforcement Learning</h3>
 <p>Learn a policy <span class="math inline">\(\pi(a|s)\)</span> from a fixed dataset <span class="math inline">\(D = \{(s, a, r, s')\}\)</span> without further environment interaction.</p>
 <div class="text-center">
 <p><img src="images/OfflineReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Robotic Manipulation <br> <a href="https://arxiv.org/pdf/2109.10813">Link to Research Paper</a></p>
 </div>
 </section>
-<section id="multi-agent-reinforcement-learning" class="level2">
-<h2 class="anchored" data-anchor-id="multi-agent-reinforcement-learning">Multi-Agent Reinforcement Learning</h2>
+<section id="multi-agent-reinforcement-learning" class="level3">
+<h3 class="anchored" data-anchor-id="multi-agent-reinforcement-learning">Multi-Agent Reinforcement Learning</h3>
 <p>Optimize multiple agents’ policies <span class="math inline">\(\pi_i(a|s)\)</span> interacting in a shared environment, considering cooperation or competition.</p>
 <div class="text-center">
 <p><img src="images/MultiAgentReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Strategic Game-play in Dota2 <br> <a href="https://arxiv.org/pdf/1912.06680">Link to Research Paper</a></p>
 </div>
 </section>
-<section id="hierarchical-reinforcement-learning" class="level2">
-<h2 class="anchored" data-anchor-id="hierarchical-reinforcement-learning">Hierarchical Reinforcement Learning</h2>
-<p>Decompose tasks into a hierarchy of policies, <span class="math inline">\(\pi_\text{high}(g|s)\)</span> for goals and <span class="math inline">\(\pi_\text{low}(a|s, g)\)</span> for actions.</p>
+<section id="hierarchical-reinforcement-learning" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-reinforcement-learning">Hierarchical Reinforcement Learning</h3>
+<p>Decompose tasks into a hierarchy of policies <span class="math inline">\(\pi_\text{high}(g|s)\)</span> for goals and <span class="math inline">\(\pi_\text{low}(a|s, g)\)</span> for actions.</p>
 <div class="text-center">
 <p><img src="images/HierarchicalReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: MuJoCo Ant Maze Path Finding <br> <a href="https://arxiv.org/pdf/1710.09767">Link to Research Paper</a></p>
 </div>
 </section>
-<section id="multi-objective-reinforcement-learning" class="level2">
-<h2 class="anchored" data-anchor-id="multi-objective-reinforcement-learning">Multi-Objective Reinforcement Learning</h2>
-<p>Optimize a policy <span class="math inline">\(\pi(a|s)\)</span> under multiple conflicting objectives, <span class="math inline">\(\{R_1, R_2, \dots\}\)</span></p>
+<section id="multi-objective-reinforcement-learning" class="level3">
+<h3 class="anchored" data-anchor-id="multi-objective-reinforcement-learning">Multi-Objective Reinforcement Learning</h3>
+<p>Optimize a policy <span class="math inline">\(\pi(a|s)\)</span> under multiple conflicting objectives, <span class="math inline">\(\mathcal{R} = \{R_1, R_2, \dots, R_n\}\)</span></p>
 <div class="text-center">
 <p><img src="images/MultiObjectiveReinforcementLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Resource Allocation <br> <a href="https://dl.acm.org/doi/10.1145/1390156.1390162">Link to Research Paper</a></p>
 </div>
 </section>
-<section id="meta-learning" class="level2">
-<h2 class="anchored" data-anchor-id="meta-learning">Meta Learning</h2>
+<section id="meta-learning" class="level3">
+<h3 class="anchored" data-anchor-id="meta-learning">Meta Learning</h3>
 <p>Train agents to quickly adapt to new tasks <span class="math inline">\(\mathcal{T}\)</span> by optimizing over task distributions <span class="math inline">\(p(\mathcal{T})\)</span>.</p>
 <div class="text-center">
 <p><img src="images/MetaLearning.png" class="img-fluid" style="width:50.0%"> <br> Application: Few Shot Learning <br> <a href="https://arxiv.org/pdf/1703.03400">Link to Research Paper</a></p>
@@ -1227,8 +1227,8 @@ window.Quarto = {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../private/lecture12/lecture12-2.html" class="pagination-link" aria-label="12.2 Identify the Reinforcement Learning Application">
-        <span class="nav-page-text"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../private/lecture12/lecture12-2.html" class="pagination-link" aria-label="12.2 Identify the Application">
+        <span class="nav-page-text"><span class="chapter-title">12.2 Identify the Application</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

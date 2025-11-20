@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12.3 Outlook of Reinforcement Learning</title>
+<title>12.3 Outlook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -92,7 +92,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">12.3 Outlook of Reinforcement Learning</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">12.3 Outlook</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -522,17 +522,17 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Advanced Topics in Reinforcement Learning</span></a>
+  <a href="../../private/lecture12/lecture12-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Advanced Topics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></a>
+  <a href="../../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 Identify the Application</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">12.3 Outlook of Reinforcement Learning</span></a>
+  <a href="../../private/lecture12/lecture12-3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">12.3 Outlook</span></a>
   </div>
 </li>
       </ul>
@@ -698,7 +698,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">12.3 Outlook of Reinforcement Learning</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">12.3 Outlook</span></h1>
 </div>
 
 
@@ -731,27 +731,119 @@ If the past was trial and error, what might the future of learning look like? âœ
 
 ## Challenges in Reinforcement Learning
 
-- **Balancing Exploration vs Exploitation**
+Reinforcement Learning, although a very powerful paradigm, faces several challenges that hinder its widespread application. These challenges can be broadly categorized into algorithmic, framework assumption, and adaptation challenges.
 
-- **Sample Efficiency**
+### Algorithmic Challenges
 
-- **Sparse Rewards**
+- **Stability -** _does the algorithm converge?_
 
-- **Converging to optimal policies**
+- **Sample Efficiency -** _how long does it take for the algorithm to converge?_
+
+- **Generalization -** _after the algorithm converges, does it generalize?_
+
+<div class="text-center">
+  ![](images/unstable.png){width=45%}
+</div>
+
+### Framework Assumption Challanges
+
+- **RL Framework -** _Should the Reinforcement Learning framework leverage a Markov Decision Process (MDP)? Is there a better framework to model our decision making apart from Markov frameworks?_
+
+- **Reward Function Design -** _Is it even possible to incorporate instructive feedback, or approximate ground truth, to our RL framework?_
+
+<div class="text-center">
+  ![](images/MDP.png){width=75%} <br>
+  MDP
+</div>
+
+### Adaptation Challanges
+
+RL models are notorius for requiring large amounts of ($S$,$A$,$R$) experience samples, as seen in previous lectures, whether to approximate action value functions or improve policy gradients. Once these experience samples have been However, there is one huge fundamental problem:
+
+If it takes a long time to sample experience from our environment, and following a longer time to train the model for multiple episodes on these experienced samples. **_We are significantly limited in our ability to simulate realistic environments and moreover train real time adaptive policies on those environments_**.
 
 ## Artificial General Intelligence (AGI)
 
-- **Definition:** AGI is AI capable of learning and applying intelligence across a wide range of tasks, similar to human cognition.
+AGI is Artificial Intelligence capable of learning and applying intelligence across a wide range of tasks $\mathcal{T}$, similar to human cognition. This is very similar to the robots or any intelligent system that you see in the movies.
 
-- **Role of RL in AGI:** RL enables autonomous learning and decision-making, key for AGI's adaptability and problem-solving.
+<div class="text-center">
+  ![](images/robot.jpg){width=75%} <br>
+  Film: _I, Robot_
+</div>
 
-- **Current Progress:** Significant advancements in deep RL and multi-agent systems, though AGI remains a long-term goal.
+RL enables autonomous learning and sequential decision-making, which is key for AGI's adaptability and problem-solving. The problem is that it does not generalize well to multiple tasks.
 
-- **Potential Impact:** AGI could revolutionize industries, solve global challenges, and transform work and society.
+### AGI Tests
 
-## [Sutton & Barto Turing Award (March 5, 2025)](https://www.nytimes.com/2025/03/05/technology/turing-award-andrew-barto-richard-sutton.html)
+- **Turing Test** (Proposed by Alan Turing)
+  
+If a human judge engaging in natural language conversations with both a human and a machine designed to generate human-like responses.
 
-## Deep Seek: Group Relative Policy Optimization (GRPO) [Deep Seek](https://www.bbc.com/news/articles/c5yv5976z9po) -->
+Evidence for Turing test: [ELIZA](https://en.wikipedia.org/wiki/ELIZA) & GPT.
+
+- **The Robot College Student Test** (Proposed by Ben Goertzel)
+
+If a machine enrolls in a university, taking and passing the same classes that humans would, and obtaining a degree.
+
+Evidence for Goertzel test: [CFA Level I Test Passed by GPT-4](https://arxiv.org/pdf/2310.08678)
+
+- **The Employment Test** (Proposed by Nils John Nilsson)
+
+If a machine performs an economically important job at least as well as humans in the same job. 
+
+Evidence for Nils test: [Stanford AI Index](https://hai.stanford.edu/news/ai-index-state-ai-13-charts)
+
+- **The Coffee Test** (Proposed by Steve Wozniak)
+
+If a machine is required to enter an average American home and figure out how to make coffee: find the coffee machine, find the coffee, add water, find a mug, and brew the coffee by pushing the proper buttons. 
+
+Evidence for Wozniak test: Physical Intelligence Company (see below).
+
+- **The Modern Turing Test** (Proposed by Suleyman)
+
+If a AI model is given $\$100,000$ and has to obtain $\$1$ million.
+
+Evidence for Suleyman test: not me ðŸ˜¢ðŸ¥€
+
+### Potential Societal Impact of AGI
+
+Is AGI something we truly desire? What are the [Pros and Cons](https://en.wikipedia.org/wiki/Artificial_general_intelligence#). 
+
+### Yann LeCun's Cake
+
+<div class="text-center">
+  ![](images/cake.png){width=75%} <br>
+  Yann LeCun's Cake
+</div>
+
+## RL is Gaining Academic Momentum
+
+### RL Wins the Turing Award 
+
+
+### [Richard Sutton & Andrew Barto - 2024 Turing Award](https://amturing.acm.org/)
+
+Pioneers of Reinforcement Learning and Authors of the course book _Reinforcement Learning: An Introduction_ 
+
+### Huge Contributers to the Field
+
+### [David Silver](https://scholar.google.com/citations?user=-8DNE4UAAAAJ&hl=en)
+
+Contributed to the advancement of RL with: _Alpha Fold_, _Alpha Go_, _MuZero_, _Deep Q-Networks (DQN)_, _Deep Deterministic Policy Gradient (DDPG)_ and more.
+
+### [Sergey Levine](https://scholar.google.com/citations?user=8R35rCwAAAAJ&hl=en)
+
+Contributed to the advancement of RL with: _Trust Region Policy Optimization (TRPO)_, _Soft Actor Critic (SAC)_, _Generalized Advantage Estimation (GAE)_,  and more.
+
+## RL is Gaining Industry Momentum
+
+### [Physical Intelligence Company ($\pi$)](https://www.physicalintelligence.company/)
+
+The Physical Intelligence group is dedicated to achieving AGI by acheiving a policy $\pi$ that is able to generalize across multiple tasks. 
+
+### [Deep Seek](https://arxiv.org/pdf/2501.12948)
+
+Deep Seek introduced a novel reinforcement learning algorithm called Group Relative Policy Optimization (GRPO), which aims to improve policy optimization by leveraging group-based relative advantages. -->
 
 
 
@@ -1158,8 +1250,8 @@ If the past was trial and error, what might the future of learning look like? âœ
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../private/lecture12/lecture12-2.html" class="pagination-link" aria-label="12.2 Identify the Reinforcement Learning Application">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></span>
+      <a href="../../private/lecture12/lecture12-2.html" class="pagination-link" aria-label="12.2 Identify the Application">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">12.2 Identify the Application</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

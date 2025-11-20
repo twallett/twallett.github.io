@@ -1403,7 +1403,7 @@
     "href": "private/lecture12/lo.html",
     "title": "Learning Objectives",
     "section": "",
-    "text": "Learning Objectives for Lecture 12: Conclusion 🎯\n\n\n\n\nAdvanced Topics in Reinforcement Learning\nIdentify the Reinforcement Learning Application.\nOutlook of Reinforcement Learning.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
+    "text": "Learning Objectives for Lecture 12: Conclusion 🎯\n\n\n\n\nAdvanced Topics.\nIdentify the Application.\nOutlook.\n\n\n\n\n\nTaxonomy of Reinforcement Learning",
     "crumbs": [
       "Lecture 12: Conclusion",
       "<span class='chapter-number'>54</span>  <span class='chapter-title'>Learning Objectives</span>"
@@ -1412,166 +1412,34 @@
   {
     "objectID": "private/lecture12/lecture12-1.html",
     "href": "private/lecture12/lecture12-1.html",
-    "title": "12.1 Advanced Topics in Reinforcement Learning",
+    "title": "12.1 Advanced Topics",
     "section": "",
-    "text": "Imitation Learning\nLearn a policy \\(\\pi(a|s)\\) by mimicking an expert’s demonstrations, \\((s, a)\\), without requiring explicit reward signals.",
+    "text": "What happens when the rules you’ve learned no longer cover the challenges ahead? 🌍\n\n\n\n\nImitation Learning\nLearn a policy \\(\\pi(a|s)\\) by mimicking an expert’s demonstrations \\((s, a)\\) without requiring explicit reward signals.\n\n  Application: Autonomous Driving  Link to Research Paper\n\n\n\nInverse Reinforcement Learning\nInfer the reward function \\(R_{\\theta}(s, a)\\) given expert trajectories to derive an optimal policy \\(\\pi^*\\).\n\n  Application: Predicting Driver Behavior and Route Recommendation  Link to Research Paper\n\n\n\nOffline Reinforcement Learning\nLearn a policy \\(\\pi(a|s)\\) from a fixed dataset \\(D = \\{(s, a, r, s')\\}\\) without further environment interaction.\n\n  Application: Robotic Manipulation  Link to Research Paper\n\n\n\nMulti-Agent Reinforcement Learning\nOptimize multiple agents’ policies \\(\\pi_i(a|s)\\) interacting in a shared environment, considering cooperation or competition.\n\n  Application: Strategic Game-play in Dota2  Link to Research Paper\n\n\n\nHierarchical Reinforcement Learning\nDecompose tasks into a hierarchy of policies \\(\\pi_\\text{high}(g|s)\\) for goals and \\(\\pi_\\text{low}(a|s, g)\\) for actions.\n\n  Application: MuJoCo Ant Maze Path Finding  Link to Research Paper\n\n\n\nMulti-Objective Reinforcement Learning\nOptimize a policy \\(\\pi(a|s)\\) under multiple conflicting objectives, \\(\\mathcal{R} = \\{R_1, R_2, \\dots, R_n\\}\\)\n\n  Application: Resource Allocation  Link to Research Paper\n\n\n\nMeta Learning\nTrain agents to quickly adapt to new tasks \\(\\mathcal{T}\\) by optimizing over task distributions \\(p(\\mathcal{T})\\).\n\n  Application: Few Shot Learning  Link to Research Paper",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-1.html#imitation-learning",
-    "href": "private/lecture12/lecture12-1.html#imitation-learning",
-    "title": "12.1 Advanced Topics in Reinforcement Learning",
-    "section": "",
-    "text": "Application: Autonomous Driving  Link to Research Paper",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-1.html#inverse-reinforcement-learning",
-    "href": "private/lecture12/lecture12-1.html#inverse-reinforcement-learning",
-    "title": "12.1 Advanced Topics in Reinforcement Learning",
-    "section": "Inverse Reinforcement Learning",
-    "text": "Inverse Reinforcement Learning\nInfer the reward function \\(R(s, a)\\) given expert trajectories to derive an optimal policy, \\(\\pi^*\\).\n\n  Application: Predicting Driver Behavior and Route Recommendation  Link to Research Paper",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-1.html#offline-reinforcement-learning",
-    "href": "private/lecture12/lecture12-1.html#offline-reinforcement-learning",
-    "title": "12.1 Advanced Topics in Reinforcement Learning",
-    "section": "Offline Reinforcement Learning",
-    "text": "Offline Reinforcement Learning\nLearn a policy \\(\\pi(a|s)\\) from a fixed dataset \\(D = \\{(s, a, r, s')\\}\\) without further environment interaction.\n\n  Application: Robotic Manipulation  Link to Research Paper",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-1.html#multi-agent-reinforcement-learning",
-    "href": "private/lecture12/lecture12-1.html#multi-agent-reinforcement-learning",
-    "title": "12.1 Advanced Topics in Reinforcement Learning",
-    "section": "Multi-Agent Reinforcement Learning",
-    "text": "Multi-Agent Reinforcement Learning\nOptimize multiple agents’ policies \\(\\pi_i(a|s)\\) interacting in a shared environment, considering cooperation or competition.\n\n  Application: Strategic Game-play in Dota2  Link to Research Paper",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-1.html#hierarchical-reinforcement-learning",
-    "href": "private/lecture12/lecture12-1.html#hierarchical-reinforcement-learning",
-    "title": "12.1 Advanced Topics in Reinforcement Learning",
-    "section": "Hierarchical Reinforcement Learning",
-    "text": "Hierarchical Reinforcement Learning\nDecompose tasks into a hierarchy of policies, \\(\\pi_\\text{high}(g|s)\\) for goals and \\(\\pi_\\text{low}(a|s, g)\\) for actions.\n\n  Application: MuJoCo Ant Maze Path Finding  Link to Research Paper",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-1.html#multi-objective-reinforcement-learning",
-    "href": "private/lecture12/lecture12-1.html#multi-objective-reinforcement-learning",
-    "title": "12.1 Advanced Topics in Reinforcement Learning",
-    "section": "Multi-Objective Reinforcement Learning",
-    "text": "Multi-Objective Reinforcement Learning\nOptimize a policy \\(\\pi(a|s)\\) under multiple conflicting objectives, \\(\\{R_1, R_2, \\dots\\}\\)\n\n  Application: Resource Allocation  Link to Research Paper",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-1.html#meta-learning",
-    "href": "private/lecture12/lecture12-1.html#meta-learning",
-    "title": "12.1 Advanced Topics in Reinforcement Learning",
-    "section": "Meta Learning",
-    "text": "Meta Learning\nTrain agents to quickly adapt to new tasks \\(\\mathcal{T}\\) by optimizing over task distributions \\(p(\\mathcal{T})\\).\n\n  Application: Few Shot Learning  Link to Research Paper",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.1 Advanced Topics in Reinforcement Learning</span>"
+      "<span class='chapter-number'>55</span>  <span class='chapter-title'>12.1 Advanced Topics</span>"
     ]
   },
   {
     "objectID": "private/lecture12/lecture12-2.html",
     "href": "private/lecture12/lecture12-2.html",
-    "title": "12.2 Identify the Reinforcement Learning Application",
+    "title": "12.2 Identify the Application",
     "section": "",
-    "text": "Task 1: Email Spam Detection",
+    "text": "Can you spot where hidden decision-making is shaping the world around you? 🔍\n\n\n\n\n\n\n\n\n\nNoteInstructions\n\n\n\nFor each scenario presented, determine whether it can be approached using:\n\nSupervised Learning\n\nUnsupervised Learning\n\nMulti-Armed Bandit\n\nClassical Reinforcement Learning\n\nDeep Reinforcement Learning\n\n\n\n\n\nScenario 1: Product Promotion\nYou’re given multiple promotional offers (‘10% off’, ‘free shipping’, ‘buy-one-get-one-free’). Each time a customer logs in to the company’s web app, you must select a promotion to maximize customer conversion (revenue).\n\n\n\n\n\n\n\n\n\nTipAnswer\n\n\n\n\n\n\n\n\n\n\n\nScenario 2: Inventory Management\nYou’re managing a warehouse and must decide daily restocking quantities for multiple products. Each decision affects future inventory levels, stockouts, and holding costs. The goal is to minimize total cost over time while meeting demand.\n\n\n\n\n\n\n\n\n\nTipAnswer\n\n\n\n\n\n\n\n\n\n\n\nScenario 3: Product Association Discovery\nYou’re given historical transaction data showing which products customers buy together. The company wants to discover natural associations. For example, items that frequently co-occur in the same basket.\n\n\n\n\n\n\n\n\n\nTipAnswer\n\n\n\n\n\n\n\n\n\n\n\nScenario 4: Key Performance Indicator (KPI) Estimation\nYou’re given the company’s historical data (sales, marketing spend, customer activity, etc.) with a critical KPI value (customer retation rate). The company wants you to estimate the KPI for the next quarter.\n\n\n\n\n\n\n\n\n\nTipAnswer\n\n\n\n\n\n\n\n\n\n\n\nScenario 5: High Engagement Layout\nYou’re given multiple layouts to display to a customer. As the customer logs in to the company’s web app, you must choose the layout that maximizes engagement (time spent).\n\n\n\n\n\n\n\n\n\nTipAnswer\n\n\n\n\n\n\n\n\n\n\n\nScenario 6: Customer Segmentation\nYou’re given data regarding customers demographics (age, gender, ethnicity, education level, income, etc.), and are asked to segment the profile of each customer into \\(k\\) segments.\n\n\n\n\n\n\n\n\n\nTipAnswer\n\n\n\n\n\n\n\n\n\n\n\nScenario 7: Sensor Data for Quality Checks\nThe company uses robotic arms on the production line to inspect products. Robots receive high-dimensional sensor data (images, temperature, vibration). They must decide whether to adjust, continue inspection, accept, or reject a product to maintain quality standards.\n\n\n\n\n\n\n\n\n\nTipAnswer\n\n\n\n\n\n\n\n\n\n\n\nScenario 8: Product Recommendation\nA company wants to recommend products to users based on past behavior (browsing history, past purchases, real-time interactions). The goal is to maximize conversions (revenue).\n\n\n\n\n\n\n\n\n\nTipAnswer",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-2.html#task-1-email-spam-detection",
-    "href": "private/lecture12/lecture12-2.html#task-1-email-spam-detection",
-    "title": "12.2 Identify the Reinforcement Learning Application",
-    "section": "",
-    "text": "TipAnswer",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-2.html#task-2-customer-segmentation-for-a-retail-store",
-    "href": "private/lecture12/lecture12-2.html#task-2-customer-segmentation-for-a-retail-store",
-    "title": "12.2 Identify the Reinforcement Learning Application",
-    "section": "Task 2: Customer Segmentation for a Retail Store",
-    "text": "Task 2: Customer Segmentation for a Retail Store\n\n\n\n\n\n\n\nTipAnswer",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-2.html#task-3-online-ad-optimization",
-    "href": "private/lecture12/lecture12-2.html#task-3-online-ad-optimization",
-    "title": "12.2 Identify the Reinforcement Learning Application",
-    "section": "Task 3: Online Ad Optimization",
-    "text": "Task 3: Online Ad Optimization\n\n\n\n\n\n\n\nTipAnswer",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-2.html#task-4-warehouse-robot-path-finding",
-    "href": "private/lecture12/lecture12-2.html#task-4-warehouse-robot-path-finding",
-    "title": "12.2 Identify the Reinforcement Learning Application",
-    "section": "Task 4: Warehouse Robot Path-finding",
-    "text": "Task 4: Warehouse Robot Path-finding\n\n\n\n\n\n\n\nTipAnswer",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
-    ]
-  },
-  {
-    "objectID": "private/lecture12/lecture12-2.html#task-5-fine-tuning-llms-with-human-feedback",
-    "href": "private/lecture12/lecture12-2.html#task-5-fine-tuning-llms-with-human-feedback",
-    "title": "12.2 Identify the Reinforcement Learning Application",
-    "section": "Task 5: Fine-tuning LLMs with Human Feedback",
-    "text": "Task 5: Fine-tuning LLMs with Human Feedback\n\n\n\n\n\n\n\nTipAnswer",
-    "crumbs": [
-      "Lecture 12: Conclusion",
-      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.2 Identify the Reinforcement Learning Application</span>"
+      "<span class='chapter-number'>56</span>  <span class='chapter-title'>12.2 Identify the Application</span>"
     ]
   },
   {
     "objectID": "private/lecture12/lecture12-3.html",
     "href": "private/lecture12/lecture12-3.html",
-    "title": "12.3 Outlook of Reinforcement Learning",
+    "title": "12.3 Outlook",
     "section": "",
     "text": "🔒 Outlook of Reinforcement Learning",
     "crumbs": [
       "Lecture 12: Conclusion",
-      "<span class='chapter-number'>57</span>  <span class='chapter-title'>12.3 Outlook of Reinforcement Learning</span>"
+      "<span class='chapter-number'>57</span>  <span class='chapter-title'>12.3 Outlook</span>"
     ]
   },
   {

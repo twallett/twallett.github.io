@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12.2 Identify the Reinforcement Learning Application</title>
+<title>12.2 Identify the Application</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,6 +81,35 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -93,7 +122,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">12.2 Identify the Application</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -523,17 +552,17 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Advanced Topics in Reinforcement Learning</span></a>
+  <a href="../../private/lecture12/lecture12-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 Advanced Topics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></a>
+  <a href="../../private/lecture12/lecture12-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">12.2 Identify the Application</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture12/lecture12-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 Outlook of Reinforcement Learning</span></a>
+  <a href="../../private/lecture12/lecture12-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 Outlook</span></a>
   </div>
 </li>
       </ul>
@@ -696,11 +725,14 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#task-1-email-spam-detection" id="toc-task-1-email-spam-detection" class="nav-link active" data-scroll-target="#task-1-email-spam-detection">Task 1: Email Spam Detection</a></li>
-  <li><a href="#task-2-customer-segmentation-for-a-retail-store" id="toc-task-2-customer-segmentation-for-a-retail-store" class="nav-link" data-scroll-target="#task-2-customer-segmentation-for-a-retail-store">Task 2: Customer Segmentation for a Retail Store</a></li>
-  <li><a href="#task-3-online-ad-optimization" id="toc-task-3-online-ad-optimization" class="nav-link" data-scroll-target="#task-3-online-ad-optimization">Task 3: Online Ad Optimization</a></li>
-  <li><a href="#task-4-warehouse-robot-path-finding" id="toc-task-4-warehouse-robot-path-finding" class="nav-link" data-scroll-target="#task-4-warehouse-robot-path-finding">Task 4: Warehouse Robot Path-finding</a></li>
-  <li><a href="#task-5-fine-tuning-llms-with-human-feedback" id="toc-task-5-fine-tuning-llms-with-human-feedback" class="nav-link" data-scroll-target="#task-5-fine-tuning-llms-with-human-feedback">Task 5: Fine-tuning LLMs with Human Feedback</a></li>
+  <li><a href="#scenario-1-product-promotion" id="toc-scenario-1-product-promotion" class="nav-link active" data-scroll-target="#scenario-1-product-promotion">Scenario 1: Product Promotion</a></li>
+  <li><a href="#scenario-2-inventory-management" id="toc-scenario-2-inventory-management" class="nav-link" data-scroll-target="#scenario-2-inventory-management">Scenario 2: Inventory Management</a></li>
+  <li><a href="#scenario-3-product-association-discovery" id="toc-scenario-3-product-association-discovery" class="nav-link" data-scroll-target="#scenario-3-product-association-discovery">Scenario 3: Product Association Discovery</a></li>
+  <li><a href="#scenario-4-key-performance-indicator-kpi-estimation" id="toc-scenario-4-key-performance-indicator-kpi-estimation" class="nav-link" data-scroll-target="#scenario-4-key-performance-indicator-kpi-estimation">Scenario 4: Key Performance Indicator (KPI) Estimation</a></li>
+  <li><a href="#scenario-5-high-engagement-layout" id="toc-scenario-5-high-engagement-layout" class="nav-link" data-scroll-target="#scenario-5-high-engagement-layout">Scenario 5: High Engagement Layout</a></li>
+  <li><a href="#scenario-6-customer-segmentation" id="toc-scenario-6-customer-segmentation" class="nav-link" data-scroll-target="#scenario-6-customer-segmentation">Scenario 6: Customer Segmentation</a></li>
+  <li><a href="#scenario-7-sensor-data-for-quality-checks" id="toc-scenario-7-sensor-data-for-quality-checks" class="nav-link" data-scroll-target="#scenario-7-sensor-data-for-quality-checks">Scenario 7: Sensor Data for Quality Checks</a></li>
+  <li><a href="#scenario-8-product-recommendation" id="toc-scenario-8-product-recommendation" class="nav-link" data-scroll-target="#scenario-8-product-recommendation">Scenario 8: Product Recommendation</a></li>
   </ul>
 </nav>
     </div>
@@ -709,7 +741,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">12.2 Identify the Reinforcement Learning Application</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">12.2 Identify the Application</span></h1>
 </div>
 
 
@@ -742,11 +774,11 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Instructions
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Instructions:</strong> For each task presented, determine whether it can be solved using:</p>
+<p>For each scenario presented, determine whether it can be approached using:</p>
 <ul>
 <li>Supervised Learning<br>
 </li>
@@ -758,18 +790,15 @@ Note
 </li>
 <li>Deep Reinforcement Learning</li>
 </ul>
-<p>Form groups of two or more and discuss the most appropriate approach for each application.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ReinforcementLearningFramework.svg" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Reinforcement Learning Framework</figcaption>
-</figure>
+<p><img src="images/ReinforcementLearningFramework.drawio.svg" class="img-fluid" style="width:75.0%"></p>
 </div>
 </div>
+<section id="scenario-1-product-promotion" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-1-product-promotion">Scenario 1: Product Promotion</h3>
+<p>You’re given multiple promotional offers (‘10% off’, ‘free shipping’, ‘buy-one-get-one-free’). Each time a customer logs in to the company’s web app, you must select a promotion to maximize customer conversion (revenue).</p>
+<div class="text-center">
+<p><img src="images/promotion.png" class="img-fluid" style="width:35.0%"></p>
 </div>
-<section id="task-1-email-spam-detection" class="level2">
-<h2 class="anchored" data-anchor-id="task-1-email-spam-detection">Task 1: Email Spam Detection</h2>
-<p><img src="images/SupervisedLearning.png" class="img-fluid" style="width:50.0%"></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -782,24 +811,19 @@ Note
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- ### Supervised Learning
+<!-- - There is sequential decision-making (choosing a promotional offer each time a user logs in) and there is no state transition dynamics, hence only one state. 
 
-- **Supervised Learning:** Classification.
-- **Features (X):**
-  - Frequency of specific keywords (e.g., "free", "win", "money").
-  - Presence of special characters (e.g., "!", "$", etc.).
-  - Sender’s domain (e.g., "trusted.com", "unknown.com").
-- **Labels (y):**
-  - 0 for Non-Spam.
-  - 1 for Spam.
-- **Example Algorithm:** Naive Bayes. -->
+- **Multi-Armed Bandit** - our data $\mathbf{X}$ is user interaction with the promotional offers, our action space (or arms)  $\mathcal{A}$ are the different promotional offers ('10% off', 'free shipping', 'buy-one-get-one'), and the reward function $R$ is the conversion of each customer. -->
 </div>
 </div>
 </div>
 </section>
-<section id="task-2-customer-segmentation-for-a-retail-store" class="level2">
-<h2 class="anchored" data-anchor-id="task-2-customer-segmentation-for-a-retail-store">Task 2: Customer Segmentation for a Retail Store</h2>
-<p><img src="images/UnsupervisedLearning.png" class="img-fluid" style="width:50.0%"></p>
+<section id="scenario-2-inventory-management" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-2-inventory-management">Scenario 2: Inventory Management</h3>
+<p>You’re managing a warehouse and must decide daily restocking quantities for multiple products. Each decision affects future inventory levels, stockouts, and holding costs. The goal is to minimize total cost over time while meeting demand.</p>
+<div class="text-center">
+<p><img src="images/inventory.png" class="img-fluid" style="width:35.0%"></p>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -812,21 +836,19 @@ Note
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- ### Unsupervised Learning
+<!-- - There is sequential decision-making (choosing a daily restocking quantity), there is state transition dynamics (each decision affects future inventory levels), and states are finite (infinite inventory levels are not possible). 
 
-- **Unsupervised Learning:** Clustering.
-- **Features (X):**
-  - Customer age, annual income, spending score, purchase frequency.
-  - Product categories purchased, total expenditure, location.
-  - Customer loyalty (e.g., membership status).
-- **Example Algorithm:** K-Means. -->
+- **Classical Reinforcement Learning** - the state space $\mathcal{S}$ is current inventory levels and demand forecasts, our action space $\mathcal{A}$ are the reordering quantities, our reward function $R$ is the total cost accrued, and our terminal step $T$ occurs at the end of a sales cycle. -->
 </div>
 </div>
 </div>
 </section>
-<section id="task-3-online-ad-optimization" class="level2">
-<h2 class="anchored" data-anchor-id="task-3-online-ad-optimization">Task 3: Online Ad Optimization</h2>
-<p><img src="images/MultiArmedBandit.png" class="img-fluid" style="width:50.0%"></p>
+<section id="scenario-3-product-association-discovery" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-3-product-association-discovery">Scenario 3: Product Association Discovery</h3>
+<p>You’re given historical transaction data showing which products customers buy together. The company wants to discover natural associations. For example, items that frequently co-occur in the same basket.</p>
+<div class="text-center">
+<p><img src="images/checkout.png" class="img-fluid" style="width:35.0%"></p>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -839,19 +861,19 @@ Note
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- ### Multi-Armed Bandit
+<!-- - There is no sequential decision-making involved and there are no labels, or ground-truth.
 
-- **State (S):** Single state (environment does not change).
-- **Actions (A):** Display ad 1, Display ad 2, Display ad 3.
-- **Rewards (R):** Click-through rate, conversion rate, user engagement.
-- **Example Algorithm:** Thompson Sampling. -->
+- **Unsupervised Learning** - our features $\mathbf{X}$ are the product purchase patterns, and we can use any associative learning algorithm, such as Kohonen Rule, in order to discover products that are co-purchased together. -->
 </div>
 </div>
 </div>
 </section>
-<section id="task-4-warehouse-robot-path-finding" class="level2">
-<h2 class="anchored" data-anchor-id="task-4-warehouse-robot-path-finding">Task 4: Warehouse Robot Path-finding</h2>
-<p><img src="images/ClassicalReinforcementLearning.png" class="img-fluid" style="width:50.0%"></p>
+<section id="scenario-4-key-performance-indicator-kpi-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-4-key-performance-indicator-kpi-estimation">Scenario 4: Key Performance Indicator (KPI) Estimation</h3>
+<p>You’re given the company’s historical data (sales, marketing spend, customer activity, etc.) with a critical KPI value (customer retation rate). The company wants you to estimate the KPI for the next quarter.</p>
+<div class="text-center">
+<p><img src="images/kpi.png" class="img-fluid" style="width:35.0%"></p>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -864,22 +886,19 @@ Note
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- ### Classical Reinforcement Learning
+<!-- - There is no sequential decision-making involved and there are labels, or ground-truth.
 
-- **State (S):** Robot position, obstacles, goal location.
-- **Actions (A):** Move up, down, left, right, stay.
-- **Rewards (R):**
-  - Positive for reaching goal.
-  - Negative for hitting obstacles.
-  - Small penalty for each step (efficiency).
-- **Example Algorithm:** Q-learning. -->
+- **Supervised Learning** - our features $\mathbf{X}$ are historical data, and our label $\mathbf{y}$ is our KPI values or the customer retention rate. -->
 </div>
 </div>
 </div>
 </section>
-<section id="task-5-fine-tuning-llms-with-human-feedback" class="level2">
-<h2 class="anchored" data-anchor-id="task-5-fine-tuning-llms-with-human-feedback">Task 5: Fine-tuning LLMs with Human Feedback</h2>
-<p><img src="images/DeepReinforcementLearning.png" class="img-fluid" style="width:50.0%"></p>
+<section id="scenario-5-high-engagement-layout" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-5-high-engagement-layout">Scenario 5: High Engagement Layout</h3>
+<p>You’re given multiple layouts to display to a customer. As the customer logs in to the company’s web app, you must choose the layout that maximizes engagement (time spent).</p>
+<div class="text-center">
+<p><img src="images/layouts.png" class="img-fluid" style="width:75.0%"></p>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -892,15 +911,99 @@ Note
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- ### Deep Reinforcement Learning
+<!-- - There is sequential decision-making (choosing a layout each time a user logs in) and there is no state transition dynamics, hence only one state. 
 
-- **State (S):** Model predictions, conversation history, human feedback.
-- **Actions (A):** Adjust weights, generate responses, explore approaches.
-- **Rewards (R):**
-  - Positive for high-quality responses.
-  - Negative for low-quality responses.
-  - Reward for alignment with human feedback.
-- **Example Algorithm:** Proximal Policy Optimization (PPO). -->
+- **Multi-Armed Bandit** - our data $\mathbf{X}$ is past user interactions with layouts, our action space (or arms) $\mathcal{A}$ are the different layouts, and the reward function $R$ is the time spent on the web app. -->
+</div>
+</div>
+</div>
+</section>
+<section id="scenario-6-customer-segmentation" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-6-customer-segmentation">Scenario 6: Customer Segmentation</h3>
+<p>You’re given data regarding customers demographics (age, gender, ethnicity, education level, income, etc.), and are asked to segment the profile of each customer into <span class="math inline">\(k\)</span> segments.</p>
+<div class="text-center">
+<p><img src="images/segmentation.png" class="img-fluid" style="width:35.0%"></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- - There is no sequential decision-making involved and there are no labels, or ground-truth.
+
+- **Unsupervised Learning** - our features $\mathbf{X}$ are the customer demographic data, and we can use any clustering algorithm, such as K-Means, in order to group similar customers. -->
+</div>
+</div>
+</div>
+</section>
+<section id="scenario-7-sensor-data-for-quality-checks" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-7-sensor-data-for-quality-checks">Scenario 7: Sensor Data for Quality Checks</h3>
+<p>The company uses robotic arms on the production line to inspect products. Robots receive high-dimensional sensor data (images, temperature, vibration). They must decide whether to adjust, continue inspection, accept, or reject a product to maintain quality standards.</p>
+<div class="text-center">
+<p><img src="images/robot.webp" class="img-fluid" style="width:45.0%"></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- - There is sequential decision-making (each action changes what the robot observes next and what opportunities it has for quality control), there is state transition dynamics (states evolve as products move along the line and as the robot adjusts its position), and states are high-dimensional (images, temperature, vibration). 
+
+- **Deep Reinforcement Learning** -  the state space $\mathcal{S}$ is images, temperature, and vibration signals, our action space $\mathcal{A}$ consists of adjust, continue inspection, accept, or reject, our reward function $R$ is the defect detection accuracy, and our terminal step $T$ robot finishes inspecting a batch. -->
+</div>
+</div>
+</div>
+</section>
+<section id="scenario-8-product-recommendation" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-8-product-recommendation">Scenario 8: Product Recommendation</h3>
+<p>A company wants to recommend products to users based on past behavior (browsing history, past purchases, real-time interactions). The goal is to maximize conversions (revenue).</p>
+<div class="text-center">
+<p><img src="images/product-rec.png" class="img-fluid" style="width:35.0%"></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- - This is a trick question as it can be approached in multiple ways.
+
+If ground truth is to be interpreted as the products purchased by a user: 
+
+- **Supervised Learning** - features $\mathbf{X}$ would be the previous purchasing behavior, and the labels $\mathbf{y}$ would be the products purchased.
+
+If sequential decision-making is involved and there is no state transition dynamics, then:
+
+- **Multi-Armed Bandit** - data $\mathbf{X}$ would be the user interaction data, the action space $\mathcal{A}$ would be the set of products to recommend, and the reward function $R$ would be whether the user clicks on or purchases the recommended product.
+
+If there is added complexity by adding state transition dynamics (users previous browsed items):
+
+- **Classical Reinforcement Learning** - the state space $\mathcal{S}$ would be the user's current browsing or purchasing history, the action space $\mathcal{A}$ and reward function $R$ similar to the MAB approach
+
+If there is to be more complex state representation (images of a particular product, user product feedback):
+
+- **Deep Reinforcement Learning** - similar to Classical RL, but using deep neural networks to handle large and complex state spaces, such as images of a particular product or user product feedback.
+   -->
 </div>
 </div>
 </div>
@@ -1311,13 +1414,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../private/lecture12/lecture12-1.html" class="pagination-link" aria-label="12.1 Advanced Topics in Reinforcement Learning">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">12.1 Advanced Topics in Reinforcement Learning</span></span>
+      <a href="../../private/lecture12/lecture12-1.html" class="pagination-link" aria-label="12.1 Advanced Topics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">12.1 Advanced Topics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../private/lecture12/lecture12-3.html" class="pagination-link" aria-label="12.3 Outlook of Reinforcement Learning">
-        <span class="nav-page-text"><span class="chapter-title">12.3 Outlook of Reinforcement Learning</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../private/lecture12/lecture12-3.html" class="pagination-link" aria-label="12.3 Outlook">
+        <span class="nav-page-text"><span class="chapter-title">12.3 Outlook</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
