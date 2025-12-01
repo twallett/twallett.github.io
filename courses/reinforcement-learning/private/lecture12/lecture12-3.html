@@ -80,6 +80,35 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -690,8 +719,38 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#challenges-in-reinforcement-learning" id="toc-challenges-in-reinforcement-learning" class="nav-link active" data-scroll-target="#challenges-in-reinforcement-learning">Challenges in Reinforcement Learning</a>
+  <ul class="collapse">
+  <li><a href="#algorithmic-challenges" id="toc-algorithmic-challenges" class="nav-link" data-scroll-target="#algorithmic-challenges">Algorithmic Challenges</a></li>
+  <li><a href="#framework-assumption-challanges" id="toc-framework-assumption-challanges" class="nav-link" data-scroll-target="#framework-assumption-challanges">Framework Assumption Challanges</a></li>
+  <li><a href="#adaptation-challanges" id="toc-adaptation-challanges" class="nav-link" data-scroll-target="#adaptation-challanges">Adaptation Challanges</a></li>
+  </ul></li>
+  <li><a href="#artificial-general-intelligence-agi" id="toc-artificial-general-intelligence-agi" class="nav-link" data-scroll-target="#artificial-general-intelligence-agi">Artificial General Intelligence (AGI)</a>
+  <ul class="collapse">
+  <li><a href="#agi-tests" id="toc-agi-tests" class="nav-link" data-scroll-target="#agi-tests">AGI Tests</a></li>
+  <li><a href="#potential-societal-impact-of-agi" id="toc-potential-societal-impact-of-agi" class="nav-link" data-scroll-target="#potential-societal-impact-of-agi">Potential Societal Impact of AGI</a></li>
+  <li><a href="#yann-lecuns-cake" id="toc-yann-lecuns-cake" class="nav-link" data-scroll-target="#yann-lecuns-cake">Yann LeCun’s Cake</a></li>
+  </ul></li>
+  <li><a href="#rl-is-gaining-academic-momentum" id="toc-rl-is-gaining-academic-momentum" class="nav-link" data-scroll-target="#rl-is-gaining-academic-momentum">RL is Gaining Academic Momentum</a>
+  <ul class="collapse">
+  <li><a href="#rl-wins-the-turing-award" id="toc-rl-wins-the-turing-award" class="nav-link" data-scroll-target="#rl-wins-the-turing-award">RL Wins the Turing Award</a></li>
+  <li><a href="#richard-sutton-andrew-barto---2024-turing-award" id="toc-richard-sutton-andrew-barto---2024-turing-award" class="nav-link" data-scroll-target="#richard-sutton-andrew-barto---2024-turing-award">Richard Sutton &amp; Andrew Barto - 2024 Turing Award</a></li>
+  <li><a href="#huge-contributers-to-the-field" id="toc-huge-contributers-to-the-field" class="nav-link" data-scroll-target="#huge-contributers-to-the-field">Huge Contributers to the Field</a></li>
+  <li><a href="#david-silver" id="toc-david-silver" class="nav-link" data-scroll-target="#david-silver">David Silver</a></li>
+  <li><a href="#sergey-levine" id="toc-sergey-levine" class="nav-link" data-scroll-target="#sergey-levine">Sergey Levine</a></li>
+  </ul></li>
+  <li><a href="#rl-is-gaining-industry-momentum" id="toc-rl-is-gaining-industry-momentum" class="nav-link" data-scroll-target="#rl-is-gaining-industry-momentum">RL is Gaining Industry Momentum</a>
+  <ul class="collapse">
+  <li><a href="#physical-intelligence-company-pi" id="toc-physical-intelligence-company-pi" class="nav-link" data-scroll-target="#physical-intelligence-company-pi">Physical Intelligence Company (<span class="math inline">\(\pi\)</span>)</a></li>
+  <li><a href="#deep-seek" id="toc-deep-seek" class="nav-link" data-scroll-target="#deep-seek">Deep Seek</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -715,137 +774,129 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </header>
 
 
+<!-- ::: {.callout-note appearance="simple" icon=false}
+🔒 Outlook of Reinforcement Learning
+::: -->
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>🔒 Outlook of Reinforcement Learning</p>
+<p>If the past was trial and error, what might the future of learning look like? ✨</p>
 </div>
 </div>
 </div>
-<!-- ::: {.callout-note appearance="simple" icon=false}
-If the past was trial and error, what might the future of learning look like? ✨
-:::
-
-## Challenges in Reinforcement Learning
-
-Reinforcement Learning, although a very powerful paradigm, faces several challenges that hinder its widespread application. These challenges can be broadly categorized into algorithmic, framework assumption, and adaptation challenges.
-
-### Algorithmic Challenges
-
-- **Stability -** _does the algorithm converge?_
-
-- **Sample Efficiency -** _how long does it take for the algorithm to converge?_
-
-- **Generalization -** _after the algorithm converges, does it generalize?_
-
+<section id="challenges-in-reinforcement-learning" class="level2">
+<h2 class="anchored" data-anchor-id="challenges-in-reinforcement-learning">Challenges in Reinforcement Learning</h2>
+<p>Reinforcement Learning, although a very powerful paradigm, faces several challenges that hinder its widespread application. These challenges can be broadly categorized into algorithmic, framework assumption, and adaptation challenges.</p>
+<section id="algorithmic-challenges" class="level3">
+<h3 class="anchored" data-anchor-id="algorithmic-challenges">Algorithmic Challenges</h3>
+<ul>
+<li><p><strong>Stability -</strong> <em>does the algorithm converge?</em></p></li>
+<li><p><strong>Sample Efficiency -</strong> <em>how long does it take for the algorithm to converge?</em></p></li>
+<li><p><strong>Generalization -</strong> <em>after the algorithm converges, does it generalize?</em></p></li>
+</ul>
 <div class="text-center">
-  ![](images/unstable.png){width=45%}
+<p><img src="images/unstable.png" class="img-fluid" style="width:45.0%"></p>
 </div>
-
-### Framework Assumption Challanges
-
-- **RL Framework -** _Should the Reinforcement Learning framework leverage a Markov Decision Process (MDP)? Is there a better framework to model our decision making apart from Markov frameworks?_
-
-- **Reward Function Design -** _Is it even possible to incorporate instructive feedback, or approximate ground truth, to our RL framework?_
-
+</section>
+<section id="framework-assumption-challanges" class="level3">
+<h3 class="anchored" data-anchor-id="framework-assumption-challanges">Framework Assumption Challanges</h3>
+<ul>
+<li><p><strong>RL Framework -</strong> <em>Should the Reinforcement Learning framework leverage a Markov Decision Process (MDP)? Is there a better framework to model our decision making apart from Markov frameworks?</em></p></li>
+<li><p><strong>Reward Function Design -</strong> <em>Is it even possible to incorporate instructive feedback, or approximate ground truth, to our RL framework?</em></p></li>
+</ul>
 <div class="text-center">
-  ![](images/MDP.png){width=75%} <br>
-  MDP
+<p><img src="images/MDP.png" class="img-fluid" style="width:75.0%"> <br> MDP</p>
 </div>
-
-### Adaptation Challanges
-
-RL models are notorius for requiring large amounts of ($S$,$A$,$R$) experience samples, as seen in previous lectures, whether to approximate action value functions or improve policy gradients. Once these experience samples have been However, there is one huge fundamental problem:
-
-If it takes a long time to sample experience from our environment, and following a longer time to train the model for multiple episodes on these experienced samples. **_We are significantly limited in our ability to simulate realistic environments and moreover train real time adaptive policies on those environments_**.
-
-## Artificial General Intelligence (AGI)
-
-AGI is Artificial Intelligence capable of learning and applying intelligence across a wide range of tasks $\mathcal{T}$, similar to human cognition. This is very similar to the robots or any intelligent system that you see in the movies.
-
+</section>
+<section id="adaptation-challanges" class="level3">
+<h3 class="anchored" data-anchor-id="adaptation-challanges">Adaptation Challanges</h3>
+<p>RL models are notorius for requiring large amounts of (<span class="math inline">\(S\)</span>,<span class="math inline">\(A\)</span>,<span class="math inline">\(R\)</span>) experience samples, as seen in previous lectures, whether to approximate action value functions or improve policy gradients. Once these experience samples have been However, there is one huge fundamental problem:</p>
+<p>If it takes a long time to sample experience from our environment, and following a longer time to train the model for multiple episodes on these experienced samples. <strong><em>We are significantly limited in our ability to simulate realistic environments and moreover train real time adaptive policies on those environments</em></strong>.</p>
+</section>
+</section>
+<section id="artificial-general-intelligence-agi" class="level2">
+<h2 class="anchored" data-anchor-id="artificial-general-intelligence-agi">Artificial General Intelligence (AGI)</h2>
+<p>AGI is Artificial Intelligence capable of learning and applying intelligence across a wide range of tasks <span class="math inline">\(\mathcal{T}\)</span>, similar to human cognition. This is very similar to the robots or any intelligent system that you see in the movies.</p>
 <div class="text-center">
-  ![](images/robot.jpg){width=75%} <br>
-  Film: _I, Robot_
+<p><img src="images/robot.jpg" class="img-fluid" style="width:75.0%"> <br> Film: <em>I, Robot</em></p>
 </div>
-
-RL enables autonomous learning and sequential decision-making, which is key for AGI's adaptability and problem-solving. The problem is that it does not generalize well to multiple tasks.
-
-### AGI Tests
-
-- **Turing Test** (Proposed by Alan Turing)
-  
-If a human judge engaging in natural language conversations with both a human and a machine designed to generate human-like responses.
-
-Evidence for Turing test: [ELIZA](https://en.wikipedia.org/wiki/ELIZA) & GPT.
-
-- **The Robot College Student Test** (Proposed by Ben Goertzel)
-
-If a machine enrolls in a university, taking and passing the same classes that humans would, and obtaining a degree.
-
-Evidence for Goertzel test: [CFA Level I Test Passed by GPT-4](https://arxiv.org/pdf/2310.08678)
-
-- **The Employment Test** (Proposed by Nils John Nilsson)
-
-If a machine performs an economically important job at least as well as humans in the same job. 
-
-Evidence for Nils test: [Stanford AI Index](https://hai.stanford.edu/news/ai-index-state-ai-13-charts)
-
-- **The Coffee Test** (Proposed by Steve Wozniak)
-
-If a machine is required to enter an average American home and figure out how to make coffee: find the coffee machine, find the coffee, add water, find a mug, and brew the coffee by pushing the proper buttons. 
-
-Evidence for Wozniak test: Physical Intelligence Company (see below).
-
-- **The Modern Turing Test** (Proposed by Suleyman)
-
-If a AI model is given $\$100,000$ and has to obtain $\$1$ million.
-
-Evidence for Suleyman test: not me 😢🥀
-
-### Potential Societal Impact of AGI
-
-Is AGI something we truly desire? What are the [Pros and Cons](https://en.wikipedia.org/wiki/Artificial_general_intelligence#). 
-
-### Yann LeCun's Cake
-
+<p>RL enables autonomous learning and sequential decision-making, which is key for AGI’s adaptability and problem-solving. The problem is that it does not generalize well to multiple tasks.</p>
+<section id="agi-tests" class="level3">
+<h3 class="anchored" data-anchor-id="agi-tests">AGI Tests</h3>
+<ul>
+<li><strong>Turing Test</strong> (Proposed by Alan Turing)</li>
+</ul>
+<p>If a human judge engaging in natural language conversations with both a human and a machine designed to generate human-like responses.</p>
+<p>Evidence for Turing test: <a href="https://en.wikipedia.org/wiki/ELIZA">ELIZA</a> &amp; GPT.</p>
+<ul>
+<li><strong>The Robot College Student Test</strong> (Proposed by Ben Goertzel)</li>
+</ul>
+<p>If a machine enrolls in a university, taking and passing the same classes that humans would, and obtaining a degree.</p>
+<p>Evidence for Goertzel test: <a href="https://arxiv.org/pdf/2310.08678">CFA Level I Test Passed by GPT-4</a></p>
+<ul>
+<li><strong>The Employment Test</strong> (Proposed by Nils John Nilsson)</li>
+</ul>
+<p>If a machine performs an economically important job at least as well as humans in the same job.</p>
+<p>Evidence for Nils test: <a href="https://hai.stanford.edu/news/ai-index-state-ai-13-charts">Stanford AI Index</a></p>
+<ul>
+<li><strong>The Coffee Test</strong> (Proposed by Steve Wozniak)</li>
+</ul>
+<p>If a machine is required to enter an average American home and figure out how to make coffee: find the coffee machine, find the coffee, add water, find a mug, and brew the coffee by pushing the proper buttons.</p>
+<p>Evidence for Wozniak test: Physical Intelligence Company (see below).</p>
+<ul>
+<li><strong>The Modern Turing Test</strong> (Proposed by Suleyman)</li>
+</ul>
+<p>If a AI model is given <span class="math inline">\(\$100,000\)</span> and has to obtain <span class="math inline">\(\$1\)</span> million.</p>
+<p>Evidence for Suleyman test: not me 😢🥀</p>
+</section>
+<section id="potential-societal-impact-of-agi" class="level3">
+<h3 class="anchored" data-anchor-id="potential-societal-impact-of-agi">Potential Societal Impact of AGI</h3>
+<p>Is AGI something we truly desire? What are the <a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence#">Pros and Cons</a>.</p>
+</section>
+<section id="yann-lecuns-cake" class="level3">
+<h3 class="anchored" data-anchor-id="yann-lecuns-cake">Yann LeCun’s Cake</h3>
 <div class="text-center">
-  ![](images/cake.png){width=75%} <br>
-  Yann LeCun's Cake
+<p><img src="images/cake.png" class="img-fluid" style="width:75.0%"> <br> Yann LeCun’s Cake</p>
 </div>
+</section>
+</section>
+<section id="rl-is-gaining-academic-momentum" class="level2">
+<h2 class="anchored" data-anchor-id="rl-is-gaining-academic-momentum">RL is Gaining Academic Momentum</h2>
+<section id="rl-wins-the-turing-award" class="level3">
+<h3 class="anchored" data-anchor-id="rl-wins-the-turing-award">RL Wins the Turing Award</h3>
+</section>
+<section id="richard-sutton-andrew-barto---2024-turing-award" class="level3">
+<h3 class="anchored" data-anchor-id="richard-sutton-andrew-barto---2024-turing-award"><a href="https://amturing.acm.org/">Richard Sutton &amp; Andrew Barto - 2024 Turing Award</a></h3>
+<p>Pioneers of Reinforcement Learning and Authors of the course book <em>Reinforcement Learning: An Introduction</em></p>
+</section>
+<section id="huge-contributers-to-the-field" class="level3">
+<h3 class="anchored" data-anchor-id="huge-contributers-to-the-field">Huge Contributers to the Field</h3>
+</section>
+<section id="david-silver" class="level3">
+<h3 class="anchored" data-anchor-id="david-silver"><a href="https://scholar.google.com/citations?user=-8DNE4UAAAAJ&amp;hl=en">David Silver</a></h3>
+<p>Contributed to the advancement of RL with: <em>Alpha Fold</em>, <em>Alpha Go</em>, <em>MuZero</em>, <em>Deep Q-Networks (DQN)</em>, <em>Deep Deterministic Policy Gradient (DDPG)</em> and more.</p>
+</section>
+<section id="sergey-levine" class="level3">
+<h3 class="anchored" data-anchor-id="sergey-levine"><a href="https://scholar.google.com/citations?user=8R35rCwAAAAJ&amp;hl=en">Sergey Levine</a></h3>
+<p>Contributed to the advancement of RL with: <em>Trust Region Policy Optimization (TRPO)</em>, <em>Soft Actor Critic (SAC)</em>, <em>Generalized Advantage Estimation (GAE)</em>, and more.</p>
+</section>
+</section>
+<section id="rl-is-gaining-industry-momentum" class="level2">
+<h2 class="anchored" data-anchor-id="rl-is-gaining-industry-momentum">RL is Gaining Industry Momentum</h2>
+<section id="physical-intelligence-company-pi" class="level3">
+<h3 class="anchored" data-anchor-id="physical-intelligence-company-pi"><a href="https://www.physicalintelligence.company/">Physical Intelligence Company (<span class="math inline">\(\pi\)</span>)</a></h3>
+<p>The Physical Intelligence group is dedicated to achieving AGI by acheiving a policy <span class="math inline">\(\pi\)</span> that is able to generalize across multiple tasks.</p>
+</section>
+<section id="deep-seek" class="level3">
+<h3 class="anchored" data-anchor-id="deep-seek"><a href="https://arxiv.org/pdf/2501.12948">Deep Seek</a></h3>
+<p>Deep Seek introduced a novel reinforcement learning algorithm called Group Relative Policy Optimization (GRPO), which aims to improve policy optimization by leveraging group-based relative advantages.</p>
 
-## RL is Gaining Academic Momentum
 
-### RL Wins the Turing Award 
-
-
-### [Richard Sutton & Andrew Barto - 2024 Turing Award](https://amturing.acm.org/)
-
-Pioneers of Reinforcement Learning and Authors of the course book _Reinforcement Learning: An Introduction_ 
-
-### Huge Contributers to the Field
-
-### [David Silver](https://scholar.google.com/citations?user=-8DNE4UAAAAJ&hl=en)
-
-Contributed to the advancement of RL with: _Alpha Fold_, _Alpha Go_, _MuZero_, _Deep Q-Networks (DQN)_, _Deep Deterministic Policy Gradient (DDPG)_ and more.
-
-### [Sergey Levine](https://scholar.google.com/citations?user=8R35rCwAAAAJ&hl=en)
-
-Contributed to the advancement of RL with: _Trust Region Policy Optimization (TRPO)_, _Soft Actor Critic (SAC)_, _Generalized Advantage Estimation (GAE)_,  and more.
-
-## RL is Gaining Industry Momentum
-
-### [Physical Intelligence Company ($\pi$)](https://www.physicalintelligence.company/)
-
-The Physical Intelligence group is dedicated to achieving AGI by acheiving a policy $\pi$ that is able to generalize across multiple tasks. 
-
-### [Deep Seek](https://arxiv.org/pdf/2501.12948)
-
-Deep Seek introduced a novel reinforcement learning algorithm called Group Relative Policy Optimization (GRPO), which aims to improve policy optimization by leveraging group-based relative advantages. -->
-
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

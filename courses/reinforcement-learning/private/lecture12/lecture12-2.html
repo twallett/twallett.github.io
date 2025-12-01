@@ -811,9 +811,10 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- - There is sequential decision-making (choosing a promotional offer each time a user logs in) and there is no state transition dynamics, hence only one state. 
-
-- **Multi-Armed Bandit** - our data $\mathbf{X}$ is user interaction with the promotional offers, our action space (or arms)  $\mathcal{A}$ are the different promotional offers ('10% off', 'free shipping', 'buy-one-get-one'), and the reward function $R$ is the conversion of each customer. -->
+<ul>
+<li><p>There is sequential decision-making (choosing a promotional offer each time a user logs in) and there is no state transition dynamics, hence only one state.</p></li>
+<li><p><strong>Multi-Armed Bandit</strong> - our data <span class="math inline">\(\mathbf{X}\)</span> is user interaction with the promotional offers, our action space (or arms) <span class="math inline">\(\mathcal{A}\)</span> are the different promotional offers (‘10% off’, ‘free shipping’, ‘buy-one-get-one’), and the reward function <span class="math inline">\(R\)</span> is the conversion of each customer.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -836,9 +837,10 @@ window.Quarto = {
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- - There is sequential decision-making (choosing a daily restocking quantity), there is state transition dynamics (each decision affects future inventory levels), and states are finite (infinite inventory levels are not possible). 
-
-- **Classical Reinforcement Learning** - the state space $\mathcal{S}$ is current inventory levels and demand forecasts, our action space $\mathcal{A}$ are the reordering quantities, our reward function $R$ is the total cost accrued, and our terminal step $T$ occurs at the end of a sales cycle. -->
+<ul>
+<li><p>There is sequential decision-making (choosing a daily restocking quantity), there is state transition dynamics (each decision affects future inventory levels), and states are finite (infinite inventory levels are not possible).</p></li>
+<li><p><strong>Classical Reinforcement Learning</strong> - the state space <span class="math inline">\(\mathcal{S}\)</span> is current inventory levels and demand forecasts, our action space <span class="math inline">\(\mathcal{A}\)</span> are the reordering quantities, our reward function <span class="math inline">\(R\)</span> is the total cost accrued, and our terminal step <span class="math inline">\(T\)</span> occurs at the end of a sales cycle.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -861,9 +863,10 @@ window.Quarto = {
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- - There is no sequential decision-making involved and there are no labels, or ground-truth.
-
-- **Unsupervised Learning** - our features $\mathbf{X}$ are the product purchase patterns, and we can use any associative learning algorithm, such as Kohonen Rule, in order to discover products that are co-purchased together. -->
+<ul>
+<li><p>There is no sequential decision-making involved and there are no labels, or ground-truth.</p></li>
+<li><p><strong>Unsupervised Learning</strong> - our features <span class="math inline">\(\mathbf{X}\)</span> are the product purchase patterns, and we can use any associative learning algorithm, such as Kohonen Rule, in order to discover products that are co-purchased together.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -886,9 +889,10 @@ window.Quarto = {
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- - There is no sequential decision-making involved and there are labels, or ground-truth.
-
-- **Supervised Learning** - our features $\mathbf{X}$ are historical data, and our label $\mathbf{y}$ is our KPI values or the customer retention rate. -->
+<ul>
+<li><p>There is no sequential decision-making involved and there are labels, or ground-truth.</p></li>
+<li><p><strong>Supervised Learning</strong> - our features <span class="math inline">\(\mathbf{X}\)</span> are historical data, and our label <span class="math inline">\(\mathbf{y}\)</span> is our KPI values or the customer retention rate.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -911,9 +915,10 @@ window.Quarto = {
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- - There is sequential decision-making (choosing a layout each time a user logs in) and there is no state transition dynamics, hence only one state. 
-
-- **Multi-Armed Bandit** - our data $\mathbf{X}$ is past user interactions with layouts, our action space (or arms) $\mathcal{A}$ are the different layouts, and the reward function $R$ is the time spent on the web app. -->
+<ul>
+<li><p>There is sequential decision-making (choosing a layout each time a user logs in) and there is no state transition dynamics, hence only one state.</p></li>
+<li><p><strong>Multi-Armed Bandit</strong> - our data <span class="math inline">\(\mathbf{X}\)</span> is past user interactions with layouts, our action space (or arms) <span class="math inline">\(\mathcal{A}\)</span> are the different layouts, and the reward function <span class="math inline">\(R\)</span> is the time spent on the web app.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -936,9 +941,10 @@ window.Quarto = {
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- - There is no sequential decision-making involved and there are no labels, or ground-truth.
-
-- **Unsupervised Learning** - our features $\mathbf{X}$ are the customer demographic data, and we can use any clustering algorithm, such as K-Means, in order to group similar customers. -->
+<ul>
+<li><p>There is no sequential decision-making involved and there are no labels, or ground-truth.</p></li>
+<li><p><strong>Unsupervised Learning</strong> - our features <span class="math inline">\(\mathbf{X}\)</span> are the customer demographic data, and we can use any clustering algorithm, such as K-Means, in order to group similar customers.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -961,9 +967,10 @@ window.Quarto = {
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- - There is sequential decision-making (each action changes what the robot observes next and what opportunities it has for quality control), there is state transition dynamics (states evolve as products move along the line and as the robot adjusts its position), and states are high-dimensional (images, temperature, vibration). 
-
-- **Deep Reinforcement Learning** -  the state space $\mathcal{S}$ is images, temperature, and vibration signals, our action space $\mathcal{A}$ consists of adjust, continue inspection, accept, or reject, our reward function $R$ is the defect detection accuracy, and our terminal step $T$ robot finishes inspecting a batch. -->
+<ul>
+<li><p>There is sequential decision-making (each action changes what the robot observes next and what opportunities it has for quality control), there is state transition dynamics (states evolve as products move along the line and as the robot adjusts its position), and states are high-dimensional (images, temperature, vibration).</p></li>
+<li><p><strong>Deep Reinforcement Learning</strong> - the state space <span class="math inline">\(\mathcal{S}\)</span> is images, temperature, and vibration signals, our action space <span class="math inline">\(\mathcal{A}\)</span> consists of adjust, continue inspection, accept, or reject, our reward function <span class="math inline">\(R\)</span> is the defect detection accuracy, and our terminal step <span class="math inline">\(T\)</span> robot finishes inspecting a batch.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -986,24 +993,25 @@ window.Quarto = {
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- - This is a trick question as it can be approached in multiple ways.
-
-If ground truth is to be interpreted as the products purchased by a user: 
-
-- **Supervised Learning** - features $\mathbf{X}$ would be the previous purchasing behavior, and the labels $\mathbf{y}$ would be the products purchased.
-
-If sequential decision-making is involved and there is no state transition dynamics, then:
-
-- **Multi-Armed Bandit** - data $\mathbf{X}$ would be the user interaction data, the action space $\mathcal{A}$ would be the set of products to recommend, and the reward function $R$ would be whether the user clicks on or purchases the recommended product.
-
-If there is added complexity by adding state transition dynamics (users previous browsed items):
-
-- **Classical Reinforcement Learning** - the state space $\mathcal{S}$ would be the user's current browsing or purchasing history, the action space $\mathcal{A}$ and reward function $R$ similar to the MAB approach
-
-If there is to be more complex state representation (images of a particular product, user product feedback):
-
-- **Deep Reinforcement Learning** - similar to Classical RL, but using deep neural networks to handle large and complex state spaces, such as images of a particular product or user product feedback.
-   -->
+<ul>
+<li>This is a trick question as it can be approached in multiple ways.</li>
+</ul>
+<p>If ground truth is to be interpreted as the products purchased by a user:</p>
+<ul>
+<li><strong>Supervised Learning</strong> - features <span class="math inline">\(\mathbf{X}\)</span> would be the previous purchasing behavior, and the labels <span class="math inline">\(\mathbf{y}\)</span> would be the products purchased.</li>
+</ul>
+<p>If sequential decision-making is involved and there is no state transition dynamics, then:</p>
+<ul>
+<li><strong>Multi-Armed Bandit</strong> - data <span class="math inline">\(\mathbf{X}\)</span> would be the user interaction data, the action space <span class="math inline">\(\mathcal{A}\)</span> would be the set of products to recommend, and the reward function <span class="math inline">\(R\)</span> would be whether the user clicks on or purchases the recommended product.</li>
+</ul>
+<p>If there is added complexity by adding state transition dynamics (users previous browsed items):</p>
+<ul>
+<li><strong>Classical Reinforcement Learning</strong> - the state space <span class="math inline">\(\mathcal{S}\)</span> would be the user’s current browsing or purchasing history, the action space <span class="math inline">\(\mathcal{A}\)</span> and reward function <span class="math inline">\(R\)</span> similar to the MAB approach</li>
+</ul>
+<p>If there is to be more complex state representation (images of a particular product, user product feedback):</p>
+<ul>
+<li><strong>Deep Reinforcement Learning</strong> - similar to Classical RL, but using deep neural networks to handle large and complex state spaces, such as images of a particular product or user product feedback.</li>
+</ul>
 </div>
 </div>
 </div>
