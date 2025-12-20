@@ -25,10 +25,11 @@ jobs:
       - name: Build React site
         run: npm run build
 
-      - name: Move build output to docs
+      - name: Prepare docs folder
         run: |
-          rm -rf docs/*
-          cp -r build/* docs/
+          rm -rf docs
+          mkdir -p docs
+          cp -r dist/* docs/
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
