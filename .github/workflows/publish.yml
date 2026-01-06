@@ -25,17 +25,11 @@ jobs:
       - name: Build React site
         run: npm run build
 
-      - name: Prepare docs folder
-        run: |
-          rm -rf docs
-          mkdir -p docs
-          cp -r dist/* docs/
-
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: ./docs
+          folder: ./dist
           clean: true
           clean-exclude: |
             courses/reinforcement-learning/
