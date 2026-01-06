@@ -103,7 +103,7 @@ export const projects = [
     image: "forecast.png",
     tags: ["Artificial Intelligence"],
     github: "https://github.com/twallett/artificial-intelligence",
-    demo: "/sales-forecast",
+    demo: "/#/sales-forecast",
     website: null,
     research: null
   },
