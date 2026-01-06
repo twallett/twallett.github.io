@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+// Changed BrowserRouter to HashRouter ^^^
+
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -25,8 +27,8 @@ function App() {
           <Route
             path="/sales-forecast"
             element={
-            <SalesForecastDashboard />
-          }
+              <SalesForecastDashboard />
+            }
           />
         </Routes>
       </div>
