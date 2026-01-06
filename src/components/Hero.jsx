@@ -97,33 +97,6 @@ export default function Hero() {
               <p className="text-lg text-slate-400 mb-8 leading-relaxed">
                 Published researcher in Neural Computing & Applications • Experience deploying ML systems in academic, public-sector, and private environments
               </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <a
-                  href="https://github.com/twallett"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-2 border-slate-600 hover:border-slate-500 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2"
-                >
-                  <Github size={20} />
-                  GitHub
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/twallett/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-2 border-slate-600 hover:border-slate-500 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2"
-                >
-                  <Linkedin size={20} />
-                  LinkedIn
-                </a>
-                <a
-                  href="mailto:twallett@gwu.edu"
-                  className="border-2 border-slate-600 hover:border-slate-500 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2"
-                >
-                  <Mail size={20} />
-                  Email
-                </a>
-              </div>
             </div>
           </div>
         </div>

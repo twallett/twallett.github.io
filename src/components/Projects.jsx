@@ -119,7 +119,7 @@ export default function Projects() {
     <div id="projects" className="bg-slate-900 py-16 min-h-screen">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white mb-3">Selected Projects</h2>
+          <h2 className="text-3xl font-bold text-white mb-3">My Project Portfolio</h2>
           <p className="text-slate-400 max-w-2xl mx-auto mb-6">
             A curated collection of my recent work across different technologies and domains
           </p>
