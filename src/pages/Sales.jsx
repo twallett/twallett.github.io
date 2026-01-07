@@ -10,7 +10,7 @@ const SalesForecastDashboard = () => {
   const [error, setError] = useState(null);
   const [apiStatus, setApiStatus] = useState('checking');
 
-  const API_URL ='https://artificial-intelligence-1kg9.onrender.com/';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
   useEffect(() => {
     window.scrollTo(0, 0);
