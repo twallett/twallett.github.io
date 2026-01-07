@@ -1,5 +1,5 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-// Changed BrowserRouter to HashRouter ^^^
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// Change from HashRouter back to BrowserRouter
 
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
