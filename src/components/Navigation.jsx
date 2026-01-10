@@ -94,7 +94,7 @@ export default function PortfolioNav() {
           {/* Right side - Social icons */}
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com"
+              href="https://github.com/twallett"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white hover:bg-white/5 p-2 rounded-md transition-all"
@@ -103,7 +103,7 @@ export default function PortfolioNav() {
               <Github className="size-5" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/twallett/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white hover:bg-white/5 p-2 rounded-md transition-all"
@@ -112,7 +112,7 @@ export default function PortfolioNav() {
               <Linkedin className="size-5" />
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:twallett@gwu.edu"
               className="text-gray-400 hover:text-white hover:bg-white/5 p-2 rounded-md transition-all"
               aria-label="Email"
             >
