@@ -89,6 +89,20 @@ export default function PortfolioNav() {
             >
               Portfolio
             </button>
+
+            {/* <button
+              onClick={handleProjectsClick}
+              className="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition-all"
+            >
+              AI/ML Pipelines
+            </button>
+
+            <button
+              onClick={handleProjectsClick}
+              className="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-md text-sm font-medium transition-all"
+            >
+              Blog
+            </button> */}
           </div>
 
           {/* Right side - Social icons */}

@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
 import SalesForecastDashboard from './pages/Sales';
+import CustomerSegmentation from './pages/Customer';
 
 function App() {
   return (
@@ -28,6 +29,12 @@ function App() {
             path="/sales-forecast"
             element={
               <SalesForecastDashboard />
+            }
+          />
+          <Route
+            path="/customer-segmentation"
+            element={
+              <CustomerSegmentation />
             }
           />
         </Routes>

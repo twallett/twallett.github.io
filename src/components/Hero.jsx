@@ -70,7 +70,7 @@ export default function Hero() {
   return (
     <>
       <div id="about" className="bg-slate-900 text-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
             <div className="flex justify-center mb-8">
               <div className="relative">
@@ -92,10 +92,7 @@ export default function Hero() {
                 </span>
               </h1>
               <p className="text-xl text-slate-300 mb-4 leading-relaxed">
-                Data Scientist with 3+ years of experience building machine learning systems across research and production, including recommendation systems, reinforcement learning, and end-to-end data pipelines.
-              </p>
-              <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-                Published researcher in Neural Computing & Applications • Experience deploying ML systems in academic, public-sector, and private environments
+                Data Scientist with 3+ years of experience building machine learning pipelines across research and production, including recommendation systems, reinforcement learning, and end-to-end data pipelines.
               </p>
             </div>
           </div>

@@ -1,160 +1,166 @@
 import React, { useState, useEffect } from 'react';
-import { Users, TrendingUp, DollarSign, Clock, BarChart3, AlertCircle, CheckCircle, Loader2, Target, TrendingDown, Mail, Gift, AlertTriangle, Zap } from 'lucide-react';
+import { Users, TrendingUp, DollarSign, Clock, BarChart3, Loader2 } from 'lucide-react';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL_CUSTOMER_SEGMENTATION || 'http://localhost:8000';
 
 const CustomerSegmentation = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [debugInfo, setDebugInfo] = useState('');
   const [modelInfo, setModelInfo] = useState(null);
   const [visualizationData, setVisualizationData] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [viewBox, setViewBox] = useState({ x: 0, y: 0, width: 200, height: 100 });
   
-  const [singleForm, setSingleForm] = useState({
+  const [form, setForm] = useState({
     recency: '',
     frequency: '',
     monetary: ''
   });
-  const [singleResult, setSingleResult] = useState(null);
+  const [result, setResult] = useState(null);
 
   useEffect(() => {
-    setDebugInfo('Component mounted, fetching data...');
-    fetchModelInfo();
-    fetchVisualizationData();
+    const fetchData = async () => {
+      try {
+        const modelRes = await fetch(`${API_BASE_URL}/model/info`);
+        const modelData = await modelRes.json();
+        setModelInfo(modelData);
+        
+        const vizRes = await fetch(`${API_BASE_URL}/visualization/data`);
+        const vizData = await vizRes.json();
+        setVisualizationData(vizData);
+      } catch (err) {
+        console.error('Failed to fetch data:', err);
+      }
+    };
+    
+    fetchData();
   }, []);
 
-  const fetchModelInfo = async () => {
-    try {
-      setDebugInfo(prev => prev + '\nFetching model info...');
-      const response = await fetch(`${API_BASE_URL}/model/info`);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-      
-      const data = await response.json();
-      setModelInfo(data);
-      setDebugInfo(prev => prev + '\n✓ Model info loaded');
-    } catch (err) {
-      const errorMsg = `Model info error: ${err.message}`;
-      setDebugInfo(prev => prev + `\n✗ ${errorMsg}`);
-      setError(errorMsg);
-    }
-  };
-
-  const fetchVisualizationData = async () => {
-    try {
-      setDebugInfo(prev => prev + '\nFetching visualization data...');
-      const response = await fetch(`${API_BASE_URL}/visualization/data`);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-      
-      const data = await response.json();
-      setVisualizationData(data);
-      setDebugInfo(prev => prev + `\n✓ Loaded ${data.all_customers.length} customers`);
-    } catch (err) {
-      const errorMsg = `Visualization error: ${err.message}`;
-      setDebugInfo(prev => prev + `\n✗ ${errorMsg}`);
-      setError(errorMsg);
-    }
-  };
-
-  const handleSinglePredict = async () => {
-    if (!singleForm.recency || !singleForm.frequency || !singleForm.monetary) {
-      setError('Please fill in all fields');
-      return;
-    }
+  const handlePredict = async () => {
+    if (!form.recency || !form.frequency || !form.monetary) return;
 
     setLoading(true);
-    setError('');
-    setSingleResult(null);
+    setResult(null);
 
-    try {
-      const response = await fetch(`${API_BASE_URL}/predict`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          recency: parseFloat(singleForm.recency),
-          frequency: parseFloat(singleForm.frequency),
-          monetary: parseFloat(singleForm.monetary)
-        })
-      });
+    const response = await fetch(`${API_BASE_URL}/predict`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        recency: parseFloat(form.recency),
+        frequency: parseFloat(form.frequency),
+        monetary: parseFloat(form.monetary)
+      })
+    });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Prediction failed');
-      }
-
-      const result = await response.json();
-      setSingleResult(result);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    const data = await response.json();
+    setResult(data);
+    setLoading(false);
   };
 
-  const getSegmentColor = (segmentName) => {
-    const colors = {
-      'Champions': '#9333ea',
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setDragStart({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    
+    const dx = (e.clientX - dragStart.x) * 0.1;
+    const dy = (e.clientY - dragStart.y) * 0.1;
+    
+    setViewBox(prev => ({
+      ...prev,
+      x: prev.x - dx,
+      y: prev.y - dy
+    }));
+    
+    setDragStart({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const getSegmentColor = (cluster) => {
+    const segmentNames = visualizationData?.cluster_centers.reduce((acc, center) => {
+      acc[center.cluster] = center.segment_name;
+      return acc;
+    }, {}) || {};
+    
+    const colorsByName = {
+      'Champions': '#22c55e',
       'Loyal Customers': '#3b82f6',
-      'Potential Loyalists': '#22c55e',
-      'At Risk': '#f97316',
-      'Lost': '#ef4444',
-      'Hibernating': '#6b7280'
+      'Potential Loyalists': '#f97316',
+      'At Risk': '#ef4444',
+      'Hibernating': '#8b5cf6'
     };
-    return colors[segmentName] || '#6b7280';
+    
+    return colorsByName[segmentNames[cluster]] || '#6b7280';
   };
 
   const getSegmentBadgeColor = (segmentName) => {
     const colors = {
-      'Champions': 'bg-purple-100 text-purple-800 border-purple-300',
+      'Champions': 'bg-green-100 text-green-800 border-green-300',
       'Loyal Customers': 'bg-blue-100 text-blue-800 border-blue-300',
-      'Potential Loyalists': 'bg-green-100 text-green-800 border-green-300',
-      'At Risk': 'bg-orange-100 text-orange-800 border-orange-300',
-      'Lost': 'bg-red-100 text-red-800 border-red-300',
-      'Hibernating': 'bg-gray-100 text-gray-800 border-gray-300'
+      'Potential Loyalists': 'bg-orange-100 text-orange-800 border-orange-300',
+      'At Risk': 'bg-red-100 text-red-800 border-red-300',
+      'Hibernating': 'bg-purple-100 text-purple-800 border-purple-300',
+      'Lost': 'bg-gray-100 text-gray-800 border-gray-300'
     };
     return colors[segmentName] || 'bg-gray-100 text-gray-800 border-gray-300';
   };
 
-  // Debug panel to show what's happening
-  if (!modelInfo && !visualizationData && !error) {
+  const getMarketingInsight = (segmentName) => {
+    const insights = {
+      'Champions': {
+        title: 'VIP Treatment Strategy',
+        description: 'Your most valuable customers! Focus on retention through exclusive perks, early access to new products, and personalized experiences.',
+        actions: ['Loyalty rewards program', 'Exclusive previews', 'Personal account manager']
+      },
+      'Loyal Customers': {
+        title: 'Engagement & Upsell',
+        description: 'Highly engaged customers with strong potential. Encourage increased spending through targeted upsells and premium offerings.',
+        actions: ['Product recommendations', 'Bundle offers', 'Premium tier upgrades']
+      },
+      'Potential Loyalists': {
+        title: 'Nurture & Convert',
+        description: 'Recent customers showing promise. Build loyalty through engagement campaigns and incentivize repeat purchases.',
+        actions: ['Welcome series', 'Loyalty program invitation', 'Next purchase discount']
+      },
+      'At Risk': {
+        title: 'Win-Back Campaign',
+        description: 'Previously active customers showing declining engagement. Re-engage with personalized offers and feedback requests.',
+        actions: ['Win-back email campaign', 'Special discount offer', 'Survey for feedback']
+      },
+      'Hibernating': {
+        title: 'Reactivation Required',
+        description: 'Dormant customers who haven\'t purchased recently. Aggressive re-engagement needed with compelling offers.',
+        actions: ['Flash sale notification', 'We miss you campaign', 'Product updates']
+      },
+      'Lost': {
+        title: 'Last Chance Recovery',
+        description: 'Long-inactive customers at risk of permanent churn. Final attempt with strong incentives or sunset gracefully.',
+        actions: ['Major discount offer', 'What did we miss survey', 'Preference center update']
+      }
+    };
+    return insights[segmentName] || insights['Potential Loyalists'];
+  };
+
+  if (!modelInfo || !visualizationData) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-8 flex items-center justify-center">
-        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl">
-          <div className="flex items-center gap-4 mb-4">
-            <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-            <h2 className="text-2xl font-bold text-gray-800">Loading Customer Segmentation...</h2>
-          </div>
-          <div className="bg-gray-50 rounded-lg p-4 font-mono text-sm text-gray-700 whitespace-pre-wrap max-h-96 overflow-y-auto">
-            {debugInfo || 'Initializing...'}
-          </div>
-          <p className="text-sm text-gray-600 mt-4">
-            If this takes too long, check that your API is running at {API_BASE_URL}
-          </p>
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 animate-spin text-blue-500 mx-auto mb-4" />
+          <p className="text-gray-600 text-lg">Loading Customer Segmentation...</p>
         </div>
       </div>
     );
   }
 
-  const renderPCAVisualization = () => {
-    if (!visualizationData) {
-      return (
-        <div className="bg-white rounded-xl p-6 border border-gray-200 flex items-center justify-center h-96">
-          <div className="text-center">
-            <Loader2 className="w-8 h-8 animate-spin text-blue-500 mx-auto mb-4" />
-            <p className="text-gray-600">Loading visualization data...</p>
-          </div>
-        </div>
-      );
-    }
-
-    const width = 700;
-    const height = 500;
-    const padding = 70;
+  const renderVisualization = () => {
+    const width = viewBox.width;
+    const height = viewBox.height;
+    const padding = 5;
     
     const allX = visualizationData.all_customers.map(c => c.pca_component_1);
     const allY = visualizationData.all_customers.map(c => c.pca_component_2);
@@ -164,31 +170,43 @@ const CustomerSegmentation = () => {
     const minY = Math.min(...allY);
     const maxY = Math.max(...allY);
     
-    const rangeX = maxX - minX;
-    const rangeY = maxY - minY;
-    
-    const xScale = (val) => padding + ((val - minX) / rangeX) * (width - 2 * padding);
-    const yScale = (val) => height - padding - ((val - minY) / rangeY) * (height - 2 * padding);
+    const xScale = (val) => padding + ((val - minX) / (maxX - minX)) * (width - 2 * padding);
+    const yScale = (val) => height - padding - ((val - minY) / (maxY - minY)) * (height - 2 * padding);
 
     return (
-      <div className="bg-white rounded-xl p-6 border border-gray-200">
-        <h3 className="text-xl font-bold text-gray-800 mb-2">Customer Segmentation Map (PCA)</h3>
-        <p className="text-sm text-gray-600 mb-4">
-          All {visualizationData.all_customers.length} customers visualized in 2D space with {visualizationData.n_clusters} clusters
-        </p>
+      <>
+        <div className="flex items-center justify-between mb-2 flex-shrink-0">
+          <div>
+            <h3 className="text-sm sm:text-base font-bold text-gray-800">Customer Segmentation Map</h3>
+          </div>
+        </div>
         
-        <div className="overflow-x-auto">
-          <svg width={width} height={height} className="mx-auto">
-            <line x1={padding} y1={height/2} x2={width-padding} y2={height/2} stroke="#e5e7eb" strokeWidth="1" strokeDasharray="5,5" />
-            <line x1={width/2} y1={padding} x2={width/2} y2={height-padding} stroke="#e5e7eb" strokeWidth="1" strokeDasharray="5,5" />
+        <div className="flex-1 min-h-0 relative flex items-center justify-center touch-none">
+          <svg 
+            viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
+            className="w-full h-full cursor-grab active:cursor-grabbing select-none" 
+            preserveAspectRatio="xMidYMid meet"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={(e) => {
+              const touch = e.touches[0];
+              handleMouseDown({ clientX: touch.clientX, clientY: touch.clientY });
+            }}
+            onTouchMove={(e) => {
+              const touch = e.touches[0];
+              handleMouseMove({ clientX: touch.clientX, clientY: touch.clientY });
+            }}
+            onTouchEnd={handleMouseUp}
+          >
+            <line x1={padding} y1={height/2} x2={width-padding} y2={height/2} stroke="#e5e7eb" strokeWidth="0.2" strokeDasharray="1,1" />
+            <line x1={width/2} y1={padding} x2={width/2} y2={height-padding} stroke="#e5e7eb" strokeWidth="0.2" strokeDasharray="1,1" />
             
-            <line x1={padding} y1={height-padding} x2={width-padding} y2={height-padding} stroke="#374151" strokeWidth="2" />
-            <line x1={padding} y1={padding} x2={padding} y2={height-padding} stroke="#374151" strokeWidth="2" />
-            
-            <text x={width/2} y={height-20} textAnchor="middle" className="text-sm font-semibold fill-gray-700">
+            <text x={width/2} y={height-4} textAnchor="middle" className="text-[2px] font-semibold fill-gray-700">
               PCA Component 1
             </text>
-            <text x={25} y={height/2} textAnchor="middle" transform={`rotate(-90 25 ${height/2})`} className="text-sm font-semibold fill-gray-700">
+            <text x={4} y={height/2} textAnchor="middle" transform={`rotate(-90 4 ${height/2})`} className="text-[2px] font-semibold fill-gray-700">
               PCA Component 2
             </text>
             
@@ -197,246 +215,188 @@ const CustomerSegmentation = () => {
                 key={idx}
                 cx={xScale(customer.pca_component_1)}
                 cy={yScale(customer.pca_component_2)}
-                r="3"
-                fill={getSegmentColor(customer.segment_name)}
-                opacity="0.5"
+                r="0.6"
+                fill={getSegmentColor(customer.cluster)}
+                opacity="0.6"
               />
             ))}
             
-            {visualizationData.cluster_centers.map((center, idx) => (
-              <g key={idx}>
+            {visualizationData.cluster_centers.map((center) => (
+              <g key={center.cluster}>
                 <circle
                   cx={xScale(center.pca_component_1)}
                   cy={yScale(center.pca_component_2)}
-                  r="30"
-                  fill={getSegmentColor(center.segment_name)}
+                  r="4"
+                  fill={getSegmentColor(center.cluster)}
                   opacity="0.1"
                 />
                 <circle
                   cx={xScale(center.pca_component_1)}
                   cy={yScale(center.pca_component_2)}
-                  r="8"
-                  fill={getSegmentColor(center.segment_name)}
+                  r="1.2"
+                  fill={getSegmentColor(center.cluster)}
                   stroke="white"
-                  strokeWidth="2"
+                  strokeWidth="0.3"
                 />
-                <text
-                  x={xScale(center.pca_component_1)}
-                  y={yScale(center.pca_component_2) - 40}
-                  textAnchor="middle"
-                  className="text-xs font-bold"
-                  fill={getSegmentColor(center.segment_name)}
-                >
-                  {center.segment_name}
-                </text>
-                <text
-                  x={xScale(center.pca_component_1)}
-                  y={yScale(center.pca_component_2) - 28}
-                  textAnchor="middle"
-                  className="text-xs"
-                  fill="#6b7280"
-                >
-                  ({center.count} customers)
-                </text>
               </g>
             ))}
             
-            {singleResult && (
+            {result && (
               <g>
                 <circle
-                  cx={xScale(singleResult.pca_component_1)}
-                  cy={yScale(singleResult.pca_component_2)}
-                  r="25"
-                  fill={getSegmentColor(singleResult.segment_name)}
+                  cx={xScale(result.pca_component_1)}
+                  cy={yScale(result.pca_component_2)}
+                  r="3.5"
+                  fill={getSegmentColor(result.cluster)}
                   opacity="0.2"
                 >
-                  <animate attributeName="r" values="25;30;25" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="r" values="3.5;4.2;3.5" dur="2s" repeatCount="indefinite" />
                 </circle>
                 <circle
-                  cx={xScale(singleResult.pca_component_1)}
-                  cy={yScale(singleResult.pca_component_2)}
-                  r="10"
-                  fill={getSegmentColor(singleResult.segment_name)}
+                  cx={xScale(result.pca_component_1)}
+                  cy={yScale(result.pca_component_2)}
+                  r="1.5"
+                  fill={getSegmentColor(result.cluster)}
                   stroke="white"
-                  strokeWidth="3"
+                  strokeWidth="0.4"
                 />
-                <text
-                  x={xScale(singleResult.pca_component_1)}
-                  y={yScale(singleResult.pca_component_2) + 45}
-                  textAnchor="middle"
-                  className="text-sm font-bold"
-                  fill={getSegmentColor(singleResult.segment_name)}
-                >
-                  ⬆ Your Customer
-                </text>
               </g>
             )}
           </svg>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
-          {visualizationData.cluster_centers.map((center, idx) => (
-            <div key={idx} className="flex items-center gap-2">
-              <div 
-                className="w-4 h-4 rounded-full"
-                style={{ backgroundColor: getSegmentColor(center.segment_name) }}
-              />
-              <span className="text-sm font-medium text-gray-700">{center.segment_name}</span>
-              <span className="text-xs text-gray-500">({center.count})</span>
-            </div>
-          ))}
+        <div className="flex-shrink-0 mt-2 pt-2 border-t border-gray-200">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1.5 sm:gap-2">
+            {Array.from(new Map(visualizationData.cluster_centers.map(center => [center.segment_name, center])).values()).map((center) => (
+              <div key={center.cluster} className="flex items-center gap-1.5 bg-gray-50 p-1.5 sm:p-2 rounded">
+                <div 
+                  className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: getSegmentColor(center.cluster) }}
+                />
+                <div className="flex-1 min-w-0">
+                  <div className="text-[10px] sm:text-xs font-medium text-gray-700 truncate">{center.segment_name}</div>
+                  <div className="text-[9px] sm:text-[10px] text-gray-500">{center.count}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </>
     );
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-4 sm:p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 mb-6 border border-gray-100">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-3 rounded-xl">
-              <Users className="w-8 h-8 text-white" />
+    <div className="h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-2 sm:p-4 pb-6 sm:pb-10 overflow-hidden pt-16 sm:pt-4">
+      <div className="h-full max-w-7xl mx-auto flex flex-col gap-2 sm:gap-3 mt-0 sm:mt-12 mb-4">
+        {/* Main Content */}
+        <div className="flex-1 min-h-0 flex flex-col lg:grid lg:grid-cols-3 gap-2 sm:gap-3">
+          {/* Left Panel - Input Form */}
+          <div className="bg-white rounded-lg shadow-lg p-3 sm:p-4 flex flex-col flex-shrink-0 lg:flex-1">
+            <div className="flex items-center gap-2 mb-3 sm:mb-4">
+              <div className="p-1.5 sm:p-2 bg-gray-900 rounded-lg flex-shrink-0">
+                <Users className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h1 className="text-base sm:text-lg font-bold text-gray-800 truncate">
+                  Customer Segmentation
+                </h1>
+                <p className="text-[10px] sm:text-xs text-gray-600">RFM Analysis • K-Means</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Customer Segmentation Intelligence
-              </h1>
-              <p className="text-gray-600 mt-1">RFM Analysis • K-Means Clustering • Strategic Insights</p>
-            </div>
-          </div>
 
-          {modelInfo && (
-            <div className="flex flex-wrap gap-4 mt-4">
-              <div className="flex items-center gap-2 bg-green-50 px-4 py-2 rounded-lg border border-green-200">
-                <CheckCircle className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-medium text-green-800">Model Active</span>
-              </div>
-              <div className="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-lg border border-blue-200">
-                <BarChart3 className="w-5 h-5 text-blue-600" />
-                <span className="text-sm font-medium text-blue-800">
-                  {modelInfo.n_clusters} Clusters
-                </span>
-              </div>
-              <div className="flex items-center gap-2 bg-purple-50 px-4 py-2 rounded-lg border border-purple-200">
-                <Users className="w-5 h-5 text-purple-600" />
-                <span className="text-sm font-medium text-purple-800">
-                  {modelInfo.training_samples} Customers
-                </span>
+            <div className="flex gap-2 mb-3 sm:mb-4">
+              <div className="bg-green-50 px-2 py-1 rounded border border-green-200 flex items-center gap-1.5">
+                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs font-medium text-green-800">API Live</span>
               </div>
             </div>
-          )}
-        </div>
-
-        {error && (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
-            <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+            
+            <h2 className="text-sm sm:text-base font-bold text-gray-800 mb-2 sm:mb-3">Analyze Customer</h2>
+            
+            <div className="space-y-2 sm:space-y-3 flex-1">
               <div>
-                <h3 className="font-semibold text-red-800">Error</h3>
-                <p className="text-red-700 text-sm mt-1">{error}</p>
-                <p className="text-sm text-red-600 mt-2">
-                  Make sure the API is running at {API_BASE_URL}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div className="mb-6">
-          {renderPCAVisualization()}
-        </div>
-
-        <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 mb-6 border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Analyze New Customer</h2>
-          
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <Clock className="w-4 h-4 inline mr-1" />
+                <label className="block text-xs font-semibold text-gray-700 mb-1">
+                  <Clock className="w-3 h-3 inline mr-1" />
                   Recency (days)
                 </label>
                 <input
                   type="number"
-                  step="0.01"
-                  value={singleForm.recency}
-                  onChange={(e) => setSingleForm({ ...singleForm, recency: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  value={form.recency}
+                  onChange={(e) => setForm({ ...form, recency: e.target.value })}
+                  className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="30"
                 />
-                <p className="text-xs text-gray-500 mt-1">Days since last purchase</p>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <TrendingUp className="w-4 h-4 inline mr-1" />
+                <label className="block text-xs font-semibold text-gray-700 mb-1">
+                  <TrendingUp className="w-3 h-3 inline mr-1" />
                   Frequency
                 </label>
                 <input
                   type="number"
-                  step="0.01"
-                  value={singleForm.frequency}
-                  onChange={(e) => setSingleForm({ ...singleForm, frequency: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  value={form.frequency}
+                  onChange={(e) => setForm({ ...form, frequency: e.target.value })}
+                  className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="10"
                 />
-                <p className="text-xs text-gray-500 mt-1">Number of purchases</p>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <DollarSign className="w-4 h-4 inline mr-1" />
+                <label className="block text-xs font-semibold text-gray-700 mb-1">
+                  <DollarSign className="w-3 h-3 inline mr-1" />
                   Monetary Value
                 </label>
                 <input
                   type="number"
-                  step="0.01"
-                  value={singleForm.monetary}
-                  onChange={(e) => setSingleForm({ ...singleForm, monetary: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="1500.00"
+                  value={form.monetary}
+                  onChange={(e) => setForm({ ...form, monetary: e.target.value })}
+                  className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  placeholder="1500"
                 />
-                <p className="text-xs text-gray-500 mt-1">Total lifetime spend</p>
               </div>
-            </div>
 
-            <button
-              onClick={handleSinglePredict}
-              disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  Analyzing Customer Profile...
-                </>
-              ) : (
-                <>
-                  <BarChart3 className="w-5 h-5" />
-                  Generate Strategic Analysis
-                </>
+              <button
+                onClick={handlePredict}
+                disabled={loading}
+                className="w-full bg-gray-900 text-white py-2 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Analyzing...
+                  </>
+                ) : (
+                  <>
+                    <BarChart3 className="w-4 h-4" />
+                    Analyze
+                  </>
+                )}
+              </button>
+
+              {result && (
+                <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-2 border border-blue-200">
+                  <p className="text-[10px] font-semibold text-gray-600 mb-1">Result</p>
+                  <div className={`px-2 py-1 rounded-lg border ${getSegmentBadgeColor(result.segment_name)}`}>
+                    <p className="text-xs font-bold">{result.segment_name}</p>
+                  </div>
+                  
+                  <div className="mt-2 pt-2 border-t border-blue-200">
+                    <p className="text-[10px] font-bold text-gray-800 mb-1">{getMarketingInsight(result.segment_name).title}</p>
+                    <p className="text-[10px] text-gray-700 leading-snug">
+                      {getMarketingInsight(result.segment_name).description}
+                    </p>
+                  </div>
+                </div>
               )}
-            </button>
+            </div>
+          </div>
+
+          {/* Right Panel - Visualization */}
+          <div className="lg:col-span-2 bg-white rounded-lg shadow-lg p-3 sm:p-4 flex flex-col min-h-0 flex-1">
+            {renderVisualization()}
           </div>
         </div>
-
-        {singleResult && (
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border border-gray-100">
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <div>
-                <p className="text-sm font-semibold text-gray-600 mb-2">Customer Segment Classification</p>
-                <div className={`inline-block px-6 py-3 rounded-xl border-2 ${getSegmentBadgeColor(singleResult.segment_name)}`}>
-                  <p className="text-3xl font-bold">{singleResult.segment_name}</p>
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="text-sm text-gray-600">Cluster Assignment</p>
-                <p className="text-2xl font-bold text-gray-800">Cluster {singleResult.cluster}</p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

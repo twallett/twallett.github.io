@@ -78,15 +78,17 @@ export const projects = [
     website: "https://twallett.com/courses/reinforcement-learning/", 
     research: null
   },
-  // {
-  //   id: 8,
-  //   name: "Customer Segmentation",
-  //   description: null,
-  //   image: "segmentation.png",
-  //   tags: ["Artificial Intelligence"],
-  //   github: null,
-  //   demo: null
-  // },
+  {
+    id: 8,
+    name: "Customer Segmentation",
+    description: "End-to-end customer segmentation system that leverages clustering algorithms to identify distinct customer groups for targeted marketing strategies.",
+    image: "segmentation.png",
+    tags: ["Artificial Intelligence"],
+    github: null,
+    demo: "/customer-segmentation", 
+    website: null,
+    research: null
+  },
   // {
   //   id: 9,
   //   name: "High Engagement Layout",
@@ -98,11 +100,11 @@ export const projects = [
   // },
   {
     id: 10,
-    name: "KPI Forecast",
+    name: "Sales Forecast",
     description: "End-to-end sales forecasting system that converts ML predictions into automated, confidence-driven business decisions.",
     image: "forecast.png",
     tags: ["Artificial Intelligence"],
-    github: "https://github.com/twallett/artificial-intelligence",
+    github: null,
     demo: "/sales-forecast",
     website: null,
     research: null
