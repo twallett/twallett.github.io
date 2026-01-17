@@ -20,7 +20,7 @@ export const projects = [
     github: "https://github.com/twallett/research",
     demo: null,
     website: null, 
-    research: null
+    research: "https://link.springer.com/article/10.1007/s00521-025-11813-2"
   },
   {
     id: 3,
