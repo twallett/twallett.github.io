@@ -33,17 +33,17 @@ export const projects = [
     website: null, 
     research: "https://link.springer.com/article/10.1007/s00521-024-10425-6"
   },
-  {
-    id: 4,
-    name: "DATS 6103: Data Mining",
-    description: "This course introduces basic concepts of data mining as applied to Data Science, using Python as the programming language.",
-    image: "dm-logo.png",
-    tags: ["Teaching & Courses"],
-    github: null,
-    demo: null,
-    website: "https://dats.columbian.gwu.edu/courses/data-mining/", 
-    research: null
-  },
+  // {
+  //   id: 4,
+  //   name: "DATS 6103: Data Mining",
+  //   description: "This course introduces basic concepts of data mining as applied to Data Science, using Python as the programming language.",
+  //   image: "dm-logo.png",
+  //   tags: ["Teaching & Courses"],
+  //   github: null,
+  //   demo: null,
+  //   website: "https://dats.columbian.gwu.edu/courses/data-mining/", 
+  //   research: null
+  // },
   {
     id: 5,
     name: "Math for Data Science",
@@ -136,17 +136,17 @@ export const projects = [
   //   github: null,
   //   demo: null
   // },
-  {
-    id: 14,
-    name: "modrl",
-    description: "A modular Python library for classical and deep Reinforcement Learning (RL).",
-    image: "modrl.png",
-    tags: ["Open Source Projects"],
-    github: "https://github.com/twallett/modrl",
-    demo: null,
-    website: null, 
-    research: null
-  },
+  // {
+  //   id: 14,
+  //   name: "modrl",
+  //   description: "A modular Python library for classical and deep Reinforcement Learning (RL).",
+  //   image: "modrl.png",
+  //   tags: ["Open Source Projects"],
+  //   github: "https://github.com/twallett/modrl",
+  //   demo: null,
+  //   website: null, 
+  //   research: null
+  // },
   {
     id: 15,
     name: "Optimization Foundations",
