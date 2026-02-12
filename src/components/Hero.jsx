@@ -92,7 +92,7 @@ export default function Hero() {
                 </span>
               </h1>
               <p className="text-xl text-slate-300 mb-4 leading-relaxed">
-                Data Scientist with 3+ years of experience building machine learning pipelines across research and production, including recommendation systems, reinforcement learning, and end-to-end data pipelines.
+                Venezuelan 🇻🇪 and Canadian 🇨🇦. Deeply passionate 💖 about computers 💻, specifically teaching computers 👨‍🏫 how to learn from lots and lots of data 🗂️.
               </p>
             </div>
           </div>
