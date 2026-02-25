@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Learning Objectives</title>
+<title>Email Marketing System</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../private/lecture8/lecture8-1.html" rel="next">
-<link href="../../private/lecture7/lecture7-2.html" rel="prev">
+<link href="../../private/applications/health-aware-school-meal-recommnedations.html" rel="next">
 <link href="../../data/images/rl-logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -81,6 +115,35 @@ gtag('js', new Date());
 gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -93,7 +156,7 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">Learning Objectives</span></h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"><span class="chapter-title">Email Marketing System</span></h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -390,16 +453,16 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Lecture 8: Deep Q-Networks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/lecture8/lo.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Learning Objectives</span></a>
+  <a href="../../private/lecture8/lo.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning Objectives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -541,16 +604,16 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true">
  <span class="menu-text">Applications</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../private/applications/email-marketing-system.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Email Marketing System</span></a>
+  <a href="../../private/applications/email-marketing-system.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Email Marketing System</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -686,15 +749,28 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#step-1-define-the-business-objective" id="toc-step-1-define-the-business-objective" class="nav-link active" data-scroll-target="#step-1-define-the-business-objective">Step 1: Define the Business Objective</a></li>
+  <li><a href="#step-2-design-the-rl-framework" id="toc-step-2-design-the-rl-framework" class="nav-link" data-scroll-target="#step-2-design-the-rl-framework">Step 2: Design the RL Framework</a>
+  <ul class="collapse">
+  <li><a href="#framework-of-choice-contextual-multi-armed-bandit-cmab" id="toc-framework-of-choice-contextual-multi-armed-bandit-cmab" class="nav-link" data-scroll-target="#framework-of-choice-contextual-multi-armed-bandit-cmab">Framework of Choice: Contextual Multi-Armed Bandit (CMAB)</a></li>
+  <li><a href="#algorithm-of-choice-linucb" id="toc-algorithm-of-choice-linucb" class="nav-link" data-scroll-target="#algorithm-of-choice-linucb">Algorithm of Choice: LinUCB</a></li>
+  <li><a href="#why-not-partially-observable-markov-decision-process-pomdp" id="toc-why-not-partially-observable-markov-decision-process-pomdp" class="nav-link" data-scroll-target="#why-not-partially-observable-markov-decision-process-pomdp">Why Not Partially Observable Markov Decision Process (POMDP)?</a></li>
+  </ul></li>
+  <li><a href="#step-3-evaluating-rl-model-performance" id="toc-step-3-evaluating-rl-model-performance" class="nav-link" data-scroll-target="#step-3-evaluating-rl-model-performance">Step 3: Evaluating RL Model Performance</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-title">Learning Objectives</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-title">Email Marketing System</span></h1>
 </div>
 
 
@@ -717,25 +793,210 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Learning Objectives for Lecture 8: Deep Q-Networks 🎯</p>
+<p>Application: Email Marketing System 💡</p>
 </div>
 </div>
 </div>
+<section id="step-1-define-the-business-objective" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-define-the-business-objective">Step 1: Define the Business Objective</h2>
+<p>The first step in designing the RL email marketing system is to define the business objective. Given the goal of maximising revenue while minimising unsubscribes, we define the following metrics:</p>
+<ol type="1">
+<li><strong>Total conversions (£)</strong> — <span class="math inline">\(\sum_{t=1}^{T} \sum_{c=1}^{C} \text{conversions}_{t,c}\)</span></li>
+<li><strong>Total unsubscriptions</strong> — <span class="math inline">\(\sum_{t=1}^{T} \sum_{c=1}^{C} \text{unsubscriptions}_{t,c}\)</span></li>
+</ol>
+<p>where <span class="math inline">\(t = 1, \ldots, T\)</span> denotes each timestep for the duration of the experiment and <span class="math inline">\(c = 1, \ldots, C\)</span> denotes each customer.</p>
+</section>
+<section id="step-2-design-the-rl-framework" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-design-the-rl-framework">Step 2: Design the RL Framework</h2>
+<p>Prior to choosing the RL framework we need to address the type of environment in which the RL task falls into.</p>
 <ul>
-<li>Deep Learning.</li>
-<li>Deep Q-Networks (DQN).</li>
-<li><code>ALE/Breakout-v5</code> environment using <code>gymnasium</code> &amp; <code>tensorflow</code>.</li>
+<li><p>❌ <a href="../../lecture3/lecture3-1.html">Non-associate environment</a> is a setting that involves learning how to act in one state.</p></li>
+<li><p>✅ <a href="../../private/lecture4/lecture4-1.html">Associate environment</a> is a setting that involves learning how to act in multiple states.</p></li>
 </ul>
-<div style="text-align:center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Lecture8.drawio.svg" class="img-fluid figure-img"></p>
-<figcaption>Taxonomy of Reinforcement Learning</figcaption>
-</figure>
+<p>Since each customer has a unique behavioural profile and journey stage (touchpoint), the agent must condition its actions on customer context making this an <strong>associative</strong>, or <strong>contextual</strong> problem.</p>
+<section id="framework-of-choice-contextual-multi-armed-bandit-cmab" class="level3">
+<h3 class="anchored" data-anchor-id="framework-of-choice-contextual-multi-armed-bandit-cmab">Framework of Choice: Contextual Multi-Armed Bandit (CMAB)</h3>
+<p>The CMAB framework is a practical and industry tested approach (see <a href="../../lecture1/lecture1-3.html">Netflix CMAB implementation</a>) to learn an optimal course of action <span class="math inline">\(\pi^{*}\)</span>, or policy, by associating actions <span class="math inline">\(a \in \mathcal{A}\)</span> with context features <span class="math inline">\(\mathbf{x}_{t,a} \in \mathbb{R}^{d}\)</span>, where <span class="math inline">\(d\)</span> is the dimension of the feature vector (amount of features).</p>
+<p>Relevant to the email marketing system, the features demonstrated by each user <span class="math inline">\(\mathbf{x}_{t,a}\)</span> are defined as:</p>
+<p><span class="math display">\[
+\mathbf{x}_{t,a} = \begin{bmatrix} \text{Email opens} \in \{0,1\} \\
+                            \text{Clicks} \in \mathbb{N} \\
+                            \text{Complaints} \in \mathbb{N} \\
+                            \end{bmatrix}
+\]</span></p>
+<p>Additionally, the action space <span class="math inline">\(\mathcal{A}\)</span> would be defined as:</p>
+<p><span class="math display">\[
+\mathcal{A} \gets
+\left\{
+\begin{array}{c}
+\text{No email} \\
+\text{Promotion email} \\
+\text{Educational email} \\
+\text{Product recommendation email} \\
+\text{Renew insurance for a product}
+\end{array}
+\right\}
+\]</span></p>
+<p>The reward signal <span class="math inline">\(r_{t,c}\)</span> (for a particular timestep <span class="math inline">\(t\)</span> and customer <span class="math inline">\(c\)</span>) and with both business objectives (1. &amp; 2.) being considered:</p>
+<p><span class="math display">\[
+r_{t,c} = \underbrace{\left(\sum_{\tau=1}^{7} \gamma^{\tau} \cdot \mathbb{1}[\text{purchase}_{\tau,c}] \cdot \text{revenue}_{c}\right)}_{\text{Business Objective 1}} - \underbrace{\left(\alpha \cdot \mathbb{1}[\text{unsubscribe}_{t,c}]\right)}_{\text{Business Objective 2}}
+\]</span></p>
+<p>where <span class="math inline">\(\gamma &lt; 1\)</span> is a discount factor relative to the observed purchasing behavior of the user, and <span class="math inline">\(\tau\)</span> denotes whether customer converts (purchase) up to 7 days after observing the action.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Adaptive Learning Ideas
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Incremental reward accumulation</strong></p>
+<p><span class="math display">\[
+r_{t,c} = (\underbrace{\sum_{\tau=1}^{t}}_{\text{Incremental}} \gamma^{\tau} \cdot \mathbb{1}[\text{purchase}_{\tau,c}] \cdot \text{revenue}_{c}) - (\alpha \cdot \mathbb{1}[\text{unsubscribe}_{t,c}]) \quad \text{where} \ t \in \{1, 2, \ldots, 7\}
+\]</span></p>
+<ul>
+<li>The difficulty is that the CMAB would have to update on sparse purchasing signals which might lead to overfitting.</li>
+</ul>
+<p><strong>Proxy purchase probability</strong></p>
+<p><span class="math display">\[
+r_{t,c} = \left(\underbrace{\hat{p}_{t,c}}_{\mathbf{NN}(\mathbf{x}_{t,a})} \cdot \text{revenue}_{c}\right) - \left(\alpha \cdot \mathbb{1}[\text{unsubscribe}_{t,c}]\right)
+\]</span></p>
+<ul>
+<li>The difficulty is that the proxy would introduce model error in the reward signal.</li>
+</ul>
 </div>
 </div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>CMAB Touchpoint Proposition
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The previous method considers optimizing over two different business objectives, with the assumption that the model will capture the behavior of the user at different stages of the customer lifecycle.</p>
+<p>An alternative method would leverage a CMAB at each touchpoint. For example, for <strong>conversion-focused touchpoints</strong> - it might be best to have particular feature vectors <span class="math inline">\(\mathbf{x}_{t,a}^{\text{conv}}\)</span> and action spaces <span class="math inline">\(\mathcal{A}^{\text{conv}}\)</span>:</p>
+<p><span class="math display">\[
+\mathbf{x}_{t,a}^{\text{conv}} = \begin{bmatrix} \text{Email opens} \in \{0,1\} \\ \text{Clicks} \in \mathbb{N} \end{bmatrix};
+\mathcal{A}^{\text{conv}} \gets
+\left\{
+\begin{array}{c}
+\text{Promotion email} \\
+\text{Educational email} \\
+\text{Product recommendation email} \\
+\text{Renew insurance for a product}
+\end{array}
+\right\}
+\]</span></p>
+<p><span class="math display">\[
+r_{t,c} = \underbrace{\left(\sum_{\tau=1}^{7} \gamma^{\tau} \cdot \mathbb{1}[\text{purchase}_{\tau,c}] \cdot \text{revenue}_{c}\right)}_{\text{Business Objective 1}}
+\]</span></p>
+<p>On the other hand, <strong>retention-focused touchpoints</strong> with feature vectors <span class="math inline">\(\mathbf{x}_{t,a}^{\text{ret}}\)</span> and action spaces <span class="math inline">\(\mathcal{A}^{\text{ret}}\)</span>:</p>
+<p><span class="math display">\[
+\mathbf{x}_{t,a}^{\text{ret}} = \begin{bmatrix} \text{Email opens} \in \{0,1\} \\ \text{Complaints} \in \mathbb{N} \end{bmatrix}; \mathcal{A}^{\text{ret}} \gets
+\left\{
+\begin{array}{c}
+\text{No email} \\
+\text{Educational email} \\
+\text{Renew insurance for a product}
+\end{array}
+\right\}
+\]</span></p>
+<p><span class="math display">\[
+r_{t,c} = - \underbrace{\left(\alpha \cdot \mathbb{1}[\text{unsubscribe}_{t,c}]\right)}_{\text{Business Objective 2}}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="algorithm-of-choice-linucb" class="level3">
+<h3 class="anchored" data-anchor-id="algorithm-of-choice-linucb">Algorithm of Choice: LinUCB</h3>
+<p><a href="../../lecture3/lecture3-5.html">LinUCB</a> is a bandit algorithm that leverages the CMAB framework. The objective of LinUCB is to learn linear weights <span class="math inline">\(\hat{\boldsymbol{\theta}}_a\)</span> for each action <span class="math inline">\(a \in \mathcal{A}\)</span> using a ridge estimator.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>LinUCB Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To estimate <span class="math inline">\(\hat{\boldsymbol{\theta}}_a\)</span> we initialize the design matrix and reward vector for each arm <span class="math inline">\(a\)</span> as:</p>
+<p><span class="math display">\[
+\mathbf{A}_a \gets \mathbf{I}_{d} \qquad \mathbf{b}_a \gets \mathbf{0}_{d}
+\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="dv">2</span>  <span class="co"># feature dimension (e.g. opens, complaints)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n_arms <span class="op">=</span> <span class="dv">5</span>  <span class="co"># no email, promotion, educational, product recommendation, renewal</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [np.identity(d) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_arms)]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> [np.zeros(d) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_arms)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The parameter vector <span class="math inline">\(\hat{\boldsymbol{\theta}}_a\)</span> is estimated as the closed-form ridge regression solution:</p>
+<p><span class="math display">\[
+\hat{\boldsymbol{\theta}}_a = \mathbf{A}_a^{-1} \cdot \mathbf{b}_a
+\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> [np.linalg.solve(A[a], b[a]) <span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(n_arms)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The agent selects the action with the highest UCB score, balancing exploitation of known rewards with exploration of uncertain arms via <span class="math inline">\(\alpha\)</span>:</p>
+<p><span class="math display">\[
+p_a = \hat{\boldsymbol{\theta}}_a^\intercal \cdot \mathbf{x}_{t,a} + \alpha \sqrt{\mathbf{x}_{t,a}^\intercal \mathbf{A}_a^{-1} \mathbf{x}_{t,a}}
+\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">0</span>])  <span class="co"># example context: email opened, no complaint</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> []</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(n_arms):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    theta_a <span class="op">=</span> np.linalg.solve(A[a], b[a])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    exploit <span class="op">=</span> theta_a <span class="op">@</span> x</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    explore <span class="op">=</span> alpha <span class="op">*</span> np.sqrt(x <span class="op">@</span> np.linalg.solve(A[a], x))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    scores.append(exploit <span class="op">+</span> explore)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>action <span class="op">=</span> np.argmax(scores)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>After observing reward <span class="math inline">\(r_t\)</span> the model updates incrementally:</p>
+<p><span class="math display">\[
+\mathbf{A}_a \gets \mathbf{A}_a + \mathbf{x}_{t,a} \mathbf{x}_{t,a}^\intercal \qquad \mathbf{b}_a \gets \mathbf{b}_a + r_t \cdot \mathbf{x}_{t,a}
+\]</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A[action] <span class="op">+=</span> np.outer(x, x)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>b[action] <span class="op">+=</span> r <span class="op">*</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-not-partially-observable-markov-decision-process-pomdp" class="level3">
+<h3 class="anchored" data-anchor-id="why-not-partially-observable-markov-decision-process-pomdp">Why Not Partially Observable Markov Decision Process (POMDP)?</h3>
+<p>The problem with <a href="../../private/lecture4/lecture4-2.html">POMDPs</a> mainly relies in the intractability of the state transition dynamics <span class="math inline">\(P(s^{'},r|s,a)\)</span> of human behavior and latent preferences which is inherently:</p>
+<ul>
+<li>⚠️ <strong>Stochastic</strong>.</li>
+<li>⚠️ <strong>Non-stationary</strong>.</li>
+<li>⚠️ <strong>Confounding variables</strong> (e.g.&nbsp;events, mood, financial circumstances).</li>
+</ul>
+<p>CMABs tackle this issue by considering each feature vector to be independent of each other.</p>
+</section>
+</section>
+<section id="step-3-evaluating-rl-model-performance" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-evaluating-rl-model-performance">Step 3: Evaluating RL Model Performance</h2>
+<p>Before deploying the CMAB in production, it is essential to validate its performance against a baseline through rigorous A/B testing. The baseline could be a rule-based system or the existing email marketing strategy, with the CMAB as the treatment.</p>
+<ul>
+<li><strong>Defining Control and Test Groups</strong> - customers are randomly split by customer ID hash to ensure consistent assignment. The control group receives the existing email strategy, the treatment group is served by the CMAB.</li>
+<li><strong>Setting Statistical Measures</strong> - a minimum detectable effect (MDE) is defined upfront based on business expectations, with power <span class="math inline">\(1 - \beta = 0.8\)</span> and significance level <span class="math inline">\(\alpha = 0.05\)</span>.</li>
+<li><strong>Hypothesis Testing</strong> - a one-tailed t-test on revenue per customer:</li>
+</ul>
+<p><span class="math display">\[H_0: \mu_{\text{CMAB}} \leq \mu_{\text{baseline}} \qquad H_1: \mu_{\text{CMAB}} &gt; \mu_{\text{baseline}}\]</span></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1140,13 +1401,10 @@ gtag('config', 'G-HZVB07BZZ2', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../private/lecture7/lecture7-2.html" class="pagination-link" aria-label="7.2 On-Policy Function Approximation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">7.2 On-Policy Function Approximation</span></span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../private/lecture8/lecture8-1.html" class="pagination-link" aria-label="8.1 Deep Learning">
-        <span class="nav-page-text"><span class="chapter-title">8.1 Deep Learning</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../private/applications/health-aware-school-meal-recommnedations.html" class="pagination-link" aria-label="Health-Aware School Meal Recommendations">
+        <span class="nav-page-text"><span class="chapter-title">Health-Aware School Meal Recommendations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
