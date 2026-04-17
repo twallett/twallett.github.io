@@ -1,0 +1,51 @@
+---
+title: "Pseudo-Labeling"
+---
+
+::: {.callout-note appearance="simple" icon=false}
+Application: Pseudo-Labeling 💡
+:::
+
+::: {.callout-note}
+## A Framework for Pseudo-labeling with Deep Reinforcement Learning (Capstone Group 11)
+
+![](images/pseudolabeling.png){width=45% fig-align="center"}
+
+[Self-supervised learning](https://en.wikipedia.org/wiki/Self-supervised_learning) is a type of learning in machine learning (alongside supervised and unsupervised learning) where the task is to train a model (usually referred to as the *downstream model*) to generate supervisory signals for creating labels. Reinforcement learning can be used in this context to leverage sequential decision-making to improve the performance of the downstream model.
+
+Suppose the dataset selected is [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html).
+
+The state space $\mathcal{S}$ consists of the state vector $\mathbf{s}$, which is constructed as a flattened concatenation of:
+
+$$
+\mathbf{s} =
+\begin{bmatrix}
+\mathbf{X} \gets \text{features at the current timestep} \\
+\text{softmax}(\mathbf{y}) \gets \text{softmax labels predicted by the downstream model} \\
+\mathcal{L} \gets \text{current loss value} \\
+\end{bmatrix}
+$$
+
+The action space $\mathcal{A}$ consists of the dataset labels and an additional option to skip labeling:
+
+$$
+\mathcal{A} = \{ 0, 1, \ldots, 9, \ \text{skip} \}
+$$
+
+The piecewise reward function $R$ is defined as:
+
+$$
+R = 
+\begin{cases}
+-1 & \text{if } a = \text{skip}, \\
+\text{metric}_t - \text{metric}_{t-1} & \text{if } a \neq \text{skip}.
+\end{cases}
+$$
+
+The environment dynamics $P(s', r \mid s, a)$ correspond to transitioning to the next feature in the dataset.
+
+The episode ends when the agent has processed all samples in the dataset:
+
+- **Termination**: once the complete length of the dataset has been reached.
+  
+:::
