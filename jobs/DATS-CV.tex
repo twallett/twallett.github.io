@@ -1,0 +1,290 @@
+%-------------------------
+% CV for Northeastern University Faculty in Latex
+% Author : Zoe Kearney
+% Based off of: https://www.overleaf.com/latex/templates/coles-resume-template/qhpynjcvjpcj
+% Follows: https://theprofessorisin.com/2016/08/19/dr-karens-rules-of-the-academic-cv/
+% License : MIT
+%------------------------
+
+% Document class and font size
+\documentclass[a4paper,9pt]{extarticle}
+
+% Packages
+\usepackage[utf8]{inputenc} % For input encoding
+\usepackage{geometry} % For page margins
+\geometry{a4paper, margin=0.5in} % Set paper size and margins
+\usepackage{titlesec} % For section title formatting
+\usepackage{enumitem} % For itemized list formatting
+\usepackage{xcolor}
+\usepackage{changepage} % for adjustwidth environment
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+\usepackage{fancyhdr} % <--- Added for footer
+\usepackage{lipsum}
+
+\definecolor{darkblue}{RGB}{0, 0, 238} % A deeper blue shade
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    urlcolor=darkblue
+}
+
+% Formatting
+\setlist{noitemsep} % Removes item separation
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule] % Section title format
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} % Section title spacing
+
+% custom url display
+\newcommand{\shorturl}[2]{%
+  \href{#1}{#2}%
+}
+
+% Footer setup
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\setlength{\footskip}{12pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% larger footer text, slightly raised
+\fancyfoot[L]{\raisebox{12pt}{\normalsize Tyler J. Wallett}}
+\fancyfoot[R]{\raisebox{12pt}{\normalsize\thepage}}
+
+% remove footer on first page
+\fancypagestyle{firstpage}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+
+% Begin document
+\begin{document}
+\thispagestyle{firstpage}
+
+% Header
+\begin{center}
+\textbf{\Huge Tyler J. Wallett }\\[3pt] % Name
+Rockville, MD, USA | Relocating to Canada | Canadian Citizen | \href{https://github.com/twallett}{GitHub} | \href{https://www.twallett.com}{twallett.com} | \href{https://www.linkedin.com/in/twallett/}{LinkedIn} | +1 (301) 318-4569  % Contact info 
+\end{center}
+
+%------------------------
+\section*{PROFESSIONAL SUMMARY}
+
+\begin{adjustwidth}{0.4cm}{0cm} % same as leftmargin in EDUCATION
+
+Data Scientist specializing in reinforcement learning and graph-based recommendation systems, with published research in contextual bandits and GNNs. Experienced deploying end-to-end ML pipelines in production and teaching graduate-level RL at George Washington University. Transitioning from academia to industry, bringing both research depth and applied engineering experience.
+% \textbf{\lipsum[1][1-5]}
+
+\end{adjustwidth}
+
+%------------------------
+
+\section*{EDUCATION}
+
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Master of Science, Data Science} (GPA 3.9) \hfill May 2024 \\ 
+    The George Washington University, Washington, D.C. \\ 
+    Scholarship: Graduate Dean's Fellowship Merit-based.
+\end{itemize}
+
+\noindent
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Bachelor of Business Administration, Finance} (GPA 3.7) \hfill June 2022 \\
+    Bishop's University, Quebec, Canada. \\ 
+    Scholarship: Ronald Crowley Merit-based.
+\end{itemize}
+
+%------------------------
+
+\section*{PROFESSIONAL EXPERIENCE}
+
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{George Washington University} \hfill January 2025 - Present \\
+    Data Science Instructional Technologist \& Professional Lecturer
+    \vspace{-0.1cm}
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Author curriculum and teach graduate-level Reinforcement Learning using NumPy, TensorFlow, and OpenAI Gymnasium.}
+    \item \small{•} \normalsize{Manage data partnerships with The World Bank, Global Food Institute and 3+ institutions supporting capstone research.}
+    \item \small{•} \normalsize{Administer HPC and AWS cloud infrastructure supporting GPU computing for 4 courses serving 70+ students.}
+    \item \small{•} \normalsize{Develop 200+ page educational platform hosting programming and mathematic resources for Data Science.} 
+    \end{itemize}
+    Link: \href{https://twallett.com/courses/reinforcement-learning/}{Reinforcement Learning Course Website}
+\end{itemize}
+
+\noindent
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{eSource Capital} \hfill August 2024 - January 2025 \\
+    Junior Data Scientist 
+    \vspace{-0.1cm}
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Prototyped multi-modal RAG system using GPT-4o-mini to automate marketing analysis report generation.}
+    \item \small{•} \normalsize{Implemented semantic search with ChromaDB and OCR for intelligent PDF document retrieval and processing.}
+    \item \small{•} \normalsize{Leveraged LangChain, PyTorch, Hugging Face, and OpenAI API with Streamlit for interactive RAG application.}
+\end{itemize}
+\end{itemize}
+
+\noindent
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{The World Bank} \hfill March - May 2024 \\
+    Data Science Consultant
+    \vspace{-0.1cm}
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Designed Data Science certification curriculum (Levels I \& II) assessing 
+  technical competencies of 80+ Data Lab personnel.} 
+  \item \small{•} \normalsize{Developed Python and R training materials covering data preprocessing, statistical modeling, and time-series forecasting.}
+  \item \small{•} \normalsize{Built hands-on exercises using pandas, NumPy, scikit-learn, and statsmodels for applied data science training.} 
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Base Operations} \hfill May - August 2023 \\
+    Data Science Intern
+    \vspace{-0.1cm}
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+        \item \small{•} \normalsize{Evaluated time-series forecasting models (ARIMA) on crime datasets to assess predictive performance across crime categories.}
+  \item \small{•} \normalsize{Developed geospatial analytics using QGIS and preprocessing data from AWS S3 for dashboard visualization using Plotly.}
+    \end{itemize}
+\end{itemize}
+
+%------------------------
+\section*{PUBLICATIONS}
+
+\begin{itemize}[leftmargin=0.5cm, label={}]
+    \item \textbf{Fusing Semantic and Graph Representations for Citation-Aware Paper Retrieval} \hfill Under Review \\ 
+    Association for Computing Machinery (ACM)
+\end{itemize}
+
+\begin{itemize}[leftmargin=0.5cm, label={}]
+    \item \textbf{Health-Aware School Meal Recommendations with Contextual Bandits} \hfill Under Review \\ 
+    Springer Nature: Computer Science 
+\end{itemize}
+
+\begin{itemize}[leftmargin=0.5cm, label={}]
+    \item \textbf{Predicting Postoperative Complications in Laparoscopic General Surgery} \hfill September 2025 \\
+    Springer Nature: Journal of Neural Computing and Applications
+    \begin{itemize}
+        \item[] \textbf{Wallett, T.}, Jafari, A., Qian, X. et al. Predicting postoperative complications in laparoscopic general surgery using machine and deep learning: a classification approach. Neural Comput \& Applic 38, 4 (2026). \href{https://doi.org/10.1007/s00521-025-11813-2}{https://doi.org/10.1007/s00521-025-11813-2}
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}[leftmargin=0.5cm, label={}]
+    \item \textbf{A Benchmark for Graph-based Dynamic Recommendation Systems} \hfill May 2024 \\ 
+    Springer Nature: Journal of Neural Computing and Applications
+    \begin{itemize}
+        \item[] \textbf{Wallett, T.}, Jafari, A. A benchmark for graph-based dynamic recommendation systems. Neural Comput \& Applic (2024). \href{https://doi.org/10.1007/s00521-024-10425-6}{https://doi.org/10.1007/s00521-024-10425-6}
+    \end{itemize}
+\end{itemize}
+
+
+%------------------------
+\section*{DEPLOYED APPLICATIONS}
+
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Production AI/ML Pipelines} \hfill 2024 - Present \\
+    Python, Scikit-Learn, Docker, FastAPI, Render
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Confidence-driven sales forecasting to automate resource, strategy, and operations decisions.} 
+    \item \small{•} \normalsize{Segmented customers with RFM analysis to drive automated marketing decisions.}
+    \end{itemize}
+    Links: \href{https://twallett.com/sales-forecast}{Sales Forecast Live Demo} | \href{https://twallett.com/customer-segmentation}{Customer Segmentation Live Demo} 
+\end{itemize}
+
+
+%------------------------
+
+\section*{OPEN-SOURCE PROJECTS}
+
+% \begin{itemize}[leftmargin=0.4cm, label={}]
+%     \item \textbf{Statistical Learning} \hfill In-Progress
+%     \begin{itemize}[leftmargin=0.3cm, label={}]
+%     \item \small{•} \normalsize{Designed easy-to-understand theory and code to introduce fundamentals of statistical learning.} 
+%     \item \small{•} \normalsize{Statistical learning models: SVD, Linear Regression, Logistic Regression, Decision Tree, Random Forest, and XGBoost.} 
+%     % \item \small{•} \normalsize{Statistical learning models: SVD, PCA, Linear Regression, Logistic Regression, Decision Tree, Random Forest, XGBoost.} 
+%     \end{itemize}
+%     Link: \shorturl{https://github.com/twallett/statistical-learning}{github.com/twallett/statistical-learning}
+% \end{itemize}
+
+% \noindent
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Reinforcement Learning} \hfill December 2024 \\
+    Python, NumPy, TensorFlow
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Implemented 9 RL algorithms from first principles with pseudocode and code examples.} 
+    \item \small{•} \normalsize{Algorithms: Bandits, Monte Carlo, SARSA, Q-Learning, DQN, VPG, PPO, MCTS.} 
+    \end{itemize}
+    Link: \shorturl{https://github.com/twallett/reinforcement-learning}{github.com/twallett/reinforcement-learning}
+\end{itemize}
+
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Neural Networks} \hfill August 2023 \\
+    Python, NumPy
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Implemented 4 neural network architectures from first principles with backpropagation.} 
+    \item \small{•} \normalsize{Architectures: Perceptron, Adaptive Linear Neuron (ADALINE), Multi-layer Perceptron (MLP).} 
+    \end{itemize}
+    Link: \shorturl{https://github.com/twallett/neural-networks}{github.com/twallett/neural-networks}
+\end{itemize}
+
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Optimization} \hfill August 2023 \\
+    Python, NumPy
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Implemented 4 optimization algorithms from first principles with convergence analysis.} 
+    \item \small{•} \normalsize{Algorithms: Gradient Descent, Linear Minimization, Newton's Method, Conjugate Gradients.} 
+    \end{itemize}
+    Link: \shorturl{https://github.com/twallett/optimization}{github.com/twallett/optimization}
+\end{itemize}
+
+
+%------------------------
+\section*{EVENTS}
+
+\begin{itemize}[leftmargin=0.5cm, label={}]
+    \item \textbf{World Bank Capstone} \hfill May 2025 - Present \\
+    Capstone Research Manager 
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Managing graduate student capstone projects in partnership with World Bank's Development Data Partnership.} 
+    \item \small{•} \normalsize{Overseeing research on air pollution's economic impact and inflation prediction using Google Trends data.}
+    \end{itemize}
+    Links: \shorturl{https://datapartnership.org/air-pollution-economic-analysis/README.html}{Air Pollution \& Economic Activity} | \shorturl{https://datapartnership.org/google-trends-inflation/README.html}{Google Trends Inflation Prediction} 
+\end{itemize}
+
+\begin{itemize}[leftmargin=0.5cm, label={}]
+    \item \textbf{Data Science Association (DSA) Datathon} \hfill April 2025 \\
+    Guest Judge
+\end{itemize}
+
+\begin{itemize}[leftmargin=0.5cm, label={}]
+    \item \textbf{The George Washington University CCAS Research} \hfill March 2025 \\
+    Data Science Representative 
+\end{itemize}
+
+%------------------------
+\section*{TECHNICAL SKILLS}
+
+\begin{itemize}[leftmargin=0.5cm, label={}]
+    \item \textbf{Programming \& Version Control:} Python, R, SQL, Git/GitHub. \\
+    
+    \item \textbf{ML/DL:} scikit-learn, XGBoost, LightGBM, PyTorch, TensorFlow, PyTorch Geometric, Transformers, Hugging Face. \\
+    
+    \item \textbf{NLP/LLM:} nltk, spacy, LangChain, OpenAI API, ChromaDB, sentence-transformers. \\
+    
+    \item \textbf{Data Processing \& Visualization:} pandas, NumPy, matplotlib, seaborn, plotly, Tableau, PowerBI. \\ 
+    
+    \item \textbf{MLOps \& Deployment:} AWS (EC2, S3), GCP (Compute Engine), Docker, FastAPI, CI/CD. \\ 
+    
+    \item \textbf{Experiment Tracking:} Tensorboard, Weights \& Biases.
+\end{itemize}
+
+%------------------------
+\section*{LANGUAGES}
+
+\hspace{0.37cm} Native: English and Spanish (Canadian and Venezuelan citizenships).
+
+% End document
+\end{document}
