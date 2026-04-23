@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 import SalesForecastDashboard from './pages/Sales';
 import CustomerSegmentation from './pages/Customer';
+import Jobs from './pages/Jobs';
 
 const THEME_STORAGE_KEY = 'portfolio-theme';
 
@@ -58,6 +59,12 @@ function App() {
             path="/customer-segmentation"
             element={
               <CustomerSegmentation />
+            }
+          />
+          <Route
+            path="/jobs"
+            element={
+              <Jobs />
             }
           />
         </Routes>
