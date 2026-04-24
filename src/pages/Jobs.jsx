@@ -344,9 +344,22 @@ export default function Jobs() {
   const availableJobs = canadaJobs.filter((job) => !appliedKeys.has(jobKey(job)));
   const visibleJobs = activeTab === "Applied" ? appliedJobs : availableJobs;
   const companies = ["All", ...new Set(visibleJobs.map((j) => j.company))];
-  const filtered = activeCompany === "All"
+  const filteredJobs = activeCompany === "All"
     ? visibleJobs
     : visibleJobs.filter((j) => j.company === activeCompany);
+  const filtered = [...filteredJobs].sort((leftJob, rightJob) => {
+    if (activeTab !== "Jobs") return 0;
+
+    const leftScore = ratingStates[jobKey(leftJob)]?.score;
+    const rightScore = ratingStates[jobKey(rightJob)]?.score;
+    const leftHasScore = typeof leftScore === "number";
+    const rightHasScore = typeof rightScore === "number";
+
+    if (leftHasScore && rightHasScore) return rightScore - leftScore;
+    if (leftHasScore) return -1;
+    if (rightHasScore) return 1;
+    return 0;
+  });
 
   const toggleJD = (i) => setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
   const toggleRating = (key) => setExpandedRatings((prev) => ({ ...prev, [key]: !prev[key] }));
