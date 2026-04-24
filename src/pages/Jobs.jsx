@@ -134,6 +134,7 @@ export default function Jobs() {
   const [activeCompany, setActiveCompany] = useState("All");
   const [activeTab, setActiveTab] = useState("Jobs");
   const [appliedJobs, setAppliedJobs] = useState([]);
+  const [appliedJobsLoaded, setAppliedJobsLoaded] = useState(false);
   const [savingKeys, setSavingKeys] = useState({});
   const [ratingStates, setRatingStates] = useState({});
   const [expandedRatings, setExpandedRatings] = useState({});
@@ -240,14 +241,17 @@ export default function Jobs() {
         localJobs = saved ? JSON.parse(saved) : [];
       } catch {}
 
-      if (!ignore) setAppliedJobs(mergeJobs(remoteJobs, localJobs));
+      if (!ignore) {
+        setAppliedJobs(mergeJobs(remoteJobs, localJobs));
+        setAppliedJobsLoaded(true);
+      }
     };
 
     loadAppliedJobs();
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [apiStatus]);
 
   useEffect(() => {
     if (apiStatus !== "online") return undefined;
@@ -278,8 +282,9 @@ export default function Jobs() {
   }, [apiStatus]);
 
   useEffect(() => {
+    if (!appliedJobsLoaded) return;
     localStorage.setItem(APPLIED_STORAGE_KEY, JSON.stringify(appliedJobs));
-  }, [appliedJobs]);
+  }, [appliedJobs, appliedJobsLoaded]);
 
   useEffect(() => {
     if (!banner) return undefined;
