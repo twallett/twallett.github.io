@@ -1,0 +1,180 @@
+%-------------------------
+% CV for Northeastern University Faculty in Latex
+% Author : Zoe Kearney
+% Based off of: https://www.overleaf.com/latex/templates/coles-resume-template/qhpynjcvjpcj
+% Follows: https://theprofessorisin.com/2016/08/19/dr-karens-rules-of-the-academic-cv/
+% License : MIT
+%------------------------
+
+% Document class and font size
+\documentclass[a4paper,9pt]{extarticle}
+
+% Packages
+\usepackage[utf8]{inputenc} % For input encoding
+\usepackage{geometry} % For page margins
+\geometry{a4paper, margin=0.5in} % Set paper size and margins
+\usepackage{titlesec} % For section title formatting
+\usepackage{enumitem} % For itemized list formatting
+\usepackage{xcolor}
+\usepackage{changepage} % for adjustwidth environment
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue]{hyperref}
+\usepackage{fancyhdr} % <--- Added for footer
+\usepackage{lipsum}
+
+\definecolor{darkblue}{RGB}{0, 0, 238} % A deeper blue shade
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    urlcolor=darkblue
+}
+
+% Formatting
+\setlist{noitemsep} % Removes item separation
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule] % Section title format
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} % Section title spacing
+
+% custom url display
+\newcommand{\shorturl}[2]{%
+  \href{#1}{#2}%
+}
+
+% Footer setup
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\setlength{\footskip}{12pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% larger footer text, slightly raised
+\fancyfoot[L]{\raisebox{12pt}{\normalsize Tyler J. Wallett}}
+\fancyfoot[R]{\raisebox{12pt}{\normalsize\thepage}}
+
+% remove footer on first page
+\fancypagestyle{firstpage}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+
+% Begin document
+\begin{document}
+\thispagestyle{firstpage}
+
+% Header
+\begin{center}
+\textbf{\Huge Tyler J. Wallett }\\[3pt] % Name
+Rockville, MD, USA | Relocating to Canada | Canadian Citizen | \href{https://github.com/twallett}{GitHub} | \href{https://www.twallett.com}{twallett.com} | \href{https://www.linkedin.com/in/twallett/}{LinkedIn} | +1 (301) 318-4569  % Contact info 
+\end{center}
+
+%------------------------
+\section*{PROFESSIONAL SUMMARY}
+
+\begin{adjustwidth}{0.4cm}{0cm}
+Data Scientist with expertise in enterprise analytics, machine learning, and cloud-based solutions. Proven experience building scalable analytics pipelines, automated monitoring systems, and production-ready data assets that drive operational excellence and business value. Strong background in cross-functional collaboration, translating complex business problems into structured analytical frameworks, and delivering actionable insights through dashboards and executive communications. Combines technical expertise (MS Data Science) with business acumen (BBA Finance) to optimize performance across operations and risk management.
+\end{adjustwidth}
+
+%------------------------
+
+\section*{EDUCATION}
+
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Master of Science, Data Science} (GPA 3.9) \hfill May 2024 \\ 
+    The George Washington University, Washington, D.C. \\ 
+    Scholarship: Graduate Dean's Fellowship Merit-based.
+\end{itemize}
+
+\noindent
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Bachelor of Business Administration, Finance} (GPA 3.7) \hfill June 2022 \\
+    Bishop's University, Quebec, Canada. \\ 
+    Scholarship: Ronald Crowley Merit-based. \\
+    Relevant Coursework: Corporate Finance, Capital Markets, Investment Analysis, Financial Accounting.
+\end{itemize}
+
+%------------------------
+
+\section*{PROFESSIONAL EXPERIENCE}
+
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{George Washington University} \hfill January 2025 - Present \\
+    Data Science Instructional Technologist \& Professional Lecturer
+    \vspace{-0.1cm}
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Partner cross-functionally with external stakeholders (World Bank, research institutions) to deliver scalable analytical solutions.}
+    \item \small{•} \normalsize{Translate complex analytical findings into executive-ready presentations and actionable business recommendations.}
+    \item \small{•} \normalsize{Build and deploy automated analytics workflows and cloud infrastructure (AWS) supporting 70+ users with embedded data quality checks.}
+    \item \small{•} \normalsize{Develop technical frameworks and training materials for advanced analytics and machine learning implementations.}
+    \end{itemize}
+    Link: \href{https://twallett.com/courses/reinforcement-learning/}{Reinforcement Learning Course Website}
+\end{itemize}
+
+\noindent
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{eSource Capital} \hfill August 2024 - January 2025 \\
+    Junior Data Scientist 
+    \vspace{-0.1cm}
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Built end-to-end automated analytics pipelines using Python, PyTorch, and SQL for business intelligence optimization.}
+    \item \small{•} \normalsize{Developed production-ready ML applications with automated monitoring and data quality validation using Streamlit and cloud platforms.}
+    \item \small{•} \normalsize{Implemented scalable document processing and semantic search solutions using machine learning techniques for operational efficiency.}
+\end{itemize}
+\end{itemize}
+
+\noindent
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{The World Bank} \hfill March - May 2024 \\
+    Data Science Consultant
+    \vspace{-0.1cm}
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Delivered enterprise consulting services designing analytical frameworks and performance optimization solutions for 80+ personnel.}
+    \item \small{•} \normalsize{Built curated datasets and analytical exercises using Python, SQL, and statistical modeling for competency assessment.}
+    \item \small{•} \normalsize{Communicated complex technical insights to senior leadership through structured presentations and executive documentation.}
+    \end{itemize}
+\end{itemize}
+
+\noindent
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Base Operations} \hfill May - August 2023 \\
+    Data Science Intern
+    \vspace{-0.1cm}
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Analyzed large, complex datasets using time-series forecasting models (ARIMA) to identify trends and optimization opportunities.}
+    \item \small{•} \normalsize{Built automated monitoring dashboards using cloud platforms (AWS S3) and visualization tools for operational performance tracking.}
+    \end{itemize}
+\end{itemize}
+
+%------------------------
+\section*{DEPLOYED APPLICATIONS}
+
+\begin{itemize}[leftmargin=0.4cm, label={}]
+    \item \textbf{Enterprise Analytics Solutions} \hfill 2024 - Present \\
+    Python, Scikit-Learn, SQL, Docker, FastAPI, Cloud Platforms
+    \begin{itemize}[leftmargin=0.3cm, label={}]
+    \item \small{•} \normalsize{Automated performance monitoring system with scalable ML pipelines deployed via Docker and FastAPI for real-time analytics.} 
+    \item \small{•} \normalsize{Customer analytics platform with end-to-end data processing, automated validation, and business intelligence dashboards.}
+    \end{itemize}
+    Links: \href{https://twallett.com/sales-forecast}{Sales Forecast Demo} | \href{https://twallett.com/customer-segmentation}{Customer Segmentation Demo} 
+\end{itemize}
+
+%------------------------
+\section*{TECHNICAL SKILLS}
+
+\begin{itemize}[leftmargin=0.5cm, label={}]
+    \item \textbf{Programming \& Analytics:} Python (Pandas, NumPy, Scikit-learn), SQL (complex queries, stored procedures), R, PySpark, statistical modeling, data mining. \\
+    
+    \item \textbf{Machine Learning \& AI:} Supervised/unsupervised learning, PyTorch, TensorFlow, time-series forecasting, predictive modeling, feature engineering. \\
+    
+    \item \textbf{Cloud \& Enterprise Platforms:} AWS (EC2, S3), Azure, Docker, FastAPI, automated pipelines, enterprise data platforms, model deployment. \\
+    
+    \item \textbf{Visualization \& BI:} PowerBI, Tableau, matplotlib, seaborn, plotly, Streamlit, executive dashboards. \\
+    
+    \item \textbf{Data Engineering:} ETL processes, data quality validation, automated monitoring, scalable data assets, database management.
+\end{itemize}
+
+% End document
+\end{document}

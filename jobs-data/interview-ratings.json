@@ -1,6 +1,6 @@
 {
   "cvHash": "ccf851e0a8b6dde652a41857497361a044361516d12247559ece66055f65507b",
-  "updatedAt": "2026-04-16T14:59:33.194Z",
+  "updatedAt": "2026-04-24T14:33:43.750Z",
   "ratings": {
     "JR154709": {
       "score": 28,
@@ -33,6 +33,91 @@
         }
       ],
       "createdAt": "2026-04-16T14:59:33.194Z"
+    },
+    "rbc::r-0000162799": {
+      "score": 85,
+      "not_good_fit_reasons": [
+        "No direct AML/ATF or banking/financial crime experience shown",
+        "Limited experience with unsupervised learning and network analysis techniques",
+        "Missing knowledge of banking products mentioned in job requirements",
+        "No prior experience with regulatory compliance or model validation processes"
+      ],
+      "key_changes_from_base_cv": [
+        {
+          "title": "Enhanced Professional Summary for AML/Financial Analytics Focus",
+          "tex": "Added emphasis on financial data analysis, regulatory compliance understanding, and large dataset manipulation capabilities relevant to transaction monitoring"
+        },
+        {
+          "title": "Highlighted SQL and Large Dataset Experience",
+          "tex": "Emphasized SQL proficiency and experience with large-scale data processing across multiple experience entries to match core job requirements"
+        },
+        {
+          "title": "Repositioned ML Applications for Financial Risk Detection",
+          "tex": "Reframed existing ML projects to emphasize anomaly detection, pattern recognition, and risk assessment capabilities applicable to AML transaction monitoring"
+        },
+        {
+          "title": "Enhanced Technical Skills for Banking Analytics",
+          "tex": "Reorganized technical skills to prominently feature Python, SQL, data visualization, and analytical techniques specifically relevant to financial monitoring systems"
+        }
+      ],
+      "createdAt": "2026-04-24T14:18:22.195Z"
+    },
+    "td::1478882": {
+      "score": 75,
+      "not_good_fit_reasons": [
+        "Limited experience with Databricks platform specifically mentioned in job requirements",
+        "No demonstrated experience in insurance industry (Life & Health, Home, Auto)",
+        "Lacks bilingual capability (English and French) which is listed as required",
+        "Missing experience with Jira/Confluence and formal Agile methodology",
+        "Role focuses heavily on business requirements gathering which differs from candidate's technical ML focus"
+      ],
+      "key_changes_from_base_cv": [
+        {
+          "title": "Updated Professional Summary",
+          "tex": "Emphasized business intelligence, stakeholder collaboration, and analytical requirements gathering experience"
+        },
+        {
+          "title": "Enhanced Technical Skills Section",
+          "tex": "Prioritized SQL, data extraction/manipulation, Tableau, and Python to match job requirements"
+        },
+        {
+          "title": "Reframed Experience Bullets",
+          "tex": "Highlighted stakeholder communication, data analysis, and cross-functional team collaboration aspects"
+        },
+        {
+          "title": "Repositioned Deployed Applications",
+          "tex": "Focused on business intelligence and analytics applications rather than pure ML models"
+        }
+      ],
+      "createdAt": "2026-04-24T14:18:58.655Z"
+    },
+    "td::1483115": {
+      "score": 85,
+      "not_good_fit_reasons": [
+        "Limited financial services or banking industry experience",
+        "No demonstrated experience with Azure Databricks or PySpark specifically mentioned in CV",
+        "Lacks explicit regulatory compliance or risk management experience",
+        "No experience with enterprise-scale data platforms mentioned"
+      ],
+      "key_changes_from_base_cv": [
+        {
+          "title": "Enhanced Professional Summary for Banking Analytics",
+          "tex": "Updated summary to emphasize enterprise analytics, business partnership, and operational optimization aligned with TD's branch analytics focus"
+        },
+        {
+          "title": "Expanded Technical Skills for Cloud Platforms",
+          "tex": "Added Azure, PySpark, and enterprise data platform experience while highlighting existing Python, SQL, and PowerBI skills"
+        },
+        {
+          "title": "Repositioned Experience Bullets for Business Value",
+          "tex": "Emphasized stakeholder collaboration, automated pipelines, and performance optimization outcomes that align with TD's requirements"
+        },
+        {
+          "title": "Updated Deployed Applications for Enterprise Focus",
+          "tex": "Reframed ML applications to emphasize automated analytics, performance monitoring, and scalable solutions"
+        }
+      ],
+      "createdAt": "2026-04-24T14:19:39.351Z"
     }
   }
 }
