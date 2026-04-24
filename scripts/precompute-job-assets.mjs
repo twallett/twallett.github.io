@@ -209,56 +209,27 @@ function writeJsonIfChanged(filePath, value) {
   return true;
 }
 
-function extractJson(text) {
-  const trimmed = String(text || "").trim();
-  if (!trimmed) {
-    throw new Error("Model returned an empty response.");
-  }
-
-  const candidates = [];
-  const fencedMatches = [...trimmed.matchAll(/```(?:json)?\s*([\s\S]*?)```/gi)];
-
-  for (const match of fencedMatches) {
-    if (match[1]?.trim()) {
-      candidates.push(match[1].trim());
-    }
-  }
-
-  candidates.push(trimmed);
-
-  const firstBrace = trimmed.indexOf("{");
-  const lastBrace = trimmed.lastIndexOf("}");
-  if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
-    candidates.push(trimmed.slice(firstBrace, lastBrace + 1).trim());
-  }
-
-  for (const candidate of candidates) {
-    try {
-      return JSON.parse(candidate);
-    } catch {}
-  }
-
-  throw new Error(`Could not parse model JSON response. Starts with: ${trimmed.slice(0, 120)}`);
-}
-
-function extractAnthropicText(payload) {
-  const texts = [];
+function extractAnthropicToolInput(payload, toolName) {
   for (const item of payload?.content || []) {
-    if (item?.type === "text" && typeof item.text === "string") {
-      texts.push(item.text);
+    if (item?.type === "tool_use" && item?.name === toolName && item?.input) {
+      return item.input;
     }
   }
-  return texts.join("\n").trim();
+
+  const textPreview = (payload?.content || [])
+    .filter((item) => item?.type === "text" && typeof item.text === "string")
+    .map((item) => item.text)
+    .join("\n")
+    .trim()
+    .slice(0, 200);
+
+  throw new Error(`Claude did not return expected tool output. Starts with: ${textPreview}`);
 }
 
 async function requestRatingAndTailoredCv(job, baseCvTex) {
   const prompt = [
     "You are tailoring a LaTeX resume for a data scientist job application.",
-    "Return JSON only with these keys:",
-    "score: integer 0-100",
-    "not_good_fit_reasons: array of 2-5 concise strings",
-    "key_changes_from_base_cv: array of 2-5 objects with keys title and tex",
-    "tailored_cv_tex_base64: base64-encoded UTF-8 text for a complete LaTeX document that preserves the base CV structure and formatting but updates the most relevant sections for this job.",
+    "Use the provided tool exactly once.",
     "",
     "Constraints:",
     "- Keep all claims grounded in the base CV. Do not invent employers, degrees, dates, or tools not supported by the base CV or job posting.",
@@ -292,6 +263,48 @@ async function requestRatingAndTailoredCv(job, baseCvTex) {
     body: JSON.stringify({
       model: ANTHROPIC_MODEL,
       max_tokens: 4000,
+      tools: [
+        {
+          name: "record_job_rating",
+          description: "Return the interview likelihood score, mismatch reasons, key CV changes, and a base64-encoded tailored LaTeX CV.",
+          input_schema: {
+            type: "object",
+            properties: {
+              score: { type: "integer", minimum: 0, maximum: 100 },
+              not_good_fit_reasons: {
+                type: "array",
+                items: { type: "string" },
+                minItems: 2,
+                maxItems: 5,
+              },
+              key_changes_from_base_cv: {
+                type: "array",
+                minItems: 2,
+                maxItems: 5,
+                items: {
+                  type: "object",
+                  properties: {
+                    title: { type: "string" },
+                    tex: { type: "string" },
+                  },
+                  required: ["title", "tex"],
+                },
+              },
+              tailored_cv_tex_base64: { type: "string" },
+            },
+            required: [
+              "score",
+              "not_good_fit_reasons",
+              "key_changes_from_base_cv",
+              "tailored_cv_tex_base64",
+            ],
+          },
+        },
+      ],
+      tool_choice: {
+        type: "tool",
+        name: "record_job_rating",
+      },
       messages: [
         {
           role: "user",
@@ -307,7 +320,7 @@ async function requestRatingAndTailoredCv(job, baseCvTex) {
   }
 
   const payload = await response.json();
-  const parsed = extractJson(extractAnthropicText(payload));
+  const parsed = extractAnthropicToolInput(payload, "record_job_rating");
   const encodedTex = String(parsed.tailored_cv_tex_base64 || "").trim();
   if (!encodedTex) {
     throw new Error("Model response did not include tailored_cv_tex_base64.");
