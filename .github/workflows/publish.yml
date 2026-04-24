@@ -7,11 +7,14 @@ on:
 
 jobs:
   deploy:
+    if: github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message, '[skip jobs precompute]')
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out source repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -21,6 +24,31 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended
+
+      - name: Precompute job ratings and tailored CVs
+        run: npm run precompute:jobs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ secrets.ANTHROPIC_MODEL }}
+          MAX_JOB_ASSETS_PER_RUN: 5
+
+      - name: Commit cached job assets
+        shell: bash
+        run: |
+          if git diff --quiet -- public/jobs-data/interview-ratings.json public/jobs-data/tailored-cv; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/jobs-data/interview-ratings.json public/jobs-data/tailored-cv
+          git commit -m "Precompute job assets [skip jobs precompute]"
+          git push
 
       - name: Build React site
         run: npm run build

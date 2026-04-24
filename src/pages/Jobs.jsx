@@ -5,7 +5,7 @@ const COLORS = {
   TD: "#54B848",
   BMO: "#0075BE",
   "Canadian Tire": "#CC0000",
-  MANULIFE: "#00A758",
+  Manulife: "#00A758",
   "Sun Life": "#F5A623",
   CIBC: "#A50034",
 };
@@ -16,9 +16,32 @@ const APPLIED_ENDPOINT = `${API_BASE}/applied-jobs`;
 const CV_UPLOAD_ENDPOINT = `${API_BASE}/cv-upload`;
 const INTERVIEW_RATINGS_ENDPOINT = `${API_BASE}/interview-ratings`;
 const TAILORED_CV_ENDPOINT = `${API_BASE}/tailored-cv`;
+const JOBS_DATA_FILES = ["jobs.csv", "workday-ats-jobs.csv"];
+
+const COMPANY_NAME_MAP = {
+  RBC: "RBC",
+  TD: "TD",
+  BMO: "BMO",
+  CIBC: "CIBC",
+  "CANADIAN TIRE": "Canadian Tire",
+  "SUN LIFE": "Sun Life",
+  MANULIFE: "Manulife",
+};
 
 const initials = (name = "") =>
   name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+
+function normalizeCompanyName(value = "") {
+  const trimmed = String(value || "").trim();
+  if (!trimmed) return "";
+
+  const mapped = COMPANY_NAME_MAP[trimmed.toUpperCase()];
+  if (mapped) return mapped;
+
+  return trimmed
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
 
 const isCanadaLocation = (location = "") => {
   const text = String(location).toLowerCase();
@@ -91,12 +114,8 @@ function parseCSV(text) {
   return rows.slice(1)
     .filter((cols) => cols.some((value) => String(value).trim()))
     .map((cols) => {
-      const companyName = cols[companyIndex] || "";
-      const company = companyName.charAt(0) + companyName.slice(1).toLowerCase()
-        .replace(/\b\w/g, (c) => c.toUpperCase());
-
       return {
-        company,
+        company: normalizeCompanyName(cols[companyIndex] || ""),
         title: cols[titleIndex] || "",
         location: cols[locationIndex] || "",
         job_id: cols[jobIdIndex] || "",
@@ -116,8 +135,20 @@ function cleanLocation(location = "") {
   return lines[0] || "";
 }
 
+function normalizeKeyPart(value = "") {
+  return String(value || "").trim().toLowerCase();
+}
+
 function jobKey(job) {
-  return job.job_id || job.url || `${job.company}-${job.title}-${job.location}`;
+  const company = normalizeKeyPart(job.company);
+  const jobId = normalizeKeyPart(job.job_id);
+  const url = normalizeKeyPart(job.url);
+  const title = normalizeKeyPart(job.title);
+  const location = normalizeKeyPart(job.location);
+
+  if (company && jobId) return `${company}::${jobId}`;
+  if (url) return `url::${url}`;
+  return `fallback::${company}::${title}::${location}`;
 }
 
 function sanitizeSlug(value = "tailored-cv") {
@@ -191,12 +222,26 @@ export default function Jobs() {
   const [downloadingCvKeys, setDownloadingCvKeys] = useState({});
 
   useEffect(() => {
-    fetch(resolveDataPath("workday-ats-jobs.csv"), { cache: "no-store" })
-      .then((response) => {
-        if (!response.ok) throw new Error("Failed to load jobs data.");
-        return response.text();
-      })
-      .then((text) => setJobs(parseCSV(text)))
+    const loadJobs = async () => {
+      const loaded = [];
+
+      for (const filename of JOBS_DATA_FILES) {
+        try {
+          const response = await fetch(resolveDataPath(filename), { cache: "no-store" });
+          if (!response.ok) continue;
+          const text = await response.text();
+          loaded.push(...parseCSV(text));
+        } catch {}
+      }
+
+      if (!loaded.length) {
+        throw new Error("Failed to load jobs data.");
+      }
+
+      setJobs(mergeJobs(loaded, []));
+    };
+
+    loadJobs()
       .catch(() => setBanner("Could not load jobs data."));
   }, []);
 
