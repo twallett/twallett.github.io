@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
 
 const COLORS = {
   RBC: "#E2001A",
@@ -13,6 +14,7 @@ const COLORS = {
 const APPLIED_STORAGE_KEY = "applied-jobs";
 const API_ROOT = String(import.meta.env?.VITE_JOBS_API_BASE || "").replace(/\/+$/, "");
 const API_BASE = `${API_ROOT}/api/jobs`;
+const HEALTH_ENDPOINT = `${API_ROOT}/health`;
 const APPLIED_ENDPOINT = `${API_BASE}/applied-jobs`;
 const CV_UPLOAD_ENDPOINT = `${API_BASE}/cv-upload`;
 const INTERVIEW_RATINGS_ENDPOINT = `${API_BASE}/interview-ratings`;
@@ -126,6 +128,9 @@ function resolveBackendUrl(path = "") {
 
 export default function Jobs() {
   const [jobs, setJobs] = useState([]);
+  const [jobsLoaded, setJobsLoaded] = useState(false);
+  const [apiStatus, setApiStatus] = useState(null);
+  const [initializing, setInitializing] = useState(true);
   const [activeCompany, setActiveCompany] = useState("All");
   const [activeTab, setActiveTab] = useState("Jobs");
   const [appliedJobs, setAppliedJobs] = useState([]);
@@ -142,6 +147,46 @@ export default function Jobs() {
   const [downloadingCvKeys, setDownloadingCvKeys] = useState({});
 
   useEffect(() => {
+    let ignore = false;
+    let timeoutId;
+
+    const checkApiHealth = async () => {
+      try {
+        const response = await fetch(HEALTH_ENDPOINT, { cache: "no-store" });
+        if (!response.ok) throw new Error("Health check failed.");
+        const data = await response.json();
+        const nextStatus = data.status === "ok" ? "online" : "offline";
+
+        if (!ignore) {
+          setApiStatus(nextStatus);
+          setInitializing(false);
+        }
+
+        if (!ignore && nextStatus !== "online") {
+          timeoutId = window.setTimeout(checkApiHealth, 5000);
+        }
+      } catch {
+        if (!ignore) {
+          setApiStatus("offline");
+          setInitializing(false);
+          timeoutId = window.setTimeout(checkApiHealth, 5000);
+        }
+      }
+    };
+
+    checkApiHealth();
+
+    return () => {
+      ignore = true;
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (apiStatus !== "online") return undefined;
+
+    let ignore = false;
+
     const loadJobs = async () => {
       const response = await fetch(API_BASE, { cache: "no-store" });
       if (!response.ok) throw new Error("Failed to load jobs data.");
@@ -154,15 +199,29 @@ export default function Jobs() {
           .map((job) => [jobKey(job), normalizeRating(job.cached_rating)])
       );
 
-      setJobs(mergeJobs(remoteJobs, []));
-      setRatingStates(normalizedRatings);
+      if (!ignore) {
+        setJobs(mergeJobs(remoteJobs, []));
+        setRatingStates((prev) => ({ ...normalizedRatings, ...prev }));
+        setJobsLoaded(true);
+      }
     };
 
     loadJobs()
-      .catch(() => setBanner("Could not load jobs data."));
-  }, []);
+      .catch(() => {
+        if (!ignore) {
+          setBanner("Could not load jobs data.");
+          setJobsLoaded(false);
+        }
+      });
+
+    return () => {
+      ignore = true;
+    };
+  }, [apiStatus]);
 
   useEffect(() => {
+    if (apiStatus !== "online") return undefined;
+
     let ignore = false;
 
     const loadAppliedJobs = async () => {
@@ -191,6 +250,8 @@ export default function Jobs() {
   }, []);
 
   useEffect(() => {
+    if (apiStatus !== "online") return undefined;
+
     let ignore = false;
 
     const loadCvMeta = async () => {
@@ -214,7 +275,7 @@ export default function Jobs() {
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [apiStatus]);
 
   useEffect(() => {
     localStorage.setItem(APPLIED_STORAGE_KEY, JSON.stringify(appliedJobs));
@@ -467,6 +528,19 @@ export default function Jobs() {
     }
   }, [companies, activeCompany]);
 
+  if (initializing || apiStatus !== "online" || !jobsLoaded) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-8 flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 animate-spin text-blue-500 mx-auto mb-4" />
+          <p className="text-gray-600 text-lg">
+            {apiStatus === "offline" ? "Waking Jobs API..." : "Loading Jobs..."}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={{ maxWidth: 960, margin: "0 auto", padding: "6.5rem 1rem 2rem", fontFamily: "system-ui, sans-serif", scrollMarginTop: 96 }}>
       {banner && (
@@ -500,6 +574,13 @@ export default function Jobs() {
       <h1 style={{ fontSize: 22, fontWeight: 500, marginBottom: "1.5rem" }}>
         Data Science Jobs
       </h1>
+
+      <div style={{ display: "flex", gap: 8, marginBottom: "1rem", flexWrap: "wrap" }}>
+        <div style={{ background: "#ecfdf3", padding: "6px 10px", borderRadius: 999, border: "1px solid #bbf7d0", display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 8, height: 8, borderRadius: 999, background: "#22c55e" }} />
+          <span style={{ fontSize: 12, fontWeight: 600, color: "#166534" }}>API Live</span>
+        </div>
+      </div>
 
       {activeTab === "Jobs" && (
         <div
