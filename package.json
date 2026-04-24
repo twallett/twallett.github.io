@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && cp -r courses dist/courses",
-    "precompute:jobs": "node scripts/precompute-job-assets.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

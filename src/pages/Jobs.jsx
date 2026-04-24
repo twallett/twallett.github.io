@@ -11,12 +11,12 @@ const COLORS = {
 };
 
 const APPLIED_STORAGE_KEY = "applied-jobs";
-const API_BASE = "/api/jobs";
+const API_ROOT = String(import.meta.env?.VITE_JOBS_API_BASE || "").replace(/\/+$/, "");
+const API_BASE = `${API_ROOT}/api/jobs`;
 const APPLIED_ENDPOINT = `${API_BASE}/applied-jobs`;
 const CV_UPLOAD_ENDPOINT = `${API_BASE}/cv-upload`;
 const INTERVIEW_RATINGS_ENDPOINT = `${API_BASE}/interview-ratings`;
 const TAILORED_CV_ENDPOINT = `${API_BASE}/tailored-cv`;
-const JOBS_DATA_FILES = ["jobs.csv", "workday-ats-jobs.csv"];
 
 const COMPANY_NAME_MAP = {
   RBC: "RBC",
@@ -56,75 +56,6 @@ const isCanadaLocation = (location = "") => {
   ].some((hint) => text.includes(hint));
 };
 
-function parseCSV(text) {
-  const rows = [];
-  let row = [];
-  let cell = "";
-  let inQuotes = false;
-
-  for (let i = 0; i < text.length; i += 1) {
-    const ch = text[i];
-    const next = text[i + 1];
-
-    if (ch === '"') {
-      if (inQuotes && next === '"') {
-        cell += '"';
-        i += 1;
-      } else {
-        inQuotes = !inQuotes;
-      }
-      continue;
-    }
-
-    if (ch === "," && !inQuotes) {
-      row.push(cell);
-      cell = "";
-      continue;
-    }
-
-    if ((ch === "\n" || ch === "\r") && !inQuotes) {
-      if (ch === "\r" && next === "\n") i += 1;
-      row.push(cell);
-      rows.push(row);
-      row = [];
-      cell = "";
-      continue;
-    }
-
-    cell += ch;
-  }
-
-  if (cell || row.length) {
-    row.push(cell);
-    rows.push(row);
-  }
-
-  if (!rows.length) return [];
-
-  const header = rows[0].map((value) => value.trim().toLowerCase());
-  const columnIndex = (names) => header.findIndex((name) => names.includes(name));
-
-  const companyIndex = columnIndex(["company", "company_name"]);
-  const titleIndex = columnIndex(["title", "job_title"]);
-  const locationIndex = columnIndex(["location", "locations"]);
-  const jobIdIndex = columnIndex(["job_id", "job id", "req_id", "req id", "id"]);
-  const urlIndex = columnIndex(["url", "job_url", "link"]);
-  const jdIndex = columnIndex(["jd", "description", "job_description"]);
-
-  return rows.slice(1)
-    .filter((cols) => cols.some((value) => String(value).trim()))
-    .map((cols) => {
-      return {
-        company: normalizeCompanyName(cols[companyIndex] || ""),
-        title: cols[titleIndex] || "",
-        location: cols[locationIndex] || "",
-        job_id: cols[jobIdIndex] || "",
-        url: cols[urlIndex] || "",
-        jd: cols[jdIndex] || "",
-      };
-    });
-}
-
 function cleanLocation(location = "") {
   const lines = String(location)
     .replace(/^locations?\s*:?\s*/i, "")
@@ -149,14 +80,6 @@ function jobKey(job) {
   if (company && jobId) return `${company}::${jobId}`;
   if (url) return `url::${url}`;
   return `fallback::${company}::${title}::${location}`;
-}
-
-function sanitizeSlug(value = "tailored-cv") {
-  return String(value || "tailored-cv")
-    .toLowerCase()
-    .replace(/[^a-z0-9._-]+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "") || "tailored-cv";
 }
 
 function normalizeRating(raw = {}) {
@@ -193,15 +116,12 @@ function mergeJobs(primaryJobs, secondaryJobs) {
   return merged;
 }
 
-function buildCachedTailoredPdfUrl(job) {
-  const basename = sanitizeSlug(`${jobKey(job)}-${job.company || "job"}-${job.title || "cv"}`);
-  return `${resolveDataPath("tailored-cv")}/${basename}.pdf`;
-}
-
-function resolveDataPath(path) {
-  const normalized = String(path || "").replace(/^\/+/, "");
-  const isLocalDev = Boolean(import.meta.env?.DEV);
-  return isLocalDev ? `/${normalized}` : `/jobs-data/${normalized}`;
+function resolveBackendUrl(path = "") {
+  const normalized = String(path || "").trim();
+  if (!normalized) return normalized;
+  if (/^https?:\/\//i.test(normalized)) return normalized;
+  if (!API_ROOT) return normalized;
+  return `${API_ROOT}${normalized.startsWith("/") ? normalized : `/${normalized}`}`;
 }
 
 export default function Jobs() {
@@ -223,22 +143,19 @@ export default function Jobs() {
 
   useEffect(() => {
     const loadJobs = async () => {
-      const loaded = [];
+      const response = await fetch(API_BASE, { cache: "no-store" });
+      if (!response.ok) throw new Error("Failed to load jobs data.");
 
-      for (const filename of JOBS_DATA_FILES) {
-        try {
-          const response = await fetch(resolveDataPath(filename), { cache: "no-store" });
-          if (!response.ok) continue;
-          const text = await response.text();
-          loaded.push(...parseCSV(text));
-        } catch {}
-      }
+      const data = await response.json();
+      const remoteJobs = Array.isArray(data.jobs) ? data.jobs : [];
+      const normalizedRatings = Object.fromEntries(
+        remoteJobs
+          .filter((job) => job.cached_rating)
+          .map((job) => [jobKey(job), normalizeRating(job.cached_rating)])
+      );
 
-      if (!loaded.length) {
-        throw new Error("Failed to load jobs data.");
-      }
-
-      setJobs(mergeJobs(loaded, []));
+      setJobs(mergeJobs(remoteJobs, []));
+      setRatingStates(normalizedRatings);
     };
 
     loadJobs()
@@ -253,10 +170,10 @@ export default function Jobs() {
       let localJobs = [];
 
       try {
-        const response = await fetch(resolveDataPath("applied-jobs.csv"), { cache: "no-store" });
+        const response = await fetch(APPLIED_ENDPOINT, { cache: "no-store" });
         if (!response.ok) throw new Error("Failed to load applied jobs.");
-        const text = await response.text();
-        remoteJobs = parseCSV(text);
+        const data = await response.json();
+        remoteJobs = Array.isArray(data.jobs) ? data.jobs : [];
       } catch {}
 
       try {
@@ -278,7 +195,7 @@ export default function Jobs() {
 
     const loadCvMeta = async () => {
       try {
-        const response = await fetch(resolveDataPath("current-cv.json"), { cache: "no-store" });
+        const response = await fetch(`${API_BASE}/current-cv`, { cache: "no-store" });
         if (!response.ok) throw new Error("Failed to load current CV metadata.");
         const data = await response.json();
         if (!ignore) {
@@ -294,32 +211,6 @@ export default function Jobs() {
     };
 
     loadCvMeta();
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
-  useEffect(() => {
-    let ignore = false;
-
-    const loadInterviewRatings = async () => {
-      try {
-        const response = await fetch(resolveDataPath("interview-ratings.json"), { cache: "no-store" });
-        if (!response.ok) throw new Error("Failed to load interview ratings.");
-        const data = await response.json();
-        if (!ignore) {
-          const normalizedRatings = Object.fromEntries(
-            Object.entries(data.ratings || {}).map(([key, value]) => [key, normalizeRating(value)])
-          );
-          setRatingStates(normalizedRatings);
-          if (data.cvHash) setCvHash(data.cvHash);
-        }
-      } catch {
-        if (!ignore) setRatingStates({});
-      }
-    };
-
-    loadInterviewRatings();
     return () => {
       ignore = true;
     };
@@ -442,18 +333,17 @@ export default function Jobs() {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`Failed to upload CV (${response.status})`);
-      }
-
       const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.detail || `Failed to upload CV (${response.status})`);
+      }
       setUploadedCvName(data.filename || selectedCvFile.name);
       setCvHash(data.cvHash || "");
       setRatingStates({});
       setSelectedCvFile(null);
       setBanner("CV submitted.");
-    } catch {
-      setBanner("Main site API is not set up for CV upload yet.");
+    } catch (error) {
+      setBanner(error.message || "CV upload failed.");
     } finally {
       setIsUploadingCv(false);
     }
@@ -478,7 +368,7 @@ export default function Jobs() {
 
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data?.error || `Failed to generate interview rating (${response.status})`);
+        throw new Error(data?.detail || data?.error || `Failed to generate interview rating (${response.status})`);
       }
 
       updateRatingState(key, {
@@ -500,7 +390,7 @@ export default function Jobs() {
       } else {
         updateRatingState(key, {
           loading: false,
-          error: "Main site API is not set up for fresh interview ratings yet.",
+          error: error.message || "Interview rating failed.",
         });
         setBanner(error.message || "Interview rating failed.");
       }
@@ -553,20 +443,19 @@ export default function Jobs() {
 
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data?.error || `Failed to create tailored CV (${response.status})`);
+        throw new Error(data?.detail || data?.error || `Failed to create tailored CV (${response.status})`);
       }
 
       const link = document.createElement("a");
-      link.href = data.pdfUrl;
+      link.href = resolveBackendUrl(data.pdfUrl);
       link.download = data.pdfFilename || "tailored-cv.pdf";
       document.body.appendChild(link);
       link.click();
       link.remove();
 
       setBanner("Tailored CV downloaded.");
-    } catch {
-      window.open(buildCachedTailoredPdfUrl(job), "_blank", "noopener,noreferrer");
-      setBanner("Opened cached tailored CV.");
+    } catch (error) {
+      setBanner(error.message || "Tailored CV download failed.");
     } finally {
       setDownloadingCv(key, false);
     }
@@ -626,7 +515,7 @@ export default function Jobs() {
             <div>
               <p style={{ margin: 0, fontSize: 14, fontWeight: 600, color: "#13406b" }}>Upload CV (.tex)</p>
               <p style={{ margin: "0.3rem 0 0", fontSize: 12, color: "#5d7690" }}>
-                Synced CV and rating cache load from `/jobs-data`. Fresh uploads need matching API routes on the main site.
+                The jobs backend stores your current CV, application state, interview ratings, and tailored CV downloads.
               </p>
               {uploadedCvName && (
                 <p style={{ margin: "0.45rem 0 0", fontSize: 12, color: "#1f5f96" }}>
@@ -635,7 +524,7 @@ export default function Jobs() {
               )}
               {uploadedCvName && cvHash && (
                 <p style={{ margin: "0.35rem 0 0", fontSize: 11, color: "#6f88a1" }}>
-                  Cached interview scores are loaded for this synced CV when available.
+                  Saved interview scores for this CV load from the jobs backend when available.
                 </p>
               )}
             </div>
@@ -834,7 +723,7 @@ export default function Jobs() {
                     </button>
                     {rating.cached && (
                       <span style={{ fontSize: 11, color: "#8a7440" }}>
-                        Cached from synced jobs data
+                        Cached on the jobs backend
                       </span>
                     )}
                   </div>
